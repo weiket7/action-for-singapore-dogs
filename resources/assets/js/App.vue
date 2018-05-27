@@ -8,7 +8,7 @@
             <nav class="mainmenu_wrapper">
               <ul class="mainmenu nav sf-menu">
                 <li class="active">
-                  <router-link :to="'/adopt'">Adopt</router-link>
+                  <a href="%23/adopt">Adopt</a>
                 </li>
 
                 <!-- blog -->

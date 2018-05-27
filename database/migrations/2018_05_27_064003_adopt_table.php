@@ -35,6 +35,20 @@ class AdoptTable extends Migration
 ('A', 'Furgie', 'Cross Breed', 'F', 0, 'furgie.jpg', '2007-10-01', 'admin', '2018-01-01'),
 ('A', 'Angel', 'Cross Breed', 'F', 0, 'angel.jpg', '2004-06-01', 'admin', '2018-01-01'),
 ('A', 'Polly', 'Cross Breed', 'F', 0, 'polly.jpg', '2008-06-01', 'admin', '2018-01-01'),
+('A', 'Winner', 'Cross Breed', 'M', 0, 'winne r.jpg', '2009-03-01', 'admin', '2018-01-01')";
+      
+      /*$sql = "INSERT INTO `adopt` (`stat`, `name`, `breed`, `gender`, `hdb`, `image`, `birthday`, `posted_by`, `posted_on`) VALUES
+('A', 'Kodomo', 'Cross Breed', 'F', 0, 'kodomo.jpg', '2006-05-01', 'admin', '2018-01-01'),
+('A', 'Elf', 'Cross Breed', 'F', 0, 'elf.jpg', '2008-02-01', 'admin', '2018-01-01'),
+('A', 'Lava', 'Cross Breed', 'F', 0, 'lava.jpg', '2009-05-01', 'admin', '2018-01-01'),
+('A', 'Black Bingo', 'Cross Breed', 'M', 0, 'blackbingo.jpg', '2007-06-01', 'admin', '2018-01-01'),
+('A', 'Lucky Strike', 'Cross Breed', 'M', 0, 'luckystrike.jpg', '2008-06-01', 'admin', '2018-01-01'),
+('A', 'Leo', 'Cross Breed', 'M', 0, 'leo-122.jpg', '2009-01-01', 'admin', '2018-01-01'),
+('A', 'Nature', 'Cross Breed', 'F', 0, 'nature.jpg', '2016-05-01', 'admin', '2018-01-01'),
+('A', 'Magic', 'Cross Breed', 'M', 1, 'magic.jpg', '2009-07-01', 'admin', '2018-01-01'),
+('A', 'Furgie', 'Cross Breed', 'F', 0, 'furgie.jpg', '2007-10-01', 'admin', '2018-01-01'),
+('A', 'Angel', 'Cross Breed', 'F', 0, 'angel.jpg', '2004-06-01', 'admin', '2018-01-01'),
+('A', 'Polly', 'Cross Breed', 'F', 0, 'polly.jpg', '2008-06-01', 'admin', '2018-01-01'),
 ('A', 'Winner', 'Cross Breed', 'M', 0, 'winner.jpg', '2009-03-01', 'admin', '2018-01-01'),
 ('A', 'Noisy', 'Cross Breed', 'M', 0, 'noisy.jpg', '2007-01-01', 'admin', '2018-01-01'),
 ('A', 'Kranji Girl', 'Cross Breed', 'F', 0, 'kranjigirl.jpg', '2007-01-01', 'admin', '2018-01-01'),
@@ -179,7 +193,7 @@ class AdoptTable extends Migration
 ('A', 'Harry', 'Cross Breed', 'M', 0, 'harry-1598.jpg', '2012-11-01', 'admin', '2018-01-01'),
 ('A', 'Mei Mei', 'Cross Breed', 'F', 1, 'mei-mei-1601.jpg', '2011-03-01', 'admin', '2018-01-01'),
 ('A', 'Nugget', 'Cross Breed', 'M', 0, 'nugget-1599.jpg', '2014-06-01', 'admin', '2018-01-01'),
-('A', 'Ron', 'Cross Breed', 'M', 0, 'ron-1600.jpg', '2014-04-01', 'admin', '2018-01-01');";
+('A', 'Ron', 'Cross Breed', 'M', 0, 'ron-1600.jpg', '2014-04-01', 'admin', '2018-01-01');";*/
       DB::statement($sql);
     }
 
