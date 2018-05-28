@@ -13,23 +13,24 @@
             {{--<p class="text-center grey">You are donating for the project:</p>--}}
             <h3 class="entry-title black text-center">Donate</h3>
             <form method="post" action="" class="donate-form">
+              {{ csrf_field() }}
               <div class="form-horizontal">
                 <div class="form-group mt-10">
                   <label for="name" class="col-sm-2 control-label">Name</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="name" id="name" autofocus="autofocus">
+                    <input type="text" name="name" id="name" class="form-control" autofocus="autofocus">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="email" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" name="email" id="email" class="form-control" id="email">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="mobile" class="col-sm-2 control-label">Mobile</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="mobile">
+                    <input type="text" name="mobile" id="mobile" class="form-control" id="mobile">
                   </div>
                 </div>
                 
@@ -38,19 +39,19 @@
                   <div class="col-sm-10">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-primary" @click="custom_amount = false">
-                        <input type="radio" name="options" id="option1"> $10
+                        <input type="radio" name="amount" value="10"> $10
                       </label>
                       <label class="btn btn-primary" @click="custom_amount = false">
-                        <input type="radio" name="options" id="option3"> $20
+                        <input type="radio" name="amount" value="20"> $20
                       </label>
                       <label class="btn btn-primary" @click="custom_amount = false">
-                        <input type="radio" name="options" id="option2"> $50
+                        <input type="radio" name="amount" value="50"> $50
                       </label>
                       <label class="btn btn-primary" @click="custom_amount = true">
-                        <input type="radio" name="options" id="option2"> Custom Amount
+                        <input type="radio" name="amount" value="custom"> Custom Amount
                       </label>
                       
-                      <input type="text" v-if="custom_amount == true" class="form-control">
+                      <input type="text" name="custom_amount" v-if="custom_amount == true" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -97,6 +98,15 @@
                   </div>
                   <div v-if="payment_method == 'paypal'" class="col-sm-offset-2 col-sm-10">
                     You will be redirected to PayPal upon submission
+                  </div>
+                  <div v-if="payment_method == 'giro'" class="col-sm-offset-2 col-sm-10">
+                    GIRO is the convenient and hassle free way of contributing every monthly automatically.<br>
+                    Please download this <a href="{{asset("assets/pdf/action-for-singapore-dogs-donate-giro-form.pdf")}}" target="_blank">form</a>, print it out, fill it up and send it to the address stated on the form.<br>
+                    <i>(Please note the minimum sum is $10)</i>
+                  </div>
+                  <div v-if="payment_method == 'paynow'" class="col-sm-offset-2 col-sm-10">
+                    Please PayNow to:<br>
+                    9123 4567
                   </div>
                 </div>
   

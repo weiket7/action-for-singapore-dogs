@@ -190,18 +190,7 @@
                   </li>
                   <!-- eof features -->
                   <li>
-                    <a href="about.html">Events</a>
-                    <ul>
-                      <li>
-                        <a href="index.html">MultiPage</a>
-                      </li>
-                      <li>
-                        <a href="index_singlepage.html">SinglePage</a>
-                      </li>
-                      <li>
-                        <a href="admin_index.html">Admin Dashboard</a>
-                      </li>
-                    </ul>
+                    <a href="events">Events</a>
                   </li>
                   <li>
                     <a href="{{ url("contact") }}">Contact</a>
@@ -378,10 +367,22 @@
 <script src="{{ asset("assets/js/main.js") }}"></script>
 <script src="{{ asset("assets/js/vue.js") }}"></script>
 <script src="{{ asset("assets/js/axios.min.js") }}"></script>
+<script src="{{ asset("assets/js/moment.js") }}"></script>
 
 @section('script')
 
 @show
+
+<script>
+  
+  Vue.filter("formatDate", function (value) {
+    return moment(value).format("DD/MM/YYYY");
+  });
+
+  Vue.filter("formatDateTime", function (value) {
+    return moment(value).format("DD/MM/YYYY hh:mm:ss A");
+  });
+</script>
 
 </body>
 
