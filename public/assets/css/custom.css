@@ -1,24 +1,51 @@
+/******OVERALL******/
 .header_yellow {
   background-color: #FFD037;
 }
 
+.form-group {
+  margin-bottom: 10px;
+}
+
+.control-label {
+  color: #666666;
+}
+
+.btn {
+  padding: 12px 15px 12px;
+  font-size: 18px;
+  font-weight: normal;
+  border: 1px solid #ebebeb;
+  color: #666666;
+  background-color: transparent;
+}
+
+.btn-primary.active, .btn-primary.focus,
+.btn-primary:hover, .btn-primary.active.focus, .btn-primary:active:hover {
+  border-color: #f83730;
+  background-color: #f83730;
+}
+
+/******SPECIFIC PAGES******/
+/*for adopt grid page, filter on the right*/
 .widget > h3, .widget-title {
   margin-bottom: 5px;
 }
 
-ul, ol {
-  margin-bottom: 0;
-}
-
+/*for contact page, icons on the right*/
 .media-body, .media-left, .media-right {
   vertical-align: baseline;
 }
 
+
+/*for adopt view page*/
+.tab-content {
+  padding: 20px 20px;
+}
 .checkbox, .radio {
   margin-top: 3px;
   margin-bottom: 3px;
 }
-
 @media (min-width: 768px) {
   .form-horizontal .control-label {
     padding-top: 5px;

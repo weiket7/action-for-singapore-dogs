@@ -12,6 +12,7 @@ class AdoptTable extends Migration
       Schema::create('adopt', function (Blueprint $table) {
         $table->increments('adopt_id');
         $table->string('name', 50);
+        $table->string('slug', 50);
         $table->string('breed', 50);
         $table->char('gender', 1);
         $table->boolean('hdb');
@@ -20,22 +21,24 @@ class AdoptTable extends Migration
         $table->string('posted_by', 30);
         $table->dateTime('posted_on');
         $table->dateTime('birthday');
+        //$table->boolean('has_foster');
+        //$table->boolean('can_sponsor');
         $table->string('desc', 250)->nullable();
       });
   
-      $sql = "INSERT INTO `adopt` (`stat`, `name`, `breed`, `gender`, `hdb`, `image`, `birthday`, `posted_by`, `posted_on`) VALUES
-('A', 'Kodomo', 'Cross Breed', 'F', 0, 'kodomo.jpg', '2006-05-01', 'admin', '2018-01-01'),
-('A', 'Elf', 'Cross Breed', 'F', 0, 'elf.jpg', '2008-02-01', 'admin', '2018-01-01'),
-('A', 'Lava', 'Cross Breed', 'F', 0, 'lava.jpg', '2009-05-01', 'admin', '2018-01-01'),
-('A', 'Black Bingo', 'Cross Breed', 'M', 0, 'blackbingo.jpg', '2007-06-01', 'admin', '2018-01-01'),
-('A', 'Lucky Strike', 'Cross Breed', 'M', 0, 'luckystrike.jpg', '2008-06-01', 'admin', '2018-01-01'),
-('A', 'Leo', 'Cross Breed', 'M', 0, 'leo-122.jpg', '2009-01-01', 'admin', '2018-01-01'),
-('A', 'Nature', 'Cross Breed', 'F', 0, 'nature.jpg', '2016-05-01', 'admin', '2018-01-01'),
-('A', 'Magic', 'Cross Breed', 'M', 1, 'magic.jpg', '2009-07-01', 'admin', '2018-01-01'),
-('A', 'Furgie', 'Cross Breed', 'F', 0, 'furgie.jpg', '2007-10-01', 'admin', '2018-01-01'),
-('A', 'Angel', 'Cross Breed', 'F', 0, 'angel.jpg', '2004-06-01', 'admin', '2018-01-01'),
-('A', 'Polly', 'Cross Breed', 'F', 0, 'polly.jpg', '2008-06-01', 'admin', '2018-01-01'),
-('A', 'Winner', 'Cross Breed', 'M', 0, 'winne r.jpg', '2009-03-01', 'admin', '2018-01-01')";
+      $sql = "INSERT INTO `adopt` (`stat`, `slug`, `name`, `breed`, `gender`, `hdb`, `image`, `birthday`, `posted_by`, `posted_on`) VALUES
+('A', 'Kodomo', 'Kodomo', 'Cross Breed', 'F', 0, 'kodomo.jpg', '2006-05-01', 'admin', '2018-01-01'),
+('A', 'Elf', 'Elf', 'Cross Breed', 'F', 0, 'elf.jpg', '2008-02-01', 'admin', '2018-01-01'),
+('A', 'Lava', 'Lava', 'Cross Breed', 'F', 0, 'lava.jpg', '2009-05-01', 'admin', '2018-01-01'),
+('A', 'Black Bingo', 'Black-Bingo', 'Cross Breed', 'M', 0, 'blackbingo.jpg', '2007-06-01', 'admin', '2018-01-01'),
+('A', 'Lucky Strike', 'Lucky-Strike', 'Cross Breed', 'M', 0, 'luckystrike.jpg', '2008-06-01', 'admin', '2018-01-01'),
+('A', 'Leo', 'Leo', 'Cross Breed', 'M', 0, 'leo-122.jpg', '2009-01-01', 'admin', '2018-01-01'),
+('A', 'Nature', 'Nature', 'Cross Breed', 'F', 0, 'nature.jpg', '2016-05-01', 'admin', '2018-01-01'),
+('A', 'Magic', 'Magic', 'Cross Breed', 'M', 1, 'magic.jpg', '2009-07-01', 'admin', '2018-01-01'),
+('A', 'Furgie', 'Furgie', 'Cross Breed', 'F', 0, 'furgie.jpg', '2007-10-01', 'admin', '2018-01-01'),
+('A', 'Angel', 'Angel', 'Cross Breed', 'F', 0, 'angel.jpg', '2004-06-01', 'admin', '2018-01-01'),
+('A', 'Polly', 'Polly', 'Cross Breed', 'F', 0, 'polly.jpg', '2008-06-01', 'admin', '2018-01-01'),
+('A', 'Winner', 'Winner', 'Cross Breed', 'M', 0, 'winner.jpg', '2009-03-01', 'admin', '2018-01-01')";
       
       /*$sql = "INSERT INTO `adopt` (`stat`, `name`, `breed`, `gender`, `hdb`, `image`, `birthday`, `posted_by`, `posted_on`) VALUES
 ('A', 'Kodomo', 'Cross Breed', 'F', 0, 'kodomo.jpg', '2006-05-01', 'admin', '2018-01-01'),

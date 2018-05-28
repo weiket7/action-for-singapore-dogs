@@ -7,7 +7,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Giving</title>
+  <title>Action for Singapore Dogs (ASD)</title>
   <meta charset="utf-8">
   <!--[if IE]>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -147,7 +147,13 @@
                     <a href="adopt">About</a>
                     <ul>
                       <li>
-                        <a href="index.html">Who Are We</a>
+                        <a href="index.html">Who We Are</a>
+                      </li>
+                      <li>
+                        <a href="index.html">Adoption & Rescue Centre (ARC)</a>
+                      </li>
+                      <li>
+                        <a href="index_singlepage.html">Media</a>
                       </li>
                       <li>
                         <a href="index_singlepage.html">Media</a>
@@ -156,10 +162,13 @@
                   </li>
                   
                   <li>
-                    <a href="adopt">Adopt</a>
+                    <a href="#">Adopt</a>
                     <ul>
                       <li>
-                        <a href="index.html">Dogs for Adoption</a>
+                        <a href="{{ url("adopt") }}">Dogs for Adoption</a>
+                      </li>
+                      <li>
+                        <a href="index_singlepage.html">Why Adopt a Dog</a>
                       </li>
                       <li>
                         <a href="index_singlepage.html">Adoption Procedure</a>

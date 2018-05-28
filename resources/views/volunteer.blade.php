@@ -45,7 +45,7 @@
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Helping at Adoption & Rescue Centre (ARC)
+                  <input type="checkbox" value=""> Volunteer at Adoption & Rescue Centre (ARC)
                 </label>
               </div>
               <div class="checkbox">
@@ -61,11 +61,6 @@
               <div class="checkbox">
                 <label>
                   <input type="checkbox" value=""> Logistics
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value=""> Sterilisation
                 </label>
               </div>
             </div>

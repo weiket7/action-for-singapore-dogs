@@ -9,4 +9,8 @@ class ApiController extends Controller {
     return Adopt::all();
   }
   
+  public function adoptView(Request $request, $slug) {
+    return Adopt::where('slug', $slug)->first();
+  }
+  
 }

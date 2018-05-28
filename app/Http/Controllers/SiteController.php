@@ -3,13 +3,9 @@
 use Illuminate\Http\Request;
 
 class SiteController extends Controller {
-  
-  public function index(Request $request) {
-    return view("home");
-  }
-  
-  public function adopt(Request $request) {
-    return view("adopt");
+  public function adoptView(Request $request, $slug) {
+    $data['slug'] = $slug;
+    return view('adopt-view', $data);
   }
   
 }
