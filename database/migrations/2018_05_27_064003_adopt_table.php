@@ -26,7 +26,7 @@ class AdoptTable extends Migration
         $table->string('desc', 250)->nullable();
       });
   
-      $sql = "INSERT INTO `adopt` (`stat`, `slug`, `name`, `breed`, `gender`, `hdb`, `image`, `birthday`, `posted_by`, `posted_on`) VALUES
+      $sql = "INSERT INTO `adopt` (`stat`, `name`, `slug`, `breed`, `gender`, `hdb`, `image`, `birthday`, `posted_by`, `posted_on`) VALUES
 ('A', 'Kodomo', 'Kodomo', 'Cross Breed', 'F', 0, 'kodomo.jpg', '2006-05-01', 'admin', '2018-01-01'),
 ('A', 'Elf', 'Elf', 'Cross Breed', 'F', 0, 'elf.jpg', '2008-02-01', 'admin', '2018-01-01'),
 ('A', 'Lava', 'Lava', 'Cross Breed', 'F', 0, 'lava.jpg', '2009-05-01', 'admin', '2018-01-01'),

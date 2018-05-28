@@ -21,10 +21,10 @@
               <div class="col-md-7">
                 <div class="item-content">
                   <h4 class="entry-title">
-                    <a href="event-single-right.html" rel="bookmark">@{{ event.name }}</a>
+                    <a :href="base_url + '/events/' + event.slug" rel="bookmark">@{{ event.name }}</a>
                   </h4>
                   
-                  <p class="event-detail highlight">
+                  <p class="event-detail">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                      @{{ event.location }}
                     <br>
@@ -32,10 +32,16 @@
                     @{{ event.date | formatDate }}
                     <br>
                     <i class="fa fa-clock" aria-hidden="true"></i> @{{ event.time }}
+                    <span v-if="event.duration">
+                      <br><i class="fas fa-ruler-horizontal" aria-hidden="true"></i> @{{ event.duration }}
+                    </span>
+                    <span v-if="event.cost">
+                      <br><i class="fa fa-dollar-sign" aria-hidden="true"></i> @{{ event.cost }}
+                    </span>
                   </p>
-                  <p>Stet clita kasd gubergren, no sea takimata sanctus sed diam voluptua.</p>
-                  <p class="topmargin_30">
-                    <a href="event-single-right.html" class="theme_button inverse wide_button bottommargin_0">Read More</a>
+                  {{--<p>Stet clita kasd gubergren, no sea takimata sanctus sed diam voluptua.</p>--}}
+                  <p>
+                    <a href="event-single-right.html" class="theme_button inverse bottommargin_0">Learn More</a>
                   </p>
                 </div>
               </div>
@@ -73,147 +79,48 @@
       <!--eof .col-sm-8 (main content)-->
       
       <!-- sidebar -->
-      <aside class="col-sm-5 col-md-4 col-lg-4">
+      <div class="col-sm-5 col-md-4 col-lg-4">
         
-        <div class="widget widget_text">
-          
-          <h3 class="widget-title">Upcoming event</h3>
-          <div class="textwidget">
-            <img src="images/gallery/07.jpg" alt="" />
-            <h4><a href="event-single-right.html">Picanha pig leberkas</a></h4>
-            <p>Shank kevin prosciutto pork belly. Rump pancetta kielbasa porchetta. Beef brisket pig cupim venison.</p>
-            <p class="item-meta highlight">
-              <span>
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                NYC 21th street #43
-              </span>
-                  <span class="text-uppercase">
-                <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                MAY 20, 5 P.M.
-              </span>
-            </p>
+        <div class="widget">
+  
+          <h3 class="widget-title">Showing</h3>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+              Upcoming
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+              Past
+            </label>
+          </div>
+        </div>
+  
+        <div class="widget mt-30">
+          <h3 class="widget-title">Type</h3>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+              Basic Obedience Class
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1">
+              Adoption Drive
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+              Others
+            </label>
           </div>
         </div>
         
-        <div class="widget widget_search">
-          <h3 class="widget-title">Search post</h3>
-          <form method="get" class="searchform form-inline" action="./">
-            <div class="form-group">
-              <label class="screen-reader-text" for="widget-search">Search for:</label>
-              <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="theme_button">Search</button>
-          </form>
-        </div>
-        
-        <div class="widget widget_categories">
-          
-          <h3 class="widget-title">Categories</h3>
-          <ul class="greylinks">
-            <li>
-              <a href="#">
-                <i class="fa fa-heart rightpadding_5" aria-hidden="true"></i> Donation</a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-user-plus rightpadding_5" aria-hidden="true"></i> Volunteering</a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-home rightpadding_5" aria-hidden="true"></i> Adoption</a>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="widget widget_recent_posts">
-          
-          <h3 class="widget-title">Recent Posts</h3>
-          <ul class="greylinks">
-            <li>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <img src="images/recent_post1.jpg" alt="" />
-                </div>
-                <div class="media-body media-middle">
-                  <h4><a href="blog-single-right.html">Missioners in charge</a></h4>
-                  <div class="entry-meta grey darklinks">
-													<span class="entry-date">
-														<time datetime="2017-03-13T08:50:40+00:00">
-															23th of april
-														</time>
-													</span>
-                    <span>|</span>
-                    <span>
-														<i class="fa fa-heart" aria-hidden="true"></i>
-														2
-													</span>
-                    <a href="blog-single-right.html#comments">
-                      <i class="fa fa-comment" aria-hidden="true"></i>
-                      4
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            
-            <li>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <img src="images/recent_post2.jpg" alt="" />
-                </div>
-                <div class="media-body media-middle">
-                  <h4><a href="blog-single-right.html">Celebrating the adoption</a></h4>
-                  <div class="entry-meta grey darklinks">
-													<span class="entry-date">
-														<time datetime="2017-03-13T08:50:40+00:00">
-															5th of april
-														</time>
-													</span>
-                    <span>|</span>
-                    <span>
-														<i class="fa fa-heart" aria-hidden="true"></i>
-														3
-													</span>
-                    <a href="blog-single-right.html#comments">
-                      <i class="fa fa-comment" aria-hidden="true"></i>
-                      1
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            
-            <li>
-              <div class="media">
-                <div class="media-left media-middle">
-                  <img src="images/recent_post3.jpg" alt="" />
-                </div>
-                <div class="media-body media-middle">
-                  <h4><a href="blog-single-right.html">Charity for everyone</a></h4>
-                  <div class="entry-meta grey darklinks">
-													<span class="entry-date">
-														<time datetime="2017-03-13T08:50:40+00:00">
-															25th of april
-														</time>
-													</span>
-                    <span>|</span>
-                    <span>
-														<i class="fa fa-heart" aria-hidden="true"></i>
-														6
-													</span>
-                    <a href="blog-single-right.html#comments">
-                      <i class="fa fa-comment" aria-hidden="true"></i>
-                      18
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
       
-      
-      </aside>
+      </div>
       <!-- eof aside sidebar -->
     
     </div>
@@ -225,7 +132,8 @@
     var vm = new Vue({
       el: "#app",
       data: {
-        events: {}
+        events: {},
+        base_url: '{{ url('/') }}'
       },
       created: function() {
         axios.get('api/events')

@@ -8,6 +8,10 @@
 .control-label {
   color: #666666;
 }
+.theme_button {
+  padding: 10px 10px;
+  font-size: 16px;
+}
 .btn {
   padding: 12px 15px 12px;
   font-size: 18px;
@@ -50,6 +54,9 @@
 /*for event page*/
 .event-detail {
   font-size: 15px;
+}
+.entry-title {
+  margin-bottom: 10px;
 }
 
 .mt-10 { margin-top: 10px !important; }
