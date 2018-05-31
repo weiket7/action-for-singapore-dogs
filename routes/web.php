@@ -1,14 +1,10 @@
 <?php
 
-Route::get('/', 'SiteController@index');
-Route::get('/', function () { return view("home"); });
-Route::get('adopt', function () { return view("adopt"); });
-Route::get('adopt/{slug}', 'SiteController@adoptView' );
-Route::get('contact', function () { return view("contact"); });
-Route::get('volunteer', function () { return view("volunteer"); });
-Route::get('donate', function () { return view("donate"); });
-Route::get('events', function () { return view("events"); });
-Route::post('donate', 'SiteController@donate');
+Route::get('/', function () { return view("welcome"); });
+Route::get('backend', function () { return view("admin"); });
+Route::get('api/dogs', 'ApiController@dogs');
+Route::get('api/dogs/{adopt_id}', 'ApiController@dog');
+
 
 Route::get('api/adopt', 'ApiController@adopt');
 Route::get('api/adopt-view/{slug}', 'ApiController@adoptView');

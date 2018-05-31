@@ -1,0 +1,21 @@
+<template>
+  <div class="tab-pane" :class="{active : active}" :id="'m_tabs_'+name" role="tabpanel">
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+  import axios from 'axios'
+  import TextboxComponent from './TextboxComponent'
+  import LabelComponent from './LabelComponent'
+  import TextComponent from './TextComponent'
+  import FormFooter from './FormFooterComponent'
+  
+  export default {
+    name: "tab",
+    props: {
+      name: {type: String, required: true},
+      active: {type: Boolean, default: false}
+    }
+  }
+</script>

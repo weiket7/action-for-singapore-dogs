@@ -29,4 +29,8 @@ class Adopt extends Model
     return $age;
   }
   
+  public function getGenderAttribute() {
+    return $this->attributes['gender'] == 'M' ? "Male" : "Female";
+  }
+  
 }
