@@ -10,6 +10,6 @@ export default new Router({
   routes: [
     { path: '/dashboard', name: 'Dashboard', component: Dashboard },
     { path: '/dogs', name: 'DogList', component: DogList },
-    { path: '/dogs/:dog_id', name: 'Dog', component: Dog },
+    { path: '/dogs/:adopt_id', name: 'Dog', component: Dog },
   ]
 })

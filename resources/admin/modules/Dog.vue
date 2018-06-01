@@ -1,5 +1,7 @@
 <template>
   <single-portlet title="Dogs">
+    <tabs :tabs="['General', 'Rescuer', 'Foster']">
+      <tab :name="'General'" :active="true">
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <div class="form-group m-form__group row" :class="{ 'has-danger': errors.has('name') }">
             <label-component value="Name"></label-component>
@@ -28,7 +30,9 @@
           <div class="form-group m-form__group row">
             <label-component value="Microchipped"></label-component>
             <radio-component name="microchip" v-model="dog.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+          </div>
 
+          <div class="form-group m-form__group row">
             <label-component value="Vaccinated"></label-component>
             <radio-component name="vaccinate" v-model="dog.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
           </div>
@@ -51,70 +55,22 @@
           <div class="form-group m-form__group row">
             <label-component value="Rescued On"></label-component>
             <textbox-component name='rescued_on' v-model="dog.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
-
-            <label-component value="Rescuer Name"></label-component>
-            <textbox-component name='rescuer_name' v-model="dog.rescuer_name" :error="errors.get('rescuer_name')"></textbox-component>
-          </div>
-
-          <div class="form-group m-form__group row">
-            <label-component value="Rescuer Mobile"></label-component>
-            <textbox-component name='rescuer_mobile' v-model="dog.rescuer_mobile" :error="errors.get('rescuer_mobile')"></textbox-component>
-
-            <label-component value="Rescuer Address"></label-component>
-            <textbox-component name='rescuer_addr' v-model="dog.rescuer_addr" :error="errors.get('rescuer_addr')"></textbox-component>
-          </div>
-
-          <hr>
-
-          <div class="form-group m-form__group row">
-            <label-component value="Need Fosterer"></label-component>
-            <radio-component name="stat" v-model="dog.stat" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
-
-            <label-component value="Fosterer Name"></label-component>
-            <textbox-component name='fosterer_name' v-model="dog.fosterer_name" :error="errors.get('fosterer_name')"></textbox-component>
-          </div>
-
-          <div class="form-group m-form__group row">
-            <label-component value="Fosterer Mobile"></label-component>
-            <textbox-component name='fosterer_mobile' v-model="dog.fosterer_mobile" :error="errors.get('fosterer_mobile')"></textbox-component>
-
-            <label-component value="Fosterer Address"></label-component>
-            <textbox-component name='fosterer_addr' v-model="dog.fosterer_addr" :error="errors.get('fosterer_addr')"></textbox-component>
-          </div>
-
-          <hr>
-
-          <div class="form-group m-form__group row">
-            <label-component value="Foster Status"></label-component>
-            <radio-component name="stat" v-model="dog.stat" :options="{ 'Y': 'Need', 'N': 'Fostered' }"></radio-component>
-
-            <label-component value="Fosterer Name"></label-component>
-            <textbox-component name='fosterer_name' v-model="dog.fosterer_name" :error="errors.get('fosterer_name')"></textbox-component>
-          </div>
-
-          <div class="form-group m-form__group row">
-            <label-component value="Fosterer Mobile"></label-component>
-            <textbox-component name='fosterer_mobile' v-model="dog.fosterer_mobile" :error="errors.get('fosterer_mobile')"></textbox-component>
-
-            <label-component value="Fosterer Address"></label-component>
-            <textbox-component name='fosterer_addr' v-model="dog.fosterer_addr" :error="errors.get('fosterer_addr')"></textbox-component>
           </div>
 
           <form-footer-component></form-footer-component>
         </form>
+      </tab>
+      <tab :name="'Rescuer'">
+        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+          <rescuer-component v-for="rescuer in rescuers" :key="rescuer.rescuer_id"></rescuer-component>
 
-        <div class="m-portlet__head">
-          <div class="m-portlet__head-caption">
-            <div class="m-portlet__head-title">
-											<span class="m-portlet__head-icon m--hide">
-												<i class="la la-gear"></i>
-											</span>
-              <h3 class="m-portlet__head-text">
-                Square Input Style
-              </h3>
-            </div>
-          </div>
-        </div>
+          <form-footer-component></form-footer-component>
+        </form>
+      </tab>
+      <tab :name="'Foster'">
+
+      </tab>
+    </tabs>
   </single-portlet>
 </template>
 
@@ -122,6 +78,7 @@
   import axios from 'axios'
   import TextboxComponent from '../components/TextboxComponent'
   import TextareaComponent from '../components/TextareaComponent'
+  import Select2Component from '../components/Select2Component'
   import SinglePortlet from '../components/SinglePortlet'
   import LabelComponent from '../components/LabelComponent'
   import TextComponent from '../components/TextComponent'
@@ -131,6 +88,7 @@
   import SelectComponent from '../components/SelectComponent'
   import RadioComponent from '../components/RadioComponent'
   import Errors from '../../common/errors'
+  import RescuerComponent from "../components/RescuerComponent";
 
   export default {
     name: "dog",
@@ -139,10 +97,12 @@
         dog: {},
         brands: {},
         categories: {},
+        rescuers: [{}],
         errors: new Errors()
       }
     },
     components: {
+      RescuerComponent,
       SinglePortlet,
       TextboxComponent,
       TextareaComponent,
@@ -151,6 +111,7 @@
       FormFooterComponent,
       SelectComponent,
       RadioComponent,
+      Select2Component,
       'tabs': TabsComponent,
       'tab': TabComponent,
     },
@@ -168,7 +129,7 @@
       }
     },
     created() {
-      axios.get('api/adoptView/' + this.$route.params.adopt_id)
+      axios.get('admin/adopt/get/' + this.$route.params.adopt_id)
         .then(response => {
           this.dog = response.data
         })

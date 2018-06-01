@@ -3,7 +3,7 @@
     <div class="row">
 
       <div class="col-md-8" data-animation="scaleAppear">
-        <h2 class="section_header bold">Contact</h2>
+        <h3 class="entry-title black">Contact</h3>
 
         <form class="contact-form columns_padding_5" method="post" action="./">
           <div class="col-sm-6">

@@ -38,6 +38,16 @@
             <div class="col-sm-9">
               <div class="checkbox">
                 <label>
+                  <input type="checkbox" value=""> Rescue
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value=""> Rehoming
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
                   <input type="checkbox" value=""> Fostering
                 </label>
               </div>
@@ -53,7 +63,7 @@
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Fund Raising
+                  <input type="checkbox" value=""> Fund Raising & Events
                 </label>
               </div>
               <div class="checkbox">
