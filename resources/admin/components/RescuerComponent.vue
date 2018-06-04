@@ -58,7 +58,7 @@
     },
     methods: {
       getRescuer(rescuer_id) {
-        axios.get('admin/rescuer/get/' + rescuer_id)
+        axios.get('api/rescuer/get/' + rescuer_id)
           .then(response => {
             this.rescuer = response.data
           })
@@ -78,7 +78,7 @@
       $('#abc').select2({
         placeholder: "Search",
         ajax: {
-          url: 'admin/rescuer/search',
+          url: 'api/rescuer/search',
           dataType: 'json',
           data: function (term, page) {
             return {

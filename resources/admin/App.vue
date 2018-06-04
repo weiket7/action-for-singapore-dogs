@@ -13,8 +13,8 @@
         data-menu-scrollable="false" data-menu-dropdown-timeout="500"
       >
         <menu-component :menus="[{ 'name': 'Dashboard', 'link': 'dashboard', 'icon': 'dashboard' },
-        { 'name': 'Dogs', 'link': 'dogs', 'icon': 'user' },
-        { 'name': 'Events', 'link': 'events', 'icon': 'car' },
+        { 'name': 'Dogs', 'link': 'adopt', 'icon': 'user' },
+        { 'name': 'Events', 'link': 'event', 'icon': 'car' },
         { 'name': 'Volunteers', 'link': 'volunteers', 'icon': 'car' },
         { 'name': 'Donations', 'link': 'donations', 'icon': 'business' },
         { 'name': 'Sponsorships', 'link': 'sponsorships', 'icon': 'coins' },

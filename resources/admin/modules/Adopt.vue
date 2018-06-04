@@ -5,56 +5,62 @@
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <div class="form-group m-form__group row" :class="{ 'has-danger': errors.has('name') }">
             <label-component value="Name"></label-component>
-            <textbox-component name='name' v-model="dog.name" :error="errors.get('name')"></textbox-component>
+            <textbox-component name='name' v-model="adopt.name" :error="errors.get('name')"></textbox-component>
 
             <label-component value="Status"></label-component>
-            <select-component name="stat" v-model="dog.stat" :options="{ 'A': 'Available', 'D': 'Adopted', 'C': 'Deceased'  }"></select-component>
+            <select-component name="stat" v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted', 'C': 'Deceased'  }"></select-component>
           </div>
 
           <div class="form-group m-form__group row">
             <label-component value="Gender"></label-component>
-            <radio-component name="gender" v-model="dog.gender" :options="{ 'M': 'Male', 'F': 'Female' }"></radio-component>
+            <radio-component name="gender" v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }"></radio-component>
 
             <label-component value="Birthday"></label-component>
-            <textbox-component name='birthday' v-model="dog.birthday" :error="errors.get('birthday')"></textbox-component>
+            <datepicker-component name='birthday' v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
           </div>
 
           <div class="form-group m-form__group row">
             <label-component value="Breed"></label-component>
-            <textbox-component name='breed' v-model="dog.breed" :error="errors.get('breed')"></textbox-component>
+            <textbox-component name='breed' v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
 
             <label-component value="Colour"></label-component>
-            <textbox-component name='colour' v-model="dog.colour" :error="errors.get('colour')"></textbox-component>
+            <textbox-component name='colour' v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
           </div>
 
           <div class="form-group m-form__group row">
             <label-component value="Microchipped"></label-component>
-            <radio-component name="microchip" v-model="dog.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+            <radio-component name="microchip" v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+
+            <label-component value="Microchip Date"></label-component>
+            <datepicker-component name='microchip_date' v-model="adopt.microchip_date" :error="errors.get('microchip_date')"></datepicker-component>
           </div>
 
           <div class="form-group m-form__group row">
             <label-component value="Vaccinated"></label-component>
-            <radio-component name="vaccinate" v-model="dog.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+            <radio-component name="vaccinate" v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+
+            <label-component value="Vaccinate Date"></label-component>
+            <datepicker-component name='vaccinate_date' v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')"></datepicker-component>
           </div>
 
           <div class="form-group m-form__group row">
             <label-component value="HDB Approved"></label-component>
-            <radio-component name="hdb" v-model="dog.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+            <radio-component name="hdb" v-model="adopt.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
           </div>
 
           <div class="form-group m-form__group row">
             <label-component value="Health"></label-component>
-            <textarea-component name='health' v-model="dog.health" :error="errors.get('health')"></textarea-component>
+            <textarea-component name='health' v-model="adopt.health" :error="errors.get('health')"></textarea-component>
 
             <label-component value="Behaviour"></label-component>
-            <textarea-component name='behaviour' v-model="dog.behaviour" :error="errors.get('behaviour')"></textarea-component>
+            <textarea-component name='behaviour' v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
           </div>
 
           <hr>
 
           <div class="form-group m-form__group row">
             <label-component value="Rescued On"></label-component>
-            <textbox-component name='rescued_on' v-model="dog.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
+            <textbox-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
           </div>
 
           <form-footer-component></form-footer-component>
@@ -81,7 +87,6 @@
   import Select2Component from '../components/Select2Component'
   import SinglePortlet from '../components/SinglePortlet'
   import LabelComponent from '../components/LabelComponent'
-  import TextComponent from '../components/TextComponent'
   import TabsComponent from '../components/TabsComponent'
   import TabComponent from '../components/TabComponent'
   import FormFooterComponent from '../components/FormFooterComponent'
@@ -89,12 +94,13 @@
   import RadioComponent from '../components/RadioComponent'
   import Errors from '../../common/errors'
   import RescuerComponent from "../components/RescuerComponent";
+  import DatepickerComponent from "../components/DatepickerComponent";
 
   export default {
-    name: "dog",
+    name: "adopt",
     data() {
       return {
-        dog: {},
+        adopt: {},
         brands: {},
         categories: {},
         rescuers: [{}],
@@ -102,12 +108,12 @@
       }
     },
     components: {
+      DatepickerComponent,
       RescuerComponent,
       SinglePortlet,
       TextboxComponent,
       TextareaComponent,
       LabelComponent,
-      TextComponent,
       FormFooterComponent,
       SelectComponent,
       RadioComponent,
@@ -118,7 +124,7 @@
     methods: {
       onSubmit() {
         //alert('hey');
-        axios.post('admin/dog/save/' + this.$route.params.adopt_id, this.dog)
+        axios.post('admin/adopt/save/' + this.$route.params.adopt_id, this.adopt)
           .then(this.onSuccess)
           .catch(error=>{
             this.errors.record(error.response.data.errors);
@@ -129,9 +135,9 @@
       }
     },
     created() {
-      axios.get('admin/adopt/get/' + this.$route.params.adopt_id)
+      axios.get('api/adopt/get/' + this.$route.params.adopt_id)
         .then(response => {
-          this.dog = response.data
+          this.adopt = response.data
         })
         .catch(error => { console.log(error); })
     }

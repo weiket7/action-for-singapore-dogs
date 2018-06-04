@@ -8,7 +8,6 @@
   import axios from 'axios'
   import TextboxComponent from './TextboxComponent'
   import LabelComponent from './LabelComponent'
-  import TextComponent from './TextComponent'
   import FormFooter from './FormFooterComponent'
   
   export default {

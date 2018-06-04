@@ -11,13 +11,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="dog in dogs">
+        <tr v-for="adopt in adopts">
           <td><!--{{ProductStat::$values[p.stat]}}--></td>
           <td width="450px">
-            <router-link v-bind:to="'/dogs/'+dog.adopt_id">{{ dog.name }}</router-link>
+            <router-link v-bind:to="'/adopt/'+adopt.adopt_id">{{ adopt.name }}</router-link>
           </td>
-          <td>{{ dog.gender }}</td>
-          <td>{{ dog.age}}</td>
+          <td>{{ adopt.gender }}</td>
+          <td>{{ adopt.age}}</td>
         </tr>
         </tbody>
       </table>
@@ -30,17 +30,17 @@
   import SinglePortlet from "../components/SinglePortlet";
 
   export default {
-    name: "dog-list",
+    name: "adopt-list",
     data() {
       return {
-        dogs: [],
-        dog_stat: {}
+        adopts: [],
+        adopt_stat: {}
       }
     },
     created() {
       axios.get('api/adopt')
         .then(response => {
-          this.dogs = response.data
+          this.adopts = response.data
         })
         .catch(error => {
           console.log(error);

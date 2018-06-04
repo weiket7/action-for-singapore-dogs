@@ -15,12 +15,16 @@ class AdoptTable extends Migration
         $table->string('slug', 50);
         $table->string('breed', 50);
         $table->char('gender', 1);
-        $table->boolean('hdb');
         $table->char('stat', 1);
         $table->string('image', 50);
         $table->string('posted_by', 30);
         $table->dateTime('posted_on');
         $table->dateTime('birthday');
+        $table->boolean('microchip')->nullable();
+        $table->boolean('vaccinate')->nullable();
+        $table->boolean('hdb')->nullable();
+        $table->date('microchip_date')->nullable();
+        $table->date('vaccinate_date')->nullable();
         //$table->boolean('has_foster');
         //$table->boolean('can_sponsor');
         $table->string('desc', 250)->nullable();
