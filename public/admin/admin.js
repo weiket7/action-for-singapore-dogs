@@ -34174,7 +34174,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34294,6 +34294,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -34318,8 +34340,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       brands: {},
       categories: {},
       rescuers: [{}],
+      fosters: [{}],
       errors: new __WEBPACK_IMPORTED_MODULE_11__common_errors__["a" /* default */]()
     };
+  },
+
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      //alert('hey');
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/adopt/save/' + this.$route.params.adopt_id, this.adopt).then(this.onSuccess).catch(function (error) {
+        _this.errors.record(error.response.data.errors);
+      });
+    },
+    onSuccess: function onSuccess(response) {
+      toastr.success("Hello world!");
+    },
+    addRescuerRow: function addRescuerRow() {
+      this.rescuers.push({});
+    },
+    addFosterRow: function addFosterRow() {
+      this.fosters.push({});
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/adopt/get/' + this.$route.params.adopt_id).then(function (response) {
+      _this2.adopt = response.data;
+    }).catch(function (error) {
+      console.log(error);
+    });
   },
 
   components: {
@@ -34335,28 +34387,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     Select2Component: __WEBPACK_IMPORTED_MODULE_3__components_Select2Component___default.a,
     'tabs': __WEBPACK_IMPORTED_MODULE_6__components_TabsComponent___default.a,
     'tab': __WEBPACK_IMPORTED_MODULE_7__components_TabComponent___default.a
-  },
-  methods: {
-    onSubmit: function onSubmit() {
-      var _this = this;
-
-      //alert('hey');
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('admin/adopt/save/' + this.$route.params.adopt_id, this.adopt).then(this.onSuccess).catch(function (error) {
-        _this.errors.record(error.response.data.errors);
-      });
-    },
-    onSuccess: function onSuccess(response) {
-      toastr.success("Hello world!");
-    }
-  },
-  created: function created() {
-    var _this2 = this;
-
-    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/adopt/get/' + this.$route.params.adopt_id).then(function (response) {
-      _this2.adopt = response.data;
-    }).catch(function (error) {
-      console.log(error);
-    });
   }
 });
 
@@ -35514,7 +35544,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35537,6 +35567,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__TextboxComponent__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__TextboxComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__TextboxComponent__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -35824,41 +35859,53 @@ var render = function() {
         _vm._v(" "),
         _c("label-component", { attrs: { value: "Name" } }),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-lg-3" },
-          [
-            _c("select", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.type == "E",
-                  expression: "type == 'E'"
-                }
-              ],
-              staticClass: "form-control m-input",
-              attrs: { id: "abc" },
-              on: {
-                change: function($event) {
-                  _vm.updateValue($event.target.value)
-                }
+        _c("div", { staticClass: "col-lg-3" }, [
+          _c("select", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.type == "E",
+                expression: "type == 'E'"
               }
-            }),
-            _vm._v(" "),
-            _c("textbox-component", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.type == "N",
-                  expression: "type == 'N'"
+            ],
+            staticClass: "form-control m-input",
+            attrs: { id: "abc" },
+            on: {
+              change: function($event) {
+                _vm.updateValue($event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.rescuer.name,
+                expression: "rescuer.name"
+              },
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.type == "N",
+                expression: "type == 'N'"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.rescuer.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              ]
-            })
-          ],
-          1
-        )
+                _vm.$set(_vm.rescuer, "name", $event.target.value)
+              }
+            }
+          })
+        ])
       ],
       1
     ),
@@ -35881,13 +35928,30 @@ var render = function() {
           ? _c("static-text-component", {
               attrs: { value: _vm.rescuer.address }
             })
-          : _c("textbox-component")
+          : _c("textbox-component"),
+        _vm._v(" "),
+        _vm._m(0)
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("hr")
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-2" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-metal btn-sm", attrs: { type: "submit" } },
+        [_vm._v("Remove")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -36394,13 +36458,74 @@ var render = function() {
                   return _c("rescuer-component", { key: rescuer.rescuer_id })
                 }),
                 _vm._v(" "),
+                _c("div", { staticClass: "form-group m-form__group row" }, [
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-10" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-metal btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.addRescuerRow()
+                          }
+                        }
+                      },
+                      [_vm._v("\n              Add Row\n            ")]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
                 _c("form-footer-component")
               ],
               2
             )
           ]),
           _vm._v(" "),
-          _c("tab", { attrs: { name: "Foster" } })
+          _c("tab", { attrs: { name: "Foster" } }, [
+            _c(
+              "form",
+              {
+                staticClass: "m-form m-form--fit m-form--label-align-right",
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.onSubmit()
+                  }
+                }
+              },
+              [
+                _vm._l(_vm.fosters, function(foster) {
+                  return _c("rescuer-component", { key: foster.foster_id })
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group m-form__group row" }, [
+                  _c("div", { staticClass: "col-lg-2" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-lg-10" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-metal btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.addFosterRow()
+                          }
+                        }
+                      },
+                      [_vm._v("\n              Add Row\n            ")]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("form-footer-component")
+              ],
+              2
+            )
+          ])
         ],
         1
       )

@@ -10,3 +10,7 @@
 .static-text {
   text-align: left !important;
 }
+
+.btn-sm {
+  margin-top: 0.25rem;
+}

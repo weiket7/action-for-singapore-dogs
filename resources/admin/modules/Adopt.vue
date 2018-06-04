@@ -70,11 +70,33 @@
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <rescuer-component v-for="rescuer in rescuers" :key="rescuer.rescuer_id"></rescuer-component>
 
+          <div class="form-group m-form__group row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+              <button type="button" @click="addRescuerRow()" class="btn btn-metal btn-sm">
+                Add Row
+              </button>
+            </div>
+          </div>
+
           <form-footer-component></form-footer-component>
         </form>
       </tab>
       <tab :name="'Foster'">
+        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+          <rescuer-component v-for="foster in fosters" :key="foster.foster_id"></rescuer-component>
 
+          <div class="form-group m-form__group row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+              <button type="button" @click="addFosterRow()" class="btn btn-metal btn-sm">
+                Add Row
+              </button>
+            </div>
+          </div>
+
+          <form-footer-component></form-footer-component>
+        </form>
       </tab>
     </tabs>
   </single-portlet>
@@ -104,8 +126,35 @@
         brands: {},
         categories: {},
         rescuers: [{}],
+        fosters: [{}],
         errors: new Errors()
       }
+    },
+    methods: {
+      onSubmit() {
+        //alert('hey');
+        axios.post('admin/adopt/save/' + this.$route.params.adopt_id, this.adopt)
+          .then(this.onSuccess)
+          .catch(error=>{
+            this.errors.record(error.response.data.errors);
+          });
+      },
+      onSuccess(response) {
+        toastr.success("Hello world!");
+      },
+      addRescuerRow() {
+        this.rescuers.push({});
+      },
+      addFosterRow() {
+        this.fosters.push({});
+      }
+    },
+    created() {
+      axios.get('api/adopt/get/' + this.$route.params.adopt_id)
+        .then(response => {
+          this.adopt = response.data
+        })
+        .catch(error => { console.log(error); })
     },
     components: {
       DatepickerComponent,
@@ -121,26 +170,6 @@
       'tabs': TabsComponent,
       'tab': TabComponent,
     },
-    methods: {
-      onSubmit() {
-        //alert('hey');
-        axios.post('admin/adopt/save/' + this.$route.params.adopt_id, this.adopt)
-          .then(this.onSuccess)
-          .catch(error=>{
-            this.errors.record(error.response.data.errors);
-          });
-      },
-      onSuccess(response) {
-        toastr.success("Hello world!");
-      }
-    },
-    created() {
-      axios.get('api/adopt/get/' + this.$route.params.adopt_id)
-        .then(response => {
-          this.adopt = response.data
-        })
-        .catch(error => { console.log(error); })
-    }
   }
 </script>
 

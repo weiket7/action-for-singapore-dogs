@@ -20,9 +20,8 @@
       <label-component value="Name"></label-component>
       <div class="col-lg-3">
         <select id="abc"  v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
-        <textbox-component v-show="type == 'N'"></textbox-component>
+        <input type="text" v-model="rescuer.name" v-show="type == 'N'" class="form-control"></input>
       </div>
-
 
     </div>
 
@@ -34,7 +33,13 @@
       <label-component value="Address"></label-component>
       <static-text-component v-if="type == 'E'" :value="rescuer.address"></static-text-component>
       <textbox-component v-else></textbox-component>
+
+      <div class="col-lg-2">
+        <button type="submit" class="btn btn-metal btn-sm">Remove</button>
+      </div>
     </div>
+
+    <hr>
 
   </div>
 </template>
