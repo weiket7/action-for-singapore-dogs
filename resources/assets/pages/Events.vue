@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container mt-30">
     <div class="row">
 
       <div class="col-sm-7 col-md-8 col-lg-8">
@@ -8,18 +8,17 @@
           <div class="side-item">
             <div class="row">
               <div class="col-md-5">
+                <router-link :to="'/events/' + event.slug">
                 <div class="item-media entry-thumbnail">
                   <img src="assets/images/events/01.jpg" alt="">
-                  <div class="media-links">
-                    <a class="abs-link" title="" href="event-single-right.html"></a>
-                  </div>
                 </div>
+                </router-link>
               </div>
 
               <div class="col-md-7">
                 <div class="item-content">
                   <h4 class="entry-title">
-                    <a :href="base_url + '/events/' + event.slug" rel="bookmark">{{ event.name }}</a>
+                    <router-link :to="'/events/' + event.slug">{{ event.name }}</router-link>
                   </h4>
 
                   <p class="event-detail">
@@ -39,7 +38,7 @@
                   </p>
                   <!--<p>Stet clita kasd gubergren, no sea takimata sanctus sed diam voluptua.</p>-->
                   <p>
-                    <a href="event-single-right.html" class="theme_button inverse bottommargin_0">Learn More</a>
+                    <router-link  class="theme_button inverse bottommargin_0" :to="'/events/' + event.slug">Learn More</router-link>
                   </p>
                 </div>
               </div>

@@ -19,9 +19,6 @@
                     <li>
                       <a href="index_singlepage.html">Media</a>
                     </li>
-                    <li>
-                      <a href="index_singlepage.html">Media</a>
-                    </li>
                   </ul>
                 </li>
 
@@ -64,7 +61,7 @@
       </div>
     </header>
 
-    <section class="ls mt-30">
+    <section class="ls">
       <router-view></router-view>
     </section>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container mt-30">
     <div class="row">
       <div class="col-sm-12">
         <div class="vertical-item content-overlap">

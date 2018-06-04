@@ -6,6 +6,7 @@ import AdoptView from './pages/AdoptView'
 import Donate from './pages/Donate'
 import Volunteer from './pages/Volunteer'
 import Events from './pages/Events'
+import EventView from './pages/EventView'
 import Contact from './pages/Contact'
 
 Vue.use(Router);
@@ -18,6 +19,7 @@ export default new Router({
     { path: '/donate', name: 'Donate', component: Donate },
     { path: '/volunteer', name: 'Volunteer', component: Volunteer },
     { path: '/events', name: 'Events', component: Events },
+    { path: '/events/:slug', name: 'EventView', component: EventView },
     { path: '/contact', name: 'Contact', component: Contact },
   ]
 })

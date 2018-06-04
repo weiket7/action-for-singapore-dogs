@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-30">
     <div class="row">
       <div class="col-md-10 col-md-offset-1 text-center">
         <h2 class="section_header bold">Be A

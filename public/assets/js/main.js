@@ -736,7 +736,7 @@ function windowLoadInit() {
 			var $currentSlider = jQuery(this);
 			var data = $currentSlider.data();
 			var nav = (data.nav !== 'undefined') ? data.nav : true;
-			var dots = (data.dots !== 'undefined') ? data.dots : true;
+			var dots = true;
 
 			$currentSlider.flexslider({
 				animation: "fade",

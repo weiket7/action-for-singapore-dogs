@@ -1,30 +1,23 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container mt-30">
     <div class="row">
 
       <div class="col-sm-7 col-md-8 col-lg-8">
 
-        <div class="shop-sorting">
+        <div class="adopt-pagination-top">
 
-          <form class="form-inline content-justify vertical-center">
-              <span class="bottommargin_10">
-                <a href="#" id="toggle_shop_view" class=""></a>
-                <span>Showing 1-9 of 30 results</span>
-              </span>
+          <div class="row columns_padding_0">
+            <div class="col-sm-4 text-center text-sm-left">
+              <a href="#" class="theme_button inverse margin_0">Prev page</a>
+            </div>
+            <div class="col-sm-4 text-center">
+              Current Page: 1 / {{ num_of_pages }}
 
-            <span class="bottommargin_10">
-              <label class="sr-only" for="orderby">Sort By:</label>
-              <select class="form-control orderby" name="orderby" id="orderby">
-                <option value="menu_order" selected>Sort By</option>
-                <option value="popularity">Name</option>
-                <option value="rating">Gender</option>
-                <option value="date"></option>
-                <option value="price">Low To High</option>
-                <option value="price-desc">High To Low</option>
-              </select>
-            </span>
-
-          </form>
+            </div>
+            <div class="col-sm-4 text-center text-sm-right">
+              <a href="#" class="theme_button inverse margin_0">Next page</a>
+            </div>
+          </div>
 
         </div>
 
@@ -100,25 +93,14 @@
         </div>
         <!-- eof .columns-* -->
 
-        <hr class="divider_30">
+        <hr>
 
         <div class="row columns_padding_0">
           <div class="col-sm-4 text-center text-sm-left">
             <a href="#" class="theme_button inverse margin_0">Prev page</a>
           </div>
           <div class="col-sm-4 text-center">
-
-            <!--<ul class="pagination block">-->
-              <!--<li class="active"><a href="#">1</a></li>-->
-              <!--<li><a href="#">2</a></li>-->
-              <!--<li><a href="#">3</a></li>-->
-              <!--<li><a href="#">4</a></li>-->
-              <!--<li><a href="#">5</a></li>-->
-            <!--</ul>-->
-
-            <ul class="pagination block">
-              <li v-for="num in num_of_pages"><a href="#">{{ num }}</a></li>
-            </ul>
+            Current Page: 1 / {{ num_of_pages }}
 
           </div>
           <div class="col-sm-4 text-center text-sm-right">

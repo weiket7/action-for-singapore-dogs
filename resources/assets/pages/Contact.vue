@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-30">
     <div class="row">
 
       <div class="col-md-8" data-animation="scaleAppear">

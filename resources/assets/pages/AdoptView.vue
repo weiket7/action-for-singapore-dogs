@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container">
+  <div id="app" class="container mt-30">
     <div class="row">
       <div class="col-sm-12">
         <div itemscope="" itemtype="http://schema.org/Product" class="product type-product row columns_padding_25">
@@ -133,7 +133,7 @@
       }
     },
     created: function() {
-      axios.get('api/adopt-view/'+this.$route.params.adopt_id)
+      axios.get('api/adopt/get/'+this.$route.params.adopt_id)
         .then(response => {
           this.adopt = response.data;
         })

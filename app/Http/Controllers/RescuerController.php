@@ -1,10 +1,9 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php namespace App\Http\Controllers;
 
 use App\Models\Adopt;
 use App\Models\Event;
 use App\Models\Rescuer;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
 class RescuerController extends Controller {
   public function search(Request $request) {
