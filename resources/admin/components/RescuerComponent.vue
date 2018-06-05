@@ -5,12 +5,12 @@
       <div class="col-lg-3">
         <div class="m-radio-inline">
           <label class="m-radio">
-            <input type="radio" checked name="type" value="E" @click="existingRescuer()">
+            <input type="radio" checked :name="'rescuer-type-'+index" value="E" @click="existingRescuer()">
               Existing
             <span></span>
           </label>
           <label class="m-radio">
-            <input type="radio" value="N" name="type" @click="newRescuer()">
+            <input type="radio" value="N" :name="'rescuer-type-'+index" @click="newRescuer()">
             New
             <span></span>
           </label>
@@ -19,7 +19,7 @@
 
       <label-component value="Name"></label-component>
       <div class="col-lg-3">
-        <select id="abc"  v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
+        <select :id="'select-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
         <input type="text" v-model="rescuer.name" v-show="type == 'N'" class="form-control"></input>
       </div>
 
@@ -35,7 +35,7 @@
       <textbox-component v-else></textbox-component>
 
       <div class="col-lg-2">
-        <button type="submit" class="btn btn-metal btn-sm">Remove</button>
+        <button type="button" @click="removeRescuer()" class="btn btn-metal btn-sm">Remove</button>
       </div>
     </div>
 
@@ -57,30 +57,36 @@
     data() {
       return {
         type: "E",
-        rescuer: { name: "bc" },
+        rescuer: { },
         options: [{"E": "Existing", "N": "New"}]
       }
     },
+    props: ['index'],
     methods: {
       getRescuer(rescuer_id) {
         axios.get('api/rescuer/get/' + rescuer_id)
           .then(response => {
-            this.rescuer = response.data
+            this.rescuer = response.data;
+            this.$emit('update-rescuer', { index: this.index, rescuer: this.rescuer});
           })
-          .catch(error => { console.log(error); })
+          .catch(error => { console.log(error); });
+      },
+      removeRescuer() {
+        console.log("remove index=" + this.index);
+        this.$emit('remove-rescuer', this.index);
       },
       existingRescuer() {
-        $("#abc").next().show();
+        $("#select-name-"+this.index).next().show();
         this.type = "E";
       },
       newRescuer() {
-        $("#abc").next().hide();
+        $("#select-name-"+this.index).next().hide();
         this.type = "N";
       }
     },
     mounted() {
       var vue = this
-      $('#abc').select2({
+      $("#select-name-"+this.index).select2({
         placeholder: "Search",
         ajax: {
           url: 'api/rescuer/search',
@@ -95,8 +101,12 @@
           },
         }
       }).on("select2:select", function() {
-        let rescuer_id = $('#abc').val();
-        vue.getRescuer(rescuer_id);
+        //vue.$nextTick(function() {
+          let rescuer_id = $(this).val();
+          console.log('select = ' + rescuer_id);
+          vue.getRescuer(rescuer_id);
+        //});
+
       });
     },
     components: {

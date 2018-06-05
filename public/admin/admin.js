@@ -34180,7 +34180,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34300,28 +34300,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -34343,9 +34321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       adopt: {},
-      brands: {},
-      categories: {},
-      rescuers: [{}],
+      rescuers: [{ type: "E", name: "", mobile: "", address: "" }],
       fosters: [{}],
       errors: new __WEBPACK_IMPORTED_MODULE_11__common_errors__["a" /* default */]()
     };
@@ -34368,6 +34344,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     addFosterRow: function addFosterRow() {
       this.fosters.push({});
+    },
+    updateRescuer: function updateRescuer(o) {
+      this.rescuers[o.index] = o.rescuer;
+    },
+    removeRescuer: function removeRescuer(index) {
+      console.log("remove index = " + index);
+      this.rescuers.splice(index, 1);
     }
   },
   created: function created() {
@@ -35550,7 +35533,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35632,33 +35615,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       type: "E",
-      rescuer: { name: "bc" },
+      rescuer: {},
       options: [{ "E": "Existing", "N": "New" }]
     };
   },
 
+  props: ['index'],
   methods: {
     getRescuer: function getRescuer(rescuer_id) {
       var _this = this;
 
       __WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('api/rescuer/get/' + rescuer_id).then(function (response) {
         _this.rescuer = response.data;
+        _this.$emit('update-rescuer', { index: _this.index, rescuer: _this.rescuer });
       }).catch(function (error) {
         console.log(error);
       });
     },
+    removeRescuer: function removeRescuer() {
+      console.log("remove index=" + this.index);
+      this.$emit('remove-rescuer', this.index);
+    },
     existingRescuer: function existingRescuer() {
-      $("#abc").next().show();
+      $("#select-name-" + this.index).next().show();
       this.type = "E";
     },
     newRescuer: function newRescuer() {
-      $("#abc").next().hide();
+      $("#select-name-" + this.index).next().hide();
       this.type = "N";
     }
   },
   mounted: function mounted() {
     var vue = this;
-    $('#abc').select2({
+    $("#select-name-" + this.index).select2({
       placeholder: "Search",
       ajax: {
         url: 'api/rescuer/search',
@@ -35673,8 +35662,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
       }
     }).on("select2:select", function () {
-      var rescuer_id = $('#abc').val();
+      //vue.$nextTick(function() {
+      var rescuer_id = $(this).val();
+      console.log('select = ' + rescuer_id);
       vue.getRescuer(rescuer_id);
+      //});
     });
   },
 
@@ -35837,7 +35829,12 @@ var render = function() {
           _c("div", { staticClass: "m-radio-inline" }, [
             _c("label", { staticClass: "m-radio" }, [
               _c("input", {
-                attrs: { type: "radio", checked: "", name: "type", value: "E" },
+                attrs: {
+                  type: "radio",
+                  checked: "",
+                  name: "rescuer-type-" + _vm.index,
+                  value: "E"
+                },
                 on: {
                   click: function($event) {
                     _vm.existingRescuer()
@@ -35850,7 +35847,11 @@ var render = function() {
             _vm._v(" "),
             _c("label", { staticClass: "m-radio" }, [
               _c("input", {
-                attrs: { type: "radio", value: "N", name: "type" },
+                attrs: {
+                  type: "radio",
+                  value: "N",
+                  name: "rescuer-type-" + _vm.index
+                },
                 on: {
                   click: function($event) {
                     _vm.newRescuer()
@@ -35876,7 +35877,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control m-input",
-            attrs: { id: "abc" },
+            attrs: { id: "select-name-" + _vm.index },
             on: {
               change: function($event) {
                 _vm.updateValue($event.target.value)
@@ -35936,7 +35937,21 @@ var render = function() {
             })
           : _c("textbox-component"),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "col-lg-2" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-metal btn-sm",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  _vm.removeRescuer()
+                }
+              }
+            },
+            [_vm._v("Remove")]
+          )
+        ])
       ],
       1
     ),
@@ -35944,20 +35959,7 @@ var render = function() {
     _c("hr")
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-metal btn-sm", attrs: { type: "submit" } },
-        [_vm._v("Remove")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -36140,404 +36142,310 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "single-portlet",
-    { attrs: { title: "Dogs" } },
-    [
-      _c(
-        "tabs",
-        { attrs: { tabs: ["General", "Rescuer", "Foster"] } },
-        [
-          _c("tab", { attrs: { name: "General", active: true } }, [
-            _c(
-              "form",
-              {
-                staticClass: "m-form m-form--fit m-form--label-align-right",
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    _vm.onSubmit()
-                  }
-                }
+  return _c("single-portlet", { attrs: { title: "Dogs" } }, [
+    _c(
+      "form",
+      {
+        staticClass: "m-form m-form--fit m-form--label-align-right",
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            _vm.onSubmit()
+          }
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "form-group m-form__group row",
+            class: { "has-danger": _vm.errors.has("name") }
+          },
+          [
+            _c("label-component", { attrs: { value: "Name" } }),
+            _vm._v(" "),
+            _c("textbox-component", {
+              attrs: { name: "name", error: _vm.errors.get("name") },
+              model: {
+                value: _vm.adopt.name,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "name", $$v)
+                },
+                expression: "adopt.name"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", { attrs: { value: "Status" } }),
+            _vm._v(" "),
+            _c("select-component", {
+              attrs: {
+                name: "stat",
+                options: { A: "Available", D: "Adopted", C: "Deceased" }
               },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "form-group m-form__group row",
-                    class: { "has-danger": _vm.errors.has("name") }
-                  },
-                  [
-                    _c("label-component", { attrs: { value: "Name" } }),
-                    _vm._v(" "),
-                    _c("textbox-component", {
-                      attrs: { name: "name", error: _vm.errors.get("name") },
-                      model: {
-                        value: _vm.adopt.name,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "name", $$v)
-                        },
-                        expression: "adopt.name"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label-component", { attrs: { value: "Status" } }),
-                    _vm._v(" "),
-                    _c("select-component", {
-                      attrs: {
-                        name: "stat",
-                        options: { A: "Available", D: "Adopted", C: "Deceased" }
-                      },
-                      model: {
-                        value: _vm.adopt.stat,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "stat", $$v)
-                        },
-                        expression: "adopt.stat"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group m-form__group row" },
-                  [
-                    _c("label-component", { attrs: { value: "Gender" } }),
-                    _vm._v(" "),
-                    _c("radio-component", {
-                      attrs: {
-                        name: "gender",
-                        options: { M: "Male", F: "Female" }
-                      },
-                      model: {
-                        value: _vm.adopt.gender,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "gender", $$v)
-                        },
-                        expression: "adopt.gender"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label-component", { attrs: { value: "Birthday" } }),
-                    _vm._v(" "),
-                    _c("datepicker-component", {
-                      attrs: {
-                        name: "birthday",
-                        error: _vm.errors.get("birthday")
-                      },
-                      model: {
-                        value: _vm.adopt.birthday,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "birthday", $$v)
-                        },
-                        expression: "adopt.birthday"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group m-form__group row" },
-                  [
-                    _c("label-component", { attrs: { value: "Breed" } }),
-                    _vm._v(" "),
-                    _c("textbox-component", {
-                      attrs: { name: "breed", error: _vm.errors.get("breed") },
-                      model: {
-                        value: _vm.adopt.breed,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "breed", $$v)
-                        },
-                        expression: "adopt.breed"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label-component", { attrs: { value: "Colour" } }),
-                    _vm._v(" "),
-                    _c("textbox-component", {
-                      attrs: {
-                        name: "colour",
-                        error: _vm.errors.get("colour")
-                      },
-                      model: {
-                        value: _vm.adopt.colour,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "colour", $$v)
-                        },
-                        expression: "adopt.colour"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group m-form__group row" },
-                  [
-                    _c("label-component", { attrs: { value: "Microchipped" } }),
-                    _vm._v(" "),
-                    _c("radio-component", {
-                      attrs: {
-                        name: "microchip",
-                        options: { Y: "Yes", N: "No" }
-                      },
-                      model: {
-                        value: _vm.adopt.microchip,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "microchip", $$v)
-                        },
-                        expression: "adopt.microchip"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label-component", {
-                      attrs: { value: "Microchip Date" }
-                    }),
-                    _vm._v(" "),
-                    _c("datepicker-component", {
-                      attrs: {
-                        name: "microchip_date",
-                        error: _vm.errors.get("microchip_date")
-                      },
-                      model: {
-                        value: _vm.adopt.microchip_date,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "microchip_date", $$v)
-                        },
-                        expression: "adopt.microchip_date"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group m-form__group row" },
-                  [
-                    _c("label-component", { attrs: { value: "Vaccinated" } }),
-                    _vm._v(" "),
-                    _c("radio-component", {
-                      attrs: {
-                        name: "vaccinate",
-                        options: { Y: "Yes", N: "No" }
-                      },
-                      model: {
-                        value: _vm.adopt.vaccinate,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "vaccinate", $$v)
-                        },
-                        expression: "adopt.vaccinate"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label-component", {
-                      attrs: { value: "Vaccinate Date" }
-                    }),
-                    _vm._v(" "),
-                    _c("datepicker-component", {
-                      attrs: {
-                        name: "vaccinate_date",
-                        error: _vm.errors.get("vaccinate_date")
-                      },
-                      model: {
-                        value: _vm.adopt.vaccinate_date,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "vaccinate_date", $$v)
-                        },
-                        expression: "adopt.vaccinate_date"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group m-form__group row" },
-                  [
-                    _c("label-component", { attrs: { value: "HDB Approved" } }),
-                    _vm._v(" "),
-                    _c("radio-component", {
-                      attrs: { name: "hdb", options: { Y: "Yes", N: "No" } },
-                      model: {
-                        value: _vm.adopt.hdb,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "hdb", $$v)
-                        },
-                        expression: "adopt.hdb"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group m-form__group row" },
-                  [
-                    _c("label-component", { attrs: { value: "Health" } }),
-                    _vm._v(" "),
-                    _c("textarea-component", {
-                      attrs: {
-                        name: "health",
-                        error: _vm.errors.get("health")
-                      },
-                      model: {
-                        value: _vm.adopt.health,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "health", $$v)
-                        },
-                        expression: "adopt.health"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label-component", { attrs: { value: "Behaviour" } }),
-                    _vm._v(" "),
-                    _c("textarea-component", {
-                      attrs: {
-                        name: "behaviour",
-                        error: _vm.errors.get("behaviour")
-                      },
-                      model: {
-                        value: _vm.adopt.behaviour,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "behaviour", $$v)
-                        },
-                        expression: "adopt.behaviour"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "form-group m-form__group row" },
-                  [
-                    _c("label-component", { attrs: { value: "Rescued On" } }),
-                    _vm._v(" "),
-                    _c("textbox-component", {
-                      attrs: {
-                        name: "rescued_on",
-                        error: _vm.errors.get("rescued_on")
-                      },
-                      model: {
-                        value: _vm.adopt.rescued_on,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "rescued_on", $$v)
-                        },
-                        expression: "adopt.rescued_on"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("form-footer-component")
-              ],
-              1
-            )
-          ]),
+              model: {
+                value: _vm.adopt.stat,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "stat", $$v)
+                },
+                expression: "adopt.stat"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "Gender" } }),
+            _vm._v(" "),
+            _c("radio-component", {
+              attrs: { name: "gender", options: { M: "Male", F: "Female" } },
+              model: {
+                value: _vm.adopt.gender,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "gender", $$v)
+                },
+                expression: "adopt.gender"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", { attrs: { value: "Birthday" } }),
+            _vm._v(" "),
+            _c("datepicker-component", {
+              attrs: { name: "birthday", error: _vm.errors.get("birthday") },
+              model: {
+                value: _vm.adopt.birthday,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "birthday", $$v)
+                },
+                expression: "adopt.birthday"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "Breed" } }),
+            _vm._v(" "),
+            _c("textbox-component", {
+              attrs: { name: "breed", error: _vm.errors.get("breed") },
+              model: {
+                value: _vm.adopt.breed,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "breed", $$v)
+                },
+                expression: "adopt.breed"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", { attrs: { value: "Colour" } }),
+            _vm._v(" "),
+            _c("textbox-component", {
+              attrs: { name: "colour", error: _vm.errors.get("colour") },
+              model: {
+                value: _vm.adopt.colour,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "colour", $$v)
+                },
+                expression: "adopt.colour"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "Microchipped" } }),
+            _vm._v(" "),
+            _c("radio-component", {
+              attrs: { name: "microchip", options: { Y: "Yes", N: "No" } },
+              model: {
+                value: _vm.adopt.microchip,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "microchip", $$v)
+                },
+                expression: "adopt.microchip"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", { attrs: { value: "Microchip Date" } }),
+            _vm._v(" "),
+            _c("datepicker-component", {
+              attrs: {
+                name: "microchip_date",
+                error: _vm.errors.get("microchip_date")
+              },
+              model: {
+                value: _vm.adopt.microchip_date,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "microchip_date", $$v)
+                },
+                expression: "adopt.microchip_date"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "Vaccinated" } }),
+            _vm._v(" "),
+            _c("radio-component", {
+              attrs: { name: "vaccinate", options: { Y: "Yes", N: "No" } },
+              model: {
+                value: _vm.adopt.vaccinate,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "vaccinate", $$v)
+                },
+                expression: "adopt.vaccinate"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", { attrs: { value: "Vaccinate Date" } }),
+            _vm._v(" "),
+            _c("datepicker-component", {
+              attrs: {
+                name: "vaccinate_date",
+                error: _vm.errors.get("vaccinate_date")
+              },
+              model: {
+                value: _vm.adopt.vaccinate_date,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "vaccinate_date", $$v)
+                },
+                expression: "adopt.vaccinate_date"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "HDB Approved" } }),
+            _vm._v(" "),
+            _c("radio-component", {
+              attrs: { name: "hdb", options: { Y: "Yes", N: "No" } },
+              model: {
+                value: _vm.adopt.hdb,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "hdb", $$v)
+                },
+                expression: "adopt.hdb"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "Health" } }),
+            _vm._v(" "),
+            _c("textarea-component", {
+              attrs: { name: "health", error: _vm.errors.get("health") },
+              model: {
+                value: _vm.adopt.health,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "health", $$v)
+                },
+                expression: "adopt.health"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", { attrs: { value: "Behaviour" } }),
+            _vm._v(" "),
+            _c("textarea-component", {
+              attrs: { name: "behaviour", error: _vm.errors.get("behaviour") },
+              model: {
+                value: _vm.adopt.behaviour,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "behaviour", $$v)
+                },
+                expression: "adopt.behaviour"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "Rescued On" } }),
+            _vm._v(" "),
+            _c("textbox-component", {
+              attrs: {
+                name: "rescued_on",
+                error: _vm.errors.get("rescued_on")
+              },
+              model: {
+                value: _vm.adopt.rescued_on,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "rescued_on", $$v)
+                },
+                expression: "adopt.rescued_on"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm._l(_vm.rescuers, function(rescuer, index) {
+          return _c("rescuer-component", {
+            key: rescuer.rescuer_id,
+            attrs: { index: index },
+            on: {
+              "update-rescuer": _vm.updateRescuer,
+              "remove-rescuer": _vm.removeRescuer
+            }
+          })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group m-form__group row" }, [
+          _c("div", { staticClass: "col-lg-2" }),
           _vm._v(" "),
-          _c("tab", { attrs: { name: "Rescuer" } }, [
+          _c("div", { staticClass: "col-lg-10" }, [
             _c(
-              "form",
+              "button",
               {
-                staticClass: "m-form m-form--fit m-form--label-align-right",
+                staticClass: "btn btn-metal btn-sm",
+                attrs: { type: "button" },
                 on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    _vm.onSubmit()
+                  click: function($event) {
+                    _vm.addRescuerRow()
                   }
                 }
               },
-              [
-                _vm._l(_vm.rescuers, function(rescuer) {
-                  return _c("rescuer-component", { key: rescuer.rescuer_id })
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c("div", { staticClass: "col-lg-2" }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-10" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-metal btn-sm",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            _vm.addRescuerRow()
-                          }
-                        }
-                      },
-                      [_vm._v("\n              Add Row\n            ")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("form-footer-component")
-              ],
-              2
-            )
-          ]),
-          _vm._v(" "),
-          _c("tab", { attrs: { name: "Foster" } }, [
-            _c(
-              "form",
-              {
-                staticClass: "m-form m-form--fit m-form--label-align-right",
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    _vm.onSubmit()
-                  }
-                }
-              },
-              [
-                _vm._l(_vm.fosters, function(foster) {
-                  return _c("rescuer-component", { key: foster.foster_id })
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group m-form__group row" }, [
-                  _c("div", { staticClass: "col-lg-2" }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-lg-10" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-metal btn-sm",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            _vm.addFosterRow()
-                          }
-                        }
-                      },
-                      [_vm._v("\n              Add Row\n            ")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("form-footer-component")
-              ],
-              2
+              [_vm._v("\n          Add Row\n        ")]
             )
           ])
-        ],
-        1
-      )
-    ],
-    1
-  )
+        ]),
+        _vm._v(" "),
+        _c("form-footer-component")
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

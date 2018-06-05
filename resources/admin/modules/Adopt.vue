@@ -1,104 +1,82 @@
 <template>
   <single-portlet title="Dogs">
-    <tabs :tabs="['General', 'Rescuer', 'Foster']">
-      <tab :name="'General'" :active="true">
-        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-          <div class="form-group m-form__group row" :class="{ 'has-danger': errors.has('name') }">
-            <label-component value="Name"></label-component>
-            <textbox-component name='name' v-model="adopt.name" :error="errors.get('name')"></textbox-component>
+    <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+      <div class="form-group m-form__group row" :class="{ 'has-danger': errors.has('name') }">
+        <label-component value="Name"></label-component>
+        <textbox-component name='name' v-model="adopt.name" :error="errors.get('name')"></textbox-component>
 
-            <label-component value="Status"></label-component>
-            <select-component name="stat" v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted', 'C': 'Deceased'  }"></select-component>
-          </div>
+        <label-component value="Status"></label-component>
+        <select-component name="stat" v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted', 'C': 'Deceased'  }"></select-component>
+      </div>
 
-          <div class="form-group m-form__group row">
-            <label-component value="Gender"></label-component>
-            <radio-component name="gender" v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }"></radio-component>
+      <div class="form-group m-form__group row">
+        <label-component value="Gender"></label-component>
+        <radio-component name="gender" v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }"></radio-component>
 
-            <label-component value="Birthday"></label-component>
-            <datepicker-component name='birthday' v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
-          </div>
+        <label-component value="Birthday"></label-component>
+        <datepicker-component name='birthday' v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
+      </div>
 
-          <div class="form-group m-form__group row">
-            <label-component value="Breed"></label-component>
-            <textbox-component name='breed' v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
+      <div class="form-group m-form__group row">
+        <label-component value="Breed"></label-component>
+        <textbox-component name='breed' v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
 
-            <label-component value="Colour"></label-component>
-            <textbox-component name='colour' v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
-          </div>
+        <label-component value="Colour"></label-component>
+        <textbox-component name='colour' v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
+      </div>
 
-          <div class="form-group m-form__group row">
-            <label-component value="Microchipped"></label-component>
-            <radio-component name="microchip" v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+      <div class="form-group m-form__group row">
+        <label-component value="Microchipped"></label-component>
+        <radio-component name="microchip" v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
 
-            <label-component value="Microchip Date"></label-component>
-            <datepicker-component name='microchip_date' v-model="adopt.microchip_date" :error="errors.get('microchip_date')"></datepicker-component>
-          </div>
+        <label-component value="Microchip Date"></label-component>
+        <datepicker-component name='microchip_date' v-model="adopt.microchip_date" :error="errors.get('microchip_date')"></datepicker-component>
+      </div>
 
-          <div class="form-group m-form__group row">
-            <label-component value="Vaccinated"></label-component>
-            <radio-component name="vaccinate" v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+      <div class="form-group m-form__group row">
+        <label-component value="Vaccinated"></label-component>
+        <radio-component name="vaccinate" v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
 
-            <label-component value="Vaccinate Date"></label-component>
-            <datepicker-component name='vaccinate_date' v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')"></datepicker-component>
-          </div>
+        <label-component value="Vaccinate Date"></label-component>
+        <datepicker-component name='vaccinate_date' v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')"></datepicker-component>
+      </div>
 
-          <div class="form-group m-form__group row">
-            <label-component value="HDB Approved"></label-component>
-            <radio-component name="hdb" v-model="adopt.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
-          </div>
+      <div class="form-group m-form__group row">
+        <label-component value="HDB Approved"></label-component>
+        <radio-component name="hdb" v-model="adopt.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+      </div>
 
-          <div class="form-group m-form__group row">
-            <label-component value="Health"></label-component>
-            <textarea-component name='health' v-model="adopt.health" :error="errors.get('health')"></textarea-component>
+      <div class="form-group m-form__group row">
+        <label-component value="Health"></label-component>
+        <textarea-component name='health' v-model="adopt.health" :error="errors.get('health')"></textarea-component>
 
-            <label-component value="Behaviour"></label-component>
-            <textarea-component name='behaviour' v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
-          </div>
+        <label-component value="Behaviour"></label-component>
+        <textarea-component name='behaviour' v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
+      </div>
 
-          <hr>
+      <hr>
 
-          <div class="form-group m-form__group row">
-            <label-component value="Rescued On"></label-component>
-            <textbox-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
-          </div>
+      <div class="form-group m-form__group row">
+        <label-component value="Rescued On"></label-component>
+        <textbox-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
+      </div>
 
-          <form-footer-component></form-footer-component>
-        </form>
-      </tab>
-      <tab :name="'Rescuer'">
-        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-          <rescuer-component v-for="rescuer in rescuers" :key="rescuer.rescuer_id"></rescuer-component>
+      <rescuer-component v-for="(rescuer, index) in rescuers"
+                         v-on:update-rescuer="updateRescuer"
+                         v-on:remove-rescuer="removeRescuer"
+                         :index="index" :key="rescuer.rescuer_id"></rescuer-component>
 
-          <div class="form-group m-form__group row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-10">
-              <button type="button" @click="addRescuerRow()" class="btn btn-metal btn-sm">
-                Add Row
-              </button>
-            </div>
-          </div>
+      <div class="form-group m-form__group row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-10">
+          <button type="button" @click="addRescuerRow()" class="btn btn-metal btn-sm">
+            Add Row
+          </button>
+        </div>
+      </div>
 
-          <form-footer-component></form-footer-component>
-        </form>
-      </tab>
-      <tab :name="'Foster'">
-        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-          <rescuer-component v-for="foster in fosters" :key="foster.foster_id"></rescuer-component>
-
-          <div class="form-group m-form__group row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-10">
-              <button type="button" @click="addFosterRow()" class="btn btn-metal btn-sm">
-                Add Row
-              </button>
-            </div>
-          </div>
-
-          <form-footer-component></form-footer-component>
-        </form>
-      </tab>
-    </tabs>
+      <form-footer-component></form-footer-component>
+    </form>
   </single-portlet>
 </template>
 
@@ -123,9 +101,7 @@
     data() {
       return {
         adopt: {},
-        brands: {},
-        categories: {},
-        rescuers: [{}],
+        rescuers: [{ type:"E", name:"", mobile:"", address:"" }],
         fosters: [{}],
         errors: new Errors()
       }
@@ -147,6 +123,13 @@
       },
       addFosterRow() {
         this.fosters.push({});
+      },
+      updateRescuer(o) {
+        this.rescuers[o.index] = o.rescuer;
+      },
+      removeRescuer(index) {
+        console.log("remove index = " + index);
+        this.rescuers.splice(index, 1);
       }
     },
     created() {

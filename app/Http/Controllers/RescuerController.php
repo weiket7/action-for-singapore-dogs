@@ -15,7 +15,7 @@ class RescuerController extends Controller {
   
   public function get(Request $request, $rescuer_id) {
     return Rescuer::where('rescuer_id', $rescuer_id)
-      ->select(['mobile', 'address'])
+      ->select(['name', 'mobile', 'address'])
       ->first();
   }
   
