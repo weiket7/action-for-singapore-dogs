@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: "static-text-component",
+    name: "static-text",
     props: {
       value: {type: String, required: false},
     }

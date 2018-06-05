@@ -27,28 +27,29 @@
 
     <div class="form-group m-form__group row">
       <label-component value="Mobile"></label-component>
-      <static-text-component v-if="type == 'E'" :value="rescuer.mobile"></static-text-component>
+      <static-text v-if="type == 'E'" :value="rescuer.mobile"></static-text>
       <textbox-component v-else></textbox-component>
 
       <label-component value="Address"></label-component>
-      <static-text-component v-if="type == 'E'" :value="rescuer.address"></static-text-component>
+      <static-text v-if="type == 'E'" :value="rescuer.address"></static-text>
       <textbox-component v-else></textbox-component>
 
       <div class="col-lg-2">
         <button type="button" @click="removeRescuer()" class="btn btn-metal btn-sm">Remove</button>
       </div>
     </div>
-
+  
+    <div class="form-group m-form__group row">
+      <label-component value="Remarks"></label-component>
+      <textarea-component name="remark" :value="rescuer.remark"></textarea-component>
+    </div>
+  
+    <hr>
   </div>
 </template>
 
 <script>
-  import StaticTextComponent from "../components/StaticTextComponent";
-  import LabelComponent from "../components/LabelComponent";
-  import Select2Component from "../components/Select2Component";
-  import RadioComponent from "../components/RadioComponent";
   import axios from 'axios'
-  import TextboxComponent from "../components/TextboxComponent";
 
   export default {
     name: "rescuer-component",
@@ -107,18 +108,8 @@
 
       });
     },
-    components: {
-      TextboxComponent,
-      StaticTextComponent,
-      LabelComponent,
-      Select2Component,
-      RadioComponent
-    },
   }
 </script>
 
 <style scoped>
-  .no-pb {
-    padding-bottom: 3px;
-  }
 </style>

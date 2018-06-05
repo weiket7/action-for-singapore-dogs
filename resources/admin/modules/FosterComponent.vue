@@ -27,28 +27,38 @@
     
     <div class="form-group m-form__group row">
       <label-component value="Mobile"></label-component>
-      <static-text-component v-if="type == 'E'" :value="foster.mobile"></static-text-component>
+      <static-text v-if="type == 'E'" :value="foster.mobile"></static-text>
       <textbox-component v-else></textbox-component>
       
       <label-component value="Address"></label-component>
-      <static-text-component v-if="type == 'E'" :value="foster.address"></static-text-component>
+      <static-text v-if="type == 'E'" :value="foster.address"></static-text>
       <textbox-component v-else></textbox-component>
       
       <div class="col-lg-2">
         <button type="button" @click="removeFoster()" class="btn btn-metal btn-sm">Remove</button>
       </div>
     </div>
+    
+    <div class="form-group m-form__group row">
+      <label-component value="Start Date"></label-component>
+      <datepicker-component name="start_date"></datepicker-component>
+    
+      <label-component value="End Date"></label-component>
+      <datepicker-component name="end_date"></datepicker-component>
+    </div>
+    
+    <div class="form-group m-form__group row">
+      <label-component value="Remarks"></label-component>
+      <textarea-component name="remark" :value="foster.remark"></textarea-component>
+    </div>
+    
+    <hr>
   
   </div>
 </template>
 
 <script>
-  import StaticTextComponent from "../components/StaticTextComponent";
-  import LabelComponent from "../components/LabelComponent";
-  import Select2Component from "../components/Select2Component";
-  import RadioComponent from "../components/RadioComponent";
   import axios from 'axios'
-  import TextboxComponent from "../components/TextboxComponent";
   
   export default {
     name: "foster-component",
@@ -107,18 +117,9 @@
         
       });
     },
-    components: {
-      TextboxComponent,
-      StaticTextComponent,
-      LabelComponent,
-      Select2Component,
-      RadioComponent
-    },
   }
 </script>
 
 <style scoped>
-  .no-pb {
-    padding-bottom: 3px;
-  }
+
 </style>

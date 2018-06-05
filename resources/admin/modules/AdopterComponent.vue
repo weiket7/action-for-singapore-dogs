@@ -27,11 +27,11 @@
 
     <div class="form-group m-form__group row">
       <label-component value="Mobile"></label-component>
-      <static-text-component v-if="type == 'E'" :value="adopter.mobile"></static-text-component>
+      <static-text v-if="type == 'E'" :value="adopter.mobile"></static-text>
       <textbox-component v-else></textbox-component>
 
       <label-component value="Address"></label-component>
-      <static-text-component v-if="type == 'E'" :value="adopter.address"></static-text-component>
+      <static-text v-if="type == 'E'" :value="adopter.address"></static-text>
       <textbox-component v-else></textbox-component>
       
       <div class="col-lg-2">
@@ -46,17 +46,13 @@
       <label-component value="Remarks"></label-component>
       <textarea-component name="remark" :value="adopter.remark"></textarea-component>
     </div>
+    
+    <hr>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
-  import StaticTextComponent from "../components/StaticTextComponent";
-  import LabelComponent from "../components/LabelComponent";
-  import Select2Component from "../components/Select2Component";
-  import RadioComponent from "../components/RadioComponent";
-  import TextboxComponent from "../components/TextboxComponent";
-  import DatepickerComponent from "../components/DatepickerComponent";
 
   export default {
     name: "adopter-component",
@@ -70,7 +66,7 @@
     props: ['index'],
     methods: {
       getAdopter(adopter_id) {
-        axios.get('api/adopter/get/' + adopter_id)
+        axios.get('api/person/get/' + adopter_id)
           .then(response => {
             this.adopter = response.data;
             this.$emit('update-adopter', { index: this.index, adopter: this.adopter});
@@ -95,7 +91,7 @@
       $("#adopter-name-"+this.index).select2({
         placeholder: "Search",
         ajax: {
-          url: 'api/adopter/search',
+          url: 'api/person/search?type=A',
           dataType: 'json',
           data: function (term, page) {
             return {
@@ -115,19 +111,8 @@
 
       });
     },
-    components: {
-      TextboxComponent,
-      StaticTextComponent,
-      LabelComponent,
-      Select2Component,
-      RadioComponent,
-      DatepickerComponent
-    },
   }
 </script>
 
 <style scoped>
-  .no-pb {
-    padding-bottom: 3px;
-  }
 </style>

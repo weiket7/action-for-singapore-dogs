@@ -13,6 +13,7 @@ import FormFooterComponent from './components/FormFooterComponent'
 import SelectComponent from './components/SelectComponent'
 import RadioComponent from './components/RadioComponent'
 import DatepickerComponent from "./components/DatepickerComponent";
+import StaticTextComponent from "./components/StaticTextComponent";
 
 Vue.component('textbox-component', TextboxComponent);
 Vue.component('textarea-component', TextareaComponent);
@@ -25,6 +26,7 @@ Vue.component('form-footer', FormFooterComponent);
 Vue.component('select-component', SelectComponent);
 Vue.component('radio-component', RadioComponent);
 Vue.component('datepicker-component', DatepickerComponent);
+Vue.component('static-text', StaticTextComponent);
 
 new Vue({
   el: '#app',

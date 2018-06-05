@@ -33572,6 +33572,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_RadioComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_RadioComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_DatepickerComponent__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_DatepickerComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_DatepickerComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_StaticTextComponent__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_StaticTextComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_StaticTextComponent__);
+
 
 
 
@@ -33599,6 +33602,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('form-footer', __WEBPACK_I
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('select-component', __WEBPACK_IMPORTED_MODULE_11__components_SelectComponent___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('radio-component', __WEBPACK_IMPORTED_MODULE_12__components_RadioComponent___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('datepicker-component', __WEBPACK_IMPORTED_MODULE_13__components_DatepickerComponent___default.a);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('static-text', __WEBPACK_IMPORTED_MODULE_14__components_StaticTextComponent___default.a);
 
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app',
@@ -34643,7 +34647,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34800,8 +34804,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -34814,7 +34816,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       adopt: {},
-      rescuers: [{ type: "E", name: "", mobile: "", address: "" }],
+      rescuers: [{}],
       fosters: [{}],
       adopters: [{}],
       errors: new __WEBPACK_IMPORTED_MODULE_1__common_errors__["a" /* default */]()
@@ -35724,7 +35726,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.no-pb[data-v-4c7a50e5] {\n  padding-bottom: 3px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35735,18 +35737,8 @@ exports.push([module.i, "\n.no-pb[data-v-4c7a50e5] {\n  padding-bottom: 3px;\n}\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_LabelComponent__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_LabelComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_LabelComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Select2Component__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Select2Component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Select2Component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_RadioComponent__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_RadioComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_RadioComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -35791,11 +35783,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
-
-
-
+//
+//
+//
+//
+//
+//
 
 
 
@@ -35814,7 +35807,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getRescuer: function getRescuer(rescuer_id) {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('api/person/get/' + rescuer_id).then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/person/get/' + rescuer_id).then(function (response) {
         _this.rescuer = response.data;
         _this.$emit('update-rescuer', { index: _this.index, rescuer: _this.rescuer });
       }).catch(function (error) {
@@ -35857,14 +35850,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       vue.getRescuer(rescuer_id);
       //});
     });
-  },
-
-  components: {
-    TextboxComponent: __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent___default.a,
-    StaticTextComponent: __WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent___default.a,
-    LabelComponent: __WEBPACK_IMPORTED_MODULE_1__components_LabelComponent___default.a,
-    Select2Component: __WEBPACK_IMPORTED_MODULE_2__components_Select2Component___default.a,
-    RadioComponent: __WEBPACK_IMPORTED_MODULE_3__components_RadioComponent___default.a
   }
 });
 
@@ -35920,7 +35905,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "static-text-component",
+  name: "static-text",
   props: {
     value: { type: String, required: false }
   }
@@ -36062,17 +36047,13 @@ var render = function() {
         _c("label-component", { attrs: { value: "Mobile" } }),
         _vm._v(" "),
         _vm.type == "E"
-          ? _c("static-text-component", {
-              attrs: { value: _vm.rescuer.mobile }
-            })
+          ? _c("static-text", { attrs: { value: _vm.rescuer.mobile } })
           : _c("textbox-component"),
         _vm._v(" "),
         _c("label-component", { attrs: { value: "Address" } }),
         _vm._v(" "),
         _vm.type == "E"
-          ? _c("static-text-component", {
-              attrs: { value: _vm.rescuer.address }
-            })
+          ? _c("static-text", { attrs: { value: _vm.rescuer.address } })
           : _c("textbox-component"),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-2" }, [
@@ -36092,7 +36073,22 @@ var render = function() {
         ])
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-group m-form__group row" },
+      [
+        _c("label-component", { attrs: { value: "Remarks" } }),
+        _vm._v(" "),
+        _c("textarea-component", {
+          attrs: { name: "remark", value: _vm.rescuer.remark }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("hr")
   ])
 }
 var staticRenderFns = []
@@ -36191,7 +36187,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.no-pb[data-v-5c8d128f] {\n  padding-bottom: 3px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -36202,18 +36198,8 @@ exports.push([module.i, "\n.no-pb[data-v-5c8d128f] {\n  padding-bottom: 3px;\n}\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_LabelComponent__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_LabelComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_LabelComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Select2Component__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Select2Component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Select2Component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_RadioComponent__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_RadioComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_RadioComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -36258,11 +36244,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
-
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -36281,7 +36277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getFoster: function getFoster(foster_id) {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('api/person/get/' + foster_id).then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/person/get/' + foster_id).then(function (response) {
         _this.foster = response.data;
         _this.$emit('update-foster', { index: _this.index, foster: _this.foster });
       }).catch(function (error) {
@@ -36324,14 +36320,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       vue.getFoster(foster_id);
       //});
     });
-  },
-
-  components: {
-    TextboxComponent: __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent___default.a,
-    StaticTextComponent: __WEBPACK_IMPORTED_MODULE_0__components_StaticTextComponent___default.a,
-    LabelComponent: __WEBPACK_IMPORTED_MODULE_1__components_LabelComponent___default.a,
-    Select2Component: __WEBPACK_IMPORTED_MODULE_2__components_Select2Component___default.a,
-    RadioComponent: __WEBPACK_IMPORTED_MODULE_3__components_RadioComponent___default.a
   }
 });
 
@@ -36449,15 +36437,13 @@ var render = function() {
         _c("label-component", { attrs: { value: "Mobile" } }),
         _vm._v(" "),
         _vm.type == "E"
-          ? _c("static-text-component", { attrs: { value: _vm.foster.mobile } })
+          ? _c("static-text", { attrs: { value: _vm.foster.mobile } })
           : _c("textbox-component"),
         _vm._v(" "),
         _c("label-component", { attrs: { value: "Address" } }),
         _vm._v(" "),
         _vm.type == "E"
-          ? _c("static-text-component", {
-              attrs: { value: _vm.foster.address }
-            })
+          ? _c("static-text", { attrs: { value: _vm.foster.address } })
           : _c("textbox-component"),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-2" }, [
@@ -36477,7 +36463,37 @@ var render = function() {
         ])
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-group m-form__group row" },
+      [
+        _c("label-component", { attrs: { value: "Start Date" } }),
+        _vm._v(" "),
+        _c("datepicker-component", { attrs: { name: "start_date" } }),
+        _vm._v(" "),
+        _c("label-component", { attrs: { value: "End Date" } }),
+        _vm._v(" "),
+        _c("datepicker-component", { attrs: { name: "end_date" } })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-group m-form__group row" },
+      [
+        _c("label-component", { attrs: { value: "Remarks" } }),
+        _vm._v(" "),
+        _c("textarea-component", {
+          attrs: { name: "remark", value: _vm.foster.remark }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("hr")
   ])
 }
 var staticRenderFns = []
@@ -36576,7 +36592,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.no-pb[data-v-41d79287] {\n  padding-bottom: 3px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -36589,18 +36605,6 @@ exports.push([module.i, "\n.no-pb[data-v-41d79287] {\n  padding-bottom: 3px;\n}\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_StaticTextComponent__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_StaticTextComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_StaticTextComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_LabelComponent__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_LabelComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_LabelComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Select2Component__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Select2Component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Select2Component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_RadioComponent__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_RadioComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_RadioComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_DatepickerComponent__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_DatepickerComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_DatepickerComponent__);
 //
 //
 //
@@ -36652,12 +36656,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
-
-
-
-
+//
+//
 
 
 
@@ -36676,7 +36676,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getAdopter: function getAdopter(adopter_id) {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/adopter/get/' + adopter_id).then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/person/get/' + adopter_id).then(function (response) {
         _this.adopter = response.data;
         _this.$emit('update-adopter', { index: _this.index, adopter: _this.adopter });
       }).catch(function (error) {
@@ -36701,7 +36701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     $("#adopter-name-" + this.index).select2({
       placeholder: "Search",
       ajax: {
-        url: 'api/adopter/search',
+        url: 'api/person/search?type=A',
         dataType: 'json',
         data: function data(term, page) {
           return {
@@ -36719,15 +36719,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       vue.getAdopter(adopter_id);
       //});
     });
-  },
-
-  components: {
-    TextboxComponent: __WEBPACK_IMPORTED_MODULE_5__components_TextboxComponent___default.a,
-    StaticTextComponent: __WEBPACK_IMPORTED_MODULE_1__components_StaticTextComponent___default.a,
-    LabelComponent: __WEBPACK_IMPORTED_MODULE_2__components_LabelComponent___default.a,
-    Select2Component: __WEBPACK_IMPORTED_MODULE_3__components_Select2Component___default.a,
-    RadioComponent: __WEBPACK_IMPORTED_MODULE_4__components_RadioComponent___default.a,
-    DatepickerComponent: __WEBPACK_IMPORTED_MODULE_6__components_DatepickerComponent___default.a
   }
 });
 
@@ -36959,17 +36950,13 @@ var render = function() {
         _c("label-component", { attrs: { value: "Mobile" } }),
         _vm._v(" "),
         _vm.type == "E"
-          ? _c("static-text-component", {
-              attrs: { value: _vm.adopter.mobile }
-            })
+          ? _c("static-text", { attrs: { value: _vm.adopter.mobile } })
           : _c("textbox-component"),
         _vm._v(" "),
         _c("label-component", { attrs: { value: "Address" } }),
         _vm._v(" "),
         _vm.type == "E"
-          ? _c("static-text-component", {
-              attrs: { value: _vm.adopter.address }
-            })
+          ? _c("static-text", { attrs: { value: _vm.adopter.address } })
           : _c("textbox-component"),
         _vm._v(" "),
         _c("div", { staticClass: "col-lg-2" }, [
@@ -37006,7 +36993,9 @@ var render = function() {
         })
       ],
       1
-    )
+    ),
+    _vm._v(" "),
+    _c("hr")
   ])
 }
 var staticRenderFns = []
@@ -37153,22 +37142,6 @@ var render = function() {
                           _vm.$set(_vm.adopt, "rescued_on", $$v)
                         },
                         expression: "adopt.rescued_on"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("label-component", { attrs: { value: "Adopted On" } }),
-                    _vm._v(" "),
-                    _c("datepicker-component", {
-                      attrs: {
-                        name: "adopted_on",
-                        error: _vm.errors.get("adopted_on")
-                      },
-                      model: {
-                        value: _vm.adopt.adopted_on,
-                        callback: function($$v) {
-                          _vm.$set(_vm.adopt, "adopted_on", $$v)
-                        },
-                        expression: "adopt.adopted_on"
                       }
                     })
                   ],
@@ -37494,7 +37467,7 @@ var render = function() {
               [
                 _vm._l(_vm.rescuers, function(rescuer, index) {
                   return _c("rescuer-component", {
-                    key: rescuer.rescuer_id,
+                    key: rescuer.person_id,
                     attrs: { index: index },
                     on: {
                       "update-rescuer": _vm.updateRescuer,
@@ -37544,7 +37517,7 @@ var render = function() {
               [
                 _vm._l(_vm.fosters, function(foster, index) {
                   return _c("foster-component", {
-                    key: foster.foster_id,
+                    key: foster.person_id,
                     attrs: { index: index },
                     on: {
                       "update-foster": _vm.updateFoster,

@@ -23,8 +23,6 @@
             <label-component value="Rescued On"></label-component>
             <datepicker-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
             
-            <label-component value="Adopted On"></label-component>
-            <datepicker-component name='adopted_on' v-model="adopt.adopted_on" :error="errors.get('adopted_on')"></datepicker-component>
           </div>
           
           <div class="form-group m-form__group row">
@@ -99,7 +97,7 @@
           <rescuer-component v-for="(rescuer, index) in rescuers"
                              v-on:update-rescuer="updateRescuer"
                              v-on:remove-rescuer="removeRescuer"
-                             :index="index" :key="rescuer.rescuer_id"></rescuer-component>
+                             :index="index" :key="rescuer.person_id"></rescuer-component>
           
           <div class="form-group m-form__group row">
             <div class="col-lg-2"></div>
@@ -118,7 +116,7 @@
           <foster-component v-for="(foster, index) in fosters"
                             v-on:update-foster="updateFoster"
                             v-on:remove-foster="removeFoster"
-                            :index="index" :key="foster.foster_id"></foster-component>
+                            :index="index" :key="foster.person_id"></foster-component>
           
           <div class="form-group m-form__group row">
             <div class="col-lg-2"></div>
@@ -149,7 +147,7 @@
     data() {
       return {
         adopt: {},
-        rescuers: [{ type:"E", name:"", mobile:"", address:"" }],
+        rescuers: [{}],
         fosters: [{}],
         adopters: [{}],
         errors: new Errors()

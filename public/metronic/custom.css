@@ -18,3 +18,7 @@
 .nav-link.active.show {
   font-weight: 600;
 }
+
+.no-pb {
+  padding-bottom: 3px;
+}
