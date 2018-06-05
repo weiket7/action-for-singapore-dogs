@@ -23,35 +23,51 @@ class PersonTable extends Migration
     });
     
     DB::table('person')->insert([
-      'name'=>'Jovial',
-      'email'=>'jovial@gmail.com',
+      'name'=>'Ralph',
+      'email'=>'ralph@gmail.com',
       'mobile'=>'9123 4567',
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'is_rescuer'=>1,
     ]);
     
     DB::table('person')->insert([
-      'name'=>'Stephanie',
-      'email'=>'stephanie@gmail.com',
+      'name'=>'Ray',
+      'email'=>'ray@gmail.com',
       'mobile'=>'9876 5421',
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
       'is_rescuer'=>1,
     ]);
   
     DB::table('person')->insert([
-      'name'=>'Misty',
-      'email'=>'misty@gmail.com',
+      'name'=>'Fable',
+      'email'=>'fable@gmail.com',
       'mobile'=>'9123 4567',
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'is_foster'=>1,
     ]);
   
     DB::table('person')->insert([
-      'name'=>'Kara',
-      'email'=>'kara@gmail.com',
+      'name'=>'Fabia',
+      'email'=>'fabia@gmail.com',
       'mobile'=>'9876 5421',
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
       'is_foster'=>1,
+    ]);
+  
+    DB::table('person')->insert([
+      'name'=>'Alan',
+      'email'=>'aaron@gmail.com',
+      'mobile'=>'9123 4567',
+      'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
+      'is_adopter'=>1,
+    ]);
+  
+    DB::table('person')->insert([
+      'name'=>'Aaron',
+      'email'=>'alan@gmail.com',
+      'mobile'=>'9876 5421',
+      'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
+      'is_adopter'=>1,
     ]);
   }
   

@@ -86,6 +86,8 @@
     mounted() {
       var vue = this
       $("#rescuer-name-"+this.index).select2({
+        width: '100%',
+        minimumInputLength: 2,
         placeholder: "Search",
         ajax: {
           url: 'api/person/search?type=r',

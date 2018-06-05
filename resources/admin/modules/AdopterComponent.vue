@@ -42,11 +42,24 @@
     <div class="form-group m-form__group row">
       <label-component value="Adopted On"></label-component>
       <datepicker-component></datepicker-component>
-      
+  
       <label-component value="Remarks"></label-component>
       <textarea-component name="remark" :value="adopter.remark"></textarea-component>
     </div>
-    
+  
+    <div class="form-group m-form__group row">
+      <label-component value="Returned"></label-component>
+      <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned" :options="{'Y': 'Yes', 'N': 'No'}"></radio-component>
+      
+      <label-component value="Returned On" v-if="adopter.returned == 'Y'"></label-component>
+      <datepicker-component v-if="adopter.returned == 'Y'"></datepicker-component>
+    </div>
+  
+    <div class="form-group m-form__group row" v-if="adopter.returned == 'Y'">
+      <label-component value="Reason"></label-component>
+      <textarea-component name="return_reason" :value="adopter.return_reason"></textarea-component>
+    </div>
+  
     <hr>
   </div>
 </template>
@@ -89,6 +102,8 @@
     mounted() {
       var vue = this
       $("#adopter-name-"+this.index).select2({
+        width: '100%',
+        minimumInputLength: 2,
         placeholder: "Search",
         ajax: {
           url: 'api/person/search?type=A',
