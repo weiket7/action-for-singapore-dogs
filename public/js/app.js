@@ -34358,9 +34358,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-4" }, [
-      _c("h2", { staticClass: "section_header bold highlight" }, [
-        _vm._v("Events")
-      ])
+      _c("h2", { staticClass: "section_header bold" }, [_vm._v("Events")])
     ])
   },
   function() {
@@ -34382,9 +34380,7 @@ var staticRenderFns = [
               { staticClass: "col-md-10 col-md-offset-1 text-center" },
               [
                 _c("h2", { staticClass: "section_header bold" }, [
-                  _c("span", { staticClass: "highlight" }, [
-                    _vm._v("what we do")
-                  ])
+                  _vm._v("\n            what we do\n          ")
                 ])
               ]
             )
@@ -35833,9 +35829,7 @@ var staticRenderFns = [
               { staticClass: "col-md-10 col-md-offset-1 text-center" },
               [
                 _c("h2", { staticClass: "section_header bold" }, [
-                  _c("span", { staticClass: "highlight" }, [
-                    _vm._v("How you can help")
-                  ])
+                  _vm._v("\n            How you can help\n          ")
                 ])
               ]
             )
@@ -35851,9 +35845,14 @@ var staticRenderFns = [
                 _c("article", { staticClass: "vertical-item" }, [
                   _c("div", { staticClass: "item-content" }, [
                     _c("h3", { staticClass: "entry-title" }, [
-                      _c("a", { attrs: { href: "blog-single-right.html" } }, [
-                        _vm._v("Adopt")
-                      ])
+                      _c(
+                        "a",
+                        {
+                          staticClass: "highlight",
+                          attrs: { href: "blog-single-right.html" }
+                        },
+                        [_vm._v("Adopt")]
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", [
@@ -35880,9 +35879,14 @@ var staticRenderFns = [
                 _c("article", { staticClass: "vertical-item" }, [
                   _c("div", { staticClass: "item-content" }, [
                     _c("h3", { staticClass: "entry-title" }, [
-                      _c("a", { attrs: { href: "blog-single-right.html" } }, [
-                        _vm._v("Donate")
-                      ])
+                      _c(
+                        "a",
+                        {
+                          staticClass: "highlight",
+                          attrs: { href: "blog-single-right.html" }
+                        },
+                        [_vm._v("Donate")]
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", [
@@ -35915,9 +35919,14 @@ var staticRenderFns = [
                   _c("article", { staticClass: "vertical-item" }, [
                     _c("div", { staticClass: "item-content" }, [
                       _c("h3", { staticClass: "entry-title" }, [
-                        _c("a", { attrs: { href: "blog-single-right.html" } }, [
-                          _vm._v("Volunteer")
-                        ])
+                        _c(
+                          "a",
+                          {
+                            staticClass: "highlight",
+                            attrs: { href: "blog-single-right.html" }
+                          },
+                          [_vm._v("Volunteer")]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", [
@@ -36159,9 +36168,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -36173,25 +36179,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       adopts: {},
-      adopts_per_page: 8,
-      num_of_adopts: 0
+      adopts_per_page: 12,
+      adopt_count: 0,
+      current_page: 1
     };
   },
 
   computed: {
     num_of_pages: function num_of_pages() {
-      return Math.ceil(this.num_of_adopts / this.adopts_per_page);
+      return Math.ceil(this.adopt_count / this.adopts_per_page);
     }
   },
   methods: {
-    nextPage: function nextPage() {}
+    nextPage: function nextPage() {
+      if (this.current_page < this.num_of_pages) {
+        this.current_page++;
+      }
+    }
   },
   created: function created() {
     var _this = this;
 
-    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/adopt/').then(function (response) {
-      var adopts = response.data;
-      _this.num_of_adopts = Object.keys(adopts).length;
+    __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/adopt?current_page=' + this.current_page).then(function (response) {
+      var adopts = response.data.adopts;
+      _this.adopt_count = response.data.adopt_count;
       _this.adopts = __WEBPACK_IMPORTED_MODULE_1_lodash_chunk___default()(adopts, 3);
     }).catch(function (error) {
       console.log(error);
@@ -36213,19 +36224,23 @@ var render = function() {
         "div",
         { staticClass: "col-sm-7 col-md-8 col-lg-8" },
         [
-          _c("div", { staticClass: "row columns_padding_0" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-4 text-center" }, [
-              _vm._v(
-                "\n          Current Page: 1 / " +
-                  _vm._s(_vm.num_of_pages) +
-                  "\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(1)
-          ]),
+          _vm.num_of_pages > 1
+            ? _c("div", { staticClass: "row columns_padding_0" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4 text-center" }, [
+                  _vm._v(
+                    "\n          Current Page: " +
+                      _vm._s(_vm.current_page) +
+                      " / " +
+                      _vm._s(_vm.num_of_pages) +
+                      "\n        "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.adopts, function(chunk) {
             return _c(
@@ -36240,21 +36255,23 @@ var render = function() {
             )
           }),
           _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row columns_padding_0" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-4 text-center" }, [
-              _vm._v(
-                "\n          Current Page: 1 / " +
-                  _vm._s(_vm.num_of_pages) +
-                  "\n\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _vm._m(3)
-          ])
+          _vm.num_of_pages > 1
+            ? _c("div", { staticClass: "row columns_padding_0" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4 text-center" }, [
+                  _vm._v(
+                    "\n          Current Page: " +
+                      _vm._s(_vm.current_page) +
+                      " / " +
+                      _vm._s(_vm.num_of_pages) +
+                      "\n        "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            : _vm._e()
         ],
         2
       ),
@@ -36526,7 +36543,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -36539,10 +36556,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
 //
 //
 //
@@ -36708,7 +36721,7 @@ var render = function() {
                 _c("img", {
                   staticClass: "attachment-shop_single wp-post-image",
                   attrs: {
-                    src: "assets/images/dogs/" + _vm.adopt.image,
+                    src: "assets/images/adopts/" + _vm.adopt.image,
                     alt: "",
                     title: ""
                   }

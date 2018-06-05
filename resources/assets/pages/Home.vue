@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <h2 class="section_header bold highlight">Events</h2>
+          <h2 class="section_header bold">Events</h2>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 text-center">
             <h2 class="section_header bold">
-              <span class="highlight">what we do</span>
+              what we do
             </h2>
           </div>
         </div>
@@ -148,7 +148,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 text-center">
             <h2 class="section_header bold">
-              <span class="highlight">How you can help</span>
+              How you can help
             </h2>
           </div>
         </div>
@@ -157,7 +157,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Adopt</a>
+                  <a href="blog-single-right.html" class="highlight">Adopt</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
@@ -173,7 +173,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Donate</a>
+                  <a href="blog-single-right.html" class="highlight">Donate</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
@@ -189,7 +189,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Volunteer</a>
+                  <a href="blog-single-right.html" class="highlight">Volunteer</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque

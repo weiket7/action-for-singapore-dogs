@@ -6,16 +6,12 @@
 
           <div class="col-sm-6">
             <div class="images">
-              <img :src="'assets/images/dogs/' + adopt.image" class="attachment-shop_single wp-post-image" alt="" title="">
+              <img :src="'assets/images/adopts/' + adopt.image" class="attachment-shop_single wp-post-image" alt="" title="">
             </div>
           </div>
 
           <div class="summary entry-summary col-sm-6">
             <h1 itemprop="name" class="product_title entry-title black">{{ adopt.name }}</h1>
-
-            <!--<p class="price">
-              <span class="amount">$299</span>
-            </p>-->
 
             <p>
               <i v-if="adopt.gender == 'M'" class="fas fa-mars"></i>

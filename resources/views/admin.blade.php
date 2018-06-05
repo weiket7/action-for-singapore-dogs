@@ -26,7 +26,7 @@
   <link href="./metronic/custom.css" rel="stylesheet" type="text/css" />
   
   <!--end::Base Styles -->
-  <link rel="shortcut icon" href="./metronic/demo/default/media/img/logo/favicon.ico" />
+  <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <!-- end::Head -->
 <!-- end::Body -->

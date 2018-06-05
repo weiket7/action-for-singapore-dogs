@@ -4,12 +4,12 @@
 
       <div class="col-sm-7 col-md-8 col-lg-8">
 
-        <div class="row columns_padding_0">
+        <div v-if="num_of_pages > 1" class="row columns_padding_0">
           <div class="col-sm-4 text-center text-sm-left">
             <a href="#" class="theme_button inverse margin_0">Prev page</a>
           </div>
           <div class="col-sm-4 text-center">
-            Current Page: 1 / {{ num_of_pages }}
+            Current Page: {{ current_page }} / {{ num_of_pages }}
           </div>
           <div class="col-sm-4 text-center text-sm-right">
             <a href="#" class="theme_button inverse margin_0">Next page</a>
@@ -20,15 +20,12 @@
           <adopt-item v-for="adopt in chunk" :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
         </div>
 
-        <hr>
-
-        <div class="row columns_padding_0">
+        <div v-if="num_of_pages > 1" class="row columns_padding_0">
           <div class="col-sm-4 text-center text-sm-left">
             <a href="#" class="theme_button inverse margin_0">Prev page</a>
           </div>
           <div class="col-sm-4 text-center">
-            Current Page: 1 / {{ num_of_pages }}
-
+            Current Page: {{ current_page }} / {{ num_of_pages }}
           </div>
           <div class="col-sm-4 text-center text-sm-right">
             <a href="#" class="theme_button inverse margin_0">Next page</a>
@@ -112,25 +109,28 @@
     data() {
       return {
         adopts: {},
-        adopts_per_page: 8,
-        num_of_adopts: 0,
+        adopts_per_page: 12,
+        adopt_count: 0,
+        current_page: 1,
       }
     },
     computed: {
-      num_of_pages: function() {
-        return Math.ceil(this.num_of_adopts / this.adopts_per_page);
+      num_of_pages() {
+        return Math.ceil(this.adopt_count / this.adopts_per_page);
       }
     },
     methods: {
-      nextPage: function() {
-
+      nextPage() {
+        if(this.current_page < this.num_of_pages) {
+          this.current_page++;
+        }
       }
     },
     created: function() {
-      axios.get('api/adopt/')
+      axios.get('api/adopt?current_page='+this.current_page)
         .then(response => {
-          let adopts = response.data;
-          this.num_of_adopts = Object.keys(adopts).length;
+          let adopts = response.data.adopts;
+          this.adopt_count = response.data.adopt_count;
           this.adopts = chunk(adopts, 3);
         })
         .catch(error => { console.log(error); })
