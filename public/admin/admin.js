@@ -34180,7 +34180,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -34218,6 +34218,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_RescuerComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_RescuerComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_DatepickerComponent__ = __webpack_require__(287);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_DatepickerComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_DatepickerComponent__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -35533,7 +35551,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.no-pb[data-v-3ba97f82] {\n  padding-bottom: 3px;\n}\n", ""]);
 
 // exports
 
@@ -35556,8 +35574,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__TextboxComponent__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__TextboxComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__TextboxComponent__);
-//
-//
 //
 //
 //
@@ -35821,7 +35837,7 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
-      { staticClass: "form-group m-form__group row" },
+      { staticClass: "form-group m-form__group row no-pb" },
       [
         _c("label-component", { attrs: { value: "Type" } }),
         _vm._v(" "),
@@ -35954,9 +35970,7 @@ var render = function() {
         ])
       ],
       1
-    ),
-    _vm._v(" "),
-    _c("hr")
+    )
   ])
 }
 var staticRenderFns = []
@@ -36391,9 +36405,43 @@ var render = function() {
           "div",
           { staticClass: "form-group m-form__group row" },
           [
-            _c("label-component", { attrs: { value: "Rescued On" } }),
+            _c("label-component", { attrs: { value: "Have Rescue Info" } }),
+            _vm._v(" "),
+            _c("radio-component", {
+              attrs: {
+                name: "have_rescue_info",
+                options: { Y: "Yes", N: "N" }
+              },
+              model: {
+                value: _vm.adopt.have_rescue_info,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "have_rescue_info", $$v)
+                },
+                expression: "adopt.have_rescue_info"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.adopt.have_rescue_info == "Y",
+                  expression: "adopt.have_rescue_info == 'Y'"
+                }
+              ],
+              attrs: { value: "Rescued On" }
+            }),
             _vm._v(" "),
             _c("textbox-component", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.adopt.have_rescue_info == "Y",
+                  expression: "adopt.have_rescue_info == 'Y'"
+                }
+              ],
               attrs: {
                 name: "rescued_on",
                 error: _vm.errors.get("rescued_on")
@@ -36412,6 +36460,92 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.rescuers, function(rescuer, index) {
           return _c("rescuer-component", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.adopt.have_rescue_info == "Y",
+                expression: "adopt.have_rescue_info == 'Y'"
+              }
+            ],
+            key: rescuer.rescuer_id,
+            attrs: { index: index },
+            on: {
+              "update-rescuer": _vm.updateRescuer,
+              "remove-rescuer": _vm.removeRescuer
+            }
+          })
+        }),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-group m-form__group row" },
+          [
+            _c("label-component", { attrs: { value: "Under Foster" } }),
+            _vm._v(" "),
+            _c("radio-component", {
+              attrs: {
+                name: "have_rescue_info",
+                options: { Y: "Yes", N: "N" }
+              },
+              model: {
+                value: _vm.adopt.have_rescue_info,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "have_rescue_info", $$v)
+                },
+                expression: "adopt.have_rescue_info"
+              }
+            }),
+            _vm._v(" "),
+            _c("label-component", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.adopt.have_rescue_info == "Y",
+                  expression: "adopt.have_rescue_info == 'Y'"
+                }
+              ],
+              attrs: { value: "Rescued On" }
+            }),
+            _vm._v(" "),
+            _c("textbox-component", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.adopt.have_rescue_info == "Y",
+                  expression: "adopt.have_rescue_info == 'Y'"
+                }
+              ],
+              attrs: {
+                name: "rescued_on",
+                error: _vm.errors.get("rescued_on")
+              },
+              model: {
+                value: _vm.adopt.rescued_on,
+                callback: function($$v) {
+                  _vm.$set(_vm.adopt, "rescued_on", $$v)
+                },
+                expression: "adopt.rescued_on"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm._l(_vm.rescuers, function(rescuer, index) {
+          return _c("rescuer-component", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.adopt.have_rescue_info == "Y",
+                expression: "adopt.have_rescue_info == 'Y'"
+              }
+            ],
             key: rescuer.rescuer_id,
             attrs: { index: index },
             on: {

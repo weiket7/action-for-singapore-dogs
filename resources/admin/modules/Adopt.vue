@@ -57,11 +57,29 @@
       <hr>
 
       <div class="form-group m-form__group row">
-        <label-component value="Rescued On"></label-component>
-        <textbox-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
+        <label-component value="Have Rescue Info"></label-component>
+        <radio-component name="have_rescue_info" v-model="adopt.have_rescue_info" :options="{ 'Y': 'Yes', 'N': 'N' }"></radio-component>
+
+        <label-component v-show="adopt.have_rescue_info == 'Y'" value="Rescued On"></label-component>
+        <textbox-component v-show="adopt.have_rescue_info == 'Y'" name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
       </div>
 
-      <rescuer-component v-for="(rescuer, index) in rescuers"
+      <rescuer-component v-show="adopt.have_rescue_info == 'Y'" v-for="(rescuer, index) in rescuers"
+                         v-on:update-rescuer="updateRescuer"
+                         v-on:remove-rescuer="removeRescuer"
+                         :index="index" :key="rescuer.rescuer_id"></rescuer-component>
+
+      <hr>
+
+      <div class="form-group m-form__group row">
+        <label-component value="Under Foster"></label-component>
+        <radio-component name="have_rescue_info" v-model="adopt.have_rescue_info" :options="{ 'Y': 'Yes', 'N': 'N' }"></radio-component>
+
+        <label-component v-show="adopt.have_rescue_info == 'Y'" value="Rescued On"></label-component>
+        <textbox-component v-show="adopt.have_rescue_info == 'Y'" name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></textbox-component>
+      </div>
+
+      <rescuer-component v-show="adopt.have_rescue_info == 'Y'" v-for="(rescuer, index) in rescuers"
                          v-on:update-rescuer="updateRescuer"
                          v-on:remove-rescuer="removeRescuer"
                          :index="index" :key="rescuer.rescuer_id"></rescuer-component>

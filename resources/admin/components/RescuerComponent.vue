@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="form-group m-form__group row">
+    <div class="form-group m-form__group row no-pb">
       <label-component value="Type"></label-component>
       <div class="col-lg-3">
         <div class="m-radio-inline">
@@ -38,8 +38,6 @@
         <button type="button" @click="removeRescuer()" class="btn btn-metal btn-sm">Remove</button>
       </div>
     </div>
-
-    <hr>
 
   </div>
 </template>
@@ -120,5 +118,7 @@
 </script>
 
 <style scoped>
-
+  .no-pb {
+    padding-bottom: 3px;
+  }
 </style>
