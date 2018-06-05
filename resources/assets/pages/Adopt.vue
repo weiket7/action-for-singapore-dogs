@@ -4,94 +4,21 @@
 
       <div class="col-sm-7 col-md-8 col-lg-8">
 
-        <div class="adopt-pagination-top">
-
-          <div class="row columns_padding_0">
-            <div class="col-sm-4 text-center text-sm-left">
-              <a href="#" class="theme_button inverse margin_0">Prev page</a>
-            </div>
-            <div class="col-sm-4 text-center">
-              Current Page: 1 / {{ num_of_pages }}
-
-            </div>
-            <div class="col-sm-4 text-center text-sm-right">
-              <a href="#" class="theme_button inverse margin_0">Next page</a>
-            </div>
+        <div class="row columns_padding_0">
+          <div class="col-sm-4 text-center text-sm-left">
+            <a href="#" class="theme_button inverse margin_0">Prev page</a>
           </div>
-
+          <div class="col-sm-4 text-center">
+            Current Page: 1 / {{ num_of_pages }}
+          </div>
+          <div class="col-sm-4 text-center text-sm-right">
+            <a href="#" class="theme_button inverse margin_0">Next page</a>
+          </div>
         </div>
 
-
-        <div class="columns-3">
-
-          <ul id="products" class="products list-unstyled grid-view">
-            <li v-for="dog in dogs" class="product type-product">
-              <div class="side-item">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="item-media">
-                      <router-link :to="'adopt/'+dog.slug">
-                        <img :src="'assets/images/dogs/'+dog.image" alt="">
-                      </router-link>
-                    </div>
-                    <div class="item-content">
-                      <h3>
-                        <a :href="'adopt/'+dog.name">{{ dog.name }}</a>
-                      </h3>
-                      <p>
-                        <i v-if="dog.gender == 'M'" class="fas fa-mars"></i>
-                        <i v-else class="fas fa-venus"></i>
-                        <span v-if="dog.gender == 'M'">Male</span>
-                        <span v-else>Female</span>
-                        <br>
-
-                        <i class="fas fa-birthday-cake"></i> {{ dog.age }}
-                        <br>
-
-                        <i class="fas fa-home"></i>
-                        <span v-if="dog.hdb">HDB Approved</span>
-                        <span v-else>Not HDB Approved</span><br>
-                      </p>
-                      <p>
-                        <a href="#" class="theme_button inverse margin_0">Learn More</a>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="col-md-6">
-                    <div class="item-content">
-                      <div class="star-rating" title="Rated 4.00 out of 5">
-															<span style="width:40%">
-																<strong class="rating">2.00</strong> out of 5
-															</span>
-                      </div>
-                      <h3>
-                        <a href="shop-product-right.html">Capicola boudin</a>
-                      </h3>
-
-                      <h4>Product Description</h4>
-                      <p class="product-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo odit, expedita est aspernatur accusamus sit dolorem et illo distinctio corporis, neque, error ipsa, eum? Suscipit fugiat totam voluptatum necessitatibus ex.
-                      </p>
-
-                      <h4>Product price</h4>
-
-                      <span class="price">
-															<span class="amount highlight">$200</span>
-														</span>
-
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </li>
-
-          </ul>
-
+        <div v-for="chunk in adopts" class="row">
+          <adopt-item v-for="adopt in chunk" :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
         </div>
-        <!-- eof .columns-* -->
 
         <hr>
 
@@ -176,21 +103,22 @@
 
 <script>
   import axios from 'axios'
+  import chunk from 'lodash.chunk';
+  import AdoptItem from "../components/AdoptItem";
 
   export default {
+    components: {AdoptItem},
     name: "Adopt",
     data() {
       return {
-        dogs: {},
-        dogs_per_page: 8,
+        adopts: {},
+        adopts_per_page: 8,
+        num_of_adopts: 0,
       }
     },
     computed: {
       num_of_pages: function() {
-        return Math.ceil(this.num_of_dogs / this.dogs_per_page);
-      },
-      num_of_dogs: function() {
-        return Object.keys(this.dogs).length;
+        return Math.ceil(this.num_of_adopts / this.adopts_per_page);
       }
     },
     methods: {
@@ -201,7 +129,9 @@
     created: function() {
       axios.get('api/adopt/')
         .then(response => {
-          this.dogs = response.data;
+          let adopts = response.data;
+          this.num_of_adopts = Object.keys(adopts).length;
+          this.adopts = chunk(adopts, 3);
         })
         .catch(error => { console.log(error); })
     }
@@ -209,5 +139,16 @@
 </script>
 
 <style scoped>
-
+  .checkbox, .radio {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  @media (min-width: 768px) {
+    .form-horizontal .control-label {
+      padding-top: 5px;
+    }
+  }
+  .widget > h3, .widget-title {
+    margin-bottom: 5px;
+  }
 </style>

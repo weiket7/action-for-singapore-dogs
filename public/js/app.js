@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 170);
+/******/ 	return __webpack_require__(__webpack_require__.s = 172);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -32839,25 +32839,557 @@ webpackContext.id = 165;
 /***/ }),
 /* 166 */,
 /* 167 */,
-/* 168 */,
-/* 169 */,
-/* 170 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(171);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(182)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(184)
+/* template */
+var __vue_template__ = __webpack_require__(185)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-ffd1d23e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\components\\AdoptItem.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ffd1d23e", Component.options)
+  } else {
+    hotAPI.reload("data-v-ffd1d23e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),
-/* 171 */
+/* 169 */
+/***/ (function(module, exports) {
+
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_SAFE_INTEGER = 9007199254740991,
+    MAX_INTEGER = 1.7976931348623157e+308,
+    NAN = 0 / 0;
+
+/** `Object#toString` result references. */
+var funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    symbolTag = '[object Symbol]';
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeCeil = Math.ceil,
+    nativeMax = Math.max;
+
+/**
+ * The base implementation of `_.slice` without an iteratee call guard.
+ *
+ * @private
+ * @param {Array} array The array to slice.
+ * @param {number} [start=0] The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the slice of `array`.
+ */
+function baseSlice(array, start, end) {
+  var index = -1,
+      length = array.length;
+
+  if (start < 0) {
+    start = -start > length ? 0 : (length + start);
+  }
+  end = end > length ? length : end;
+  if (end < 0) {
+    end += length;
+  }
+  length = start > end ? 0 : ((end - start) >>> 0);
+  start >>>= 0;
+
+  var result = Array(length);
+  while (++index < length) {
+    result[index] = array[index + start];
+  }
+  return result;
+}
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  length = length == null ? MAX_SAFE_INTEGER : length;
+  return !!length &&
+    (typeof value == 'number' || reIsUint.test(value)) &&
+    (value > -1 && value % 1 == 0 && value < length);
+}
+
+/**
+ * Checks if the given arguments are from an iteratee call.
+ *
+ * @private
+ * @param {*} value The potential iteratee value argument.
+ * @param {*} index The potential iteratee index or key argument.
+ * @param {*} object The potential iteratee object argument.
+ * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+ *  else `false`.
+ */
+function isIterateeCall(value, index, object) {
+  if (!isObject(object)) {
+    return false;
+  }
+  var type = typeof index;
+  if (type == 'number'
+        ? (isArrayLike(object) && isIndex(index, object.length))
+        : (type == 'string' && index in object)
+      ) {
+    return eq(object[index], value);
+  }
+  return false;
+}
+
+/**
+ * Creates an array of elements split into groups the length of `size`.
+ * If `array` can't be split evenly, the final chunk will be the remaining
+ * elements.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.0.0
+ * @category Array
+ * @param {Array} array The array to process.
+ * @param {number} [size=1] The length of each chunk
+ * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+ * @returns {Array} Returns the new array of chunks.
+ * @example
+ *
+ * _.chunk(['a', 'b', 'c', 'd'], 2);
+ * // => [['a', 'b'], ['c', 'd']]
+ *
+ * _.chunk(['a', 'b', 'c', 'd'], 3);
+ * // => [['a', 'b', 'c'], ['d']]
+ */
+function chunk(array, size, guard) {
+  if ((guard ? isIterateeCall(array, size, guard) : size === undefined)) {
+    size = 1;
+  } else {
+    size = nativeMax(toInteger(size), 0);
+  }
+  var length = array ? array.length : 0;
+  if (!length || size < 1) {
+    return [];
+  }
+  var index = 0,
+      resIndex = 0,
+      result = Array(nativeCeil(length / size));
+
+  while (index < length) {
+    result[resIndex++] = baseSlice(array, index, (index += size));
+  }
+  return result;
+}
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null && isLength(value.length) && !isFunction(value);
+}
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+  var tag = isObject(value) ? objectToString.call(value) : '';
+  return tag == funcTag || tag == genTag;
+}
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' &&
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+}
+
+/**
+ * Converts `value` to a finite number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.12.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted number.
+ * @example
+ *
+ * _.toFinite(3.2);
+ * // => 3.2
+ *
+ * _.toFinite(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toFinite(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toFinite('3.2');
+ * // => 3.2
+ */
+function toFinite(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = (value < 0 ? -1 : 1);
+    return sign * MAX_INTEGER;
+  }
+  return value === value ? value : 0;
+}
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3.2);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3.2');
+ * // => 3
+ */
+function toInteger(value) {
+  var result = toFinite(value),
+      remainder = result % 1;
+
+  return result === result ? (remainder ? result - remainder : result) : 0;
+}
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = chunk;
+
+
+/***/ }),
+/* 170 */,
+/* 171 */,
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(173);
+
+
+/***/ }),
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(177);
 
 
 
@@ -32871,15 +33403,15 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 });
 
 /***/ }),
-/* 172 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(173)
+var __vue_script__ = __webpack_require__(175)
 /* template */
-var __vue_template__ = __webpack_require__(174)
+var __vue_template__ = __webpack_require__(176)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -32918,7 +33450,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 173 */
+/* 175 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32999,7 +33531,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 174 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -33173,28 +33705,28 @@ if (false) {
 }
 
 /***/ }),
-/* 175 */
+/* 177 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_Home__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_Home__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_Home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__pages_Home__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_Adopt__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_Adopt__ = __webpack_require__(187);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_Adopt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__pages_Adopt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_AdoptView__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_AdoptView__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_AdoptView___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__pages_AdoptView__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_Donate__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_Donate__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_Donate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__pages_Donate__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_Volunteer__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_Volunteer__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_Volunteer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__pages_Volunteer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_Events__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_Events__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_Events___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__pages_Events__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_EventView__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_EventView__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_EventView___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__pages_EventView__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_Contact__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_Contact__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_Contact___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__pages_Contact__);
 
 
@@ -33214,19 +33746,19 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 }));
 
 /***/ }),
-/* 176 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(177)
+  __webpack_require__(179)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(179)
+var __vue_script__ = __webpack_require__(181)
 /* template */
-var __vue_template__ = __webpack_require__(180)
+var __vue_template__ = __webpack_require__(186)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33265,13 +33797,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 177 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(178);
+var content = __webpack_require__(180);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -33291,7 +33823,7 @@ if(false) {
 }
 
 /***/ }),
-/* 178 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -33299,13 +33831,358 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.bxslider-row[data-v-0f49c57b] {\n  margin-left: 0;\n  margin-right: 0;\n}\n.bx-wrapper[data-v-0f49c57b] {\n  margin-bottom: 30px;\n}\n.btn-view-adoption[data-v-0f49c57b] {\n  padding: 15px;\n  font-size: 20px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 179 */
+/* 181 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_AdoptItem__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_AdoptItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_AdoptItem__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_chunk__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_chunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_chunk__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { AdoptItem: __WEBPACK_IMPORTED_MODULE_0__components_AdoptItem___default.a },
+  name: "home",
+  data: function data() {
+    return {
+      adopts: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    $(document).ready(function () {
+      $('.bxslider').bxSlider({
+        minSlides: 2,
+        maxSlides: 2
+      });
+    });
+
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('api/adopt/').then(function (response) {
+      var adopts = response.data;
+      _this.num_of_adopts = Object.keys(adopts).length;
+      _this.adopts = __WEBPACK_IMPORTED_MODULE_2_lodash_chunk___default()(adopts, 3);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+});
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(183);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("638f3dbf", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ffd1d23e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AdoptItem.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ffd1d23e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AdoptItem.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n@media (min-width: 768px) {\n.adopt-grid-image[data-v-ffd1d23e] {\n    height: 200px;\n    overflow-y: hidden;\n}\n}\n.adopt-grid-border[data-v-ffd1d23e] {\n  border: 1px solid #ddd;\n  padding: 5px;\n}\n.adopt-grid-name[data-v-ffd1d23e] {\n  margin-top: 5px;\n  margin-bottom: 10px;\n}\n.adopt-grid-content[data-v-ffd1d23e] {\n  line-height: 24px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33341,536 +34218,1733 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "home",
-  mounted: function mounted() {}
+  name: "adopt-item",
+  props: ['adopt']
 });
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "col-md-4" }, [
+    _c(
+      "div",
+      { staticClass: "adopt-grid-border" },
+      [
+        _c(
+          "div",
+          { staticClass: "adopt-grid-image" },
+          [
+            _c("router-link", { attrs: { to: "adopt/" + _vm.adopt.slug } }, [
+              _c("img", {
+                attrs: {
+                  src: "assets/images/adopts/" + _vm.adopt.image,
+                  alt: ""
+                }
+              })
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("h3", { staticClass: "adopt-grid-name" }, [
+          _c("a", { attrs: { href: "adopt/" + _vm.adopt.name } }, [
+            _vm._v(_vm._s(_vm.adopt.name))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "adopt-grid-content" }, [
+          _vm.adopt.gender == "M"
+            ? _c("i", { staticClass: "fas fa-mars" })
+            : _c("i", { staticClass: "fas fa-venus" }),
+          _vm._v(" "),
+          _vm.adopt.gender == "M"
+            ? _c("span", [_vm._v("Male")])
+            : _c("span", [_vm._v("Female")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("i", { staticClass: "fas fa-birthday-cake" }),
+          _vm._v(" " + _vm._s(_vm.adopt.age) + "\n      "),
+          _c("br"),
+          _vm._v(" "),
+          _c("i", { staticClass: "fas fa-home" }),
+          _vm._v(" "),
+          _vm.adopt.hdb
+            ? _c("span", [_vm._v("HDB Approved")])
+            : _c("span", [_vm._v("Not HDB Approved")]),
+          _c("br")
+        ]),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "theme_button inverse margin_0",
+            attrs: { to: "adopt/" + _vm.adopt.slug }
+          },
+          [_vm._v("Learn More")]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ffd1d23e", module.exports)
+  }
+}
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container mt-30" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "bxslider" }, [
+            _c("div", [
+              _c("img", {
+                attrs: { src: "assets/images/dimple.jpg", title: "Funky roots" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("img", {
+                attrs: {
+                  src: "assets/images/dimple.jpg",
+                  title: "The long and winding road"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("img", {
+                attrs: { src: "assets/images/dimple.jpg", title: "Happy trees" }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _vm._m(3)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "section",
-        { staticClass: "ls section_padding_100", attrs: { id: "blog" } },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-10 col-md-offset-1 text-center" },
-                [
-                  _c("h2", { staticClass: "section_header bold" }, [
-                    _c("span", { staticClass: "highlight" }, [
-                      _vm._v("what we do")
-                    ])
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("h2", { staticClass: "section_header bold highlight" }, [
+        _vm._v("Events")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "section",
+      {
+        staticClass: "pt-30",
+        staticStyle: { "background-color": "#f2f2f2" },
+        attrs: { id: "what-we-do" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
             _c(
               "div",
-              {
-                staticClass: "row columns_margin_bottom_30 columns_margin_top_0"
-              },
+              { staticClass: "col-md-10 col-md-offset-1 text-center" },
               [
-                _c("div", { staticClass: "col-md-4 col-sm-6" }, [
-                  _c("article", { staticClass: "vertical-item" }, [
-                    _c("div", { staticClass: "item-content" }, [
-                      _c("h3", { staticClass: "entry-title" }, [
-                        _c("a", { attrs: { href: "blog-single-right.html" } }, [
-                          _vm._v("Rescue")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "topmargin_30" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "theme_button inverse",
-                            attrs: { href: "blog-single-right.html" }
-                          },
-                          [_vm._v("Read more")]
-                        )
-                      ])
-                    ])
+                _c("h2", { staticClass: "section_header bold" }, [
+                  _c("span", { staticClass: "highlight" }, [
+                    _vm._v("what we do")
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-4 col-sm-6" }, [
-                  _c("article", { staticClass: "vertical-item" }, [
-                    _c("div", { staticClass: "item-content" }, [
-                      _c("h3", { staticClass: "entry-title" }, [
-                        _c("a", { attrs: { href: "blog-single-right.html" } }, [
-                          _vm._v("Rehabilitate")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "topmargin_30" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "theme_button inverse",
-                            attrs: { href: "blog-single-right.html" }
-                          },
-                          [_vm._v("Read more")]
-                        )
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0"
-                  },
-                  [
-                    _c("article", { staticClass: "vertical-item" }, [
-                      _c("div", { staticClass: "item-content" }, [
-                        _c("h3", { staticClass: "entry-title" }, [
-                          _c(
-                            "a",
-                            { attrs: { href: "blog-single-right.html" } },
-                            [_vm._v("Rehome")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _vm._v(
-                            "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "topmargin_30" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "theme_button inverse",
-                              attrs: { href: "blog-single-right.html" }
-                            },
-                            [_vm._v("Read more")]
-                          )
-                        ])
-                      ])
-                    ])
-                  ]
-                )
+                ])
               ]
             )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "section",
-        {
-          staticClass:
-            "cs section_padding_0 columns_padding_0 columns_margin_0",
-          attrs: { id: "about" }
-        },
-        [
-          _c("div", { staticClass: "container-fluid" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-md-4 col-sm-6 after_cover color_bg_1 light bg_teaser text-center"
-                },
-                [
-                  _c("img", { attrs: { src: "images/teaser01.jpg", alt: "" } }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "toppadding_60 bottompadding_60 inline-block text-left"
-                    },
-                    [
-                      _c("h2", { staticClass: "bold" }, [
-                        _vm._v(".01 Donator")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "theme_button inverse",
-                          attrs: { href: "careers.html" }
-                        },
-                        [_vm._v("Learn more")]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-md-4 col-sm-6 after_cover color_bg_1 medium bg_teaser text-center"
-                },
-                [
-                  _c("img", { attrs: { src: "images/teaser02.jpg", alt: "" } }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "toppadding_60 bottompadding_60 inline-block text-left"
-                    },
-                    [
-                      _c("h2", { staticClass: "bold" }, [
-                        _vm._v(".02 Volunteer")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "theme_button inverse",
-                          attrs: { href: "careers.html" }
-                        },
-                        [_vm._v("Learn more")]
-                      )
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-md-4 col-sm-12 after_cover color_bg_1 darken bg_teaser text-center"
-                },
-                [
-                  _c("img", { attrs: { src: "images/teaser03.jpg", alt: "" } }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "toppadding_60 bottompadding_60 inline-block text-left"
-                    },
-                    [
-                      _c("h2", { staticClass: "bold" }, [
-                        _vm._v(".03 Adopter")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "theme_button inverse",
-                          attrs: { href: "careers.html" }
-                        },
-                        [_vm._v("Learn more")]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "section",
-        {
-          staticClass:
-            "ds page_video parallax section_padding_100 table_section table_section_md columns_padding_0 columns_margin_0"
-        },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-6 col-md-push-6" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "embed-responsive embed-responsive-2by1 topmargin_20"
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "embed-placeholder",
-                        attrs: {
-                          href: "https://www.youtube.com/embed/xKxrkht7CpY"
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: { src: "images/video.jpg", alt: "" }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 col-md-pull-6" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "with_padding_big with_border thick_border right-offset"
-                  },
-                  [
-                    _c("h2", { staticClass: "section_header" }, [
-                      _c("strong", [_vm._v("135 dogs for adoption")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "row columns_margin_bottom_30 columns_margin_top_0"
+            },
+            [
+              _c("div", { staticClass: "col-md-4 col-sm-6" }, [
+                _c("article", { staticClass: "vertical-item" }, [
+                  _c("div", { staticClass: "item-content" }, [
+                    _c("h3", { staticClass: "entry-title" }, [
+                      _c("a", { attrs: { href: "blog-single-right.html" } }, [
+                        _vm._v("Rescue")
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("p", [
                       _vm._v(
-                        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                        "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
                       )
                     ]),
                     _vm._v(" "),
-                    _c("p", { staticClass: "inline-vertical-center" }, [
+                    _c("p", { staticClass: "topmargin_30" }, [
                       _c(
                         "a",
                         {
-                          staticClass:
-                            "theme_button wide_button inverse2 margin_0",
-                          attrs: { href: "donation.html" }
+                          staticClass: "theme_button inverse",
+                          attrs: { href: "blog-single-right.html" }
                         },
-                        [_vm._v("Dogs for Adoption")]
+                        [_vm._v("Read more")]
                       )
                     ])
-                  ]
-                )
-              ])
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("h3", [_vm._v("Dolores Vel Reiciendis")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorem nisi unde itaque, aliquid. Necessitatibus, dolorem tempora repudiandae modi. Quis, esse eveniet suscipit! Enim dicta voluptate quas ea, facilis repellat!"
-                  )
+                  ])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6" }, [
-                _c("h3", [_vm._v("Reprehenderit Nemo Alias")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloribus obcaecati incidunt quas iusto eos nobis. Laudantium veniam, reprehenderit nemo alias ducimus, illo, omnis voluptas doloribus cupiditate repudiandae porro numquam?"
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("h3", [_vm._v("Laboriosam ducimus")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorem nisi unde itaque, aliquid. Necessitatibus, dolorem tempora repudiandae modi. Quis, esse eveniet suscipit! Enim dicta voluptate quas ea, facilis repellat!"
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("h3", [_vm._v("Necessitatibus Saepe")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloribus obcaecati incidunt quas iusto eos nobis. Laudantium veniam, reprehenderit nemo alias ducimus, illo, omnis voluptas doloribus cupiditate repudiandae porro numquam?"
-                  )
+              _c("div", { staticClass: "col-md-4 col-sm-6" }, [
+                _c("article", { staticClass: "vertical-item" }, [
+                  _c("div", { staticClass: "item-content" }, [
+                    _c("h3", { staticClass: "entry-title" }, [
+                      _c("a", { attrs: { href: "blog-single-right.html" } }, [
+                        _vm._v("Rehabilitate")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "topmargin_30" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse",
+                          attrs: { href: "blog-single-right.html" }
+                        },
+                        [_vm._v("Read more")]
+                      )
+                    ])
+                  ])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("h3", [_vm._v("Maxime Fugiat Error")]),
-                _vm._v(" "),
-                _c("p", [
-                  _vm._v(
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloribus obcaecati incidunt quas iusto eos nobis. Laudantium veniam, reprehenderit nemo alias ducimus, illo, omnis voluptas doloribus cupiditate repudiandae porro."
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("h3", [_vm._v("Consectetur Adipisicing Elit")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore in blanditiis tempora aliquam omnis recusandae maxime fugiat error dolores vel reiciendis quia, laboriosam dolorum, ipsa corrupti. Laboriosam odio ducimus harum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio assumenda vitae iure, totam laboriosam voluptatibus delectus autem pariatur excepturi eligendi natus unde. Numquam vel quia dolore tempore consequuntur nobis architecto."
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0"
+                },
+                [
+                  _c("article", { staticClass: "vertical-item" }, [
+                    _c("div", { staticClass: "item-content" }, [
+                      _c("h3", { staticClass: "entry-title" }, [
+                        _c("a", { attrs: { href: "blog-single-right.html" } }, [
+                          _vm._v("Rehome")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "topmargin_30" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "theme_button inverse",
+                            attrs: { href: "blog-single-right.html" }
+                          },
+                          [_vm._v("Read more")]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
               )
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "section",
+      { staticClass: "mt-30", attrs: { id: "dogs-for-adoption" } },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("h2", { staticClass: "section_header bold text-center" }, [
+              _c("span", {}, [_vm._v("Dogs for Adoption")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "visible-lg visible-md" }, [
+              _c("div", { staticClass: "bxslider" }, [
+                _c("div", { staticClass: "row bxslider-row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row bxslider-row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-3 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  )
+                ])
+              ])
             ]),
             _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo repellendus, repellat rem debitis id, harum ipsa nostrum, aut eius atque repudiandae officia nemo. Laborum fugit maiores aut non sit alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos voluptas nihil tenetur quibusdam, laborum sed id laboriosam obcaecati corporis necessitatibus saepe voluptatem incidunt, cumque aperiam, quam nisi? Numquam, ullam, alias."
+            _c("div", { staticClass: "hidden-lg hidden-md" }, [
+              _c("div", { staticClass: "bxslider" }, [
+                _c("div", { staticClass: "row bxslider-row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-6 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-6 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row bxslider-row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-6 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-xs-6 adopt-grid-border",
+                      attrs: { "data-v-ffd1d23e": "" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "adopt-grid-image",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "#/adopt/Kodomo"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  "data-v-ffd1d23e": "",
+                                  src: "assets/images/adopts/kodomo.jpg",
+                                  alt: ""
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h3",
+                        {
+                          staticClass: "adopt-grid-name",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                "data-v-ffd1d23e": "",
+                                href: "adopt/Kodomo"
+                              }
+                            },
+                            [_vm._v("Kodomo")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: "adopt-grid-content",
+                          attrs: { "data-v-ffd1d23e": "" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-venus",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Female")
+                          ]),
+                          _vm._v(" "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-birthday-cake",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" 12 yrs 1 mth\n                "),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } }),
+                          _vm._v(" "),
+                          _c("i", {
+                            staticClass: "fas fa-home",
+                            attrs: { "data-v-ffd1d23e": "" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { "data-v-ffd1d23e": "" } }, [
+                            _vm._v("Not HDB Approved")
+                          ]),
+                          _c("br", { attrs: { "data-v-ffd1d23e": "" } })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse margin_0",
+                          attrs: {
+                            "data-v-ffd1d23e": "",
+                            href: "#/adopt/Kodomo"
+                          }
+                        },
+                        [_vm._v("Learn More")]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 text-center" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "theme_button btn-view-adoption margin_0",
+                  attrs: { href: "#/adopt/Kodomo" }
+                },
+                [_vm._v("View All Dog for Adoption")]
               )
             ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "section",
+      {
+        staticClass: "pt-30 mt-30",
+        staticStyle: { "background-color": "#f2f2f2" },
+        attrs: { id: "how-you-can-help" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-10 col-md-offset-1 text-center" },
+              [
+                _c("h2", { staticClass: "section_header bold" }, [
+                  _c("span", { staticClass: "highlight" }, [
+                    _vm._v("How you can help")
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "row columns_margin_bottom_30 columns_margin_top_0"
+            },
+            [
+              _c("div", { staticClass: "col-md-4 col-sm-6" }, [
+                _c("article", { staticClass: "vertical-item" }, [
+                  _c("div", { staticClass: "item-content" }, [
+                    _c("h3", { staticClass: "entry-title" }, [
+                      _c("a", { attrs: { href: "blog-single-right.html" } }, [
+                        _vm._v("Adopt")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "topmargin_30" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse",
+                          attrs: { href: "blog-single-right.html" }
+                        },
+                        [_vm._v("Read more")]
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4 col-sm-6" }, [
+                _c("article", { staticClass: "vertical-item" }, [
+                  _c("div", { staticClass: "item-content" }, [
+                    _c("h3", { staticClass: "entry-title" }, [
+                      _c("a", { attrs: { href: "blog-single-right.html" } }, [
+                        _vm._v("Donate")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "topmargin_30" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "theme_button inverse",
+                          attrs: { href: "blog-single-right.html" }
+                        },
+                        [_vm._v("Read more")]
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0"
+                },
+                [
+                  _c("article", { staticClass: "vertical-item" }, [
+                    _c("div", { staticClass: "item-content" }, [
+                      _c("h3", { staticClass: "entry-title" }, [
+                        _c("a", { attrs: { href: "blog-single-right.html" } }, [
+                          _vm._v("Volunteer")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque\n              "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "topmargin_30" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "theme_button inverse",
+                            attrs: { href: "blog-single-right.html" }
+                          },
+                          [_vm._v("Read more")]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -33883,19 +35957,19 @@ if (false) {
 }
 
 /***/ }),
-/* 181 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(182)
+  __webpack_require__(188)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(184)
+var __vue_script__ = __webpack_require__(190)
 /* template */
-var __vue_template__ = __webpack_require__(185)
+var __vue_template__ = __webpack_require__(191)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33934,13 +36008,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 182 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(183);
+var content = __webpack_require__(189);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -33960,7 +36034,7 @@ if(false) {
 }
 
 /***/ }),
-/* 183 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -33968,19 +36042,23 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.checkbox[data-v-54a31d78], .radio[data-v-54a31d78] {\n  margin-top: 3px;\n  margin-bottom: 3px;\n}\n@media (min-width: 768px) {\n.form-horizontal .control-label[data-v-54a31d78] {\n    padding-top: 5px;\n}\n}\n.widget > h3[data-v-54a31d78], .widget-title[data-v-54a31d78] {\n  margin-bottom: 5px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 184 */
+/* 190 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_chunk__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_chunk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_chunk__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_AdoptItem__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_AdoptItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_AdoptItem__);
 //
 //
 //
@@ -34084,97 +36162,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: { AdoptItem: __WEBPACK_IMPORTED_MODULE_2__components_AdoptItem___default.a },
   name: "Adopt",
   data: function data() {
     return {
-      dogs: {},
-      dogs_per_page: 8
+      adopts: {},
+      adopts_per_page: 8,
+      num_of_adopts: 0
     };
   },
 
   computed: {
     num_of_pages: function num_of_pages() {
-      return Math.ceil(this.num_of_dogs / this.dogs_per_page);
-    },
-    num_of_dogs: function num_of_dogs() {
-      return Object.keys(this.dogs).length;
+      return Math.ceil(this.num_of_adopts / this.adopts_per_page);
     }
   },
   methods: {
@@ -34184,7 +36190,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('api/adopt/').then(function (response) {
-      _this.dogs = response.data;
+      var adopts = response.data;
+      _this.num_of_adopts = Object.keys(adopts).length;
+      _this.adopts = __WEBPACK_IMPORTED_MODULE_1_lodash_chunk___default()(adopts, 3);
     }).catch(function (error) {
       console.log(error);
     });
@@ -34192,7 +36200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 185 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34201,117 +36209,57 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-30", attrs: { id: "app" } }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-7 col-md-8 col-lg-8" }, [
-        _c("div", { staticClass: "adopt-pagination-top" }, [
+      _c(
+        "div",
+        { staticClass: "col-sm-7 col-md-8 col-lg-8" },
+        [
           _c("div", { staticClass: "row columns_padding_0" }, [
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "col-sm-4 text-center" }, [
               _vm._v(
-                "\n              Current Page: 1 / " +
+                "\n          Current Page: 1 / " +
                   _vm._s(_vm.num_of_pages) +
-                  "\n\n            "
+                  "\n        "
               )
             ]),
             _vm._v(" "),
             _vm._m(1)
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "columns-3" }, [
-          _c(
-            "ul",
-            {
-              staticClass: "products list-unstyled grid-view",
-              attrs: { id: "products" }
-            },
-            _vm._l(_vm.dogs, function(dog) {
-              return _c("li", { staticClass: "product type-product" }, [
-                _c("div", { staticClass: "side-item" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _c(
-                        "div",
-                        { staticClass: "item-media" },
-                        [
-                          _c(
-                            "router-link",
-                            { attrs: { to: "adopt/" + dog.slug } },
-                            [
-                              _c("img", {
-                                attrs: {
-                                  src: "assets/images/dogs/" + dog.image,
-                                  alt: ""
-                                }
-                              })
-                            ]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "item-content" }, [
-                        _c("h3", [
-                          _c("a", { attrs: { href: "adopt/" + dog.name } }, [
-                            _vm._v(_vm._s(dog.name))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          dog.gender == "M"
-                            ? _c("i", { staticClass: "fas fa-mars" })
-                            : _c("i", { staticClass: "fas fa-venus" }),
-                          _vm._v(" "),
-                          dog.gender == "M"
-                            ? _c("span", [_vm._v("Male")])
-                            : _c("span", [_vm._v("Female")]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "fas fa-birthday-cake" }),
-                          _vm._v(
-                            " " + _vm._s(dog.age) + "\n                        "
-                          ),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("i", { staticClass: "fas fa-home" }),
-                          _vm._v(" "),
-                          dog.hdb
-                            ? _c("span", [_vm._v("HDB Approved")])
-                            : _c("span", [_vm._v("Not HDB Approved")]),
-                          _c("br")
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(2, true)
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(3, true)
-                  ])
-                ])
-              ])
-            })
-          )
-        ]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("div", { staticClass: "row columns_padding_0" }, [
-          _vm._m(4),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-4 text-center" }, [
-            _vm._v(
-              "\n            Current Page: 1 / " +
-                _vm._s(_vm.num_of_pages) +
-                "\n\n          "
-            )
           ]),
           _vm._v(" "),
-          _vm._m(5)
-        ])
-      ]),
+          _vm._l(_vm.adopts, function(chunk) {
+            return _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(chunk, function(adopt) {
+                return _c("adopt-item", {
+                  key: adopt.adopt_id,
+                  attrs: { adopt: adopt }
+                })
+              })
+            )
+          }),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row columns_padding_0" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-4 text-center" }, [
+              _vm._v(
+                "\n          Current Page: 1 / " +
+                  _vm._s(_vm.num_of_pages) +
+                  "\n\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(3)
+          ])
+        ],
+        2
+      ),
       _vm._v(" "),
-      _vm._m(6)
+      _vm._m(4)
     ])
   ])
 }
@@ -34338,60 +36286,6 @@ var staticRenderFns = [
         { staticClass: "theme_button inverse margin_0", attrs: { href: "#" } },
         [_vm._v("Next page")]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c(
-        "a",
-        { staticClass: "theme_button inverse margin_0", attrs: { href: "#" } },
-        [_vm._v("Learn More")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "item-content" }, [
-        _c(
-          "div",
-          {
-            staticClass: "star-rating",
-            attrs: { title: "Rated 4.00 out of 5" }
-          },
-          [
-            _c("span", { staticStyle: { width: "40%" } }, [
-              _c("strong", { staticClass: "rating" }, [_vm._v("2.00")]),
-              _vm._v(" out of 5\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("h3", [
-          _c("a", { attrs: { href: "shop-product-right.html" } }, [
-            _vm._v("Capicola boudin")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("h4", [_vm._v("Product Description")]),
-        _vm._v(" "),
-        _c("p", { staticClass: "product-description" }, [
-          _vm._v(
-            "\n                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo odit, expedita est aspernatur accusamus sit dolorem et illo distinctio corporis, neque, error ipsa, eum? Suscipit fugiat totam voluptatum necessitatibus ex.\n                      "
-          )
-        ]),
-        _vm._v(" "),
-        _c("h4", [_vm._v("Product price")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "price" }, [
-          _c("span", { staticClass: "amount highlight" }, [_vm._v("$200")])
-        ])
-      ])
     ])
   },
   function() {
@@ -34442,7 +36336,7 @@ var staticRenderFns = [
                 value: "option1"
               }
             }),
-            _vm._v("\n              Yes\n            ")
+            _vm._v("\n            Yes\n          ")
           ])
         ]),
         _vm._v(" "),
@@ -34456,7 +36350,7 @@ var staticRenderFns = [
                 value: "option2"
               }
             }),
-            _vm._v("\n              No\n            ")
+            _vm._v("\n            No\n          ")
           ])
         ]),
         _vm._v(" "),
@@ -34472,7 +36366,7 @@ var staticRenderFns = [
                 value: "option1"
               }
             }),
-            _vm._v("\n              Male\n            ")
+            _vm._v("\n            Male\n          ")
           ])
         ]),
         _vm._v(" "),
@@ -34486,7 +36380,7 @@ var staticRenderFns = [
                 value: "option2"
               }
             }),
-            _vm._v("\n              Female\n            ")
+            _vm._v("\n            Female\n          ")
           ])
         ]),
         _vm._v(" "),
@@ -34502,7 +36396,7 @@ var staticRenderFns = [
                 value: "option1"
               }
             }),
-            _vm._v("\n              0-3\n            ")
+            _vm._v("\n            0-3\n          ")
           ])
         ]),
         _vm._v(" "),
@@ -34516,7 +36410,7 @@ var staticRenderFns = [
                 value: "option2"
               }
             }),
-            _vm._v("\n              4-7\n            ")
+            _vm._v("\n            4-7\n          ")
           ])
         ]),
         _vm._v(" "),
@@ -34530,7 +36424,7 @@ var staticRenderFns = [
                 value: "option2"
               }
             }),
-            _vm._v("\n              8+\n            ")
+            _vm._v("\n            8+\n          ")
           ])
         ])
       ])
@@ -34547,19 +36441,19 @@ if (false) {
 }
 
 /***/ }),
-/* 186 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(187)
+  __webpack_require__(193)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(189)
+var __vue_script__ = __webpack_require__(195)
 /* template */
-var __vue_template__ = __webpack_require__(190)
+var __vue_template__ = __webpack_require__(196)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34598,13 +36492,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 187 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(188);
+var content = __webpack_require__(194);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -34624,7 +36518,7 @@ if(false) {
 }
 
 /***/ }),
-/* 188 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -34638,7 +36532,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 189 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34792,7 +36686,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 190 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34826,7 +36720,7 @@ var render = function() {
               _c(
                 "h1",
                 {
-                  staticClass: "product_title entry-title black text-uppercase",
+                  staticClass: "product_title entry-title black",
                   attrs: { itemprop: "name" }
                 },
                 [_vm._v(_vm._s(_vm.adopt.name))]
@@ -35119,19 +37013,19 @@ if (false) {
 }
 
 /***/ }),
-/* 191 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(192)
+  __webpack_require__(198)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(194)
+var __vue_script__ = __webpack_require__(200)
 /* template */
-var __vue_template__ = __webpack_require__(195)
+var __vue_template__ = __webpack_require__(201)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35170,13 +37064,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 192 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(193);
+var content = __webpack_require__(199);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -35196,7 +37090,7 @@ if(false) {
 }
 
 /***/ }),
-/* 193 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -35210,7 +37104,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 194 */
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35367,7 +37261,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 195 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35895,15 +37789,15 @@ if (false) {
 }
 
 /***/ }),
-/* 196 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(197)
+var __vue_script__ = __webpack_require__(203)
 /* template */
-var __vue_template__ = __webpack_require__(198)
+var __vue_template__ = __webpack_require__(204)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35942,7 +37836,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 197 */
+/* 203 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36043,7 +37937,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 198 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -36239,15 +38133,15 @@ if (false) {
 }
 
 /***/ }),
-/* 199 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(200)
+var __vue_script__ = __webpack_require__(206)
 /* template */
-var __vue_template__ = __webpack_require__(201)
+var __vue_template__ = __webpack_require__(207)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -36286,7 +38180,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 200 */
+/* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36446,7 +38340,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 201 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -36742,19 +38636,19 @@ if (false) {
 }
 
 /***/ }),
-/* 202 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(203)
+  __webpack_require__(209)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(205)
+var __vue_script__ = __webpack_require__(211)
 /* template */
-var __vue_template__ = __webpack_require__(206)
+var __vue_template__ = __webpack_require__(212)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -36793,13 +38687,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 203 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(204);
+var content = __webpack_require__(210);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -36819,7 +38713,7 @@ if(false) {
 }
 
 /***/ }),
-/* 204 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -36833,7 +38727,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 205 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36928,7 +38822,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 206 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37058,19 +38952,19 @@ if (false) {
 }
 
 /***/ }),
-/* 207 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(208)
+  __webpack_require__(214)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(210)
+var __vue_script__ = __webpack_require__(216)
 /* template */
-var __vue_template__ = __webpack_require__(211)
+var __vue_template__ = __webpack_require__(217)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37109,13 +39003,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 208 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(209);
+var content = __webpack_require__(215);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -37135,7 +39029,7 @@ if(false) {
 }
 
 /***/ }),
-/* 209 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -37149,7 +39043,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 210 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37270,7 +39164,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 211 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

@@ -27,31 +27,17 @@
 }
 
 /******SPECIFIC PAGES******/
-/*for adopt grid page, filter on the right*/
-.widget > h3, .widget-title {
-  margin-bottom: 5px;
+/*for layout*/
+@media (max-width: 991px) {
+  a.logo img {
+    max-width: none;
+  }
 }
+
 
 /*for contact page, icons on the right*/
 .media-body, .media-left, .media-right {
   vertical-align: baseline;
-}
-
-/*for adopt view page*/
-.tab-content {
-  padding: 20px 20px;
-}
-.checkbox, .radio {
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-@media (min-width: 768px) {
-  .form-horizontal .control-label {
-    padding-top: 5px;
-  }
-}
-.adopt-pagination-top {
-  margin-bottom: 20px;
 }
 
 /*for event page*/
@@ -67,3 +53,9 @@
 .mt-30 { margin-top: 30px !important; }
 .mt-40 { margin-top: 40px !important; }
 .mt-50 { margin-top: 50px !important; }
+
+.pt-10 { padding-top: 10px !important; }
+.pt-20 { padding-top: 20px !important; }
+.pt-30 { padding-top: 30px !important; }
+.pt-40 { padding-top: 40px !important; }
+.pt-50 { padding-top: 50px !important; }

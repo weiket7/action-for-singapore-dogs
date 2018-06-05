@@ -1,6 +1,21 @@
 <template>
   <div>
-    <section id="blog" class="ls section_padding_100">
+    <div class="container mt-30">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="bxslider">
+            <div><img :src="'assets/images/dimple.jpg'" title="Funky roots"></div>
+            <div><img :src="'assets/images/dimple.jpg'" title="The long and winding road"></div>
+            <div><img :src="'assets/images/dimple.jpg'" title="Happy trees"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h2 class="section_header bold highlight">Events</h2>
+        </div>
+      </div>
+    </div>
+
+    <section id="what-we-do" style="background-color:#f2f2f2" class="pt-30">
       <div class="container">
         <div class="row">
           <div class="col-md-10 col-md-offset-1 text-center">
@@ -60,25 +75,151 @@
         </div>
       </div>
     </section>
-    <section id="about" class="cs section_padding_0 columns_padding_0 columns_margin_0">
+
+    <section id="dogs-for-adoption" class="mt-30">
+      <div class="container">
+        <div class="row">
+          <h2 class="section_header bold text-center">
+            <span class="">Dogs for Adoption</span>
+          </h2>
+        </div>
+        <div class="row">
+          <div class="visible-lg visible-md">
+            <div class="bxslider">
+              <div class="row bxslider-row">
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+              </div>
+
+              <div class="row bxslider-row">
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden-lg hidden-md">
+            <div class="bxslider">
+              <div class="row bxslider-row">
+                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+              </div>
+
+              <div class="row bxslider-row">
+                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+
+                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <a href="#/adopt/Kodomo" class="theme_button btn-view-adoption margin_0">View All Dog for Adoption</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-you-can-help" style="background-color:#f2f2f2" class="pt-30 mt-30">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 text-center">
+            <h2 class="section_header bold">
+              <span class="highlight">How you can help</span>
+            </h2>
+          </div>
+        </div>
+        <div class="row columns_margin_bottom_30 columns_margin_top_0">
+          <div class="col-md-4 col-sm-6">
+            <article class="vertical-item">
+              <div class="item-content">
+                <h3 class="entry-title">
+                  <a href="blog-single-right.html">Adopt</a>
+                </h3>
+                <p>
+                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                </p>
+                <p class="topmargin_30">
+                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+            <article class="vertical-item">
+              <div class="item-content">
+                <h3 class="entry-title">
+                  <a href="blog-single-right.html">Donate</a>
+                </h3>
+                <p>
+                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                </p>
+                <p class="topmargin_30">
+                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0">
+            <article class="vertical-item">
+              <div class="item-content">
+                <h3 class="entry-title">
+                  <a href="blog-single-right.html">Volunteer</a>
+                </h3>
+                <p>
+                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                </p>
+                <p class="topmargin_30">
+                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--<section id="about" class="cs section_padding_0 columns_padding_0 columns_margin_0">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-4 col-sm-6 after_cover color_bg_1 light bg_teaser text-center">
-            <img src="images/teaser01.jpg" alt="">
             <div class="toppadding_60 bottompadding_60 inline-block text-left">
               <h2 class="bold">.01 Donator</h2>
               <a href="careers.html" class="theme_button inverse">Learn more</a>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 after_cover color_bg_1 medium bg_teaser text-center">
-            <img src="images/teaser02.jpg" alt="">
             <div class="toppadding_60 bottompadding_60 inline-block text-left">
               <h2 class="bold">.02 Volunteer</h2>
               <a href="careers.html" class="theme_button inverse">Learn more</a>
             </div>
           </div>
           <div class="col-md-4 col-sm-12 after_cover color_bg_1 darken bg_teaser text-center">
-            <img src="images/teaser03.jpg" alt="">
             <div class="toppadding_60 bottompadding_60 inline-block text-left">
               <h2 class="bold">.03 Adopter</h2>
               <a href="careers.html" class="theme_button inverse">Learn more</a>
@@ -86,9 +227,9 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
 
-    <section class="ds page_video parallax section_padding_100 table_section table_section_md columns_padding_0 columns_margin_0">
+    <!--<section class="ds page_video parallax section_padding_100 table_section table_section_md columns_padding_0 columns_margin_0">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-push-6">
@@ -112,55 +253,53 @@
           </div>
         </div>
       </div>
-    </section>
-
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="row">
-            <div class="col-sm-6">
-              <h3>Dolores Vel Reiciendis</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorem nisi unde itaque, aliquid. Necessitatibus, dolorem tempora repudiandae modi. Quis, esse eveniet suscipit! Enim dicta voluptate quas ea, facilis repellat!</p>
-            </div>
-            <div class="col-sm-6">
-              <h3>Reprehenderit Nemo Alias</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloribus obcaecati incidunt quas iusto eos nobis. Laudantium veniam, reprehenderit nemo alias ducimus, illo, omnis voluptas doloribus cupiditate repudiandae porro numquam?</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-4">
-              <h3>Laboriosam ducimus</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorem nisi unde itaque, aliquid. Necessitatibus, dolorem tempora repudiandae modi. Quis, esse eveniet suscipit! Enim dicta voluptate quas ea, facilis repellat!</p>
-            </div>
-            <div class="col-sm-4">
-              <h3>Necessitatibus Saepe</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloribus obcaecati incidunt quas iusto eos nobis. Laudantium veniam, reprehenderit nemo alias ducimus, illo, omnis voluptas doloribus cupiditate repudiandae porro numquam?</p>
-            </div>
-            <div class="col-sm-4">
-              <h3>Maxime Fugiat Error</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut doloribus obcaecati incidunt quas iusto eos nobis. Laudantium veniam, reprehenderit nemo alias ducimus, illo, omnis voluptas doloribus cupiditate repudiandae porro.</p>
-            </div>
-          </div>
-          <h3>Consectetur Adipisicing Elit</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore in blanditiis tempora aliquam omnis recusandae maxime fugiat error dolores vel reiciendis quia, laboriosam dolorum, ipsa corrupti. Laboriosam odio ducimus harum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio assumenda vitae iure, totam laboriosam voluptatibus delectus autem pariatur excepturi eligendi natus unde. Numquam vel quia dolore tempore consequuntur nobis architecto.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo repellendus, repellat rem debitis id, harum ipsa nostrum, aut eius atque repudiandae officia nemo. Laborum fugit maiores aut non sit alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos voluptas nihil tenetur quibusdam, laborum sed id laboriosam obcaecati corporis necessitatibus saepe voluptatem incidunt, cumque aperiam, quam nisi? Numquam, ullam, alias.</p>
-        </div>
-      </div>
-    </div>
+    </section>-->
   </div>
 
 </template>
 
 <script>
-  export default {
-    name: "home",
-    mounted() {
+  import AdoptItem from "../components/AdoptItem";
+  import axios from 'axios'
+  import chunk from 'lodash.chunk';
 
+  export default {
+    components: {AdoptItem},
+    name: "home",
+    data() {
+      return {
+        adopts: {},
+      }
+    },
+    mounted() {
+      $(document).ready(function(){
+        $('.bxslider').bxSlider({
+          minSlides: 2,
+          maxSlides: 2
+        });
+      });
+
+      axios.get('api/adopt/')
+        .then(response => {
+          let adopts = response.data;
+          this.num_of_adopts = Object.keys(adopts).length;
+          this.adopts = chunk(adopts, 3);
+        })
+        .catch(error => { console.log(error); })
     }
   }
 </script>
 
 <style scoped>
-
+  .bxslider-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .bx-wrapper {
+    margin-bottom: 30px;
+  }
+  .btn-view-adoption {
+    padding: 15px;
+    font-size: 20px;
+  }
 </style>

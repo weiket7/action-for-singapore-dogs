@@ -13,11 +13,11 @@
         "axios": "^0.17",
         "cross-env": "^5.1",
         "laravel-mix": "^1.0",
-        "lodash": "^4.17.4",
         "vue": "^2.5.7"
     },
     "dependencies": {
         "accounting": "^0.4.1",
+        "lodash.chunk": "^4.2.0",
         "moment": "^2.22.1",
         "vue-router": "^3.0.1"
     }

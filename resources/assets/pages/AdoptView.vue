@@ -11,7 +11,7 @@
           </div>
 
           <div class="summary entry-summary col-sm-6">
-            <h1 itemprop="name" class="product_title entry-title black text-uppercase">{{ adopt.name }}</h1>
+            <h1 itemprop="name" class="product_title entry-title black">{{ adopt.name }}</h1>
 
             <!--<p class="price">
               <span class="amount">$299</span>
