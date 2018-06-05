@@ -5,89 +5,89 @@
       <div class="col-lg-3">
         <div class="m-radio-inline">
           <label class="m-radio">
-            <input type="radio" checked :name="'rescuer-type-'+index" value="E" @click="existingRescuer()">
-              Existing
+            <input type="radio" checked :name="'foster-type-'+index" value="E" @click="existingFoster()">
+            Existing
             <span></span>
           </label>
           <label class="m-radio">
-            <input type="radio" value="N" :name="'rescuer-type-'+index" @click="newRescuer()">
+            <input type="radio" value="N" :name="'foster-type-'+index" @click="newFoster()">
             New
             <span></span>
           </label>
         </div>
       </div>
-
+      
       <label-component value="Name"></label-component>
       <div class="col-lg-3">
-        <select :id="'select-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
-        <input type="text" v-model="rescuer.name" v-show="type == 'N'" class="form-control"></input>
+        <select :id="'foster-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
+        <input type="text" v-model="foster.name" v-show="type == 'N'" class="form-control"></input>
       </div>
-
+    
     </div>
-
+    
     <div class="form-group m-form__group row">
       <label-component value="Mobile"></label-component>
-      <static-text-component v-if="type == 'E'" :value="rescuer.mobile"></static-text-component>
+      <static-text-component v-if="type == 'E'" :value="foster.mobile"></static-text-component>
       <textbox-component v-else></textbox-component>
-
+      
       <label-component value="Address"></label-component>
-      <static-text-component v-if="type == 'E'" :value="rescuer.address"></static-text-component>
+      <static-text-component v-if="type == 'E'" :value="foster.address"></static-text-component>
       <textbox-component v-else></textbox-component>
-
+      
       <div class="col-lg-2">
-        <button type="button" @click="removeRescuer()" class="btn btn-metal btn-sm">Remove</button>
+        <button type="button" @click="removeFoster()" class="btn btn-metal btn-sm">Remove</button>
       </div>
     </div>
-
+  
   </div>
 </template>
 
 <script>
-  import StaticTextComponent from "./StaticTextComponent";
-  import LabelComponent from "./LabelComponent";
-  import Select2Component from "./Select2Component";
-  import RadioComponent from "./RadioComponent";
+  import StaticTextComponent from "../components/StaticTextComponent";
+  import LabelComponent from "../components/LabelComponent";
+  import Select2Component from "../components/Select2Component";
+  import RadioComponent from "../components/RadioComponent";
   import axios from 'axios'
-  import TextboxComponent from "./TextboxComponent";
-
+  import TextboxComponent from "../components/TextboxComponent";
+  
   export default {
-    name: "rescuer-component",
+    name: "foster-component",
     data() {
       return {
         type: "E",
-        rescuer: { },
+        foster: { },
         options: [{"E": "Existing", "N": "New"}]
       }
     },
     props: ['index'],
     methods: {
-      getRescuer(rescuer_id) {
-        axios.get('api/rescuer/get/' + rescuer_id)
+      getFoster(foster_id) {
+        axios.get('api/person/get/' + foster_id)
           .then(response => {
-            this.rescuer = response.data;
-            this.$emit('update-rescuer', { index: this.index, rescuer: this.rescuer});
+            this.foster = response.data;
+            this.$emit('update-foster', { index: this.index, foster: this.foster});
           })
           .catch(error => { console.log(error); });
       },
-      removeRescuer() {
-        console.log("remove index=" + this.index);
-        this.$emit('remove-rescuer', this.index);
+      removeFoster() {
+        //console.log("remove index=" + this.index);
+        this.$emit('remove-foster', this.index);
       },
-      existingRescuer() {
-        $("#select-name-"+this.index).next().show();
+      existingFoster() {
+        $("#foster-name-"+this.index).next().show();
         this.type = "E";
       },
-      newRescuer() {
-        $("#select-name-"+this.index).next().hide();
+      newFoster() {
+        $("#foster-name-"+this.index).next().hide();
         this.type = "N";
       }
     },
     mounted() {
       var vue = this
-      $("#select-name-"+this.index).select2({
+      $("#foster-name-"+this.index).select2({
         placeholder: "Search",
         ajax: {
-          url: 'api/rescuer/search',
+          url: 'api/person/search?type=f',
           dataType: 'json',
           data: function (term, page) {
             return {
@@ -100,11 +100,11 @@
         }
       }).on("select2:select", function() {
         //vue.$nextTick(function() {
-          let rescuer_id = $(this).val();
-          console.log('select = ' + rescuer_id);
-          vue.getRescuer(rescuer_id);
+        let foster_id = $(this).val();
+        console.log('select = ' + foster_id);
+        vue.getFoster(foster_id);
         //});
-
+        
       });
     },
     components: {

@@ -12,4 +12,4 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/app.js', 'public/js')
-  .js('resources/admin/admin.js', 'public/admin');
+  .js('resources/admin/admin.js', 'public/admin').disableSuccessNotifications();;

@@ -14,3 +14,7 @@
 .btn-sm {
   margin-top: 0.25rem;
 }
+
+.nav-link.active.show {
+  font-weight: 600;
+}

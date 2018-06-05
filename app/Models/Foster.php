@@ -3,10 +3,10 @@
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
-class Rescuer extends Model
+class Foster extends Model
 {
-  public $table = 'rescuer';
-  protected $primaryKey = 'rescuer_id';
+  public $table = 'foster';
+  protected $primaryKey = 'foster_id';
   public $timestamps = false;
   protected $validation;
   

@@ -18,8 +18,8 @@
         { 'name': 'Volunteers', 'link': 'volunteers', 'icon': 'car' },
         { 'name': 'Donations', 'link': 'donations', 'icon': 'business' },
         { 'name': 'Sponsorships', 'link': 'sponsorships', 'icon': 'coins' },
-        { 'name': 'Rescuers', 'link': 'sponsorships', 'icon': 'coins' },
-        { 'name': 'Fosters', 'link': 'sponsorships', 'icon': 'coins' }
+        { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'coins' },
+        { 'name': 'Fosters', 'link': 'foster', 'icon': 'coins' }
         ]"/>
       </div>
       <!-- END: Aside Menu -->
@@ -57,8 +57,9 @@
 
 <script>
   toastr.options.positionClass = "toast-top-center";
-  
+
   import MenuComponent from './components/MenuComponent'
+  import TextareaComponent from './components/TextareaComponent'
 
   export default {
     name: 'app',
@@ -68,7 +69,8 @@
       }
     },
     components: {
-      'menu-component': MenuComponent
+      'menu-component': MenuComponent,
+      TextareaComponent
     }
   }
 </script>
