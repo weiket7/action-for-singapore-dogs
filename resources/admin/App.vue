@@ -13,13 +13,14 @@
         data-menu-scrollable="false" data-menu-dropdown-timeout="500"
       >
         <menu-component :menus="[{ 'name': 'Dashboard', 'link': 'dashboard', 'icon': 'dashboard' },
-        { 'name': 'Dogs', 'link': 'adopt', 'icon': 'user' },
-        { 'name': 'Events', 'link': 'event', 'icon': 'car' },
-        { 'name': 'Volunteers', 'link': 'volunteers', 'icon': 'car' },
-        { 'name': 'Donations', 'link': 'donations', 'icon': 'business' },
-        { 'name': 'Sponsorships', 'link': 'sponsorships', 'icon': 'coins' },
-        { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'coins' },
-        { 'name': 'Fosters', 'link': 'foster', 'icon': 'coins' }
+        { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
+        { 'name': 'Adopters', 'link': 'adopters', 'icon': 'user-circle' },
+        { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
+        { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-plus' },
+        { 'name': 'Sponsors', 'link': 'sponsors', 'icon': 'money' },
+        { 'name': 'Volunteers', 'link': 'volunteers', 'icon': 'handshake-o' },
+        { 'name': 'Donations', 'link': 'donations', 'icon': 'dollar' },
+        { 'name': 'Events', 'link': 'event', 'icon': 'car' }
         ]"/>
       </div>
       <!-- END: Aside Menu -->

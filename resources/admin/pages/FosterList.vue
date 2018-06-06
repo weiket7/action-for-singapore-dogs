@@ -36,7 +36,7 @@
       }
     },
     created() {
-      axios.get('api/foster')
+      axios.get('api/person?type=foster')
         .then(response => {
           this.fosters = response.data
         })

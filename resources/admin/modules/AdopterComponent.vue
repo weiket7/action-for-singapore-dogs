@@ -26,7 +26,7 @@
         <button type="button" class="btn btn-success">
           Save
         </button>
-        <button type="button" @click="$emit('remove-rescuer', index)" class="btn btn-metal">
+        <button type="button" @click="$emit('remove-adopter', index)" class="btn btn-metal">
           Remove
         </button>
       </div>

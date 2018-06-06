@@ -18,7 +18,8 @@
       </div>
       
       <label-component>Name</label-component>
-      <select2-component :name="select2_name" :url="'api/person/search?type='+this.type" event_name="select-person"
+      <select2-component :name="select2_name" :url="'api/person/search?type='+type" event_name="select-person"
+                         :default_id="person.person_id" :default_text="person.name"
                          v-show="source == 'E'"
                          v-on:select-person="selectPerson"></select2-component>
       <textbox-component name="name" :value="person.name" v-show="source == 'N'"></textbox-component>

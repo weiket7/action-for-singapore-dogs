@@ -77,7 +77,7 @@
         <adopter-component v-for="(adopter, index) in adopters"
                            v-on:update-adopter="updateAdopter"
                            v-on:remove-adopter="removeAdopter"
-                           :adopter="adopter" :index="index" :key="index"></adopter-component>
+                           :adopter="adopter" :index="index" :key="adopter.person_id"></adopter-component>
 
         <form-row>
           <div class="col-lg-2"></div>
@@ -94,7 +94,7 @@
         <rescuer-component v-for="(rescuer, index) in rescuers"
                            v-on:update-rescuer="updateRescuer"
                            v-on:remove-rescuer="removeRescuer"
-                           :rescuer="rescuer" :index="index" :key="index"></rescuer-component>
+                           :rescuer="rescuer" :index="index" :key="rescuer.person_id"></rescuer-component>
 
         <form-row>
           <div class="col-lg-2"></div>
@@ -111,7 +111,7 @@
         <foster-component v-for="(foster, index) in fosters"
                           v-on:update-foster="updateFoster"
                           v-on:remove-foster="removeFoster"
-                          :foster="foster" :index="index" :key="index"></foster-component>
+                          :foster="foster" :index="index" :key="foster.person_id"></foster-component>
 
         <form-row>
           <div class="col-lg-2"></div>

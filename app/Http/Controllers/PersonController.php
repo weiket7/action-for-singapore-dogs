@@ -5,26 +5,16 @@ use App\Models\Person;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller {
-  public function all() {
-    return Person::all();
+  public function all(Request $request) {
+    $query = Person::select('person_id', 'name', 'email', 'mobile');
+    $this->appendType($request->type, $query);
+    return $query->get();
   }
   
   public function search(Request $request) {
     $term = $request->term;
     $query = Person::where('name', 'like', '%'.$term.'%');
-    $type = strtolower($request->type);
-    if($type == 'rescuer') {
-      $query->where('is_rescuer', 1);
-    }
-    if($type == 'foster') {
-      $query->where('is_foster', 1);
-    }
-    if($type == 'adopter') {
-      $query->where('is_adopter', 1);
-    }
-    if($type == 'sponsor') {
-      $query->where('is_sponsor', 1);
-    }
+    $this->appendType($request->type, $query);
     return $query->select(['person_id as id', 'name as text'])
       ->get();
   }
@@ -33,5 +23,22 @@ class PersonController extends Controller {
     return Person::where('person_id', $person_id)
       ->select(['name', 'mobile', 'address'])
       ->first();
+  }
+  
+  private function appendType($type, $query)
+  {
+    $type = strtolower($type);
+    if ($type == 'rescuer') {
+      $query->where('is_rescuer', 1);
+    }
+    if ($type == 'foster') {
+      $query->where('is_foster', 1);
+    }
+    if ($type == 'adopter') {
+      $query->where('is_adopter', 1);
+    }
+    if ($type == 'sponsor') {
+      $query->where('is_sponsor', 1);
+    }
   }
 }

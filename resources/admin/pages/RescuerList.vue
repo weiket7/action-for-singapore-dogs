@@ -36,7 +36,7 @@
       }
     },
     created() {
-      axios.get('api/rescuer')
+      axios.get('api/person?type=rescuer')
         .then(response => {
           this.rescuers = response.data
         })

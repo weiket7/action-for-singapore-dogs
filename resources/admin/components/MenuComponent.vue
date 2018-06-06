@@ -2,7 +2,7 @@
   <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
     <li v-for="menu in menus" class="m-menu__item" aria-haspopup="true" >
     <router-link v-bind:to="'/'+menu.link" class="m-menu__link ">
-      <i class="m-menu__link-icon" :class="'flaticon-'+menu.icon"></i>
+      <i class="m-menu__link-icon fa" :class="'fa-'+menu.icon"></i>
       <span class="m-menu__link-title">
         <span class="m-menu__link-wrap">
           <span class="m-menu__link-text">
