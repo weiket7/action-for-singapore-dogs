@@ -59,13 +59,16 @@
       <label-component>Reason</label-component>
       <textarea-component name="return_reason" :value="adopter.return_reason"></textarea-component>
     </div>
-  
+
+    <person-remark></person-remark>
+
     <hr>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import PersonRemark from "./PersonRemark";
 
   export default {
     name: "adopter-component",
@@ -97,7 +100,13 @@
       newAdopter() {
         $("#adopter-name-"+this.index).next().hide();
         this.type = "N";
-      }
+      },
+      addRemarkRow() {
+        this.remarks.push({});
+      },
+      removeRemarkRow(index) {
+        this.remarks.splice(index, 1);
+      },
     },
     mounted() {
       var vue = this
@@ -126,6 +135,9 @@
 
       });
     },
+    components: {
+      PersonRemark
+    }
   }
 </script>
 

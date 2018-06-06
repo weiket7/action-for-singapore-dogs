@@ -7,6 +7,7 @@ Route::get('backend', function () { return view("admin"); });
 Route::get('api/adopt', 'AdoptController@all');
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page');
 Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
+
 Route::get('api/events', 'EventController@all');
 Route::get('api/events/{adopt_id}', 'EventController@get');
 

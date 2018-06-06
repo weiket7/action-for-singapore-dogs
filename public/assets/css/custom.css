@@ -40,6 +40,11 @@
   vertical-align: baseline;
 }
 
+/*for adopt, event right side*/
+.widget > h3, .widget-title {
+  margin-bottom: 5px;
+}
+
 /*for event page*/
 .event-detail {
   font-size: 15px;

@@ -17,7 +17,7 @@
         </div>
       </div>
       
-      <label-component value="Name"></label-component>
+      <label-component>Name</label-component>
       <div class="col-lg-3">
         <select :id="'foster-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
         <input type="text" v-model="foster.name" v-show="type == 'N'" class="form-control"></input>
@@ -33,33 +33,33 @@
       <label-component>Address</label-component>
       <static-text v-if="type == 'E'" :value="foster.address"></static-text>
       <textbox-component v-else></textbox-component>
-      
-      <div class="col-lg-2">
-        <button type="button" @click="removeFoster()" class="btn btn-metal btn-sm">Remove</button>
+    </div>
+    
+    <div class="form-group m-form__group row">
+      <label-component>Start Date</label-component>
+      <datepicker-component :name="'start_date-'+index"></datepicker-component>
+    
+      <label-component>End Date</label-component>
+      <datepicker-component :name="'end_date-'+index"></datepicker-component>
+    </div>
+
+    <person-remark></person-remark>
+
+    <form-row>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <button type="button" @click="removeFoster()" class="btn btn-metal btn-sm">Remove Row</button>
       </div>
-    </div>
-    
-    <div class="form-group m-form__group row">
-      <label-component value="Start Date"></label-component>
-      <datepicker-component name="start_date"></datepicker-component>
-    
-      <label-component value="End Date"></label-component>
-      <datepicker-component name="end_date"></datepicker-component>
-    </div>
-    
-    <div class="form-group m-form__group row">
-      <label-component value="Remarks"></label-component>
-      <textarea-component name="remark" :value="foster.remark"></textarea-component>
-    </div>
-    
+    </form-row>
+
     <hr>
-  
   </div>
 </template>
 
 <script>
   import axios from 'axios'
-  
+  import PersonRemark from "./PersonRemark";
+
   export default {
     name: "foster-component",
     data() {
@@ -90,7 +90,13 @@
       newFoster() {
         $("#foster-name-"+this.index).next().hide();
         this.type = "N";
-      }
+      },
+      addRemarkRow() {
+        this.remarks.push({});
+      },
+      removeRemarkRow(index) {
+        this.remarks.splice(index, 1);
+      },
     },
     mounted() {
       var vue = this
@@ -119,6 +125,9 @@
         
       });
     },
+    components: {
+      PersonRemark
+    }
   }
 </script>
 

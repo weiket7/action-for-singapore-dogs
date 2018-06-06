@@ -115,7 +115,7 @@
           <foster-component v-for="(foster, index) in fosters"
                             v-on:update-foster="updateFoster"
                             v-on:remove-foster="removeFoster"
-                            :index="index" :key="foster.person_id"></foster-component>
+                            :index="index" :key="index"></foster-component>
           
           <form-row>
             <div class="col-lg-2"></div>

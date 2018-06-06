@@ -5,11 +5,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import TextboxComponent from './TextboxComponent'
-  import LabelComponent from './LabelComponent'
-  import FormFooter from './FormFooterComponent'
-  
   export default {
     name: "tab",
     props: {

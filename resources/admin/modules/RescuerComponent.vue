@@ -22,7 +22,6 @@
         <select :id="'rescuer-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
         <input type="text" v-model="rescuer.name" v-show="type == 'N'" class="form-control"></input>
       </div>
-
     </div>
 
     <div class="form-group m-form__group row">
@@ -33,25 +32,24 @@
       <label-component>Address</label-component>
       <static-text v-if="type == 'E'" :value="rescuer.address"></static-text>
       <textbox-component v-else></textbox-component>
+    </div>
 
-      <div class="col-lg-2">
-        <button type="button" @click="removeRescuer()" class="btn btn-metal btn-sm">Remove</button>
+    <person-remark></person-remark>
+
+    <form-row>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <button type="button" @click="removeRescuer()" class="btn btn-metal btn-sm">Remove Row</button>
       </div>
-    </div>
-  
-    <div class="form-group m-form__group row">
-      <person-remark>
+    </form-row>
 
-      </person-remark>
-    </div>
-  
     <hr>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
-  import PersonRemark from "./PersonRemarkComponent";
+  import PersonRemark from "./PersonRemark";
 
   export default {
     components: {PersonRemark},
@@ -84,7 +82,13 @@
       newRescuer() {
         $("#rescuer-name-"+this.index).next().hide();
         this.type = "N";
-      }
+      },
+      addRemarkRow() {
+        this.remarks.push({});
+      },
+      removeRemarkRow(index) {
+        this.remarks.splice(index, 1);
+      },
     },
     mounted() {
       var vue = this

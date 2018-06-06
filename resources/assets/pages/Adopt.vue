@@ -127,7 +127,7 @@
       }
     },
     created: function() {
-      axios.get('api/adopt?current_page='+this.current_page)
+      axios.get('api/adopt/page/'+this.current_page)
         .then(response => {
           let adopts = response.data.adopts;
           this.adopt_count = response.data.adopt_count;
@@ -147,8 +147,5 @@
     .form-horizontal .control-label {
       padding-top: 5px;
     }
-  }
-  .widget > h3, .widget-title {
-    margin-bottom: 5px;
   }
 </style>
