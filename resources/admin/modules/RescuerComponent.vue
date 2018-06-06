@@ -1,39 +1,7 @@
 <template>
   <div>
-    <div class="form-group m-form__group row no-pb">
-      <label-component>Type</label-component>
-      <div class="col-lg-3">
-        <div class="m-radio-inline">
-          <label class="m-radio">
-            <input type="radio" checked :name="'rescuer-type-'+index" value="E" @click="existingRescuer()">
-              Existing
-            <span></span>
-          </label>
-          <label class="m-radio">
-            <input type="radio" value="N" :name="'rescuer-type-'+index" @click="newRescuer()">
-            New
-            <span></span>
-          </label>
-        </div>
-      </div>
-
-      <label-component>Name</label-component>
-      <div class="col-lg-3">
-        <select :id="'rescuer-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
-        <input type="text" v-model="rescuer.name" v-show="type == 'N'" class="form-control"></input>
-      </div>
-    </div>
-
-    <div class="form-group m-form__group row">
-      <label-component>Mobile</label-component>
-      <static-text v-if="type == 'E'" :value="rescuer.mobile"></static-text>
-      <textbox-component v-else></textbox-component>
-
-      <label-component>Address</label-component>
-      <static-text v-if="type == 'E'" :value="rescuer.address"></static-text>
-      <textbox-component v-else></textbox-component>
-    </div>
-
+    <person-component :index="index" :person="rescuer"></person-component>
+  
     <person-remark></person-remark>
 
     <form-row>
@@ -50,9 +18,9 @@
 <script>
   import axios from 'axios'
   import PersonRemark from "./PersonRemark";
+  import PersonComponent from "./PersonComponent";
 
   export default {
-    components: {PersonRemark},
     name: "rescuer-component",
     data() {
       return {
@@ -113,6 +81,11 @@
           vue.getRescuer(rescuer_id);
       });
     },
+    components: {
+      PersonRemark,
+      PersonComponent
+    },
+  
   }
 </script>
 

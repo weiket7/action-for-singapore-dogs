@@ -1,43 +1,6 @@
 <template>
   <div>
-    <div class="form-group m-form__group row no-pb">
-      <label-component>Type</label-component>
-      <div class="col-lg-3">
-        <div class="m-radio-inline">
-          <label class="m-radio">
-            <input type="radio" checked :name="'adopter-type-'+index" value="E" @click="existingAdopter()">
-              Existing
-            <span></span>
-          </label>
-          <label class="m-radio">
-            <input type="radio" value="N" :name="'adopter-type-'+index" @click="newAdopter()">
-            New
-            <span></span>
-          </label>
-        </div>
-      </div>
-
-      <label-component>Name</label-component>
-      <div class="col-lg-3">
-        <select :id="'adopter-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
-        <input type="text" v-model="adopter.name" v-show="type == 'N'" class="form-control"></input>
-      </div>
-
-    </div>
-
-    <div class="form-group m-form__group row">
-      <label-component>Mobile</label-component>
-      <static-text v-if="type == 'E'" :value="adopter.mobile"></static-text>
-      <textbox-component v-else></textbox-component>
-
-      <label-component value="Address"></label-component>
-      <static-text v-if="type == 'E'" :value="adopter.address"></static-text>
-      <textbox-component v-else></textbox-component>
-      
-      <div class="col-lg-2">
-        <button type="button" @click="removeAdopter()" class="btn btn-metal btn-sm">Remove</button>
-      </div>
-    </div>
+    <person-component :index="index" :person="adopter" v-on:update-person="updatePerson"></person-component>
     
     <div class="form-group m-form__group row">
       <label-component>Adopted On</label-component>
@@ -68,14 +31,13 @@
 <script>
   import axios from 'axios'
   import PersonRemark from "./PersonRemark";
+  import PersonComponent from "./PersonComponent";
 
   export default {
     name: "adopter-component",
     data() {
       return {
-        type: "E",
         adopter: { },
-        options: [{"E": "Existing", "N": "New"}]
       }
     },
     props: ['index'],
@@ -92,13 +54,8 @@
         //console.log("remove index=" + this.index);
         this.$emit('remove-adopter', this.index);
       },
-      existingAdopter() {
-        $("#adopter-name-"+this.index).next().show();
-        this.type = "E";
-      },
-      newAdopter() {
-        $("#adopter-name-"+this.index).next().hide();
-        this.type = "N";
+      updatePerson(person) {
+        this.adopter = person;
       },
       addRemarkRow() {
         this.remarks.push({});
@@ -135,6 +92,7 @@
       });
     },
     components: {
+      PersonComponent,
       PersonRemark
     }
   }
