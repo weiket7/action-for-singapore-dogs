@@ -2,76 +2,75 @@
   <single-portlet title="Dogs">
     <tabs :tabs="['General', 'Adopter', 'Rescuer', 'Foster', 'Sponsor']">
       <tab :name="'General'" :active="true">
-        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-          <div class="form-group m-form__group row" :class="{ 'has-danger': errors.has('name') }">
-            <label-component value="Name"></label-component>
+        <div @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+          <form-row>
+            <label-component>Name</label-component>
             <textbox-component name='name' v-model="adopt.name" :error="errors.get('name')"></textbox-component>
             
-            <label-component value="Status"></label-component>
+            <label-component>Status</label-component>
             <radio-component name="stat" v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }"></radio-component>
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="Foster"></label-component>
+          <form-row>
+            <label-component>Foster</label-component>
             <radio-component name="foster" v-model="adopt.stat" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }"></radio-component>
             
-            <label-component value="Location"></label-component>
+            <label-component>Location</label-component>
             <select-component name='location' v-model="adopt.location" :options="{ 'C': 'ARC', 'R': 'Rescuer', 'F':'Foster', 'A': 'Adopter' }" :error="errors.get('location')"></select-component>
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="Rescued On"></label-component>
+          <form-row>
+            <label-component>Rescued On</label-component>
             <datepicker-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
-            
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="Gender"></label-component>
+          <form-row>
+            <label-component>Gender</label-component>
             <radio-component name="gender" v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }"></radio-component>
             
-            <label-component value="Birthday"></label-component>
+            <label-component>Birthday</label-component>
             <datepicker-component name='birthday' v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="Breed"></label-component>
+          <form-row>
+            <label-component>Breed</label-component>
             <textbox-component name='breed' v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
             
-            <label-component value="Colour"></label-component>
+            <label-component>Colour</label-component>
             <textbox-component name='colour' v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="Microchipped"></label-component>
+          <form-row>
+            <label-component>Microchipped</label-component>
             <radio-component name="microchip" v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
             
             <label-component value="Microchip Date" v-show="adopt.microchip == 'Y'"></label-component>
             <datepicker-component name='microchip_date' v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="Vaccinated"></label-component>
+          <form-row>
+            <label-component>Vaccinated</label-component>
             <radio-component name="vaccinate" v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
             
-            <label-component value="Vaccinate Date" v-show="adopt.vaccinate == 'Y'"></label-component>
+            <label-component v-show="adopt.vaccinate == 'Y'">Vaccinate Date</label-component>
             <datepicker-component name='vaccinate_date' v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate == 'Y'"></datepicker-component>
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="HDB Approved"></label-component>
+          <form-row>
+            <label-component>HDB Approved</label-component>
             <radio-component name="hdb" v-model="adopt.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
-          </div>
+          </form-row>
           
-          <div class="form-group m-form__group row">
-            <label-component value="Health"></label-component>
+          <form-row>
+            <label-component>Health</label-component>
             <textarea-component name='health' v-model="adopt.health" :error="errors.get('health')"></textarea-component>
             
-            <label-component value="Behaviour"></label-component>
+            <label-component>Behaviour</label-component>
             <textarea-component name='behaviour' v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
-          </div>
+          </form-row>
           
           <form-footer></form-footer>
-        </form>
+        </div>
       </tab>
       <tab :name="'Adopter'">
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
@@ -80,14 +79,14 @@
                              v-on:remove-adopter="removeFoster"
                              :index="index" :key="adopter.adopter_id"></adopter-component>
           
-          <div class="form-group m-form__group row">
+          <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
               <button type="button" @click="addAdopterRow()" class="btn btn-metal btn-sm">
                 Add Row
               </button>
             </div>
-          </div>
+          </form-row>
           
           <form-footer></form-footer>
         </form>
@@ -99,14 +98,14 @@
                              v-on:remove-rescuer="removeRescuer"
                              :index="index" :key="rescuer.person_id"></rescuer-component>
           
-          <div class="form-group m-form__group row">
+          <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
               <button type="button" @click="addRescuerRow()" class="btn btn-metal btn-sm">
                 Add Row
               </button>
             </div>
-          </div>
+          </form-row>
           
           <form-footer></form-footer>
         </form>
@@ -118,14 +117,14 @@
                             v-on:remove-foster="removeFoster"
                             :index="index" :key="foster.person_id"></foster-component>
           
-          <div class="form-group m-form__group row">
+          <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
               <button type="button" @click="addFosterRow()" class="btn btn-metal btn-sm">
                 Add Row
               </button>
             </div>
-          </div>
+          </form-row>
         </form>
       </tab>
       <tab :name="'Sponsor'">

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
+import FormRow from './components/FormRow'
 import TextboxComponent from './components/TextboxComponent'
 import TextareaComponent from './components/TextareaComponent'
 import Select2Component from './components/Select2Component'
@@ -15,6 +16,7 @@ import RadioComponent from './components/RadioComponent'
 import DatepickerComponent from "./components/DatepickerComponent";
 import StaticTextComponent from "./components/StaticTextComponent";
 
+Vue.component('form-row', FormRow);
 Vue.component('textbox-component', TextboxComponent);
 Vue.component('textarea-component', TextareaComponent);
 Vue.component('select-component', Select2Component);

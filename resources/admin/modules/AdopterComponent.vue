@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group m-form__group row no-pb">
-      <label-component value="Type"></label-component>
+      <label-component>Type</label-component>
       <div class="col-lg-3">
         <div class="m-radio-inline">
           <label class="m-radio">
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <label-component value="Name"></label-component>
+      <label-component>Name</label-component>
       <div class="col-lg-3">
         <select :id="'adopter-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
         <input type="text" v-model="adopter.name" v-show="type == 'N'" class="form-control"></input>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="form-group m-form__group row">
-      <label-component value="Mobile"></label-component>
+      <label-component>Mobile</label-component>
       <static-text v-if="type == 'E'" :value="adopter.mobile"></static-text>
       <textbox-component v-else></textbox-component>
 
@@ -40,23 +40,23 @@
     </div>
     
     <div class="form-group m-form__group row">
-      <label-component value="Adopted On"></label-component>
+      <label-component>Adopted On</label-component>
       <datepicker-component></datepicker-component>
   
-      <label-component value="Remarks"></label-component>
+      <label-component>Remarks</label-component>
       <textarea-component name="remark" :value="adopter.remark"></textarea-component>
     </div>
   
     <div class="form-group m-form__group row">
-      <label-component value="Returned"></label-component>
+      <label-component>Returned</label-component>
       <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned" :options="{'Y': 'Yes', 'N': 'No'}"></radio-component>
       
-      <label-component value="Returned On" v-if="adopter.returned == 'Y'"></label-component>
+      <label-component v-if="adopter.returned == 'Y'">Returned On</label-component>
       <datepicker-component v-if="adopter.returned == 'Y'"></datepicker-component>
     </div>
   
     <div class="form-group m-form__group row" v-if="adopter.returned == 'Y'">
-      <label-component value="Reason"></label-component>
+      <label-component>Reason</label-component>
       <textarea-component name="return_reason" :value="adopter.return_reason"></textarea-component>
     </div>
   

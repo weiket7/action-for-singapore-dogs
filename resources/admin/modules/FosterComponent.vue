@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group m-form__group row no-pb">
-      <label-component value="Type"></label-component>
+      <label-component>Type</label-component>
       <div class="col-lg-3">
         <div class="m-radio-inline">
           <label class="m-radio">
@@ -26,11 +26,11 @@
     </div>
     
     <div class="form-group m-form__group row">
-      <label-component value="Mobile"></label-component>
+      <label-component>Mobile</label-component>
       <static-text v-if="type == 'E'" :value="foster.mobile"></static-text>
       <textbox-component v-else></textbox-component>
       
-      <label-component value="Address"></label-component>
+      <label-component>Address</label-component>
       <static-text v-if="type == 'E'" :value="foster.address"></static-text>
       <textbox-component v-else></textbox-component>
       

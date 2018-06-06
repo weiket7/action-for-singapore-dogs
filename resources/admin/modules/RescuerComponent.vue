@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="form-group m-form__group row no-pb">
-      <label-component value="Type"></label-component>
+      <label-component>Type</label-component>
       <div class="col-lg-3">
         <div class="m-radio-inline">
           <label class="m-radio">
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <label-component value="Name"></label-component>
+      <label-component>Name</label-component>
       <div class="col-lg-3">
         <select :id="'rescuer-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
         <input type="text" v-model="rescuer.name" v-show="type == 'N'" class="form-control"></input>
@@ -26,11 +26,11 @@
     </div>
 
     <div class="form-group m-form__group row">
-      <label-component value="Mobile"></label-component>
+      <label-component>Mobile</label-component>
       <static-text v-if="type == 'E'" :value="rescuer.mobile"></static-text>
       <textbox-component v-else></textbox-component>
 
-      <label-component value="Address"></label-component>
+      <label-component>Address</label-component>
       <static-text v-if="type == 'E'" :value="rescuer.address"></static-text>
       <textbox-component v-else></textbox-component>
 
@@ -40,8 +40,9 @@
     </div>
   
     <div class="form-group m-form__group row">
-      <label-component value="Remarks"></label-component>
-      <textarea-component name="remark" :value="rescuer.remark"></textarea-component>
+      <person-remark>
+
+      </person-remark>
     </div>
   
     <hr>
@@ -50,8 +51,10 @@
 
 <script>
   import axios from 'axios'
+  import PersonRemark from "./PersonRemarkComponent";
 
   export default {
+    components: {PersonRemark},
     name: "rescuer-component",
     data() {
       return {
