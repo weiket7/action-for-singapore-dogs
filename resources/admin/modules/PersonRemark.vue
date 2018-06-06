@@ -9,6 +9,7 @@
           <option>Home</option>
           <option>Work</option>
           <option>Personality</option>
+          <option>Others</option>
         </select>
       </div>
       <div class="col-lg-6">

@@ -22,7 +22,7 @@ class FosterTable extends Migration
     DB::table('foster')->insert([
       'stat'=>'P',
       'adopt_id'=>'1',
-      'person_id'=>'1',
+      'person_id'=>'3',
       'start_date'=>Carbon::now()->subDays(10),
       'end_date'=>Carbon::now()->subDays(1),
     ]);
@@ -30,7 +30,7 @@ class FosterTable extends Migration
     DB::table('foster')->insert([
       'stat'=>'C',
       'adopt_id'=>'1',
-      'person_id'=>'2',
+      'person_id'=>'4',
       'start_date'=>Carbon::now(),
     ]);
   }

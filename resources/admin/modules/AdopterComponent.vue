@@ -42,22 +42,21 @@
     <div class="form-group m-form__group row">
       <label-component>Adopted On</label-component>
       <datepicker-component></datepicker-component>
-  
-      <label-component>Remarks</label-component>
-      <textarea-component name="remark" :value="adopter.remark"></textarea-component>
+
+      <label-component>Returned</label-component>
+      <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned" :options="{'Y': 'Yes', 'N': 'No'}"></radio-component>
     </div>
   
     <div class="form-group m-form__group row">
-      <label-component>Returned</label-component>
-      <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned" :options="{'Y': 'Yes', 'N': 'No'}"></radio-component>
-      
       <label-component v-if="adopter.returned == 'Y'">Returned On</label-component>
       <datepicker-component v-if="adopter.returned == 'Y'"></datepicker-component>
+
+      <label-component v-if="adopter.returned == 'Y'">Reason</label-component>
+      <textarea-component v-if="adopter.returned == 'Y'" name="return_reason" :value="adopter.return_reason"></textarea-component>
     </div>
   
     <div class="form-group m-form__group row" v-if="adopter.returned == 'Y'">
-      <label-component>Reason</label-component>
-      <textarea-component name="return_reason" :value="adopter.return_reason"></textarea-component>
+
     </div>
 
     <person-remark></person-remark>

@@ -139,13 +139,4 @@
 </script>
 
 <style scoped>
-  .checkbox, .radio {
-    margin-top: 3px;
-    margin-bottom: 3px;
-  }
-  @media (min-width: 768px) {
-    .form-horizontal .control-label {
-      padding-top: 5px;
-    }
-  }
 </style>

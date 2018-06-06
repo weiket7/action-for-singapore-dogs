@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Dogs">
+  <single-portlet title="Dogs" create_link="adopt/create">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>

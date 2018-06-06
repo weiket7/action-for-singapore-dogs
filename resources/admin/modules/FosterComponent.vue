@@ -16,12 +16,14 @@
           </label>
         </div>
       </div>
-      
+
       <label-component>Name</label-component>
-      <div class="col-lg-3">
+      <select2-component :name="'foster-name-'+index" url="api/person/search?type=f" event_name="select-foster"
+        v-on:select-foster="selectFoster"></select2-component>
+      <!--<div class="col-lg-3">
         <select :id="'foster-name-'+index" v-show="type == 'E'" class="form-control m-input" @change="updateValue($event.target.value)"></select>
-        <input type="text" v-model="foster.name" v-show="type == 'N'" class="form-control"></input>
-      </div>
+        <input type="text" v-model="foster_data.name" v-show="type == 'N'" class="form-control"></input>
+      </div>-->
     
     </div>
     
@@ -37,10 +39,10 @@
     
     <div class="form-group m-form__group row">
       <label-component>Start Date</label-component>
-      <datepicker-component :name="'start_date-'+index"></datepicker-component>
+      <datepicker-component :name="'start_date-'+index" :value="foster.start_date | formatDate"></datepicker-component>
     
       <label-component>End Date</label-component>
-      <datepicker-component :name="'end_date-'+index"></datepicker-component>
+      <datepicker-component :name="'end_date-'+index" :value="foster.end_date | formatDate"></datepicker-component>
     </div>
 
     <person-remark></person-remark>
@@ -59,23 +61,23 @@
 <script>
   import axios from 'axios'
   import PersonRemark from "./PersonRemark";
+  import Select2Component from "../components/Select2Component";
 
   export default {
     name: "foster-component",
     data() {
       return {
-        type: "E",
-        foster: { },
-        options: [{"E": "Existing", "N": "New"}]
+        type: 'E',
+        options: [{"E": "Existing", "N": "New"}],
+        foster_data: this.foster
       }
     },
-    props: ['index'],
+    props: ['index', 'foster'],
     methods: {
-      getFoster(foster_id) {
+      selectFoster(foster_id) {
         axios.get('api/person/get/' + foster_id)
           .then(response => {
-            this.foster = response.data;
-            this.$emit('update-foster', { index: this.index, foster: this.foster});
+            this.$emit('update-foster', { index: this.index, foster: response.data});
           })
           .catch(error => { console.log(error); });
       },
@@ -98,34 +100,8 @@
         this.remarks.splice(index, 1);
       },
     },
-    mounted() {
-      var vue = this
-      $("#foster-name-"+this.index).select2({
-        width: '100%',
-        minimumInputLength: 2,
-        placeholder: "Search",
-        ajax: {
-          url: 'api/person/search?type=f',
-          dataType: 'json',
-          data: function (term, page) {
-            return {
-              term: term.term
-            };
-          },
-          processResults: function (data) {
-            return { results: data };
-          },
-        }
-      }).on("select2:select", function() {
-        //vue.$nextTick(function() {
-        let foster_id = $(this).val();
-        console.log('select = ' + foster_id);
-        vue.getFoster(foster_id);
-        //});
-        
-      });
-    },
     components: {
+      Select2Component,
       PersonRemark
     }
   }

@@ -109,12 +109,8 @@
           },
         }
       }).on("select2:select", function() {
-        //vue.$nextTick(function() {
           let rescuer_id = $(this).val();
-          console.log('select = ' + rescuer_id);
           vue.getRescuer(rescuer_id);
-        //});
-
       });
     },
   }

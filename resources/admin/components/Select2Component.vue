@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-3">
-    <select id="abc" :name="name" class="form-control m-input" @change="updateValue($event.target.value)">
+    <select :id="name" :name="name" class="form-control m-input" @change="updateValue($event.target.value)">
 
     </select>
     <span class="m-form__help" v-if="error">
@@ -13,15 +13,19 @@
   export default {
     name: "select2-component",
     props: {
-      name: {type: String, required: true},
-      options: {required: true},
-      error: { type: String, required: false}
+      name: {type: String, required: true },
+      url: { type: String, required: true },
+      error: { type: String, required: false },
+      event_name: { type: String, required: false }
     },
     mounted() {
-      $('#abc').select2({
+      var vue = this
+      $("#"+this.name).select2({
+        width: '100%',
+        //minimumInputLength: 2,
         placeholder: "Search",
         ajax: {
-          url: 'admin/rescuer/search',
+          url: this.url,
           dataType: 'json',
           data: function (term, page) {
             return {
@@ -33,7 +37,7 @@
           },
         }
       }).on("select2:select", function() {
-        alert();
+        vue.$emit(vue.event_name, $(this).val())
       });
     }
 

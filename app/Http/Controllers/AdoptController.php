@@ -2,6 +2,7 @@
 
 use App\Models\Adopt;
 use App\Models\Enums\AdoptStat;
+use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -19,20 +20,23 @@ class AdoptController extends Controller {
     $page_limit = 12;
     $offset = ($current_page-1)*$page_limit;
     $rand = $request->session()->get('rand');
-    $s =  "SELECT * from adopt order by rand($rand) limit :offset, :page_limit";
-    $p['offset'] = $offset;
-    $p['page_limit'] = $page_limit;
-    $data['adopts'] = DB::select($s, $p);
+    
+    $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
+      ->orderByRaw("rand(".$rand.")")->skip($offset)->limit($page_limit)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
     return $data;
   }
   
   public function get(Request $request, $adopt_id) {
-    if (is_numeric($adopt_id)) {
-      return Adopt::where('adopt_id', $adopt_id)->first();
-    }
-    $slug = $adopt_id;
-    return Adopt::where('slug', $slug)->first();
+    $adopt = Adopt::where('adopt_id', $adopt_id)->first();
+    $data['adopt'] = $adopt;
+    $data['fosters'] = DB::table('foster')->where('adopt_id', $adopt_id)
+      ->join('person', 'foster.person_id', '=', 'person.person_id')
+      ->select('foster.person_id', 'name', 'mobile', 'address', 'start_date', 'end_date', DB::raw("'E' as type"))->get();
+    return $data;
   }
   
+  public function slug(Request $request, $slug) {
+    return Adopt::where('slug', $slug)->first();
+  }
 }
