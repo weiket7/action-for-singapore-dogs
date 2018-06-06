@@ -1,6 +1,6 @@
 <template>
   <div>
-    <person-component :index="index" type="rescuer" :person="rescuer" v-on:update-person="updatePerson"></person-component>
+    <person-component :index="index" type="rescuer" :person="rescuer" v-on:update-person="updateRescuer"></person-component>
 
     <person-remark></person-remark>
   
@@ -28,8 +28,8 @@
     name: "rescuer-component",
     props: ['index', 'rescuer'],
     methods: {
-      updatePerson(person) {
-        this.rescuer = person;
+      updateRescuer(person) {
+        this.$emit('update-rescuer', { index: this.index, person: person });
       },
     },
     components: {

@@ -36,9 +36,9 @@ class AdoptController extends Controller {
     $data['adopters'] = DB::table('adopter')->where('adopt_id', $adopt_id)
       ->join('person', 'adopter.person_id', '=', 'person.person_id')
       ->select('adopter.person_id', 'name', 'mobile', 'address', 'adopted_on', 'returned', 'returned_on', 'return_reason')->get();
-    $data['rescuers'] = DB::table('rescue')->where('adopt_id', $adopt_id)
-      ->join('person', 'rescue.person_id', '=', 'person.person_id')
-      ->select('rescue.person_id', 'name', 'mobile', 'address')->get();
+    $data['rescuers'] = DB::table('rescuer')->where('adopt_id', $adopt_id)
+      ->join('person', 'rescuer.person_id', '=', 'person.person_id')
+      ->select('rescuer.person_id', 'name', 'mobile', 'address')->get();
     return $data;
   }
   

@@ -17,7 +17,7 @@
       }
     },
     mounted() {
-      $('#txt-datepicker-'+this.name).datepicker({
+      $('#datepicker-'+this.name).datepicker({
         todayHighlight: true,
         orientation: "bottom left",
         templates: {

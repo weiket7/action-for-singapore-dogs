@@ -13,7 +13,7 @@
 
         <form-row>
           <label-component>Foster</label-component>
-          <radio-component name="foster" v-model="adopt.stat" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }"></radio-component>
+          <radio-component name="foster" v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }"></radio-component>
 
           <label-component>Location</label-component>
           <select-component name='location' v-model="adopt.location" :options="{ 'C': 'ARC', 'R': 'Rescuer', 'F':'Foster', 'A': 'Adopter' }" :error="errors.get('location')"></select-component>
@@ -44,7 +44,7 @@
           <label-component>Microchipped</label-component>
           <radio-component name="microchip" v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
 
-          <label-component value="Microchip Date" v-show="adopt.microchip == 'Y'"></label-component>
+          <label-component v-show="adopt.microchip == 'Y'">Microchip Date</label-component>
           <datepicker-component name='microchip_date' v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
         </form-row>
 
@@ -77,7 +77,7 @@
         <adopter-component v-for="(adopter, index) in adopters"
                            v-on:update-adopter="updateAdopter"
                            v-on:remove-adopter="removeAdopter"
-                           :adopter="adopter" :index="index" :key="adopter.adopter_id"></adopter-component>
+                           :adopter="adopter" :index="index" :key="index"></adopter-component>
 
         <form-row>
           <div class="col-lg-2"></div>
@@ -94,7 +94,7 @@
         <rescuer-component v-for="(rescuer, index) in rescuers"
                            v-on:update-rescuer="updateRescuer"
                            v-on:remove-rescuer="removeRescuer"
-                           :rescuer="rescuer" :index="index" :key="rescuer.person_id"></rescuer-component>
+                           :rescuer="rescuer" :index="index" :key="index"></rescuer-component>
 
         <form-row>
           <div class="col-lg-2"></div>
@@ -164,7 +164,7 @@
         this.rescuers.push({});
       },
       updateRescuer(o) {
-        this.rescuers[o.index] = o.rescuer;
+        this.$set(this.rescuers, o.index, o.person);
       },
       removeRescuer(index) {
         this.rescuers.splice(index, 1);
@@ -173,7 +173,7 @@
         this.fosters.push({});
       },
       updateFoster(o) {
-        this.$set(this.fosters, o.index, o.foster);
+        this.$set(this.fosters, o.index, o.person);
       },
       removeFoster(index) {
         this.fosters.splice(index, 1);
@@ -182,7 +182,7 @@
         this.adopters.push({});
       },
       updateAdopter(o) {
-        this.adopters[o.index] = o.rescuer;
+        this.$set(this.adopters, o.index, o.person);
       },
       removeAdopter(index) {
         this.adopters.splice(index, 1);

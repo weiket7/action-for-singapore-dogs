@@ -29,7 +29,7 @@
       <static-text v-if="source == 'E'" :value="person.mobile"></static-text>
       <textbox-component v-else></textbox-component>
       
-      <label-component value="Address"></label-component>
+      <label-component>Address</label-component>
       <static-text v-if="source == 'E'" :value="person.address"></static-text>
       <textbox-component v-else></textbox-component>
     </div>

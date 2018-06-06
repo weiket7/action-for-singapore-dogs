@@ -1,6 +1,6 @@
 <template>
   <div>
-    <person-component :index="index" type="adopter" :person="adopter" v-on:update-person="updatePerson"></person-component>
+    <person-component :index="index" type="adopter" :person="adopter" v-on:update-person="updateAdopter"></person-component>
     
     <div class="form-group m-form__group row">
       <label-component>Adopted On</label-component>
@@ -10,7 +10,7 @@
       <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned" :options="{'1': 'Yes', '0': 'No'}"></radio-component>
     </div>
     
-    <div class="form-group m-form__group row" v-show="adopter.returned">
+    <div class="form-group m-form__group row" v-show="adopter.returned == 1">
       <label-component>Returned On</label-component>
       <datepicker-component :name="'adopter-returned_on-'+index" :value="adopter.returned_on | formatDate"></datepicker-component>
       
@@ -44,8 +44,8 @@
     name: "adopter-component",
     props: ['index', 'adopter'],
     methods: {
-      updatePerson(person) {
-        this.adopter = person;
+      updateAdopter(person) {
+        this.$emit('update-adopter', { index: this.index, person: person });
       },
     },
     components: {

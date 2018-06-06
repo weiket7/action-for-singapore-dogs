@@ -1,6 +1,6 @@
 <template>
   <div>
-    <person-component :index="index" type="foster" :person="foster" v-on:update-person="updatePerson"></person-component>
+    <person-component :index="index" type="foster" :person="foster" v-on:update-person="updateFoster"></person-component>
   
     <div class="form-group m-form__group row">
       <label-component>Start Date</label-component>
@@ -36,8 +36,8 @@
     name: "foster-component",
     props: ['index', 'foster'],
     methods: {
-      updatePerson(person) {
-        this.foster = person;
+      updateFoster(person) {
+        this.$emit('update-foster', { index: this.index, person: person });
       },
     },
     components: {
