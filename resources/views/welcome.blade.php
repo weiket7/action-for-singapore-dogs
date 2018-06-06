@@ -294,7 +294,7 @@
 
 <script src="{{ asset("assets/js/compressed.js" ) }}"></script>
 <script src="{{ asset("assets/js/main.js" ) }}"></script>
-<script src="{{ asset("js/app.js" ) }}"></script>
+<script src="{{ asset("app.js" ) }}"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 </body>
