@@ -37,7 +37,6 @@
         this.remarks.push({});
       },
       removeRemarkRow(index) {
-        console.log('remove remark row = ' + index);
         this.remarks.splice(index, 1);
       }
     }

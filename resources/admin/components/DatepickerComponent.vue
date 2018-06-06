@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-3">
-    <input type="text" :id="'txt-datepicker-'+name" :name="name" :value="value" class="form-control" @input="updateValue($event.target.value)"/>
+    <input type="text" :id="'datepicker-'+name" :name="name" :value="value" class="form-control" @input="updateValue($event.target.value)"/>
     <span class="m-form__help" v-if="error">
       {{ error }}
     </span>

@@ -75,20 +75,18 @@
     <tab :name="'Adopter'">
       <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
         <adopter-component v-for="(adopter, index) in adopters"
-                           v-on:update-adopter="updateFoster"
-                           v-on:remove-adopter="removeFoster"
-                           :index="index" :key="adopter.adopter_id"></adopter-component>
+                           v-on:update-adopter="updateAdopter"
+                           v-on:remove-adopter="removeAdopter"
+                           :adopter="adopter" :index="index" :key="adopter.adopter_id"></adopter-component>
 
         <form-row>
           <div class="col-lg-2"></div>
           <div class="col-lg-10">
-            <button type="button" @click="addAdopterRow()" class="btn btn-metal btn-sm">
+            <button type="button" @click="addAdopterRow()" class="btn btn-metal">
               Add Row
             </button>
           </div>
         </form-row>
-
-        <form-footer></form-footer>
       </form>
     </tab>
     <tab :name="'Rescuer'">
@@ -96,18 +94,16 @@
         <rescuer-component v-for="(rescuer, index) in rescuers"
                            v-on:update-rescuer="updateRescuer"
                            v-on:remove-rescuer="removeRescuer"
-                           :index="index" :key="rescuer.person_id"></rescuer-component>
+                           :rescuer="rescuer" :index="index" :key="rescuer.person_id"></rescuer-component>
 
         <form-row>
           <div class="col-lg-2"></div>
           <div class="col-lg-10">
-            <button type="button" @click="addRescuerRow()" class="btn btn-metal btn-sm">
+            <button type="button" @click="addRescuerRow()" class="btn btn-metal">
               Add Row
             </button>
           </div>
         </form-row>
-
-        <form-footer></form-footer>
       </form>
     </tab>
     <tab :name="'Foster'">
@@ -120,7 +116,7 @@
         <form-row>
           <div class="col-lg-2"></div>
           <div class="col-lg-10">
-            <button type="button" @click="addFosterRow()" class="btn btn-metal btn-sm">
+            <button type="button" @click="addFosterRow()" class="btn btn-metal">
               Add Row
             </button>
           </div>
@@ -197,6 +193,8 @@
         .then(response => {
           this.adopt = response.data.adopt;
           this.fosters = response.data.fosters;
+          this.adopters = response.data.adopters;
+          this.rescuers = response.data.rescuers;
         })
         .catch(error => { console.log(error); })
     },

@@ -16,21 +16,20 @@ class FosterTable extends Migration
       $table->integer('person_id');
       $table->dateTime('start_date');
       $table->dateTime('end_date')->nullable();
-      $table->string('desc', 250)->nullable();
     });
     
     DB::table('foster')->insert([
       'stat'=>'P',
-      'adopt_id'=>'1',
-      'person_id'=>'3',
+      'adopt_id'=>1,
+      'person_id'=>3,
       'start_date'=>Carbon::now()->subDays(10),
       'end_date'=>Carbon::now()->subDays(1),
     ]);
   
     DB::table('foster')->insert([
       'stat'=>'C',
-      'adopt_id'=>'1',
-      'person_id'=>'4',
+      'adopt_id'=>1,
+      'person_id'=>4,
       'start_date'=>Carbon::now(),
     ]);
   }

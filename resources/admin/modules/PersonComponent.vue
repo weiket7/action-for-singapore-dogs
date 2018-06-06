@@ -5,12 +5,12 @@
       <div class="col-lg-3">
         <div class="m-radio-inline">
           <label class="m-radio">
-            <input type="radio" checked :name="'person-type-'+index" value="E" @click="existingPerson()">
+            <input type="radio" :name="'source-'+type+'-'+index" checked value="E" @click="existingPerson()">
             Existing
             <span></span>
           </label>
           <label class="m-radio">
-            <input type="radio" value="N" :name="'person-type-'+index" @click="newPerson()">
+            <input type="radio" :name="'source-'+type+'-'+index" value="N" @click="newPerson()">
             New
             <span></span>
           </label>
@@ -18,19 +18,19 @@
       </div>
       
       <label-component>Name</label-component>
-      <select2-component :name="'person-name-'+index" url="api/person/search?type=f" event_name="select-person"
-                         v-show="type == 'E'"
+      <select2-component :name="select2_name" :url="'api/person/search?type='+this.type" event_name="select-person"
+                         v-show="source == 'E'"
                          v-on:select-person="selectPerson"></select2-component>
-      <textbox-component name="name" :value="person.name" v-show="type == 'N'"></textbox-component>
+      <textbox-component name="name" :value="person.name" v-show="source == 'N'"></textbox-component>
     </div>
     
     <div class="form-group m-form__group row">
       <label-component>Mobile</label-component>
-      <static-text v-if="type == 'E'" :value="person.mobile"></static-text>
+      <static-text v-if="source == 'E'" :value="person.mobile"></static-text>
       <textbox-component v-else></textbox-component>
       
       <label-component value="Address"></label-component>
-      <static-text v-if="type == 'E'" :value="person.address"></static-text>
+      <static-text v-if="source == 'E'" :value="person.address"></static-text>
       <textbox-component v-else></textbox-component>
     </div>
   </div>
@@ -43,21 +43,26 @@
 
   export default {
     name: "person-component",
-    props: ['person', "index"],
+    props: ['person', "index", "type"],
     data() {
       return {
-        type: "E",
+        source: "E",
         options: [{"E": "Existing", "N": "New"}]
+      }
+    },
+    computed: {
+      select2_name() {
+        return 'select2-'+this.type+'-'+this.index;
       }
     },
     methods: {
       existingPerson() {
-        $("#person-name-"+this.index).next().show();
-        this.type = "E";
+        $("#"+this.select2_name).next().show();
+        this.source = "E";
       },
       newPerson() {
-        $("#person-name-"+this.index).next().hide();
-        this.type = "N";
+        $("#"+this.select2_name).next().hide();
+        this.source = "N";
       },
       selectPerson(person_id) {
         axios.get('api/person/get/' + person_id)

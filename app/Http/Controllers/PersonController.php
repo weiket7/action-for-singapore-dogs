@@ -12,15 +12,18 @@ class PersonController extends Controller {
   public function search(Request $request) {
     $term = $request->term;
     $query = Person::where('name', 'like', '%'.$term.'%');
-    $type = strtoupper($request->type);
-    if($type == PersonType::Rescuer) {
+    $type = strtolower($request->type);
+    if($type == 'rescuer') {
       $query->where('is_rescuer', 1);
     }
-    if($type == PersonType::Foster) {
+    if($type == 'foster') {
       $query->where('is_foster', 1);
     }
-    if($type == PersonType::Adopter) {
+    if($type == 'adopter') {
       $query->where('is_adopter', 1);
+    }
+    if($type == 'sponsor') {
+      $query->where('is_sponsor', 1);
     }
     return $query->select(['person_id as id', 'name as text'])
       ->get();
