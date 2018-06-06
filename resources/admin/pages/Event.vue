@@ -30,18 +30,13 @@
         <textbox-component name="cost" v-model="event.cost" :error="errors.get('cost')"></textbox-component>
       </div>
 
-      <form-footer-component></form-footer-component>
+      <form-footer></form-footer>
     </form>
   </single-portlet>
 </template>
 
 <script>
   import axios from 'axios'
-  import SinglePortlet from '../components/SinglePortlet'
-  import LabelComponent from '../components/LabelComponent'
-  import TextboxComponent from '../components/TextboxComponent'
-  import RadioComponent from '../components/RadioComponent'
-  import FormFooterComponent from '../components/FormFooterComponent'
   import Errors from '../../common/errors'
 
   export default {
@@ -54,13 +49,6 @@
         rescuers: [{}],
         errors: new Errors()
       }
-    },
-    components: {
-      SinglePortlet,
-      LabelComponent,
-      TextboxComponent,
-      RadioComponent,
-      FormFooterComponent,
     },
     methods: {
       onSubmit() {

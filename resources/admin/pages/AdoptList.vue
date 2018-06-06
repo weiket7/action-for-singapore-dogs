@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Dogs" create_link="adopt/create">
+  <single-portlet title="Dogs" create_link="adopt/save">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
@@ -14,7 +14,7 @@
         <tr v-for="adopt in adopts">
           <td><!--{{ProductStat::$values[p.stat]}}--></td>
           <td width="450px">
-            <router-link v-bind:to="'/adopt/'+adopt.adopt_id">{{ adopt.name }}</router-link>
+            <router-link v-bind:to="'/adopt/save/'+adopt.adopt_id">{{ adopt.name }}</router-link>
           </td>
           <td>{{ adopt.gender == 'M' ? 'Male' : 'Female'   }}</td>
           <td>{{ adopt.age}}</td>

@@ -10,7 +10,7 @@ import SinglePortlet from './components/SinglePortlet'
 import LabelComponent from './components/LabelComponent'
 import TabsComponent from './components/TabsComponent'
 import TabComponent from './components/TabComponent'
-import FormFooterComponent from './components/FormFooterComponent'
+import FormFooter from './components/FormFooter'
 import SelectComponent from './components/SelectComponent'
 import RadioComponent from './components/RadioComponent'
 import DatepickerComponent from "./components/DatepickerComponent";
@@ -24,7 +24,7 @@ Vue.component('single-portlet', SinglePortlet);
 Vue.component('label-component', LabelComponent);
 Vue.component('tabs', TabsComponent);
 Vue.component('tab', TabComponent);
-Vue.component('form-footer', FormFooterComponent);
+Vue.component('form-footer', FormFooter);
 Vue.component('select-component', SelectComponent);
 Vue.component('radio-component', RadioComponent);
 Vue.component('datepicker-component', DatepickerComponent);

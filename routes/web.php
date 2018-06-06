@@ -5,6 +5,7 @@ Route::get('welcome2', function () { return view("welcome2"); });
 Route::get('backend', function () { return view("admin"); });
 
 Route::get('api/adopt', 'AdoptController@all');
+Route::post('api/adopt/save', 'AdoptController@save');
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page');
 Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
 

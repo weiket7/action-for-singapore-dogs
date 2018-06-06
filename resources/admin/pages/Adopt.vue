@@ -1,8 +1,8 @@
 <template>
   <single-portlet title="Dogs">
-  <tabs :tabs="['General', 'Adopter', 'Rescuer', 'Foster', 'Sponsor']">
+  <tabs :tabs="tabs">
     <tab :name="'General'" :active="true">
-      <div @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+      <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
         <form-row>
           <label-component>Name</label-component>
           <textbox-component name='name' v-model="adopt.name" :error="errors.get('name')"></textbox-component>
@@ -68,9 +68,9 @@
           <label-component>Behaviour</label-component>
           <textarea-component name='behaviour' v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
         </form-row>
-
+  
         <form-footer></form-footer>
-      </div>
+      </form>
     </tab>
     <tab :name="'Adopter'">
       <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
@@ -149,6 +149,16 @@
       }
     },
     computed: {
+      is_create() {
+        return this.$route.path == "/adopt/save";
+      },
+      tabs() {
+        let tabs = ['General'];
+        if (! this.is_create) {
+          tabs = ['General', 'Adopter', 'Rescuer', 'Foster', 'Sponsor'];
+        }
+        return tabs;
+      },
       location_options() {
         let options = ['ARC'];
         for (let i=0; i<this.adopters.length; i++) {
@@ -165,8 +175,12 @@
     },
     methods: {
       onSubmit() {
-        //alert('hey');
-        axios.post('admin/adopt/save/' + this.$route.params.adopt_id, this.adopt)
+        console.log('save = ' + JSON.stringify(this.adopt));
+        var url = 'api/adopt/save';
+        if (!this.is_create) {
+          url += this.$route.params.adopt_id
+        }
+        axios.post(url, this.adopt)
           .then(this.onSuccess)
           .catch(error=>{
             this.errors.record(error.response.data.errors);
@@ -204,14 +218,16 @@
       }
     },
     created() {
-      axios.get('api/adopt/get/' + this.$route.params.adopt_id)
-        .then(response => {
-          this.adopt = response.data.adopt;
-          this.fosters = response.data.fosters;
-          this.adopters = response.data.adopters;
-          this.rescuers = response.data.rescuers;
-        })
-        .catch(error => { console.log(error); })
+      if (! this.is_create) {
+        axios.get('api/adopt/get/' + this.$route.params.adopt_id)
+          .then(response => {
+            this.adopt = response.data.adopt;
+            this.fosters = response.data.fosters;
+            this.adopters = response.data.adopters;
+            this.rescuers = response.data.rescuers;
+          })
+          .catch(error => { console.log(error); })
+      }
     },
     components: {
       RescuerComponent,

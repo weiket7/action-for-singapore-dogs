@@ -8,6 +8,13 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 class AdoptController extends Controller {
+  public function save(Request $request) {
+    $adopt = new Adopt();
+    if ($request->get('adopt_id')) {
+      $adopt = Adopt::find($request->get('adopt_id'));
+    }
+  }
+  
   public function all(Request $request) {
     return Adopt::all();
   }

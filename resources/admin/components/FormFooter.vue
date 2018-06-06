@@ -4,11 +4,8 @@
       <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-10">
-          <button type="submit" class="btn btn-success">
-            Submit
-          </button>
-          <button type="reset" class="btn btn-secondary">
-            Cancel
+          <button type="submit" @click="$emit('submit')" class="btn btn-success">
+            Save
           </button>
         </div>
       </div>
@@ -18,6 +15,6 @@
 
 <script>
   export default {
-    name: "form-footer"
+    name: "form-footer",
   }
 </script>
