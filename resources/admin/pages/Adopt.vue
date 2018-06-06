@@ -14,14 +14,14 @@
         <form-row>
           <label-component>Foster</label-component>
           <radio-component name="foster" v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }"></radio-component>
-
-          <label-component>Location</label-component>
-          <select-component name='location' v-model="adopt.location" :options="{ 'C': 'ARC', 'R': 'Rescuer', 'F':'Foster', 'A': 'Adopter' }" :error="errors.get('location')"></select-component>
-        </form-row>
-
-        <form-row>
+  
           <label-component>Rescued On</label-component>
           <datepicker-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
+          </form-row>
+
+        <form-row v-if="adopt.adopt_id">
+          <label-component>Location</label-component>
+          <select-component name='location' v-model="adopt.location" :options="location_options" :error="errors.get('location')"></select-component>
         </form-row>
 
         <form-row>
@@ -145,7 +145,22 @@
         rescuers: [{}],
         fosters: [{}],
         adopters: [{}],
-        errors: new Errors()
+        errors: new Errors(),
+      }
+    },
+    computed: {
+      location_options() {
+        let options = ['ARC'];
+        for (let i=0; i<this.adopters.length; i++) {
+          options.push("Adopter " + this.adopters[i].name);
+        }
+        for (let i=0; i<this.rescuers.length; i++) {
+          options.push("Rescuer " + this.rescuers[i].name);
+        }
+        for (let i=0; i<this.fosters.length; i++) {
+          options.push("Foster " + this.fosters[i].name);
+        }
+        return options;
       }
     },
     methods: {
