@@ -54,6 +54,14 @@
   }
 }
 
+/*for adoption form*/
+.no-mb {
+  margin-bottom: 0;
+}
+.adoption-form-header {
+  margin-bottom: 0;
+}
+
 /*for event page*/
 .event-detail {
   font-size: 15px;

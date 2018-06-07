@@ -2,7 +2,7 @@
   <div id="app" class="container mt-30">
     <div class="row">
       <div class="col-sm-12">
-        <div itemscope="" itemtype="http://schema.org/Product" class="product type-product row columns_padding_25">
+        <div itemscope="" class="product type-product row columns_padding_25">
 
           <div class="col-sm-6">
             <div class="images">
@@ -41,7 +41,7 @@
             <div class="tab-content">
               <div class="tab-pane fade in active" id="tab1">
                 <form class="form-horizontal" method="post">
-                  To indicate interest in adopting {{ adopt.name }}, please fill in the following form with a brief introduction of yourself:
+                  Are you ready to adopt a dog and engage To indicate interest in adopting {{ adopt.name }}, please fill in the following form with a brief introduction of yourself:
                   <br>
                   <div class="form-group mt-10">
                     <label for="name" class="col-sm-2 control-label">Name</label>
@@ -59,12 +59,6 @@
                     <label for="mobile" class="col-sm-2 control-label">Mobile</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="mobile">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="self-intro" class="col-sm-2 control-label">Self Introduction</label>
-                    <div class="col-sm-10">
-                      <textarea class="form-control" id="self-intro" rows="5"></textarea>
                     </div>
                   </div>
 
@@ -124,12 +118,12 @@
     name: "AdoptView",
     data() {
       return {
-        slug: '{{ $slug }}',
         adopt: {}
       }
     },
     created: function() {
-      axios.get('api/adopt/get/'+this.$route.params.adopt_id)
+      console.log(this.$route);
+      axios.get('api/adopt/slug/'+this.$route.params.slug)
         .then(response => {
           this.adopt = response.data;
         })
