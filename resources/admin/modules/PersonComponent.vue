@@ -39,8 +39,6 @@
 
 <script>
   import axios from 'axios'
-  import Select2Component from "../components/Select2Component";
-  import TextboxComponent from "../components/TextboxComponent";
 
   export default {
     name: "person-component",
@@ -72,10 +70,6 @@
           })
           .catch(error => { console.log(error); });
       }
-    },
-    components: {
-      TextboxComponent,
-      Select2Component
     }
   }
 </script>

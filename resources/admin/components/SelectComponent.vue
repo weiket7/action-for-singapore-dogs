@@ -15,10 +15,10 @@
   export default {
     name: "select-component",
     props: {
-      name: {type: String, required: true},
-      value: {required: true},
-      options: {required: true},
-      error: { type: String, required: false}
+      name: { type: String, required: false},
+      value: { type: String, required: false},
+      error: { type: String, required: false},
+      options: {required: true}
     },
     methods: {
       updateValue: function (value) {

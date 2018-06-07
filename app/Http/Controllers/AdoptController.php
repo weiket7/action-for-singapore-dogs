@@ -13,7 +13,7 @@ class AdoptController extends Controller {
     if ($adopt_id) {
       $adopt = Adopt::find($request->get('adopt_id'));
     }
-    $adopt->saveAdopt($request->all());
+    return $adopt->saveAdopt($request->all());
   }
   
   public function messages() {

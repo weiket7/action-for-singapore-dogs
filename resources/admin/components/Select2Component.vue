@@ -13,9 +13,9 @@
   export default {
     name: "select2-component",
     props: {
-      name: {type: String, required: true },
+      name: { type: String, required: false},
+      error: { type: String, required: false},
       url: { type: String, required: true },
-      error: { type: String, required: false },
       event_name: { type: String, required: false },
       default_id: { required: false},
       default_text: { required: false},

@@ -1,8 +1,8 @@
 <template>
   <div class="col-lg-3">
-    <div class="m-radio-inline">
-      <label v-for="(val, key) in options" class="m-radio">
-        <input type="radio" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
+    <div class="m-checkbox-inline">
+      <label v-for="(val, key) in options" class="m-checkbox">
+        <input type="checkbox" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
         {{ val }}
         <span></span>
       </label>
@@ -15,7 +15,7 @@
 
 <script>
   export default {
-    name: "radio-component",
+    name: "checkbox-component",
     props: {
       name: { type: String, required: false},
       value: { required: false},

@@ -10,7 +10,11 @@
 <script>
   export default {
     name: "textarea-component",
-    props: ['name', 'value', 'error'],
+    props: {
+      name: { type: String, required: false},
+      value: { required: false},
+      error: { type: String, required: false},
+    },
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);

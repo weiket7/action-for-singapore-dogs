@@ -16,7 +16,7 @@
           <radio-component v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }" :error="errors.get('foster')"></radio-component>
   
           <label-component>Rescued On</label-component>
-          <datepicker-component v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
+          <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
           </form-row>
 
         <form-row v-if="adopt.adopt_id">
@@ -29,7 +29,7 @@
           <radio-component v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
 
           <label-component>Birthday</label-component>
-          <datepicker-component v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
+          <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
         </form-row>
 
         <form-row>
@@ -45,7 +45,7 @@
           <radio-component v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }" :error="errors.get('microchip')"></radio-component>
 
           <label-component v-show="adopt.microchip == 'Y'">Microchip Date</label-component>
-          <datepicker-component v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
+          <datepicker-component name="microchip_date" v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
         </form-row>
 
         <form-row>
@@ -53,7 +53,7 @@
           <radio-component v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
 
           <label-component v-show="adopt.vaccinate == 'Y'">Vaccinate Date</label-component>
-          <datepicker-component v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate == 'Y'"></datepicker-component>
+          <datepicker-component name="vaccinate_date" v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate == 'Y'"></datepicker-component>
         </form-row>
 
         <form-row>
@@ -181,17 +181,24 @@
         }
         axios.post(url, this.adopt)
           .then(this.onSuccess)
-          .catch(error=>{
-            console.log(error);
-            this.errors.record(error.response.data.errors);
-          });
+          .catch(this.onError);
+      },
+      onError(error) {
+        if (error.response.status == 500) {
+          toastr.error("A system error occurred");
+          return;
+        }
+        toastr.error("There were some errors, please check the form");
+        this.errors.record(error.response.data.errors);
       },
       onSuccess(response) {
-        toastr.success("Hello world!");
-        if (!this.is_create()) {
-          let adopt_id = response.data;
-          this.$router.push('/adopt/save/'+adopt_id);
+        if (this.is_create) {
+          toastr.success("Dog added");
+          return;
         }
+        toastr.success("Dog updated");
+        let adopt_id = response.data;
+        this.$router.push('/adopt/save/'+adopt_id);
       },
       addRescuerRow() {
         this.rescuers.push({});

@@ -21,7 +21,6 @@ class PersonController extends Controller {
   
   public function get(Request $request, $person_id) {
     return Person::where('person_id', $person_id)
-      ->select(['name', 'mobile', 'address'])
       ->first();
   }
   

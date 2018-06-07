@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,16 +10,19 @@ class Adopt extends Model
   protected $primaryKey = 'adopt_id';
   protected $attributes = ['stat' => 'A', 'birthday'=>'', 'breed'=>'Cross Breed'];
   public $timestamps = false;
-  protected $validation;
+  protected $dates = ['birthday'];
   protected $appends = ['age'];
 
   public function saveAdopt($input) {
     $this->name = $input['name'];
     $this->slug = str_slug($this->name);
     $this->gender = $input['gender'];
-    $this->birthday = $input['birthday'];
+    $this->birthday = Carbon::createFromFormat('d M Y', $input['birthday']);
     $this->breed = $input['breed'];
-    //$this->colour = $input['colour'];
+    $this->colour = $input['colour'];
+    $this->image = '';
+    $this->posted_by = 'admin';
+    $this->posted_on = Carbon::now();
     $this->save();
     return $this->adopt_id;
   }

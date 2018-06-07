@@ -13,13 +13,14 @@ import TabComponent from './components/TabComponent'
 import FormFooter from './components/FormFooter'
 import SelectComponent from './components/SelectComponent'
 import RadioComponent from './components/RadioComponent'
+import CheckboxComponent from './components/CheckboxComponent'
 import DatepickerComponent from "./components/DatepickerComponent";
 import StaticTextComponent from "./components/StaticTextComponent";
 
 Vue.component('form-row', FormRow);
 Vue.component('textbox-component', TextboxComponent);
 Vue.component('textarea-component', TextareaComponent);
-Vue.component('select-component', Select2Component);
+Vue.component('select2-component', Select2Component);
 Vue.component('single-portlet', SinglePortlet);
 Vue.component('label-component', LabelComponent);
 Vue.component('tabs', TabsComponent);
@@ -27,6 +28,7 @@ Vue.component('tab', TabComponent);
 Vue.component('form-footer', FormFooter);
 Vue.component('select-component', SelectComponent);
 Vue.component('radio-component', RadioComponent);
+Vue.component('checkbox-component', CheckboxComponent);
 Vue.component('datepicker-component', DatepickerComponent);
 Vue.component('static-text', StaticTextComponent);
 

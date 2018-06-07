@@ -25,7 +25,6 @@
 
 <script>
   import axios from 'axios'
-  import SinglePortlet from '../components/SinglePortlet'
   import "../../common/filters"
 
   export default {
@@ -43,9 +42,6 @@
         .catch(error => {
           console.log(error);
         })
-    },
-    components: {
-      SinglePortlet,
     }
   }
 </script>

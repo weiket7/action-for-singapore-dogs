@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Rescuers">
+  <single-portlet title="People">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
@@ -10,12 +10,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="rescuer in rescuers">
+        <tr v-for="person in persons">
           <td><!--{{ProductStat::$values[p.stat]}}--></td>
           <td width="450px">
-            <router-link v-bind:to="'/rescuers/'+rescuer.rescuer_id">{{ rescuer.name }}</router-link>
+            <router-link v-bind:to="'/person/'+person.person_id">{{ person.name }}</router-link>
           </td>
-          <td>{{ rescuer.mobile }}</td>
+          <td>{{ person.mobile }}</td>
         </tr>
         </tbody>
       </table>
@@ -26,18 +26,18 @@
 <script>
   import axios from 'axios'
   import "../../common/filters"
-
+  
   export default {
-    name: "rescuers",
+    name: "persons",
     data() {
       return {
-        rescuers: [],
+        persons: [],
       }
     },
     created() {
-      axios.get('api/person?type=rescuer')
+      axios.get('api/person')
         .then(response => {
-          this.rescuers = response.data
+          this.persons = response.data
         })
         .catch(error => {
           console.log(error);

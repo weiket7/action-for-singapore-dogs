@@ -15,6 +15,7 @@
         <menu-component :menus="[{ 'name': 'Dashboard', 'link': 'dashboard', 'icon': 'dashboard' },
         { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
         { 'name': 'Adopters', 'link': 'adopters', 'icon': 'user-circle' },
+        { 'name': 'People', 'link': 'person', 'icon': 'street-view' },
         { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
         { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-plus' },
         { 'name': 'Sponsors', 'link': 'sponsors', 'icon': 'money' },

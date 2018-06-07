@@ -11,9 +11,9 @@
   export default {
     name: "textbox-component",
     props: {
-      name: {type: String, required: false},
-      value: {required: false},
-      error: {required: false}
+      name: { type: String, required: false},
+      value: { required: false},
+      error: { type: String, required: false},
     },
     methods: {
       updateValue: function (value) {
