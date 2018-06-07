@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="form-group m-form__group row no-pb">
+    <div class="form-group m-form__group row">
       <label-component>Type</label-component>
       <div class="col-lg-3">
         <div class="m-radio-inline">

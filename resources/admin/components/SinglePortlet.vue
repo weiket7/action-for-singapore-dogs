@@ -12,7 +12,7 @@
           </div>
           <div v-if="create_link" class="m-portlet__head-tools">
             <router-link :to="create_link">
-              <button class="btn btn-primary">Create</button>
+              <button class="btn btn-primary">Add</button>
             </router-link>
           </div>
         </div>

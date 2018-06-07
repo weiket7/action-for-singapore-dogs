@@ -1,7 +1,7 @@
 <template>
   <div class="col-lg-3">
     <input type="text" :name="name" :value="value" class="form-control" @input="updateValue($event.target.value)"/>
-    <span class="m-form__help" v-if="error">
+    <span class="m-form__help m-form__error" v-if="error">
       {{ error }}
     </span>
   </div>
@@ -10,7 +10,11 @@
 <script>
   export default {
     name: "textbox-component",
-    props: ['name', 'value', 'error'],
+    props: {
+      name: {type: String, required: false},
+      value: {required: false},
+      error: {required: false}
+    },
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);
@@ -18,9 +22,3 @@
     }
   }
 </script>
-
-<style scoped="">
-  .m-form__help {
-    color: #f4516c;
-  }
-</style>

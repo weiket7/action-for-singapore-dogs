@@ -16,7 +16,7 @@
           <td width="450px">
             <router-link v-bind:to="'/adopt/save/'+adopt.adopt_id">{{ adopt.name }}</router-link>
           </td>
-          <td>{{ adopt.gender == 'M' ? 'Male' : 'Female'   }}</td>
+          <td>{{ adopt.gender | showGender  }}</td>
           <td>{{ adopt.age}}</td>
         </tr>
         </tbody>

@@ -1,12 +1,15 @@
 <template>
   <div class="col-lg-3">
     <div class="m-radio-inline">
-    <label v-for="(val, key) in options" class="m-radio">
-      <input type="radio" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
+      <label v-for="(val, key) in options" class="m-radio">
+        <input type="radio" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
         {{ val }}
-      <span></span>
-    </label>
+        <span></span>
+      </label>
     </div>
+    <span class="m-form__help m-form__error" v-if="error">
+      {{ error }}
+    </span>
   </div>
 </template>
 
@@ -14,9 +17,10 @@
   export default {
     name: "radio-component",
     props: {
-      name: {type: String, required: true},
-      value: {required: true},
-      options: {required: true}
+      options: {required: true},
+      name: {type: String, required: false},
+      value: {required: false},
+      error: {required: false}
     },
     methods: {
       updateValue: function (value) {

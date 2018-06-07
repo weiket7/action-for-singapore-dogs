@@ -3,7 +3,7 @@
     <select :id="name" :name="name" class="form-control m-input" @change="updateValue($event.target.value)">
     
     </select>
-    <span class="m-form__help" v-if="error">
+    <span class="m-form__help m-form__error" v-if="error">
       {{ error }}
     </span>
   </div>

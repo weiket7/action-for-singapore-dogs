@@ -1,24 +1,15 @@
+.m-form .m-form__help {
+  padding-top: 0;
+}
+.m-form__help.m-form__error {
+  color: #f4516c;
+}
+
 .m-form .m-form__group {
   padding-top: 0;
   padding-bottom: 10px;
 }
-@media (min-width: 993px) {
-  .m-form .m-form__group:last-child {
-    padding-bottom: 10px;
-  }
-}
-.static-text {
-  text-align: left !important;
-}
 
-.btn-sm {
-  margin-top: 0.25rem;
-}
-
-.nav-link.active.show {
+.nav-link.active.show { /*bold active tab*/
   font-weight: 600;
-}
-
-.no-pb {
-  padding-bottom: 3px;
 }

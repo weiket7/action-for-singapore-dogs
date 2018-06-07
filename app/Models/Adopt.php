@@ -7,11 +7,22 @@ class Adopt extends Model
 {
   public $table = 'adopt';
   protected $primaryKey = 'adopt_id';
-  protected $attributes = ['adopt_stat' => 'A', 'birthday'=>'', 'breed'=>'Cross Breed'];
+  protected $attributes = ['stat' => 'A', 'birthday'=>'', 'breed'=>'Cross Breed'];
   public $timestamps = false;
   protected $validation;
   protected $appends = ['age'];
 
+  public function saveAdopt($input) {
+    $this->name = $input['name'];
+    $this->slug = str_slug($this->name);
+    $this->gender = $input['gender'];
+    $this->birthday = $input['birthday'];
+    $this->breed = $input['breed'];
+    //$this->colour = $input['colour'];
+    $this->save();
+    return $this->adopt_id;
+  }
+  
   public function getAgeAttribute() {
     $date = new DateTime($this->birthday);
     $diff = $date->diff(new DateTime());

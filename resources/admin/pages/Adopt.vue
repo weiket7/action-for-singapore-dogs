@@ -1,72 +1,72 @@
 <template>
-  <single-portlet title="Dogs">
+  <single-portlet :title="is_create ? 'Add Dog' : 'Update Dog'">
   <tabs :tabs="tabs">
     <tab :name="'General'" :active="true">
       <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
         <form-row>
-          <label-component>Name</label-component>
-          <textbox-component name='name' v-model="adopt.name" :error="errors.get('name')"></textbox-component>
+          <label-component required>Name</label-component>
+          <textbox-component v-model="adopt.name" :error="errors.get('name')"></textbox-component>
 
-          <label-component>Status</label-component>
-          <radio-component name="stat" v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }"></radio-component>
+          <label-component required>Status</label-component>
+          <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')"></radio-component>
         </form-row>
 
         <form-row>
           <label-component>Foster</label-component>
-          <radio-component name="foster" v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }"></radio-component>
+          <radio-component v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }" :error="errors.get('foster')"></radio-component>
   
           <label-component>Rescued On</label-component>
-          <datepicker-component name='rescued_on' v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
+          <datepicker-component v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
           </form-row>
 
         <form-row v-if="adopt.adopt_id">
           <label-component>Location</label-component>
-          <select-component name='location' v-model="adopt.location" :options="location_options" :error="errors.get('location')"></select-component>
+          <select-component v-model="adopt.location" :options="location_options" :error="errors.get('location')"></select-component>
         </form-row>
 
         <form-row>
-          <label-component>Gender</label-component>
-          <radio-component name="gender" v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }"></radio-component>
+          <label-component required>Gender</label-component>
+          <radio-component v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
 
           <label-component>Birthday</label-component>
-          <datepicker-component name='birthday' v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
+          <datepicker-component v-model="adopt.birthday" :error="errors.get('birthday')"></datepicker-component>
         </form-row>
 
         <form-row>
           <label-component>Breed</label-component>
-          <textbox-component name='breed' v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
+          <textbox-component v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
 
           <label-component>Colour</label-component>
-          <textbox-component name='colour' v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
+          <textbox-component v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
         </form-row>
 
         <form-row>
           <label-component>Microchipped</label-component>
-          <radio-component name="microchip" v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+          <radio-component v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }" :error="errors.get('microchip')"></radio-component>
 
           <label-component v-show="adopt.microchip == 'Y'">Microchip Date</label-component>
-          <datepicker-component name='microchip_date' v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
+          <datepicker-component v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
         </form-row>
 
         <form-row>
           <label-component>Vaccinated</label-component>
-          <radio-component name="vaccinate" v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+          <radio-component v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
 
           <label-component v-show="adopt.vaccinate == 'Y'">Vaccinate Date</label-component>
-          <datepicker-component name='vaccinate_date' v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate == 'Y'"></datepicker-component>
+          <datepicker-component v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate == 'Y'"></datepicker-component>
         </form-row>
 
         <form-row>
           <label-component>HDB Approved</label-component>
-          <radio-component name="hdb" v-model="adopt.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
+          <radio-component v-model="adopt.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }" :error="errors.get('hdb')"></radio-component>
         </form-row>
 
         <form-row>
           <label-component>Health</label-component>
-          <textarea-component name='health' v-model="adopt.health" :error="errors.get('health')"></textarea-component>
+          <textarea-component v-model="adopt.health" :error="errors.get('health')"></textarea-component>
 
           <label-component>Behaviour</label-component>
-          <textarea-component name='behaviour' v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
+          <textarea-component v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
         </form-row>
   
         <form-footer></form-footer>
@@ -175,19 +175,23 @@
     },
     methods: {
       onSubmit() {
-        console.log('save = ' + JSON.stringify(this.adopt));
         var url = 'api/adopt/save';
         if (!this.is_create) {
-          url += this.$route.params.adopt_id
+          url += '/'+ this.$route.params.adopt_id
         }
         axios.post(url, this.adopt)
           .then(this.onSuccess)
           .catch(error=>{
+            console.log(error);
             this.errors.record(error.response.data.errors);
           });
       },
       onSuccess(response) {
         toastr.success("Hello world!");
+        if (!this.is_create()) {
+          let adopt_id = response.data;
+          this.$router.push('/adopt/save/'+adopt_id);
+        }
       },
       addRescuerRow() {
         this.rescuers.push({});

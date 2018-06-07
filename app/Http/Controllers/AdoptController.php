@@ -1,18 +1,23 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\AdoptRequest;
 use App\Models\Adopt;
 use App\Models\Enums\AdoptStat;
-use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 class AdoptController extends Controller {
-  public function save(Request $request) {
+  public function save(AdoptRequest $request, $adopt_id = null) {
     $adopt = new Adopt();
-    if ($request->get('adopt_id')) {
+    if ($adopt_id) {
       $adopt = Adopt::find($request->get('adopt_id'));
     }
+    $adopt->saveAdopt($request->all());
+  }
+  
+  public function messages() {
+    return ['name.required'=>'Name is required'];
   }
   
   public function all(Request $request) {

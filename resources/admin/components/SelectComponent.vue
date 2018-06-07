@@ -5,7 +5,7 @@
         {{ val }}
       </option>
     </select>
-    <span class="m-form__help" v-if="error">
+    <span class="m-form__help m-form__error" v-if="error">
       {{ error }}
     </span>
   </div>
