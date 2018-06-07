@@ -8,7 +8,7 @@ import Volunteer from './pages/Volunteer'
 import Events from './pages/Events'
 import EventView from './pages/EventView'
 import Contact from './pages/Contact'
-import AdoptionForm from './pages/AdoptionForm'
+import HeartList from './pages/HeartList'
 
 Vue.use(Router);
 
@@ -16,7 +16,7 @@ export default new Router({
   routes: [
     { path: '', name: 'Index', component: Home },
     { path: '/adopt', name: 'Adopt', component: Adopt },
-    { path: '/adoption-form', name: 'AdoptionForm', component: AdoptionForm },
+    { path: '/i-want-to-adopt', name: 'HeartList', component: HeartList },
     { path: '/adopt/:slug', name: 'AdoptView', component: AdoptView },
     { path: '/donate', name: 'Donate', component: Donate },
     { path: '/volunteer', name: 'Volunteer', component: Volunteer },

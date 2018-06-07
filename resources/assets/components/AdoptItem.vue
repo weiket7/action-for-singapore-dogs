@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-4">
+  <div :class="'col-md-'+col">
     <div class="adopt-grid-border">
       <div class="adopt-grid-image">
         <router-link :to="'adopt/'+adopt.slug">
@@ -23,7 +23,14 @@
         <span v-if="adopt.hdb">HDB Approved</span>
         <span v-else>Not HDB Approved</span><br>
       </p>
-      <router-link :to="'adopt/'+adopt.slug" class="theme_button inverse margin_0">Learn More</router-link>
+      <div class="row">
+        <div class="col-xs-8">
+          <router-link :to="'adopt/'+adopt.slug" class="theme_button inverse margin_0">Learn More</router-link>
+        </div>
+        <div class="col-xs-4 text-right">
+          <i class="fas fa-heart fa-2x" :class="{'highlight': highlight}"></i>
+        </div>
+      </div>
     </div>
     </div>
 
@@ -32,7 +39,7 @@
 <script>
   export default {
     name: "adopt-item",
-    props: ['adopt']
+    props: ['adopt', 'col', 'highlight']
   }
 </script>
 

@@ -24,6 +24,18 @@ class AdoptController extends Controller {
     return Adopt::all();
   }
   
+  public function temp(Request $request, $count) {
+    if (! $request->session()->get('rand')) {
+      $request->session()->put('rand', rand());
+    }
+    $rand = $request->session()->get('rand');
+    return Adopt::where('stat', AdoptStat::Available)
+      ->orderByRaw("rand(".$rand.")")->limit($count)->get();
+    return $data;
+  }
+  
+  
+  
   public function page(Request $request) {
     if (! $request->session()->get('rand')) {
       $request->session()->put('rand', rand());

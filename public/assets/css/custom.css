@@ -27,6 +27,21 @@
 }
 
 /******SPECIFIC PAGES******/
+/*home*/
+.small-teaser .media-left {
+  vertical-align: middle;
+}
+.top-heart {
+  cursor: pointer;
+}
+.small-teaser .media-left.top-heart-icon {
+  padding-right: 5px;
+}
+.small-teaser .media-body.top-heart-number {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
 /*for layout*/
 @media (max-width: 991px) {
   a.logo img {
