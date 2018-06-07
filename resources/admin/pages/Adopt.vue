@@ -16,7 +16,7 @@
           <radio-component v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }" :error="errors.get('foster')"></radio-component>
   
           <label-component>Rescued On</label-component>
-          <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
+          <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')" v-if="adopt.rescued_on"></datepicker-component>
           </form-row>
 
         <form-row v-if="adopt.adopt_id">
@@ -29,9 +29,7 @@
           <radio-component v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
 
           <label-component>Birthday</label-component>
-          <datepicker-component name="birthday" :value="adopt.birthday | formatDate"
-                                v-on:input = "adopt.birthday = $event"
-                                :error="errors.get('birthday')"></datepicker-component>
+          <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')" v-if="adopt.birthday"></datepicker-component>
         </form-row>
 
         <form-row>
@@ -76,7 +74,7 @@
     </tab>
     <tab :name="'Adopter'">
       <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-        <adopter-component v-for="(adopter, index) in adopters"
+        <adopter-component v-for="(adopter, index) in adopters" v-if="adopter"
                            v-on:update-adopter="updateAdopter"
                            v-on:remove-adopter="removeAdopter"
                            :adopter="adopter" :index="index" :key="adopter.person_id"></adopter-component>

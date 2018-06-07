@@ -4,10 +4,10 @@
   
     <div class="form-group m-form__group row">
       <label-component>Start Date</label-component>
-      <datepicker-component :name="'foster-start_date-'+index" :value="foster.start_date"></datepicker-component>
+      <datepicker-component :name="'foster-start_date-'+index" v-model="foster.start_date" v-if="foster.start_date"></datepicker-component>
     
       <label-component>End Date</label-component>
-      <datepicker-component :name="'foster-end_date-'+index" :value="foster.end_date"></datepicker-component>
+      <datepicker-component :name="'foster-end_date-'+index" v-model="foster.end_date" v-if="foster.end_date"></datepicker-component>
     </div>
 
     <person-remark></person-remark>
