@@ -14,8 +14,8 @@ class FosterTable extends Migration
       $table->char('stat', 1);
       $table->integer('adopt_id');
       $table->integer('person_id');
-      $table->dateTime('start_date');
-      $table->dateTime('end_date')->nullable();
+      $table->date('start_date');
+      $table->date('end_date')->nullable();
     });
     
     DB::table('foster')->insert([

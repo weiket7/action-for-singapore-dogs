@@ -16,7 +16,7 @@ class AdoptTable extends Migration
         $table->string('slug', 50);
         $table->char('stat', 1);
         $table->char('gender', 1);
-        $table->dateTime('birthday');
+        $table->date('birthday');
         $table->string('breed', 50);
         $table->string('colour', 20);
         $table->boolean('microchip')->nullable();

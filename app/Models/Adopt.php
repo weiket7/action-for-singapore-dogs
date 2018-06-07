@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Adopt extends Model
 {
@@ -10,7 +11,7 @@ class Adopt extends Model
   protected $primaryKey = 'adopt_id';
   protected $attributes = ['stat' => 'A', 'birthday'=>'', 'breed'=>'Cross Breed'];
   public $timestamps = false;
-  protected $dates = ['birthday'];
+  //protected $dates = ['birthday'];
   protected $appends = ['age'];
 
   public function saveAdopt($input) {

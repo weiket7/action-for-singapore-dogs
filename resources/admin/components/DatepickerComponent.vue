@@ -17,6 +17,10 @@
       }
     },
     mounted() {
+      //bootstrap datepicker sql format = yyyy-mm-dd
+      //bootstrap datepicker display format = dd M yyyy
+      //moment sql format = YYYY-DD-MM
+      //moment display format = DD MMM YYYY
       let vue = this
       $('#datepicker-'+this.name).datepicker({
         todayHighlight: true,

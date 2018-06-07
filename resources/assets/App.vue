@@ -19,6 +19,9 @@
                     <li>
                       <a href="index_singlepage.html">Media</a>
                     </li>
+                    <li>
+                      <a href="index_singlepage.html">Annual Reports</a>
+                    </li>
                   </ul>
                 </li>
 

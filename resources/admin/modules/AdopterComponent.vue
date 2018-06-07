@@ -4,7 +4,7 @@
     
     <div class="form-group m-form__group row">
       <label-component>Adopted On</label-component>
-      <datepicker-component :name="'adopter-adopted_on-'+index" :value="adopter.adopted_on | formatDate"></datepicker-component>
+      <datepicker-component :name="'adopter-adopted_on-'+index" :value="adopter.adopted_on"></datepicker-component>
       
       <label-component>Returned</label-component>
       <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned" :options="{'1': 'Yes', '0': 'No'}"></radio-component>
@@ -12,7 +12,7 @@
     
     <div class="form-group m-form__group row" v-show="adopter.returned == 1">
       <label-component>Returned On</label-component>
-      <datepicker-component :name="'adopter-returned_on-'+index" :value="adopter.returned_on | formatDate"></datepicker-component>
+      <datepicker-component :name="'adopter-returned_on-'+index" :value="adopter.returned_on"></datepicker-component>
       
       <label-component>Reason</label-component>
       <textarea-component name="return_reason" :value="adopter.return_reason"></textarea-component>

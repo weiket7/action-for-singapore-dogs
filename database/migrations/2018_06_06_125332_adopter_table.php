@@ -14,9 +14,9 @@ class AdopterTable extends Migration
       $table->char('stat', 1);
       $table->integer('adopt_id');
       $table->integer('person_id');
-      $table->dateTime('adopted_on');
+      $table->date('adopted_on');
       $table->boolean('returned');
-      $table->dateTime('returned_on')->nullable();
+      $table->date('returned_on')->nullable();
       $table->string('return_reason', 250)->nullable();
     });
     
