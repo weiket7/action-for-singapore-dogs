@@ -28,7 +28,7 @@
           <router-link :to="'adopt/'+adopt.slug" class="theme_button inverse margin_0">Learn More</router-link>
         </div>
         <div class="col-xs-4 text-right">
-          <i class="fas fa-heart fa-2x" :class="{'highlight': highlight}"></i>
+          <i @click="heartAdopt" :class="{'highlight': highlight}" class="fas fa-heart fa-2x adopt-heart"></i>
         </div>
       </div>
     </div>
@@ -39,7 +39,12 @@
 <script>
   export default {
     name: "adopt-item",
-    props: ['adopt', 'col', 'highlight']
+    props: ['adopt', 'col', 'highlight'],
+    methods: {
+      heartAdopt() {
+        this.$emit('heart-adopt', this.adopt.adopt_id);
+      }
+    }
   }
 </script>
 
@@ -60,5 +65,8 @@
   }
   .adopt-grid-content {
     line-height: 24px;
+  }
+  .adopt-heart {
+    cursor: pointer
   }
 </style>
