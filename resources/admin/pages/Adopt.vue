@@ -30,6 +30,7 @@
 
           <label-component>Birthday</label-component>
           <datepicker-component name="birthday" :value="adopt.birthday | formatDate"
+                                v-on:input = "adopt.birthday = $event"
                                 :error="errors.get('birthday')"></datepicker-component>
         </form-row>
 

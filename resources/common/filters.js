@@ -5,6 +5,10 @@ Vue.filter("formatDate", function (value) {
   if (value === "" || value == null || value == undefined) {
     return "";
   }
+  let formatted = (value.match(/^\d{2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}$/)) != null;
+  if (formatted) {
+    return value;
+  }
   return moment(value).format("DD MMM YYYY");
 });
 
