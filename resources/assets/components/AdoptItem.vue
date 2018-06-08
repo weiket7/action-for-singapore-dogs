@@ -43,7 +43,7 @@
     methods: {
       heartAdopt() {
         this.$emit('heart-adopt', this.adopt.adopt_id);
-      }
+      },
     }
   }
 </script>

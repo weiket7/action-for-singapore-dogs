@@ -118,7 +118,10 @@
     </header>
     
     <section class="ls">
-      <router-view v-on:heart-adopt="heartAdopt"></router-view>
+      <router-view v-on:unheart-adopt="unheartAdopt"
+        v-on:heart-adopt="heartAdopt">
+        
+      </router-view>
     </section>
     
     <footer class="page_footer ds ms parallax section_padding_50">
@@ -285,6 +288,10 @@
     methods: {
       heartAdopt(adopt_id) {
         this.hearts.push(adopt_id);
+      },
+      unheartAdopt(adopt_id) {
+        let index = this.hearts.indexOf(adopt_id);
+        this.hearts.splice(index, 1);
       }
     },
     computed: {
