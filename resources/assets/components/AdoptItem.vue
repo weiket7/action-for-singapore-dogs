@@ -1,5 +1,4 @@
 <template>
-  <div :class="'col-md-'+col">
     <div class="adopt-grid-border">
       <div class="adopt-grid-image">
         <router-link :to="'adopt/'+adopt.slug">
@@ -32,14 +31,12 @@
         </div>
       </div>
     </div>
-    </div>
-
 </template>
 
 <script>
   export default {
     name: "adopt-item",
-    props: ['adopt', 'col', 'highlight'],
+    props: ['adopt', 'highlight'],
     methods: {
       heartAdopt() {
         this.$emit('heart-adopt', this.adopt.adopt_id);

@@ -24,6 +24,10 @@ class AdoptController extends Controller {
     return Adopt::all();
   }
   
+  public function list(Request $request, $adopt_ids) {
+    return Adopt::whereIn('adopt_id', explode(',', $adopt_ids))->get();
+  }
+  
   public function temp(Request $request, $count) {
     if (! $request->session()->get('rand')) {
       $request->session()->put('rand', rand());
@@ -33,8 +37,6 @@ class AdoptController extends Controller {
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
     return $data;
   }
-  
-  
   
   public function page(Request $request) {
     if (! $request->session()->get('rand')) {

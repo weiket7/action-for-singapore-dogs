@@ -131,7 +131,7 @@
           
           <div class="col-md-4">
             <a href="./" class="logo">
-              <img src="{{ asset("assets/images/logo-dark.png") }}" alt="" />
+              <img src="assets/images/logo-dark.png" alt="" />
             </a>
             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque orrupti quos </p>
             <div class="media fontsize_18">
@@ -168,7 +168,7 @@
                   <li>
                     <div class="media">
                       <div class="media-left media-middle">
-                        <img src="{{ asset("assets/images/recent_post1.jpg") }}" alt="" />
+                        <img src="assets/images/recent_post1.jpg" alt="" />
                       </div>
                       <div class="media-body media-middle">
                         <h4><a href="blog-single-right.html">Missioners in charge</a></h4>
@@ -195,7 +195,7 @@
                   <li>
                     <div class="media">
                       <div class="media-left media-middle">
-                        <img src="{{ asset("assets/images/recent_post2.jpg") }}" alt="" />
+                        <img src="assets/images/recent_post2.jpg" alt="" />
                       </div>
                       <div class="media-body media-middle">
                         <h4><a href="blog-single-right.html">Celebrating the adoption</a></h4>
@@ -222,7 +222,7 @@
                   <li>
                     <div class="media">
                       <div class="media-left media-middle">
-                        <img src="{{ asset("assets/images/recent_post3.jpg") }}" alt="" />
+                        <img src="assets/images/recent_post3.jpg" alt="" />
                       </div>
                       <div class="media-body media-middle">
                         <h4><a href="blog-single-right.html">Charity for everyone</a></h4>

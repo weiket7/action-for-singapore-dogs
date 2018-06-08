@@ -17,10 +17,11 @@
         </div>
         
         <div v-for="chunk in adopts" class="row">
-          <adopt-item v-for="adopt in chunk" :adopt="adopt"
-                      :key="adopt.adopt_id" col="4"
+          <div class="col-md-4" v-for="adopt in chunk" >
+            <adopt-item :adopt="adopt" :key="adopt.adopt_id"
                       :highlight="hasHeart(adopt.adopt_id)"
                       v-on:heart-adopt="heartAdopt"></adopt-item>
+          </div>
         </div>
         
         <div v-if="num_of_pages > 1" class="row columns_padding_0">
@@ -156,7 +157,7 @@
       let hearts = localStorage.getItem('hearts');
       //console.log('adopt.vue hearts = ' + hearts);
       if (hearts != null) {
-        this.hearts = hearts;
+        this.hearts = JSON.parse(hearts);
       }
     }
   }
