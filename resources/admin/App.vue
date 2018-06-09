@@ -18,8 +18,8 @@
         { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-circle' },
         { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
         { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-plus' },
-        { 'name': 'Sponsors', 'link': 'sponsors', 'icon': 'money' },
         { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
+        { 'name': 'Sponsors', 'link': 'sponsors', 'icon': 'money' },
         { 'name': 'Donations', 'link': 'donations', 'icon': 'dollar' },
         { 'name': 'Events', 'link': 'event', 'icon': 'car' }
         ]"/>

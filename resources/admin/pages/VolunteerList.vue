@@ -11,7 +11,7 @@
         </thead>
         <tbody>
         <tr v-for="volunteer in volunteers">
-          <td><!--{{ProductStat::$values[p.stat]}}--></td>
+          <td>{{ volunteer_stats[volunteer.stat] }}</td>
           <td width="450px">
             <router-link v-bind:to="'/volunteer/'+volunteer.volunteer_id">{{ volunteer.name }}</router-link>
           </td>
@@ -32,12 +32,14 @@
     data() {
       return {
         volunteers: [],
+        volunteer_stats: []
       }
     },
     created() {
       axios.get('api/volunteer')
         .then(response => {
-          this.volunteers = response.data
+          this.volunteers = response.data.volunteers;
+          this.volunteer_stats = response.data.volunteer_stats;
         })
         .catch(error => {
           console.log(error);

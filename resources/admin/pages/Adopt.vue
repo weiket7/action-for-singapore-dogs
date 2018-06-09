@@ -175,7 +175,7 @@
     },
     methods: {
       onSubmit() {
-        var url = 'api/adopt/save';
+        let url = 'api/adopt/save';
         if (!this.is_create) {
           url += '/'+ this.$route.params.adopt_id
         }

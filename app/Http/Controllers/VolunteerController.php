@@ -1,16 +1,20 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Enums\VolunteerStat;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 
 class VolunteerController extends Controller {
   public function all(Request $request) {
-    return Volunteer::select('volunteer_id', 'name', 'email', 'mobile')->get();
+    $data['volunteers'] = Volunteer::select('stat', 'volunteer_id', 'name', 'email', 'mobile')->get();
+    $data['volunteer_stats'] = VolunteerStat::$values;
+    return $data;
   }
   
   public function get(Request $request, $volunteer_id) {
-    return Volunteer::where('volunteer_id', $volunteer_id)
-      ->first();
+    $data['volunteer'] =  Volunteer::where('volunteer_id', $volunteer_id)->first();
+    $data['volunteer_stats'] = VolunteerStat::$values;
+    return $data;
   }
   
 }

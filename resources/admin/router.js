@@ -27,7 +27,8 @@ export default new Router({
     { path: '/event/:event_id', name: 'Event', component: Event },
   
     { path: '/person', name: 'PersonList', component: PersonList },
-    { path: '/person/:person_id', name: 'Person', component: Person },
+    { path: '/person/save', name: 'Person', component: Person },
+    { path: '/person/save/:person_id', name: 'Person', component: Person },
     { path: '/adopter', name: 'AdopterList', component: AdopterList },
     { path: '/rescuer', name: 'RescuerList', component: RescuerList },
     { path: '/foster', name: 'FosterList', component: FosterList },

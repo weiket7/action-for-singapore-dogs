@@ -10,12 +10,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="rescuer in rescuers">
+        <tr v-for="person in persons">
           <td><!--{{ProductStat::$values[p.stat]}}--></td>
           <td width="450px">
-            <router-link v-bind:to="'/rescuers/'+rescuer.rescuer_id">{{ rescuer.name }}</router-link>
+            <router-link v-bind:to="'/rescuer/'+person.person_id">{{ person.name }}</router-link>
           </td>
-          <td>{{ rescuer.mobile }}</td>
+          <td>{{ person.mobile }}</td>
         </tr>
         </tbody>
       </table>
@@ -28,16 +28,16 @@
   import "../../common/filters"
 
   export default {
-    name: "rescuers",
+    name: "persons",
     data() {
       return {
-        rescuers: [],
+        persons: [],
       }
     },
     created() {
       axios.get('api/person?type=rescuer')
         .then(response => {
-          this.rescuers = response.data
+          this.persons = response.data.persons
         })
         .catch(error => {
           console.log(error);
