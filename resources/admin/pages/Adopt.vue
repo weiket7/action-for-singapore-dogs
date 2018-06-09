@@ -10,7 +10,7 @@
           <label-component required>Status</label-component>
           <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')"></radio-component>
         </form-row>
-a
+
         <form-row>
           <label-component>Foster</label-component>
           <radio-component v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }" :error="errors.get('foster')"></radio-component>

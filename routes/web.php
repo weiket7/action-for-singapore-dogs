@@ -22,6 +22,9 @@ Route::get('api/person', 'PersonController@all');
 Route::get('api/person/search', 'PersonController@search');
 Route::get('api/person/get/{person_id}', 'PersonController@get');
 
+Route::get('api/volunteer', 'VolunteerController@all');
+Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
+
 
 /*Route::get('/', function () {
     return view('welcome');

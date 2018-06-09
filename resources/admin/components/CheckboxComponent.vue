@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-3">
-    <div class="m-checkbox-inline">
+    <div :class="class_name">
       <label v-for="(val, key) in options" class="m-checkbox">
         <input type="checkbox" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
         {{ val }}
@@ -20,11 +20,17 @@
       name: { type: String, required: false},
       value: { required: false},
       error: { type: String, required: false},
+      inline: { type: Boolean, required: false, default: false },
       options: {required: true}
     },
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);
+      }
+    },
+    computed: {
+      class_name() {
+        return this.inline ? 'm-checkbox-inline' : 'm-checkbox-list';
       }
     }
   }

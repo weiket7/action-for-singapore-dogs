@@ -155,7 +155,6 @@
         .catch(error => { console.log(error); });
       
       let hearts = localStorage.getItem('hearts');
-      //console.log('adopt.vue hearts = ' + hearts);
       if (hearts != null) {
         this.hearts = JSON.parse(hearts);
       }

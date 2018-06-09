@@ -9,25 +9,25 @@
     
     <div class="row" v-if="adopt_count === 1">
       <div class="col-md-3 col-center">
-        <adopt-item :adopt="adopts[0]" :key="adopts[0].adopt_id" highlight="true"></adopt-item>
+        <adopt-item :adopt="adopts[0]" :key="adopts[0].adopt_id" :highlight="hasHeart(adopts[0].adopt_id)" v-on:heart-adopt="heartAdopt"></adopt-item>
       </div>
     </div>
     <div class="row" v-if="adopt_count === 2">
       <div class="col-md-3"></div>
         <div class="col-md-3" v-for="adopt in adopts">
-        <adopt-item :adopt="adopt" :key="adopt.adopt_id" highlight="true"></adopt-item>
+        <adopt-item :adopt="adopt" :key="adopt.adopt_id" :highlight="hasHeart(adopt.adopt_id)" v-on:heart-adopt="heartAdopt"></adopt-item>
       </div>
       <div class="col-md-3"></div>
     </div>
     <div class="row row-col-3" v-if="adopt_count === 3">
       <div class="col-md-3 center-col-3" v-for="adopt in adopts">
-        <adopt-item :adopt="adopt" :key="adopt.adopt_id" highlight="true"></adopt-item>
+        <adopt-item :adopt="adopt" :key="adopt.adopt_id" :highlight="hasHeart(adopt.adopt_id)" v-on:heart-adopt="heartAdopt"></adopt-item>
       </div>
     </div>
     <div class="row" v-if="adopt_count >= 4" v-for="chunk in adopts">
       <div class="col-md-3" v-for="adopt in chunk">
         <adopt-item :adopt="adopt" :key="adopt.adopt_id"
-                    highlight="true"></adopt-item>
+                    :highlight="hasHeart(adopt.adopt_id)" v-on:heart-adopt="heartAdopt"></adopt-item>
       </div>
     </div>
     
@@ -58,11 +58,32 @@
       return {
         adopts: {},
         adopt_count: 0,
-        interested: false
+        interested: false,
+        hearts: []
+      }
+    },
+    methods: {
+      heartAdopt(adopt_id) {
+        let index = this.hearts.indexOf(adopt_id);
+        if (index >= 0) {
+          this.hearts.splice(index, 1);
+          this.$emit('unheart-adopt');
+        } else {
+          this.hearts.push(adopt_id);
+          this.$emit('heart-adopt');
+        }
+        localStorage.setItem('hearts', JSON.stringify(this.hearts));
+      },
+      hasHeart(adopt_id) {
+        return this.hearts.indexOf(adopt_id) >= 0;
       }
     },
     created() {
-      this.hearts = JSON.parse(localStorage.getItem('hearts'));
+      let hearts = localStorage.getItem('hearts');
+      if (hearts != null) {
+        this.hearts = JSON.parse(hearts);
+      }
+      
       axios.get("api/adopt/list/"+this.hearts).then(
         response => {
           let adopts = response.data;
@@ -72,6 +93,7 @@
           }
           this.adopts = adopts;
         }).catch(error => { console.log(error); });
+  
     },
     components: {
       AdoptItem,

@@ -7,7 +7,7 @@
 <!--<![endif]-->
 
 <head>
-    <title>Giving</title>
+    <title>Action for Singapore Dogs</title>
     <meta charset="utf-8">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,7 +32,8 @@
     <script src="{{ asset("assets/js/vendor/respond.min.js") }}"></script>
     <script src="{{ asset("assets/js/vendor/jquery-1.12.4.min.js") }}"></script>
     <![endif]-->
-
+  
+    <link rel="shortcut icon" href="{{ asset("favicon.ico") }}" />
 </head>
 
 <body>

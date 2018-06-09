@@ -14,12 +14,12 @@
       >
         <menu-component :menus="[{ 'name': 'Dashboard', 'link': 'dashboard', 'icon': 'dashboard' },
         { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
-        { 'name': 'Adopters', 'link': 'adopters', 'icon': 'user-circle' },
         { 'name': 'People', 'link': 'person', 'icon': 'street-view' },
+        { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-circle' },
         { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
         { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-plus' },
         { 'name': 'Sponsors', 'link': 'sponsors', 'icon': 'money' },
-        { 'name': 'Volunteers', 'link': 'volunteers', 'icon': 'handshake-o' },
+        { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
         { 'name': 'Donations', 'link': 'donations', 'icon': 'dollar' },
         { 'name': 'Events', 'link': 'event', 'icon': 'car' }
         ]"/>
