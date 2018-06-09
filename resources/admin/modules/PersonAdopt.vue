@@ -20,10 +20,25 @@
       <label-component>Reason</label-component>
       <static-text>{{ adopt.return_reason }}</static-text>
     </form-row>
-    
-    <person-remark>
-    
-    </person-remark>
+  
+    <form-row>
+      <label-component>Remarks</label-component>
+      <static-text>
+        Home - Abc<br>
+        Personality - Def
+      </static-text>
+    </form-row>
+  
+    <form-row>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-10">
+        <router-link :to="'/adopter/save/'+adopt.adopter_id">
+          <button type="button" class="btn btn-success">
+            Update
+          </button>
+        </router-link>
+      </div>
+    </form-row>
     
     <hr>
   </div>

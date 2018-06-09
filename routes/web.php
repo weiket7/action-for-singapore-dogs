@@ -23,6 +23,7 @@ Route::get('api/events/{adopt_id}', 'EventController@get');
 Route::get('api/person', 'PersonController@all');
 Route::get('api/person/search', 'PersonController@search');
 Route::get('api/person/get/{person_id}', 'PersonController@get');
+Route::post('api/person/save', 'PersonController@save');
 Route::post('api/person/save/{person_id}', 'PersonController@save');
 
 Route::get('api/adopter/get/{adopter_id}', 'AdopterController@get');

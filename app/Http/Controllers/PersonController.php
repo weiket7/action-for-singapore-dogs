@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller {
-  public function save(PersonRequest $request, $person_id) {
+  public function save(PersonRequest $request, $person_id = null) {
     $person = new Person();
     if ($person_id) {
       $person = Person::find($request->person_id);

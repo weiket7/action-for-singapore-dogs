@@ -14,6 +14,7 @@ class Person extends Model
     $this->name = $input['name'];
     $this->mobile = $input['mobile'];
     $this->address = $input['address'];
+    $this->email = $input['email'];
     $this->is_adopter = $input['is_adopter'];
     $this->is_rescuer = $input['is_rescuer'];
     $this->is_foster = $input['is_foster'];

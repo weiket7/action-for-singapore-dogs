@@ -3,7 +3,7 @@
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
         <label-component>Dog Name</label-component>
-        <select2-component name='dog_name' url="api/adopt/search" v-if="is_create"
+        <select2-component name='dog_name' url="api/adopt/search" v-if="has_adopt_id == false && is_create"
                            event_name="select-adopt"
                            v-on:select-adopt="selectAdopt"></select2-component>
         <static-text v-else>
@@ -19,7 +19,10 @@
         <select2-component name='person_name' url="api/person/search" v-if="is_create"
                            event_name="select-person"
                            v-on:select-person="selectPerson"></select2-component>
-  
+        <static-text v-else>
+          <router-link :to="'/person/save/'+person.person_id">{{ person.name }}</router-link>
+        </static-text>
+        
         <label-component>Mobile</label-component>
         <static-text>{{ person.mobile }}</static-text>
       </form-row>
@@ -85,6 +88,9 @@
     computed: {
       is_create() {
         return this.$route.path === "/adopter/save";
+      },
+      has_adopt_id() {
+        return this.$route.query.adopt_id > 0;
       }
     },
     methods: {
@@ -102,6 +108,10 @@
       }
     },
     created() {
+      if (this.has_adopt_id) {
+        this.selectAdopt(this.$route.query.adopt_id);
+        this.adopter.adopted_on = moment().format('YYYY-MM-DD');
+      }
       if (!this.is_create) {
         axios.get('api/adopter/get/'+this.$route.params.adopter_id)
           .then(response => {

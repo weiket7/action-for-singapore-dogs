@@ -6,12 +6,15 @@
           <form-row>
             <label-component>Name</label-component>
             <textbox-component v-model="person.name"></textbox-component>
-            
-            <label-component>Mobile</label-component>
-            <textbox-component v-model="person.mobile"></textbox-component>
+  
+            <label-component>Email</label-component>
+            <textbox-component v-model="person.email"></textbox-component>
           </form-row>
           
           <form-row>
+            <label-component>Mobile</label-component>
+            <textbox-component v-model="person.mobile"></textbox-component>
+            
             <label-component>Address</label-component>
             <textbox-component v-model="person.address"></textbox-component>
           </form-row>
@@ -69,7 +72,7 @@
         adopts: [],
         fosters: [],
         rescues: [],
-        tabs: []
+        tabs: ['General']
       }
     },
     computed: {
@@ -80,16 +83,17 @@
     methods: {
       generateTabs() {
         let tabs = ['General'];
-        if (this.person.is_adopter == "1") {
+        console.log(JSON.stringify(this.person));
+        if (this.person.is_adopter) {
           tabs.push('Adopt');
         }
-        if (this.person.is_rescuer == "1") {
+        if (this.person.is_rescuer) {
           tabs.push('Rescue');
         }
-        if (this.person.is_foster == "1") {
+        if (this.person.is_foster) {
           tabs.push('Foster');
         }
-        if (this.person.is_volunteer == "1") {
+        if (this.person.is_volunteer) {
           tabs.push('Volunteer');
         }
         return tabs;
@@ -124,16 +128,17 @@
       },
     },
     created() {
-      axios.get("api/person/get/" + this.$route.params.person_id)
-        .then(response => {
-          this.person = response.data.person;
-          this.adopts = response.data.adopts;
-          this.fosters = response.data.fosters;
-          this.rescues = response.data.rescues;
-        })
-        .catch(error => { console.log(error); });
-      this.tabs = this.generateTabs();
-  
+      if(!this.is_create) {
+        axios.get("api/person/get/" + this.$route.params.person_id)
+          .then(response => {
+            this.person = response.data.person;
+            this.adopts = response.data.adopts;
+            this.fosters = response.data.fosters;
+            this.rescues = response.data.rescues;
+            this.tabs = this.generateTabs();
+          })
+          .catch(error => { console.log(error); });
+      }
     }
   }
 </script>

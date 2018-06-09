@@ -6,11 +6,14 @@
         <router-link :to="'/person/save/'+adopter.person_id">{{ adopter.name }}</router-link>
       </static-text>
       
-      <label-component>Mobile</label-component>
-      <static-text>{{ adopter.mobile }}</static-text>
+      <label-component>Email</label-component>
+      <static-text>{{ adopter.email }}</static-text>
     </form-row>
     
     <form-row>
+      <label-component>Mobile</label-component>
+      <static-text>{{ adopter.mobile }}</static-text>
+      
       <label-component>Address</label-component>
       <static-text>{{ adopter.address }}</static-text>
     </form-row>
@@ -31,7 +34,7 @@
       <static-text>{{ adopter.return_reason }}</static-text>
     </form-row>
   
-    <form-row v-show="adopter.returned == 1">
+    <form-row>
       <label-component>Remarks</label-component>
       <static-text>
         Home - Abc<br>

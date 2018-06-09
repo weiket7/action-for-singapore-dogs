@@ -82,7 +82,7 @@
         <form-row>
           <div class="col-lg-2"></div>
           <div class="col-lg-10">
-            <router-link :to="'/adopter/save'">
+            <router-link :to="'/adopter/save?adopt_id='+adopt.adopt_id">
               <button type="button" class="btn btn-primary">
                 Add Adopter
               </button>

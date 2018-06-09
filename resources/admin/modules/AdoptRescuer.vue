@@ -5,12 +5,15 @@
       <static-text>
         <router-link :to="'/person/save/'+rescuer.person_id">{{ rescuer.name }}</router-link>
       </static-text>
-    
-      <label-component>Mobile</label-component>
-      <static-text>{{ rescuer.mobile }}</static-text>
+  
+      <label-component>Email</label-component>
+      <static-text>{{ rescuer.email }}</static-text>
     </form-row>
   
     <form-row>
+      <label-component>Mobile</label-component>
+      <static-text>{{ rescuer.mobile }}</static-text>
+      
       <label-component>Address</label-component>
       <static-text>{{ rescuer.address }}</static-text>
     </form-row>
