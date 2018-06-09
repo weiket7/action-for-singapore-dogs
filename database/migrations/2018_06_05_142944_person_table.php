@@ -14,11 +14,11 @@ class PersonTable extends Migration
       $table->string('email', 50);
       $table->string('mobile', 20);
       $table->string('address', 100);
-      $table->boolean('is_rescuer')->nullable();
-      $table->boolean('is_adopter')->nullable();
-      $table->boolean('is_foster')->nullable();
-      $table->boolean('is_sponsor')->nullable();
-      $table->boolean('is_volunteer')->nullable();
+      $table->boolean('is_rescuer')->default(0);
+      $table->boolean('is_adopter')->default(0);
+      $table->boolean('is_foster')->default(0);
+      $table->boolean('is_sponsor')->default(0);
+      $table->boolean('is_volunteer')->default(0);
       $table->string('desc', 250)->nullable();
     });
     

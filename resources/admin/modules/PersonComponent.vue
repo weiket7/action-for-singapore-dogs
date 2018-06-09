@@ -58,10 +58,12 @@
       existingPerson() {
         $("#"+this.select2_name).next().show();
         this.source = "E";
+        this.$emit('existing-person');
       },
       newPerson() {
         $("#"+this.select2_name).next().hide();
         this.source = "N";
+        this.$emit('new-person');
       },
       selectPerson(person_id) {
         axios.get('api/person/get-single/' + person_id)

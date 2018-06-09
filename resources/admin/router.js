@@ -6,6 +6,7 @@ import Adopt from './pages/Adopt'
 import EventList from './pages/EventList'
 import Event from './pages/Event'
 import Person from './pages/Person'
+import Adopter from './pages/Adopter'
 import AdopterList from './pages/AdopterList'
 import PersonList from './pages/PersonList'
 import RescuerList from './pages/RescuerList'
@@ -29,12 +30,14 @@ export default new Router({
     { path: '/person', name: 'PersonList', component: PersonList },
     { path: '/person/save', name: 'Person', component: Person },
     { path: '/person/save/:person_id', name: 'Person', component: Person },
+    
     { path: '/adopter', name: 'AdopterList', component: AdopterList },
+    { path: '/adopter/save', name: 'Adopter', component: Adopter },
+    { path: '/adopter/save/:adopter_id', name: 'Adopter', component: Adopter },
+    
     { path: '/rescuer', name: 'RescuerList', component: RescuerList },
     { path: '/foster', name: 'FosterList', component: FosterList },
     { path: '/volunteer', name: 'VolunteerList', component: VolunteerList },
     { path: '/volunteer/:volunteer_id', name: 'Volunteer', component: Volunteer },
-
-
   ]
 })

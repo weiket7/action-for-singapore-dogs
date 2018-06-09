@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Fosters">
+  <single-portlet title="Fosters" create_link="/foster/save">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
@@ -13,7 +13,7 @@
         <tr v-for="person in persons">
           <td><!--{{ProductStat::$values[p.stat]}}--></td>
           <td width="450px">
-            <router-link v-bind:to="'/foster/'+person.person_id">{{ person.name }}</router-link>
+            <router-link v-bind:to="'/foster/save/'+person.person_id">{{ person.name }}</router-link>
           </td>
           <td>{{ person.mobile }}</td>
         </tr>

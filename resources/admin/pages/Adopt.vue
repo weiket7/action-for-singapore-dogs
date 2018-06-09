@@ -74,34 +74,39 @@
       </tab>
       <tab :name="'Adopter'">
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-          <adopter-component v-for="(adopter, index) in adopters" v-if="adopter"
+          <adopt-adopter v-for="(adopter, index) in adopters" v-if="adopter"
                              v-on:update-person="updateAdopter"
                              v-on:remove-person="removeAdopter"
-                             :adopter="adopter" :index="index" :key="adopter.person_id"></adopter-component>
-          
-          <form-row>
-            <div class="col-lg-2"></div>
-            <div class="col-lg-10">
-              <button type="button" @click="addAdopterRow()" class="btn btn-metal">
+                             :adopter="adopter" :index="index" :key="adopter.person_id"></adopt-adopter>
+        
+        <form-row>
+          <div class="col-lg-2"></div>
+          <div class="col-lg-10">
+            <router-link :to="'/adopter/save'">
+              <button type="button" class="btn btn-primary">
                 Add Adopter
               </button>
-            </div>
-          </form-row>
+            </router-link>
+          </div>
+        </form-row>
+
         </form>
       </tab>
       <tab :name="'Rescuer'">
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-          <rescuer-component v-for="(rescuer, index) in rescuers"
+          <adopt-rescuer v-for="(rescuer, index) in rescuers"
                              v-on:update-person="updateRescuer"
                              v-on:remove-person="removeRescuer"
-                             :rescuer="rescuer" :index="index" :key="rescuer.person_id"></rescuer-component>
+                             :rescuer="rescuer" :index="index" :key="rescuer.person_id"></adopt-rescuer>
           
           <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
-              <button type="button" @click="addRescuerRow()" class="btn btn-metal">
-                Add Rescuer
-              </button>
+              <router-link :to="'/rescuer/save'">
+                <button type="button" @click="addRescuerRow()" class="btn btn-primary">
+                 Add Rescuer
+                </button>
+              </router-link>
             </div>
           </form-row>
         </form>
@@ -115,7 +120,7 @@
           <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
-              <button type="button" @click="addFosterRow()" class="btn btn-metal">
+              <button type="button" @click="addFosterRow()" class="btn btn-primary">
                 Add Foster
               </button>
             </div>
@@ -129,9 +134,9 @@
 <script>
   import axios from 'axios'
   import Errors from '../../common/errors'
-  import RescuerComponent from "../modules/RescuerComponent";
-  import FosterComponent from "../modules/FosterComponent";
-  import AdopterComponent from "../modules/AdopterComponent";
+  import AdoptRescuer from "../modules/AdoptRescuer";
+  import FosterComponent from "../modules/AdoptFoster";
+  import AdoptAdopter from "../modules/AdoptAdopter";
   
   export default {
     name: "adopt",
@@ -237,9 +242,9 @@
       }
     },
     components: {
-      RescuerComponent,
+      AdoptRescuer,
       FosterComponent,
-      AdopterComponent,
+      AdoptAdopter,
     },
   }
 </script>

@@ -13,7 +13,7 @@
   export default {
     name: "select2-component",
     props: {
-      name: { type: String, required: false},
+      name: { type: String, required: true},
       error: { type: String, required: false},
       url: { type: String, required: true },
       event_name: { type: String, required: false },
@@ -26,7 +26,7 @@
       }
     },
     mounted() {
-      var options = {
+      let options = {
         width: '100%',
         minimumInputLength: 2,
         ajax: {

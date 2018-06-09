@@ -16,16 +16,21 @@ class AdoptController extends Controller {
     return $adopt->saveAdopt($request->all());
   }
   
-  public function messages() {
-    return ['name.required'=>'Name is required'];
-  }
-  
   public function all(Request $request) {
     return Adopt::all();
   }
   
   public function list(Request $request, $adopt_ids) {
     return Adopt::whereIn('adopt_id', explode(',', $adopt_ids))->get();
+  }
+  
+  public function search(Request $request) {
+    $term = $request->term;
+    return Adopt::where('name', 'like', '%'.$term.'%')->select(['adopt_id as id', 'name as text'])->get();
+  }
+  
+  public function getSingle(Request $request, $adopt_id) {
+    return Adopt::where('adopt_id', $adopt_id)->first();
   }
   
   public function temp(Request $request, $count) {
@@ -58,13 +63,13 @@ class AdoptController extends Controller {
     $data['adopt'] = $adopt;
     $data['fosters'] = DB::table('foster')->where('adopt_id', $adopt_id)
       ->join('person', 'foster.person_id', '=', 'person.person_id')
-      ->select('foster.person_id', 'name', 'mobile', 'address', 'start_date', 'end_date')->get();
+      ->select('foster_id', 'foster.person_id', 'name', 'mobile', 'address', 'start_date', 'end_date')->get();
     $data['adopters'] = DB::table('adopter')->where('adopt_id', $adopt_id)
       ->join('person', 'adopter.person_id', '=', 'person.person_id')
-      ->select('adopter.person_id', 'name', 'mobile', 'address', 'adopted_on', 'returned', 'returned_on', 'return_reason')->get();
+      ->select('adopter_id', 'adopter.person_id', 'name', 'mobile', 'address', 'adopted_on', 'returned', 'returned_on', 'return_reason')->get();
     $data['rescuers'] = DB::table('rescuer')->where('adopt_id', $adopt_id)
       ->join('person', 'rescuer.person_id', '=', 'person.person_id')
-      ->select('rescuer.person_id', 'name', 'mobile', 'address')->get();
+      ->select('rescuer_id', 'rescuer.person_id', 'name', 'mobile', 'address')->get();
     return $data;
   }
   

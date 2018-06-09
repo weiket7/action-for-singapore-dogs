@@ -38,7 +38,7 @@ class PersonController extends Controller {
     $data['adopts'] = DB::table('adopter')->where('person_id', $person_id)
       ->join('adopt', 'adopt.adopt_id', '=', 'adopter.person_id')->select('adopt.name', 'adopt.adopt_id', 'adopted_on', 'returned', 'returned_on', 'return_reason')->get();
     $data['fosters'] = DB::table('foster')->where('person_id', $person_id)
-      ->join('adopt', 'adopt.adopt_id', '=', 'foster.person_id')->select('adopt.name')->get();
+      ->join('adopt', 'adopt.adopt_id', '=', 'foster.person_id')->select('adopt.name', 'adopt.adopt_id', 'start_date', 'end_date')->get();
     $data['rescues'] = DB::table('rescuer')->where('person_id', $person_id)
       ->join('adopt', 'adopt.adopt_id', '=', 'rescuer.person_id')->select('adopt.name')->get();
     return $data;

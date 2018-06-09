@@ -25,8 +25,8 @@
       //bootstrap datepicker sql format = yyyy-mm-dd
       //bootstrap datepicker display format = dd M yyyy
       //moment sql format = YYYY-DD-MM
-      //moment display format = DD MMM YYYY
       this.display_value = moment(this.value, 'YYYY-MM-DD').format('DD MMM YYYY');
+      //moment display format = DD MMM YYYY
       //console.log('name='+this.name+' value='+this.value+' display_value='+this.display_value);
       let options = {
         todayHighlight: true,

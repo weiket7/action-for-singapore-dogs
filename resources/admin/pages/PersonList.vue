@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="People">
+  <single-portlet title="People" create_link="/person/save">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <tr>

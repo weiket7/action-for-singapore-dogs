@@ -38,19 +38,14 @@
       <tab name="Adopt">
         <div class="m-form m-form--fit m-form--label-align-right">
           <person-adopt v-for="(adopt, index) in adopts" :adopt="adopt" :index="index" :key="adopt.adopt_id"></person-adopt>
-  
-          <form-row>
-            <div class="col-lg-2"></div>
-            <div class="col-lg-10">
-              <button type="button" @click="addAdoptRow()" class="btn btn-metal">
-                Add Adopter
-              </button>
-            </div>
-          </form-row>
         </div>
       </tab>
       <tab name="Rescue"></tab>
-      <tab name="Foster"></tab>
+      <tab name="Foster">
+        <div class="m-form m-form--fit m-form--label-align-right">
+          <person-foster v-for="(foster, index) in fosters" :foster="foster" :index="index" :key="foster.adopt_id"></person-foster>
+        </div>
+      </tab>
     </tabs>
   </single-portlet>
 </template>
@@ -59,11 +54,13 @@
   import axios from 'axios';
   import CheckboxComponent from "../components/CheckboxComponent";
   import PersonAdopt from "../modules/PersonAdopt";
+  import PersonFoster from "../modules/PersonFoster";
   
   export default {
     name: "Person",
     components: {
       PersonAdopt,
+      PersonFoster,
       CheckboxComponent
     },
     data() {
@@ -133,9 +130,10 @@
           this.adopts = response.data.adopts;
           this.fosters = response.data.fosters;
           this.rescues = response.data.rescues;
-          this.tabs = this.generateTabs();
         })
         .catch(error => { console.log(error); });
+      this.tabs = this.generateTabs();
+  
     }
   }
 </script>
