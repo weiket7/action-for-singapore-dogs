@@ -4,6 +4,7 @@ use App\Http\Requests\PersonRequest;
 use App\Models\Enums\PersonType;
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller {
   public function save(PersonRequest $request, $person_id) {
@@ -33,8 +34,18 @@ class PersonController extends Controller {
   }
   
   public function get(Request $request, $person_id) {
-    return Person::where('person_id', $person_id)
-      ->first();
+    $data['person'] = Person::where('person_id', $person_id)->first();
+    $data['adopts'] = DB::table('adopter')->where('person_id', $person_id)
+      ->join('adopt', 'adopt.adopt_id', '=', 'adopter.person_id')->select('adopt.name', 'adopt.adopt_id', 'adopted_on', 'returned', 'returned_on', 'return_reason')->get();
+    $data['fosters'] = DB::table('foster')->where('person_id', $person_id)
+      ->join('adopt', 'adopt.adopt_id', '=', 'foster.person_id')->select('adopt.name')->get();
+    $data['rescues'] = DB::table('rescuer')->where('person_id', $person_id)
+      ->join('adopt', 'adopt.adopt_id', '=', 'rescuer.person_id')->select('adopt.name')->get();
+    return $data;
+  }
+  
+  public function getSingle(Request $request, $person_id) {
+    return Person::where('person_id', $person_id)->first();
   }
   
   private function appendType($type, $query)

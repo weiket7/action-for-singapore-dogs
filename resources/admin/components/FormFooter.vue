@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-10">
-          <button type="submit" @click="$emit('submit')" class="btn btn-success">
+          <button type="submit" class="btn btn-success">
             Save
           </button>
         </div>

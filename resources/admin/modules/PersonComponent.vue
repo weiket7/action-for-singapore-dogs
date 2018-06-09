@@ -27,11 +27,11 @@
     
     <div class="form-group m-form__group row">
       <label-component>Mobile</label-component>
-      <static-text v-if="source == 'E'" :value="person.mobile"></static-text>
+      <static-text v-if="source == 'E'">{{ person.mobile }}</static-text>
       <textbox-component v-else></textbox-component>
       
       <label-component>Address</label-component>
-      <static-text v-if="source == 'E'" :value="person.address"></static-text>
+      <static-text v-if="source == 'E'">{{ person.address }}</static-text>
       <textbox-component v-else></textbox-component>
     </div>
   </div>
@@ -64,7 +64,7 @@
         this.source = "N";
       },
       selectPerson(person_id) {
-        axios.get('api/person/get/' + person_id)
+        axios.get('api/person/get-single/' + person_id)
           .then(response => {
             this.$emit('update-person', response.data );
           })
