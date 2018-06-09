@@ -13,7 +13,7 @@
         <tr v-for="person in persons">
           <td><!--{{ProductStat::$values[p.stat]}}--></td>
           <td width="450px">
-            <router-link v-bind:to="'/rescuer/'+person.person_id">{{ person.name }}</router-link>
+            <router-link v-bind:to="'/person/save/'+person.person_id">{{ person.name }}</router-link>
           </td>
           <td>{{ person.mobile }}</td>
         </tr>

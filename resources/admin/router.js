@@ -10,6 +10,7 @@ import Adopter from './pages/Adopter'
 import AdopterList from './pages/AdopterList'
 import PersonList from './pages/PersonList'
 import RescuerList from './pages/RescuerList'
+import Foster from './pages/Foster'
 import FosterList from './pages/FosterList'
 import Volunteer from './pages/Volunteer'
 import VolunteerList from './pages/VolunteerList'
@@ -34,9 +35,12 @@ export default new Router({
     { path: '/adopter', name: 'AdopterList', component: AdopterList },
     { path: '/adopter/save', name: 'Adopter', component: Adopter },
     { path: '/adopter/save/:adopter_id', name: 'Adopter', component: Adopter },
+  
+    { path: '/foster', name: 'FosterList', component: FosterList },
+    { path: '/foster/save', name: 'Foster', component: Foster },
+    { path: '/foster/save/:foster_id', name: 'Foster', component: Foster },
     
     { path: '/rescuer', name: 'RescuerList', component: RescuerList },
-    { path: '/foster', name: 'FosterList', component: FosterList },
     { path: '/volunteer', name: 'VolunteerList', component: VolunteerList },
     { path: '/volunteer/:volunteer_id', name: 'Volunteer', component: Volunteer },
   ]

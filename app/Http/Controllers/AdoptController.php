@@ -63,13 +63,13 @@ class AdoptController extends Controller {
     $data['adopt'] = $adopt;
     $data['fosters'] = DB::table('foster')->where('adopt_id', $adopt_id)
       ->join('person', 'foster.person_id', '=', 'person.person_id')
-      ->select('foster_id', 'foster.person_id', 'name', 'mobile', 'address', 'start_date', 'end_date')->get();
+      ->select('foster_id', 'foster.person_id', 'name', 'mobile', 'address', 'email', 'start_date', 'end_date')->get();
     $data['adopters'] = DB::table('adopter')->where('adopt_id', $adopt_id)
       ->join('person', 'adopter.person_id', '=', 'person.person_id')
-      ->select('adopter_id', 'adopter.person_id', 'name', 'mobile', 'address', 'adopted_on', 'returned', 'returned_on', 'return_reason')->get();
+      ->select('adopter_id', 'adopter.person_id', 'name', 'mobile', 'address', 'email', 'adopted_on', 'returned', 'returned_on', 'return_reason')->get();
     $data['rescuers'] = DB::table('rescuer')->where('adopt_id', $adopt_id)
       ->join('person', 'rescuer.person_id', '=', 'person.person_id')
-      ->select('rescuer_id', 'rescuer.person_id', 'name', 'mobile', 'address')->get();
+      ->select('rescuer_id', 'rescuer.person_id', 'name', 'mobile', 'address', 'email')->get();
     return $data;
   }
   

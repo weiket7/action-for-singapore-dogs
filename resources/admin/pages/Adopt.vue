@@ -6,105 +6,105 @@
           <form-row>
             <label-component required>Name</label-component>
             <textbox-component v-model="adopt.name" :error="errors.get('name')"></textbox-component>
-            
+
             <label-component required>Status</label-component>
             <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')"></radio-component>
           </form-row>
-          
+
           <form-row>
             <label-component>Foster</label-component>
             <radio-component v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }" :error="errors.get('foster')"></radio-component>
-            
+
             <label-component>Rescued On</label-component>
             <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')" v-if="adopt.rescued_on"></datepicker-component>
           </form-row>
-          
+
           <form-row v-if="adopt.adopt_id">
             <label-component>Location</label-component>
             <select-component v-model="adopt.location" :options="location_options" :error="errors.get('location')"></select-component>
           </form-row>
-          
+
           <form-row>
             <label-component required>Gender</label-component>
             <radio-component v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
-            
+
             <label-component>Birthday</label-component>
             <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')" v-if="adopt.birthday"></datepicker-component>
           </form-row>
-          
+
           <form-row>
             <label-component>Breed</label-component>
             <textbox-component v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
-            
+
             <label-component>Colour</label-component>
             <textbox-component v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
           </form-row>
-          
+
           <form-row>
             <label-component>Microchipped</label-component>
             <radio-component v-model="adopt.microchip" :options="{ 'Y': 'Yes', 'N': 'No' }" :error="errors.get('microchip')"></radio-component>
-            
+
             <label-component v-show="adopt.microchip == 'Y'">Microchip Date</label-component>
             <datepicker-component name="microchip_date" v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
           </form-row>
-          
+
           <form-row>
             <label-component>Vaccinated</label-component>
             <radio-component v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
-            
+
             <label-component v-show="adopt.vaccinate == 'Y'">Vaccinate Date</label-component>
             <datepicker-component name="vaccinate_date" v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate == 'Y'"></datepicker-component>
           </form-row>
-          
+
           <form-row>
             <label-component>HDB Approved</label-component>
             <radio-component v-model="adopt.hdb" :options="{ 'Y': 'Yes', 'N': 'No' }" :error="errors.get('hdb')"></radio-component>
           </form-row>
-          
+
           <form-row>
             <label-component>Health</label-component>
             <textarea-component v-model="adopt.health" :error="errors.get('health')"></textarea-component>
-            
+
             <label-component>Behaviour</label-component>
             <textarea-component v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
           </form-row>
-          
+
           <form-footer></form-footer>
         </form>
       </tab>
       <tab :name="'Adopter'">
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <adopt-adopter v-for="(adopter, index) in adopters" v-if="adopter"
-                             v-on:update-person="updateAdopter"
-                             v-on:remove-person="removeAdopter"
-                             :adopter="adopter" :index="index" :key="adopter.person_id"></adopt-adopter>
-        
-        <form-row>
-          <div class="col-lg-2"></div>
-          <div class="col-lg-10">
-            <router-link :to="'/adopter/save?adopt_id='+adopt.adopt_id">
-              <button type="button" class="btn btn-primary">
-                Add Adopter
-              </button>
-            </router-link>
-          </div>
-        </form-row>
+                         v-on:update-person="updateAdopter"
+                         v-on:remove-person="removeAdopter"
+                         :adopter="adopter" :index="index" :key="adopter.person_id"></adopt-adopter>
+
+          <form-row>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+              <router-link :to="'/adopter/save?adopt_id='+adopt.adopt_id">
+                <button type="button" class="btn btn-primary">
+                  Add Adopter
+                </button>
+              </router-link>
+            </div>
+          </form-row>
 
         </form>
       </tab>
       <tab :name="'Rescuer'">
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <adopt-rescuer v-for="(rescuer, index) in rescuers"
-                             v-on:update-person="updateRescuer"
-                             v-on:remove-person="removeRescuer"
-                             :rescuer="rescuer" :index="index" :key="rescuer.person_id"></adopt-rescuer>
-          
+                         v-on:update-person="updateRescuer"
+                         v-on:remove-person="removeRescuer"
+                         :rescuer="rescuer" :index="index" :key="rescuer.person_id"></adopt-rescuer>
+
           <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
-              <router-link :to="'/rescuer/save'">
-                <button type="button" @click="addRescuerRow()" class="btn btn-primary">
-                 Add Rescuer
+              <router-link :to="'/adopter/save?adopt_id='+adopt.adopt_id">
+                <button type="button" class="btn btn-primary">
+                  Add Adopter
                 </button>
               </router-link>
             </div>
@@ -120,9 +120,11 @@
           <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
-              <button type="button" @click="addFosterRow()" class="btn btn-primary">
-                Add Foster
-              </button>
+              <router-link :to="'/foster/save?adopt_id='+adopt.adopt_id">
+                <button type="button" class="btn btn-primary">
+                  Add Foster
+                </button>
+              </router-link>
             </div>
           </form-row>
         </form>

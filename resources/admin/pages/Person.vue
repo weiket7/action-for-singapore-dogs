@@ -43,7 +43,11 @@
           <person-adopt v-for="(adopt, index) in adopts" :adopt="adopt" :index="index" :key="adopt.adopt_id"></person-adopt>
         </div>
       </tab>
-      <tab name="Rescue"></tab>
+      <tab name="Rescue">
+        <div class="m-form m-form--fit m-form--label-align-right">
+          <person-rescue v-for="(rescue, index) in rescues" :rescue="rescue" :index="index" :key="rescue.adopt_id"></person-rescue>
+        </div>
+      </tab>
       <tab name="Foster">
         <div class="m-form m-form--fit m-form--label-align-right">
           <person-foster v-for="(foster, index) in fosters" :foster="foster" :index="index" :key="foster.adopt_id"></person-foster>
@@ -58,12 +62,14 @@
   import CheckboxComponent from "../components/CheckboxComponent";
   import PersonAdopt from "../modules/PersonAdopt";
   import PersonFoster from "../modules/PersonFoster";
-  
+  import PersonRescue from "../modules/PersonRescue";
+
   export default {
     name: "Person",
     components: {
       PersonAdopt,
       PersonFoster,
+      PersonRescue,
       CheckboxComponent
     },
     data() {

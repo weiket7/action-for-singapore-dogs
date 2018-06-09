@@ -17,23 +17,7 @@
       <label-component>Address</label-component>
       <static-text>{{ rescuer.address }}</static-text>
     </form-row>
-  
-    <form-row>
-      <label-component>Adopted On</label-component>
-      <static-text>{{ rescuer.adopted_on | formatDate }}</static-text>
-    
-      <label-component>Returned</label-component>
-      <static-text>{{ rescuer.returned ? "Yes" : "No" }}</static-text>
-    </form-row>
-  
-    <form-row v-show="rescuer.returned == 1">
-      <label-component>Returned On</label-component>
-      <static-text>{{ rescuer.returned_on | formatDate }}</static-text>
-    
-      <label-component>Reason</label-component>
-      <static-text>{{ rescuer.return_reason }}</static-text>
-    </form-row>
-  
+
     <form-row>
       <label-component>Remarks</label-component>
       <static-text>

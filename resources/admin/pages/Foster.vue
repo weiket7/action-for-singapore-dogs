@@ -1,5 +1,5 @@
 <template>
-  <single-portlet :title="is_create ? 'Add Adopter' : 'Update Adopter'">
+  <single-portlet :title="is_create ? 'Add Foster' : 'Update Foster'">
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
         <label-component>Dog Name</label-component>
@@ -36,20 +36,11 @@
       </form-row>
       
       <form-row>
-        <label-component>Adopted On</label-component>
-        <datepicker-component name="adopted_on" v-model="adopter.adopted_on" v-if="is_create || adopter.adopted_on"></datepicker-component>
+        <label-component>Start Date</label-component>
+        <datepicker-component name="start_date" v-model="foster.start_date" v-if="is_create || foster.start_date"></datepicker-component>
         
-        <label-component v-show="!is_create">Returned</label-component>
-        <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned"
-                         :options="{'1': 'Yes', '0': 'No'}" v-show="!is_create"></radio-component>
-      </form-row>
-      
-      <form-row v-show="adopter.returned == 1">
-        <label-component>Returned On</label-component>
-        <datepicker-component name="returned_on" v-model="adopter.returned_on" v-if="is_create || adopter.adopted_on"></datepicker-component>
-        
-        <label-component>Reason</label-component>
-        <textarea-component name="return_reason" :value="adopter.return_reason"></textarea-component>
+        <label-component>End Date</label-component>
+        <datepicker-component name="end_date" v-model="foster.end_date" v-if="is_create || foster.end_date"></datepicker-component>
       </form-row>
       
       <person-remark></person-remark>
@@ -79,18 +70,18 @@
   import axios from 'axios';
   
   export default {
-    name: "Adopter",
+    name: "Foster",
     components: {PersonRemark},
     data() {
       return {
-        adopter: {},
+        foster: {},
         adopt: {},
         person: {}
       }
     },
     computed: {
       is_create() {
-        return this.$route.path === "/adopter/save";
+        return this.$route.path === "/foster/save";
       },
       has_adopt_id() {
         return this.$route.query.adopt_id > 0;
@@ -110,7 +101,7 @@
           });
       },
       onSubmit() {
-        let url = 'api/adopter/save';
+        let url = 'api/foster/save';
         if (!this.is_create) {
           url += '/'+ this.$route.params.adopt_id
         }
@@ -138,13 +129,13 @@
     created() {
       if (this.has_adopt_id) {
         this.selectAdopt(this.$route.query.adopt_id);
-        this.adopter.adopted_on = moment().format('YYYY-MM-DD');
+        this.foster.adopted_on = moment().format('YYYY-MM-DD');
       }
       if (!this.is_create) {
-        axios.get('api/adopter/get/'+this.$route.params.adopter_id)
+        axios.get('api/foster/get/'+this.$route.params.foster_id)
           .then(response => {
             this.adopt = response.data.adopt;
-            this.adopter = response.data.adopter;
+            this.foster = response.data.foster;
             this.person = response.data.person;
           });
       }

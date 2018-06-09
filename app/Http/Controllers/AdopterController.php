@@ -8,7 +8,7 @@ use App\Models\Volunteer;
 use Illuminate\Http\Request;
 
 class AdopterController extends Controller {
-  public function save(Request $request, $adopter_id) {
+  public function save(Request $request, $adopter_id = null) {
     $adopter = new Adopter();
     if ($adopter_id) {
       $adopter = Adopt::find($request->get('adopter_id'));

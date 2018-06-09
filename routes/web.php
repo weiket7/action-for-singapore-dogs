@@ -15,8 +15,6 @@ Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list');
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug');
 Route::get('api/adopt/search', 'AdoptController@search');
 
-
-
 Route::get('api/events', 'EventController@all');
 Route::get('api/events/{adopt_id}', 'EventController@get');
 
@@ -27,7 +25,13 @@ Route::post('api/person/save', 'PersonController@save');
 Route::post('api/person/save/{person_id}', 'PersonController@save');
 
 Route::get('api/adopter/get/{adopter_id}', 'AdopterController@get');
+Route::post('api/adopter/save/', 'AdopterController@save');
 Route::post('api/adopter/save/{adopter_id}', 'AdopterController@save');
+
+Route::get('api/foster/get/{foster_id}', 'FosterController@get');
+Route::post('api/foster/save/', 'FosterController@save');
+Route::post('api/foster/save/{foster_id}', 'FosterController@save');
+
 
 Route::get('api/volunteer', 'VolunteerController@all');
 Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
