@@ -15,7 +15,12 @@
           display_value: ""
       }
     },
-    props: ['name', 'value', 'error', 'months'],
+    props: {
+      name: { type: String, required: true},
+      value: { required: false},
+      error: { type: String, required: false},
+      months: { type: Boolean, required: false},
+    },
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);
@@ -26,7 +31,10 @@
       //bootstrap datepicker display format = dd M yyyy
       //moment sql format = YYYY-MM-DD
       //moment display format = DD MMM YYYY
-      this.display_value = moment(this.value, 'YYYY-MM-DD').format('DD MMM YYYY');
+      this.display_value = "";
+      if (this.value) {
+        this.display_value = moment(this.value, 'YYYY-MM-DD').format('DD MMM YYYY');
+      }
       let options = {
         todayHighlight: true,
         defaultViewDate: this.display_value,

@@ -138,7 +138,7 @@
       }
     },
     created: function() {
-      axios.get('api/events')
+      axios.get('api/event')
         .then(response => {
           this.events = response.data;
         })

@@ -29,7 +29,7 @@ export default new Router({
     { path: '/adopt/save/:adopt_id', name: 'SaveAdopt', component: Adopt },
     
     { path: '/event', name: 'EventList', component: EventList },
-    { path: '/event/:event_id', name: 'Event', component: Event },
+    { path: '/event/save/:event_id', name: 'Event', component: Event },
   
     { path: '/person', name: 'PersonList', component: PersonList },
     { path: '/person/save', name: 'AddPerson', component: Person },

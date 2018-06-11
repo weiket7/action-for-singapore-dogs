@@ -13,7 +13,7 @@
         <tr v-for="event in events">
           <td><!--{{ProductStat::$values[p.stat]}}--></td>
           <td width="450px">
-            <router-link v-bind:to="'/events/'+event.event_id">{{ event.name }}</router-link>
+            <router-link v-bind:to="'/event/save/'+event.event_id">{{ event.name }}</router-link>
           </td>
           <td>{{ event.date | formatDate }}</td>
         </tr>
@@ -36,7 +36,7 @@
       }
     },
     created() {
-      axios.get('api/events')
+      axios.get('api/event')
         .then(response => {
           this.events = response.data
         })
