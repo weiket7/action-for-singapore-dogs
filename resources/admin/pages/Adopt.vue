@@ -11,15 +11,10 @@
             <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')"></radio-component>
           </form-row>
 
-          <form-row>
-            <label-component>Foster</label-component>
-            <radio-component v-model="adopt.foster" :options="{ 'D': 'Don\'t Need', 'N': 'Need', 'F': 'Fostered' }" :error="errors.get('foster')"></radio-component>
-
-            <label-component>Rescued On</label-component>
-            <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')" v-if="adopt.rescued_on"></datepicker-component>
-          </form-row>
-
           <form-row v-if="adopt.adopt_id">
+            <label-component>Rescued On</label-component>
+            <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
+
             <label-component>Location</label-component>
             <select-component v-model="adopt.location" :options="location_options" :error="errors.get('location')"></select-component>
           </form-row>

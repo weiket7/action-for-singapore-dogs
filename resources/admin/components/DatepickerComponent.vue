@@ -41,7 +41,8 @@
       };
       let vue = this
       $('#datepicker-'+this.name).datepicker(options).on('changeDate', function() {
-        vue.updateValue($(this).val());
+        let date = $(this).val();
+        vue.updateValue(moment(date, 'DD MMM YYYY').format('YYYY-MM-DD'));
       });
     }
   }

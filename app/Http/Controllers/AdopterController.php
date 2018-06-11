@@ -11,9 +11,9 @@ class AdopterController extends Controller {
   public function save(Request $request, $adopter_id = null) {
     $adopter = new Adopter();
     if ($adopter_id) {
-      $adopter = Adopt::find($request->get('adopter_id'));
+      $adopter = Adopter::find($adopter_id);
     }
-    return $adopter->saveAdopt($request->all());
+    return $adopter->saveAdopter($request->all());
   }
   
   public function get(Request $request, $adopter_id) {

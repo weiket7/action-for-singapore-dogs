@@ -9,6 +9,7 @@ import Person from './pages/Person'
 import Adopter from './pages/Adopter'
 import AdopterList from './pages/AdopterList'
 import PersonList from './pages/PersonList'
+import Rescuer from './pages/Rescuer'
 import RescuerList from './pages/RescuerList'
 import Foster from './pages/Foster'
 import FosterList from './pages/FosterList'
@@ -22,24 +23,28 @@ export default new Router({
     { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   
     { path: '/adopt', name: 'AdoptList', component: AdoptList },
-    { path: '/adopt/save', name: 'Adopt', component: Adopt },
-    { path: '/adopt/save/:adopt_id', name: 'Adopt', component: Adopt },
+    { path: '/adopt/save', name: 'AddAdopt', component: Adopt },
+    { path: '/adopt/save/:adopt_id', name: 'SaveAdopt', component: Adopt },
     
     { path: '/event', name: 'EventList', component: EventList },
     { path: '/event/:event_id', name: 'Event', component: Event },
   
     { path: '/person', name: 'PersonList', component: PersonList },
-    { path: '/person/save', name: 'Person', component: Person },
-    { path: '/person/save/:person_id', name: 'Person', component: Person },
+    { path: '/person/save', name: 'AddPerson', component: Person },
+    { path: '/person/save/:person_id', name: 'SavePerson', component: Person },
     
     { path: '/adopter', name: 'AdopterList', component: AdopterList },
-    { path: '/adopter/save', name: 'Adopter', component: Adopter },
-    { path: '/adopter/save/:adopter_id', name: 'Adopter', component: Adopter },
+    { path: '/adopter/save', name: 'AddAdopter', component: Adopter },
+    { path: '/adopter/save/:adopter_id', name: 'SaveAdopter', component: Adopter },
   
     { path: '/foster', name: 'FosterList', component: FosterList },
-    { path: '/foster/save', name: 'Foster', component: Foster },
-    { path: '/foster/save/:foster_id', name: 'Foster', component: Foster },
+    { path: '/foster/save', name: 'AddFoster', component: Foster },
+    { path: '/foster/save/:foster_id', name: 'SaveFoster', component: Foster },
     
+    { path: '/rescuer', name: 'RescuerList', component: RescuerList },
+    { path: '/rescuer/save', name: 'AddRescuer', component: Rescuer },
+    { path: '/rescuer/save/:foster_id', name: 'SaveRescuer', component: Rescuer },
+  
     { path: '/rescuer', name: 'RescuerList', component: RescuerList },
     { path: '/volunteer', name: 'VolunteerList', component: VolunteerList },
     { path: '/volunteer/:volunteer_id', name: 'Volunteer', component: Volunteer },

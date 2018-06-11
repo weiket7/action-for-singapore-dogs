@@ -1,22 +1,25 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\FosterRequest;
+use App\Models\Adopt;
 use App\Models\Foster;
 use App\Models\Person;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class FosterController extends Controller {
   public function save(FosterRequest $request, $foster_id = null) {
+    Log::info('foster_id = '.$foster_id);
     $foster = new Foster();
     if ($foster_id) {
-      $foster = Foster::find($request->get('foster_id'));
+      $foster = Foster::find($foster_id);
     }
     return $foster->saveFoster($request->all());
   }
   
   public function get(Request $request, $foster_id) {
     $foster = Foster::where('foster_id', $foster_id)->first();
-    $data['adopt'] = Foster::find($foster->adopt_id);
+    $data['adopt'] = Adopt::find($foster->adopt_id);
     $data['person'] = Person::find($foster->person_id);
     $data['foster'] = $foster;
     return $data;

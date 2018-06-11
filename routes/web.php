@@ -6,6 +6,7 @@ Route::get('backend', function () { return view("admin"); });
 Route::get('api/adopt', 'AdoptController@all');
 Route::post('api/adopt/save', 'AdoptController@save');
 Route::post('api/adopt/save/{adopt_id}', 'AdoptController@save');
+
 Route::get('api/person/get-single/{person_id}', 'PersonController@getSingle');
 Route::get('api/adopt/get-single/{adopt_id}', 'AdoptController@getSingle');
 

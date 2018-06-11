@@ -101,20 +101,22 @@
         axios.get('api/adopt/get-single/'+adopt_id)
           .then(response => {
             this.adopt = response.data;
+            this.adopter.adopt_id = this.adopt.adopt_id;
           });
       },
       selectPerson(person_id) {
         axios.get('api/person/get-single/'+person_id)
           .then(response => {
             this.person = response.data;
+            this.adopter.person_id = this.person.person_id;
           });
       },
       onSubmit() {
         let url = 'api/adopter/save';
         if (!this.is_create) {
-          url += '/'+ this.$route.params.adopt_id
+          url += '/'+ this.$route.params.adopter_id
         }
-        axios.post(url, this.person)
+        axios.post(url, this.adopter)
           .then(this.onSuccess)
           .catch(this.onError);
       },
@@ -128,17 +130,16 @@
       },
       onSuccess(response) {
         if (this.is_create) {
-          toastr.success("Person added");
+          toastr.success("Adopter added");
           this.$router.push('/person/save/'+person_id);
         }
-        toastr.success("Person updated");
+        toastr.success("Adopter updated");
         this.tabs = this.generateTabs();
       },
     },
     created() {
       if (this.has_adopt_id) {
         this.selectAdopt(this.$route.query.adopt_id);
-        this.adopter.adopted_on = moment().format('YYYY-MM-DD');
       }
       if (!this.is_create) {
         axios.get('api/adopter/get/'+this.$route.params.adopter_id)

@@ -10,15 +10,13 @@ class Foster extends Model
   public $timestamps = false;
   protected $validation;
   
-  public function saveAdopter($input) {
+  public function saveFoster($input) {
     $this->adopt_id = $input['adopt_id'];
     $this->person_id = $input['person_id'];
-    $this->adopted_on = $input['adopted_on'];
-    $this->returned = $input['returned'];
-    $this->returned_on = $input['returned'];
-    $this->return_reason = $input['return_reason'];
+    $this->start_date = $input['start_date'];
+    $this->end_date = $input['end_date'];
     $this->save();
-    return $this->adopter_id;
+    return $this->foster_id;
   }
   
 }

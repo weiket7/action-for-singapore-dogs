@@ -103,9 +103,9 @@
       onSubmit() {
         let url = 'api/foster/save';
         if (!this.is_create) {
-          url += '/'+ this.$route.params.adopt_id
+          url += '/'+ this.$route.params.foster_id
         }
-        axios.post(url, this.person)
+        axios.post(url, this.foster)
           .then(this.onSuccess)
           .catch(this.onError);
       },
@@ -119,10 +119,10 @@
       },
       onSuccess(response) {
         if (this.is_create) {
-          toastr.success("Person added");
+          toastr.success("Foster added");
           this.$router.push('/person/save/'+person_id);
         }
-        toastr.success("Person updated");
+        toastr.success("Foster updated");
         this.tabs = this.generateTabs();
       },
     },

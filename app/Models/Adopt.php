@@ -18,7 +18,7 @@ class Adopt extends Model
     $this->name = $input['name'];
     $this->slug = str_slug($this->name);
     $this->gender = $input['gender'];
-    $this->birthday = Carbon::createFromFormat('d M Y', $input['birthday']);
+    $this->birthday = Carbon::createFromFormat('Y-m-d', $input['birthday']);
     $this->breed = $input['breed'];
     $this->colour = $input['colour'];
     $this->image = '';
