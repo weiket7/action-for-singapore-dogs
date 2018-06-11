@@ -40,6 +40,8 @@ Route::post('api/rescuer/save/{rescuer_id}', 'RescuerController@save');
 Route::get('api/volunteer', 'VolunteerController@all');
 Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
 
+Route::get('api/donation', 'DonationController@all');
+
 Route::get('api/adopt/temp/{count}', 'AdoptController@temp');
 
 /*Route::get('/', function () {

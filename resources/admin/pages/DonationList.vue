@@ -1,13 +1,46 @@
 <template>
-  
+  <single-portlet title="Donations">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Donated On</th>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Payment Method</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="donation in donations">
+          <td>{{ donation.donated_on | formatDate}}</td>
+          <td>
+            <router-link v-bind:to="'/donation/save/'+donation.donation_id">{{ donation.name }}</router-link>
+          </td>
+          <td>{{ donation.amount  }}</td>
+          <td>{{ payment_methods[donation.payment_method] }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </single-portlet>
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
-    name: "DonationList"
+    name: "DonationList",
+    data() {
+      return {
+        donations: {}
+      }
+    },
+    created() {
+      axios.get('api/donation')
+        .then(response=>{
+          this.donations = response.data.donations;
+          this.payment_methods = response.data.payment_methods;
+        })
+    }
   }
 </script>
-
-<style scoped>
-
-</style>

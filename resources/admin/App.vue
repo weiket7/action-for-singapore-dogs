@@ -19,8 +19,8 @@
         { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
         { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-plus' },
         { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
-        { 'name': 'Sponsors', 'link': 'sponsors', 'icon': 'money' },
-        { 'name': 'Donations', 'link': 'donations', 'icon': 'dollar' },
+        { 'name': 'Sponsors', 'link': 'sponsor', 'icon': 'money' },
+        { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
         { 'name': 'Events', 'link': 'event', 'icon': 'car' }
         ]"/>
       </div>
