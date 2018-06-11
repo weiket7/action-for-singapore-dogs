@@ -76,6 +76,11 @@
             <label-component>Behaviour</label-component>
             <textarea-component v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
           </form-row>
+  
+          <form-row>
+            <label-component>Image 1</label-component>
+            <image-component v-model="adopt.image1" :src="'adopts/'+adopt.image" :error="errors.get('adopt.image1')"></image-component>
+          </form-row>
 
           <form-footer></form-footer>
         </form>
@@ -147,6 +152,7 @@
   import AdoptRescuer from "../modules/AdoptRescuer";
   import FosterComponent from "../modules/AdoptFoster";
   import AdoptAdopter from "../modules/AdoptAdopter";
+  import ImageComponent from "../components/ImageComponent";
   
   export default {
     name: "adopt",
@@ -211,26 +217,17 @@
         let adopt_id = response.data;
         this.$router.push('/adopt/save/'+adopt_id);
       },
-      addRescuerRow() {
-        this.rescuers.push({});
-      },
       updateRescuer(o) {
         this.$set(this.rescuers, o.index, o.person);
       },
       removeRescuer(index) {
         this.rescuers.splice(index, 1);
       },
-      addFosterRow() {
-        this.fosters.push({});
-      },
       updateFoster(o) {
         this.$set(this.fosters, o.index, o.person);
       },
       removeFoster(index) {
         this.fosters.splice(index, 1);
-      },
-      addAdopterRow() {
-        this.adopters.push({});
       },
       updateAdopter(o) {
         this.$set(this.adopters, o.index, o.person);
@@ -255,6 +252,7 @@
       AdoptRescuer,
       FosterComponent,
       AdoptAdopter,
+      ImageComponent
     },
   }
 </script>
