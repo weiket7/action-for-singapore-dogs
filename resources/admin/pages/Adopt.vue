@@ -43,6 +43,11 @@
             <datepicker-component name="microchip_date" v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip == 'Y'"></datepicker-component>
           </form-row>
 
+          <div class="form-row" v-show="adopt.microchip == 'Y'">
+            <label-component>Microchip No</label-component>
+            <textbox-component v-model="adopt.microchip_no" :error="errors.get('microchip_no')"></textbox-component>
+          </div>
+
           <form-row>
             <label-component>Vaccinated</label-component>
             <radio-component v-model="adopt.vaccinate" :options="{ 'Y': 'Yes', 'N': 'No' }"></radio-component>
@@ -97,9 +102,9 @@
           <form-row>
             <div class="col-lg-2"></div>
             <div class="col-lg-10">
-              <router-link :to="'/adopter/save?adopt_id='+adopt.adopt_id">
+              <router-link :to="'/rescuer/save?adopt_id='+adopt.adopt_id">
                 <button type="button" class="btn btn-primary">
-                  Add Adopter
+                  Add Rescuer
                 </button>
               </router-link>
             </div>
@@ -158,7 +163,7 @@
         return tabs;
       },
       location_options() {
-        let options = ['ARC'];
+        let options = ['ARC', "The Animal Lodge", "Others"];
         for (let i=0; i<this.adopters.length; i++) {
           options.push("Adopter " + this.adopters[i].name);
         }

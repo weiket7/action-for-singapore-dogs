@@ -13,13 +13,13 @@
         <label-component>Mobile</label-component>
         <textbox-component v-model="volunteer.mobile"></textbox-component>
         
-        <label-component>Address</label-component>
-        <textbox-component v-model="volunteer.address"></textbox-component>
+        <label-component>Email</label-component>
+        <textbox-component v-model="volunteer.email"></textbox-component>
       </form-row>
       
       <form-row>
         <label-component>Interested In</label-component>
-        <checkbox-component :options="interested_in_options"></checkbox-component>
+        <checkbox-component :value="interests" :options="interested_in_options" v-if="volunteer"></checkbox-component>
       </form-row>
       
       <form-footer></form-footer>
@@ -36,7 +36,8 @@
       return {
         volunteer: {},
         volunteer_stats: [],
-        interested_in_options: ['Rescue', 'Rehoming', 'Foster', 'Volunteer at Adoption & Rescue Centre (ARC)', 'Publicity', 'Fund Raising & Events', 'Logistics']
+        interests: [],
+        interested_in_options: ['Rescuing', 'Rehoming', 'Fostering', 'Volunteering', 'Publicity', 'Fund Raising & Events', 'Logistics']
       }
     },
     created() {
@@ -44,6 +45,7 @@
         .then(response => {
           this.volunteer = response.data.volunteer;
           this.volunteer_stats = response.data.volunteer_stats;
+          this.interests = response.data.interests;
         })
         .catch(error => { console.log(error); });
     }

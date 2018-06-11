@@ -33,6 +33,9 @@ Route::get('api/foster/get/{foster_id}', 'FosterController@get');
 Route::post('api/foster/save/', 'FosterController@save');
 Route::post('api/foster/save/{foster_id}', 'FosterController@save');
 
+Route::get('api/rescuer/get/{rescuer_id}', 'RescuerController@get');
+Route::post('api/rescuer/save/', 'RescuerController@save');
+Route::post('api/rescuer/save/{rescuer_id}', 'RescuerController@save');
 
 Route::get('api/volunteer', 'VolunteerController@all');
 Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');

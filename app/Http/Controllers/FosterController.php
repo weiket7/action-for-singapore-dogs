@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Log;
 
 class FosterController extends Controller {
   public function save(FosterRequest $request, $foster_id = null) {
-    Log::info('foster_id = '.$foster_id);
     $foster = new Foster();
     if ($foster_id) {
       $foster = Foster::find($foster_id);

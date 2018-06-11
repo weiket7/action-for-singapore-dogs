@@ -70,6 +70,9 @@
                       <a href="index.html">Adoption & Rescue Centre (ARC)</a>
                     </li>
                     <li>
+                      <a href="index.html">Boarding Services</a>
+                    </li>
+                    <li>
                       <a href="index_singlepage.html">Media</a>
                     </li>
                     <li>
@@ -92,6 +95,9 @@
                     </li>
                     <li>
                       <a href="index_singlepage.html">Project Adore</a>
+                    </li>
+                    <li>
+                      <a href="index_singlepage.html">Gone to Loving Homes</a>
                     </li>
                   </ul>
                 </li>

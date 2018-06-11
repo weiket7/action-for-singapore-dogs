@@ -1,8 +1,8 @@
 <template>
   <div class="col-lg-3">
-    <div :class="class_name">
+    <div :class="className">
       <label v-for="(val, key) in options" class="m-checkbox">
-        <input type="checkbox" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
+        <input type="checkbox" v-bind:value="key" :checked="isChecked(key, val)" :name="name" @change="updateValue($event.target.value)">
         {{ val }}
         <span></span>
       </label>
@@ -26,10 +26,20 @@
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);
+      },
+      isChecked(key, val) {
+        if (this.value === undefined) {
+          return "";
+        }
+        if (typeof this.value === 'string') {
+          return this.value === val || this.value === key;
+        }
+        //console.log("this.value " + this.value + " value="+value);
+        return this.value.indexOf(key) >= 0 ||this.value.indexOf(val) >= 0;
       }
     },
     computed: {
-      class_name() {
+      className() {
         return this.inline ? 'm-checkbox-inline' : 'm-checkbox-list';
       }
     }

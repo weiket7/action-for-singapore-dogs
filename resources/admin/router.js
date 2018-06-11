@@ -43,10 +43,10 @@ export default new Router({
     
     { path: '/rescuer', name: 'RescuerList', component: RescuerList },
     { path: '/rescuer/save', name: 'AddRescuer', component: Rescuer },
-    { path: '/rescuer/save/:foster_id', name: 'SaveRescuer', component: Rescuer },
+    { path: '/rescuer/save/:rescuer_id', name: 'SaveRescuer', component: Rescuer },
   
-    { path: '/rescuer', name: 'RescuerList', component: RescuerList },
     { path: '/volunteer', name: 'VolunteerList', component: VolunteerList },
-    { path: '/volunteer/:volunteer_id', name: 'Volunteer', component: Volunteer },
+    { path: '/volunteer/save', name: 'AddVolunteer', component: Rescuer },
+    { path: '/volunteer/:volunteer_id', name: 'SaveVolunteer', component: Volunteer },
   ]
 })

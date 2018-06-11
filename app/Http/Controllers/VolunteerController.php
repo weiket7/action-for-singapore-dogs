@@ -3,6 +3,7 @@
 use App\Models\Enums\VolunteerStat;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VolunteerController extends Controller {
   public function all(Request $request) {
@@ -14,6 +15,7 @@ class VolunteerController extends Controller {
   public function get(Request $request, $volunteer_id) {
     $data['volunteer'] =  Volunteer::where('volunteer_id', $volunteer_id)->first();
     $data['volunteer_stats'] = VolunteerStat::$values;
+    $data['interests'] = DB::table('volunteer_interest')->where('volunteer_id', $data['volunteer']->volunteer_id)->pluck('interest');
     return $data;
   }
   

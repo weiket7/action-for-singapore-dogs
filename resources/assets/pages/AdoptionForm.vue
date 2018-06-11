@@ -45,7 +45,24 @@
           </div>
         </div>
       </div>
-      
+
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group no-mb">
+            <label class="control-label">Birthday</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group no-mb">
+            <label class="control-label">Postal Code</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">

@@ -15,7 +15,6 @@ class VolunteerTable extends Migration
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
-      $table->string('address', 100);
       $table->string('desc', 250)->nullable();
     });
   
@@ -24,7 +23,6 @@ class VolunteerTable extends Migration
       'name'=>'Vivien',
       'email'=>'vivien@gmail.com',
       'mobile'=>'9123 6666',
-      'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
     ]);
   
     DB::table('volunteer')->insert([
@@ -32,7 +30,6 @@ class VolunteerTable extends Migration
       'name'=>'Valora',
       'email'=>'valora@gmail.com',
       'mobile'=>'9876 6666',
-      'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
     ]);
   }
   
