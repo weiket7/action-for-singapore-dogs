@@ -24,7 +24,7 @@
             <radio-component v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
 
             <label-component>Birthday</label-component>
-            <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')" v-if="adopt.birthday"></datepicker-component>
+            <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')" :months="true" v-if="adopt.birthday"></datepicker-component>
           </form-row>
 
           <form-row>
