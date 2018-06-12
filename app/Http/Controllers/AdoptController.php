@@ -13,6 +13,16 @@ class AdoptController extends Controller {
   
   }
   
+  public function random(Request $request) {
+    if (! $request->session()->get('rand')) {
+      $request->session()->put('rand', rand());
+    }
+    $rand = $request->session()->get('rand');
+    $count = 8;
+    return Adopt::where('stat', AdoptStat::Available)
+      ->orderByRaw("rand(".$rand.")")->limit($count)->get();
+  }
+  
   public function save(AdoptRequest $request, $adopt_id = null) {
     $adopt = new Adopt();
     if ($adopt_id) {
@@ -36,16 +46,6 @@ class AdoptController extends Controller {
   
   public function getSingle(Request $request, $adopt_id) {
     return Adopt::where('adopt_id', $adopt_id)->first();
-  }
-  
-  public function temp(Request $request, $count) {
-    if (! $request->session()->get('rand')) {
-      $request->session()->put('rand', rand());
-    }
-    $rand = $request->session()->get('rand');
-    return Adopt::where('stat', AdoptStat::Available)
-      ->orderByRaw("rand(".$rand.")")->limit($count)->get();
-    return $data;
   }
   
   public function page(Request $request) {

@@ -86,32 +86,10 @@
         <div class="row">
           <div class="visible-lg visible-md">
             <div class="bxslider">
-              <div class="row bxslider-row">
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-              </div>
-
-              <div class="row bxslider-row">
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div data-v-ffd1d23e="" class="col-xs-3 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+              <div v-for="chunk in adopts" class="row bxslider-row">
+                <div v-for="adopt in chunk" class="col-md-3">
+                  <adopt-item :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
+                </div>
               </div>
             </div>
           </div>
@@ -119,19 +97,19 @@
           <div class="hidden-lg hidden-md">
             <div class="bxslider">
               <div class="row bxslider-row">
-                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
 
-                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
               </div>
 
               <div class="row bxslider-row">
-                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
 
-                <div data-v-ffd1d23e="" class="col-xs-6 adopt-grid-border"><div data-v-ffd1d23e="" class="adopt-grid-image"><a data-v-ffd1d23e="" href="#/adopt/Kodomo" class=""><img data-v-ffd1d23e="" src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 data-v-ffd1d23e="" class="adopt-grid-name"><a data-v-ffd1d23e="" href="adopt/Kodomo">Kodomo</a></h3> <p data-v-ffd1d23e="" class="adopt-grid-content"><i data-v-ffd1d23e="" class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i data-v-ffd1d23e="" class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a data-v-ffd1d23e="" href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
+                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
               </div>
             </div>
           </div>
@@ -262,9 +240,13 @@
   import AdoptItem from "../components/AdoptItem";
   import axios from 'axios'
   import chunk from 'lodash.chunk';
+  import Adopt from "./Adopt";
 
   export default {
-    components: {AdoptItem},
+    components: {
+      Adopt,
+      AdoptItem
+    },
     name: "home",
     data() {
       return {
@@ -272,18 +254,16 @@
       }
     },
     mounted() {
-      $(document).ready(function(){
-        $('.bxslider').bxSlider({
-          minSlides: 2,
-          maxSlides: 2
-        });
-      });
 
-      axios.get('api/adopt/')
+      axios.get('api/adopt/random')
         .then(response => {
           let adopts = response.data;
           this.num_of_adopts = Object.keys(adopts).length;
-          this.adopts = chunk(adopts, 3);
+          this.adopts = chunk(adopts, 4);
+
+          this.$nextTick(function() {
+            $('.bxslider').bxSlider();
+          });
         })
         .catch(error => { console.log(error); })
     }
