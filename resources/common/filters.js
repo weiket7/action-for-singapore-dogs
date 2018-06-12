@@ -12,10 +12,6 @@ Vue.filter("formatDate", function (value) {
   return moment(value).format("DD MMM YYYY");
 });
 
-Vue.filter("showGender", function (value) {
-  return value == 'M' ? 'Male' : 'Female';
-});
-
 Vue.filter("formatDateTime", function (value) {
   if (value === "") {
     return "";
@@ -23,3 +19,6 @@ Vue.filter("formatDateTime", function (value) {
   return moment(value).format("DD MMM YYYY hh:mm:ss A");
 });
 
+Vue.filter("showGender", function (value) {
+  return value == 'M' ? 'Male' : 'Female';
+});

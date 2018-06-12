@@ -5,18 +5,26 @@
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <form-row>
             <label-component>Name</label-component>
-            <textbox-component v-model="person.name"></textbox-component>
+            <textbox-component v-model="person.name" :error="errors.get('name')"></textbox-component>
   
             <label-component>Email</label-component>
-            <textbox-component v-model="person.email"></textbox-component>
+            <textbox-component v-model="person.email" :error="errors.get('email')"></textbox-component>
           </form-row>
           
           <form-row>
             <label-component>Mobile</label-component>
-            <textbox-component v-model="person.mobile"></textbox-component>
+            <textbox-component v-model="person.mobile" :error="errors.get('mobile')"></textbox-component>
             
+            <label-component>Birthday</label-component>
+            <datepicker-component name="birthday" v-model="person.birthday" v-if="person.birthday" :error="errors.get('birthday')"></datepicker-component>
+          </form-row>
+
+          <form-row>
             <label-component>Address</label-component>
-            <textbox-component v-model="person.address"></textbox-component>
+            <textbox-component v-model="person.address" :error="errors.get('address')"></textbox-component>
+
+            <label-component>Postal</label-component>
+            <textbox-component v-model="person.postal" :error="errors.get('postal')"></textbox-component>
           </form-row>
           
           <form-row>
@@ -63,6 +71,7 @@
   import PersonAdopt from "../modules/PersonAdopt";
   import PersonFoster from "../modules/PersonFoster";
   import PersonRescue from "../modules/PersonRescue";
+  import Errors from "../../common/errors";
 
   export default {
     name: "Person",
@@ -78,7 +87,8 @@
         adopts: [],
         fosters: [],
         rescues: [],
-        tabs: ['General']
+        tabs: ['General'],
+        errors: new Errors(),
       }
     },
     computed: {

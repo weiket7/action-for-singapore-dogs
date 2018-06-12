@@ -15,12 +15,12 @@
       </div>
     </div>
 
-    <section id="what-we-do" style="background-color:#f2f2f2" class="pt-30">
+    <section id="how-you-can-help" style="background-color:#f2f2f2" class="pt-30 mt-30">
       <div class="container">
         <div class="row">
           <div class="col-md-10 col-md-offset-1 text-center">
             <h2 class="section_header bold">
-              what we do
+              How you can help
             </h2>
           </div>
         </div>
@@ -29,7 +29,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Rescue</a>
+                  <a href="blog-single-right.html" class="highlight">ADOPT</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
@@ -45,7 +45,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Rehabilitate</a>
+                  <a href="blog-single-right.html" class="highlight">Donate</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
@@ -61,7 +61,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Rehome</a>
+                  <a href="blog-single-right.html" class="highlight">Volunteer</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
@@ -143,12 +143,12 @@
       </div>
     </section>
 
-    <section id="how-you-can-help" style="background-color:#f2f2f2" class="pt-30 mt-30">
+    <section id="what-we-do" style="background-color:#f2f2f2" class="pt-30">
       <div class="container">
         <div class="row">
           <div class="col-md-10 col-md-offset-1 text-center">
             <h2 class="section_header bold">
-              How you can help
+              what we do
             </h2>
           </div>
         </div>
@@ -157,7 +157,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html" class="highlight">Adopt</a>
+                  <a href="blog-single-right.html">Rescue</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
@@ -173,7 +173,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html" class="highlight">Donate</a>
+                  <a href="blog-single-right.html">Rehabilitate</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
@@ -189,7 +189,7 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html" class="highlight">Volunteer</a>
+                  <a href="blog-single-right.html">Rehome</a>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque

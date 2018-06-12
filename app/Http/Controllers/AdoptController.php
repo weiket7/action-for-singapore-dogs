@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
 use App\Models\Adopt;
 use App\Models\Enums\AdoptStat;
@@ -8,6 +9,10 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 class AdoptController extends Controller {
+  public function form(AdoptionFormRequest $request) {
+  
+  }
+  
   public function save(AdoptRequest $request, $adopt_id = null) {
     $adopt = new Adopt();
     if ($adopt_id) {

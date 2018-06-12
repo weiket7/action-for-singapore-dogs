@@ -61,7 +61,7 @@
             <nav class="mainmenu_wrapper">
               <ul class="mainmenu nav sf-menu">
                 <li class="active">
-                  <router-link :to="'/about'" :data-target="'about'">About</router-link>
+                  <a href="#">Adopt</a>
                   <ul>
                     <li>
                       <a href="index.html">Who We Are</a>
@@ -85,7 +85,7 @@
                   <a href="#">Adopt</a>
                   <ul>
                     <li>
-                      <router-link :to="'/adopt'" :data-target="'adopt'">Adoption Gallery</router-link>
+                      <router-link :to="'/adopt'" :data-target="'adopt'">Dogs for Adoption</router-link>
                     </li>
                     <li>
                       <a href="index_singlepage.html">Why Adopt a Dog</a>
@@ -103,11 +103,21 @@
                 </li>
                 
                 <li>
-                  <router-link :to="'/volunteer'" :data-target="'volunteer'">Volunteer</router-link>
+                  <a href="#">Donate</a>
+                  <ul>
+                    <li>
+                      <router-link :to="'/donate'" :data-target="'donate'">Make a Donation</router-link>
+                    </li>
+                    <li>
+                      <router-link :to="'/sponsor'" :data-target="'donate'">Sponsor</router-link>
+                    </li>
+                    <li>
+                      <router-link :to="'/gift-shop'" :data-target="'donate'">Gift Shop</router-link>
+                    </li>
+                  </ul>
                 </li>
-                
                 <li>
-                  <router-link :to="'/donate'" :data-target="'donate'">Donate</router-link>
+                  <router-link :to="'/volunteer'" :data-target="'volunteer'">Volunteer</router-link>
                 </li>
                 <li>
                   <router-link :to="'/events'" :data-target="'events'">Events</router-link>

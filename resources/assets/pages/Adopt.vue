@@ -94,6 +94,9 @@
               8+
             </label>
           </div>
+          <br>
+
+          <button type="button" class="theme_button inverse margin_0">Search</button>
         
         </div>
       </aside>

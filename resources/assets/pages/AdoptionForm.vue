@@ -5,27 +5,27 @@
         <h3>Thank you for your interest in adopting</h3>
         
         <h5>
-          Please fill in the form to share some information with us so that we can assist you in the adoption process.<br>
-          Upon submission, our rehomers will get in touch with you via text and/or email
+          Please fill in the short form below to share some information with us so that we can assist you in the adoption process.<br>
+          Upon submission, our rehomers will get in touch with you via email.
         </h5>
       </div>
     </div>
     
-    <form>
+    <form @submit.prevent="onSubmit()">
       <h4 class="adoption-form-header">Personal Info</h4>
       
       <div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">
             <label class="control-label">Name</label>
-            <input type="text" class="form-control" autofocus>
+            <input type="text" v-model="form.name" class="form-control" autofocus>
           </div>
         </div>
         
         <div class="col-md-6">
           <div class="form-group no-mb">
             <label class="control-label">Mobile</label>
-            <input type="text" class="form-control">
+            <input type="text" v-model="form.mobile" class="form-control">
           </div>
         </div>
       </div>
@@ -34,36 +34,35 @@
         <div class="col-md-6">
           <div class="form-group no-mb">
             <label class="control-label">Email</label>
-            <input type="text" class="form-control">
+            <input type="text" v-model="form.email" class="form-control">
           </div>
         </div>
         
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Address</label>
-            <input type="text" class="form-control">
+            <label class="control-label">Birthday</label>
+            <input type="text" v-model="form.birthday" class="form-control">
           </div>
         </div>
       </div>
 
-
       <div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Birthday</label>
-            <input type="text" class="form-control">
+            <label class="control-label">Address</label>
+            <input type="text" v-model="form.address" class="form-control">
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="form-group no-mb">
             <label class="control-label">Postal Code</label>
-            <input type="text" class="form-control">
+            <input type="text" v-model="form.postal" class="form-control">
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <!--<div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">
             <label class="control-label">Occupation</label>
@@ -143,7 +142,7 @@
             <input type="text" class="form-control">
           </div>
         </div>
-      </div>
+      </div>-->
       
       <hr>
       
@@ -157,8 +156,33 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
-    name: "adoption-form"
+    name: "adoption-form",
+    data() {
+      return {
+        form: {}
+      }
+    },
+    methods: {
+      onSubmit() {
+        axios.post("api/adopt/form", this.form)
+          .then(this.onSuccess)
+          .catch(this.onError);
+      },
+      onSuccess() {
+        alert();
+      },
+      onError(error) {
+        if (error.response.status == 500) {
+          toastr.error("A system error occurred");
+          return;
+        }
+        toastr.error("There were some errors, please check the form");
+        this.errors.record(error.response.data.errors);
+      }
+    }
   }
 </script>
 

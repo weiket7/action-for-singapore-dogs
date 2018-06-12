@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -14,6 +15,8 @@ class PersonTable extends Migration
       $table->string('email', 50);
       $table->string('mobile', 20);
       $table->string('address', 100);
+      $table->string('postal', 10);
+      $table->dateTime('birthday');
       $table->boolean('is_rescuer')->default(0);
       $table->boolean('is_adopter')->default(0);
       $table->boolean('is_foster')->default(0);
@@ -27,6 +30,8 @@ class PersonTable extends Migration
       'email'=>'ralph@gmail.com',
       'mobile'=>'9111 111',
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
+      'postal'=>'123456',
+      'birthday'=>Carbon::now()->subYear(30),
       'is_rescuer'=>1,
     ]);
     
@@ -35,6 +40,8 @@ class PersonTable extends Migration
       'email'=>'ray@gmail.com',
       'mobile'=>'9222 2222',
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
+      'postal'=>'123456',
+      'birthday'=>Carbon::now()->subYear(30),
       'is_rescuer'=>1,
     ]);
   
@@ -43,6 +50,8 @@ class PersonTable extends Migration
       'email'=>'fable@gmail.com',
       'mobile'=>'9333 3333',
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
+      'postal'=>'123456',
+      'birthday'=>Carbon::now()->subYear(30),
       'is_foster'=>1,
     ]);
   
@@ -51,6 +60,8 @@ class PersonTable extends Migration
       'email'=>'fabia@gmail.com',
       'mobile'=>'9444 4444',
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
+      'postal'=>'123456',
+      'birthday'=>Carbon::now()->subYear(30),
       'is_foster'=>1,
     ]);
   
@@ -59,6 +70,8 @@ class PersonTable extends Migration
       'email'=>'aaron@gmail.com',
       'mobile'=>'9555 5555',
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
+      'postal'=>'123456',
+      'birthday'=>Carbon::now()->subYear(30),
       'is_adopter'=>1,
     ]);
   
@@ -67,6 +80,8 @@ class PersonTable extends Migration
       'email'=>'alan@gmail.com',
       'mobile'=>'9666 6666',
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
+      'postal'=>'123456',
+      'birthday'=>Carbon::now()->subYear(30),
       'is_adopter'=>1,
     ]);
   }

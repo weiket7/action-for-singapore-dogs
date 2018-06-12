@@ -1,6 +1,5 @@
 <?php namespace App\Models;
 
-use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
@@ -9,7 +8,6 @@ class Adopter extends Model
   public $table = 'adopter';
   protected $primaryKey = 'adopter_id';
   public $timestamps = false;
-  protected $validation;
   
   public function saveAdopter($input) {
     $this->stat = 'A';

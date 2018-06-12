@@ -8,6 +8,7 @@ Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list');
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug');
 Route::get('api/adopt/search', 'AdoptController@search');
+Route::get('api/adopt/form', 'AdoptController@form');
 
 Route::get('api/adopt', 'AdoptController@all');
 Route::post('api/adopt/save', 'AdoptController@save');
