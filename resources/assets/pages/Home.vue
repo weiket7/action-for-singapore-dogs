@@ -86,7 +86,7 @@
         <div class="row">
           <div class="visible-lg visible-md">
             <div class="bxslider">
-              <div v-for="chunk in adopts" class="row bxslider-row">
+              <div v-for="chunk in adopts_desktop" class="row bxslider-row">
                 <div v-for="adopt in chunk" class="col-md-3">
                   <adopt-item :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
                 </div>
@@ -96,20 +96,10 @@
 
           <div class="hidden-lg hidden-md">
             <div class="bxslider">
-              <div class="row bxslider-row">
-                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-              </div>
-
-              <div class="row bxslider-row">
-                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
-
-                <div class="col-xs-6 adopt-grid-border"><div class="adopt-grid-image"><a href="#/adopt/Kodomo" class=""><img src="assets/images/adopts/kodomo.jpg" alt=""></a></div> <h3 class="adopt-grid-name"><a href="adopt/Kodomo">Kodomo</a></h3> <p class="adopt-grid-content"><i class="fas fa-venus"></i> <span data-v-ffd1d23e="">Female</span> <br data-v-ffd1d23e=""> <i class="fas fa-birthday-cake"></i> 12 yrs 1 mth
-                  <br data-v-ffd1d23e=""> <i class="fas fa-home"></i> <span data-v-ffd1d23e="">Not HDB Approved</span><br data-v-ffd1d23e=""></p> <a href="#/adopt/Kodomo" class="theme_button inverse margin_0">Learn More</a></div>
+              <div v-for="chunk in adopts_mobile" class="row bxslider-row">
+                <div v-for="adopt in chunk" class="col-xs-6">
+                  <adopt-item :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
+                </div>
               </div>
             </div>
           </div>
@@ -250,7 +240,8 @@
     name: "home",
     data() {
       return {
-        adopts: {},
+        adopts_desktop: {},
+        adopts_mobile: {},
       }
     },
     mounted() {
@@ -259,7 +250,8 @@
         .then(response => {
           let adopts = response.data;
           this.num_of_adopts = Object.keys(adopts).length;
-          this.adopts = chunk(adopts, 4);
+          this.adopts_desktop = chunk(adopts, 4);
+          this.adopts_mobile = chunk(adopts, 2);
 
           this.$nextTick(function() {
             $('.bxslider').bxSlider();
