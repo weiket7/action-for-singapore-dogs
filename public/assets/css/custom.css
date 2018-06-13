@@ -55,7 +55,7 @@
 /*for layout*/
 @media (max-width: 991px) {
   a.logo img {
-    max-width: 290px;
+    max-width: 280px;
   }
   .small-teaser .media-left {
     padding-right: 10px;
