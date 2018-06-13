@@ -64,19 +64,19 @@
                   <a href="#">Adopt</a>
                   <ul>
                     <li>
-                      <a href="index.html">Who We Are</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Who We Are</router-link>
                     </li>
                     <li>
-                      <a href="index.html">Adoption & Rescue Centre (ARC)</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Adoption & Rescue Centre (ARC)</router-link>
                     </li>
                     <li>
-                      <a href="index.html">Boarding Services</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Boarding Services</router-link>
                     </li>
                     <li>
-                      <a href="index_singlepage.html">Media</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Media</router-link>
                     </li>
                     <li>
-                      <a href="index_singlepage.html">Annual Reports</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Annual Reports</router-link>
                     </li>
                   </ul>
                 </li>
@@ -85,19 +85,19 @@
                   <a href="#">Adopt</a>
                   <ul>
                     <li>
-                      <router-link :to="'/adopt'" :data-target="'adopt'">Dogs for Adoption</router-link>
+                      <router-link :to="'/dogs-for-adoption'" :data-target="'adopt'">Dogs for Adoption</router-link>
                     </li>
                     <li>
-                      <a href="index_singlepage.html">Why Adopt a Dog</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Why Adopt a Dog</router-link>
                     </li>
                     <li>
-                      <a href="index_singlepage.html">Adoption Procedure</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Adoption Procedure</router-link>
                     </li>
                     <li>
-                      <a href="index_singlepage.html">Project Adore</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Project Adore</router-link>
                     </li>
                     <li>
-                      <a href="index_singlepage.html">Gone to Loving Homes</a>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Gone to Loving Homes</router-link>
                     </li>
                   </ul>
                 </li>
@@ -109,10 +109,10 @@
                       <router-link :to="'/donate'" :data-target="'donate'">Make a Donation</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/sponsor'" :data-target="'donate'">Sponsor</router-link>
+                      <router-link :to="'/sponsor'" :data-target="'coming-soon'">Sponsor</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/gift-shop'" :data-target="'donate'">Gift Shop</router-link>
+                      <router-link :to="'/gift-shop'" :data-target="'coming-soon'">Gift Shop</router-link>
                     </li>
                   </ul>
                 </li>

@@ -4,13 +4,26 @@
       <div class="row">
         <div class="col-md-8">
           <div class="bxslider">
-            <div><img :src="'assets/images/dimple.jpg'" title="Funky roots"></div>
-            <div><img :src="'assets/images/dimple.jpg'" title="The long and winding road"></div>
-            <div><img :src="'assets/images/dimple.jpg'" title="Happy trees"></div>
+            <div><img :src="'assets/images/banners/banner1.jpg'" title="Funky roots"></div>
+            <div><img :src="'assets/images/banners/banner2.jpg'" title="The long and winding road"></div>
+            <div><img :src="'assets/images/banners/banner3.jpg'" title="Happy trees"></div>
+            <div><img :src="'assets/images/banners/banner4.jpg'" title="Happy trees"></div>
           </div>
         </div>
         <div class="col-md-4">
           <h2 class="section_header bold">Events</h2>
+          <h4 class="entry-title">
+            Basic Obedience Class
+          </h4>
+
+          <p class="event-detail"><i aria-hidden="true" class="fa fa-map-marker"></i>
+            Bishan Park II
+            <br> <i aria-hidden="true" class="fa fa-calendar-check-o"></i>
+            15 Jun 2018
+            <br> <i aria-hidden="true" class="fa fa-clock"></i> 4.30 pm to 6.00pm (1.5hrs)
+            <span><br><i aria-hidden="true" class="fas fa-ruler-horizontal"></i> 6 weeks, every Sunday
+                  </span> <span><br><i aria-hidden="true" class="fa fa-dollar-sign"></i> 350
+                  </span></p>
         </div>
       </div>
     </div>
@@ -29,13 +42,13 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html" class="highlight">ADOPT</a>
+                  <router-link :to="'/dogs-for-adoption'" class="bold">ADOPT</router-link>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
                 </p>
                 <p class="topmargin_30">
-                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                  <router-link :to="'/dogs-for-adoption'" class="theme_button">View Dogs for Adoption</router-link>
                 </p>
               </div>
             </article>
@@ -45,13 +58,13 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html" class="highlight">Donate</a>
+                  <router-link :to="'/donate'" class="bold">Donate</router-link>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
                 </p>
                 <p class="topmargin_30">
-                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                  <router-link :to="'/donate'" class="theme_button">Make a Donation</router-link>
                 </p>
               </div>
             </article>
@@ -61,13 +74,13 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html" class="highlight">Volunteer</a>
+                  <router-link :to="'/volunteer'" class="bold">Volunteer</router-link>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
                 </p>
                 <p class="topmargin_30">
-                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                  <router-link :to="'/volunteer'" class="theme_button">Be a Volunteer</router-link>
                 </p>
               </div>
             </article>
@@ -76,7 +89,7 @@
       </div>
     </section>
 
-    <section id="dogs-for-adoption" class="mt-30">
+    <section id="dogs-for-adoption" class="mt-30 mb-30">
       <div class="container">
         <div class="row">
           <h2 class="section_header bold text-center">
@@ -105,7 +118,7 @@
           </div>
 
           <div class="col-md-12 text-center">
-            <a href="#/adopt/Kodomo" class="theme_button btn-view-adoption margin_0">View All Dog for Adoption</a>
+            <a href="#/adopt/Kodomo" class="theme_button btn-view-adoption margin_0">View Dogs for Adoption</a>
           </div>
         </div>
       </div>
@@ -125,13 +138,13 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Rescue</a>
+                  <router-link :to="'/coming-soon'" class="bold">Rescue</router-link>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
                 </p>
                 <p class="topmargin_30">
-                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                  <router-link :to="'/coming-soon'" class="theme_button inverse">Learn More</router-link>
                 </p>
               </div>
             </article>
@@ -141,13 +154,13 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Rehabilitate</a>
+                  <router-link :to="'/coming-soon'" class="bold">Rehabilitate</router-link>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
                 </p>
                 <p class="topmargin_30">
-                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                  <router-link :to="'/coming-soon'" class="theme_button inverse">Learn More</router-link>
                 </p>
               </div>
             </article>
@@ -157,13 +170,13 @@
             <article class="vertical-item">
               <div class="item-content">
                 <h3 class="entry-title">
-                  <a href="blog-single-right.html">Rehome</a>
+                  <router-link :to="'/coming-soon'" class="bold">Rehome</router-link>
                 </h3>
                 <p>
                   At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
                 </p>
                 <p class="topmargin_30">
-                  <a href="blog-single-right.html" class="theme_button inverse">Read more</a>
+                  <router-link :to="'/coming-soon'" class="theme_button inverse">Learn More</router-link>
                 </p>
               </div>
             </article>
@@ -266,9 +279,6 @@
   .bxslider-row {
     margin-left: 0;
     margin-right: 0;
-  }
-  .bx-wrapper {
-    margin-bottom: 30px;
   }
   .btn-view-adoption {
     padding: 15px;

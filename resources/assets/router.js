@@ -9,13 +9,14 @@ import Events from './pages/Events'
 import EventView from './pages/EventView'
 import Contact from './pages/Contact'
 import HeartList from './pages/HeartList'
+import ComingSoon from './pages/ComingSoon'
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     { path: '', name: 'Index', component: Home },
-    { path: '/adopt', name: 'Adopt', component: Adopt },
+    { path: '/dogs-for-adoption', name: 'Adopt', component: Adopt },
     { path: '/i-want-to-adopt', name: 'HeartList', component: HeartList },
     { path: '/adopt/:slug', name: 'AdoptView', component: AdoptView },
     { path: '/donate', name: 'Donate', component: Donate },
@@ -23,5 +24,6 @@ export default new Router({
     { path: '/events', name: 'Events', component: Events },
     { path: '/events/:slug', name: 'EventView', component: EventView },
     { path: '/contact', name: 'Contact', component: Contact },
+    { path: '/coming-soon', name: 'ComingSoon', component: ComingSoon },
   ]
 })

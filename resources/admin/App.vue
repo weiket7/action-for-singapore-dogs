@@ -19,9 +19,11 @@
         { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
         { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-plus' },
         { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
-        { 'name': 'Sponsors', 'link': 'sponsor', 'icon': 'money' },
+        { 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },
         { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
-        { 'name': 'Events', 'link': 'event', 'icon': 'car' }
+        { 'name': 'Banners', 'link': 'banner', 'icon': 'car' },
+        { 'name': 'Events', 'link': 'event', 'icon': 'car' },
+        { 'name': 'Adoption Drive', 'link': 'event', 'icon': 'car' }
         ]"/>
       </div>
       <!-- END: Aside Menu -->
