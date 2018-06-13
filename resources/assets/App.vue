@@ -109,10 +109,10 @@
                       <router-link :to="'/donate'" :data-target="'donate'">Make a Donation</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/sponsor'" :data-target="'coming-soon'">Sponsor</router-link>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Sponsor</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/gift-shop'" :data-target="'coming-soon'">Gift Shop</router-link>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Gift Shop</router-link>
                     </li>
                   </ul>
                 </li>

@@ -810,7 +810,7 @@ input[type*="password"],
 }
 
 /* collapse accordion */
-.panel-heading .panel-title {
+/*.panel-heading .panel-title {
 	font-size: inherit;
 	letter-spacing: 0;
 	padding: 0;
@@ -935,7 +935,7 @@ input[type*="password"],
 
 .collapse-unstyled .panel-content {
 	padding: 10px 20px;
-}
+}*/
 
 /* progress bars */
 .progress-bar-title {
