@@ -147,31 +147,24 @@
           
           <div class="col-md-4">
             <a href="./" class="logo">
-              <img src="assets/images/logo-dark.png" alt="" />
+              <img src="assets/images/action-for-singapore-dogs-logo.png" alt="" />
             </a>
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque orrupti quos </p>
-            <div class="media fontsize_18">
-              <i class="fa fa-search highlight rightpadding_5"></i>
-              address:
-              <span class="grey">12 Ave., New York</span>
-            </div>
+            <p>A society set up to help the stray and abandoned dogs in Singapore</p>
             <div class="media fontsize_18">
               <i class="fa fa-envelope highlight rightpadding_5"></i>
-              email:
-              <span class="grey">info@giving.com</span>
+              Email:
+              <span class="grey">info@asdsingapore.com</span>
             </div>
             <div class="media fontsize_18">
-              <i class="fa fa-phone highlight rightpadding_5"></i>
-              phone:
-              <span class="grey">800 516 3290</span>
+              <i class="fa fa-search highlight rightpadding_5"></i>
+              Address:
+              <span class="grey">80 Lim Chu Kang Lane 1, Singapore 718911</span>
             </div>
             <div class="topmargin_30 darklinks">
               <a class="social-icon theme-color-icon soc-facebook" href="#" title="Facebook"></a>
               <a class="social-icon theme-color-icon soc-twitter" href="#" title="Twitter"></a>
-              <a class="social-icon theme-color-icon soc-google" href="#" title="Google"></a>
-              <a class="social-icon theme-color-icon soc-linkedin" href="#" title="LinkedIn"></a>
-              <a class="social-icon theme-color-icon soc-flickr" href="#" title="Flickr"></a>
-              <a class="social-icon theme-color-icon soc-rss" href="#" title="Rss"></a>
+              <a class="social-icon theme-color-icon soc-instagram" href="#" title="Instagram"></a>
+              <a class="social-icon theme-color-icon soc-youtube" href="#" title="Youtube"></a>
             </div>
           </div>
           
@@ -179,30 +172,21 @@
             <div class="topmargin_20">
               <div class="widget widget_recent_posts">
                 
-                <h3 class="widget-title">From the blog</h3>
+                <h3 class="widget-title">Gone to Loving Homes</h3>
                 <ul class="greylinks">
                   <li>
                     <div class="media">
                       <div class="media-left media-middle">
-                        <img src="assets/images/recent_post1.jpg" alt="" />
+                        <img src="assets/images/adopted/gg5.jpg" alt="" />
                       </div>
                       <div class="media-body media-middle">
-                        <h4><a href="blog-single-right.html">Missioners in charge</a></h4>
+                        <h4><a href="blog-single-right.html">Fluffy</a></h4>
                         <div class="entry-meta grey darklinks">
-														<span class="entry-date">
-															<time datetime="2017-03-13T08:50:40+00:00">
-																23th of april
-															</time>
-														</span>
-                          <span>|</span>
-                          <span>
-															<i class="fa fa-heart" aria-hidden="true"></i>
-															2
-														</span>
-                          <a href="blog-single-right.html#comments">
-                            <i class="fa fa-comment" aria-hidden="true"></i>
-                            4
-                          </a>
+                          <span class="entry-date">
+                            <time datetime="2017-03-13T08:50:40+00:00">
+                              Adopted on 5 Feb 2018
+                            </time>
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -211,25 +195,16 @@
                   <li>
                     <div class="media">
                       <div class="media-left media-middle">
-                        <img src="assets/images/recent_post2.jpg" alt="" />
+                        <img src="assets/images/adopted/gg4.jpg" alt="" />
                       </div>
                       <div class="media-body media-middle">
-                        <h4><a href="blog-single-right.html">Celebrating the adoption</a></h4>
+                        <h4><a href="blog-single-right.html">Sparkle</a></h4>
                         <div class="entry-meta grey darklinks">
-														<span class="entry-date">
-															<time datetime="2017-03-13T08:50:40+00:00">
-																5th of april
-															</time>
-														</span>
-                          <span>|</span>
-                          <span>
-															<i class="fa fa-heart" aria-hidden="true"></i>
-															3
-														</span>
-                          <a href="blog-single-right.html#comments">
-                            <i class="fa fa-comment" aria-hidden="true"></i>
-                            1
-                          </a>
+                          <span class="entry-date">
+                            <time datetime="2017-03-13T08:50:40+00:00">
+                              Adopted on 10 Apr 2018
+                            </time>
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -238,25 +213,16 @@
                   <li>
                     <div class="media">
                       <div class="media-left media-middle">
-                        <img src="assets/images/recent_post3.jpg" alt="" />
+                        <img src="assets/images/adopted/gg3.jpg" alt="" />
                       </div>
                       <div class="media-body media-middle">
-                        <h4><a href="blog-single-right.html">Charity for everyone</a></h4>
+                        <h4><a href="blog-single-right.html">Tinker</a></h4>
                         <div class="entry-meta grey darklinks">
-														<span class="entry-date">
-															<time datetime="2017-03-13T08:50:40+00:00">
-																25th of april
-															</time>
-														</span>
-                          <span>|</span>
-                          <span>
-															<i class="fa fa-heart" aria-hidden="true"></i>
-															6
-														</span>
-                          <a href="blog-single-right.html#comments">
-                            <i class="fa fa-comment" aria-hidden="true"></i>
-                            18
-                          </a>
+                          <span class="entry-date">
+                            <time datetime="2017-03-13T08:50:40+00:00">
+                              Adopted on 6 Jun 2018
+                            </time>
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -268,7 +234,7 @@
           
           <div class="col-md-4 col-sm-6">
             <div class="widget widget_instagram topmargin_20">
-              <h3 class="widget-title">Our Happy faces</h3>
+              <h3 class="widget-title">Instagram</h3>
               <div class="instafeed">
               
               </div>
@@ -293,7 +259,6 @@
 </template>
 
 <script>
-  
   export default {
     name: "app",
     data() {
@@ -323,3 +288,13 @@
     }
   }
 </script>
+
+<style scoped>
+  .ds .greylinks a {
+    color: #ffffff;
+  }
+
+  .entry-date {
+    color :#666666;
+  }
+</style>
