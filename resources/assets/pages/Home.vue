@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mt-30">
+    <div class="container content">
       <div class="row">
         <div class="col-md-8">
           <div class="bxslider">

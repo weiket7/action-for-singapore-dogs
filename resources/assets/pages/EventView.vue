@@ -1,6 +1,5 @@
 <template>
-  <section class="ls mt-30">
-    <div class="container">
+  <div class="container content">
       <div class="row">
         <div class="col-sm-12">
           <article class="vertical-item">
@@ -59,7 +58,6 @@
         </div>
       </div>
     </div>
-  </section>
 </template>
 
 <script>

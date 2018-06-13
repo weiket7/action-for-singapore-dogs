@@ -3,7 +3,7 @@
     <section class="page_toplogo table_section table_section_md ls">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 text-center text-md-left">
+          <div class="col-md-4 text-md-left">
             <router-link :to="'/'" class="logo">
               <img src="assets/images/action-for-singapore-dogs-logo.png" alt="" />
             </router-link>
@@ -20,12 +20,19 @@
                 </div>
               </div>
               <div class="media-body">
-                <h4>
-                  Email:
-                </h4>
-                <p>
-                  <a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a>
-                </p>
+                <div class="visible-lg visible-md">
+                  <h4>
+                    Email:
+                  </h4>
+                  <p>
+                    <a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a>
+                  </p>
+                </div>
+                <div class="hidden-lg hidden-md">
+                  <h4>
+                    <a href="mailto:info@asdsingapore.com">Email</a>
+                  </h4>
+                </div>
               </div>
             </div>
             

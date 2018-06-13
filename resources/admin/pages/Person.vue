@@ -99,7 +99,6 @@
     methods: {
       generateTabs() {
         let tabs = ['General'];
-        console.log(JSON.stringify(this.person));
         if (this.person.is_adopter) {
           tabs.push('Adopt');
         }

@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-30">
+  <div class="container content mb-30">
     <div class="row">
       <h1>Coming Soon</h1>
 

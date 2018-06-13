@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container mt-30">
+  <div id="app" class="container content">
     <div class="row">
       <div class="col-sm-12">
         <div itemscope="" class="product type-product row columns_padding_25">
