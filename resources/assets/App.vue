@@ -61,7 +61,7 @@
             <nav class="mainmenu_wrapper">
               <ul class="mainmenu nav sf-menu">
                 <li class="active">
-                  <a href="#">Adopt</a>
+                  <a href="#">About</a>
                   <ul>
                     <li>
                       <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Who We Are</router-link>

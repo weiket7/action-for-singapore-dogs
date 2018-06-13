@@ -41,34 +41,13 @@
             <div class="tab-content">
               <div class="tab-pane fade in active" id="tab1">
                 <form class="form-horizontal" method="post">
-                  Are you ready to adopt a dog and engage To indicate interest in adopting {{ adopt.name }}, please fill in the following form with a brief introduction of yourself:
-                  <br>
-                  <div class="form-group mt-10">
-                    <label for="name" class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" name="name" id="name">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="mobile" class="col-sm-2 control-label">Mobile</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="mobile">
-                    </div>
-                  </div>
+                  Would you like to adopt {{ adopt.name }}? Click this
+                  <i class="fa fa-heart fa-2x"></i> to add {{ adopt.gender == 'M' ? "him" : "her"}}
+                  to your Likes list.
+                  <br><br>
 
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <a href="#" rel="nofollow" class="theme_button inverse add_to_cart_button margin_0">
-                        Submit
-                      </a>
-                    </div>
-                  </div>
+                  When you are ready, go to your <router-link :to="'/i-want-to-adopt'">Likes</router-link> list
+                  to fill in the adoption form.
                 </form>
               </div>
               <div class="tab-pane fade" id="tab2">
