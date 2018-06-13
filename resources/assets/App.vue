@@ -124,13 +124,13 @@
                   </ul>
                 </li>
                 <li>
-                  <router-link :to="'/volunteer'" :data-target="'volunteer'">Volunteer</router-link>
+                  <router-link :to="'/volunteer'" :data-target="'volunteer'" class="menu-single">Volunteer</router-link>
                 </li>
                 <li>
-                  <router-link :to="'/events'" :data-target="'events'">Events</router-link>
+                  <router-link :to="'/events'" :data-target="'events'" class="menu-single">Events</router-link>
                 </li>
                 <li>
-                  <router-link :to="'/contact'" :data-target="'contact'">Contact</router-link>
+                  <router-link :to="'/contact'" :data-target="'contact'" class="menu-single">Contact</router-link>
                 </li>
               </ul>
             </nav>

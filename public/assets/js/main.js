@@ -281,6 +281,12 @@ function documentReadyInit() {
 				.find('.page_header')
 				.toggleClass('mobile-active');
 	});
+ 
+  jQuery('.mainmenu .menu-single, .mainmenu > li > ul > li > a').on('click', function(){
+    jQuery('.toggle_menu')
+      .toggleClass('mobile-active');
+  });
+  
 
 	jQuery('.mainmenu a').on('click', function(){
 	var $this = jQuery(this);

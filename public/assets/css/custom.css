@@ -34,6 +34,9 @@
 .bx-wrapper {
   margin-bottom: 30px;
 }
+.bx-wrapper .bx-controls-direction a {
+  z-index: 1000;
+}
 .small-teaser .media-left {
   vertical-align: middle;
 }
