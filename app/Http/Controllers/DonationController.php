@@ -1,16 +1,18 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\DonationRequest;
 use App\Models\Donation;
 use App\Models\Enums\PaymentMethod;
-use App\Models\Rescuer;
 
 class DonationController extends Controller {
-  public function save(RescuerRequest $request, $rescuer_id = null) {
-    $rescuer = new Rescuer();
-    if ($rescuer_id) {
-      $rescuer = Rescuer::find($rescuer_id);
-    }
-    return $rescuer->saveRescuer($request->all());
+  public function form(DonationRequest $request) {
+    $donation = new Donation();
+    return $donation->saveDonation($request->all());
+  }
+  
+  public function save(DonationRequest $request) {
+    $donation = new Donation();
+    return $donation->saveDonation($request->all());
   }
   
   public function all() {

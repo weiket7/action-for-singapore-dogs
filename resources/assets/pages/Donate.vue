@@ -10,24 +10,24 @@
             <i class="fa fa-heart highlight top_icon" aria-hidden="true"></i>
             <!--<p class="text-center grey">You are donating for the project:</p>-->
             <h1 class="entry-title black text-center">Donate</h1>
-            <form method="post" action="" class="donate-form">
+            <form @submit.prevent="onSubmit()" method="post" action="" class="donate-form">
               <div class="form-horizontal">
                 <div class="form-group mt-10">
                   <label for="name" class="col-sm-2 control-label">Name</label>
                   <div class="col-sm-10">
-                    <input type="text" name="name" id="name" class="form-control" autofocus="autofocus">
+                    <input type="text" v-model="donation.name" id="name" class="form-control" autofocus="autofocus">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="email" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" name="email" id="email" class="form-control">
+                    <input type="email" v-model="donation.email" id="email" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="mobile" class="col-sm-2 control-label">Mobile</label>
                   <div class="col-sm-10">
-                    <input type="text" name="mobile" id="mobile" class="form-control">
+                    <input type="text" v-model="donation.mobile" id="mobile" class="form-control">
                   </div>
                 </div>
 
@@ -35,20 +35,26 @@
                   <label for="mobile" class="col-sm-2 control-label">Amount</label>
                   <div class="col-sm-10">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary" @click="custom_amount = false">
+                      <label class="btn btn-primary" @click="chooseAmount(10)">
                         <input type="radio" name="amount" value="10"> $10
                       </label>
-                      <label class="btn btn-primary" @click="custom_amount = false">
+                      <label class="btn btn-primary" @click="chooseAmount(20)">
                         <input type="radio" name="amount" value="20"> $20
                       </label>
-                      <label class="btn btn-primary" @click="custom_amount = false">
+                      <label class="btn btn-primary" @click="chooseAmount(50)">
                         <input type="radio" name="amount" value="50"> $50
                       </label>
-                      <label class="btn btn-primary" @click="custom_amount = true">
-                        <input type="radio" name="amount" value="custom"> Custom Amount
+                      <label class="btn btn-primary" @click="chooseAmount(100)">
+                        <input type="radio" name="amount" value="50"> $100
+                      </label>
+                      <label class="btn btn-primary" @click="customAmount()">
+                        <input type="radio" v-model="donation.amount" name="amount" value="custom"> Custom Amount
                       </label>
 
-                      <input type="text" name="custom_amount" v-if="custom_amount == true" class="form-control">
+                      <div v-if="custom_amount == true">
+                        <input type="text" v-model="donation.amount" class="form-control">
+                        (Minimum $10)
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -98,7 +104,7 @@
                   </div>
                   <div v-if="payment_method == 'giro'" class="col-sm-offset-2 col-sm-10">
                     GIRO is the convenient and hassle free way of contributing every monthly automatically.<br>
-                    Please download this <a href="{{asset("assets/pdf/action-for-singapore-dogs-donate-giro-form.pdf")}}" target="_blank">form</a>, print it out, fill it up and send it to the address stated on the form.<br>
+                    Please download this <a href="assets/pdf/action-for-singapore-dogs-donate-giro-form.pdf" target="_blank">form</a>, print it out, fill it up and send it to the address stated on the form.<br>
                     <i>(Please note the minimum sum is $10)</i>
                   </div>
                   <div v-if="payment_method == 'paynow'" class="col-sm-offset-2 col-sm-10">
@@ -122,6 +128,10 @@
                   </div>
                 </div>
 
+                <div class="alert alert-success" v-show="success">
+                  YAY
+                </div>
+
               </div>
             </form>
 
@@ -133,12 +143,32 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     name: "Donate",
     data() {
       return {
         custom_amount: false,
         payment_method: "",
+        donation: {},
+        success: false
+      }
+    },
+    methods: {
+      chooseAmount(amount) {
+        this.donation.amount = amount;
+        this.custom_amount = false;
+      },
+      customAmount() {
+        this.custom_amount = true;
+      },
+      onSubmit() {
+        axios.post('api/donation/form', this.donation)
+          .then(response => this.onSuccess)
+      },
+      onSuccess(response) {
+        this.success = true;
       }
     },
     computed: {
