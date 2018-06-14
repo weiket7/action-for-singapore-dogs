@@ -1,11 +1,17 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\VolunteerRequest;
 use App\Models\Enums\VolunteerStat;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class VolunteerController extends Controller {
+  public function form(VolunteerRequest $request) {
+    $volunteer = new Volunteer();
+    return $volunteer->saveVolunteer($request->all());
+  }
+  
   public function all(Request $request) {
     $data['volunteers'] = Volunteer::select('stat', 'volunteer_id', 'name', 'email', 'mobile')->get();
     $data['volunteer_stats'] = VolunteerStat::$values;

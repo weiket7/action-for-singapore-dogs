@@ -9,6 +9,7 @@ Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart li
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
 Route::get('api/adopt/form', 'AdoptController@form');
 Route::post('api/donation/form', 'DonationController@form');
+Route::post('api/volunteer/form', 'VolunteerController@form');
 
 Route::get('api/adopt', 'AdoptController@all');
 Route::get('api/adopt/search', 'AdoptController@search');

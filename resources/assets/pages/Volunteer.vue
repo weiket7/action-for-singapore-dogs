@@ -14,23 +14,23 @@
       <div class="col-md-6">
         <!--<h2 class="black highlight">Donator</h2>-->
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        <form class="donator-form topmargin_30 form-horizontal" id="donatorform" method="post" action="">
+        <form @submit.prevent="onSubmit()" class="donator-form topmargin_30 form-horizontal" id="donatorform" method="post" action="">
           <div class="form-group">
             <label for="name" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="name" autofocus>
+              <input type="text" v-model="volunteer.name" class="form-control" id="name" autofocus>
             </div>
           </div>
           <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
-              <input type="email" class="form-control" id="email">
+              <input type="email" v-model="volunteer.email" class="form-control" id="email">
             </div>
           </div>
           <div class="form-group">
             <label for="mobile" class="col-sm-3 control-label">Mobile</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="mobile">
+              <input type="text" v-model="volunteer.mobile" class="form-control" id="mobile">
             </div>
           </div>
           <div class="form-group">
@@ -38,37 +38,37 @@
             <div class="col-sm-9">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Rescue
+                  <input type="checkbox" v-model="volunteer.interests" value="rescuing"> Rescue
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Rehoming
+                  <input type="checkbox" v-model="volunteer.interests" value="rehoming"> Rehoming
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Fostering
+                  <input type="checkbox" v-model="volunteer.interests" value="fostering"> Fostering
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Volunteer at Adoption & Rescue Centre (ARC)
+                  <input type="checkbox" v-model="volunteer.interests" value="volunteering"> Volunteer at Adoption & Rescue Centre (ARC)
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Publicity
+                  <input type="checkbox" v-model="volunteer.interests" value="publicity"> Publicity
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Fund Raising & Events
+                  <input type="checkbox" v-model="volunteer.interests" value="fund-raising-events"> Fund Raising & Events
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value=""> Logistics
+                  <input type="checkbox" v-model="volunteer.interests" value="logistics"> Logistics
                 </label>
               </div>
             </div>
@@ -77,6 +77,10 @@
           <div class="form-group">
             <div class="col-sm-12 col-sm-offset-3">
               <button type="submit" name="submit" class="theme_button">Submit</button>
+
+              <div class="alert alert-success mt-10" v-show="success">
+                Thank you
+              </div>
             </div>
           </div>
         </form>
@@ -112,11 +116,36 @@
 
 <script>
   import Panel from '../components/Panel'
+  import axios from 'axios'
 
   export default {
     name: "Volunteer",
+    data() {
+      return {
+        volunteer: { name: "", mobile: "", email: "", interests: [] },
+        success: false
+      }
+    },
     components: {
       Panel
+    },
+    methods: {
+      onSubmit() {
+        axios.post('api/volunteer/form', this.volunteer)
+          .then(this.onSuccess)
+          .catch(this.onError);
+      },
+      onSuccess(response) {
+        this.success = true;
+      },
+      onError(error) {
+        if (error.response.status == 500) {
+          toastr.error("A system error occurred");
+          return;
+        }
+        toastr.error("There were some errors, please check the form");
+        this.errors.record(error.response.data.errors);
+      },
     }
   }
 </script>

@@ -21,7 +21,6 @@ class Donation extends Model
     }
     $this->save();
     return $this->donation_id;
-    
   }
   
 }
