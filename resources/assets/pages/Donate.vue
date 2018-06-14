@@ -63,27 +63,27 @@
                   <label for="mobile" class="col-sm-2 control-label">Payment Method</label>
                   <div class="col-sm-10">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary" @click="payment_method = 'paynow'">
-                        <input type="radio" name="payment_method" value="paynow"> PayNow
+                      <label class="btn btn-primary" @click="donation.payment_method = 'paynow'">
+                        <input type="radio" name="donation.payment_method" value="paynow"> PayNow
                       </label>
-                      <label class="btn btn-primary" @click="payment_method = 'giro'">
-                        <input type="radio" name="payment_method" value="giro"> Giro
+                      <label class="btn btn-primary" @click="donation.payment_method = 'giro'">
+                        <input type="radio" name="donation.payment_method" value="giro"> Giro
                       </label>
-                      <label class="btn btn-primary" @click="payment_method = 'banktransfer'">
-                        <input type="radio" name="payment_method" value="banktransfer"> Bank Transfer
+                      <label class="btn btn-primary" @click="donation.payment_method = 'banktransfer'">
+                        <input type="radio" name="donation.payment_method" value="banktransfer"> Bank Transfer
                       </label>
-                      <label class="btn btn-primary" @click="payment_method = 'cheque'">
-                        <input type="radio" name="payment_method" value="cheque"> Cheque
+                      <label class="btn btn-primary" @click="donation.payment_method = 'cheque'">
+                        <input type="radio" name="donation.payment_method" value="cheque"> Cheque
                       </label>
-                      <label class="btn btn-primary" @click="payment_method = 'paypal'">
-                        <input type="radio" name="payment_method" value="paypal"> PayPal
+                      <label class="btn btn-primary" @click="donation.payment_method = 'paypal'">
+                        <input type="radio" name="donation.payment_method" value="paypal"> PayPal
                       </label>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <div v-if="payment_method == 'cheque'" class="col-sm-offset-2 col-sm-10">
+                  <div v-if="donation.payment_method == 'cheque'" class="col-sm-offset-2 col-sm-10">
                     Please make the cheque payable to:<br>
                     Action For Singapore Dogs Society
                     <br><br>
@@ -91,7 +91,7 @@
                     ASD c/o Ricky Yeo<br>
                     3 Jambol Place, Singapore 119330
                   </div>
-                  <div v-if="payment_method == 'banktransfer'" class="col-sm-offset-2 col-sm-10">
+                  <div v-if="donation.payment_method == 'banktransfer'" class="col-sm-offset-2 col-sm-10">
                     Please transfer to:<br>
                     Bank: OCBC<br>
                     Account No: 650322456001<br>
@@ -99,15 +99,15 @@
                     Branch Code: 650<br>
                     Bank Code: 7339
                   </div>
-                  <div v-if="payment_method == 'paypal'" class="col-sm-offset-2 col-sm-10">
+                  <div v-if="donation.payment_method == 'paypal'" class="col-sm-offset-2 col-sm-10">
                     You will be redirected to PayPal upon submission
                   </div>
-                  <div v-if="payment_method == 'giro'" class="col-sm-offset-2 col-sm-10">
+                  <div v-if="donation.payment_method == 'giro'" class="col-sm-offset-2 col-sm-10">
                     GIRO is the convenient and hassle free way of contributing every monthly automatically.<br>
                     Please download this <a href="assets/pdf/action-for-singapore-dogs-donate-giro-form.pdf" target="_blank">form</a>, print it out, fill it up and send it to the address stated on the form.<br>
                     <i>(Please note the minimum sum is $10)</i>
                   </div>
-                  <div v-if="payment_method == 'paynow'" class="col-sm-offset-2 col-sm-10">
+                  <div v-if="donation.payment_method == 'paynow'" class="col-sm-offset-2 col-sm-10">
                     Please PayNow to:<br>
                     9123 4567
                   </div>
@@ -125,13 +125,12 @@
                     <button type="submit" class="theme_button">
                       Submit
                     </button>
+
+                    <div class="alert alert-success mt-10" v-show="success">
+                      Thank you for your donation
+                    </div>
                   </div>
                 </div>
-
-                <div class="alert alert-success" v-show="success">
-                  YAY
-                </div>
-
               </div>
             </form>
 
@@ -150,7 +149,6 @@
     data() {
       return {
         custom_amount: false,
-        payment_method: "",
         donation: {},
         success: false
       }
@@ -165,15 +163,24 @@
       },
       onSubmit() {
         axios.post('api/donation/form', this.donation)
-          .then(response => this.onSuccess)
+          .then(this.onSuccess)
+          .catch(this.onError);
       },
       onSuccess(response) {
         this.success = true;
-      }
+      },
+      onError(error) {
+        if (error.response.status == 500) {
+          toastr.error("A system error occurred");
+          return;
+        }
+        toastr.error("There were some errors, please check the form");
+        this.errors.record(error.response.data.errors);
+      },
     },
     computed: {
       needRefNo: function() {
-        return this.payment_method == 'banktransfer' || this.payment_method == 'cheque' || this.payment_method == "paynow";
+        return this.donation.payment_method == 'banktransfer' || this.donation.payment_method == 'cheque' || this.donation.payment_method == "paynow";
       }
     }
   }

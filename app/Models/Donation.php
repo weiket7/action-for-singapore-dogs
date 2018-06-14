@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Donation extends Model
@@ -13,7 +14,11 @@ class Donation extends Model
     $this->mobile = $input['mobile'];
     $this->email = $input['email'];
     $this->amount = $input['amount'];
-    $this->payment_method =   $input['payment_method'];
+    $this->payment_method = $input['payment_method'];
+    $this->donated_on = Carbon::now();
+    if (isset($input['ref_no'])) {
+      $this->ref_no = isset($input['ref_no']);
+    }
     $this->save();
     return $this->donation_id;
     
