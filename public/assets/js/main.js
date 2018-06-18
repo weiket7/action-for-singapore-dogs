@@ -818,9 +818,9 @@ function windowLoadInit() {
 	var boxed = $header.closest('.boxed').length;
 	if ($header.length) {
 		//hiding main menu 1st levele elements that do not fit width
-		menuHideExtraElements();
+		//menuHideExtraElements();
 		//mega menu
-		initMegaMenu();
+		//initMegaMenu();
 		//wrap header for smooth stick and unstick
 		var headerHeight = $header.outerHeight();
 		$header.wrap('<div class="page_header_wrapper"></div>');
@@ -862,8 +862,8 @@ function windowLoadInit() {
 			} else {
 				$headerWrapper.removeClass('affix-wrapper affix-top-wrapper affix-bottom-wrapper');
 			}
-			menuHideExtraElements();
-			initMegaMenu();
+			//menuHideExtraElements();
+			//initMegaMenu();
 		});
 
 		//if header has different height on afixed and affixed-top positions - correcting wrapper height
@@ -1252,8 +1252,8 @@ $window.on('resize', function(){
 	$body.scrollspy('refresh');
 
 	//header processing
-	menuHideExtraElements();
-	initMegaMenu();
+	//menuHideExtraElements();
+	//initMegaMenu();
 	var $header = jQuery('.page_header').first();
 		//checking document scrolling position
 		if ($header.length && !jQuery(document).scrollTop() && $header.first().data('bs.affix')) {

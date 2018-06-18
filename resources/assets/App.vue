@@ -68,6 +68,9 @@
             <nav class="mainmenu_wrapper">
               <ul class="mainmenu nav sf-menu">
                 <li class="active">
+                  <router-link :to="'/'" :data-target="'home'" class="menu-single">Home</router-link>
+                </li>
+                <li>
                   <a href="#">About</a>
                   <ul>
                     <li>

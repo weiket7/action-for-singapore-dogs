@@ -65,6 +65,14 @@
    }
 }
 
+@media (max-width: 1199px) and (min-width: 992px) {
+  .bordered_items .sf-menu > li > a {
+    margin-right: 12px;
+    margin-left: 12px;
+    padding: 10px 20px;
+  }
+}
+
 
 /*for contact page, icons on the right*/
 .media-body, .media-left, .media-right {
