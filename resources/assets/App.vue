@@ -153,13 +153,13 @@
       </router-view>
     </section>
     
-    <footer class="page_footer ds ms parallax section_padding_50">
+    <footer class="page_footer ds ms parallax">
       <div class="container">
         
         <div class="row columns_padding_50">
           
           <div class="col-md-4">
-            <a href="./" class="logo">
+            <a href="./" class="logo topmargin_20">
               <img src="assets/images/action-for-singapore-dogs-logo.png" alt="" />
             </a>
             <p>A society set up to help the stray and abandoned dogs in Singapore</p>
@@ -168,15 +168,9 @@
               Email:
               <span class="grey">info@asdsingapore.com</span>
             </div>
-            <div class="media fontsize_18">
-              <i class="fa fa-search highlight rightpadding_5"></i>
-              Address:
-              <span class="grey">80 Lim Chu Kang Lane 1, Singapore 718911</span>
-            </div>
             <div class="topmargin_30 darklinks">
-              <a class="social-icon theme-color-icon soc-facebook" href="#" title="Facebook"></a>
-              <a class="social-icon theme-color-icon soc-twitter" href="#" title="Twitter"></a>
-              <a class="social-icon theme-color-icon soc-instagram" href="#" title="Instagram"></a>
+              <a class="social-icon theme-color-icon soc-facebook" href="https://www.facebook.com/asdsingapore/" title="Facebook"></a>
+              <a class="social-icon theme-color-icon soc-instagram" href="https://www.instagram.com/asdsingapore" title="Instagram"></a>
               <a class="social-icon theme-color-icon soc-youtube" href="#" title="Youtube"></a>
             </div>
           </div>
@@ -257,17 +251,7 @@
         </div>
       </div>
     </footer>
-    
-    <section class="page_copyright ds ms parallax">
-      <div class="container with_top_border">
-        <div class="row">
-          <div class="col-sm-12 text-center">
-            <p class="greylinks">Copyright 2016 - <a href="#">MW Templates</a>. All Rights Reserved</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  
+
   </div>
 </template>
 

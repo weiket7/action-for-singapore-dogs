@@ -34,11 +34,28 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="birthday" class="col-sm-3 control-label">Birthday</label>
+            <div class="col-sm-9">
+              <input type="text" v-model="volunteer.birthday" class="form-control datepicker" id="birthday">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="gender" class="col-sm-3 control-label">Gender</label>
+            <div class="col-sm-9">
+              <label class="radio-inline">
+                <input type="radio" v-model="volunteer.gender" name="gender" value="M"> Male
+              </label>
+              <label class="radio-inline">
+                <input type="radio" v-model="volunteer.gender" name="gender" value="F"> Female
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="mobile" class="col-sm-3 control-label">I'm interested in</label>
             <div class="col-sm-9">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="rescuing"> Rescue
+                  <input type="checkbox" v-model="volunteer.interests" value="rescuing"> Rescuing
                 </label>
               </div>
               <div class="checkbox">
@@ -128,6 +145,11 @@
     },
     components: {
       Panel
+    },
+    mounted() {
+      this.$nextTick(function() {
+        $( ".datepicker" ).datepicker();
+      });
     },
     methods: {
       onSubmit() {

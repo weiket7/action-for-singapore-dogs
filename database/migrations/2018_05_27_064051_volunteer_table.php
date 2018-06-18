@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Enums\VolunteerStat;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,6 +16,8 @@ class VolunteerTable extends Migration
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
+      $table->char('gender', 1);
+      $table->dateTime('birthday');
       $table->string('desc', 250)->nullable();
     });
   
@@ -23,6 +26,8 @@ class VolunteerTable extends Migration
       'name'=>'Vivien',
       'email'=>'vivien@gmail.com',
       'mobile'=>'9123 6666',
+      'gender'=>'F',
+      'birthday'=>Carbon::now()->subYear(18)
     ]);
   
     DB::table('volunteer')->insert([
@@ -30,6 +35,8 @@ class VolunteerTable extends Migration
       'name'=>'Valora',
       'email'=>'valora@gmail.com',
       'mobile'=>'9876 6666',
+      'gender'=>'F',
+      'birthday'=>Carbon::now()->subYear(30)
     ]);
   }
   

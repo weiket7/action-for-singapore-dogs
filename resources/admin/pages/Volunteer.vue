@@ -16,6 +16,14 @@
         <label-component>Email</label-component>
         <textbox-component v-model="volunteer.email"></textbox-component>
       </form-row>
+
+      <form-row>
+        <label-component required>Gender</label-component>
+        <radio-component v-model="volunteer.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
+
+        <label-component>Birthday</label-component>
+        <datepicker-component name="birthday" v-model="volunteer.birthday" :error="errors.get('birthday')" v-if="volunteer.birthday"></datepicker-component>
+      </form-row>
       
       <form-row>
         <label-component>Interested In</label-component>
@@ -29,6 +37,7 @@
 
 <script>
   import axios from 'axios'
+  import Errors from "../../common/errors";
   
   export default {
     name: "Volunteer",
@@ -37,7 +46,8 @@
         volunteer: {},
         volunteer_stats: [],
         interests: [],
-        interested_in_options: ['Rescuing', 'Rehoming', 'Fostering', 'Volunteering', 'Publicity', 'Fund Raising & Events', 'Logistics']
+        interested_in_options: ['Rescuing', 'Rehoming', 'Fostering', 'Volunteering', 'Publicity', 'Fund Raising & Events', 'Logistics'],
+        errors: new Errors(),
       }
     },
     created() {

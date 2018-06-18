@@ -3,7 +3,7 @@
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" :href="'#'+id" aria-expanded="false" :aria-controls="id">
-          {{ title }}
+          {{ title }} <i class="fas fa-plus"></i>
         </a>
       </h4>
     </div>
