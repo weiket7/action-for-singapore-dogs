@@ -148,7 +148,10 @@
     },
     mounted() {
       this.$nextTick(function() {
-        $( ".datepicker" ).datepicker();
+        $( ".datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+        });
       });
     },
     methods: {

@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}" class="color-switcher-link">
     <link rel="stylesheet" href="{{ asset("assets/css/shop.css") }}" class="color-switcher-link">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <link rel="stylesheet" href="{{ asset("assets/css/jquery.bxslider.css") }}">
+  <link rel="stylesheet" href="{{ asset("assets/css/jquery-ui.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}">
     
     <script src="{{ asset("assets/js/vendor/modernizr-2.6.2.min.js") }}"></script>
@@ -49,8 +50,9 @@
 
 <script src="{{ asset("assets/js/compressed.js" ) }}"></script>
 <script src="{{ asset("assets/js/main.js" ) }}"></script>
+<script src="{{ asset("assets/js/jquery.bxslider.min.js" ) }}"></script>
+<script src="{{ asset("assets/js/jquery-ui.min.js" ) }}"></script>
 <script src="{{ asset("app.js" ) }}"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 </body>
 
