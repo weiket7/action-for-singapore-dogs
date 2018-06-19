@@ -17,6 +17,8 @@ class Volunteer extends Model
     $this->name = $input['name'];
     $this->mobile = $input['mobile'];
     $this->email = $input['email'];
+    $this->gender = $input['gender'];
+    $this->birthday = $input['birthday'];
     $this->save();
     $this->saveVolunteerInterest($input['interests']);
     return $this->donation_id;

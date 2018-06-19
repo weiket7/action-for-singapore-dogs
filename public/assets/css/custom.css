@@ -28,6 +28,9 @@
 .content {
   margin-top: 30px;
 }
+.form-control[readonly] {
+  background-color: transparent;
+}
 
 /******SPECIFIC PAGES******/
 /*home*/

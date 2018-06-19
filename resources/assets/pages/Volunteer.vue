@@ -36,7 +36,7 @@
           <div class="form-group">
             <label for="birthday" class="col-sm-3 control-label">Birthday</label>
             <div class="col-sm-9">
-              <input type="text" v-model="volunteer.birthday" class="form-control datepicker" id="birthday">
+              <input type="text" class="form-control datepicker" id="birthday" readonly>
             </div>
           </div>
           <div class="form-group">
@@ -55,37 +55,37 @@
             <div class="col-sm-9">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="rescuing"> Rescuing
+                  <input type="checkbox" v-model="volunteer.interests" value="Rescuing"> Rescuing
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="rehoming"> Rehoming
+                  <input type="checkbox" v-model="volunteer.interests" value="Rehoming"> Rehoming
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="fostering"> Fostering
+                  <input type="checkbox" v-model="volunteer.interests" value="Fostering"> Fostering
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="volunteering"> Volunteer at Adoption & Rescue Centre (ARC)
+                  <input type="checkbox" v-model="volunteer.interests" value="Volunteering"> Volunteer at Adoption & Rescue Centre (ARC)
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="publicity"> Publicity
+                  <input type="checkbox" v-model="volunteer.interests" value="Publicity"> Publicity
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="fund-raising-events"> Fund Raising & Events
+                  <input type="checkbox" v-model="volunteer.interests" value="Fund Raising & Events"> Fund Raising & Events
                 </label>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="logistics"> Logistics
+                  <input type="checkbox" v-model="volunteer.interests" value="Logistics"> Logistics
                 </label>
               </div>
             </div>
@@ -132,8 +132,9 @@
 </template>
 
 <script>
-  import Panel from '../components/Panel'
-  import axios from 'axios'
+  import Panel from '../components/Panel';
+  import axios from 'axios';
+  import moment from 'moment';
 
   export default {
     name: "Volunteer",
@@ -147,14 +148,22 @@
       Panel
     },
     mounted() {
+      let vue = this
       this.$nextTick(function() {
         $( ".datepicker" ).datepicker({
           changeMonth: true,
           changeYear: true,
+          dateFormat: 'd M yy',
+          onSelect: function(value, date) {
+            vue.updateBirthday(moment(value, 'DD MMM YYYY').format('YYYY-MM-DD'));
+          }
         });
       });
     },
     methods: {
+      updateBirthday(date) {
+        this.volunteer.birthday = date;
+      },
       onSubmit() {
         axios.post('api/volunteer/form', this.volunteer)
           .then(this.onSuccess)
