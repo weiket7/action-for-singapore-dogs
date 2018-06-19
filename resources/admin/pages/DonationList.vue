@@ -14,7 +14,7 @@
         <tr v-for="donation in donations">
           <td>{{ donation.donated_on | formatDate}}</td>
           <td>
-            <router-link v-bind:to="'/donation/save/'+donation.donation_id">{{ donation.name }}</router-link>
+            <router-link v-bind:to="'/donation/'+donation.donation_id">{{ donation.name }}</router-link>
           </td>
           <td>{{ donation.amount  }}</td>
           <td>{{ payment_methods[donation.payment_method] }}</td>

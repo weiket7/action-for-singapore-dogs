@@ -15,7 +15,7 @@ import Foster from './pages/Foster'
 import FosterList from './pages/FosterList'
 import Volunteer from './pages/Volunteer'
 import VolunteerList from './pages/VolunteerList'
-//import Donation from './pages/Donation'
+import Donation from './pages/Donation'
 import DonationList from './pages/DonationList'
 
 Vue.use(Router)
@@ -52,6 +52,6 @@ export default new Router({
     { path: '/volunteer/:volunteer_id', name: 'SaveVolunteer', component: Volunteer },
   
     { path: '/donation', name: 'DonationList', component: DonationList },
-    //{ path: '/donation/:donation_id', name: 'Donation', component: Donation },
+    { path: '/donation/:donation_id', name: 'SaveDonation', component: Donation },
   ]
 })

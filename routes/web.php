@@ -42,6 +42,7 @@ Route::get('api/volunteer', 'VolunteerController@all');
 Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
 
 Route::get('api/donation', 'DonationController@all');
+Route::get('api/donation/get/{donation_id}', 'DonationController@get');
 
 Route::get('api/event', 'EventController@all');
 Route::get('api/event/get/{event_id}', 'EventController@get');

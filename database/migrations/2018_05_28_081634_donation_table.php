@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Enums\DonationStat;
 use App\Models\Enums\PaymentMethod;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
@@ -12,6 +13,7 @@ class DonationTable extends Migration
     {
       Schema::create('donation', function (Blueprint $table) {
         $table->increments('donation_id');
+        $table->char('stat', 1);
         $table->string('name', 50);
         $table->string('email', 50);
         $table->string('mobile', 50);
@@ -22,6 +24,7 @@ class DonationTable extends Migration
       });
       
       DB::table('donation')->insert([
+        'stat'=>DonationStat::Pending,
         'name'=>'David',
         'email'=>'david@gmail.com',
         'mobile'=>'9123 4567',
@@ -31,6 +34,7 @@ class DonationTable extends Migration
         'donated_on'=>Carbon::now()
       ]);
       DB::table('donation')->insert([
+        'stat'=>DonationStat::Received,
         'name'=>'Dakota',
         'email'=>'dakota@gmail.com',
         'mobile'=>'9123 4567',
