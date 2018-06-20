@@ -15,8 +15,8 @@ class Volunteer extends Model
       $this->stat = VolunteerStat::Active;
     }
     $this->name = $input['name'];
-    $this->mobile = $input['mobile'];
     $this->email = $input['email'];
+    $this->mobile = $input['mobile'];
     $this->gender = $input['gender'];
     $this->birthday = $input['birthday'];
     $this->save();

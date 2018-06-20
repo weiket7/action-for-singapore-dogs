@@ -149,15 +149,13 @@
     },
     mounted() {
       let vue = this
-      this.$nextTick(function() {
-        $( ".datepicker" ).datepicker({
-          changeMonth: true,
-          changeYear: true,
-          dateFormat: 'd M yy',
-          onSelect: function(value, date) {
-            vue.updateBirthday(moment(value, 'DD MMM YYYY').format('YYYY-MM-DD'));
-          }
-        });
+      $(".datepicker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'd M yy',
+        onSelect: function(value, date) {
+          vue.updateBirthday(moment(value, 'DD MMM YYYY').format('YYYY-MM-DD'));
+        }
       });
     },
     methods: {

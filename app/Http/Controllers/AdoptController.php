@@ -3,6 +3,7 @@
 use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
 use App\Models\Adopt;
+use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptStat;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -10,7 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class AdoptController extends Controller {
   public function form(AdoptionFormRequest $request) {
-  
+    $adoption_form = new AdoptionForm();
+    return $adoption_form->saveAdoptionForm($request->all());
   }
   
   public function random(Request $request) {

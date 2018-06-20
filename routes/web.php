@@ -7,7 +7,7 @@ Route::get('api/adopt/random', 'AdoptController@random'); //for home
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
-Route::get('api/adopt/form', 'AdoptController@form');
+Route::post('api/adopt/form', 'AdoptController@form');
 Route::post('api/donation/form', 'DonationController@form');
 Route::post('api/volunteer/form', 'VolunteerController@form');
 
@@ -48,3 +48,8 @@ Route::get('api/event', 'EventController@all');
 Route::get('api/event/get/{event_id}', 'EventController@get');
 Route::post('api/event/save/', 'EventController@save');
 Route::post('api/event/save/{event_id}', 'EventController@save');
+
+Route::get('api/banner', 'BannerController@all');
+Route::get('api/banner/get/{banner_id}', 'BannerController@get');
+Route::post('api/banner/save/', 'BannerController@save');
+Route::post('api/banner/save/{banner_id}', 'BannerController@save');

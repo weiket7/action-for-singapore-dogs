@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdoptionForm extends Migration
+class AdoptionFormTable extends Migration
 {
   public function up()
   {
@@ -16,6 +16,7 @@ class AdoptionForm extends Migration
       $table->string('mobile', 20);
       $table->string('address', 50);
       $table->string('postal', 10);
+      $table->char('gender', 1);
       $table->dateTime('birthday');
       $table->dateTime('submitted_on');
     });
@@ -28,6 +29,7 @@ class AdoptionForm extends Migration
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'postal'=>'123456',
       'birthday'=>Carbon::now()->subYear(30),
+      'gender'=>'M',
       'submitted_on'=>Carbon::now()
     ]);
   }

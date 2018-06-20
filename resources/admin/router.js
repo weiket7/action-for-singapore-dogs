@@ -17,6 +17,8 @@ import Volunteer from './pages/Volunteer'
 import VolunteerList from './pages/VolunteerList'
 import Donation from './pages/Donation'
 import DonationList from './pages/DonationList'
+import Banner from './pages/Banner'
+import BannerList from './pages/BannerList'
 
 Vue.use(Router)
 
@@ -53,5 +55,8 @@ export default new Router({
   
     { path: '/donation', name: 'DonationList', component: DonationList },
     { path: '/donation/:donation_id', name: 'SaveDonation', component: Donation },
+  
+    { path: '/banner', name: 'BannerList', component: BannerList },
+    { path: '/banner/:banner_id', name: 'SaveBanner', component: Banner },
   ]
 })
