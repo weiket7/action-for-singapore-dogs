@@ -79,7 +79,9 @@
   
           <form-row>
             <label-component>Image 1</label-component>
-            <image-component v-model="adopt.image1" :src="'adopts/'+adopt.image" :error="errors.get('adopt.image1')"></image-component>
+            <image-component v-model="adopt.image1" name="image1"
+                             v-on:update-image1="updateImage1"
+                             :src="'adopts/'+adopt.image" :error="errors.get('adopt.image')"></image-component>
           </form-row>
 
           <form-footer></form-footer>
@@ -196,6 +198,7 @@
         if (!this.is_create) {
           url += '/'+ this.$route.params.adopt_id
         }
+
         axios.post(url, this.adopt)
           .then(this.onSuccess)
           .catch(this.onError);
@@ -234,6 +237,18 @@
       },
       removeAdopter(index) {
         this.adopters.splice(index, 1);
+      },
+      updateImage1(file) {
+        const formData = new FormData();
+        formData.append("image1", file);
+        const config = {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        };
+
+        axios.post('api/adopt/upload-image', formData, config);
+
       }
     },
     created() {

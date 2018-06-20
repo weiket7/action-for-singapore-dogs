@@ -5,9 +5,11 @@ use App\Http\Requests\AdoptRequest;
 use App\Models\Adopt;
 use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptStat;
+use App\Helpers\BackendHelper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AdoptController extends Controller {
   public function form(AdoptionFormRequest $request) {
@@ -25,7 +27,12 @@ class AdoptController extends Controller {
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
   }
   
+  public function uploadImage(Request $request) {
+    BackendHelper::uploadImage("adopts", "abc.jpg", $request->image1);
+  }
+  
   public function save(AdoptRequest $request, $adopt_id = null) {
+    Log::info($request->image1);
     $adopt = new Adopt();
     if ($adopt_id) {
       $adopt = Adopt::find($request->get('adopt_id'));

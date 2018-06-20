@@ -1,11 +1,14 @@
 <template>
   <div class="col-lg-3">
-    <input type="file" :name="name" :value="value" class="form-control" @input="updateValue($event.target.value)"/>
+    <input type="file" :name="name" @input="updateValue($event)" class="form-control">
     <span class="m-form__help m-form__error" v-if="error">
       {{ error }}
     </span>
     <br>
-    <img :src="'assets/images/'+src" v-if="src" style="max-height: 150px">
+    <div :id="'image-' + name">
+      <img :src="'assets/images/'+src" v-if="src" style="max-height: 150px"/>
+    </div>
+
   </div>
 </template>
 
@@ -19,8 +22,23 @@
       src: { required: false }
     },
     methods: {
-      updateValue: function (value) {
-        this.$emit('input', value);
+      previewImage: function(e) {
+
+      },
+      updateValue: function (e) {
+        var reader = new FileReader();
+        var vue = this
+        reader.onload = function (e) {
+          var img = $('<img/>', {
+            style: 'max-height: 150px;',
+            src: e.target.result
+          });
+          $('#image-'+vue.name).html(img);
+        };
+        var file = e.target.files[0];
+        reader.readAsDataURL(file);
+
+        this.$emit('update-image1', file);
       }
     }
   }
