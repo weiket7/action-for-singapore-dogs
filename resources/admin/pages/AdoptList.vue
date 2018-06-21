@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <tr v-for="adopt in adopts">
-          <td><!--{{ProductStat::$values[p.stat]}}--></td>
+          <td>{{ adopt_stats[adopt.stat] }}</td>
           <td width="450px">
             <router-link v-bind:to="'/adopt/save/'+adopt.adopt_id">{{ adopt.name }}</router-link>
           </td>
@@ -34,13 +34,14 @@
     data() {
       return {
         adopts: [],
-        adopt_stat: {}
+        adopt_stats: {}
       }
     },
     created() {
       axios.get('api/adopt')
         .then(response => {
-          this.adopts = response.data
+          this.adopts = response.data.adopts;
+          this.adopt_stats = response.data.adopt_stats;
         })
         .catch(error => {
           console.log(error);

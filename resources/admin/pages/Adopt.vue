@@ -23,12 +23,12 @@
             <label-component required>Gender</label-component>
             <radio-component v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
 
-            <label-component>Birthday</label-component>
+            <label-component required>Birthday</label-component>
             <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')" :months="true" v-if="loaded"></datepicker-component>
           </form-row>
 
           <form-row>
-            <label-component>Breed</label-component>
+            <label-component required>Breed</label-component>
             <textbox-component v-model="adopt.breed" :error="errors.get('breed')"></textbox-component>
 
             <label-component>Colour</label-component>
@@ -79,9 +79,9 @@
   
           <form-row>
             <label-component>Image 1</label-component>
-            <image-component v-model="adopt.image1" name="image1"
-                             v-on:update-image="updateImage1" folder="adopts"
-                             :src="adopt.image" :error="errors.get('adopt.image')"></image-component>
+            <image-component v-model="adopt.image" name="image"
+                             v-on:update-image="updateImage" folder="adopts"
+                             :src="adopt.image" :error="errors.get('image_new')"></image-component>
           </form-row>
 
           <form-footer></form-footer>
@@ -166,7 +166,7 @@
         fosters: [{}],
         adopters: [{}],
         errors: new Errors(),
-        image1: null,
+        image_new: null,
       }
     },
     computed: {
@@ -200,14 +200,14 @@
         if (!this.is_create) {
           url += '/'+ this.$route.params.adopt_id
         }
-
-        const form_data = new FormData();
-        this.appendObjectToFormData(this.adopt, form_data);
-
+  
+        let form_data = this.adopt;
         let config = {};
-        if (this.image1) {
-          form_data.append("image1", this.image1);
-
+        if (this.image_new) {
+          form_data = new FormData();
+          this.appendObjectToFormData(this.adopt, form_data);
+          form_data.append("image_new", this.image_new);
+    
           config = {
             headers: {
               'content-type': 'multipart/form-data'
@@ -261,9 +261,8 @@
       removeAdopter(index) {
         this.adopters.splice(index, 1);
       },
-      updateImage1(file) {
-        this.image1 = file;
-
+      updateImage(file) {
+        this.image_new = file;
       }
     },
     created() {

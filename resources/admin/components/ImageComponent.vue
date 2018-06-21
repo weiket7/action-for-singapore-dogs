@@ -5,8 +5,8 @@
       {{ error }}
     </span>
     <br>
-    <div v-if="src" :id="'image-' + name">
-      <img :src="'assets/images/'+folder+'/'+src" style="max-height: 150px"/>
+    <div :id="'image-' + name">
+      <img :src="'assets/images/'+folder+'/'+src" v-if="src" style="max-height: 150px"/>
     </div>
 
   </div>

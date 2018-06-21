@@ -17,6 +17,9 @@ class AdoptRequest extends FormRequest
       'name' => 'required',
       'stat' => 'required',
       'gender' => 'required',
+      'birthday' => 'required',
+      'breed' => 'required',
+      'image_new' => 'required_without:adopt_id|mimes:jpeg,png,gif|max:1024',
     ];
   }
   
@@ -25,6 +28,11 @@ class AdoptRequest extends FormRequest
       'name.required' => 'Name is required',
       'stat.required' => 'Status is required',
       'gender.required' => 'Gender is required',
+      'birthday.required' => 'Birthday is required',
+      'breed.required' => 'breed is required',
+      'image_new.required_without' => 'Image is required',
+      'image_new.mimes' => 'Image must be jpg, png or gif',
+      'image_new.max' => 'Image must be less than 1mb size',
     ];
   }
 }

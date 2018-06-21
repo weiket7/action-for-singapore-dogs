@@ -23,6 +23,9 @@ class Adopt extends Model
     $this->colour = $input['colour'];
     $this->posted_by = 'admin';
     $this->posted_on = Carbon::now();
+    if ($this->adopt_id == null) {
+      $this->image = "";
+    }
     $this->save();
     return $this->adopt_id;
   }

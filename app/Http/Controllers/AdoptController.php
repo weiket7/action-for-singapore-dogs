@@ -29,16 +29,14 @@ class AdoptController extends Controller {
   }
   
   public function save(AdoptRequest $request, $adopt_id = null) {
-    //Log::info($request->image1);
     $adopt = new Adopt();
     if ($adopt_id) {
       $adopt = Adopt::find($request->get('adopt_id'));
     }
     $adopt_id = $adopt->saveAdopt($request->all());
-    //Log::info("file name=".str_slug($name)."-".Carbon::now()->format("YmdHis"));
-    if ($request->image1) {
+    if ($request->image_new) {
       $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
-      $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image1);
+      $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image_new);
       $adopt->image = $image_name;
       $adopt->save();
     }
@@ -46,7 +44,9 @@ class AdoptController extends Controller {
   }
   
   public function all(Request $request) {
-    return Adopt::all();
+    $data['adopts'] = Adopt::all();
+    $data['adopt_stats'] = AdoptStat::$values;
+    return $data;
   }
   
   public function list(Request $request, $adopt_ids) {
