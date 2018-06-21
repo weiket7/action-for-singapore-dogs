@@ -10,8 +10,13 @@ class Banner extends Model
   public $timestamps = false;
   
   public function saveBanner($input) {
-    $this->image = $input['image'];
-    $this->url = $input['url'];
+    $this->name = $input['name'];
+    $this->stat = $input['stat'];
+    $this->url = $input['url'] ?? "";
+    if ($this->banner_id == null) {
+      $this->image = "";
+      $this->position = Banner::max("position") + 1;
+    }
     $this->save();
     return $this->banner_id;
   }

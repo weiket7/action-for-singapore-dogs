@@ -10,6 +10,7 @@ class BannerTable extends Migration
   {
     Schema::create('banner', function (Blueprint $table) {
       $table->increments('banner_id');
+      $table->string('name', 50);
       $table->char('stat', 1);
       $table->integer('position');
       $table->string('image', 50);
@@ -17,24 +18,28 @@ class BannerTable extends Migration
     });
     
     DB::table('banner')->insert([
+      'name'=>'name1',
       'stat'=>'A',
       'position'=>1,
       'image'=>'banner1.jpg',
     ]);
   
     DB::table('banner')->insert([
+      'name'=>'name2',
       'stat'=>'A',
       'position'=>2,
       'image'=>'banner2.jpg',
     ]);
   
     DB::table('banner')->insert([
+      'name'=>'name3',
       'stat'=>'A',
       'position'=>3,
       'image'=>'banner3.jpg',
     ]);
   
     DB::table('banner')->insert([
+      'name'=>'name4',
       'stat'=>'A',
       'position'=>4,
       'image'=>'banner4.jpg',

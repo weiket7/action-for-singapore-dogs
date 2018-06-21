@@ -6,25 +6,25 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class BannerRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            //
-        ];
-    }
+  
+  public function rules()
+  {
+    return [
+      'name' => 'required',
+      'stat' => 'required',
+      'image' => 'required_without:banner_id',
+    ];
+  }
+  
+  public function messages() {
+    return [
+      'name.required' => 'Name is required',
+      'stat.required' => 'Status is required',
+      'image.required_without' => 'Image is required',
+    ];
+  }
 }

@@ -5,8 +5,8 @@
       {{ error }}
     </span>
     <br>
-    <div :id="'image-' + name">
-      <img :src="'assets/images/'+src" v-if="src" style="max-height: 150px"/>
+    <div v-if="src" :id="'image-' + name">
+      <img :src="'assets/images/'+folder+'/'+src" style="max-height: 150px"/>
     </div>
 
   </div>
@@ -19,12 +19,10 @@
       name: { type: String, required: false },
       value: { required: false },
       error: { type: String, required: false },
-      src: { required: false }
+      src: { required: false },
+      folder: { required: false }
     },
     methods: {
-      previewImage: function(e) {
-
-      },
       updateValue: function (e) {
         var reader = new FileReader();
         var vue = this
@@ -38,7 +36,7 @@
         var file = e.target.files[0];
         reader.readAsDataURL(file);
 
-        this.$emit('update-image1', file);
+        this.$emit('update-image', file);
       }
     }
   }

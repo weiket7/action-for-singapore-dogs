@@ -31,6 +31,7 @@ export default new Router({
     { path: '/adopt/save/:adopt_id', name: 'SaveAdopt', component: Adopt },
     
     { path: '/event', name: 'EventList', component: EventList },
+    { path: '/event/save', name: 'AddEvent', component: Event },
     { path: '/event/save/:event_id', name: 'Event', component: Event },
   
     { path: '/person', name: 'PersonList', component: PersonList },
@@ -57,6 +58,7 @@ export default new Router({
     { path: '/donation/:donation_id', name: 'SaveDonation', component: Donation },
   
     { path: '/banner', name: 'BannerList', component: BannerList },
+    { path: '/banner/save', name: 'AddBanner', component: Banner },
     { path: '/banner/:banner_id', name: 'SaveBanner', component: Banner },
   ]
 })

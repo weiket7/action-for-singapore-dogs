@@ -9,7 +9,21 @@ class EventRequest extends FormRequest
   public function rules()
   {
     return [
-      //
+      'stat'=>'required',
+      'name'=>'required',
+      'location'=>'required',
+      'date'=>'required',
+      'time'=>'required',
+    ];
+  }
+  
+  public function messages() {
+    return [
+      'stat.required'=>'Status is required',
+      'name.required'=>'Name is required',
+      'location.required'=>'Location is required',
+      'date.required'=>'Date  is required',
+      'time.required'=>'Time is required',
     ];
   }
   

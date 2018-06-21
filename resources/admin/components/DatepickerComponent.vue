@@ -32,6 +32,9 @@
       //moment sql format = YYYY-MM-DD
       //moment display format = DD MMM YYYY
       this.display_value = "";
+      if (this.value == undefined) {
+        this.display_value = moment().format('DD MMM YYYY');
+      }
       if (this.value) {
         this.display_value = moment(this.value, 'YYYY-MM-DD').format('DD MMM YYYY');
       }

@@ -3,7 +3,7 @@
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <div class="form-group m-form__group row" :class="{ 'has-danger': errors.has('name') }">
         <label-component>Status</label-component>
-        <radio-component name="stat" v-model="event.stat" :options="{ 'A': 'Available', 'H': 'Hidden' }"></radio-component>
+        <radio-component name="stat" v-model="event.stat" :options="{ 'A': 'Available', 'H': 'Hidden' }" :error="errors.get('stat')"></radio-component>
 
         <label-component>Name</label-component>
         <textbox-component name='name' v-model="event.name" :error="errors.get('name')"></textbox-component>
@@ -14,7 +14,7 @@
         <textbox-component name="location" v-model="event.location" :error="errors.get('location')"></textbox-component>
 
         <label-component>Date</label-component>
-        <datepicker-component name="date" v-model="event.date" v-if="event.date"></datepicker-component>
+        <datepicker-component name="date" v-model="event.date" v-if="loaded"></datepicker-component>
       </div>
 
       <div class="form-group m-form__group row">
@@ -44,10 +44,8 @@
     data() {
       return {
         event: {},
-        brands: {},
-        categories: {},
-        rescuers: [{}],
-        errors: new Errors()
+        errors: new Errors(),
+        loaded: false
       }
     },
     methods: {
@@ -76,11 +74,18 @@
       }
     },
     created() {
-      axios.get('api/event/get/' + this.$route.params.event_id)
-        .then(response => {
-          this.event = response.data
-        })
-        .catch(error => { console.log(error); })
+      if (this.is_create) {
+        this.loaded = true;
+      } else {
+        axios.get('api/event/get/' + this.$route.params.event_id)
+          .then(response => {
+            this.event = response.data;
+            this.loaded = true;
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      }
     }
   }
 </script>

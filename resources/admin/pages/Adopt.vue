@@ -80,8 +80,8 @@
           <form-row>
             <label-component>Image 1</label-component>
             <image-component v-model="adopt.image1" name="image1"
-                             v-on:update-image1="updateImage1"
-                             :src="'adopts/'+adopt.image" :error="errors.get('adopt.image')"></image-component>
+                             v-on:update-image="updateImage1" folder="adopts"
+                             :src="adopt.image" :error="errors.get('adopt.image')"></image-component>
           </form-row>
 
           <form-footer></form-footer>
@@ -207,7 +207,7 @@
         if (this.image1) {
           form_data.append("image1", this.image1);
 
-          const config = {
+          config = {
             headers: {
               'content-type': 'multipart/form-data'
             }

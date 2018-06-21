@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Events">
+  <single-portlet title="Events" create_link="event/save">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
