@@ -36,10 +36,12 @@ class AdoptController extends Controller {
     }
     $adopt_id = $adopt->saveAdopt($request->all());
     //Log::info("file name=".str_slug($name)."-".Carbon::now()->format("YmdHis"));
-    $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
-    $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image1);
-    $adopt->image = $image_name;
-    $adopt->save();
+    if ($request->image1) {
+      $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
+      $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image1);
+      $adopt->image = $image_name;
+      $adopt->save();
+    }
     return $adopt_id;
   }
   

@@ -202,13 +202,17 @@
 
         const form_data = new FormData();
         this.appendObjectToFormData(this.adopt, form_data);
-        form_data.append("image1", this.image1);
 
-        const config = {
-          headers: {
-            'content-type': 'multipart/form-data'
-          }
-        };
+        let config = {};
+        if (this.image1) {
+          form_data.append("image1", this.image1);
+
+          const config = {
+            headers: {
+              'content-type': 'multipart/form-data'
+            }
+          };
+        }
 
         axios.post(url, form_data, config)
           .then(this.onSuccess)

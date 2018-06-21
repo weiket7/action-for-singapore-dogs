@@ -21,7 +21,6 @@ class Adopt extends Model
     $this->birthday = Carbon::createFromFormat('Y-m-d', $input['birthday']);
     $this->breed = $input['breed'];
     $this->colour = $input['colour'];
-    $this->image = '';
     $this->posted_by = 'admin';
     $this->posted_on = Carbon::now();
     $this->save();
