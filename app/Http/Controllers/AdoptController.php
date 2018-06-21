@@ -6,6 +6,7 @@ use App\Models\Adopt;
 use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptStat;
 use App\Helpers\BackendHelper;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -27,17 +28,19 @@ class AdoptController extends Controller {
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
   }
   
-  public function uploadImage(Request $request) {
-    BackendHelper::uploadImage("adopts", "abc.jpg", $request->image1);
-  }
-  
   public function save(AdoptRequest $request, $adopt_id = null) {
-    Log::info($request->image1);
+    //Log::info($request->image1);
     $adopt = new Adopt();
     if ($adopt_id) {
       $adopt = Adopt::find($request->get('adopt_id'));
     }
-    return $adopt->saveAdopt($request->all());
+    $adopt_id = $adopt->saveAdopt($request->all());
+    //Log::info("file name=".str_slug($name)."-".Carbon::now()->format("YmdHis"));
+    $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
+    $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image1);
+    $adopt->image = $image_name;
+    $adopt->save();
+    return $adopt_id;
   }
   
   public function all(Request $request) {

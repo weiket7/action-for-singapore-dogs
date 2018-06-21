@@ -165,6 +165,7 @@
         fosters: [{}],
         adopters: [{}],
         errors: new Errors(),
+        image1: null
       }
     },
     computed: {
@@ -199,9 +200,26 @@
           url += '/'+ this.$route.params.adopt_id
         }
 
-        axios.post(url, this.adopt)
+        const form_data = new FormData();
+        this.appendObjectToFormData(this.adopt, form_data);
+        form_data.append("image1", this.image1);
+
+        const config = {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        };
+
+        axios.post(url, form_data, config)
           .then(this.onSuccess)
           .catch(this.onError);
+      },
+      appendObjectToFormData(obj, form_data) {
+        for (let key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            form_data.append(key, obj[key]);
+          }
+        }
       },
       onError(error) {
         if (error.response.status == 500) {
@@ -239,15 +257,7 @@
         this.adopters.splice(index, 1);
       },
       updateImage1(file) {
-        const formData = new FormData();
-        formData.append("image1", file);
-        const config = {
-          headers: {
-            'content-type': 'multipart/form-data'
-          }
-        };
-
-        axios.post('api/adopt/upload-image', formData, config);
+        this.image1 = file;
 
       }
     },

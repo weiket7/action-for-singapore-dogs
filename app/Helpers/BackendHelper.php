@@ -5,11 +5,10 @@ use Illuminate\Support\Facades\Log;
 
 class BackendHelper {
   public static function uploadImage($folder, $name, $image) {
-    Log::info($image);
     if (App::environment('local')) {
-      $base_path = $_SERVER['DOCUMENT_ROOT'] . "/asd/assets/images/";
+      $base_path = $_SERVER['DOCUMENT_ROOT'] . "/asd/public/assets/images/";
     } else {
-      $base_path = $_SERVER['DOCUMENT_ROOT'] . "/assets/images/";
+      $base_path = $_SERVER['DOCUMENT_ROOT'] . "/public/assets/images/";
     }
     
     $destination_path = $base_path . $folder . "/";

@@ -16,7 +16,6 @@ Route::get('api/adopt/search', 'AdoptController@search');
 Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
 Route::post('api/adopt/save', 'AdoptController@save');
 Route::post('api/adopt/save/{adopt_id}', 'AdoptController@save');
-Route::post('api/adopt/upload-image', 'AdoptController@uploadImage');
 
 Route::get('api/adopt/get-single/{adopt_id}', 'AdoptController@getSingle');
 Route::get('api/person/get-single/{person_id}', 'PersonController@getSingle');
