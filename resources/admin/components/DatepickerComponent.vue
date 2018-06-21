@@ -24,24 +24,15 @@
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);
-      }
+      },
     },
     mounted() {
       //bootstrap datepicker sql format = yyyy-mm-dd
       //bootstrap datepicker display format = dd M yyyy
       //moment sql format = YYYY-MM-DD
       //moment display format = DD MMM YYYY
-      this.display_value = "";
-      if (this.value == undefined) {
-        this.display_value = moment().format('DD MMM YYYY');
-      }
-      if (this.value) {
-        this.display_value = moment(this.value, 'YYYY-MM-DD').format('DD MMM YYYY');
-      }
       let options = {
         todayHighlight: true,
-        defaultViewDate: this.display_value,
-
         orientation: "bottom left",
         templates: {
           leftArrow: '<i class="la la-angle-left"></i>',
@@ -49,7 +40,6 @@
         },
         autoclose: true,
       };
-      //console.log('options months='+this.months);
       if (this.months) {
         options["viewMode"] = "months";
         options["minViewMode"] = "months";
@@ -57,15 +47,20 @@
       } else {
         options["format"] = "dd M yyyy";
       }
+
+      if (this.value) {
+        let date = moment(this.value, 'YYYY-MM-DD');
+        this.display_value = this.months ? date.format('MMM YYYY') : date.format('DD MMM YYYY');
+        options["defaultViewDate"] = this.display_value;
+      }
       let vue = this
-      $('#datepicker-'+this.name).datepicker(options).on('changeDate', function() {
-        let date = moment($(this).val(), 'DD MMM YYYY');
-        if (vue.months) {
-          date = moment($(this).val(), 'MMM YYYY').startOf("month");
-        }
-        let result = date.format('YYYY-MM-DD');
-        //console.log('this val=' + $(this).val() + ' date=' + date + ' formatted date='+result);
-        vue.updateValue(result);
+      //without nextTick, when click datepicker then click outside, value will be gone
+      this.$nextTick(function() {
+        $('#datepicker-'+this.name).datepicker(options).on('changeDate', function() {
+          let value = $(this).val();
+          let date = vue.months ? moment(value, 'MMM YYYY').startOf("month") : moment(value, 'DD MMM YYYY');
+          vue.updateValue(date.format('YYYY-MM-DD'));
+        });
       });
     }
   }

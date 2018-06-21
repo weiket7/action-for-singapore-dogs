@@ -24,7 +24,7 @@
             <radio-component v-model="adopt.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
 
             <label-component>Birthday</label-component>
-            <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')" :months="true" v-if="adopt.birthday"></datepicker-component>
+            <datepicker-component name="birthday" v-model="adopt.birthday" :error="errors.get('birthday')" :months="true" v-if="loaded"></datepicker-component>
           </form-row>
 
           <form-row>
@@ -155,6 +155,7 @@
   import FosterComponent from "../modules/AdoptFoster";
   import AdoptAdopter from "../modules/AdoptAdopter";
   import ImageComponent from "../components/ImageComponent";
+  import FormMixin from "../form-mixin";
   
   export default {
     name: "adopt",
@@ -165,7 +166,7 @@
         fosters: [{}],
         adopters: [{}],
         errors: new Errors(),
-        image1: null
+        image1: null,
       }
     },
     computed: {
@@ -273,8 +274,11 @@
             this.fosters = response.data.fosters;
             this.adopters = response.data.adopters;
             this.rescuers = response.data.rescuers;
+            this.loaded = true;
           })
           .catch(error => { console.log(error); })
+      } else {
+        this.loaded = true;
       }
     },
     components: {
@@ -283,6 +287,7 @@
       AdoptAdopter,
       ImageComponent
     },
+    mixins: [FormMixin]
   }
 </script>
 

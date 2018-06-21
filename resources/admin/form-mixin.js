@@ -1,4 +1,12 @@
 export default {
+  data() {
+    return {
+      loaded: false
+    }
+  },
+  created() {
+    //console.log(this.$data)
+  },
   methods: {
     onError(error) {
       if (error.response.status == 500) {
