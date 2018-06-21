@@ -1,5 +1,6 @@
 import Vue from "vue"
 import moment from "moment"
+import accounting from "accounting"
 
 Vue.filter("formatDate", function (value) {
   if (value === "" || value == null || value == undefined) {
@@ -18,6 +19,11 @@ Vue.filter("formatDateTime", function (value) {
   }
   return moment(value).format("DD MMM YYYY hh:mm:ss A");
 });
+
+Vue.filter("formatNumber", function (value) {
+  return accounting.format(value, 2);
+});
+
 
 Vue.filter("showGender", function (value) {
   return value == 'M' ? 'Male' : 'Female';

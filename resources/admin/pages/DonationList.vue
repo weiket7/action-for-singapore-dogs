@@ -4,20 +4,22 @@
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
-          <th>Donated On</th>
+          <th width="80px">Status</th>
           <th>Name</th>
-          <th>Amount</th>
-          <th>Payment Method</th>
+          <th width="100px">Amount</th>
+          <th width="150px">Payment Method</th>
+          <th>Donated On</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="donation in donations">
-          <td>{{ donation.donated_on | formatDate}}</td>
+          <td>{{ donation_stats[donation.stat] }}</td>
           <td>
             <router-link v-bind:to="'/donation/'+donation.donation_id">{{ donation.name }}</router-link>
           </td>
-          <td>{{ donation.amount  }}</td>
+          <td>{{ donation.amount | formatNumber }}</td>
           <td>{{ payment_methods[donation.payment_method] }}</td>
+          <td>{{ donation.donated_on | formatDate}}</td>
         </tr>
         </tbody>
       </table>
@@ -32,7 +34,8 @@
     name: "DonationList",
     data() {
       return {
-        donations: {}
+        donations: {},
+        donation_stats: {}
       }
     },
     created() {
@@ -40,6 +43,7 @@
         .then(response=>{
           this.donations = response.data.donations;
           this.payment_methods = response.data.payment_methods;
+          this.donation_stats = response.data.donation_stats;
         })
     }
   }

@@ -38,7 +38,7 @@
     created() {
       axios.get('api/event')
         .then(response => {
-          this.events = response.data
+          this.events = response.data;
         })
         .catch(error => {
           console.log(error);

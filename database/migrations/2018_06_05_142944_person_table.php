@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Enums\PersonStat;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,6 +12,7 @@ class PersonTable extends Migration
   {
     Schema::create('person', function (Blueprint $table) {
       $table->increments('person_id');
+      $table->char('stat', 1);
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
@@ -26,6 +28,7 @@ class PersonTable extends Migration
     });
     
     DB::table('person')->insert([
+      'stat'=>PersonStat::Active,
       'name'=>'Ralph 1',
       'email'=>'ralph@gmail.com',
       'mobile'=>'9111 111',
@@ -36,6 +39,7 @@ class PersonTable extends Migration
     ]);
     
     DB::table('person')->insert([
+      'stat'=>PersonStat::Active,
       'name'=>'Ray 2',
       'email'=>'ray@gmail.com',
       'mobile'=>'9222 2222',
@@ -46,6 +50,7 @@ class PersonTable extends Migration
     ]);
   
     DB::table('person')->insert([
+      'stat'=>PersonStat::Active,
       'name'=>'Fable 3',
       'email'=>'fable@gmail.com',
       'mobile'=>'9333 3333',
@@ -56,6 +61,7 @@ class PersonTable extends Migration
     ]);
   
     DB::table('person')->insert([
+      'stat'=>PersonStat::Active,
       'name'=>'Fabia 4',
       'email'=>'fabia@gmail.com',
       'mobile'=>'9444 4444',
@@ -66,6 +72,7 @@ class PersonTable extends Migration
     ]);
   
     DB::table('person')->insert([
+      'stat'=>PersonStat::Active,
       'name'=>'Alan 5',
       'email'=>'aaron@gmail.com',
       'mobile'=>'9555 5555',
@@ -76,6 +83,7 @@ class PersonTable extends Migration
     ]);
   
     DB::table('person')->insert([
+      'stat'=>PersonStat::Active,
       'name'=>'Aaron 6',
       'email'=>'alan@gmail.com',
       'mobile'=>'9666 6666',

@@ -11,11 +11,15 @@ class Event extends Model
   public function saveEvent($input) {
     $this->stat = $input['stat'];
     $this->name = $input['name'];
+    $this->slug = str_slug($input['name']);
     $this->location = $input['location'];
     $this->date = $input['date'];
     $this->time = $input['time'];
     $this->duration = $input['duration'];
     $this->cost = $input['cost'];
+    if ($this->banner_id == null) {
+      $this->image = "";
+    }
     $this->save();
     return $this->event_id;
   }

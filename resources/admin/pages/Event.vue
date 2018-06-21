@@ -45,13 +45,16 @@
       return {
         event: {},
         errors: new Errors(),
-        loaded: false
       }
     },
     methods: {
       onSubmit() {
-        //alert('hey');
-        axios.post('api/event/save/' + this.$route.params.event_id, this.event)
+        let url = 'api/event/save';
+        if (!this.is_create) {
+          url += '/'+ this.$route.params.event_id
+        }
+        
+        axios.post(url, this.event)
           .then(this.onSuccess)
           .catch(this.onError);
       },

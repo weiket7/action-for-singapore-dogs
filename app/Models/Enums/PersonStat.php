@@ -1,7 +1,15 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: WeiKet
- * Date: 9/6/2018
- * Time: 12:03 PM
- */
+<?php namespace App\Models\Enums;
+
+abstract class PersonStat {
+  const Active = 'A';
+  const Inactive = 'I';
+  const Blacklisted = 'B';
+  
+  static $values = array(
+    self::Active=>'Active',
+    self::Inactive=>'Inactive',
+    self::Blacklisted=>'Blacklisted',
+  );
+}
+
+

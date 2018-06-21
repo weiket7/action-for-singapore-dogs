@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\PersonRequest;
+use App\Models\Enums\PersonStat;
 use App\Models\Enums\PersonType;
 use App\Models\Person;
 use Illuminate\Http\Request;
@@ -16,12 +17,13 @@ class PersonController extends Controller {
   }
   
   public function all(Request $request) {
-    $query = Person::select('person_id', 'name', 'email', 'mobile');
+    $query = Person::select('person_id', 'name', 'email', 'mobile', 'stat', 'is_adopter', 'is_rescuer', 'is_foster', 'is_volunteer');
     $data['person_types'] = PersonType::$values;
     if($request->type) {
       $this->appendType($request->type, $query);
     }
     $data['persons'] = $query->get();
+    $data['person_stats'] = PersonStat::$values;
     return $data;
   }
   
