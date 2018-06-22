@@ -1,9 +1,13 @@
 <template>
   <div class="col-lg-3">
     <select :name="name" :value="value" class="form-control m-input" @change="updateValue($event.target.value)">
-      <option :value="key" v-for="(val, key) in options" :selected="value == key">
+      <option v-if="isArray" :value="val" v-for="(val, key) in options" :selected="value == val">
         {{ val }}
       </option>
+      <option v-else :value="key" v-for="(val, key) in options" :selected="value == key">
+        {{ val }}
+      </option>
+      
     </select>
     <span class="m-form__help m-form__error" v-if="error">
       {{ error }}
@@ -23,6 +27,11 @@
     methods: {
       updateValue: function (value) {
         this.$emit('input', value);
+      },
+    },
+    computed: {
+      isArray() {
+        return Array.isArray(this.options);
       }
     }
   }

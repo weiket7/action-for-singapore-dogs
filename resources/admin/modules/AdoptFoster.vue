@@ -50,21 +50,9 @@
 </template>
 
 <script>
-  import PersonRemark from "./PersonRemark";
-  import PersonComponent from "./PersonComponent";
-
   export default {
     name: "adopt-foster",
-    props: ['index', 'foster'],
-    methods: {
-      updatePerson(person) {
-        this.$emit('update-person', { index: this.index, person: person });
-      },
-    },
-    components: {
-      PersonRemark,
-      PersonComponent
-    }
+    props: ['index', 'foster']
   }
 </script>
 

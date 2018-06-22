@@ -20,6 +20,7 @@ class AdoptRequest extends FormRequest
       'birthday' => 'required',
       'breed' => 'required',
       'image_new' => 'required_without:adopt_id|mimes:jpeg,png,gif|max:1024',
+      'location_other' => 'required_if:location,Others'
     ];
   }
   
@@ -33,6 +34,7 @@ class AdoptRequest extends FormRequest
       'image_new.required_without' => 'Image is required',
       'image_new.mimes' => 'Image must be jpg, png or gif',
       'image_new.max' => 'Image must be less than 1mb size',
+      'location_other.required_if' => 'Other Location is required',
     ];
   }
 }

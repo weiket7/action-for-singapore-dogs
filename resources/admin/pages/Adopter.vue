@@ -77,10 +77,10 @@
 <script>
   import PersonRemark from "../modules/PersonRemark";
   import axios from 'axios';
+  import FormMixin from '../form-mixin';
   
   export default {
     name: "Adopter",
-    components: {PersonRemark},
     data() {
       return {
         adopter: {},
@@ -120,14 +120,6 @@
           .then(this.onSuccess)
           .catch(this.onError);
       },
-      onError(error) {
-        if (error.response.status == 500) {
-          toastr.error("A system error occurred");
-          return;
-        }
-        toastr.error("There were some errors, please check the form");
-        this.errors.record(error.response.data.errors);
-      },
       onSuccess(response) {
         if (this.is_create) {
           toastr.success("Adopter added");
@@ -141,7 +133,9 @@
       if (this.has_adopt_id) {
         this.selectAdopt(this.$route.query.adopt_id);
       }
-      if (!this.is_create) {
+      if (this.is_create) {
+        this.adopter.adopted_on = moment().format('YYYY-MM-DD');
+      } else {
         axios.get('api/adopter/get/'+this.$route.params.adopter_id)
           .then(response => {
             this.adopt = response.data.adopt;
@@ -149,6 +143,8 @@
             this.person = response.data.person;
           });
       }
-    }
+    },
+    components: {PersonRemark},
+    mixins: [FormMixin]
   }
 </script>

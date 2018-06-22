@@ -35,6 +35,7 @@ class Person extends Model
     $this->gender = $adoption_form->gender;
     $this->address = $adoption_form->address;
     $this->postal = $adoption_form->postal;
+    $this->adoption_form_id = $adoption_form->adoption_form_id;
     $this->save();
   }
 }

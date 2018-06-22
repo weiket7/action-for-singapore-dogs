@@ -55,17 +55,26 @@
       </tab>
       <tab name="Adopt">
         <div class="m-form m-form--fit m-form--label-align-right">
-          <person-adopt v-for="(adopt, index) in adopts" :adopt="adopt" :index="index" :key="adopt.adopt_id"></person-adopt>
+          <person-adopt v-for="(adopt, index) in adopts" :adopt="adopt" :index="index" :key="adopt.adopt_id" v-if="adopts.length > 0"></person-adopt>
+          <div v-if="adopts.length == 0">
+            No dogs yet
+          </div>
         </div>
       </tab>
       <tab name="Rescue">
         <div class="m-form m-form--fit m-form--label-align-right">
-          <person-rescue v-for="(rescue, index) in rescues" :rescue="rescue" :index="index" :key="rescue.adopt_id"></person-rescue>
+          <person-rescue v-for="(rescue, index) in rescues" :rescue="rescue" :index="index" :key="rescue.adopt_id" v-if="rescues.length > 0"></person-rescue>
+          <div v-if="adopts.length == 0">
+            No dogs yet
+          </div>
         </div>
       </tab>
       <tab name="Foster">
         <div class="m-form m-form--fit m-form--label-align-right">
-          <person-foster v-for="(foster, index) in fosters" :foster="foster" :index="index" :key="foster.adopt_id"></person-foster>
+          <person-foster v-for="(foster, index) in fosters" :foster="foster" :index="index" :key="foster.adopt_id" v-if="fosters.length > 0"></person-foster>
+          <div v-if="adopts.length == 0">
+            No dogs yet
+          </div>
         </div>
       </tab>
     </tabs>

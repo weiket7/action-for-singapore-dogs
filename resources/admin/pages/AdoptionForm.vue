@@ -85,13 +85,8 @@
           .catch(this.onError);
       },
       onSuccess(response) {
-        if (this.is_create) {
-          toastr.success("Banner added");
-          return;
-        }
-        toastr.success("Banner updated");
-        let adoption_form_id = response.data;
-        this.$router.push('/adoption_form/save/'+adoption_form_id);
+        toastr.success("Approved");
+        this.adoption_form.stat = 'A';
       },
     },
     created() {
@@ -104,11 +99,6 @@
         }).catch(error => {
         console.log(error);
       })
-    },
-    computed: {
-      is_create() {
-        return this.$route.path == "/adoption_form/save";
-      }
     },
     mixins: [FormMixin]
   }

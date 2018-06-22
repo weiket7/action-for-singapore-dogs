@@ -12,11 +12,16 @@
           </form-row>
 
           <form-row v-if="adopt.adopt_id">
-            <label-component>Rescued On</label-component>
-            <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
-
             <label-component>Location</label-component>
             <select-component v-model="adopt.location" :options="location_options" :error="errors.get('location')"></select-component>
+            
+            <label-component>Rescued On</label-component>
+            <datepicker-component name="rescued_on" v-model="adopt.rescued_on" :error="errors.get('rescued_on')"></datepicker-component>
+          </form-row>
+          
+          <form-row v-if="adopt.location == 'Others'">
+            <label-component>Other Location</label-component>
+            <textbox-component v-model="adopt.location_other" :error="errors.get('location_other')"></textbox-component>
           </form-row>
 
           <form-row>
