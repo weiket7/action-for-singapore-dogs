@@ -10,11 +10,11 @@
       </form-row>
       
       <form-row>
-        <label-component>Mobile</label-component>
-        <textbox-component v-model="volunteer.mobile"></textbox-component>
-        
         <label-component>Email</label-component>
         <textbox-component v-model="volunteer.email"></textbox-component>
+        
+        <label-component>Mobile</label-component>
+        <textbox-component v-model="volunteer.mobile"></textbox-component>
       </form-row>
 
       <form-row>

@@ -4,43 +4,53 @@
       <tab name="General" active>
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <form-row>
-            <label-component>Name</label-component>
+            <label-component required>Name</label-component>
             <textbox-component v-model="person.name" :error="errors.get('name')"></textbox-component>
   
-            <label-component>Email</label-component>
-            <textbox-component v-model="person.email" :error="errors.get('email')"></textbox-component>
+            <label-component required>Status</label-component>
+            <radio-component v-model="person.stat" :options="person_stats" v-if="!is_create" :error="errors.get('stat')"></radio-component>
+            <static-text v-else>Active</static-text>
           </form-row>
           
           <form-row>
-            <label-component>Mobile</label-component>
+            <label-component required>Email</label-component>
+            <textbox-component v-model="person.email" :error="errors.get('email')"></textbox-component>
+            
+            <label-component required>Mobile</label-component>
             <textbox-component v-model="person.mobile" :error="errors.get('mobile')"></textbox-component>
             
-            <label-component>Birthday</label-component>
-            <datepicker-component name="birthday" v-model="person.birthday" v-if="person.birthday" :error="errors.get('birthday')"></datepicker-component>
+          </form-row>
+          
+          <form-row>
+            <label-component required>Gender</label-component>
+            <radio-component v-model="person.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
+  
+            <label-component required>Birthday</label-component>
+            <datepicker-component name="birthday" v-model="person.birthday" v-if="loaded" :error="errors.get('birthday')"></datepicker-component>
           </form-row>
 
           <form-row>
-            <label-component>Address</label-component>
+            <label-component required>Address</label-component>
             <textbox-component v-model="person.address" :error="errors.get('address')"></textbox-component>
 
-            <label-component>Postal</label-component>
+            <label-component required>Postal</label-component>
             <textbox-component v-model="person.postal" :error="errors.get('postal')"></textbox-component>
           </form-row>
           
           <form-row>
             <label-component>Adopter</label-component>
-            <radio-component v-model="person.is_adopter" :options="{'1':'Yes', '0': 'No'}"></radio-component>
+            <radio-component v-model="person.is_adopter" :options="{'1':'Yes', '0': 'No'}" :error="errors.get('is_adopter')"></radio-component>
             
             <label-component>Rescuer</label-component>
-            <radio-component v-model="person.is_rescuer" :options="{'1':'Yes', '0': 'No'}"></radio-component>
+            <radio-component v-model="person.is_rescuer" :options="{'1':'Yes', '0': 'No'}" :error="errors.get('is_rescuer')"></radio-component>
           </form-row>
           
           <form-row>
             <label-component>Foster</label-component>
-            <radio-component name="" v-model="person.is_foster" :options="{'1':'Yes', '0': 'No'}"></radio-component>
+            <radio-component name="" v-model="person.is_foster" :options="{'1':'Yes', '0': 'No'}" :error="errors.get('is_foster')"></radio-component>
             
             <label-component>Volunteer</label-component>
-            <radio-component name="" v-model="person.is_volunteer" :options="{'1':'Yes', '0': 'No'}"></radio-component>
+            <radio-component name="" v-model="person.is_volunteer" :options="{'1':'Yes', '0': 'No'}" :error="errors.get('is_volunteer')"></radio-component>
           </form-row>
           
           <form-row v-if="person.is_adopter && person.adoption_form_id">
@@ -138,6 +148,8 @@
         rescues: [],
         tabs: ['General'],
         errors: new Errors(),
+        loaded: false,
+        person_stats: {}
       }
     },
     computed: {
@@ -182,13 +194,12 @@
       onSuccess(response) {
         if (this.is_create) {
           toastr.success("Person added");
-          this.$router.push('/person/save/'+person_id);
+          this.person.person_id = response.data;
+          this.$router.push('/person/save/'+this.person.person_id);
+          return;
         }
         toastr.success("Person updated");
         this.tabs = this.generateTabs();
-      },
-      addAdoptRow() {
-        this.adopts.push({});
       },
     },
     created() {
@@ -199,9 +210,14 @@
             this.adopts = response.data.adopts;
             this.fosters = response.data.fosters;
             this.rescues = response.data.rescues;
+            this.person_stats = response.data.person_stats;
             this.tabs = this.generateTabs();
+            this.loaded = true;
           })
           .catch(error => { console.log(error); });
+      } else {
+        this.person.stat = 'A';
+        this.loaded = true;
       }
     }
   }

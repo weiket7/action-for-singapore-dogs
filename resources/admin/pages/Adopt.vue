@@ -8,7 +8,8 @@
             <textbox-component v-model="adopt.name" :error="errors.get('name')"></textbox-component>
 
             <label-component required>Status</label-component>
-            <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')"></radio-component>
+            <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')" v-if="!is_create"></radio-component>
+            <static-text v-else>Active</static-text>
           </form-row>
 
           <form-row v-if="adopt.adopt_id">
@@ -284,6 +285,7 @@
           })
           .catch(error => { console.log(error); })
       } else {
+        this.adopt.stat = 'A';
         this.loaded = true;
       }
     },

@@ -131,7 +131,7 @@
           this.$router.push('/adopt/save/'+this.$route.query.adopt_id);
         } else if (this.has_person_id) {
           toastr.success("Dog added");
-          this.$router.push('/adopt/save/'+this.$route.query.person_id);
+          this.$router.push('/person/save/'+this.$route.query.person_id);
         }
       },
     },

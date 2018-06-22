@@ -10,16 +10,18 @@ class Person extends Model
   public $timestamps = false;
   
   public function savePerson($input) {
+    $this->stat = PersonStat::Active;
     $this->name = $input['name'];
     $this->email = $input['email'];
     $this->mobile = $input['mobile'];
     $this->address = $input['address'];
     $this->postal = $input['postal'];
     $this->birthday = $input['birthday'];
-    $this->is_adopter = $input['is_adopter'];
-    $this->is_rescuer = $input['is_rescuer'];
-    $this->is_foster = $input['is_foster'];
-    $this->is_volunteer = $input['is_volunteer'];
+    $this->gender = $input['gender'];
+    $this->is_adopter = $input['is_adopter'] ?? 0;
+    $this->is_rescuer = $input['is_rescuer'] ?? 0;
+    $this->is_foster = $input['is_foster'] ?? 0;
+    $this->is_volunteer = $input['is_volunteer'] ?? 0;
     $this->save();
     return $this->person_id;
   }
