@@ -59,22 +59,55 @@
           <div v-if="adopts.length == 0">
             No dogs yet
           </div>
+  
+          <form-row>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+              <router-link :to="'/adopter/save?person_id='+person.person_id">
+                <button type="button" class="btn btn-primary">
+                  Add Dog
+                </button>
+              </router-link>
+            </div>
+          </form-row>
         </div>
       </tab>
       <tab name="Rescue">
         <div class="m-form m-form--fit m-form--label-align-right">
           <person-rescue v-for="(rescue, index) in rescues" :rescue="rescue" :index="index" :key="rescue.adopt_id" v-if="rescues.length > 0"></person-rescue>
-          <div v-if="adopts.length == 0">
+          <div v-if="rescues.length == 0">
             No dogs yet
           </div>
+          
+          <form-row>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+              <router-link :to="'/rescuer/save?person_id='+person.person_id">
+                <button type="button" class="btn btn-primary">
+                  Add Dog
+                </button>
+              </router-link>
+            </div>
+          </form-row>
         </div>
       </tab>
       <tab name="Foster">
         <div class="m-form m-form--fit m-form--label-align-right">
           <person-foster v-for="(foster, index) in fosters" :foster="foster" :index="index" :key="foster.adopt_id" v-if="fosters.length > 0"></person-foster>
-          <div v-if="adopts.length == 0">
+          <div v-if="fosters.length == 0">
             No dogs yet
           </div>
+          
+          <form-row>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+              <router-link :to="'/foster/save?person_id='+person.person_id">
+                <button type="button" class="btn btn-primary">
+                  Add Dog
+                </button>
+              </router-link>
+            </div>
+          </form-row>
         </div>
       </tab>
     </tabs>

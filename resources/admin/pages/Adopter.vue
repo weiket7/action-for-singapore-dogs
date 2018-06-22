@@ -16,7 +16,7 @@
   
       <form-row>
         <label-component>Person Name</label-component>
-        <select2-component name='person_name' url="api/person/search" v-if="is_create"
+        <select2-component name='person_name' url="api/person/search" v-if="has_person_id == false && is_create"
                            event_name="select-person"
                            v-on:select-person="selectPerson"></select2-component>
         <static-text v-else>
@@ -94,6 +94,9 @@
       },
       has_adopt_id() {
         return this.$route.query.adopt_id > 0;
+      },
+      has_person_id() {
+        return this.$route.query.person_id > 0;
       }
     },
     methods: {
@@ -132,6 +135,9 @@
     created() {
       if (this.has_adopt_id) {
         this.selectAdopt(this.$route.query.adopt_id);
+      }
+      if (this.has_person_id) {
+        this.selectPerson(this.$route.query.person_id);
       }
       if (this.is_create) {
         this.adopter.adopted_on = moment().format('YYYY-MM-DD');

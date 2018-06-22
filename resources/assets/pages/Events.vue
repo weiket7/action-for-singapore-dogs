@@ -140,7 +140,7 @@
     created: function() {
       axios.get('api/event')
         .then(response => {
-          this.events = response.data;
+          this.events = response.data.events;
         })
         .catch(error => { console.log(error); })
     }

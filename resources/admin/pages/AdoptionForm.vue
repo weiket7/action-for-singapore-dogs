@@ -1,63 +1,70 @@
 <template>
   <single-portlet title="Adoption Form">
-    <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-      <form-row>
-        <label-component>Status</label-component>
-        <static-text>{{ adoption_form_stats[adoption_form.stat] }}</static-text>
+    <tabs :tabs="['Initial', 'Second']">
+      <tab :name="'Initial'" :active="true">
+        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+          <form-row>
+            <label-component>Status</label-component>
+            <static-text>{{ adoption_form_stats[adoption_form.stat] }}</static-text>
+            
+            <label-component>Name</label-component>
+            <static-text>{{ adoption_form.name }}</static-text>
+          </form-row>
+          
+          <form-row>
+            <label-component>Email</label-component>
+            <static-text>{{ adoption_form.email }}</static-text>
+            
+            <label-component>Mobile</label-component>
+            <static-text>{{ adoption_form.mobile }}</static-text>
+          </form-row>
+          
+          <form-row>
+            <label-component>Birthday</label-component>
+            <static-text>{{ adoption_form.birthday | formatDate }}</static-text>
+            
+            <label-component>Gender</label-component>
+            <static-text>{{ adoption_form.gender | showGender }}</static-text>
+          </form-row>
+          
+          <form-row>
+            <label-component>Address</label-component>
+            <static-text>{{ adoption_form.address }}</static-text>
+            
+            <label-component>Postal</label-component>
+            <static-text>{{ adoption_form.postal }}</static-text>
+          </form-row>
+          
+          <!--<form-row>
+            <label-component>Url</label-component>
+            <static-text>
+              <router-link :to="'../adoption-form/token/'+adoption_form.token" exact>
+                adoption-form/token/{{ adoption_form.token }}
+              </router-link>
+            </static-text>
         
-        <label-component>Name</label-component>
-        <static-text>{{ adoption_form.name }}</static-text>
-      </form-row>
-      
-      <form-row>
-        <label-component>Email</label-component>
-        <static-text>{{ adoption_form.email }}</static-text>
-        
-        <label-component>Mobile</label-component>
-        <static-text>{{ adoption_form.mobile }}</static-text>
-      </form-row>
-  
-      <form-row>
-        <label-component>Birthday</label-component>
-        <static-text>{{ adoption_form.birthday | formatDate }}</static-text>
-  
-        <label-component>Gender</label-component>
-        <static-text>{{ adoption_form.gender | showGender }}</static-text>
-      </form-row>
-  
-      <form-row>
-        <label-component>Address</label-component>
-        <static-text>{{ adoption_form.address }}</static-text>
-    
-        <label-component>Postal</label-component>
-        <static-text>{{ adoption_form.postal }}</static-text>
-      </form-row>
-  
-      <!--<form-row>
-        <label-component>Url</label-component>
-        <static-text>
-          <router-link :to="'../adoption-form/token/'+adoption_form.token" exact>
-            adoption-form/token/{{ adoption_form.token }}
-          </router-link>
-        </static-text>
-    
-      </form-row>-->
-      
-      <hr>
-      
-      <form-row v-for="answer in answers" :key="answer.id">
-        <label class="col-lg-4 col-form-label">
-          {{ answer.question }}
-        </label>
-        <label class="col-lg-8 col-form-label static-text">
-          {{ answer.answer }}
-        </label>
-      </form-row>
-  
-      <form-footer v-if="adoption_form.stat === 'S'">
-        <button type="submit" class="btn btn-success">Approve</button>
-      </form-footer>
-    </form>
+          </form-row>-->
+          
+          <form-footer v-if="adoption_form.stat === 'S'">
+            <form-row>
+            
+            </form-row>
+            
+            <button type="submit" class="btn btn-success">Approve</button>
+          </form-footer>
+        </form>
+      </tab>
+      <tab :name="'Second'">
+        <form-row v-for="answer in answers" :key="answer.id">
+          <label class="col-lg-4 col-form-label">
+            {{ answer.question }}
+          </label>
+          <label class="col-lg-8 col-form-label static-text">
+            {{ answer.answer }}
+          </label>
+        </form-row>
+      </tab>
+    </tabs>
   </single-portlet>
 </template>
 

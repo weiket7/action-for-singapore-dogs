@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Fosters" create_link="/foster/save">
+  <single-portlet title="Fosters">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>

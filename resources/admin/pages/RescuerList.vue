@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Rescuers" create_link="/rescuer/save">
+  <single-portlet title="Rescuers">
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
