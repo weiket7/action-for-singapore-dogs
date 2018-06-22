@@ -3,46 +3,60 @@
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
         <label-component>Status</label-component>
-        <radio-component name="stat" v-model="adoption_form.stat" :options="adoption_form_stats" :error="errors.get('stat')"></radio-component>
+        <static-text>{{ adoption_form_stats[adoption_form.stat] }}</static-text>
         
         <label-component>Name</label-component>
-        <textbox-component v-model="adoption_form.name" :error="errors.get('name')"></textbox-component>
+        <static-text>{{ adoption_form.name }}</static-text>
       </form-row>
       
       <form-row>
         <label-component>Email</label-component>
-        <textbox-component v-model="adoption_form.email" :error="errors.get('email')"></textbox-component>
+        <static-text>{{ adoption_form.email }}</static-text>
         
         <label-component>Mobile</label-component>
-        <textbox-component v-model="adoption_form.mobile" :error="errors.get('mobile')"></textbox-component>
+        <static-text>{{ adoption_form.mobile }}</static-text>
       </form-row>
   
       <form-row>
-        <label-component required>Birthday</label-component>
-        <datepicker-component name="birthday" v-model="adoption_form.birthday" :error="errors.get('birthday')" v-if="loaded"></datepicker-component>
+        <label-component>Birthday</label-component>
+        <static-text>{{ adoption_form.birthday | formatDate }}</static-text>
   
-        <label-component required>Gender</label-component>
-        <radio-component v-model="adoption_form.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
+        <label-component>Gender</label-component>
+        <static-text>{{ adoption_form.gender | showGender }}</static-text>
       </form-row>
   
       <form-row>
         <label-component>Address</label-component>
-        <textbox-component v-model="adoption_form.address" :error="errors.get('address')"></textbox-component>
+        <static-text>{{ adoption_form.address }}</static-text>
     
         <label-component>Postal</label-component>
-        <textbox-component v-model="adoption_form.postal" :error="errors.get('postal')"></textbox-component>
+        <static-text>{{ adoption_form.postal }}</static-text>
       </form-row>
+  
+      <!--<form-row>
+        <label-component>Url</label-component>
+        <static-text>
+          <router-link :to="'../adoption-form/token/'+adoption_form.token" exact>
+            adoption-form/token/{{ adoption_form.token }}
+          </router-link>
+        </static-text>
+    
+      </form-row>-->
       
       <hr>
       
-      <table class="table table-bordered">
-        <tr v-for="answer in answers">
-          <td width="50%">{{ answer.question }}</td>
-          <td>{{ answer.answer }}</td>
-        </tr>
-      </table>
-      
-      <form-footer></form-footer>
+      <form-row v-for="answer in answers" :key="answer.id">
+        <label class="col-lg-4 col-form-label">
+          {{ answer.question }}
+        </label>
+        <label class="col-lg-8 col-form-label static-text">
+          {{ answer.answer }}
+        </label>
+      </form-row>
+  
+      <form-footer v-if="adoption_form.stat === 'S'">
+        <button type="submit" class="btn btn-success">Approve</button>
+      </form-footer>
     </form>
   </single-portlet>
 </template>
@@ -65,12 +79,8 @@
     },
     methods: {
       onSubmit() {
-        let url = 'api/adoption_form/save';
-        if (!this.is_create) {
-          url += '/'+ this.$route.params.adoption_form_id
-        }
-        
-        axios.post(url, this.adoption_form, config)
+        let url = 'api/adoption-form/approve/'+this.$route.params.adoption_form_id;
+        axios.post(url, this.adoption_form)
           .then(this.onSuccess)
           .catch(this.onError);
       },
@@ -105,5 +115,7 @@
 </script>
 
 <style scoped>
-
+  .static-text {
+    text-align: left !important;
+  }
 </style>

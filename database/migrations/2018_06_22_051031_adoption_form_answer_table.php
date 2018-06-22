@@ -26,7 +26,19 @@ class AdoptionFormAnswerTable extends Migration
       ['adoption_form_id'=>1, 'question'=>'What type of housing do you live in?', 'answer'=>8],
       ['adoption_form_id'=>1, 'question'=>'Do you have a domestic helper?', 'answer'=>9],
       ['adoption_form_id'=>1, 'question'=>'How many family member(s) stay with you?', 'answer'=>10],
-      ['adoption_form_id'=>1, 'question'=>'What age(s) are your family member(s)?', 'answer'=>11]
+      ['adoption_form_id'=>1, 'question'=>'What age(s) are your family member(s)?', 'answer'=>11],
+  
+      ['adoption_form_id'=>2, 'question'=>'Occupation', 'answer'=>1],
+      ['adoption_form_id'=>2, 'question'=>'Working Hours', 'answer'=>2],
+      ['adoption_form_id'=>2, 'question'=>'Experience with dogs', 'answer'=>3],
+      ['adoption_form_id'=>2, 'question'=>'Have you had dog(s) before?', 'answer'=>4],
+      ['adoption_form_id'=>2, 'question'=>'Do you currently have dog(s)?', 'answer'=>5],
+      ['adoption_form_id'=>2, 'question'=>'Why do you want to adopt a dog?', 'answer'=>6],
+      ['adoption_form_id'=>2, 'question'=>'Family and home', 'answer'=>7],
+      ['adoption_form_id'=>2, 'question'=>'What type of housing do you live in?', 'answer'=>8],
+      ['adoption_form_id'=>2, 'question'=>'Do you have a domestic helper?', 'answer'=>9],
+      ['adoption_form_id'=>2, 'question'=>'How many family member(s) stay with you?', 'answer'=>10],
+      ['adoption_form_id'=>2, 'question'=>'What age(s) are your family member(s)?', 'answer'=>11]
     ];
     foreach($answers as $answer) {
       DB::table('adoption_form_answer')->insert($answer);

@@ -8,8 +8,10 @@
         <label-component>Question</label-component>
         <textbox-component v-model="question.content" :error="errors.get('content')"></textbox-component>
       </form-row>
-
-      <form-footer></form-footer>
+  
+      <form-footer>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form-footer>
     </form>
   </single-portlet>
 </template>

@@ -29,7 +29,6 @@ class AdoptTable extends Migration
         $table->string('behaviour', 250)->nullable();
         $table->string('posted_by', 30);
         $table->dateTime('posted_on');
-        $table->integer('adoption_form_id')->nullable();
         //$table->boolean('has_foster');
         //$table->boolean('can_sponsor');
         $table->string('desc', 250)->nullable();

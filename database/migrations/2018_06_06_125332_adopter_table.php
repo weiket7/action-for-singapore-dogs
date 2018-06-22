@@ -29,14 +29,6 @@ class AdopterTable extends Migration
       'returned_on'=>Carbon::now()->subYear(1)->subDay(1),
       'return_reason'=>'Moving out of SG'
     ]);
-    
-    DB::table('adopter')->insert([
-      'stat'=>'P',
-      'adopt_id'=>1,
-      'person_id'=>6,
-      'adopted_on'=>Carbon::now()->subYear(1),
-      'returned'=>0,
-    ]);
   }
   
   public function down()

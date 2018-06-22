@@ -34,8 +34,10 @@
                          v-on:update-image="updateImage" folder="events"
                          :src="event.image" :error="errors.get('image')"></image-component>
       </div>
-
-      <form-footer></form-footer>
+  
+      <form-footer>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form-footer>
     </form>
   </single-portlet>
 </template>

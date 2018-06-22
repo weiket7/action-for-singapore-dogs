@@ -29,8 +29,10 @@
         <label-component>Interested In</label-component>
         <checkbox-component :value="interests" :options="interested_in_options" v-if="volunteer"></checkbox-component>
       </form-row>
-      
-      <form-footer></form-footer>
+  
+      <form-footer>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form-footer>
     </form>
   </single-portlet>
 </template>

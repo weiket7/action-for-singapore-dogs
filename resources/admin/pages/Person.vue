@@ -43,7 +43,14 @@
             <radio-component name="" v-model="person.is_volunteer" :options="{'1':'Yes', '0': 'No'}"></radio-component>
           </form-row>
           
-          <form-footer></form-footer>
+          <form-row v-if="person.is_adopter && person.adoption_form_id">
+            <label-component>Adoption Form</label-component>
+            <static-text><router-link :to="'/adoption-form/save/'+person.adoption_form_id">View</router-link></static-text>
+          </form-row>
+  
+          <form-footer>
+            <button type="submit" class="btn btn-success">Save</button>
+          </form-footer>
         </form>
       </tab>
       <tab name="Adopt">

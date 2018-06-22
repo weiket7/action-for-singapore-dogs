@@ -14,6 +14,7 @@ Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@g
 Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
 Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
 Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
+Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
 
 Route::get('api/adopt', 'AdoptController@all');
 Route::get('api/adopt/search', 'AdoptController@search');

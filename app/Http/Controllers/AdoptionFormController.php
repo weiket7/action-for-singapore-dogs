@@ -6,18 +6,16 @@ use App\Mail\AdoptionFormMail;
 use App\Models\Adopt;
 use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptionFormStat;
-use App\Models\Enums\AdoptStat;
-use App\Helpers\BackendHelper;
+use App\Models\Person;
 use App\Models\Question;
-use App\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class AdoptionFormController extends Controller {
+  
+  //POST
   public function initial(AdoptionFormRequest $request) {
     $adoption_form = new AdoptionForm();
     
@@ -47,10 +45,21 @@ class AdoptionFormController extends Controller {
     return $data;
   }
   
+  //POST
   public function second(Request $request, $token) {
     //Log::info($token);
     $adoption_form = AdoptionForm::where('token', $token)->first();
     $adoption_form->saveSecondForm($request->all());
+  }
+  
+  //POST
+  public function approve(Request $request, $adoption_form_id) {
+    $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
+    $adoption_form->stat = AdoptionFormStat::Approved;
+    $adoption_form->save();
+    
+    $person = new Person();
+    $person->saveAdoptionFormAsAdopter($adoption_form);
   }
   
   public function get(Request $request, $adoption_form_id) {

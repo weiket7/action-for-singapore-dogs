@@ -83,8 +83,10 @@
                              v-on:update-image="updateImage" folder="adopts"
                              :src="adopt.image" :error="errors.get('image_new')"></image-component>
           </form-row>
-
-          <form-footer></form-footer>
+  
+          <form-footer>
+            <button type="submit" class="btn btn-success">Save</button>
+          </form-footer>
         </form>
       </tab>
       <tab :name="'Adopter'">

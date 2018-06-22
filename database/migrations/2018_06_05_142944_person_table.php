@@ -16,14 +16,16 @@ class PersonTable extends Migration
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
+      $table->dateTime('birthday');
+      $table->char('gender', 1);
       $table->string('address', 100);
       $table->string('postal', 10);
-      $table->dateTime('birthday');
       $table->boolean('is_rescuer')->default(0);
       $table->boolean('is_adopter')->default(0);
       $table->boolean('is_foster')->default(0);
       $table->boolean('is_sponsor')->default(0);
       $table->boolean('is_volunteer')->default(0);
+      $table->integer('adoption_form_id')->nullable();
       $table->string('desc', 250)->nullable();
     });
     
@@ -35,6 +37,7 @@ class PersonTable extends Migration
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'postal'=>'123456',
       'birthday'=>Carbon::now()->subYear(30),
+      'gender'=>'M',
       'is_rescuer'=>1,
     ]);
     
@@ -46,6 +49,7 @@ class PersonTable extends Migration
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
       'postal'=>'123456',
       'birthday'=>Carbon::now()->subYear(30),
+      'gender'=>'M',
       'is_rescuer'=>1,
     ]);
   
@@ -57,6 +61,7 @@ class PersonTable extends Migration
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'postal'=>'123456',
       'birthday'=>Carbon::now()->subYear(30),
+      'gender'=>'M',
       'is_foster'=>1,
     ]);
   
@@ -68,6 +73,7 @@ class PersonTable extends Migration
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
       'postal'=>'123456',
       'birthday'=>Carbon::now()->subYear(30),
+      'gender'=>'M',
       'is_foster'=>1,
     ]);
   
@@ -79,18 +85,9 @@ class PersonTable extends Migration
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'postal'=>'123456',
       'birthday'=>Carbon::now()->subYear(30),
+      'gender'=>'M',
       'is_adopter'=>1,
-    ]);
-  
-    DB::table('person')->insert([
-      'stat'=>PersonStat::Active,
-      'name'=>'Aaron 6',
-      'email'=>'alan@gmail.com',
-      'mobile'=>'9666 6666',
-      'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
-      'postal'=>'123456',
-      'birthday'=>Carbon::now()->subYear(30),
-      'is_adopter'=>1,
+      'adoption_form_id'=>1
     ]);
   }
   

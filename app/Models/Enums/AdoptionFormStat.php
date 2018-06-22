@@ -2,13 +2,13 @@
 
 abstract class AdoptionFormStat {
   const Initial = 'I';
-  const Second = 'C';
-  const Success = 'S';
+  const Second = 'S';
+  const Approved = 'A';
   
   static $values = array(
     self::Initial=>'Initial',
     self::Second=>'Second',
-    self::Success=>'Success',
+    self::Approved=>'Approved',
   );
 }
 

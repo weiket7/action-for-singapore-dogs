@@ -18,8 +18,10 @@
                          v-on:update-image="updateImage" folder="banners"
                          :src="banner.image" :error="errors.get('image')"></image-component>
       </form-row>
-
-      <form-footer></form-footer>
+  
+      <form-footer>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form-footer>
     </form>
   </single-portlet>
 </template>
