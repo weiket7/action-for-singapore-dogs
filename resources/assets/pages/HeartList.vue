@@ -7,6 +7,12 @@
       </div>
     </div>
     
+    <div class="row" v-if="adopt_count === 0">
+      <div class="col-md-12 text-center">
+        <h3>Please view <router-link :to="'dogs-for-adoption'" class="highlight bold">Dogs for Adoption</router-link> and click the <i class="fas fa-heart highlight"></i> to add them to your Likes.</h3>
+      </div>
+    </div>
+    
     <div class="row" v-if="adopt_count === 1">
       <div class="col-md-3 col-center">
         <adopt-item :adopt="adopts[0]" :key="adopts[0].adopt_id" :highlight="hasHeart(adopts[0].adopt_id)" v-on:heart-adopt="heartAdopt"></adopt-item>
@@ -31,10 +37,9 @@
       </div>
     </div>
     
+    <hr v-show="adopt_count > 0">
     
-    <hr>
-    
-    <div class="row" v-show="!interested">
+    <div v-show="!interested && adopt_count > 0" class="row">
       <div class="col-md-12 text-center">
         <button type="button" class="" @click="interested = true">I'm interested in adopting</button>
       </div>
@@ -103,6 +108,8 @@
 </script>
 
 <style scoped>
+  
+  
   .col-center {
     float: none;
     margin: 0 auto;

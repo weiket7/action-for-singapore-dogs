@@ -77,89 +77,7 @@
           </div>
         </div>
       </div>
-
-      <!--<div class="row">
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">Occupation</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">Working Hours</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
-
-      <h4 class="adoption-form-header">Experience with Dogs</h4>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">Have you had dog(s) before?</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">Do you currently have dog(s)?</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">Why do you want to adopt a dog?</label>
-            <textarea class="form-control" rows="3"></textarea>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-          </div>
-        </div>
-      </div>
-
-      <h4 class="adoption-form-header">Family and Home</h4>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">What type of housing do you live in?</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">Do you have a domestic helper?</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">How many family member(s) stay with you?</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group no-mb">
-            <label class="control-label">What age(s) are your family member(s)?</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>-->
-
+      
       <hr>
 
       <div class="row">
@@ -184,7 +102,8 @@
     data() {
       return {
         success: false,
-        form: {}
+        form: {},
+        hearts: [],
       }
     },
     methods: {
@@ -192,7 +111,7 @@
         this.form.birthday = date;
       },
       onSubmit() {
-        axios.post("api/adopt/form", this.form)
+        axios.post("api/adoption-form/initial", this.form)
           .then(this.onSuccess)
           .catch(this.onError);
       },
@@ -218,6 +137,11 @@
           vue.updateBirthday(moment(value, 'DD MMM YYYY').format('YYYY-MM-DD'));
         }
       });
+  
+      let hearts = localStorage.getItem('hearts');
+      if (hearts != null) {
+        this.form.hearts = JSON.parse(hearts);
+      }
     }
   }
 </script>

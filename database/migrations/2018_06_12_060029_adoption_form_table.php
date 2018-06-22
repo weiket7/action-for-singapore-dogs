@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Enums\AdoptionFormStat;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,18 +12,22 @@ class AdoptionFormTable extends Migration
   {
     Schema::create('adoption_form', function (Blueprint $table) {
       $table->increments('adoption_form_id');
+      $table->char('stat', 1);
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
       $table->string('address', 50);
       $table->string('postal', 10);
       $table->char('gender', 1);
+      $table->char('token', 16);
       $table->dateTime('birthday');
-      $table->dateTime('submitted_on');
+      $table->dateTime('initial_on');
+      $table->dateTime('second_on')->nullable();
     });
     
     DB::table('adoption_form')->insert([
       'adoption_form_id'=>1,
+      'stat'=>AdoptionFormStat::Second,
       'name'=>'Ralph 1',
       'email'=>'ralph@gmail.com',
       'mobile'=>'9111 111',
@@ -30,7 +35,8 @@ class AdoptionFormTable extends Migration
       'postal'=>'123456',
       'birthday'=>Carbon::now()->subYear(30),
       'gender'=>'M',
-      'submitted_on'=>Carbon::now()
+      'token'=>'zxc',
+      'initial_on'=>Carbon::now()
     ]);
   }
   

@@ -1,22 +1,12 @@
 <template>
-  <single-portlet title="Banner">
+  <single-portlet title="Question">
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
-        <label-component>Status</label-component>
-        <radio-component name="stat" v-model="banner.stat" :options="{ 'A': 'Available', 'H': 'Hidden' }" :error="errors.get('stat')"></radio-component>
+        <label-component>Is Header</label-component>
+        <radio-component name="is_header" v-model="question.is_header" :options="{ '1': 'Yes', '0': 'No' }" :error="errors.get('is_header')"></radio-component>
 
-        <label-component>Name</label-component>
-        <textbox-component v-model="banner.name" :error="errors.get('name')"></textbox-component>
-      </form-row>
-
-      <form-row>
-        <label-component>Url</label-component>
-        <textbox-component v-model="banner.url" :error="errors.get('url')"></textbox-component>
-
-        <label-component>Image</label-component>
-        <image-component v-model="banner.image" name="image"
-                         v-on:update-image="updateImage" folder="banners"
-                         :src="banner.image" :error="errors.get('image')"></image-component>
+        <label-component>Question</label-component>
+        <textbox-component v-model="question.content" :error="errors.get('content')"></textbox-component>
       </form-row>
 
       <form-footer></form-footer>
@@ -31,10 +21,10 @@
   import FormMixin from '../form-mixin';
 
   export default {
-    name: "banner",
+    name: "question",
     data() {
       return {
-        banner: {},
+        question: {},
         errors: new Errors(),
         image_new: null
       }
@@ -44,16 +34,16 @@
         this.image_new = file;
       },
       onSubmit() {
-        let url = 'api/banner/save';
+        let url = 'api/question/save';
         if (!this.is_create) {
-          url += '/'+ this.$route.params.banner_id
+          url += '/'+ this.$route.params.question_id
         }
 
-        let form_data = this.banner;
+        let form_data = this.question;
         let config = {};
         if (this.image_new) {
           form_data = new FormData();
-          this.appendObjectToFormData(this.banner, form_data);
+          this.appendObjectToFormData(this.question, form_data);
           form_data.append("image_new", this.image_new);
 
           config = {
@@ -69,20 +59,19 @@
       },
       onSuccess(response) {
         if (this.is_create) {
-          toastr.success("Banner added");
+          toastr.success("Question added");
           return;
         }
-        toastr.success("Banner updated");
-        let banner_id = response.data;
-        this.$router.push('/banner/save/'+banner_id);
+        toastr.success("Question updated");
+        let question_id = response.data;
+        this.$router.push('/question/save/'+question_id);
       },
     },
     created() {
       if (! this.is_create) {
-        axios.get('api/banner/get/' + this.$route.params.banner_id)
+        axios.get('api/question/get/' + this.$route.params.question_id)
           .then(response => {
-            this.banner = response.data.banner;
-            this.banner_stats = response.data.banner_stats;
+            this.question = response.data;
           }).catch(error => {
           console.log(error);
         })
@@ -90,7 +79,7 @@
     },
     computed: {
       is_create() {
-        return this.$route.path == "/banner/save";
+        return this.$route.path == "/question/save";
       }
     },
     components: {

@@ -16,7 +16,7 @@ class BannerRequest extends FormRequest
     return [
       'name' => 'required',
       'stat' => 'required',
-      'image' => 'required_without:banner_id',
+      'image_new' => 'required_without:banner_id',
     ];
   }
   
@@ -24,7 +24,7 @@ class BannerRequest extends FormRequest
     return [
       'name.required' => 'Name is required',
       'stat.required' => 'Status is required',
-      'image.required_without' => 'Image is required',
+      'image_new.required_without' => 'Image is required',
     ];
   }
 }

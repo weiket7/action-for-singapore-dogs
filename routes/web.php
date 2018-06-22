@@ -7,9 +7,13 @@ Route::get('api/adopt/random', 'AdoptController@random'); //for home
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
-Route::post('api/adopt/form', 'AdoptController@form');
 Route::post('api/donation/form', 'DonationController@form');
 Route::post('api/volunteer/form', 'VolunteerController@form');
+
+Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
+Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
+Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
+Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
 
 Route::get('api/adopt', 'AdoptController@all');
 Route::get('api/adopt/search', 'AdoptController@search');
@@ -53,3 +57,13 @@ Route::get('api/banner', 'BannerController@all');
 Route::get('api/banner/get/{banner_id}', 'BannerController@get');
 Route::post('api/banner/save/', 'BannerController@save');
 Route::post('api/banner/save/{banner_id}', 'BannerController@save');
+
+Route::get('api/adoption-form', 'AdoptionFormController@all');
+Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
+Route::post('api/adoption-form/save/', 'AdoptionFormController@save');
+Route::post('api/adoption-form/save/{adoption_form_id}', 'AdoptionFormController@save');
+
+Route::get('api/question', 'QuestionController@all');
+Route::get('api/question/get/{question_id}', 'QuestionController@get');
+Route::post('api/question/save/', 'QuestionController@save');
+Route::post('api/question/save/{question_id}', 'QuestionController@save');

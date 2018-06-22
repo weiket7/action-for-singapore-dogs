@@ -1,8 +1,11 @@
 <?php namespace App\Http\Controllers;
 
+use App\Helpers\BackendHelper;
 use App\Http\Requests\EventRequest;
 use App\Models\Adopt;
+use App\Models\Enums\EventStat;
 use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventController extends Controller {
@@ -11,11 +14,20 @@ class EventController extends Controller {
     if ($event_id) {
       $event = Event::find($request->event_id);
     }
-    return $event->saveEvent($request->all());
+    $event_id = $event->saveEvent($request->all());
+    if ($request->image_new) {
+      $image_name = "event-".str_slug($event->name)."-".Carbon::now()->format("YmdHis");
+      $image_name = BackendHelper::uploadImage("events", $image_name, $request->image_new);
+      $event->image = $image_name;
+      $event->save();
+    }
+    return $event_id;
   }
   
   public function all(Request $request) {
-    return Event::all();
+    $data['events'] = Event::all();
+    $data['event_stats'] = EventStat::$values;
+    return $data;
   }
   
   public function get(Request $request, $event_id) {
