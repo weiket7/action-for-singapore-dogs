@@ -30,7 +30,7 @@ class AdoptTable extends Migration
         $table->string('image', 50);
         $table->string('health', 250)->nullable();
         $table->string('behaviour', 250)->nullable();
-        $table->dateTime('rescued_on');
+        $table->dateTime('rescued_on')->nullable();
         $table->string('posted_by', 30);
         $table->dateTime('posted_on');
         //$table->boolean('has_foster');

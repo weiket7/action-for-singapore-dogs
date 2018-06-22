@@ -84,7 +84,7 @@
           </form-row>
   
           <form-row>
-            <label-component>Image 1</label-component>
+            <label-component required>Image 1</label-component>
             <image-component v-model="adopt.image" name="image"
                              v-on:update-image="updateImage" folder="adopts"
                              :src="adopt.image" :error="errors.get('image_new')"></image-component>
@@ -245,6 +245,8 @@
       onSuccess(response) {
         if (this.is_create) {
           toastr.success("Dog added");
+          this.adopt.adopt_id = response.data;
+          this.$router.push('/adopt/save/'+this.adopt.adopt_id);
           return;
         }
         toastr.success("Dog updated");

@@ -20,11 +20,17 @@ class Adopt extends Model
     $this->gender = $input['gender'];
     $this->birthday = Carbon::createFromFormat('Y-m-d', $input['birthday']);
     $this->breed = $input['breed'];
-    $this->colour = $input['colour'];
+    $this->colour = $input['colour'] ?? "";
+    $this->microchip = $input['microchip'] ?? 0;
+    $this->vaccinate = $input['vaccinate'] ?? 0;
+    $this->hdb = $input['hdb'] ?? 0;
     $this->posted_by = 'admin';
     $this->posted_on = Carbon::now();
     if ($this->adopt_id == null) {
       $this->image = "";
+    } else {
+      $this->location = $input['location'] == "Others" ? $input['location_other'] : $input['location'];
+      $this->rescued_on = $input['rescued_on'];
     }
     $this->save();
     return $this->adopt_id;
