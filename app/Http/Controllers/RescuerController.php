@@ -5,7 +5,6 @@ use App\Models\Adopt;
 use App\Models\Rescuer;
 use App\Models\Person;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class RescuerController extends Controller {
   public function save(RescuerRequest $request, $rescuer_id = null) {
@@ -13,7 +12,7 @@ class RescuerController extends Controller {
     if ($rescuer_id) {
       $rescuer = Rescuer::find($rescuer_id);
     }
-    return $rescuer->saveRescuer($request->all());
+    $rescuer->saveRescuer($request->all());
   }
   
   public function get(Request $request, $rescuer_id) {

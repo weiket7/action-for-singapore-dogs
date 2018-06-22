@@ -22,6 +22,5 @@ class Adopter extends Model
       $this->return_reason = $input['return_reason'];
     }
     $this->save();
-    return $this->adopter_id;
   }
 }

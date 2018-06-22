@@ -60,6 +60,7 @@
 <script>
   import PersonRemark from "../modules/PersonRemark";
   import axios from 'axios';
+  import FormMixin from '../form-mixin'
 
   export default {
     name: "Rescuer",
@@ -87,12 +88,14 @@
         axios.get('api/adopt/get-single/'+adopt_id)
           .then(response => {
             this.adopt = response.data;
+            this.rescuer.adopt_id = this.adopt.adopt_id;
           });
       },
       selectPerson(person_id) {
         axios.get('api/person/get-single/'+person_id)
           .then(response => {
             this.person = response.data;
+            this.rescuer.person_id = this.person.person_id;
           });
       },
       onSubmit() {
@@ -104,21 +107,16 @@
           .then(this.onSuccess)
           .catch(this.onError);
       },
-      onError(error) {
-        if (error.response.status == 500) {
-          toastr.error("A system error occurred");
-          return;
-        }
-        toastr.error("There were some errors, please check the form");
-        this.errors.record(error.response.data.errors);
-      },
       onSuccess(response) {
-        if (this.is_create) {
+        if (! this.is_create) {
+          toastr.success("Rescuer updated");
+        } else if (this.has_adopt_id) {
           toastr.success("Rescuer added");
-          this.$router.push('/person/save/'+person_id);
+          this.$router.push('/adopt/save/'+this.$route.query.adopt_id);
+        } else if (this.has_person_id) {
+          toastr.success("Dog added");
+          this.$router.push('/adopt/save/'+this.$route.query.person_id);
         }
-        toastr.success("Rescuer updated");
-        this.tabs = this.generateTabs();
       },
     },
     created() {
@@ -137,6 +135,7 @@
             this.person = response.data.person;
           });
       }
-    }
+    },
+    mixins: [FormMixin]
   }
 </script>

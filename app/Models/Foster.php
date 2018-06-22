@@ -9,6 +9,7 @@ class Foster extends Model
   public $timestamps = false;
   
   public function saveFoster($input) {
+    $this->stat = 'A';
     $this->adopt_id = $input['adopt_id'];
     $this->person_id = $input['person_id'];
     $this->start_date = $input['start_date'];

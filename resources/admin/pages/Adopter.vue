@@ -124,12 +124,15 @@
           .catch(this.onError);
       },
       onSuccess(response) {
-        if (this.is_create) {
+        if (! this.is_create) {
+          toastr.success("Adopter updated");
+        } else if (this.has_adopt_id) {
           toastr.success("Adopter added");
-          this.$router.push('/person/save/'+person_id);
+          this.$router.push('/adopt/save/'+this.$route.query.adopt_id);
+        } else if (this.has_person_id) {
+          toastr.success("Dog added");
+          this.$router.push('/adopt/save/'+this.$route.query.person_id);
         }
-        toastr.success("Adopter updated");
-        this.tabs = this.generateTabs();
       },
     },
     created() {

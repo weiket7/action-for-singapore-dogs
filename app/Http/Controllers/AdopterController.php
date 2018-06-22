@@ -6,6 +6,7 @@ use App\Models\Enums\VolunteerStat;
 use App\Models\Person;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AdopterController extends Controller {
   public function save(Request $request, $adopter_id = null) {
@@ -13,7 +14,7 @@ class AdopterController extends Controller {
     if ($adopter_id) {
       $adopter = Adopter::find($adopter_id);
     }
-    return $adopter->saveAdopter($request->all());
+    $adopter->saveAdopter($request->all());
   }
   
   public function get(Request $request, $adopter_id) {

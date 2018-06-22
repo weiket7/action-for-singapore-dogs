@@ -13,7 +13,7 @@ class FosterController extends Controller {
     if ($foster_id) {
       $foster = Foster::find($foster_id);
     }
-    return $foster->saveFoster($request->all());
+    $foster->saveFoster($request->all());
   }
   
   public function get(Request $request, $foster_id) {
