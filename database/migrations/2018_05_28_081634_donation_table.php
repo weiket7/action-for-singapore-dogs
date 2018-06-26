@@ -20,6 +20,7 @@ class DonationTable extends Migration
         $table->string('amount', 50);
         $table->string('payment_method', 50);
         $table->string('ref_no', 50)->nullable();
+        $table->dateTime('transfer_date')->nullable();
         $table->dateTime('donated_on');
       });
       
@@ -31,6 +32,7 @@ class DonationTable extends Migration
         'amount'=>10,
         'payment_method'=>PaymentMethod::BankTransfer,
         'ref_no'=>123,
+        'transfer_date'=>123,
         'donated_on'=>Carbon::now()
       ]);
       DB::table('donation')->insert([

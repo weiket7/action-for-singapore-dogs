@@ -13,27 +13,27 @@
             <form @submit.prevent="onSubmit()" method="post" action="" class="donate-form">
               <div class="form-horizontal">
                 <div class="form-group mt-10">
-                  <label for="name" class="col-sm-2 control-label">Name</label>
-                  <div class="col-sm-10">
+                  <label for="name" class="col-sm-3 control-label">Name</label>
+                  <div class="col-sm-9">
                     <input type="text" v-model="donation.name" id="name" class="form-control" autofocus="autofocus">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="email" class="col-sm-2 control-label">Email</label>
-                  <div class="col-sm-10">
+                  <label for="email" class="col-sm-3 control-label">Email</label>
+                  <div class="col-sm-9">
                     <input type="email" v-model="donation.email" id="email" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="mobile" class="col-sm-2 control-label">Mobile</label>
-                  <div class="col-sm-10">
+                  <label for="mobile" class="col-sm-3 control-label">Mobile</label>
+                  <div class="col-sm-9">
                     <input type="text" v-model="donation.mobile" id="mobile" class="form-control">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="mobile" class="col-sm-2 control-label">Amount</label>
-                  <div class="col-sm-10">
+                  <label for="mobile" class="col-sm-3 control-label">Amount</label>
+                  <div class="col-sm-9">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-primary" @click="chooseAmount(10)">
                         <input type="radio" name="amount" value="10"> $10
@@ -60,23 +60,23 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="mobile" class="col-sm-2 control-label">Payment Method</label>
-                  <div class="col-sm-10">
+                  <label for="mobile" class="col-sm-3 control-label">Payment Method</label>
+                  <div class="col-sm-9">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-primary" @click="donation.payment_method = 'paynow'">
-                        <input type="radio" name="donation.payment_method" value="paynow"> PayNow
+                        <input type="radio" name="payment_method" value="paynow"> PayNow
                       </label>
                       <label class="btn btn-primary" @click="donation.payment_method = 'giro'">
-                        <input type="radio" name="donation.payment_method" value="giro"> Giro
+                        <input type="radio" name="payment_method" value="giro"> Giro
                       </label>
                       <label class="btn btn-primary" @click="donation.payment_method = 'banktransfer'">
-                        <input type="radio" name="donation.payment_method" value="banktransfer"> Bank Transfer
+                        <input type="radio" name="payment_method" value="banktransfer"> Bank Transfer
                       </label>
                       <label class="btn btn-primary" @click="donation.payment_method = 'cheque'">
-                        <input type="radio" name="donation.payment_method" value="cheque"> Cheque
+                        <input type="radio" name="payment_method" value="cheque"> Cheque
                       </label>
                       <label class="btn btn-primary" @click="donation.payment_method = 'paypal'">
-                        <input type="radio" name="donation.payment_method" value="paypal"> PayPal
+                        <input type="radio" name="payment_method" value="paypal"> PayPal
                       </label>
                     </div>
                   </div>
@@ -114,14 +114,21 @@
                 </div>
 
                 <div class="form-group" v-if="needRefNo">
-                  <label for="mobile" class="col-sm-2 control-label">Reference No</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control">
+                  <label for="ref_no" class="col-sm-3 control-label">Reference No</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="ref_no" v-model="donation.ref_no" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="transfer_date" class="col-sm-3 control-label">Transfer Date</label>
+                  <div class="col-sm-9">
+                    <input type="text" id="transfer_date" class="form-control datepicker" readonly>
                   </div>
                 </div>
 
                 <div class="form-group" >
-                  <div class="col-sm-offset-2 col-sm-10">
+                  <div class="col-sm-offset-3 col-sm-9">
                     <button type="submit" class="theme_button">
                       Submit
                     </button>
@@ -143,13 +150,14 @@
 
 <script>
   import axios from 'axios';
+  import moment from 'moment';
 
   export default {
     name: "Donate",
     data() {
       return {
         custom_amount: false,
-        donation: {},
+        donation: { payment_method: "", transfer_date: null },
         success: false
       }
     },
@@ -160,6 +168,9 @@
       },
       customAmount() {
         this.custom_amount = true;
+      },
+      updateTransferDate(date) {
+        this.donation.transfer_date = date;
       },
       onSubmit() {
         axios.post('api/donation/form', this.donation)
@@ -182,6 +193,15 @@
       needRefNo: function() {
         return this.donation.payment_method == 'banktransfer' || this.donation.payment_method == 'cheque' || this.donation.payment_method == "paynow";
       }
+    },
+    mounted() {
+      let vue = this
+      $(".datepicker").datepicker({
+        dateFormat: 'd M yy',
+        onSelect: function(value, date) {
+          vue.updateTransferDate(moment(value, 'DD MMM YYYY').format('YYYY-MM-DD'));
+        }
+      });
     }
   }
 </script>
