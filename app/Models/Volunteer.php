@@ -11,7 +11,9 @@ class Volunteer extends Model
   public $timestamps = false;
   
   public function saveVolunteer($input) {
-    if (!$this->volunteer_id) {
+    if ($this->volunteer_id) {
+      $this->stat = $input['stat'];
+    } else { //create
       $this->stat = VolunteerStat::Active;
     }
     $this->name = $input['name'];

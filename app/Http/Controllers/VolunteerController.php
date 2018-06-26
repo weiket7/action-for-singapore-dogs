@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class VolunteerController extends Controller {
+  public function save(VolunteerRequest $request) {
+    $volunteer = Volunteer::find($request->volunteer_id);
+    return $volunteer->saveVolunteer($request->all());
+  }
+  
   public function form(VolunteerRequest $request) {
     $volunteer = new Volunteer();
     return $volunteer->saveVolunteer($request->all());

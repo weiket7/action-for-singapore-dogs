@@ -2,7 +2,7 @@
   <div class="col-lg-3">
     <div :class="className">
       <label v-for="(val, key) in options" class="m-checkbox">
-        <input type="checkbox" v-bind:value="key" :checked="isChecked(key, val)" :name="name" @change="updateValue($event.target.value)">
+        <input type="checkbox" v-bind:value="key" :checked="isChecked(key, val)" :name="name" @change="updateValue(key, val)">
         {{ val }}
         <span></span>
       </label>
@@ -24,8 +24,14 @@
       options: {required: true}
     },
     methods: {
-      updateValue: function (value) {
-        this.$emit('input', value);
+      updateValue: function (key, val) {
+        if (this.isChecked(key, val)) {
+          const index = this.value.indexOf(val);
+          this.value.splice(index, 1);
+        } else {
+          this.value.push(val);
+        }
+        this.$emit('input', this.value);
       },
       isChecked(key, val) {
         if (this.value === undefined) {
@@ -35,7 +41,7 @@
           return this.value === val || this.value === key;
         }
         //console.log("this.value " + this.value + " value="+value);
-        return this.value.indexOf(key) >= 0 ||this.value.indexOf(val) >= 0;
+        return this.value.indexOf(key) >= 0 || this.value.indexOf(val) >= 0;
       }
     },
     computed: {

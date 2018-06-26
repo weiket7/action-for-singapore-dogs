@@ -45,6 +45,8 @@ Route::post('api/rescuer/save/{rescuer_id}', 'RescuerController@save');
 
 Route::get('api/volunteer', 'VolunteerController@all');
 Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
+Route::post('api/volunteer/save/', 'VolunteerController@save');
+Route::post('api/volunteer/save/{volunteer_id}', 'VolunteerController@save');
 
 Route::get('api/donation', 'DonationController@all');
 Route::get('api/donation/get/{donation_id}', 'DonationController@get');

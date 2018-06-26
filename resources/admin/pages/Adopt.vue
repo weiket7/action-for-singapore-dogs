@@ -250,8 +250,6 @@
           return;
         }
         toastr.success("Dog updated");
-        let adopt_id = response.data;
-        this.$router.push('/adopt/save/'+adopt_id);
       },
       updateRescuer(o) {
         this.$set(this.rescuers, o.index, o.person);

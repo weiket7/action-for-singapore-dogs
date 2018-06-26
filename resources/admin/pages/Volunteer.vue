@@ -27,7 +27,7 @@
       
       <form-row>
         <label-component>Interested In</label-component>
-        <checkbox-component :value="interests" :options="interested_in_options" v-if="volunteer"></checkbox-component>
+        <checkbox-component v-model="interests" :options="interested_in_options" v-if="volunteer"></checkbox-component>
       </form-row>
   
       <form-footer>
@@ -51,6 +51,34 @@
         interested_in_options: ['Rescuing', 'Rehoming', 'Fostering', 'Volunteering', 'Publicity', 'Fund Raising & Events', 'Logistics'],
         errors: new Errors(),
       }
+    },
+    methods: {
+      onSubmit() {
+        let url = 'api/volunteer/save';
+        if (!this.is_create) {
+          url += '/'+ this.$route.params.volunteer_id
+        }
+
+        this.volunteer.interests = this.interests;
+
+        axios.post(url, this.volunteer)
+          .then(this.onSuccess)
+          .catch(this.onError);
+      },
+      onSuccess(response) {
+        if (this.is_create) {
+          toastr.success("Volunteer added");
+          this.volunteer.volunteer_id = response.data;
+          this.$router.push('/volunteer/save/'+this.volunteer.volunteer_id);
+          return;
+        }
+        toastr.success("Volunteer updated");
+      },
+    },
+    computed: {
+      is_create() {
+        return this.$route.path == "/volunteer/save";
+      },
     },
     created() {
       axios.get("api/volunteer/get/" + this.$route.params.volunteer_id)
