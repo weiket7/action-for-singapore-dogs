@@ -7,12 +7,12 @@ use App\Models\Enums\PaymentMethod;
 use Illuminate\Http\Request;
 
 class DonationController extends Controller {
-  public function form(DonationRequest $request) {
-    $donation = new Donation();
+  public function save(DonationRequest $request) {
+    $donation = Donation::find($request->donation_id);
     return $donation->saveDonation($request->all());
   }
   
-  public function save(DonationRequest $request) {
+  public function form(DonationRequest $request) {
     $donation = new Donation();
     return $donation->saveDonation($request->all());
   }

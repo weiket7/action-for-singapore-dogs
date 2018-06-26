@@ -75,19 +75,19 @@
                   <label for="mobile" class="col-sm-3 control-label">Payment Method <span class="required">*</span></label>
                   <div class="col-sm-9">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary" @click="donation.payment_method = 'paynow'">
+                      <label class="btn btn-primary" @click="donation.payment_method = 'N'">
                         <input type="radio" name="payment_method" value="paynow"> PayNow
                       </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'giro'">
+                      <label class="btn btn-primary" @click="donation.payment_method = 'G'">
                         <input type="radio" name="payment_method" value="giro"> Giro
                       </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'banktransfer'">
+                      <label class="btn btn-primary" @click="donation.payment_method = 'B'">
                         <input type="radio" name="payment_method" value="banktransfer"> Bank Transfer
                       </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'cheque'">
+                      <label class="btn btn-primary" @click="donation.payment_method = 'Q'">
                         <input type="radio" name="payment_method" value="cheque"> Cheque
                       </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'paypal'">
+                      <label class="btn btn-primary" @click="donation.payment_method = 'P'">
                         <input type="radio" name="payment_method" value="paypal"> PayPal
                       </label>
                     </div>
@@ -183,7 +183,7 @@
         default_date: moment().format("DD MMM YYYY"),
         donation: { payment_method: "" },
         success: false,
-        errors: new Errors()
+        errors: new Errors(),
       }
     },
     methods: {
@@ -220,6 +220,7 @@
       }
     },
     mounted() {
+      
       let vue = this
       $(".datepicker").datepicker({
         dateFormat: 'd M yy',

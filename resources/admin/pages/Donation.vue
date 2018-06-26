@@ -2,27 +2,35 @@
   <single-portlet title="Donation">
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
-        <label-component>Name</label-component>
+        <label-component required>Name</label-component>
         <textbox-component v-model="donation.name"></textbox-component>
 
-        <label-component>Status</label-component>
+        <label-component required>Status</label-component>
         <radio-component v-model="donation.stat" :options="donation_stats"></radio-component>
       </form-row>
 
       <form-row>
-        <label-component>Mobile</label-component>
+        <label-component required>Mobile</label-component>
         <textbox-component v-model="donation.mobile"></textbox-component>
 
-        <label-component>Email</label-component>
+        <label-component required>Email</label-component>
         <textbox-component v-model="donation.email"></textbox-component>
       </form-row>
 
       <form-row>
-        <label-component>Amount</label-component>
+        <label-component required>Amount</label-component>
         <textbox-component v-model="donation.amount"></textbox-component>
 
-        <label-component>Payment Method</label-component>
+        <label-component required>Payment Method</label-component>
         <radio-component v-model="donation.payment_method" :options="payment_methods"></radio-component>
+      </form-row>
+
+      <form-row>
+        <label-component v-show="needRefNo">Ref No</label-component>
+        <textbox-component v-model="donation.ref_no" v-show="needRefNo"></textbox-component>
+
+        <label-component v-show="showTransferDate">Transfer Date</label-component>
+        <datepicker-component name="transfer_date" v-model="donation.transfer_date" :error="errors.get('transfer_date')" v-if="loaded && showTransferDate"></datepicker-component>
       </form-row>
   
       <form-footer>
@@ -44,6 +52,36 @@
         donation_stats: [],
         payment_methods: [],
         errors: new Errors(),
+        loaded: false,
+      }
+    },
+    methods: {
+      onSubmit() {
+        let url = 'api/donation/save';
+        if (!this.is_create) {
+          url += '/'+ this.$route.params.donation_id
+        }
+
+        axios.post(url, this.donation)
+          .then(this.onSuccess)
+          .catch(this.onError);
+      },
+      onSuccess(response) {
+        if (this.is_create) {
+          toastr.success("Donation added");
+          this.donation.donation_id = response.data;
+          this.$router.push('/donation/save/'+this.donation.donation_id);
+          return;
+        }
+        toastr.success("Donation updated");
+      },
+    },
+    computed: {
+      needRefNo: function() {
+        return this.donation.payment_method == 'banktransfer' || this.donation.payment_method == 'cheque' || this.donation.payment_method == "paynow";
+      },
+      showTransferDate: function() {
+        return this.donation.payment_method != "giro";
       }
     },
     created() {
@@ -52,6 +90,7 @@
           this.donation = response.data.donation;
           this.donation_stats = response.data.donation_stats;
           this.payment_methods = response.data.payment_methods;
+          this.loaded = true;
         })
         .catch(error => { console.log(error); });
     }
