@@ -203,10 +203,11 @@
           .catch(this.onError);
       },
       onSuccess(response) {
-        this.errors = new Errors();
         this.success = true;
+        this.errors = new Errors();
       },
       onError(error) {
+        this.success = false;
         this.errors.record(error.response.data.errors);
       },
     },

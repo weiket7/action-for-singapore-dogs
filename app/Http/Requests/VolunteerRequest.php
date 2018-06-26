@@ -14,6 +14,7 @@ class VolunteerRequest extends FormRequest
       'mobile' => 'required',
       'gender' => 'required',
       'birthday' => 'required',
+      'interests' => 'required',
     ];
   }
   
@@ -25,6 +26,7 @@ class VolunteerRequest extends FormRequest
       'mobile.required' => 'Mobile is required',
       'gender.required' => 'Gender is required',
       'birthday.required' => 'Birthday is required',
+      'interests.required' => 'Interests is required',
     ];
   }
   

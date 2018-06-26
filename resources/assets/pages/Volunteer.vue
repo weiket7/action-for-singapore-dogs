@@ -19,24 +19,36 @@
             <label for="name" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-9">
               <input type="text" v-model="volunteer.name" class="form-control" id="name" autofocus>
+              <span class="help-block error" v-if="errors.get('name')">
+                {{ errors.get('name') }}
+              </span>
             </div>
           </div>
           <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-9">
               <input type="email" v-model="volunteer.email" class="form-control" id="email">
+              <span class="help-block error" v-if="errors.get('email')">
+                {{ errors.get('email') }}
+              </span>
             </div>
           </div>
           <div class="form-group">
             <label for="mobile" class="col-sm-3 control-label">Mobile</label>
             <div class="col-sm-9">
               <input type="text" v-model="volunteer.mobile" class="form-control" id="mobile">
+              <span class="help-block error" v-if="errors.get('mobile')">
+                {{ errors.get('mobile') }}
+              </span>
             </div>
           </div>
           <div class="form-group">
             <label for="birthday" class="col-sm-3 control-label">Birthday</label>
             <div class="col-sm-9">
               <input type="text" class="form-control datepicker" id="birthday" readonly>
+              <span class="help-block error" v-if="errors.get('birthday')">
+                {{ errors.get('birthday') }}
+              </span>
             </div>
           </div>
           <div class="form-group">
@@ -48,6 +60,9 @@
               <label class="radio-inline">
                 <input type="radio" v-model="volunteer.gender" name="gender" value="F"> Female
               </label>
+              <span class="help-block error" v-if="errors.get('gender')">
+                {{ errors.get('gender') }}
+              </span>
             </div>
           </div>
           <div class="form-group">
@@ -88,6 +103,9 @@
                   <input type="checkbox" v-model="volunteer.interests" value="Logistics"> Logistics
                 </label>
               </div>
+              <span class="help-block error" v-if="errors.get('interests')">
+                {{ errors.get('interests') }}
+              </span>
             </div>
           </div>
 
@@ -97,6 +115,9 @@
 
               <div class="alert alert-success mt-10" v-show="success">
                 Thank you
+              </div>
+              <div class="alert alert-danger mt-10" v-show="errors.any()">
+                There were some errors, please check the form
               </div>
             </div>
           </div>
@@ -135,13 +156,15 @@
   import Panel from '../components/Panel';
   import axios from 'axios';
   import moment from 'moment';
+  import Errors from '../../common/errors';
 
   export default {
     name: "Volunteer",
     data() {
       return {
         volunteer: { name: "", mobile: "", email: "", interests: [] },
-        success: false
+        success: false,
+        errors: new Errors()
       }
     },
     components: {
@@ -169,13 +192,10 @@
       },
       onSuccess(response) {
         this.success = true;
+        this.errors = new Errors();
       },
       onError(error) {
-        if (error.response.status == 500) {
-          toastr.error("A system error occurred");
-          return;
-        }
-        toastr.error("There were some errors, please check the form");
+        this.success = false;
         this.errors.record(error.response.data.errors);
       },
     }
