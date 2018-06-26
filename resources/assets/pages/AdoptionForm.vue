@@ -19,6 +19,9 @@
           <div class="form-group no-mb">
             <label class="control-label">Name</label>
             <input type="text" name="name" v-model="form.name" class="form-control" autofocus>
+            <span class="help-block error" v-if="errors.get('name')">
+              {{ errors.get('name') }}
+            </span>
           </div>
         </div>
 
@@ -26,6 +29,9 @@
           <div class="form-group no-mb">
             <label class="control-label">Email</label>
             <input type="email" name="email" v-model="form.email" class="form-control">
+            <span class="help-block error" v-if="errors.get('email')">
+              {{ errors.get('email') }}
+            </span>
           </div>
         </div>
       </div>
@@ -35,6 +41,9 @@
           <div class="form-group no-mb">
             <label class="control-label">Mobile</label>
             <input type="text" name="mobile" v-model="form.mobile" class="form-control">
+            <span class="help-block error" v-if="errors.get('mobile')">
+              {{ errors.get('mobile') }}
+            </span>
           </div>
         </div>
 
@@ -42,6 +51,9 @@
           <div class="form-group no-mb">
             <label class="control-label">Birthday</label>
             <input type="text" name="birthday" v-model="form.birthday" class="form-control datepicker" readonly>
+            <span class="help-block error" v-if="errors.get('birthday')">
+              {{ errors.get('birthday') }}
+            </span>
           </div>
         </div>
       </div>
@@ -58,6 +70,9 @@
                 <input type="radio" v-model="form.gender" name="gender" value="F"> Female
               </label>
             </div>
+            <span class="help-block error" v-if="errors.get('gender')">
+              {{ errors.get('gender') }}
+            </span>
           </div>
         </div>
 
@@ -65,6 +80,9 @@
           <div class="form-group no-mb">
             <label class="control-label">Address</label>
             <input type="text" v-model="form.address" class="form-control">
+            <span class="help-block error" v-if="errors.get('address')">
+              {{ errors.get('address') }}
+            </span>
           </div>
         </div>
       </div>
@@ -74,6 +92,9 @@
           <div class="form-group no-mb">
             <label class="control-label">Postal Code</label>
             <input type="text" v-model="form.postal" class="form-control">
+            <span class="help-block error" v-if="errors.get('postal')">
+              {{ errors.get('postal') }}
+            </span>
           </div>
         </div>
       </div>
@@ -87,6 +108,9 @@
           <div class="alert alert-success mt-10" v-show="success">
             Thank you
           </div>
+          <div class="alert alert-danger mt-10" v-show="errors.any()">
+            There were some errors, please check the form
+          </div>
         </div>
       </div>
     </form>
@@ -96,12 +120,14 @@
 <script>
   import axios from 'axios'
   import moment from 'moment';
+  import Errors from '../../common/errors';
 
   export default {
     name: "adoption-form",
     data() {
       return {
         success: false,
+        errors: new Errors(),
         form: {},
         hearts: [],
       }
@@ -115,17 +141,14 @@
           .then(this.onSuccess)
           .catch(this.onError);
       },
-      onSuccess() {
+      onSuccess(response) {
         this.success = true;
+        this.errors = new Errors();
       },
       onError(error) {
-        if (error.response.status == 500) {
-          toastr.error("A system error occurred");
-          return;
-        }
-        toastr.error("There were some errors, please check the form");
+        this.success = false;
         this.errors.record(error.response.data.errors);
-      }
+      },
     },
     mounted() {
       let vue = this
