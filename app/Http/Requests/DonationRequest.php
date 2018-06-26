@@ -13,7 +13,9 @@ class DonationRequest extends FormRequest
             'mobile'=>'required',
             'email'=>'required',
             'amount'=>'required',
-            'payment_method'=>'required'
+            'payment_method'=>'required',
+            'ref_no'=>'required_if:payment_method,banktransfer,cheque,paynow',
+            'transfer_date'=>'required_if:payment_method,banktransfer,cheque,paynow,paypal'
         ];
     }
     

@@ -35,6 +35,9 @@
   position: relative;
   z-index: 10;
 }
+.help-block.error {
+  color: #a94442;
+}
 
 /******SPECIFIC PAGES******/
 /*home*/
