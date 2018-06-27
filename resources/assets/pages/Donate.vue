@@ -122,7 +122,7 @@
                   </div>
                 </div>
 
-                <div class="form-group" v-show="needRefNo">
+                <div class="form-group" v-show="showRefNo">
                   <label for="ref_no" class="col-sm-3 control-label">Reference No <span class="required">*</span></label>
                   <div class="col-sm-9">
                     <input type="text" id="ref_no" v-model="donation.ref_no" class="form-control">
@@ -204,6 +204,9 @@
       onSuccess(response) {
         this.success = true;
         this.errors = new Errors();
+        if (this.donation.payment_method == 'P') {
+          this.$router.push('/paypal');
+        }
       },
       onError(error) {
         if (error.response.status == 500) {
@@ -215,11 +218,11 @@
       },
     },
     computed: {
-      needRefNo: function() {
+      showRefNo: function() {
         return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
       },
       showTransferDate: function() {
-        return this.donation.payment_method != "G";
+        return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
       }
     },
     mounted() {

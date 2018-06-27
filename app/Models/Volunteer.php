@@ -14,7 +14,7 @@ class Volunteer extends Model
     if ($this->volunteer_id) {
       $this->stat = $input['stat'];
     } else { //create
-      $this->stat = VolunteerStat::Active;
+      $this->stat = VolunteerStat::Potential;
     }
     $this->name = $input['name'];
     $this->email = $input['email'];
