@@ -64,9 +64,14 @@
                       {{ errors.get('amount') }}
                     </span>
 
-                    <div v-if="custom_amount == true">
+                    <div v-if="donation.custom_amount == true">
                       <input type="text" v-model="donation.amount" class="form-control">
-                      (Minimum $10)
+                      <span class="help-block">
+                        (Minimum $10)
+                      </span>
+                      <span class="help-block error" v-if="errors.get('custom_amount')">
+                        {{ errors.get('custom_amount') }}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -75,20 +80,8 @@
                   <label for="mobile" class="col-sm-3 control-label">Payment Method <span class="required">*</span></label>
                   <div class="col-sm-9">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary" @click="donation.payment_method = 'N'">
-                        <input type="radio" name="payment_method" value="paynow"> PayNow
-                      </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'G'">
-                        <input type="radio" name="payment_method" value="giro"> Giro
-                      </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'B'">
-                        <input type="radio" name="payment_method" value="banktransfer"> Bank Transfer
-                      </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'Q'">
-                        <input type="radio" name="payment_method" value="cheque"> Cheque
-                      </label>
-                      <label class="btn btn-primary" @click="donation.payment_method = 'P'">
-                        <input type="radio" name="payment_method" value="paypal"> PayPal
+                      <label v-for="(value, key) in payment_methods" class="btn btn-primary" @click="donation.payment_method = key">
+                        <input type="radio" name="payment_method" :value="key"> {{ value }}
                       </label>
                     </div>
 
@@ -99,7 +92,7 @@
                 </div>
 
                 <div class="form-group">
-                  <div v-if="donation.payment_method == 'cheque'" class="col-sm-offset-3 col-sm-9">
+                  <div v-if="donation.payment_method == 'Q'" class="col-sm-offset-3 col-sm-9">
                     Please make the cheque payable to:<br>
                     Action For Singapore Dogs Society
                     <br><br>
@@ -107,7 +100,7 @@
                     ASD c/o Ricky Yeo<br>
                     3 Jambol Place, Singapore 119330
                   </div>
-                  <div v-if="donation.payment_method == 'banktransfer'" class="col-sm-offset-3 col-sm-9">
+                  <div v-if="donation.payment_method == 'B'" class="col-sm-offset-3 col-sm-9">
                     Please transfer to:<br>
                     Bank: OCBC<br>
                     Account No: 650322456001<br>
@@ -115,15 +108,15 @@
                     Branch Code: 650<br>
                     Bank Code: 7339
                   </div>
-                  <div v-if="donation.payment_method == 'paypal'" class="col-sm-offset-3 col-sm-9">
+                  <div v-if="donation.payment_method == 'P'" class="col-sm-offset-3 col-sm-9">
                     You will be redirected to PayPal upon submission
                   </div>
-                  <div v-if="donation.payment_method == 'giro'" class="col-sm-offset-3 col-sm-9">
+                  <div v-if="donation.payment_method == 'G'" class="col-sm-offset-3 col-sm-9">
                     GIRO is the convenient and hassle free way of contributing every monthly automatically.<br>
                     Please download this <a href="assets/pdf/action-for-singapore-dogs-donate-giro-form.pdf" target="_blank">form</a>, print it out, fill it up and send it to the address stated on the form.<br>
                     <i>(Please note the minimum sum is $10)</i>
                   </div>
-                  <div v-if="donation.payment_method == 'paynow'" class="col-sm-offset-3 col-sm-9">
+                  <div v-if="donation.payment_method == 'N'" class="col-sm-offset-3 col-sm-9">
                     Please PayNow to:<br>
                     9123 4567
                   </div>
@@ -181,18 +174,24 @@
       return {
         custom_amount: false,
         default_date: moment().format("DD MMM YYYY"),
-        donation: { payment_method: "" },
+        donation: {
+          payment_method: "",
+          transfer_date: moment().format("YYYY-MM-DD"),
+          custom_amount: false,
+          amount: 10
+        },
         success: false,
         errors: new Errors(),
+        payment_methods: { "N": "PayNow", "G": "Giro", "B": "Bank Transfer", "Q": "Cheque", "P": "PayPal"}
       }
     },
     methods: {
       chooseAmount(amount) {
         this.donation.amount = amount;
-        this.custom_amount = false;
+        this.donation.custom_amount = false;
       },
       customAmount() {
-        this.custom_amount = true;
+        this.donation.custom_amount = true;
       },
       updateTransferDate(date) {
         this.donation.transfer_date = date;
@@ -207,20 +206,23 @@
         this.errors = new Errors();
       },
       onError(error) {
+        if (error.response.status == 500) {
+          alert("A system error occurred");
+          return;
+        }
         this.success = false;
         this.errors.record(error.response.data.errors);
       },
     },
     computed: {
       needRefNo: function() {
-        return this.donation.payment_method == 'banktransfer' || this.donation.payment_method == 'cheque' || this.donation.payment_method == "paynow";
+        return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
       },
       showTransferDate: function() {
-        return this.donation.payment_method != "giro";
+        return this.donation.payment_method != "G";
       }
     },
     mounted() {
-      
       let vue = this
       $(".datepicker").datepicker({
         dateFormat: 'd M yy',

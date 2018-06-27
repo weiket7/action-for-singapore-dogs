@@ -195,6 +195,10 @@
         this.errors = new Errors();
       },
       onError(error) {
+        if (error.response.status == 500) {
+          alert("A system error occurred");
+          return;
+        }
         this.success = false;
         this.errors.record(error.response.data.errors);
       },

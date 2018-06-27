@@ -12,20 +12,20 @@
         data-menu-vertical="true"
         data-menu-scrollable="false" data-menu-dropdown-timeout="500"
       >
-        <menu-component :menus="[{ 'name': 'Dashboard', 'link': 'dashboard', 'icon': 'dashboard' },
-        { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
-        { 'name': 'People', 'link': 'person', 'icon': 'street-view' },
-        { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-plus' },
-        { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
-        { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-o' },
-        { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
-        { 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },
-        { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
-        { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
-        { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
-        { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
-        { 'name': 'Questions', 'link': 'question', 'icon': 'question' },
-        { 'name': 'Adoption Drive', 'link': 'event', 'icon': 'car' }
+        <menu-component :menus="[
+          { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
+          { 'name': 'People', 'link': 'person', 'icon': 'street-view' },
+          { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-plus' },
+          { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
+          { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-o' },
+          { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
+          { 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },
+          { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
+          { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
+          { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
+          { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
+          { 'name': 'Questions', 'link': 'question', 'icon': 'question' },
+          { 'name': 'Adoption Drive', 'link': 'event', 'icon': 'car' }
         ]"/>
       </div>
       <!-- END: Aside Menu -->

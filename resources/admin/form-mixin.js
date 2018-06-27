@@ -9,7 +9,6 @@ export default {
   },
   methods: {
     onError(error) {
-      console.log(JSON.stringify(error));
       if (error.response.status == 500) {
         toastr.error("A system error occurred");
         return;
