@@ -1,6 +1,6 @@
 <template>
   <div class="container content">
-    <h2>Please wait..</h2>
+    <h2>Pl..</h2>
 
     <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display:none">
       <input name="cmd" type="hidden" value="_s-xclick"><br>

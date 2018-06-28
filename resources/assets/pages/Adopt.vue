@@ -42,9 +42,10 @@
       
       <!-- sidebar -->
       <aside class="col-sm-5 col-md-4 col-lg-4">
-        
+        <h2>Search</h2>
+
         <div class="widget widget_categories2">
-          <h3 class="widget-title">Name</h3>
+          <h3 class="widget-title">Dog Name</h3>
           <input type="text" class="form-control">
           
           <h3 class="widget-title mt-30">HDB Approved</h3>

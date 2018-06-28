@@ -21,7 +21,6 @@ class AdoptionFormMail extends Mailable
   
   public function build()
   {
-    Log::info($this->adoption_form->name);
     return $this->subject("ASD - Adoption Form")->view('emails.adoption-form');
   }
 }

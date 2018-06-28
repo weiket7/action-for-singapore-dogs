@@ -99,14 +99,20 @@
           <h3 class="widget-title">Type</h3>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
-              Basic Obedience Class
+              <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1">
+              Adoption Drives
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1">
-              Adoption Drive
+              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+              Basic Obedience Classes
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+              Social Events
             </label>
           </div>
           <div class="checkbox">

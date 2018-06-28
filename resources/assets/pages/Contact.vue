@@ -2,6 +2,52 @@
   <div class="container content">
     <div class="row">
 
+      <div class="col-md-4" data-animation="scaleAppear">
+
+        <div class="with_border with_padding_small">
+          <ul class="list1 no-bullets no-top-border no-bottom-border">
+
+            <li>
+              <div class="media">
+                <div class="media-left">
+                  <i class="fas fa-donate highlight"></i>
+                </div>
+                <div class="media-body">
+                  <h5 class="media-heading grey">
+                    <a href="#">Donate</a>
+                  </h5>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="media">
+                <div class="media-left">
+                  <i class="fas fa-hand-holding-heart highlight"></i>
+                </div>
+                <div class="media-body">
+                  <h5 class="media-heading grey">
+                    <a href="#">Sponsor</a>
+                  </h5>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="media">
+                <div class="media-left">
+                  <i class="fas fa-hands highlight fontsize_18"></i>
+                </div>
+                <div class="media-body">
+                  <h5 class="media-heading grey">
+                    <a href="#">Volunteer</a>
+                  </h5>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
       <div class="col-md-8" data-animation="scaleAppear">
         <h3 class="entry-title black">Contact</h3>
 
@@ -58,51 +104,6 @@
         </form>
       </div>
 
-      <div class="col-md-4" data-animation="scaleAppear">
-
-        <div class="with_border with_padding_small">
-          <ul class="list1 no-bullets no-top-border no-bottom-border">
-
-            <li>
-              <div class="media">
-                <div class="media-left">
-                  <i class="fas fa-donate highlight"></i>
-                </div>
-                <div class="media-body">
-                  <h5 class="media-heading grey">
-                    <a href="#">Donate</a>
-                  </h5>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="media">
-                <div class="media-left">
-                  <i class="fas fa-hand-holding-heart highlight"></i>
-                </div>
-                <div class="media-body">
-                  <h5 class="media-heading grey">
-                    <a href="#">Sponsor</a>
-                  </h5>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="media">
-                <div class="media-left">
-                  <i class="fas fa-hands highlight fontsize_18"></i>
-                </div>
-                <div class="media-body">
-                  <h5 class="media-heading grey">
-                    <a href="#">Volunteer</a>
-                  </h5>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-      </div>
 
     </div>
   </div>
@@ -110,7 +111,7 @@
 
 <script>
   export default {
-    name: "ontact"
+    name: "contact"
   }
 </script>
 
