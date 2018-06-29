@@ -12,7 +12,7 @@ class DonationRequest extends FormRequest
       'name'=>'required',
       'email'=>'required',
       'mobile'=>'required',
-      'amount'=>'required',
+      'amount'=>'required|min:10',
       'payment_method'=>'required',
       'ref_no'=>'required_if:payment_method,B,Q,N',
       'transfer_date'=>'required_if:payment_method,B,Q,N,P'
@@ -25,7 +25,7 @@ class DonationRequest extends FormRequest
       'name.required' => 'Name is required',
       'email.required' => 'Email is required',
       'mobile.required' => 'Mobile is required',
-      'amount.required' => 'Amount is required',
+      'amount.min' => 'Amount minimum is 10',
       'payment_method.required' => 'Payment Method is required',
       'custom_amount.required_if' => 'Custom Amount is required',
       'ref_no.required_if' => 'Reference No is required',
