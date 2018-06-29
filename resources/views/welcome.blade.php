@@ -48,8 +48,31 @@
 </div>
 <!-- eof #canvas -->
 
-<script src="{{ asset("assets/js/compressed.js" ) }}"></script>
-<script src="{{ asset("assets/js/main.js" ) }}"></script>
+{{--<script src="{{ asset("assets/js/vendor/jquery-2.2.4.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/bootstrap.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.appear.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.hoverIntent.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/superfish.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.easing.1.3.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.ui.totop.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.localscroll-min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.scrollTo-min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.parallax-1.1.3.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.easypiechart.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/bootstrap-progressbar.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.countTo.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.prettyPhoto.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.countdown.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/isotope.pkgd.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/owl.carousel.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.flexslider-min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jflickrfeed.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery-ui.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/price-slider.min.js" )}}"></script>
+<script src="{{ asset("assets/js/vendor/jquery.cookie.js" )}}"></script>
+<script src="{{ asset("assets/js/plugins.js" )}}"></script>--}}
+<script src="{{ asset("assets/js/compressed.js" )}}"></script>
+<script src="{{ asset("assets/js/main.js" )}}"></script>
 <script src="{{ asset("assets/js/jquery.bxslider.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/jquery-ui.min.js" ) }}"></script>
 <script src="{{ asset("app.js" ) }}"></script>

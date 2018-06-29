@@ -20,6 +20,6 @@ class ContactMail extends Mailable
   
   public function build()
   {
-    return $this->subject($input['subject'])->view('emails.contact');
+    return $this->subject($this->input['subject'])->view('emails.contact');
   }
 }

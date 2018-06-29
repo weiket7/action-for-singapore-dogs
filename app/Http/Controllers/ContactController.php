@@ -3,11 +3,12 @@
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\RescuerRequest;
 use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller {
-  public function save(ContactRequest $request, $rescuer_id = null) {
-    Mail::to("wei_ket@hotmail.com") //TODO
-    ->send(new ContactMail($request->all()));
+  public function form(ContactRequest $request) {
+    Mail::to("info@asdsingapore.com") //TODO
+      ->send(new ContactMail($request->all()));
   }
   
 }
