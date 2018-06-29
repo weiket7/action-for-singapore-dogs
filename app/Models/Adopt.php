@@ -16,6 +16,7 @@ class Adopt extends Model
 
   public function saveAdopt($input) {
     $this->name = $input['name'];
+    $this->stat = $input['stat'];
     $this->slug = str_slug($this->name);
     $this->gender = $input['gender'];
     $this->birthday = Carbon::createFromFormat('Y-m-d', $input['birthday']);
@@ -23,7 +24,15 @@ class Adopt extends Model
     $this->colour = $input['colour'] ?? "";
     $this->microchip = $input['microchip'] ?? 0;
     $this->vaccinate = $input['vaccinate'] ?? 0;
-    $this->hdb = $input['hdb'] ?? 0;
+    if ($this->microchip) {
+      $this->microchip_date = $input['microchip_date'];
+      $this->microchip_no = $input['microchip_no'];
+    }
+    if ($this->vaccinate) {
+      $this->vaccinate_date1 = $input['vaccinate_date1'];
+      $this->vaccinate_date2 = $input['vaccinate_date2'];
+      $this->vaccinate_date3 = $input['vaccinate_date3'];
+    }
     $this->posted_by = 'admin';
     $this->posted_on = Carbon::now();
     if ($this->adopt_id == null) {

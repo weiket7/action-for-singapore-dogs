@@ -100,7 +100,7 @@
             </div>
 
             <div class="alert alert-success mt-10" v-show="success">
-              Thank you for your donation
+              Thank you, we will get back to you when we can
             </div>
             <div class="alert alert-danger mt-10" v-show="errors.any()">
               There were some errors, please check the form

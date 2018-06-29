@@ -59,15 +59,15 @@
             <radio-component v-model="adopt.vaccinate" :options="{ 1: 'Yes', 0: 'No' }"></radio-component>
 
             <label-component v-show="adopt.vaccinate">Vaccinate Date 1</label-component>
-            <datepicker-component name="vaccinate_date1" v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate"></datepicker-component>
+            <datepicker-component name="vaccinate_date1" v-model="adopt.vaccinate_date1" :error="errors.get('vaccinate_date1')" v-show="adopt.vaccinate"></datepicker-component>
           </form-row>
           
           <form-row v-show="adopt.vaccinate">
             <label-component>Vaccinate Date 2</label-component>
-            <datepicker-component name="vaccinate_date2" v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate"></datepicker-component>
+            <datepicker-component name="vaccinate_date2" v-model="adopt.vaccinate_date2" :error="errors.get('vaccinate_date2')" v-show="adopt.vaccinate"></datepicker-component>
   
             <label-component>Vaccinate Date 3</label-component>
-            <datepicker-component name="vaccinate_date3" v-model="adopt.vaccinate_date" :error="errors.get('vaccinate_date')" v-show="adopt.vaccinate"></datepicker-component>
+            <datepicker-component name="vaccinate_date3" v-model="adopt.vaccinate_date3" :error="errors.get('vaccinate_date3')" v-show="adopt.vaccinate"></datepicker-component>
           </form-row>
 
           <form-row>
