@@ -24,7 +24,7 @@
           { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
           { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
           { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
-          { 'name': 'Questions', 'link': 'question', 'icon': 'question' },
+          /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
           { 'name': 'Adoption Drive', 'link': 'event', 'icon': 'car' }
         ]"/>
       </div>

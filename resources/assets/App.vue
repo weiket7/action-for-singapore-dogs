@@ -86,9 +86,6 @@
                       <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Media</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Annual Reports</router-link>
-                    </li>
-                    <li>
                       <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Dog Listener Academy</router-link>
                     </li>
                   </ul>

@@ -26,8 +26,8 @@
       </form-row>
 
       <form-row>
-        <label-component v-show="needRefNo">Ref No</label-component>
-        <textbox-component v-model="donation.ref_no" v-show="needRefNo"></textbox-component>
+        <label-component v-show="showRefNo">Ref No</label-component>
+        <textbox-component v-model="donation.ref_no" v-show="showRefNo"></textbox-component>
 
         <label-component v-show="showTransferDate">Transfer Date</label-component>
         <datepicker-component name="transfer_date" v-model="donation.transfer_date" :error="errors.get('transfer_date')" v-if="loaded && showTransferDate"></datepicker-component>
@@ -77,11 +77,11 @@
       },
     },
     computed: {
-      needRefNo: function() {
-        return this.donation.payment_method == 'banktransfer' || this.donation.payment_method == 'cheque' || this.donation.payment_method == "paynow";
+      showRefNo: function() {
+        return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
       },
       showTransferDate: function() {
-        return this.donation.payment_method != "giro";
+        return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
       }
     },
     created() {
