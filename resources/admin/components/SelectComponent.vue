@@ -4,7 +4,7 @@
       <option v-if="isArray" :value="val" v-for="(val, key) in options" :selected="value == val">
         {{ val }}
       </option>
-      <option v-else :value="key" v-for="(val, key) in options" :selected="value == key">
+      <option v-if="!isArray" :value="key" v-for="(val, key) in options" :selected="value == key">
         {{ val }}
       </option>
       
@@ -20,7 +20,7 @@
     name: "select-component",
     props: {
       name: { type: String, required: false},
-      value: { type: String, required: false},
+      value: { required: false},
       error: { type: String, required: false},
       options: {required: true}
     },
