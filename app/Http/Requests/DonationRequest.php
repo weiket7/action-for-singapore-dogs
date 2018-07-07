@@ -10,12 +10,12 @@ class DonationRequest extends FormRequest
   {
     return [
       'name'=>'required',
-      'email'=>'required',
+      'email'=>'email|required',
       'mobile'=>'required',
-      'amount'=>'required|min:10',
+      'amount'=>'required|numeric|min:10',
       'payment_method'=>'required',
       'ref_no'=>'required_if:payment_method,B,Q,N',
-      'transfer_date'=>'required_if:payment_method,B,Q,N,P'
+      'transfer_date'=>'required_if:payment_method,B,Q,N'
     ];
   }
   
@@ -23,11 +23,12 @@ class DonationRequest extends FormRequest
   {
     return [
       'name.required' => 'Name is required',
+      'email.email' => 'Email should be abc@example.com',
       'email.required' => 'Email is required',
       'mobile.required' => 'Mobile is required',
+      'amount.required' => 'Amount is required',
       'amount.min' => 'Amount minimum is 10',
       'payment_method.required' => 'Payment Method is required',
-      'custom_amount.required_if' => 'Custom Amount is required',
       'ref_no.required_if' => 'Reference No is required',
       'transfer_date.required_if' => 'Transfer Date is required',
     ];

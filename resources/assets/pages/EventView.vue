@@ -18,6 +18,13 @@
               <div class="entry-content">
                 <template v-if="event.adoption_drive">
                   <p class="event-detail">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    {{ event.location }}
+                    <br>
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    {{ event.date | formatDate }}
+                    <br><br>
+                    
                     {{ event.desc }}
                   </p>
                   

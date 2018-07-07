@@ -11,7 +11,7 @@ class Banner extends Model
   
   public function saveBanner($input) {
     $this->name = $input['name'];
-    $this->stat = $input['stat'];
+    //$this->stat = $input['stat'];
     $this->url = $input['url'] ?? "";
     if ($this->banner_id == null) {
       $this->image = "";

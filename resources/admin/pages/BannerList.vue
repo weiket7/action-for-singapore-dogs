@@ -4,7 +4,6 @@
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
-          <th width="80px">Status</th>
           <th>Name</th>
           <th>Image</th>
           <th>Url</th>
@@ -12,7 +11,6 @@
         </thead>
         <tbody>
         <tr v-for="banner in banners">
-          <td>{{ banner_stats[banner.stat] }}</td>
           <td>
             <router-link :to="'/banner/save/'+banner.banner_id">
               {{ banner.name }}

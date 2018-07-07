@@ -11,7 +11,7 @@ class Event extends Model
   public $timestamps = false;
   
   public function saveEvent($input) {
-    $this->stat = $input['stat'];
+    //$this->stat = $input['stat'];
     $this->name = $input['name'];
     $this->slug = str_slug($input['name']);
     $this->location = $input['location'];

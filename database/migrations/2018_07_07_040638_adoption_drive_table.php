@@ -14,15 +14,15 @@ class AdoptionDriveTable extends Migration
     });
     
     DB::table('adoption_drive')->insert([
-      'event_id'=>1,
+      'event_id'=>4,
       'adopt_id'=>3,
     ]);
     DB::table('adoption_drive')->insert([
-      'event_id'=>1,
+      'event_id'=>4,
       'adopt_id'=>6,
     ]);
     DB::table('adoption_drive')->insert([
-      'event_id'=>1,
+      'event_id'=>4,
       'adopt_id'=>9,
     ]);
   }

@@ -6,21 +6,22 @@ Route::post('login', 'AdminController@login');
 Route::get('logout', 'AdminController@logout');
 Route::get('backend', 'AdminController@backend');
 
+Route::get('api/event/latest', 'EventController@latest');
+Route::get('api/adopt/random', 'AdoptController@random'); //for home
+Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
+Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
+Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
+Route::post('api/donation/form', 'DonationController@form');
+Route::post('api/volunteer/form', 'VolunteerController@form');
+Route::post('api/contact/form', 'ContactController@form');
+
+Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
+Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
+Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
+Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
+Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
+
 Route::group(['middleware' => 'auth'], function () {
-  Route::get('api/adopt/random', 'AdoptController@random'); //for home
-  Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
-  Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
-  Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
-  Route::post('api/donation/form', 'DonationController@form');
-  Route::post('api/volunteer/form', 'VolunteerController@form');
-  Route::post('api/contact/form', 'ContactController@form');
-  
-  Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
-  Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
-  Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
-  Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
-  Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
-  
   Route::get('api/adopt', 'AdoptController@all');
   Route::get('api/adopt/search', 'AdoptController@search');
   Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');

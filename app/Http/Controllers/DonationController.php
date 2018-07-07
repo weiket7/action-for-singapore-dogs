@@ -18,7 +18,7 @@ class DonationController extends Controller {
   }
   
   public function all() {
-    $data['donations'] = Donation::all();
+    $data['donations'] = Donation::orderBy('donated_on', 'desc')->get();
     $data['payment_methods'] = PaymentMethod::$values;
     $data['donation_stats'] = DonationStat::$values;
     return $data;

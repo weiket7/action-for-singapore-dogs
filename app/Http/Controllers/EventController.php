@@ -31,6 +31,14 @@ class EventController extends Controller {
     return $data;
   }
   
+  public function latest(Request $request) {
+    $data['events'] = Event::where('date', '>=', Carbon::today())
+      ->orderBy('date')
+      ->orderBy("adoption_drive", "desc")
+      ->get();
+    return $data;
+  }
+  
   public function get(Request $request, $event_id) {
     $event = null;
     if (is_numeric($event_id)) {

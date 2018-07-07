@@ -4,18 +4,18 @@
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
-          <th width="80px">Status</th>
           <th>Name</th>
           <th>Date</th>
+          <th>Time</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="event in events">
-          <td>{{ event_stats[event.stat] }}</td>
           <td width="450px">
             <router-link v-bind:to="'/event/save/'+event.event_id">{{ event.name }}</router-link>
           </td>
           <td>{{ event.date | formatDate }}</td>
+          <td>{{ event.time }}</td>
         </tr>
         </tbody>
       </table>

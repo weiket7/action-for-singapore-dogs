@@ -88,7 +88,6 @@
       }
     },
     created: function() {
-      console.log(this.$route);
       axios.get('api/adopt/slug/'+this.$route.params.slug)
         .then(response => {
           this.adopt = response.data;

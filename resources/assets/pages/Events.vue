@@ -116,11 +116,10 @@
     data() {
       return {
         events: {},
-        base_url: '{{ url('/') }}'
       }
     },
     created: function() {
-      axios.get('api/event')
+      axios.get('api/event/latest')
         .then(response => {
           this.events = response.data.events;
         })

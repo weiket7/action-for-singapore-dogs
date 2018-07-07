@@ -2,17 +2,14 @@
   <single-portlet title="Banner">
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
-        <label-component>Status</label-component>
-        <radio-component name="stat" v-model="banner.stat" :options="{ 'A': 'Available', 'H': 'Hidden' }" :error="errors.get('stat')"></radio-component>
-
         <label-component>Name</label-component>
         <textbox-component v-model="banner.name" :error="errors.get('name')"></textbox-component>
+  
+        <label-component>Url</label-component>
+        <textbox-component v-model="banner.url" :error="errors.get('url')"></textbox-component>
       </form-row>
 
       <form-row>
-        <label-component>Url</label-component>
-        <textbox-component v-model="banner.url" :error="errors.get('url')"></textbox-component>
-
         <label-component>Image</label-component>
         <image-component v-model="banner.image" name="image"
                          v-on:update-image="updateImage" folder="banners"
