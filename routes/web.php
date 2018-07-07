@@ -1,75 +1,81 @@
 <?php
 
 Route::get('/', function () { return view("welcome"); });
-Route::get('backend', function () { return view("admin"); });
+Route::get('login', 'AdminController@login');
+Route::post('login', 'AdminController@login');
+Route::get('logout', 'AdminController@logout');
+Route::get('backend', 'AdminController@backend');
 
-Route::get('api/adopt/random', 'AdoptController@random'); //for home
-Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
-Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
-Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
-Route::post('api/donation/form', 'DonationController@form');
-Route::post('api/volunteer/form', 'VolunteerController@form');
-Route::post('api/contact/form', 'ContactController@form');
-
-Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
-Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
-Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
-Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
-Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
-
-Route::get('api/adopt', 'AdoptController@all');
-Route::get('api/adopt/search', 'AdoptController@search');
-Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
-Route::post('api/adopt/save', 'AdoptController@save');
-Route::post('api/adopt/save/{adopt_id}', 'AdoptController@save');
-
-Route::get('api/adopt/get-single/{adopt_id}', 'AdoptController@getSingle');
-Route::get('api/person/get-single/{person_id}', 'PersonController@getSingle');
-
-Route::get('api/person', 'PersonController@all');
-Route::get('api/person/search', 'PersonController@search');
-Route::get('api/person/get/{person_id}', 'PersonController@get');
-Route::post('api/person/save', 'PersonController@save');
-Route::post('api/person/save/{person_id}', 'PersonController@save');
-
-Route::get('api/adopter/get/{adopter_id}', 'AdopterController@get');
-Route::post('api/adopter/save/', 'AdopterController@save');
-Route::post('api/adopter/save/{adopter_id}', 'AdopterController@save');
-
-Route::get('api/foster/get/{foster_id}', 'FosterController@get');
-Route::post('api/foster/save/', 'FosterController@save');
-Route::post('api/foster/save/{foster_id}', 'FosterController@save');
-
-Route::get('api/rescuer/get/{rescuer_id}', 'RescuerController@get');
-Route::post('api/rescuer/save/', 'RescuerController@save');
-Route::post('api/rescuer/save/{rescuer_id}', 'RescuerController@save');
-
-Route::get('api/volunteer', 'VolunteerController@all');
-Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
-Route::post('api/volunteer/save/', 'VolunteerController@save');
-Route::post('api/volunteer/save/{volunteer_id}', 'VolunteerController@save');
-
-Route::get('api/donation', 'DonationController@all');
-Route::get('api/donation/get/{donation_id}', 'DonationController@get');
-Route::post('api/donation/save/', 'DonationController@save');
-Route::post('api/donation/save/{donation_id}', 'DonationController@save');
-
-Route::get('api/event', 'EventController@all');
-Route::get('api/event/get/{event_id}', 'EventController@get');
-Route::post('api/event/save/', 'EventController@save');
-Route::post('api/event/save/{event_id}', 'EventController@save');
-
-Route::get('api/banner', 'BannerController@all');
-Route::get('api/banner/get/{banner_id}', 'BannerController@get');
-Route::post('api/banner/save/', 'BannerController@save');
-Route::post('api/banner/save/{banner_id}', 'BannerController@save');
-
-Route::get('api/adoption-form', 'AdoptionFormController@all');
-Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
-Route::post('api/adoption-form/save/', 'AdoptionFormController@save');
-Route::post('api/adoption-form/save/{adoption_form_id}', 'AdoptionFormController@save');
-
-Route::get('api/question', 'QuestionController@all');
-Route::get('api/question/get/{question_id}', 'QuestionController@get');
-Route::post('api/question/save/', 'QuestionController@save');
-Route::post('api/question/save/{question_id}', 'QuestionController@save');
+Route::group(['middleware' => 'auth'], function () {
+  
+  Route::get('api/adopt/random', 'AdoptController@random'); //for home
+  Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
+  Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
+  Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
+  Route::post('api/donation/form', 'DonationController@form');
+  Route::post('api/volunteer/form', 'VolunteerController@form');
+  Route::post('api/contact/form', 'ContactController@form');
+  
+  Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
+  Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
+  Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
+  Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
+  Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
+  
+  Route::get('api/adopt', 'AdoptController@all');
+  Route::get('api/adopt/search', 'AdoptController@search');
+  Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
+  Route::post('api/adopt/save', 'AdoptController@save');
+  Route::post('api/adopt/save/{adopt_id}', 'AdoptController@save');
+  
+  Route::get('api/adopt/get-single/{adopt_id}', 'AdoptController@getSingle');
+  Route::get('api/person/get-single/{person_id}', 'PersonController@getSingle');
+  
+  Route::get('api/person', 'PersonController@all');
+  Route::get('api/person/search', 'PersonController@search');
+  Route::get('api/person/get/{person_id}', 'PersonController@get');
+  Route::post('api/person/save', 'PersonController@save');
+  Route::post('api/person/save/{person_id}', 'PersonController@save');
+  
+  Route::get('api/adopter/get/{adopter_id}', 'AdopterController@get');
+  Route::post('api/adopter/save/', 'AdopterController@save');
+  Route::post('api/adopter/save/{adopter_id}', 'AdopterController@save');
+  
+  Route::get('api/foster/get/{foster_id}', 'FosterController@get');
+  Route::post('api/foster/save/', 'FosterController@save');
+  Route::post('api/foster/save/{foster_id}', 'FosterController@save');
+  
+  Route::get('api/rescuer/get/{rescuer_id}', 'RescuerController@get');
+  Route::post('api/rescuer/save/', 'RescuerController@save');
+  Route::post('api/rescuer/save/{rescuer_id}', 'RescuerController@save');
+  
+  Route::get('api/volunteer', 'VolunteerController@all');
+  Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
+  Route::post('api/volunteer/save/', 'VolunteerController@save');
+  Route::post('api/volunteer/save/{volunteer_id}', 'VolunteerController@save');
+  
+  Route::get('api/donation', 'DonationController@all');
+  Route::get('api/donation/get/{donation_id}', 'DonationController@get');
+  Route::post('api/donation/save/', 'DonationController@save');
+  Route::post('api/donation/save/{donation_id}', 'DonationController@save');
+  
+  Route::get('api/event', 'EventController@all');
+  Route::get('api/event/get/{event_id}', 'EventController@get');
+  Route::post('api/event/save/', 'EventController@save');
+  Route::post('api/event/save/{event_id}', 'EventController@save');
+  
+  Route::get('api/banner', 'BannerController@all');
+  Route::get('api/banner/get/{banner_id}', 'BannerController@get');
+  Route::post('api/banner/save/', 'BannerController@save');
+  Route::post('api/banner/save/{banner_id}', 'BannerController@save');
+  
+  Route::get('api/adoption-form', 'AdoptionFormController@all');
+  Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
+  Route::post('api/adoption-form/save/', 'AdoptionFormController@save');
+  Route::post('api/adoption-form/save/{adoption_form_id}', 'AdoptionFormController@save');
+  
+  Route::get('api/question', 'QuestionController@all');
+  Route::get('api/question/get/{question_id}', 'QuestionController@get');
+  Route::post('api/question/save/', 'QuestionController@save');
+  Route::post('api/question/save/{question_id}', 'QuestionController@save');
+});

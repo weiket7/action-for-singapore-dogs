@@ -152,99 +152,29 @@
     
     <footer class="page_footer ds ms parallax">
       <div class="container">
-        
-        <div class="row columns_padding_50">
-          
+        <div class="row columns_padding_50 bottommargin_20">
           <div class="col-md-4">
             <a href="./" class="logo topmargin_20">
               <img src="assets/images/action-for-singapore-dogs-logo.png" alt="" />
             </a>
-            <p>A society set up to help the stray and abandoned dogs in Singapore</p>
-            <div class="media fontsize_18">
+          </div>
+          
+          <div class="col-md-4">
+            <p class="topmargin_20">A society set up to help the stray and abandoned dogs in Singapore</p>
+          </div>
+        
+          <div class="col-md-4">
+            <div class="fontsize_18 topmargin_20">
               <i class="fa fa-envelope highlight rightpadding_5"></i>
               Email:
               <span class="grey">info@asdsingapore.com</span>
             </div>
-            <div class="topmargin_30 darklinks">
+            <div class="darklinks topmargin_10">
               <a class="social-icon theme-color-icon soc-facebook" href="https://www.facebook.com/asdsingapore/" title="Facebook"></a>
               <a class="social-icon theme-color-icon soc-instagram" href="https://www.instagram.com/asdsingapore" title="Instagram"></a>
               <a class="social-icon theme-color-icon soc-youtube" href="#" title="Youtube"></a>
             </div>
           </div>
-          
-          <div class="col-md-4 col-sm-6">
-            <div class="topmargin_20">
-              <div class="widget widget_recent_posts">
-                
-                <h3 class="widget-title">Gone to Loving Homes</h3>
-                <ul class="greylinks">
-                  <li>
-                    <div class="media">
-                      <div class="media-left media-middle">
-                        <img src="assets/images/adopted/gg5.jpg" alt="" />
-                      </div>
-                      <div class="media-body media-middle">
-                        <h4><a href="blog-single-right.html">Fluffy</a></h4>
-                        <div class="entry-meta grey darklinks">
-                          <span class="entry-date">
-                            <time datetime="2017-03-13T08:50:40+00:00">
-                              Adopted on 5 Feb 2018
-                            </time>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  
-                  <li>
-                    <div class="media">
-                      <div class="media-left media-middle">
-                        <img src="assets/images/adopted/gg4.jpg" alt="" />
-                      </div>
-                      <div class="media-body media-middle">
-                        <h4><a href="blog-single-right.html">Sparkle</a></h4>
-                        <div class="entry-meta grey darklinks">
-                          <span class="entry-date">
-                            <time datetime="2017-03-13T08:50:40+00:00">
-                              Adopted on 10 Apr 2018
-                            </time>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  
-                  <li>
-                    <div class="media">
-                      <div class="media-left media-middle">
-                        <img src="assets/images/adopted/gg3.jpg" alt="" />
-                      </div>
-                      <div class="media-body media-middle">
-                        <h4><a href="blog-single-right.html">Tinker</a></h4>
-                        <div class="entry-meta grey darklinks">
-                          <span class="entry-date">
-                            <time datetime="2017-03-13T08:50:40+00:00">
-                              Adopted on 6 Jun 2018
-                            </time>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-md-4 col-sm-6">
-            <div class="widget widget_instagram topmargin_20">
-              <h3 class="widget-title">Instagram</h3>
-              <div class="instafeed">
-              
-              </div>
-            </div>
-          </div>
-        
         </div>
       </div>
     </footer>
