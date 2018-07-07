@@ -1,12 +1,12 @@
 <template>
     <div class="adopt-grid-border">
       <div class="adopt-grid-image">
-        <router-link :to="'adopt/'+adopt.slug">
+        <router-link :to="'/adopt/'+adopt.slug">
           <img :src="'assets/images/adopts/'+adopt.image" alt="">
         </router-link>
       </div>
       <h3 class="adopt-grid-name">
-        <a :href="'adopt/'+adopt.name">{{ adopt.name }}</a>
+        <a :href="'/adopt/'+adopt.slug">{{ adopt.name }}</a>
       </h3>
       <p class="adopt-grid-content">
         <i v-if="adopt.gender == 'M'" class="fas fa-mars"></i>

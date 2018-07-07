@@ -10,7 +10,7 @@
               <div class="col-md-5">
                 <router-link :to="'/events/' + event.slug">
                 <div class="item-media entry-thumbnail">
-                  <img src="assets/images/events/01.jpg" alt="">
+                  <img :src="'assets/images/events/'+event.image" alt="">
                 </div>
                 </router-link>
               </div>
@@ -47,30 +47,6 @@
 
           <hr class="divider_40">
         </article>
-
-        <div class="row columns_margin_0">
-          <div class="col-sm-12 text-center">
-            <div class="row columns_padding_0">
-              <div class="col-sm-4 text-center text-sm-left">
-                <a href="#" class="theme_button inverse margin_0">Prev page</a>
-              </div>
-              <div class="col-sm-4 text-center">
-
-                <ul class="pagination block">
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                </ul>
-
-              </div>
-              <div class="col-sm-4 text-center text-sm-right">
-                <a href="#" class="theme_button inverse margin_0">Next page</a>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div>
       <!--eof .col-sm-8 (main content)-->

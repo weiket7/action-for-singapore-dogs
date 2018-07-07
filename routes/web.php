@@ -7,7 +7,6 @@ Route::get('logout', 'AdminController@logout');
 Route::get('backend', 'AdminController@backend');
 
 Route::group(['middleware' => 'auth'], function () {
-  
   Route::get('api/adopt/random', 'AdoptController@random'); //for home
   Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
   Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
@@ -78,4 +77,10 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/question/get/{question_id}', 'QuestionController@get');
   Route::post('api/question/save/', 'QuestionController@save');
   Route::post('api/question/save/{question_id}', 'QuestionController@save');
+  
+  Route::get('api/user', 'UserController@all');
+  Route::get('api/user/get/{user_id}', 'UserController@get');
+  Route::post('api/user/save/', 'UserController@save');
+  Route::post('api/user/save/{user_id}', 'UserController@save');
+  
 });

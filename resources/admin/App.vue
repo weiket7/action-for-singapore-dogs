@@ -25,7 +25,8 @@
           { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
           { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
           /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
-          { 'name': 'Adoption Drive', 'link': 'event', 'icon': 'car' }
+          { 'name': 'Adoption Drive', 'link': 'event', 'icon': 'car' },
+          { 'name': 'Users', 'link': 'user', 'icon': 'car' }
         ]"/>
       </div>
       <!-- END: Aside Menu -->

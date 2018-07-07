@@ -23,6 +23,8 @@ import Question from './pages/Question'
 import QuestionList from './pages/QuestionList'
 import AdoptionForm from './pages/AdoptionForm'
 import AdoptionFormList from './pages/AdoptionFormList'
+import User from './pages/User'
+import UserList from './pages/UserList'
 
 Vue.use(Router)
 
@@ -72,5 +74,9 @@ export default new Router({
     { path: '/adoption-form', name: 'AdoptionFormList', component: AdoptionFormList },
     { path: '/adoption-form/save', name: 'AddAdoptionForm', component: AdoptionForm },
     { path: '/adoption-form/save/:adoption_form_id', name: 'SaveAdoptionForm', component: AdoptionForm },
+    
+    { path: '/user', name: 'UserList', component: UserList },
+    { path: '/user/save', name: 'AddUser', component: User },
+    { path: '/user/save/:user_id', name: 'SaveUser', component: User },
   ]
 })

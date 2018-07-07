@@ -7,6 +7,7 @@ use App\Models\Enums\EventStat;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller {
   public function save(EventRequest $request, $event_id = null) {
@@ -31,11 +32,16 @@ class EventController extends Controller {
   }
   
   public function get(Request $request, $event_id) {
+    $event = null;
     if (is_numeric($event_id)) {
-      return Event::where('event_id', $event_id)->first();
+      $event = Event::where('event_id', $event_id)->first();
+    } else {
+      $slug = $event_id;
+      $event = Event::where('slug', $slug)->first();
     }
-    $slug = $event_id;
-    return Event::where('slug', $slug)->first();
+    $data['event'] = $event;
+    $adopt_ids = DB::table('adoption_drive')->where('event_id', $event->event_id)->pluck('adopt_id');
+    $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
+    return $data;
   }
-  
 }
