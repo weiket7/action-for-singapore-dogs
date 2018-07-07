@@ -2,7 +2,7 @@
   <div>
     <div class="container content">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="bxslider">
             <div><img :src="'assets/images/banners/banner1.jpg'" title="Funky roots"></div>
             <div><img :src="'assets/images/banners/banner2.jpg'" title="The long and winding road"></div>
@@ -10,7 +10,7 @@
             <div><img :src="'assets/images/banners/banner4.jpg'" title="Happy trees"></div>
           </div>
         </div>
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
           <h2 class="section_header bold">Events</h2>
           <h4 class="entry-title">
             Basic Obedience Class
@@ -24,7 +24,7 @@
             <span><br><i aria-hidden="true" class="fas fa-ruler-horizontal"></i> 6 weeks, every Sunday
                   </span> <span><br><i aria-hidden="true" class="fa fa-dollar-sign"></i> 350
                   </span></p>
-        </div>
+        </div>-->
       </div>
     </div>
 

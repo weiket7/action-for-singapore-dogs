@@ -11,7 +11,7 @@ import Contact from './pages/Contact'
 import HeartList from './pages/HeartList'
 import ComingSoon from './pages/ComingSoon'
 import AdoptionForm2 from './pages/AdoptionForm2'
-import PayPal from './pages/PayPal'
+//import PayPal from './pages/PayPal'
 
 Vue.use(Router);
 
@@ -28,6 +28,6 @@ export default new Router({
     { path: '/events/:slug', name: 'EventView', component: EventView },
     { path: '/contact', name: 'Contact', component: Contact },
     { path: '/coming-soon', name: 'ComingSoon', component: ComingSoon },
-    { path: '/paypal', name: 'PayPal', component: PayPal },
+    //{ path: '/paypal', name: 'PayPal', component: PayPal },
   ]
 })
