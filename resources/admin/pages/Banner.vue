@@ -18,6 +18,7 @@
   
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
       </form-footer>
     </form>
   </single-portlet>
@@ -75,6 +76,14 @@
         let banner_id = response.data;
         this.$router.push('/banner/save/'+banner_id);
       },
+      deleteBanner() {
+        axios.post('api/banner/delete/'+this.$route.params.banner_id)
+          .then(response => {
+            toastr.success("Banner deleted");
+            this.$router.push('/banner');
+          })
+          .catch(this.onError);
+      }
     },
     created() {
       if (! this.is_create) {
@@ -86,6 +95,14 @@
           console.log(error);
         })
       }
+    },
+    mounted() {
+      let vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteBanner();
+      });
     },
     computed: {
       is_create() {

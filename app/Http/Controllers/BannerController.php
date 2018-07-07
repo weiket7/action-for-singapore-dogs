@@ -36,4 +36,8 @@ class BannerController extends Controller
     $data['banner_stats'] = BannerStat::$values;
     return $data;
   }
+  
+  public function delete($banner_id) {
+    Banner::where('banner_id', $banner_id)->delete();
+  }
 }

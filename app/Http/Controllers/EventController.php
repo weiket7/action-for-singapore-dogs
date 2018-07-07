@@ -52,4 +52,8 @@ class EventController extends Controller {
     $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
     return $data;
   }
+  
+  public function delete($event_id) {
+    Event::where('event_id', $event_id)->delete();
+  }
 }

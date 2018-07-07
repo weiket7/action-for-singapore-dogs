@@ -64,6 +64,7 @@
   
           <form-footer>
             <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
           </form-footer>
         </form>
   </single-portlet>
@@ -132,6 +133,14 @@
       },
       updateImage(file) {
         this.image_new = file;
+      },
+      deleteEvent() {
+        axios.post('api/event/delete/'+this.$route.params.event_id)
+          .then(response => {
+            toastr.success("Event deleted");
+            this.$router.push('/event');
+          })
+          .catch(this.onError);
       }
     },
     computed: {
@@ -162,6 +171,14 @@
             console.log(error);
           })
       }
+    },
+    mounted() {
+      let vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteEvent();
+      });
     },
     components: {
       ImageComponent

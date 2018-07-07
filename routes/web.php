@@ -63,11 +63,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/event/get/{event_id}', 'EventController@get');
   Route::post('api/event/save/', 'EventController@save');
   Route::post('api/event/save/{event_id}', 'EventController@save');
+  Route::post('api/event/delete/{event_id}', 'EventController@delete');
   
   Route::get('api/banner', 'BannerController@all');
   Route::get('api/banner/get/{banner_id}', 'BannerController@get');
   Route::post('api/banner/save/', 'BannerController@save');
   Route::post('api/banner/save/{banner_id}', 'BannerController@save');
+  Route::post('api/banner/delete/{banner_id}', 'BannerController@delete');
   
   Route::get('api/adoption-form', 'AdoptionFormController@all');
   Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+  //import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
   import axios from 'axios'
   import FormMixin from '../form-mixin';
 
@@ -53,14 +53,14 @@
         .then(response => {
           this.page = response.data;
   
-          ClassicEditor
+          /*ClassicEditor
             .create( document.querySelector( '#editor' ) )
             .then( editor => {
               //console.log( editor );
             } )
             .catch( error => {
               //console.error( error );
-            } );
+            } );*/
         });
       
     },
