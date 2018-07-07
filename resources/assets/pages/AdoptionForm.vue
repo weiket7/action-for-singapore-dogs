@@ -6,7 +6,6 @@
 
         <h5>
           Please fill in the short form below to share some information with us so that we can assist you in the adoption process.<br>
-          Upon submission, our rehomers will get in touch with you via email.
         </h5>
       </div>
     </div>
@@ -106,7 +105,7 @@
           <button type="submit">I want to adopt</button>
 
           <div class="alert alert-success mt-10" v-show="success">
-            Thank you
+            Thank you, our rehomers will get in touch with you via email.
           </div>
           <div class="alert alert-danger mt-10" v-show="errors.any()">
             There were some errors, please check the form

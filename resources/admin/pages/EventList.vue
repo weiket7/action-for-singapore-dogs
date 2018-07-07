@@ -42,12 +42,7 @@
           this.events = response.data.events;
           this.event_stats = response.data.event_stats;
         })
-        .catch(error => {
-          console.log(error);
-        })
-    },
-    components: {
-      SinglePortlet,
+        .catch(this.onError);
     }
   }
 </script>

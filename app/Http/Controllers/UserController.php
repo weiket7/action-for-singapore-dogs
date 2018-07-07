@@ -10,4 +10,9 @@ class UserController extends Controller {
     return User::all();
   }
   
+  public function get($user_id) {
+    $data['user'] = User::find($user_id);
+    return $data;
+  }
+  
 }

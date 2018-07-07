@@ -11,7 +11,8 @@ class Page extends Model
   public $timestamps = false;
   
   public function savePage($input) {
-    $this->name = $input['name'];
+    $this->title = $input['title'];
+    $this->slug = str_slug($this->title);
     $this->content = $input['content'];
     $this->save();
     

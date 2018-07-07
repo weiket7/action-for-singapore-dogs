@@ -1,72 +1,71 @@
 <template>
   <single-portlet title="Event">
-        <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
-          <form-row :class="{ 'has-danger': errors.has('name') }">
-            
-            <label-component required>Name</label-component>
-            <textbox-component name='name' v-model="event.name" :error="errors.get('name')"></textbox-component>
-            
-            <label-component>Adoption Drive</label-component>
-            <radio-component name="adoption_drive" v-model="event.adoption_drive" :options="{ '1': 'Yes', '0': 'No' }" :error="errors.get('adoption_drive')"></radio-component>
-          </form-row>
-          
-          <form-row>
-            <label-component required>Location</label-component>
-            <textbox-component name="location" v-model="event.location" :error="errors.get('location')"></textbox-component>
-            
-            <label-component required>Date</label-component>
-            <datepicker-component name="date" v-model="event.date" v-if="loaded"></datepicker-component>
-          </form-row>
-          
-          <form-row>
-            <label-component required>Time</label-component>
-            <textbox-component name='time' v-model="event.time" :error="errors.get('time')"></textbox-component>
-            
-            <label-component v-show="event.adoption_drive">Duration</label-component>
-            <textbox-component name='duration' v-model="event.duration" :error="errors.get('duration')" v-show="event.adoption_drive"></textbox-component>
-          </form-row>
-          
-          <form-row>
-            <label-component v-show="event.adoption_drive">Cost</label-component>
-            <textbox-component name="cost" v-model="event.cost" :error="errors.get('cost')" v-show="event.adoption_drive"></textbox-component>
-          </form-row>
-          
-          <form-row>
-            <label-component>Description</label-component>
-            <textarea-component v-model="event.desc"></textarea-component>
-  
-            <label-component>Image</label-component>
-            <image-component v-model="event.image" name="image"
-                             v-on:update-image="updateImage" folder="events"
-                             :src="event.image" :error="errors.get('image')"></image-component>
-          </form-row>
-    
-          <hr>
-          
-          <form-row>
-            <label-component>Search</label-component>
-            <select2-component name='dog_name' url="api/adopt/search"
-                               event_name="select-adopt"
-                               v-on:select-adopt="selectAdopt"></select2-component>
-          </form-row>
-          
-          <form-row>
-            <label-component>Dogs</label-component>
-            <static-text>
-              <table class="table">
-                <tr v-for="(adopt, index) in adopts">
-                  <td>{{ adopt.name }}</td>
-                  <td @click="removeAdopt(index)">X</td>
-                </tr>
-              </table>
-            </static-text>
-          </form-row>
-  
-          <form-footer>
-            <button type="submit" class="btn btn-success">Save</button>
-            <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
-          </form-footer>
-        </form>
+    <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+      <form-row>
+        <label-component required>Name</label-component>
+        <textbox-component name='name' v-model="event.name" :error="errors.get('name')"></textbox-component>
+
+        <label-component>Adoption Drive</label-component>
+        <radio-component name="adoption_drive" v-model="event.adoption_drive" :options="{ '1': 'Yes', '0': 'No' }" :error="errors.get('adoption_drive')"></radio-component>
+      </form-row>
+
+      <form-row>
+        <label-component required>Location</label-component>
+        <textbox-component name="location" v-model="event.location" :error="errors.get('location')"></textbox-component>
+
+        <label-component required>Date</label-component>
+        <datepicker-component name="date" v-model="event.date" v-if="loaded"></datepicker-component>
+      </form-row>
+
+      <form-row>
+        <label-component required>Time</label-component>
+        <textbox-component name='time' v-model="event.time" :error="errors.get('time')"></textbox-component>
+
+        <label-component v-show="event.adoption_drive">Duration</label-component>
+        <textbox-component name='duration' v-model="event.duration" :error="errors.get('duration')" v-show="event.adoption_drive"></textbox-component>
+      </form-row>
+
+      <form-row>
+        <label-component v-show="event.adoption_drive">Cost</label-component>
+        <textbox-component name="cost" v-model="event.cost" :error="errors.get('cost')" v-show="event.adoption_drive"></textbox-component>
+      </form-row>
+
+      <form-row>
+        <label-component>Description</label-component>
+        <textarea-component v-model="event.desc"></textarea-component>
+
+        <label-component>Image</label-component>
+        <image-component v-model="event.image" name="image"
+                         v-on:update-image="updateImage" folder="events"
+                         :src="event.image" :error="errors.get('image')"></image-component>
+      </form-row>
+
+      <hr>
+
+      <form-row>
+        <label-component>Search</label-component>
+        <select2-component name='dog_name' url="api/adopt/search"
+                           event_name="select-adopt"
+                           v-on:select-adopt="selectAdopt"></select2-component>
+      </form-row>
+
+      <form-row>
+        <label-component>Dogs</label-component>
+        <static-text>
+          <table class="table">
+            <tr v-for="(adopt, index) in adopts">
+              <td>{{ adopt.name }}</td>
+              <td @click="removeAdopt(index)">X</td>
+            </tr>
+          </table>
+        </static-text>
+      </form-row>
+
+      <form-footer>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+      </form-footer>
+    </form>
   </single-portlet>
 </template>
 
@@ -104,7 +103,7 @@
         
         let form_data = this.event;
         form_data.adopt_ids = this.adopt_ids;
-  
+
         let config = {};
         if (this.image_new) {
           form_data = new FormData();
@@ -117,7 +116,7 @@
             }
           };
         }
-  
+
         axios.post(url, form_data, config)
           .then(this.onSuccess)
           .catch(this.onError);

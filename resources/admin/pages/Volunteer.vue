@@ -32,6 +32,7 @@
   
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
       </form-footer>
     </form>
   </single-portlet>
@@ -74,6 +75,14 @@
         }
         toastr.success("Volunteer updated");
       },
+      deleteEvent() {
+        axios.post('api/volunteer/delete/'+this.$route.params.volunteer_id)
+          .then(response => {
+            toastr.success("Volunteer deleted");
+            this.$router.push('/volunteer');
+          })
+          .catch(this.onError);
+      }
     },
     computed: {
       is_create() {
@@ -88,7 +97,15 @@
           this.interests = response.data.interests;
         })
         .catch(error => { console.log(error); });
-    }
+    },
+    mounted() {
+      let vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteEvent();
+      });
+    },
     
   }
 </script>

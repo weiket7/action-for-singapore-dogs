@@ -10,16 +10,27 @@ class PageTable extends Migration
     {
       Schema::create('page', function (Blueprint $table) {
         $table->increments('page_id');
-        $table->string('name', 50);
+        $table->string('title', 50);
+        $table->string('slug', 50);
         $table->text('content');
       });
       
-      DB::table('page')->insert([
-        'name'=>'Why Adopt A Dog',
-        'content'=>'1
-        2
-        3'
-      ]);
+      
+      $arr = [
+        'Why Adopt A Dog',
+        'Adoption & Rescue Centre (ARC)',
+        'Boarding Services',
+        'Media',
+        'Dog Listener Academy'
+      ];
+      foreach($arr as $a) {
+        DB::table('page')->insert([
+          'title'=>$a,
+          'slug'=>str_slug($a),
+          'content'=>$a
+        ]);
+      }
+      
     }
 
     public function down()

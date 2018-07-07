@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
   Route::post('api/volunteer/save/', 'VolunteerController@save');
   Route::post('api/volunteer/save/{volunteer_id}', 'VolunteerController@save');
+  Route::post('api/volunteer/delete/{volunteer_id}', 'VolunteerController@delete');
   
   Route::get('api/donation', 'DonationController@all');
   Route::get('api/donation/get/{donation_id}', 'DonationController@get');

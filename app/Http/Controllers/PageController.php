@@ -11,7 +11,12 @@ class PageController extends Controller {
   }
   
   public function get(Request $request, $page_id) {
-    return Page::find($page_id);
+    if (is_numeric($page_id)) {
+      return Page::find($page_id);
+    } else {
+      $slug = $page_id;
+      return Page::where('slug', $slug)->first();
+    }
   }
   
   public function all() {

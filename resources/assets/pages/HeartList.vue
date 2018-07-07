@@ -108,8 +108,6 @@
 </script>
 
 <style scoped>
-  
-  
   .col-center {
     float: none;
     margin: 0 auto;

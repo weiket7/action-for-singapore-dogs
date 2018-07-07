@@ -74,19 +74,19 @@
                   <a href="#">About</a>
                   <ul>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Who We Are</router-link>
+                      <router-link :to="'/pages/who-we-are'" :data-target="'coming-soon'">Who We Are</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Adoption & Rescue Centre (ARC)</router-link>
+                      <router-link :to="'/pages/adoption-rescue-centre-arc'" :data-target="'coming-soon'">Adoption & Rescue Centre (ARC)</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Boarding Services</router-link>
+                      <router-link :to="'/pages/boarding-services'" :data-target="'coming-soon'">Boarding Services</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Media</router-link>
+                      <router-link :to="'/pages/media'" :data-target="'coming-soon'">Media</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Dog Listener Academy</router-link>
+                      <router-link :to="'/pages/dog-listener-academy'" :data-target="'coming-soon'">Dog Listener Academy</router-link>
                     </li>
                   </ul>
                 </li>
@@ -98,7 +98,7 @@
                       <router-link :to="'/dogs-for-adoption'" :data-target="'adopt'">Dogs for Adoption</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Why Adopt a Dog</router-link>
+                      <router-link :to="'/pages/why-adopt-a-dog'" :data-target="'coming-soon'">Why Adopt a Dog</router-link>
                     </li>
                     <li>
                       <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Adoption Procedure</router-link>
