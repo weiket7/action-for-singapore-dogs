@@ -25,6 +25,8 @@ import AdoptionForm from './pages/AdoptionForm'
 import AdoptionFormList from './pages/AdoptionFormList'
 import User from './pages/User'
 import UserList from './pages/UserList'
+import Page from './pages/Page'
+import PageList from './pages/PageList'
 
 Vue.use(Router)
 
@@ -78,5 +80,8 @@ export default new Router({
     { path: '/user', name: 'UserList', component: UserList },
     { path: '/user/save', name: 'AddUser', component: User },
     { path: '/user/save/:user_id', name: 'SaveUser', component: User },
+    
+    { path: '/page', name: 'PageList', component: PageList },
+    { path: '/page/save/:page_id', name: 'SavePage', component: Page },
   ]
 })

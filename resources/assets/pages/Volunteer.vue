@@ -16,7 +16,7 @@
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
         <form @submit.prevent="onSubmit()" class="donator-form topmargin_30 form-horizontal" id="donatorform" method="post" action="">
           <div class="form-group">
-            <label for="name" class="col-sm-3 control-label">Name</label>
+            <label for="name" class="col-sm-3 control-label">Name <span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="text" v-model="volunteer.name" class="form-control" id="name" autofocus>
               <span class="help-block error" v-if="errors.get('name')">
@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
+            <label for="email" class="col-sm-3 control-label">Email <span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="email" v-model="volunteer.email" class="form-control" id="email">
               <span class="help-block error" v-if="errors.get('email')">
@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="mobile" class="col-sm-3 control-label">Mobile</label>
+            <label for="mobile" class="col-sm-3 control-label">Mobile <span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="text" v-model="volunteer.mobile" class="form-control" id="mobile">
               <span class="help-block error" v-if="errors.get('mobile')">
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="birthday" class="col-sm-3 control-label">Birthday</label>
+            <label for="birthday" class="col-sm-3 control-label">Birthday <span class="required">*</span></label>
             <div class="col-sm-9">
               <input type="text" class="form-control datepicker" id="birthday" readonly>
               <span class="help-block error" v-if="errors.get('birthday')">
@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="gender" class="col-sm-3 control-label">Gender</label>
+            <label for="gender" class="col-sm-3 control-label">Gender <span class="required">*</span></label>
             <div class="col-sm-9">
               <label class="radio-inline">
                 <input type="radio" v-model="volunteer.gender" name="gender" value="M"> Male
@@ -66,7 +66,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="mobile" class="col-sm-3 control-label">I'm interested in</label>
+            <label for="mobile" class="col-sm-3 control-label">I'm interested in <span class="required">*</span></label>
             <div class="col-sm-9">
               <div class="checkbox">
                 <label>

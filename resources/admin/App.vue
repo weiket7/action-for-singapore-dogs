@@ -14,10 +14,10 @@
       >
         <menu-component :menus="[
           { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
-          { 'name': 'People', 'link': 'person', 'icon': 'street-view' },
+          { 'name': 'People', 'link': 'person', 'icon': 'users' },
           { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-plus' },
           { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
-          { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-o' },
+          { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-md' },
           { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
           { 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },
           { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
@@ -25,8 +25,8 @@
           { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
           { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
           /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
-          { 'name': 'Adoption Drive', 'link': 'event', 'icon': 'car' },
-          { 'name': 'Users', 'link': 'user', 'icon': 'car' }
+          { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' },
+          { 'name': 'Pages', 'link': 'page', 'icon': 'font' }
         ]"/>
       </div>
       <!-- END: Aside Menu -->

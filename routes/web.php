@@ -84,4 +84,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/user/save/', 'UserController@save');
   Route::post('api/user/save/{user_id}', 'UserController@save');
   
+  Route::get('api/page', 'PageController@all');
+  Route::get('api/page/get/{page_id}', 'PageController@get');
+  Route::post('api/page/save/{page_id}', 'PageController@save');
+  
 });
