@@ -18,6 +18,7 @@ class VolunteerTable extends Migration
       $table->string('mobile', 20);
       $table->char('gender', 1);
       $table->dateTime('birthday');
+      $table->dateTime('created_on');
       $table->string('desc', 250)->nullable();
     });
   
@@ -27,7 +28,8 @@ class VolunteerTable extends Migration
       'email'=>'vivien@gmail.com',
       'mobile'=>'9123 6666',
       'gender'=>'F',
-      'birthday'=>Carbon::now()->subYear(18)
+      'birthday'=>Carbon::now()->subYear(18),
+      'created_on'=>Carbon::now(),
     ]);
   
     DB::table('volunteer')->insert([
@@ -36,7 +38,8 @@ class VolunteerTable extends Migration
       'email'=>'valora@gmail.com',
       'mobile'=>'9876 6666',
       'gender'=>'F',
-      'birthday'=>Carbon::now()->subYear(30)
+      'birthday'=>Carbon::now()->subYear(30),
+      'created_on'=>Carbon::now(),
     ]);
   }
   

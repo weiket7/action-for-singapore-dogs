@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use App\Models\Enums\VolunteerStat;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +22,7 @@ class Volunteer extends Model
     $this->mobile = $input['mobile'];
     $this->gender = $input['gender'];
     $this->birthday = $input['birthday'];
+    $this->created_on = Carbon::now();
     $this->save();
     $this->saveVolunteerInterest($input['interests']);
     return $this->donation_id;

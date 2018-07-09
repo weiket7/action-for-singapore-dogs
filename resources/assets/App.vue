@@ -113,7 +113,7 @@
                 </li>
                 
                 <li>
-                  <a href="#">Donate</a>
+                  <a href="#">Donate / Sponsor</a>
                   <ul>
                     <li>
                       <router-link :to="'/donate'" :data-target="'donate'">Make a Donation</router-link>
@@ -123,6 +123,9 @@
                     </li>
                     <li>
                       <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Gift Shop</router-link>
+                    </li>
+                    <li>
+                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Dogs in Need</router-link>
                     </li>
                   </ul>
                 </li>

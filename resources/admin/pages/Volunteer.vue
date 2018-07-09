@@ -75,7 +75,7 @@
         }
         toastr.success("Volunteer updated");
       },
-      deleteEvent() {
+      deleteVolunteer() {
         axios.post('api/volunteer/delete/'+this.$route.params.volunteer_id)
           .then(response => {
             toastr.success("Volunteer deleted");
@@ -103,7 +103,7 @@
       $('[data-toggle=confirmation]').confirmation({
         rootSelector: '[data-toggle=confirmation]',
       }).on("confirmed.bs.confirmation", function() {
-        vue.deleteEvent();
+        vue.deleteVolunteer();
       });
     },
     

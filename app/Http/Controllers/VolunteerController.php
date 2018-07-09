@@ -18,7 +18,8 @@ class VolunteerController extends Controller {
   }
   
   public function all(Request $request) {
-    $data['volunteers'] = Volunteer::select('stat', 'volunteer_id', 'name', 'email', 'mobile')->get();
+    $data['volunteers'] = Volunteer::select('stat', 'volunteer_id', 'name', 'email', 'mobile')
+      ->orderBy('created_on', 'desc')->get();
     $data['volunteer_stats'] = VolunteerStat::$values;
     return $data;
   }

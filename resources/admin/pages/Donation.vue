@@ -35,6 +35,7 @@
   
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
       </form-footer>
     </form>
   </single-portlet>
@@ -75,6 +76,14 @@
         }
         toastr.success("Donation updated");
       },
+      deleteDonation() {
+        axios.post('api/donation/delete/'+this.$route.params.donation_id)
+          .then(response => {
+            toastr.success("Donation deleted");
+            this.$router.push('/donation');
+          })
+          .catch(this.onError);
+      }
     },
     computed: {
       showRefNo: function() {
@@ -93,7 +102,15 @@
           this.loaded = true;
         })
         .catch(error => { console.log(error); });
-    }
+    },
+    mounted() {
+      let vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteDonation();
+      });
+    },
 
   }
 </script>
