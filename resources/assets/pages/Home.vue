@@ -4,7 +4,12 @@
       <div class="row">
         <div class="col-md-8">
           <div class="bxslider">
-            <div><img :src="'assets/images/banners/banner1.jpg'" title="Funky roots"></div>
+            <div v-for="banner in banners">
+              <router-link :to="'/'+banner.url" v-if="banner.url">
+                <img :src="'assets/images/banners/'+banner.image" :title="banner.name">
+              </router-link>
+              <img :src="'assets/images/banners/'+banner.image" :title="banner.name" v-else>
+            </div>
           </div>
         </div>
         <div class="col-md-4">
@@ -255,13 +260,14 @@
       return {
         adopts_desktop: {},
         adopts_mobile: {},
+        banners: {}
       }
     },
     mounted() {
-
-      axios.get('api/adopt/random')
+      axios.get('api/home')
         .then(response => {
-          let adopts = response.data;
+          this.banners = response.data.banners;
+          let adopts = response.data.adopts;
           this.num_of_adopts = Object.keys(adopts).length;
           this.adopts_desktop = chunk(adopts, 4);
           this.adopts_mobile = chunk(adopts, 2);

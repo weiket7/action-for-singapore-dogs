@@ -4,6 +4,7 @@ use App\Helpers\BackendHelper;
 use App\Http\Requests\BannerRequest;
 use App\Models\Banner;
 use App\Models\Enums\BannerStat;
+use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,12 @@ class BannerController extends Controller
   public function get(Request $request, $banner_id) {
     $data['banner'] = Banner::find($banner_id);
     $data['banner_stats'] = BannerStat::$values;
+    $events = Event::where('date', '>=', Carbon::today())->get();
+    $res = [];
+    foreach($events as $event) {
+      $res[$event->event_id] = $event->name . ' on ' . Carbon::createFromFormat('Y-m-d H:i:s', $event->date)->format('d M Y');
+    }
+    $data['events'] = $res;
     return $data;
   }
   

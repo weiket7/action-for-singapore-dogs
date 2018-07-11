@@ -6,8 +6,8 @@ Route::post('login', 'AdminController@login');
 Route::get('logout', 'AdminController@logout');
 Route::get('backend', 'AdminController@backend');
 
+Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');
-Route::get('api/adopt/random', 'AdoptController@random'); //for home
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view

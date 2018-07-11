@@ -14,16 +14,13 @@
           </div>
           <div class="col-md-8 text-center text-md-right">
             <div class="media small-teaser">
-              <div class="media-left">
+              <div class="media-left top-email-icon">
                 <div class="teaser_icon highlight fontsize_18">
                   <i class="fa fa-envelope"></i>
                 </div>
               </div>
               <div class="media-body">
                 <div class="visible-lg visible-md">
-                  <h4>
-                    Email:
-                  </h4>
                   <p>
                     <a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a>
                   </p>
@@ -169,8 +166,7 @@
           <div class="col-md-4">
             <div class="fontsize_18 topmargin_20">
               <i class="fa fa-envelope highlight rightpadding_5"></i>
-              Email:
-              <span class="grey">info@asdsingapore.com</span>
+              <span class="grey"><a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a></span>
             </div>
             <div class="darklinks topmargin_10">
               <a class="social-icon theme-color-icon soc-facebook" href="https://www.facebook.com/asdsingapore/" title="Facebook"></a>
@@ -223,5 +219,8 @@
 
   .entry-date {
     color :#666666;
+  }
+  .top-email-icon {
+    padding-right: 5px;
   }
 </style>

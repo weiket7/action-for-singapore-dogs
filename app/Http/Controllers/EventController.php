@@ -33,8 +33,8 @@ class EventController extends Controller {
   
   public function latest(Request $request) {
     $data['events'] = Event::where('date', '>=', Carbon::today())
-      ->orderBy('date')
       ->orderBy("adoption_drive", "desc")
+      ->orderBy('date', "desc")
       ->get();
     return $data;
   }
