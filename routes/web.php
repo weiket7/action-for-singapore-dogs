@@ -13,7 +13,7 @@ Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart li
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
 Route::post('api/donation/form', 'DonationController@form');
 Route::post('api/volunteer/form', 'VolunteerController@form');
-Route::post('api/contact/form', 'ContactController@form');
+Route::post('api/contact/form', 'SiteController@form');
 
 Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
 Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');

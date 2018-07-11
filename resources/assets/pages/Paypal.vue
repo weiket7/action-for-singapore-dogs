@@ -14,14 +14,16 @@
 
 <script>
   export default {
-    name: "paypal.vue",
+    name: "paypal",
     data() {
       return {
         amount: 10
       }
     },
-    mounted() {
+    created() {
       this.amount = this.$route.params.amount;
+    },
+    mounted() {
       document.getElementById("paypal-form").submit();
     }
   }

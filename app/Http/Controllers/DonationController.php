@@ -1,10 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\DonationRequest;
+use App\Mail\DonationAdminMail;
+use App\Mail\DonationMail;
 use App\Models\Donation;
 use App\Models\Enums\DonationStat;
 use App\Models\Enums\PaymentMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DonationController extends Controller {
   public function save(DonationRequest $request) {
@@ -14,7 +17,12 @@ class DonationController extends Controller {
   
   public function form(DonationRequest $request) {
     $donation = new Donation();
-    return $donation->saveDonation($request->all());
+    $donation->saveDonation($request->all());
+    Mail::to("info@asdsingapore.com") //TODO
+      ->send(new DonationAdminMail($donation));
+    Mail::to($donation->email) //TODO
+    ->send(new DonationMail($donation));
+    return $donation->donation_id;
   }
   
   public function all() {

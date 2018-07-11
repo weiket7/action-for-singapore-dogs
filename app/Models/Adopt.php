@@ -24,6 +24,8 @@ class Adopt extends Model
     $this->colour = $input['colour'] ?? "";
     $this->microchip = $input['microchip'] ?? 0;
     $this->vaccinate = $input['vaccinate'] ?? 0;
+    $this->sterilise = $input['sterilise'] ?? 0;
+    $this->hdb = $input['hdb'] ?? 0;
     if ($this->microchip) {
       $this->microchip_date = $input['microchip_date'];
       $this->microchip_no = $input['microchip_no'];
@@ -32,6 +34,10 @@ class Adopt extends Model
       $this->vaccinate_date1 = $input['vaccinate_date1'];
       $this->vaccinate_date2 = $input['vaccinate_date2'];
       $this->vaccinate_date3 = $input['vaccinate_date3'];
+    }
+    if ($this->sterilise) {
+      $this->sterilise_date = $input['sterilise_date'];
+      $this->vet = $input['vet'];
     }
     $this->posted_by = 'admin';
     $this->posted_on = Carbon::now();

@@ -5,6 +5,7 @@ use App\Models\Banner;
 use App\Models\Donation;
 use App\Models\Enums\AdoptStat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller {
   public function home(Request $request) {
@@ -17,6 +18,11 @@ class SiteController extends Controller {
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
     return $data;
+  }
+  
+  public function form(ContactRequest $request) {
+    Mail::to("info@asdsingapore.com") //TODO
+    ->send(new ContactMail($request->all()));
   }
   
   

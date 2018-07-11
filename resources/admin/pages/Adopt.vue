@@ -59,15 +59,28 @@
             <radio-component v-model="adopt.vaccinate" :options="{ 1: 'Yes', 0: 'No' }"></radio-component>
 
             <label-component v-show="adopt.vaccinate">Vaccinate Date 1</label-component>
-            <datepicker-component name="vaccinate_date1" v-model="adopt.vaccinate_date1" :error="errors.get('vaccinate_date1')" v-show="adopt.vaccinate"></datepicker-component>
+            <datepicker-component name="vaccinate_date1" v-model="adopt.vaccinate_date1" :error="errors.get('vaccinate_date1')" v-if="adopt.vaccinate && loaded"></datepicker-component>
           </form-row>
           
           <form-row v-show="adopt.vaccinate">
             <label-component>Vaccinate Date 2</label-component>
-            <datepicker-component name="vaccinate_date2" v-model="adopt.vaccinate_date2" :error="errors.get('vaccinate_date2')" v-show="adopt.vaccinate"></datepicker-component>
+            <datepicker-component name="vaccinate_date2" v-model="adopt.vaccinate_date2" :error="errors.get('vaccinate_date2')" v-if="adopt.vaccinate && loaded"></datepicker-component>
   
             <label-component>Vaccinate Date 3</label-component>
-            <datepicker-component name="vaccinate_date3" v-model="adopt.vaccinate_date3" :error="errors.get('vaccinate_date3')" v-show="adopt.vaccinate"></datepicker-component>
+            <datepicker-component name="vaccinate_date3" v-model="adopt.vaccinate_date3" :error="errors.get('vaccinate_date3')" v-if="adopt.vaccinate && loaded"></datepicker-component>
+          </form-row>
+
+          <form-row>
+            <label-component>Sterilised</label-component>
+            <radio-component v-model="adopt.sterilise" :options="{ 1: 'Yes', 0: 'No' }" :error="errors.get('sterilise')"></radio-component>
+
+            <label-component v-show="adopt.sterilise">Sterilisation Date</label-component>
+            <datepicker-component name="sterilise_date" v-model="adopt.sterilise_date" :error="errors.get('sterilise_date')" v-if="adopt.sterilise && loaded"></datepicker-component>
+          </form-row>
+
+          <form-row v-show="adopt.sterilise">
+            <label-component>Vet</label-component>
+            <textbox-component v-model="adopt.vet" :error="errors.get('vet')"></textbox-component>
           </form-row>
 
           <form-row>
