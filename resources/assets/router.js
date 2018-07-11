@@ -30,6 +30,6 @@ export default new Router({
     { path: '/contact', name: 'Contact', component: Contact },
     { path: '/coming-soon', name: 'ComingSoon', component: ComingSoon },
     { path: '/pages/:slug', name: 'Page', component: Page },
-    { path: '/paypal', name: 'Paypal', component: Paypal },
+    { path: '/paypal/:amount', name: 'Paypal', component: Paypal },
   ]
 })

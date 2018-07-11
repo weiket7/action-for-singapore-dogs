@@ -205,7 +205,7 @@
         this.success = true;
         this.errors = new Errors();
         if (this.donation.payment_method == 'P') {
-          this.$router.push('/paypal');
+          this.$router.push('/paypal/'+this.donation.amount);
         }
       },
       onError(error) {
