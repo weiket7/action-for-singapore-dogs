@@ -136,7 +136,7 @@
         this.form.birthday = date;
       },
       onSubmit() {
-        axios.post("api/adoption-form/initial", this.form)
+        axios.post("api/adoption-form/enquiry", this.form)
           .then(this.onSuccess)
           .catch(this.onError);
       },

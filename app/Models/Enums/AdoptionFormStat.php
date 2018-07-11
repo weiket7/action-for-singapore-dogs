@@ -1,14 +1,16 @@
 <?php namespace App\Models\Enums;
 
 abstract class AdoptionFormStat {
-  const Initial = 'I';
-  const Second = 'S';
-  const Approved = 'A';
+  const Enquiry = 'E';
+  const Application = 'P';
+  const PendingSignature = 'S';
+  const Agreement = 'A';
   
   static $values = array(
-    self::Initial=>'Initial',
-    self::Second=>'Second',
-    self::Approved=>'Approved',
+    self::Enquiry=>'Enquiry',
+    self::Application=>'Application',
+    self::PendingSignature=>'Pending Signature',
+    self::Agreement=>'Agreement',
   );
 }
 

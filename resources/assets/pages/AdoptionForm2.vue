@@ -64,7 +64,7 @@
     },
     methods: {
       onSubmit() {
-        axios.post('api/adoption-form/second/'+this.$route.params.token, this.answers)
+        axios.post('api/adoption-form/application/'+this.$route.params.token, this.answers)
           .then(this.onSuccess)
           .catch(this.onError);
       },

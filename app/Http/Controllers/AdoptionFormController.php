@@ -4,6 +4,7 @@ use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
 use App\Mail\AdoptionFormMail;
 use App\Models\Adopt;
+use App\Models\Adopter;
 use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptionFormStat;
 use App\Models\Person;
@@ -14,12 +15,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class AdoptionFormController extends Controller {
-  
   //POST
-  public function initial(AdoptionFormRequest $request) {
+  public function enquiry(AdoptionFormRequest $request) {
     $adoption_form = new AdoptionForm();
     
-    $adoption_form_id = $adoption_form->saveAdoptionForm($request->all());
+    $adoption_form_id = $adoption_form->saveEnquiry($request->all());
     //$user = User::where('email', $registration->email)->firstOrFail();
     $adopt_names = Adopt::whereIn('adopt_id', $request->hearts)->pluck('name')->toArray();
     $str = array_pop($adopt_names);
@@ -34,7 +34,7 @@ class AdoptionFormController extends Controller {
   }
   
   public function token(Request $request, $token) {
-    $data['adoption_form'] = AdoptionForm::where('token', $token)->first();
+    $data['adoption_form'] = AdoptionForm::where('application_token', $token)->first();
     $question_ids = Question::where('is_header', false)->pluck('question_id');
     $answers = [];
     foreach($question_ids as $question_id) {
@@ -46,20 +46,48 @@ class AdoptionFormController extends Controller {
   }
   
   //POST
-  public function second(Request $request, $token) {
+  public function application(Request $request, $token) {
     //Log::info($token);
-    $adoption_form = AdoptionForm::where('token', $token)->first();
-    $adoption_form->saveSecondForm($request->all());
+    $adoption_form = AdoptionForm::where('application_token', $token)->first();
+    $adoption_form->saveApplication($request->all());
+  }
+  
+  public function approve(Request $request, $adoption_form_id) {
+    $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
+    $adoption_form->stat = AdoptionFormStat::PendingSignature;
+    $adoption_form->adopt_id = $request->adopt_id;
+    $adoption_form->adopted_on = $request->adopted_on;
+    $adoption_form->remark = $request->remark;
+    $adoption_form->save();
+  }
+  
+  public function sign($adoption_form_id) {
+    $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
+    
+    $person = new Person();
+    $person->saveAdoptionFormAsAdopter($adoption_form);
+  
+    $adopter = new Adopter();
+    $input['person_id'] = $person->person_id;
+    $input['adopt_id'] = $adoption_form->adopt_id;
+    $input['adopted_on'] = $adoption_form->adopted_on;
+    $adopter->saveAdopter($input);
   }
   
   //POST
-  public function approve(Request $request, $adoption_form_id) {
+  public function save(Request $request, $adoption_form_id) {
     $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
-    $adoption_form->stat = AdoptionFormStat::Approved;
+    $adoption_form->stat = AdoptionFormStat::Agreement;
     $adoption_form->save();
     
     $person = new Person();
     $person->saveAdoptionFormAsAdopter($adoption_form);
+  
+    $adopter = new Adopter();
+    $input['adopt_id'] = $request->adopt_id;
+    $input['person_id'] = $person->person_id;
+    $input['adopted_on'] = $request->adopted_on;
+    $adopter->saveAdopter($input);
   }
   
   public function get(Request $request, $adoption_form_id) {

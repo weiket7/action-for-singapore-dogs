@@ -15,11 +15,9 @@ Route::post('api/donation/form', 'DonationController@form');
 Route::post('api/volunteer/form', 'VolunteerController@form');
 Route::post('api/contact/form', 'SiteController@form');
 
-Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
 Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
-Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
-Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
-Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
+Route::post('api/adoption-form/enquiry', 'AdoptionFormController@enquiry');
+Route::post('api/adoption-form/application/{token}', 'AdoptionFormController@application');
 Route::get('api/event/get/{event_id}', 'EventController@get');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -75,13 +73,14 @@ Route::group(['middleware' => 'auth'], function () {
   
   Route::get('api/adoption-form', 'AdoptionFormController@all');
   Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
-  Route::post('api/adoption-form/save/', 'AdoptionFormController@save');
-  Route::post('api/adoption-form/save/{adoption_form_id}', 'AdoptionFormController@save');
+  Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
+  Route::post('api/adoption-form/sign/{token}', 'AdoptionFormController@sign');
   
-  Route::get('api/question', 'QuestionController@all');
+  /*Route::get('api/question', 'QuestionController@all');
   Route::get('api/question/get/{question_id}', 'QuestionController@get');
   Route::post('api/question/save/', 'QuestionController@save');
-  Route::post('api/question/save/{question_id}', 'QuestionController@save');
+  Route::post('api/question/save/{question_id}', 'QuestionController@save');*/
+  
   
   Route::get('api/user', 'UserController@all');
   Route::get('api/user/get/{user_id}', 'UserController@get');
