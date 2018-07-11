@@ -10,7 +10,7 @@
       </form-row>
 
       <form-row>
-        <label-component>Image</label-component>
+        <label-component>Image<br>(820 x 340 px)</label-component>
         <image-component v-model="banner.image" name="image"
                          v-on:update-image="updateImage" folder="banners"
                          :src="banner.image" :error="errors.get('image')"></image-component>

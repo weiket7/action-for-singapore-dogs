@@ -25,7 +25,7 @@ class BannerTable extends Migration
       'url'=>'events/adoption-drive-1'
     ]);
   
-    DB::table('banner')->insert([
+    /*DB::table('banner')->insert([
       'name'=>'name2',
       'stat'=>'A',
       'position'=>2,
@@ -44,7 +44,7 @@ class BannerTable extends Migration
       'stat'=>'A',
       'position'=>4,
       'image'=>'banner4.jpg',
-    ]);
+    ]);*/
   }
   
   public function down()

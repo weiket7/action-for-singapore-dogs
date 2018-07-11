@@ -182,7 +182,7 @@
         },
         success: false,
         errors: new Errors(),
-        payment_methods: { "N": "PayNow", "G": "Giro", "B": "Bank Transfer", "Q": "Cheque", "P": "PayPal"}
+        payment_methods: { "N": "PayNow", "B": "Bank Transfer", "G": "Giro", "Q": "Cheque", "P": "PayPal"}
       }
     },
     methods: {
