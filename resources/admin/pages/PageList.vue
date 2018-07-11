@@ -10,7 +10,7 @@
         <tbody>
         <tr v-for="page in pages">
           <td width="450px">
-            <router-link v-bind:to="'/page/save/'+page.page_id">{{ page.name }}</router-link>
+            <router-link v-bind:to="'/page/save/'+page.page_id">{{ page.title }}</router-link>
           </td>
         </tr>
         </tbody>

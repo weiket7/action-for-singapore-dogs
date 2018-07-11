@@ -98,13 +98,13 @@
                       <router-link :to="'/pages/why-adopt-a-dog'" :data-target="'coming-soon'">Why Adopt a Dog</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Adoption Procedure</router-link>
+                      <router-link :to="'/pages/adoption-procedure'" :data-target="'coming-soon'">Adoption Procedure</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Project Adore</router-link>
+                      <router-link :to="'/pages/project-adore'" :data-target="'coming-soon'">Project Adore</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Gone to Loving Homes</router-link>
+                      <router-link :to="'/pages/gone-to-loving-homes'" :data-target="'coming-soon'">Gone to Loving Homes</router-link>
                     </li>
                   </ul>
                 </li>
@@ -116,13 +116,13 @@
                       <router-link :to="'/donate'" :data-target="'donate'">Make a Donation</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Sponsor</router-link>
+                      <router-link to="/pages/sponsor" :data-target="'coming-soon'">Sponsor</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Gift Shop</router-link>
+                      <router-link to="/pages/gift-shop" :data-target="'coming-soon'">Gift Shop</router-link>
                     </li>
                     <li>
-                      <router-link :to="'/coming-soon'" :data-target="'coming-soon'">Dogs in Need</router-link>
+                      <router-link to="/pages/dogs-in-need" :data-target="'coming-soon'">Dogs in Need</router-link>
                     </li>
                   </ul>
                 </li>

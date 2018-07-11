@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <h2>{{ page.title }}</h2>
 
-        {{ page.content }}
+        <span v-html="page.content"></span>
       </div>
     </div>
   </div>

@@ -17,11 +17,18 @@ class PageTable extends Migration
       
       
       $arr = [
-        'Why Adopt A Dog',
+        'Who We Are',
         'Adoption & Rescue Centre (ARC)',
         'Boarding Services',
         'Media',
-        'Dog Listener Academy'
+        'Dog Listener Academy',
+        'Why Adopt A Dog',
+        'Adoption Procedure',
+        'Project Adore',
+        'Gone to Loving Homes',
+        'Sponsor',
+        'Gift Shop',
+        'Dogs in Need',
       ];
       foreach($arr as $a) {
         DB::table('page')->insert([
@@ -30,7 +37,6 @@ class PageTable extends Migration
           'content'=>$a
         ]);
       }
-      
     }
 
     public function down()
