@@ -20,6 +20,7 @@ Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
 Route::post('api/adoption-form/initial', 'AdoptionFormController@initial');
 Route::post('api/adoption-form/second/{token}', 'AdoptionFormController@second');
 Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
+Route::get('api/event/get/{event_id}', 'EventController@get');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::get('api/adopt', 'AdoptController@all');
@@ -62,7 +63,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/donation/delete/{donation_id}', 'DonationController@delete');
   
   Route::get('api/event', 'EventController@all');
-  Route::get('api/event/get/{event_id}', 'EventController@get');
   Route::post('api/event/save/', 'EventController@save');
   Route::post('api/event/save/{event_id}', 'EventController@save');
   Route::post('api/event/delete/{event_id}', 'EventController@delete');
