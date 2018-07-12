@@ -28,8 +28,7 @@ class AdoptController extends Controller {
       $str = implode(', ', $adopt_names)." and ".$str;
     }
     $adoption_form->adopt_names = $str;
-    Mail::to("wei_ket@hotmail.com") //TODO
-      ->send(new AdoptionFormMail($adoption_form));
+    Mail::to(env("MAIL_INBOX"))->send(new AdoptionFormMail($adoption_form));
     
     return $adoption_form_id;
   }

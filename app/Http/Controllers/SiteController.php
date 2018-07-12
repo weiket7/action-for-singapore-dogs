@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
+use App\Mail\ContactMail;
 use App\Models\Adopt;
 use App\Models\Banner;
 use App\Models\Donation;
@@ -21,8 +23,7 @@ class SiteController extends Controller {
   }
   
   public function form(ContactRequest $request) {
-    Mail::to("info@asdsingapore.com") //TODO
-    ->send(new ContactMail($request->all()));
+    Mail::to(env("MAIL_INBOX"))->send(new ContactMail($request->all()));
   }
   
   
