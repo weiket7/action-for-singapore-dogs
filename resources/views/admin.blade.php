@@ -1769,7 +1769,7 @@
   <!--begin::Page Snippets -->
   <script src="./metronic/app/js/dashboard.js" type="text/javascript"></script>
   <script src="./bootstrap-confirmation.min.js" type="text/javascript"></script>
-  <script src="{{ asset(mix("admin.js")) }}"></script>
+  <script src="{{ asset("admin.js") }}"></script>
   <!--end::Page Snippets -->
 </body>
 <!-- end::Body -->

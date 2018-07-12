@@ -14,7 +14,3 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/app.js', 'public')
   .js('resources/admin/admin.js', 'public')
   .disableSuccessNotifications();
-
-if (mix.inProduction()) {
-  mix.version();
-}
