@@ -28,9 +28,11 @@ class AdminController extends Controller {
     Auth::logout();
   }
   
-  public function uploadImage(Request $request)
-  {
-    $image_name = BackendHelper::uploadImage($request->folder, "abc", $request->upload);
+  public function uploadImage(Request $request) {
+    $name_with_extension = $request->upload->getClientOriginalName();
+    $name_without_extension = explode('.',$name_with_extension)[0];
+    
+    $image_name = BackendHelper::uploadImage($request->folder, $name_without_extension, $request->upload);
     $data['uploaded'] = 1;
     $data['url'] = url('/') . '/assets/images/'.$request->folder.'/'.$image_name;
     return $data;

@@ -20,11 +20,21 @@
         page: {}
       }
     },
+    methods: {
+      getPage() {
+        axios.get('api/page/get/'+this.$route.params.slug)
+          .then(response => {
+            this.page = response.data;
+          });
+      }
+    },
     created() {
-      axios.get('api/page/get/'+this.$route.params.slug)
-        .then(response => {
-          this.page = response.data;
-        });
+      this.getPage();
+    },
+    watch:{
+      $route (to, from){
+        this.getPage();
+      }
     }
   }
 </script>
