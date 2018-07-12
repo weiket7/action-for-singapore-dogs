@@ -91,4 +91,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/page/get/{page_id}', 'PageController@get');
   Route::post('api/page/save/{page_id}', 'PageController@save');
   
+  Route::get('settings', function () { return view("settings"); });
+  
 });
