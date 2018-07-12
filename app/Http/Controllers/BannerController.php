@@ -15,7 +15,7 @@ class BannerController extends Controller
     if ($banner_id) {
       $banner = Banner::find($request->get('banner_id'));
     }
-    $banner_id = $banner->saveBanner($request->all());
+    $banner_id = $banner->saveBanner(BackendHelper::processInput($request->all()));
     if ($request->image_new) {
       $image_name = "banner-".str_slug($banner->name)."-".Carbon::now()->format("YmdHis");
       $image_name = BackendHelper::uploadImage("banners", $image_name, $request->image_new);

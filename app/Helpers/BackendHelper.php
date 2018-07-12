@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 
 class BackendHelper {
+  public static function processInput($input) {
+    foreach($input as $key => $value) {
+      if ($input[$key] == "null") {
+        $input[$key] = null;
+      }
+    }
+    return $input;
+  }
+  
   public static function uploadImage($folder, $name, $image) {
     if (App::environment('local')) {
       $base_path = $_SERVER['DOCUMENT_ROOT'] . "/asd/public/assets/images/";

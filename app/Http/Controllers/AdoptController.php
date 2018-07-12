@@ -56,7 +56,7 @@ class AdoptController extends Controller {
     if ($adopt_id) {
       $adopt = Adopt::find($request->get('adopt_id'));
     }
-    $adopt_id = $adopt->saveAdopt($request->all());
+    $adopt_id = $adopt->saveAdopt(BackendHelper::processInput($request->all()));
     if ($request->image_new) {
       $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
       $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image_new);

@@ -15,7 +15,7 @@ class EventController extends Controller {
     if ($event_id) {
       $event = Event::find($request->event_id);
     }
-    $event_id = $event->saveEvent($request->all());
+    $event_id = $event->saveEvent(BackendHelper::processInput($request->all()));
     if ($request->image_new) {
       $image_name = "event-".str_slug($event->name)."-".Carbon::now()->format("YmdHis");
       $image_name = BackendHelper::uploadImage("events", $image_name, $request->image_new);

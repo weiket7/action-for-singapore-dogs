@@ -221,55 +221,27 @@
     methods: {
       onSubmit() {
         let url = 'api/adopt/save';
-  
         if (!this.is_create) {
           url += '/'+ this.$route.params.adopt_id
         }
   
-        let save_adopt = axios.post(url, this.adopt);
+        let form_data = this.adopt;
+        let config = {};
+        if (this.image_new) {
+          form_data = new FormData();
+          this.appendObjectToFormData(this.adopt, form_data);
+          form_data.append("image_new", this.image_new);
+    
+          config = {
+            headers: {
+              'content-type': 'multipart/form-data'
+            }
+          };
+        }
   
-        let form_data = new FormData();
-        form_data.append("image_new", this.image_new);
-  
-        let config = {
-          headers: {
-            'content-type': 'multipart/form-data'
-          }
-        };
-        let save_image = axios.post(url, this.adopt, config);
-
-        axios.all([save_adopt, save_image])
-          .then(this.onSuccess)
-          .catch(this.onError);
-      },
-      uploadImage() {
-        let form_data = new FormData();
-        form_data.append("image_new", this.image_new);
-        
-        let config = {
-          headers: {
-            'content-type': 'multipart/form-data'
-          }
-        };
-        
         axios.post(url, form_data, config)
           .then(this.onSuccess)
           .catch(this.onError);
-      },
-      appendObjectToFormData(obj, form_data) {
-        for (let key in obj) {
-          if (obj.hasOwnProperty(key)) {
-            form_data.append(key, obj[key]);
-          }
-        }
-      },
-      onError(error) {
-        if (error.response.status == 500) {
-          toastr.error("A system error occurred");
-          return;
-        }
-        toastr.error("There were some errors, please check the form");
-        this.errors.record(error.response.data.errors);
       },
       onSuccess(response) {
         if (this.is_create) {
