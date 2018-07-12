@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Helpers\BackendHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -25,5 +26,13 @@ class AdminController extends Controller {
   
   public function logout() {
     Auth::logout();
+  }
+  
+  public function uploadImage(Request $request)
+  {
+    $image_name = BackendHelper::uploadImage($request->folder, "abc", $request->upload);
+    $data['uploaded'] = 1;
+    $data['url'] = url('/') . '/assets/images/'.$request->folder.'/'.$image_name;
+    return $data;
   }
 }

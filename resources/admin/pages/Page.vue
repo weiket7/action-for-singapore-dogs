@@ -53,8 +53,13 @@
 
           let vue = this
           ClassicEditor
-            .create( document.querySelector( '#editor' ) )
+            .create(document.querySelector( '#editor' ), {
+              ckfinder: {
+                uploadUrl: '/asd/public/api/upload-image?folder=events'
+              }
+            })
             .then( editor => {
+              
               vue.editor = editor;
             } )
             .catch( error => {
