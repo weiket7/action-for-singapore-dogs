@@ -24,6 +24,7 @@ class AdoptTable extends Migration
         $table->boolean('vaccinate');
         $table->boolean('sterilise');
         $table->boolean('hdb');
+        $table->string('image', 50);
         $table->string('microchip_no',40)->nullable();
         $table->date('microchip_date')->nullable();
         $table->date('vaccinate_date1')->nullable();
@@ -32,9 +33,9 @@ class AdoptTable extends Migration
         $table->date('sterilise_date')->nullable();
         $table->string('vet',40)->nullable();
         $table->string('location', 30)->nullable();
-        $table->string('image', 50);
-        $table->string('health', 250)->nullable();
-        $table->string('behaviour', 250)->nullable();
+        $table->string('health', 500)->nullable();
+        $table->string('behaviour', 500)->nullable();
+        $table->string('history', 500)->nullable();
         $table->dateTime('rescued_on')->nullable();
         $table->string('posted_by', 30);
         $table->dateTime('posted_on');

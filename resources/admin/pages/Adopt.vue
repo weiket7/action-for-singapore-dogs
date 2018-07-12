@@ -46,7 +46,7 @@
             <radio-component v-model="adopt.microchip" :options="{ 1: 'Yes', 0: 'No' }" :error="errors.get('microchip')"></radio-component>
 
             <label-component v-show="adopt.microchip">Microchip Date</label-component>
-            <datepicker-component name="microchip_date" v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-show="adopt.microchip"></datepicker-component>
+            <datepicker-component name="microchip_date" v-model="adopt.microchip_date" :error="errors.get('microchip_date')" v-if="adopt.microchip"></datepicker-component>
           </form-row>
 
           <form-row v-show="adopt.microchip">
@@ -97,6 +97,9 @@
           </form-row>
   
           <form-row>
+            <label-component>History</label-component>
+            <textarea-component v-model="adopt.history" :error="errors.get('history')"></textarea-component>
+            
             <label-component required>Image 1</label-component>
             <image-component v-model="adopt.image" name="image"
                              v-on:update-image="updateImage" folder="adopts"
@@ -218,24 +221,37 @@
     methods: {
       onSubmit() {
         let url = 'api/adopt/save';
+  
         if (!this.is_create) {
           url += '/'+ this.$route.params.adopt_id
         }
   
-        let form_data = this.adopt;
-        let config = {};
-        if (this.image_new) {
-          form_data = new FormData();
-          this.appendObjectToFormData(this.adopt, form_data);
-          form_data.append("image_new", this.image_new);
-    
-          config = {
-            headers: {
-              'content-type': 'multipart/form-data'
-            }
-          };
-        }
+        let save_adopt = axios.post(url, this.adopt);
+  
+        let form_data = new FormData();
+        form_data.append("image_new", this.image_new);
+  
+        let config = {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        };
+        let save_image = axios.post(url, this.adopt, config);
 
+        axios.all([save_adopt, save_image])
+          .then(this.onSuccess)
+          .catch(this.onError);
+      },
+      uploadImage() {
+        let form_data = new FormData();
+        form_data.append("image_new", this.image_new);
+        
+        let config = {
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        };
+        
         axios.post(url, form_data, config)
           .then(this.onSuccess)
           .catch(this.onError);

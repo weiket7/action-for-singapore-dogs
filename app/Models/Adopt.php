@@ -21,7 +21,7 @@ class Adopt extends Model
     $this->gender = $input['gender'];
     $this->birthday = Carbon::createFromFormat('Y-m-d', $input['birthday']);
     $this->breed = $input['breed'];
-    $this->colour = $input['colour'] ?? "";
+    $this->colour = $input['colour'];
     $this->microchip = $input['microchip'] ?? 0;
     $this->vaccinate = $input['vaccinate'] ?? 0;
     $this->sterilise = $input['sterilise'] ?? 0;
@@ -39,6 +39,9 @@ class Adopt extends Model
       $this->sterilise_date = $input['sterilise_date'];
       $this->vet = $input['vet'];
     }
+    $this->health = $input['health'];
+    $this->behaviour = $input['behaviour'];
+    $this->history = $input['history'];
     $this->posted_by = 'admin';
     $this->posted_on = Carbon::now();
     if ($this->adopt_id == null) {
