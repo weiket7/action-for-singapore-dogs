@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\Donation;
 use App\Models\Enums\AdoptStat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller {
@@ -23,6 +24,7 @@ class SiteController extends Controller {
   }
   
   public function form(ContactRequest $request) {
+    Log::info("inbox = ".env("MAIL_INBOX"));
     Mail::to(env("MAIL_INBOX"))->send(new ContactMail($request->all()));
   }
   
