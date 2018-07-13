@@ -33,6 +33,7 @@ class AdoptTable extends Migration
         $table->date('sterilise_date')->nullable();
         $table->string('vet',40)->nullable();
         $table->string('location', 30)->nullable();
+        $table->string('location_other', 30);
         $table->string('health', 500)->nullable();
         $table->string('behaviour', 500)->nullable();
         $table->string('history', 500)->nullable();
@@ -46,29 +47,29 @@ class AdoptTable extends Migration
   
       $adopts = [
         ['stat'=>AdoptStat::Available, 'name'=>'Kodomo', 'slug'=>'Kodomo', 'rescued_on'=>'2006-05-01', 'birthday'=>'2006-05-01', 'gender'=>'F', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'kodomo.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'kodomo.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Elf', 'slug'=>'Elf', 'rescued_on'=>'2008-02-01', 'birthday'=>'2008-02-01', 'gender'=>'F', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'elf.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'elf.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Lava', 'slug'=>'Lava', 'rescued_on'=>'2009-05-01', 'birthday'=>'2009-05-01', 'gender'=>'F', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'lava.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'lava.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Black Bingo', 'slug'=>'Black-Bingo', 'rescued_on'=>'2007-06-01', 'birthday'=>'2007-06-01', 'gender'=>'M', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'blackbingo.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'blackbingo.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Lucky Strike', 'slug'=>'Lucky-Strike', 'rescued_on'=>'2008-06-01', 'birthday'=>'2008-06-01', 'gender'=>'M', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'luckystrike.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'luckystrike.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Leo', 'slug'=>'Leo', 'rescued_on'=>'2009-01-01', 'birthday'=>'2009-01-01', 'gender'=>'M', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'leo-122.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'leo-122.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Nature', 'slug'=>'Nature', 'rescued_on'=>'2016-05-01', 'birthday'=>'2016-05-01', 'gender'=>'F', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'nature.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'nature.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Magic', 'slug'=>'Magic', 'rescued_on'=>'2009-07-01', 'birthday'=>'2009-07-01', 'gender'=>'M', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>1, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'magic.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'magic.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Furgie', 'slug'=>'Furgie', 'rescued_on'=>'2007-10-01', 'birthday'=>'2007-10-01', 'gender'=>'F', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'furgie.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'furgie.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Angel', 'slug'=>'Angel', 'rescued_on'=>'2004-06-01', 'birthday'=>'2004-06-01', 'gender'=>'F', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'angel.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'angel.jpg'],
         ['stat'=>AdoptStat::Available, 'name'=>'Polly', 'slug'=>'Polly', 'rescued_on'=>'2008-06-01', 'birthday'=>'2008-06-01', 'gender'=>'F', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'polly.jpg'],
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'polly.jpg'],
         ['stat'=>AdoptStat::Adopted, 'name'=>'Winner', 'slug'=>'Winner', 'rescued_on'=>'2009-03-01', 'birthday'=>'2009-03-01', 'gender'=>'M', 'microchip'=>1, 'vaccinate'=>1, 'hdb'=>0, 'sterilise'=>1,
-          'location'=>'ARC', 'image'=>'winner.jpg']
+          'location_other'=>0, 'location'=>'ARC', 'image'=>'winner.jpg']
       ];
       
       $now = Carbon::now();

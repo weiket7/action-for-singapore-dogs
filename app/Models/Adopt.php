@@ -39,15 +39,16 @@ class Adopt extends Model
       $this->sterilise_date = $input['sterilise_date'];
       $this->vet = $input['vet'];
     }
-    $this->health = $input['health'];
-    $this->behaviour = $input['behaviour'];
-    $this->history = $input['history'];
+    $this->health = $input['health'] ?? "";
+    $this->behaviour = $input['behaviour'] ?? "";
+    $this->history = $input['history'] ?? "";
     $this->posted_by = 'admin';
     $this->posted_on = Carbon::now();
     if ($this->adopt_id == null) {
       $this->image = "";
     } else {
-      $this->location = $input['location'] == "Others" ? $input['location_other'] : $input['location'];
+      $this->location = $input['location'];
+      $this->location_other = $input['location_other'] ?? "";
       $this->rescued_on = $input['rescued_on'];
     }
     $this->save();

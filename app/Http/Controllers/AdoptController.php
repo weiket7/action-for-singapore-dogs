@@ -17,40 +17,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class AdoptController extends Controller {
-  public function saveInitialForm(AdoptionFormRequest $request) {
-    $adoption_form = new AdoptionForm();
-  
-    $adoption_form_id = $adoption_form->saveAdoptionForm($request->all());
-    //$user = User::where('email', $registration->email)->firstOrFail();
-    $adopt_names = Adopt::whereIn('adopt_id', $request->hearts)->pluck('name')->toArray();
-    $str = array_pop($adopt_names);
-    if ($adopt_names) {
-      $str = implode(', ', $adopt_names)." and ".$str;
-    }
-    $adoption_form->adopt_names = $str;
-    Mail::to(env("MAIL_INBOX"))->send(new AdoptionFormMail($adoption_form));
-    
-    return $adoption_form_id;
-  }
-  
-  public function form(Request $request, $token) {
-    $data['adoption_form'] = AdoptionForm::where('token', $token)->first();
-    $question_ids = Question::where('is_header', false)->pluck('question_id');
-    $answers = [];
-    foreach($question_ids as $question_id) {
-      $answers['answer-'.$question_id] = '';
-    }
-    $data['answers'] = $answers;
-    $data['questions'] = Question::orderBy('position')->select('content', 'is_header', 'question_id')->get();
-    return $data;
-  }
-  
-  public function saveSecondForm(Request $request, $token) {
-    Log::info($token);
-    $adoption_form = AdoptionForm::where('token', $token)->first();
-    $adoption_form->saveSecondForm($request->all());
-  }
-  
   public function save(AdoptRequest $request, $adopt_id = null) {
     $adopt = new Adopt();
     if ($adopt_id) {
