@@ -10,6 +10,7 @@ class VolunteerRequest extends FormRequest
   {
     return [
       'name' => 'required',
+      'stat' => 'required',
       'email' => 'required',
       'mobile' => 'required',
       'gender' => 'required',
@@ -22,6 +23,7 @@ class VolunteerRequest extends FormRequest
   {
     return [
       'name.required' => 'Name is required',
+      'stat.required' => 'Status is required',
       'email.required' => 'Email is required',
       'mobile.required' => 'Mobile is required',
       'gender.required' => 'Gender is required',

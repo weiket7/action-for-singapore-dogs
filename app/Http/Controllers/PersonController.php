@@ -38,11 +38,11 @@ class PersonController extends Controller {
   public function get(Request $request, $person_id) {
     $data['person'] = Person::where('person_id', $person_id)->first();
     $data['adopts'] = DB::table('adopter')->where('person_id', $person_id)
-      ->join('adopt', 'adopt.adopt_id', '=', 'adopter.adopt_id')->select('adopt.name', 'adopt.adopt_id', 'adopted_on', 'returned', 'returned_on', 'return_reason', 'remark1', 'remark2', 'remark3')->get();
+      ->join('adopt', 'adopt.adopt_id', '=', 'adopter.adopt_id')->select('adopt.name', 'adopt.adopt_id', 'adopter_id', 'adopted_on', 'returned', 'returned_on', 'return_reason', 'remark1', 'remark2', 'remark3')->get();
     $data['fosters'] = DB::table('foster')->where('person_id', $person_id)
-      ->join('adopt', 'adopt.adopt_id', '=', 'foster.adopt_id')->select('adopt.name', 'adopt.adopt_id', 'start_date', 'end_date', 'remark1', 'remark2', 'remark3')->get();
+      ->join('adopt', 'adopt.adopt_id', '=', 'foster.adopt_id')->select('adopt.name', 'adopt.adopt_id', 'foster_id', 'start_date', 'end_date', 'remark1', 'remark2', 'remark3')->get();
     $data['rescues'] = DB::table('rescuer')->where('person_id', $person_id)
-      ->join('adopt', 'adopt.adopt_id', '=', 'rescuer.adopt_id')->select('adopt.name', 'adopt.adopt_id', 'remark1', 'remark2', 'remark3')->get();
+      ->join('adopt', 'adopt.adopt_id', '=', 'rescuer.adopt_id')->select('adopt.name', 'adopt.adopt_id', 'rescuer_id', 'remark1', 'remark2', 'remark3')->get();
     $data['person_stats'] = PersonStat::$values;
     return $data;
   }

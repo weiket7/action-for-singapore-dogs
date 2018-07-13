@@ -2,18 +2,18 @@
   <single-portlet title="Volunteer">
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
-        <label-component>Name</label-component>
+        <label-component required>Name</label-component>
         <textbox-component v-model="volunteer.name"></textbox-component>
   
-        <label-component>Status</label-component>
+        <label-component required>Status</label-component>
         <radio-component v-model="volunteer.stat" :options="volunteer_stats"></radio-component>
       </form-row>
       
       <form-row>
-        <label-component>Email</label-component>
+        <label-component required>Email</label-component>
         <textbox-component v-model="volunteer.email"></textbox-component>
         
-        <label-component>Mobile</label-component>
+        <label-component required>Mobile</label-component>
         <textbox-component v-model="volunteer.mobile"></textbox-component>
       </form-row>
 
@@ -21,7 +21,7 @@
         <label-component required>Gender</label-component>
         <radio-component v-model="volunteer.gender" :options="{ 'M': 'Male', 'F': 'Female' }" :error="errors.get('gender')"></radio-component>
 
-        <label-component>Birthday</label-component>
+        <label-component required>Birthday</label-component>
         <datepicker-component name="birthday" v-model="volunteer.birthday" :error="errors.get('birthday')" v-if="volunteer.birthday"></datepicker-component>
       </form-row>
       

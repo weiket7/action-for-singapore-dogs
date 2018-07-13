@@ -7,7 +7,7 @@
     
     <form-row>
       <label-component>Adopted On</label-component>
-      <static-text>{{ adopt.adopted_on }}</static-text>
+      <static-text>{{ adopt.adopted_on | formatDate }}</static-text>
       
       <label-component>Returned</label-component>
       <static-text>{{ adopt.returned ? "Yes" : "No" }}</static-text>
@@ -26,7 +26,7 @@
     <form-row>
       <div class="col-lg-2"></div>
       <div class="col-lg-10">
-        <router-link :to="'/adopter/save/'+adopt.adopt_id+'?referrer=person'">
+        <router-link :to="'/adopter/save/'+adopt.adopter_id+'?referrer=person'">
           <button type="button" class="btn btn-success">
             Update
           </button>

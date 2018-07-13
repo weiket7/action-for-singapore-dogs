@@ -10,7 +10,7 @@
     <form-row>
       <div class="col-lg-2"></div>
       <div class="col-lg-10">
-        <router-link :to="'/rescuer/save/'+rescue.adopt_id+'?referrer=person'">
+        <router-link :to="'/rescuer/save/'+rescue.rescuer_id+'?referrer=person'">
           <button type="button" class="btn btn-success">
             Update
           </button>
