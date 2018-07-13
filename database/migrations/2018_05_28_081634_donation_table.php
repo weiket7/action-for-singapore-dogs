@@ -33,7 +33,7 @@ class DonationTable extends Migration
         'payment_method'=>PaymentMethod::BankTransfer,
         'ref_no'=>123,
         'transfer_date'=>123,
-        'donated_on'=>Carbon::now()
+        'donated_on'=>Carbon::now()->subDay()
       ]);
       DB::table('donation')->insert([
         'stat'=>DonationStat::Received,

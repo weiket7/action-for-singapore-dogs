@@ -11,7 +11,7 @@
         </thead>
         <tbody>
         <tr v-for="person in persons">
-          <td><!--{{ProductStat::$values[p.stat]}}--></td>
+          <td>{{ person_stats[person.stat]}}</td>
           <td width="450px">
             <router-link v-bind:to="'/person/save/'+person.person_id">{{ person.name }}</router-link>
           </td>
@@ -32,12 +32,14 @@
     data() {
       return {
         persons: [],
+        person_stats: {},
       }
     },
     created() {
       axios.get('api/person?type=foster')
         .then(response => {
           this.persons = response.data.persons
+          this.person_stats = response.data.person_stats;
         })
         .catch(error => {
           console.log(error);

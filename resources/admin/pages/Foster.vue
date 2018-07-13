@@ -72,7 +72,7 @@
               <button type="submit" class="btn btn-success">
                 Save
               </button>
-              <button type="button" data-toggle="confirmation" class="btn btn-metal">
+              <button type="button" data-toggle="confirmation" class="btn btn-metal" v-if="!is_create">
                 Remove
               </button>
             </div>
