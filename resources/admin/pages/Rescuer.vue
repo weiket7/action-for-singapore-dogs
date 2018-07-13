@@ -64,7 +64,7 @@
               <button type="submit" class="btn btn-success">
                 Save
               </button>
-              <button type="submit" class="btn btn-danger">
+              <button type="button" data-toggle="confirmation" class="btn btn-metal">
                 Remove
               </button>
             </div>
@@ -124,6 +124,17 @@
           .then(this.onSuccess)
           .catch(this.onError);
       },
+      deleteRescuer() {
+        axios.post('api/delete-record?table=rescuer&column=rescuer_id&id='+this.$route.params.rescuer_id)
+          .then(response => {
+            toastr.success("Rescuer deleted");
+            if (this.$route.query.referrer == "adopt") {
+              this.$router.push('/adopt/save/'+this.rescuer.adopt_id);
+            } else if (this.$route.query.referrer == "person") {
+              this.$router.push('/person/save/'+this.rescuer.person_id);
+            }
+          }).catch(this.onError);
+      },
       onSuccess(response) {
         if (! this.is_create) {
           toastr.success("Rescuer updated");
@@ -152,6 +163,14 @@
             this.person = response.data.person;
           });
       }
+    },
+    mounted() {
+      var vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteRescuer();
+      });
     },
     mixins: [FormMixin]
   }

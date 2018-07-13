@@ -72,7 +72,7 @@
               <button type="submit" class="btn btn-success">
                 Save
               </button>
-              <button type="submit" class="btn btn-metal">
+              <button type="button" data-toggle="confirmation" class="btn btn-metal">
                 Remove
               </button>
             </div>
@@ -123,6 +123,17 @@
             this.foster.person_id = this.person.person_id;
           });
       },
+      deleteFoster() {
+        axios.post('api/delete-record?table=foster&column=foster_id&id='+this.$route.params.foster_id)
+          .then(response => {
+            toastr.success("Foster deleted");
+            if (this.$route.query.referrer == "adopt") {
+              this.$router.push('/adopt/save/'+this.foster.adopt_id);
+            } else if (this.$route.query.referrer == "person") {
+              this.$router.push('/person/save/'+this.foster.person_id);
+            }
+          }).catch(this.onError);
+      },
       onSubmit() {
         let url = 'api/foster/save';
         if (!this.is_create) {
@@ -159,6 +170,14 @@
             this.person = response.data.person;
           });
       }
+    },
+    mounted() {
+      var vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteFoster();
+      });
     },
     mixins: [FormMixin]
   }

@@ -132,7 +132,15 @@
           });
       },
       deleteAdopter() {
-
+        axios.post('api/delete-record?table=adopter&column=adopter_id&id='+this.$route.params.adopter_id)
+          .then(response => {
+            toastr.success("Adopter deleted");
+            if (this.$route.query.referrer == "adopt") {
+              this.$router.push('/adopt/save/'+this.adopter.adopt_id);
+            } else if (this.$route.query.referrer == "person") {
+              this.$router.push('/person/save/'+this.adopter.person_id);
+            }
+          }).catch(this.onError);
       },
       onSubmit() {
         let url = 'api/adopter/save';
@@ -178,10 +186,7 @@
       $('[data-toggle=confirmation]').confirmation({
         rootSelector: '[data-toggle=confirmation]',
       }).on("confirmed.bs.confirmation", function() {
-        axios.post('api/delete-record?table=adopter&column=adopter_id&id='+vue.$route.params.adopter_id)
-          .then(response => {
-            toastr.success("Adopter deleted");
-          }).catch(this.onError);
+        vue.deleteAdopter();
       });
     },
     mixins: [FormMixin]

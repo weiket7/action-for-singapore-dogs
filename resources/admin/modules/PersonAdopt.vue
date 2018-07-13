@@ -26,7 +26,7 @@
     <form-row>
       <div class="col-lg-2"></div>
       <div class="col-lg-10">
-        <router-link :to="'/adopter/save/'+adopt.adopt_id">
+        <router-link :to="'/adopter/save/'+adopt.adopt_id+'?referrer=person'">
           <button type="button" class="btn btn-success">
             Update
           </button>
