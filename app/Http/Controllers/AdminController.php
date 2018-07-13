@@ -3,6 +3,7 @@
 use App\Helpers\BackendHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller {
@@ -36,5 +37,9 @@ class AdminController extends Controller {
     $data['uploaded'] = 1;
     $data['url'] = url('/') . '/assets/images/'.$request->folder.'/'.$image_name;
     return $data;
+  }
+  
+  public function deleteRecord(Request $request) {
+    DB::table($request->table)->where($request->column, $request->id)->delete();
   }
 }

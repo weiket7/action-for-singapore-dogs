@@ -10,9 +10,3 @@
     }
   }
 </script>
-
-<style scoped>
-  .static-text {
-    text-align: left !important;
-  }
-</style>

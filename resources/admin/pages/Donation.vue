@@ -77,7 +77,7 @@
         toastr.success("Donation updated");
       },
       deleteDonation() {
-        axios.post('api/donation/delete/'+this.$route.params.donation_id)
+        axios.post('api/delete-record?table=donation&column=donation_id&id='+this.$route.params.donation_id)
           .then(response => {
             toastr.success("Donation deleted");
             this.$router.push('/donation');

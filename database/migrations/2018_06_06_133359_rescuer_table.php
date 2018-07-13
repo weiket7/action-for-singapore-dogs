@@ -10,9 +10,12 @@ class RescuerTable extends Migration
   {
     Schema::create('rescuer', function (Blueprint $table) {
       $table->increments('rescuer_id');
-      $table->char('stat', 1);
+      $table->char('stat',  1);
       $table->integer('adopt_id');
       $table->integer('person_id');
+      $table->string('remark1', 500)->nullable();
+      $table->string('remark2', 500)->nullable();
+      $table->string('remark3', 500)->nullable();
     });
     
     DB::table('rescuer')->insert([

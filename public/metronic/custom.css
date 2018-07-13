@@ -5,6 +5,10 @@
   color: #f4516c;
 }
 
+.static-text {
+  text-align: left !important;
+}
+
 .m-form .m-form__group {
   padding-top: 0;
   padding-bottom: 10px;

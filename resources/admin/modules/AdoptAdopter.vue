@@ -33,14 +33,8 @@
       <label-component>Reason</label-component>
       <static-text>{{ adopter.return_reason }}</static-text>
     </form-row>
-  
-    <form-row>
-      <label-component>Remarks</label-component>
-      <static-text>
-        Home - Abc<br>
-        Personality - Def
-      </static-text>
-    </form-row>
+
+    <remark :remark1="adopter.remark1" :remark2="adopter.remark2" :remark3="adopter.remark3"></remark>
   
     <form-row>
       <div class="col-lg-2"></div>
@@ -58,9 +52,12 @@
 </template>
 
 <script>
+  import Remark from './Remark'
+
   export default {
     name: "adopt-adopter",
     props: ['index', 'adopter'],
+    components: { Remark }
   }
 </script>
 

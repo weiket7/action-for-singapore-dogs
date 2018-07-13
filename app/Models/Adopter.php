@@ -21,6 +21,10 @@ class Adopter extends Model
       $this->returned_on = $input['returned_on'];
       $this->return_reason = $input['return_reason'];
     }
+    $this->remark1 = $input['remark1'] ?? "";
+    $this->remark2 = $input['remark2'] ?? "";
+    $this->remark3 = $input['remark3'] ?? "";
+  
     $this->save();
   }
 }

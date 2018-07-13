@@ -40,8 +40,7 @@
         <datepicker-component name="adopted_on" v-model="adopter.adopted_on" v-if="is_create || adopter.adopted_on"></datepicker-component>
         
         <label-component v-show="!is_create">Returned</label-component>
-        <radio-component name="returned" v-model="adopter.returned" :value="adopter.returned"
-                         :options="{'1': 'Yes', '0': 'No'}" v-show="!is_create"></radio-component>
+        <radio-component name="returned" v-model="adopter.returned" :options="{'1': 'Yes', '0': 'No'}" v-show="!is_create"></radio-component>
       </form-row>
       
       <form-row v-show="adopter.returned == 1">
@@ -49,11 +48,30 @@
         <datepicker-component name="returned_on" v-model="adopter.returned_on" v-if="is_create || adopter.adopted_on"></datepicker-component>
         
         <label-component>Reason</label-component>
-        <textarea-component name="return_reason" :value="adopter.return_reason"></textarea-component>
+        <textarea-component name="return_reason" v-model="adopter.return_reason"></textarea-component>
       </form-row>
       
-      <person-remark></person-remark>
-  
+      <form-row>
+        <label-component>Remark 1</label-component>
+        <div class="col-lg-8">
+          <input type="text" v-model="adopter.remark1" class="form-control" maxlength="500">
+        </div>
+      </form-row>
+
+      <form-row>
+        <label-component>Remark 2</label-component>
+        <div class="col-lg-8">
+          <input type="text" v-model="adopter.remark2" class="form-control" maxlength="500">
+        </div>
+      </form-row>
+
+      <form-row>
+        <label-component>Remark 3</label-component>
+        <div class="col-lg-8">
+          <input type="text" v-model="adopter.remark3" class="form-control" maxlength="500">
+        </div>
+      </form-row>
+
       <div class="m-portlet__foot m-portlet__foot--fit">
         <div class="m-form__actions">
           <div class="row">
@@ -62,7 +80,7 @@
               <button type="submit" class="btn btn-success">
                 Save
               </button>
-              <button type="submit" class="btn btn-metal">
+              <button type="button" data-toggle="confirmation" class="btn btn-metal">
                 Remove
               </button>
             </div>
@@ -75,7 +93,6 @@
 </template>
 
 <script>
-  import PersonRemark from "../modules/PersonRemark";
   import axios from 'axios';
   import FormMixin from '../form-mixin';
   
@@ -113,6 +130,9 @@
             this.person = response.data;
             this.adopter.person_id = this.person.person_id;
           });
+      },
+      deleteAdopter() {
+
       },
       onSubmit() {
         let url = 'api/adopter/save';
@@ -153,7 +173,17 @@
           });
       }
     },
-    components: {PersonRemark},
+    mounted() {
+      var vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        axios.post('api/delete-record?table=adopter&column=adopter_id&id='+vue.$route.params.adopter_id)
+          .then(response => {
+            toastr.success("Adopter deleted");
+          }).catch(this.onError);
+      });
+    },
     mixins: [FormMixin]
   }
 </script>

@@ -77,7 +77,7 @@
         this.$router.push('/banner/save/'+banner_id);
       },
       deleteBanner() {
-        axios.post('api/banner/delete/'+this.$route.params.banner_id)
+        axios.post('api/delete-record?table=banner&column=banner_id&id='+this.$route.params.banner_id)
           .then(response => {
             toastr.success("Banner deleted");
             this.$router.push('/banner');

@@ -16,6 +16,9 @@ class FosterTable extends Migration
       $table->integer('person_id');
       $table->date('start_date');
       $table->date('end_date')->nullable();
+      $table->string('remark1', 500)->nullable();
+      $table->string('remark2', 500)->nullable();
+      $table->string('remark3', 500)->nullable();
     });
     
     DB::table('foster')->insert([

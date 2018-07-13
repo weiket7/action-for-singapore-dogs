@@ -12,6 +12,9 @@ class Rescuer extends Model
     $this->stat = 'A';
     $this->adopt_id = $input['adopt_id'];
     $this->person_id = $input['person_id'];
+    $this->remark1 = $input['remark1'] ?? "";
+    $this->remark2 = $input['remark2'] ?? "";
+    $this->remark3 = $input['remark3'] ?? "";
     $this->save();
   }
   

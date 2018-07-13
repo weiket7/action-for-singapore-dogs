@@ -14,6 +14,9 @@ class Foster extends Model
     $this->person_id = $input['person_id'];
     $this->start_date = $input['start_date'];
     $this->end_date = $input['end_date'];
+    $this->remark1 = $input['remark1'] ?? "";
+    $this->remark2 = $input['remark2'] ?? "";
+    $this->remark3 = $input['remark3'] ?? "";
     $this->save();
     return $this->foster_id;
   }

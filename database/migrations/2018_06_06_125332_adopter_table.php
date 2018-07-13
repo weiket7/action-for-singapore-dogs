@@ -15,6 +15,9 @@ class AdopterTable extends Migration
       $table->integer('adopt_id');
       $table->integer('person_id');
       $table->date('adopted_on');
+      $table->string('remark1', 500)->nullable();
+      $table->string('remark2', 500)->nullable();
+      $table->string('remark3', 500)->nullable();
       $table->boolean('returned');
       $table->date('returned_on')->nullable();
       $table->string('return_reason', 250)->nullable();

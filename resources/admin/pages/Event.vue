@@ -134,7 +134,7 @@
         this.image_new = file;
       },
       deleteEvent() {
-        axios.post('api/event/delete/'+this.$route.params.event_id)
+        axios.post('api/delete-record?table=event&column=event_id&id='+this.$route.params.event_id)
           .then(response => {
             toastr.success("Event deleted");
             this.$router.push('/event');

@@ -76,7 +76,7 @@
         toastr.success("Volunteer updated");
       },
       deleteVolunteer() {
-        axios.post('api/volunteer/delete/'+this.$route.params.volunteer_id)
+        axios.post('api/delete-record?table=volunteer&column=volunteer_id&id='+this.$route.params.volunteer_id)
           .then(response => {
             toastr.success("Volunteer deleted");
             this.$router.push('/volunteer');

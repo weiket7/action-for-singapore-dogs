@@ -18,14 +18,8 @@
       <static-text>{{ rescuer.address }}</static-text>
     </form-row>
 
-    <form-row>
-      <label-component>Remarks</label-component>
-      <static-text>
-        Home - Abc<br>
-        Personality - Def
-      </static-text>
-    </form-row>
-  
+    <remark :remark1="rescuer.remark1" :remark2="rescuer.remark2" :remark3="rescuer.remark3"></remark>
+
     <form-row>
       <div class="col-lg-2"></div>
       <div class="col-lg-10">
@@ -42,9 +36,12 @@
 </template>
 
 <script>
+  import Remark from './Remark'
+
   export default {
     name: "adopt-rescuer",
     props: ['index', 'rescuer'],
+    components: { Remark }
   }
 </script>
 

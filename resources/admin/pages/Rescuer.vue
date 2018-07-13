@@ -35,7 +35,26 @@
         <static-text>{{ person.address }}</static-text>
       </form-row>
 
-      <person-remark></person-remark>
+      <form-row>
+        <label-component>Remark 1</label-component>
+        <div class="col-lg-8">
+          <input type="text" v-model="rescuer.remark1" class="form-control" maxlength="500">
+        </div>
+      </form-row>
+
+      <form-row>
+        <label-component>Remark 2</label-component>
+        <div class="col-lg-8">
+          <input type="text" v-model="rescuer.remark2" class="form-control" maxlength="500">
+        </div>
+      </form-row>
+
+      <form-row>
+        <label-component>Remark 3</label-component>
+        <div class="col-lg-8">
+          <input type="text" v-model="rescuer.remark3" class="form-control" maxlength="500">
+        </div>
+      </form-row>
 
       <div class="m-portlet__foot m-portlet__foot--fit">
         <div class="m-form__actions">
@@ -58,13 +77,11 @@
 </template>
 
 <script>
-  import PersonRemark from "../modules/PersonRemark";
   import axios from 'axios';
   import FormMixin from '../form-mixin'
 
   export default {
     name: "Rescuer",
-    components: {PersonRemark},
     data() {
       return {
         rescuer: {},

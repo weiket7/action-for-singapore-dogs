@@ -52,24 +52,20 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/volunteer/get/{person_id}', 'VolunteerController@get');
   Route::post('api/volunteer/save/', 'VolunteerController@save');
   Route::post('api/volunteer/save/{volunteer_id}', 'VolunteerController@save');
-  Route::post('api/volunteer/delete/{volunteer_id}', 'VolunteerController@delete');
   
   Route::get('api/donation', 'DonationController@all');
   Route::get('api/donation/get/{donation_id}', 'DonationController@get');
   Route::post('api/donation/save/', 'DonationController@save');
   Route::post('api/donation/save/{donation_id}', 'DonationController@save');
-  Route::post('api/donation/delete/{donation_id}', 'DonationController@delete');
   
   Route::get('api/event', 'EventController@all');
   Route::post('api/event/save/', 'EventController@save');
   Route::post('api/event/save/{event_id}', 'EventController@save');
-  Route::post('api/event/delete/{event_id}', 'EventController@delete');
   
   Route::get('api/banner', 'BannerController@all');
   Route::get('api/banner/get/{banner_id}', 'BannerController@get');
   Route::post('api/banner/save/', 'BannerController@save');
   Route::post('api/banner/save/{banner_id}', 'BannerController@save');
-  Route::post('api/banner/delete/{banner_id}', 'BannerController@delete');
   
   Route::get('api/adoption-form', 'AdoptionFormController@all');
   Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
@@ -90,8 +86,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/page', 'PageController@all');
   Route::get('api/page/get/{page_id}', 'PageController@get');
   Route::post('api/page/save/{page_id}', 'PageController@save');
+  
+  Route::post('api/delete-record', 'AdminController@deleteRecord');
   Route::post('api/upload-image', 'AdminController@uploadImage');
   
   Route::get('settings', function () { return view("settings"); });
-  
 });
