@@ -1,13 +1,10 @@
 Hi {{ $adoption_form->name }},
 <br><br>
 
-Please sign the adoption agreement in the link below:
+Please sign the adoption agreement in the link below:<br>
 <a href="{{ url('/#/adoption-agreement/'.$adoption_form->agreement_token) }}" target="_blank">
   {{ url('/#/adoption-agreement/'.$adoption_form->agreement_token) }}
 </a>
-
-We thank you for your support and for helping ASD give stray and abandoned dogs a Second Chance in Life.
-We look forward to receiving the application agreement from you after which we will contact you for a further discussion.
 <br><br>
 
 Regards,<br>

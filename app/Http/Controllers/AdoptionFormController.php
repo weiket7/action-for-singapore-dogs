@@ -46,28 +46,21 @@ class AdoptionFormController extends Controller {
     return $data;
   }
   
-  //POST
-  public function application(Request $request, $token) {
-    //Log::info($token);
-    $adoption_form = AdoptionForm::where('application_token', $token)->first();
+  public function application(Request $request, $application_token) {
+    $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
     $adoption_form->saveApplication($request->all());
   }
   
   public function approve(Request $request, $adoption_form_id) {
     $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
-    $adoption_form->stat = AdoptionFormStat::PendingSignature;
-    $adoption_form->adopt_id = $request->adopt_id;
-    $adoption_form->adopted_on = $request->adopted_on;
-    $adoption_form->agreement_token = str_random();
-    $adoption_form->remark = $request->remark;
-    $adoption_form->save();
-    Log::info($adoption_form);
+    $adoption_form->approve($request->all(0));
     Mail::to(env("MAIL_INBOX"))->send(new AdoptionAgreementMail($adoption_form));
   }
   
-  public function sign($adoption_form_id) {
+  public function agreement($adoption_form_id) {
     $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
-    
+    $adoption_form->saveAgreement($request->all());
+  
     $person = new Person();
     $person->saveAdoptionFormAsAdopter($adoption_form);
   

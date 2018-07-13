@@ -48,4 +48,19 @@ class AdoptionForm extends Model
       ]);
     }
   }
+  
+  public function approve($input) {
+    $this->stat = AdoptionFormStat::PendingSignature;
+    $this->adopt_id = $input['adopt_id'];
+    $this->adopted_on = $input['adopted_on'];
+    $this->agreement_token = str_random();
+    $this->remark = $input['remark'];
+    $this->save();
+  }
+  
+  public function saveAgreement($input) {
+    $this->stat = AdoptionFormStat::Agreement;
+    $this->agreed_on = Carbon::now();
+    $this->save();
+  }
 }
