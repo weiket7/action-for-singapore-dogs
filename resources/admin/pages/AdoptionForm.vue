@@ -8,7 +8,7 @@
             <static-text v-if="adoption_form.stat === 'S'">
               Approved<br>
               Email has been sent<br>
-              Please contact him to check his email and sign
+              Please contact {{ adoption_form.gender == "M" ? "him" : "her" }} to check his email and sign
             </static-text>
             <static-text v-else>{{ adoption_form_stats[adoption_form.stat] }}</static-text>
 
@@ -62,10 +62,12 @@
           </template>
           <template v-if="isPendingSignature || isAgreement">
             <form-row>
-              <label-component>Dog Name</label-component>
-              <static-text>{{ adoption_form.adopt_id }}</static-text>
+              <label-component required>Dog Name</label-component>
+              <static-text>
+                <router-link :to="'/adopt/save/'+adopt.adopt_id">{{ adopt.name }}</router-link>
+              </static-text>
 
-              <label-component>Adopted On</label-component>
+              <label-component required>Adopted On</label-component>
               <static-text>{{ adoption_form.adopted_on | formatDate }}</static-text>
             </form-row>
 
@@ -76,7 +78,7 @@
           </template>
         </form>
       </tab>
-      <tab :name="'Agreement'">
+      <tab :name="'Questionnaire'">
         <form-row v-for="answer in answers" :key="answer.id">
           <label class="col-lg-4 col-form-label">
             {{ answer.question }}
@@ -101,6 +103,7 @@
       return {
         adoption_form: {},
         adoption_form_stats: {},
+        adopt: {},
         answers: {},
         errors: new Errors(),
         loaded: false
@@ -114,19 +117,34 @@
           .catch(this.onError);
       },
       onSuccess(response) {
-        toastr.success("Approved, email has been sent, please contact him to check his email and sign");
-        this.adoption_form.stat = 'S';
+        toastr.success("Approved, email has been sent, please contact "
+          + (this.adoption_form.gender === "M" ? "him" : "her")
+          + " to check his email and sign");
+        this.getAdoptionForm();
       },
       selectAdopt: function(adopt_id) {
         this.adoption_form.adopt_id = adopt_id;
       },
-
+      getAdoptionForm() {
+        axios.get('api/adoption-form/get/' + this.$route.params.adoption_form_id)
+          .then(response => {
+            this.adoption_form = response.data.adoption_form;
+            this.adoption_form_stats = response.data.adoption_form_stats;
+            if (this.adoption_form.adopt_id) {
+              this.adopt = response.data.adopt;
+            }
+            this.answers = response.data.answers;
+            this.loaded = true;
+          }).catch(error => {
+          console.log(error);
+        });
+      }
     },
     computed: {
       tabs() {
         let tabs = ['General'];
         if (this.isApplication || this.isPendingSignature || this.isAgreement) {
-          tabs.push('Agreement');
+          tabs.push('Questionnaire');
         }
         return tabs;
       },
@@ -141,15 +159,7 @@
       }
     },
     created() {
-      axios.get('api/adoption-form/get/' + this.$route.params.adoption_form_id)
-        .then(response => {
-          this.adoption_form = response.data.adoption_form;
-          this.adoption_form_stats = response.data.adoption_form_stats;
-          this.answers = response.data.answers;
-          this.loaded = true;
-        }).catch(error => {
-        console.log(error);
-      })
+      this.getAdoptionForm();
     },
     mixins: [FormMixin]
   }

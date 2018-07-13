@@ -2,6 +2,7 @@
 
 use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
+use App\Mail\AdoptionAgreementMail;
 use App\Mail\AdoptionFormMail;
 use App\Models\Adopt;
 use App\Models\Adopter;
@@ -12,6 +13,7 @@ use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class AdoptionFormController extends Controller {
@@ -56,8 +58,11 @@ class AdoptionFormController extends Controller {
     $adoption_form->stat = AdoptionFormStat::PendingSignature;
     $adoption_form->adopt_id = $request->adopt_id;
     $adoption_form->adopted_on = $request->adopted_on;
+    $adoption_form->agreement_token = str_random();
     $adoption_form->remark = $request->remark;
     $adoption_form->save();
+    Log::info($adoption_form);
+    Mail::to(env("MAIL_INBOX"))->send(new AdoptionAgreementMail($adoption_form));
   }
   
   public function sign($adoption_form_id) {
@@ -73,7 +78,6 @@ class AdoptionFormController extends Controller {
     $adopter->saveAdopter($input);
   }
   
-  //POST
   public function save(Request $request, $adoption_form_id) {
     $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
     $adoption_form->stat = AdoptionFormStat::Agreement;
@@ -91,6 +95,9 @@ class AdoptionFormController extends Controller {
   
   public function get(Request $request, $adoption_form_id) {
     $data['adoption_form'] = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
+    if ($data['adoption_form']->adopt_id) {
+      $data['adopt'] = Adopt::where('adopt_id', $data['adoption_form']->adopt_id)->first();
+    }
     $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $data['adoption_form']->adoption_form_id)->select('question', 'answer')->get();
     $data['adoption_form_stats'] = AdoptionFormStat::$values;
     return $data;
