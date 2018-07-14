@@ -9,15 +9,16 @@ Route::get('backend', 'AdminController@backend');
 Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');
 Route::post('api/event/filter', 'EventController@filter');
+Route::get('api/page/get/{page_id}', 'PageController@get');
+Route::post('api/donation/form', 'DonationController@form');
+Route::post('api/volunteer/form', 'VolunteerController@form');
+Route::post('api/contact/form', 'SiteController@form');
+Route::get('api/event/get/{event_id}', 'EventController@get');
 
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
 Route::post('api/adopt/filter', 'AdoptController@filter'); //for adopt view
-Route::post('api/donation/form', 'DonationController@form');
-Route::post('api/volunteer/form', 'VolunteerController@form');
-Route::post('api/contact/form', 'SiteController@form');
-Route::get('api/event/get/{event_id}', 'EventController@get');
 
 Route::post('api/adoption-form/enquiry', 'AdoptionFormController@enquiry'); //step 1 - fill in basic info
 Route::get('api/adoption-form/get-application/{application_token}', 'AdoptionFormController@getApplication'); //step 2 - open
@@ -91,7 +92,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/user/delete/{user_id}', 'UserController@delete');
   
   Route::get('api/page', 'PageController@all');
-  Route::get('api/page/get/{page_id}', 'PageController@get');
   Route::post('api/page/save/{page_id}', 'PageController@save');
   
   Route::post('api/delete-record', 'AdminController@deleteRecord');
