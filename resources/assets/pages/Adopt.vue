@@ -46,18 +46,18 @@
 
         <div class="widget widget_categories2">
           <h3 class="widget-title">Dog Name</h3>
-          <input type="text" class="form-control">
+          <input type="text" v-model="filter.name" class="form-control">
           
           <h3 class="widget-title mt-30">HDB Approved</h3>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="hdb" v-model="hdb" value="1">
+              <input type="checkbox" name="hdb" v-model="filter.hdb" value="1">
               Yes
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="hdb" v-model="hdb" value="0">
+              <input type="checkbox" name="hdb" v-model="filter.hdb" value="0">
               No
             </label>
           </div>
@@ -65,13 +65,13 @@
           <h3 class="widget-title mt-30">Gender</h3>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="gender" v-model="gender" value="M">
+              <input type="checkbox" name="gender" v-model="filter.gender" value="M">
               Male
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="gender" v-model="gender" value="F">
+              <input type="checkbox" name="gender" v-model="filter.gender" value="F">
               Female
             </label>
           </div>
@@ -79,19 +79,19 @@
           <h3 class="widget-title mt-30">Age</h3>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="age" value="1" v-model="age">
+              <input type="checkbox" name="age" value="1" v-model="filter.age">
               0-3
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="age" value="2" v-model="age">
+              <input type="checkbox" name="age" value="2" v-model="filter.age">
               4-7
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="age" value="3" v-model="age">
+              <input type="checkbox" name="age" value="3" v-model="filter.age">
               8+
             </label>
           </div>
@@ -121,9 +121,12 @@
         adopt_count: 0,
         current_page: 1,
         hearts: [],
-        hdb: [],
-        gender: [],
-        age: []
+        filter: {
+          name: "",
+          hdb: [],
+          gender: [],
+          age: []
+        }
       }
     },
     computed: {
@@ -155,12 +158,7 @@
         return this.hearts.indexOf(adopt_id) >= 0;
       },
       filterAdopt() {
-        let data = {
-          hdb: this.hdb,
-          gender: this.gender,
-          age: this.age,
-        };
-        axios.post('api/adopt/filter', data)
+        axios.post('api/adopt/filter', this.filter)
           .then(response => {
             this.adopts = response.data.adopts;
             this.adopt_count = response.data.adopt_count;
