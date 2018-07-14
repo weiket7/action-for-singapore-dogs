@@ -37,8 +37,4 @@ class DonationController extends Controller {
     return $data;
   }
   
-  public function delete($donation_id) {
-    Donation::where('donation_id', $donation_id)->delete();
-  }
-  
 }

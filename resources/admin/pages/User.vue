@@ -4,11 +4,16 @@
       <form-row>
         <label-component required>Username</label-component>
         <textbox-component name='username' v-model="user.username" :error="errors.get('username')"></textbox-component>
+        
+        <label-component>Password</label-component>
+        <div class="col-lg-3">
+          <input type="password" v-model="user.password" class="form-control">
+        </div>
       </form-row>
 
       <form-row>
         <label-component>Permissions</label-component>
-        <checkbox-component v-model="user.permissions" :options="permissions"></checkbox-component>
+        <checkbox-component v-model="permissions" :options="permissions_options" v-if="user"></checkbox-component>
       </form-row>
 
       <form-footer>
@@ -30,12 +35,25 @@
       return {
         user: {},
         errors: new Errors(),
-        permissions: ['Dogs', 'People', 'Volunteer', 'Sponsorships', 'Donations', 'Banners', 'Events',
+        permissions: [],
+        permissions_options: ['Dogs', 'People', 'Volunteer', 'Sponsorships', 'Donations', 'Banners', 'Events',
           'Adoption Forms', 'Users', 'Pages']
       }
     },
+    computed: {
+      is_create() {
+        return this.$route.path == "/user/save";
+      },
+    },
     methods: {
       onSubmit() {
+        let url = 'api/user/save';
+        if (!this.is_create) {
+          url += '/'+ this.$route.params.user_id
+        }
+  
+        this.user.permissions = this.permissions;
+        
         axios.post(url, this.user)
           .then(this.onSuccess)
           .catch(this.onError);
@@ -43,11 +61,11 @@
       onSuccess(response) {
         if (this.is_create) {
           toastr.success("User added");
+          this.user.user_id = response.data;
+          this.$router.push('/user/save/'+this.user.user_id);
           return;
         }
         toastr.success("User updated");
-        let user_id = response.data;
-        this.$router.push('/user/save/'+user_id);
       },
       deleteUser() {
         axios.post('api/user/delete/'+this.$route.params.user_id)
@@ -70,6 +88,7 @@
         axios.get('api/user/get/' + this.$route.params.user_id)
           .then(response => {
             this.user = response.data.user;
+            this.permissions = response.data.permissions;
           })
           .catch(error => {
             console.log(error);

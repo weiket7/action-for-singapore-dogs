@@ -29,6 +29,8 @@ class Volunteer extends Model
   }
   
   public function saveVolunteerInterest($interests) {
+    DB::table('volunteer_interest')->where('volunteer_id', $this->volunteer_id)->delete();
+    
     foreach($interests as $interest) {
       DB::table('volunteer_interest')->insert([
         'volunteer_id'=>$this->volunteer_id,

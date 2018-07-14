@@ -31,8 +31,4 @@ class VolunteerController extends Controller {
     return $data;
   }
   
-  public function delete($volunteer_id) {
-    Volunteer::where('volunteer_id', $volunteer_id)->delete();
-  }
-  
 }
