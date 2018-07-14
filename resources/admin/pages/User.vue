@@ -18,7 +18,7 @@
 
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
-        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+        <button type="button" class="btn btn-danger" data-toggle="confirmation" v-if="!this.is_create">Delete</button>
       </form-footer>
     </form>
   </single-portlet>

@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');
   Route::post('api/adopt/save', 'AdoptController@save');
   Route::post('api/adopt/save/{adopt_id}', 'AdoptController@save');
+  Route::post('api/adopt/delete/{adopt_id}', 'AdoptController@delete');
   
   Route::get('api/adopt/get-single/{adopt_id}', 'AdoptController@getSingle');
   Route::get('api/person/get-single/{person_id}', 'PersonController@getSingle');
@@ -84,6 +85,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/user/get/{user_id}', 'UserController@get');
   Route::post('api/user/save/', 'UserController@save');
   Route::post('api/user/save/{user_id}', 'UserController@save');
+  Route::post('api/user/delete/{user_id}', 'UserController@delete');
   
   Route::get('api/page', 'PageController@all');
   Route::get('api/page/get/{page_id}', 'PageController@get');

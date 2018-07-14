@@ -43,6 +43,7 @@ class AdoptTable extends Migration
         //$table->boolean('has_foster');
         //$table->boolean('can_sponsor');
         $table->string('desc', 250)->nullable();
+        $table->softDeletes();
       });
   
       $adopts = [

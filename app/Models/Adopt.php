@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Log;
 
 class Adopt extends Model
@@ -13,7 +14,8 @@ class Adopt extends Model
   public $timestamps = false;
   //protected $dates = ['birthday'];
   protected $appends = ['age'];
-
+  use SoftDeletes;
+  
   public function saveAdopt($input) {
     $this->name = $input['name'];
     $this->stat = $input['stat'];

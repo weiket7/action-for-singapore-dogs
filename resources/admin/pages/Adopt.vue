@@ -108,6 +108,7 @@
   
           <form-footer>
             <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-danger" data-toggle="confirmation" v-if="!this.is_create">Delete</button>
           </form-footer>
         </form>
       </tab>
@@ -272,6 +273,14 @@
       },
       updateImage(file) {
         this.image_new = file;
+      },
+      deleteAdopt() {
+        axios.post('api/adopt/delete/'+this.$route.params.adopt_id)
+          .then(response => {
+            toastr.success("Adopt deleted");
+            this.$router.push('/adopt');
+          })
+          .catch(this.onError);
       }
     },
     created() {
@@ -289,6 +298,14 @@
         this.adopt.stat = 'A';
         this.loaded = true;
       }
+    },
+    mounted() {
+      let vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteAdopt();
+      });
     },
     components: {
       AdoptRescuer,

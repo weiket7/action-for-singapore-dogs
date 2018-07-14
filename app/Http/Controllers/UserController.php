@@ -21,4 +21,9 @@ class UserController extends Controller {
     return $data;
   }
   
+  public function delete($user_id) {
+    User::where('id', $user_id)->delete();
+    DB::table('user_permission')->where('user_id', $user_id)->delete();
+  }
+  
 }

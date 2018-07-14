@@ -105,8 +105,7 @@
       }).on("confirmed.bs.confirmation", function() {
         vue.deleteVolunteer();
       });
-    },
-    
+    }
   }
 </script>
 

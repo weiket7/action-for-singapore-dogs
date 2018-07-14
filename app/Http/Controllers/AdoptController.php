@@ -4,10 +4,13 @@ use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
 use App\Mail\AdoptionFormMail;
 use App\Models\Adopt;
+use App\Models\Adopter;
 use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptStat;
 use App\Helpers\BackendHelper;
+use App\Models\Foster;
 use App\Models\Question;
+use App\Models\Rescuer;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -84,5 +87,18 @@ class AdoptController extends Controller {
   
   public function slug(Request $request, $slug) {
     return Adopt::where('slug', $slug)->first();
+  }
+  
+  public function delete(Request $request, $adopt_id) {
+    Adopt::where('adopt_id', $adopt_id)->delete();
+    $adoption_form = AdoptionForm::where('adopt_id', $adopt_id)->first();
+    if ($adoption_form) {
+      DB::table('adoption_form_adopt')->where('adoption_form_id', $adoption_form->adoption_form_id)->delete();
+      DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form->adoption_form_id)->delete();
+      $adoption_form->delete();
+    }
+    Adopter::where('adopt_id', $adopt_id)->delete();
+    Foster::where('adopt_id', $adopt_id)->delete();
+    Rescuer::where('adopt_id', $adopt_id)->delete();
   }
 }
