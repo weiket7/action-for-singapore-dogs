@@ -10,8 +10,10 @@ use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptionFormStat;
 use App\Models\Person;
 use App\Models\Question;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -35,12 +37,16 @@ class AdoptionFormController extends Controller {
   }
   
   public function getApplication(Request $request, $application_token) {
-    $data['adoption_form'] = AdoptionForm::where('application_token', $application_token)->first();
+    $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
+    if ($adoption_form->stat != AdoptionFormStat::Enquiry) {
+      throw new Exception();
+    }
     $question_ids = Question::where('is_header', false)->pluck('question_id');
     $answers = [];
     foreach($question_ids as $question_id) {
       $answers['answer-'.$question_id] = '';
     }
+    $data['adoption_form'] = $adoption_form;
     $data['answers'] = $answers;
     $data['questions'] = Question::orderBy('position')->select('content', 'is_header', 'question_id')->get();
     return $data;
@@ -53,13 +59,17 @@ class AdoptionFormController extends Controller {
   
   public function approve(Request $request, $adoption_form_id) {
     $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
-    $adoption_form->approve($request->all(0));
+    $adoption_form->approve($request->all(), Auth::user()->username);
     Mail::to(env("MAIL_INBOX"))->send(new AdoptionAgreementMail($adoption_form));
   }
   
   public function getAgreement(Request $request, $agreement_token) {
-    $data['adoption_form'] = AdoptionForm::where('agreement_token', $agreement_token)->first();;
-    $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $data['adoption_form']->adoption_form_id)
+    $adoption_form = AdoptionForm::where('agreement_token', $agreement_token)->first();
+    if ($adoption_form->stat != AdoptionFormStat::PendingSignature) {
+      throw new Exception();
+    }
+    $data['adoption_form'] = $adoption_form;
+    $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form->adoption_form_id)
       ->select('question', 'answer')->get();
     return $data;
   }
@@ -79,18 +89,24 @@ class AdoptionFormController extends Controller {
   }
   
   public function get(Request $request, $adoption_form_id) {
-    $data['adoption_form'] = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
-    if ($data['adoption_form']->adopt_id) {
-      $data['adopt'] = Adopt::where('adopt_id', $data['adoption_form']->adopt_id)->first();
+    $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
+    if ($adoption_form->adopt_id) {
+      $data['adopt'] = Adopt::where('adopt_id', $adoption_form->adopt_id)->first();
     }
+    $data['adoption_form'] = $adoption_form;
     $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $data['adoption_form']->adoption_form_id)->select('question', 'answer')->get();
     $data['adoption_form_stats'] = AdoptionFormStat::$values;
     return $data;
   }
   
   public function all(Request $request) {
-    $data['adoption_forms'] = AdoptionForm::all();
+    $data['adoption_forms'] = AdoptionForm::orderBy('enquired_on', 'desc')->get();
     $data['adoption_form_stats'] = AdoptionFormStat::$values;
     return $data;
+  }
+  
+  public function delete($adoption_form_id) {
+    DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form_id)->delete();
+    AdoptionForm::where('adoption_form_id', $adoption_form_id)->delete();
   }
 }

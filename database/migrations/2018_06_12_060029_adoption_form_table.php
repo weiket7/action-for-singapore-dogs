@@ -24,10 +24,13 @@ class AdoptionFormTable extends Migration
       $table->char('agreement_token', 16)->nullable();
       $table->integer('adopt_id')->nullable();
       $table->dateTime('adopted_on')->nullable();
+      $table->string('remark1', 500)->nullable();
+      $table->string('remark2', 500)->nullable();
+      $table->string('remark3', 500)->nullable();
       $table->dateTime('enquired_on');
       $table->dateTime('applied_on')->nullable();
+      $table->dateTime('approved_on')->nullable();
       $table->string('approved_by', 30)->nullable();
-      $table->string('remark', 200)->nullable();
       $table->dateTime('agreed_on')->nullable();
     });
     
@@ -42,7 +45,7 @@ class AdoptionFormTable extends Migration
       'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'postal'=>'123456',
       'application_token'=>'zxc',
-      'enquired_on'=>Carbon::now(),
+      'enquired_on'=>Carbon::now()->subDays(3),
     ]);
   
     DB::table('adoption_form')->insert([
@@ -56,8 +59,8 @@ class AdoptionFormTable extends Migration
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
       'postal'=>'123456',
       'application_token'=>'abc',
-      'enquired_on'=>Carbon::now()->addDay(1),
-      'applied_on'=>Carbon::now()->addDay(2)
+      'enquired_on'=>Carbon::now()->subDays(2),
+      'applied_on'=>Carbon::now()->subDays(1)
     ]);
   
     DB::table('adoption_form')->insert([
@@ -71,9 +74,9 @@ class AdoptionFormTable extends Migration
       'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
       'postal'=>'123456',
       'application_token'=>'abc',
-      'enquired_on'=>Carbon::now(),
-      'applied_on'=>Carbon::now()->addDay(1),
-      'agreed_on'=>Carbon::now()->addDay(2)
+      'enquired_on'=>Carbon::now()->subDays(1),
+      'applied_on'=>Carbon::now(),
+      'agreed_on'=>Carbon::now()
     ]);
   }
   

@@ -49,12 +49,16 @@ class AdoptionForm extends Model
     }
   }
   
-  public function approve($input) {
+  public function approve($input, $username) {
     $this->stat = AdoptionFormStat::PendingSignature;
     $this->adopt_id = $input['adopt_id'];
     $this->adopted_on = $input['adopted_on'];
     $this->agreement_token = str_random();
-    $this->remark = $input['remark'];
+    $this->remark1 = $input['remark1'];
+    $this->remark2 = $input['remark2'];
+    $this->remark3 = $input['remark3'];
+    $this->approved_on = Carbon::now();
+    $this->approved_by = $username;
     $this->save();
   }
   

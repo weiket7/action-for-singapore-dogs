@@ -72,7 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/adoption-form', 'AdoptionFormController@all');
   Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
   Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
-  Route::post('api/adoption-form/agreement/{token}', 'AdoptionFormController@sign');
+  Route::post('api/adoption-form/delete/{adoption_form_id}', 'AdoptionFormController@delete');
   
   /*Route::get('api/question', 'QuestionController@all');
   Route::get('api/question/get/{question_id}', 'QuestionController@get');

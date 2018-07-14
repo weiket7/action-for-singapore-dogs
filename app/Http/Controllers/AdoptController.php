@@ -44,7 +44,8 @@ class AdoptController extends Controller {
   
   public function search(Request $request) {
     $term = $request->term;
-    return Adopt::where('name', 'like', '%'.$term.'%')->select(['adopt_id as id', 'name as text'])->get();
+    return Adopt::where('name', 'like', '%'.$term.'%')->where('stat', AdoptStat::Available)
+      ->select(['adopt_id as id', 'name as text'])->get();
   }
   
   public function getSingle(Request $request, $adopt_id) {

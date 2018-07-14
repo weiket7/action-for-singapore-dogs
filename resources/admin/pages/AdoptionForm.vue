@@ -5,7 +5,7 @@
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <form-row>
             <label-component>Status</label-component>
-            <static-text v-if="adoption_form.stat === 'S'">
+            <static-text v-if="isPendingSignature">
               Approved<br>
               Email has been sent<br>
               Please contact {{ adoption_form.gender == "M" ? "him" : "her" }} to check his email and sign
@@ -40,7 +40,7 @@
             <static-text>{{ adoption_form.postal }}</static-text>
           </form-row>
 
-          <template v-if="adoption_form.stat === 'P'">
+          <template v-if="isApplication">
             <form-row>
               <label-component>Dog Name</label-component>
               <select2-component name='dog_name' url="api/adopt/search"
@@ -52,14 +52,20 @@
             </form-row>
 
             <form-row>
-              <label-component>Remark</label-component>
-              <textarea-component v-model="adoption_form.remark"></textarea-component>
+              <label-component>Remark 1</label-component>
+              <textarea-component v-model="adoption_form.remark1"></textarea-component>
             </form-row>
-
-            <form-footer>
-              <button type="submit" class="btn btn-success">Approve</button>
-            </form-footer>
+  
+            <form-row>
+              <label-component>Remark 2</label-component>
+              <textarea-component v-model="adoption_form.remark2"></textarea-component>
+            </form-row>
+            <form-row>
+              <label-component>Remark 3</label-component>
+              <textarea-component v-model="adoption_form.remark3"></textarea-component>
+            </form-row>
           </template>
+          
           <template v-if="isPendingSignature || isAgreement">
             <form-row>
               <label-component required>Dog Name</label-component>
@@ -71,11 +77,14 @@
               <static-text>{{ adoption_form.adopted_on | formatDate }}</static-text>
             </form-row>
 
-            <form-row>
-              <label-component>Remark</label-component>
-              <static-text>{{ adoption_form.remark }}</static-text>
-            </form-row>
+            <remark :remark1="adoption_form.remark1" :remark2="adoption_form.remark2" :remark3="adoption_form.remark3"></remark>
           </template>
+          
+          <form-footer v-show="isEnquiry || isApplication || isPendingSignature">
+            <button type="submit" v-if="isApplication" class="btn btn-success">Approve</button>
+  
+            <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+          </form-footer>
         </form>
       </tab>
       <tab :name="'Questionnaire'">
@@ -96,7 +105,8 @@
   import axios from 'axios';
   import Errors from '../../common/errors'
   import FormMixin from '../form-mixin';
-  
+  import Remark from '../modules/Remark'
+
   export default {
     name: "adoption_form",
     data() {
@@ -130,14 +140,21 @@
           .then(response => {
             this.adoption_form = response.data.adoption_form;
             this.adoption_form_stats = response.data.adoption_form_stats;
+            this.answers = response.data.answers;
             if (this.adoption_form.adopt_id) {
               this.adopt = response.data.adopt;
             }
-            this.answers = response.data.answers;
+            if (this.isApplication) {
+              this.adoption_form.adopted_on = moment().format('YYYY-MM-DD');
+            }
             this.loaded = true;
-          }).catch(error => {
-          console.log(error);
-        });
+          }).catch(this.onError);
+      },
+      deleteAdoptionForm() {
+        axios.post('api/adoption-form/delete/' + this.$route.params.adoption_form_id)
+          .then(response => {
+            this.$router.push('/adoption-form');
+          }).catch(this.onError);
       }
     },
     computed: {
@@ -147,6 +164,9 @@
           tabs.push('Questionnaire');
         }
         return tabs;
+      },
+      isEnquiry() {
+        return this.adoption_form.stat === 'E';
       },
       isApplication() {
         return this.adoption_form.stat === 'P';
@@ -161,6 +181,16 @@
     created() {
       this.getAdoptionForm();
     },
+    mounted() {
+      let vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        toastr.success("Adoption form deleted");
+        vue.deleteAdoptionForm();
+      });
+    },
+    components: { Remark },
     mixins: [FormMixin]
   }
 </script>

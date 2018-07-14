@@ -110,8 +110,7 @@
       }).on("confirmed.bs.confirmation", function() {
         vue.deleteDonation();
       });
-    },
-
+    }
   }
 </script>
 
