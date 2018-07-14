@@ -16,10 +16,11 @@ Route::post('api/volunteer/form', 'VolunteerController@form');
 Route::post('api/contact/form', 'SiteController@form');
 Route::get('api/event/get/{event_id}', 'EventController@get');
 
-Route::get('api/adoption-form/token/{token}', 'AdoptionFormController@token');
-Route::post('api/adoption-form/enquiry', 'AdoptionFormController@enquiry');
-Route::post('api/adoption-form/application/{application_token}', 'AdoptionFormController@application');
-Route::post('api/adoption-form/agreement/{agreement_token}', 'AdoptionFormController@agreement');
+Route::post('api/adoption-form/enquiry', 'AdoptionFormController@enquiry'); //step 1 - fill in basic info
+Route::get('api/adoption-form/get-application/{application_token}', 'AdoptionFormController@getApplication'); //step 2 - open
+Route::post('api/adoption-form/save-application/{application_token}', 'AdoptionFormController@saveApplication');
+Route::get('api/adoption-form/get-agreement/{agreement_token}', 'AdoptionFormController@getAgreement');
+Route::post('api/adoption-form/save-agreement/{agreement_token}', 'AdoptionFormController@saveAgreement');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::get('api/adopt', 'AdoptController@all');

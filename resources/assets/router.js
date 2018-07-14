@@ -10,7 +10,8 @@ import EventView from './pages/EventView'
 import Contact from './pages/Contact'
 import HeartList from './pages/HeartList'
 import ComingSoon from './pages/ComingSoon'
-import AdoptionForm2 from './pages/AdoptionForm2'
+import AdoptionApplication from './pages/AdoptionApplication'
+import AdoptionAgreement from './pages/AdoptionAgreement'
 import Page from './pages/Page'
 import Paypal from './pages/Paypal'
 
@@ -21,7 +22,8 @@ export default new Router({
     { path: '', name: 'Index', component: Home },
     { path: '/dogs-for-adoption', name: 'Adopt', component: Adopt },
     { path: '/i-want-to-adopt', name: 'HeartList', component: HeartList },
-    { path: '/adoption-form/:token', name: 'AdoptionForm2', component: AdoptionForm2 },
+    { path: '/adoption-application/:token', name: 'AdoptionApplication', component: AdoptionApplication },
+    { path: '/adoption-agreement/:token', name: 'AdoptionAgreement', component: AdoptionAgreement },
     { path: '/adopt/:slug', name: 'AdoptView', component: AdoptView },
     { path: '/donate', name: 'Donate', component: Donate },
     { path: '/volunteer', name: 'Volunteer', component: Volunteer },

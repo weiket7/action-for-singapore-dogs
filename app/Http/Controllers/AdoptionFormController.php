@@ -34,8 +34,8 @@ class AdoptionFormController extends Controller {
     return $adoption_form_id;
   }
   
-  public function token(Request $request, $token) {
-    $data['adoption_form'] = AdoptionForm::where('application_token', $token)->first();
+  public function getApplication(Request $request, $application_token) {
+    $data['adoption_form'] = AdoptionForm::where('application_token', $application_token)->first();
     $question_ids = Question::where('is_header', false)->pluck('question_id');
     $answers = [];
     foreach($question_ids as $question_id) {
@@ -46,7 +46,7 @@ class AdoptionFormController extends Controller {
     return $data;
   }
   
-  public function application(Request $request, $application_token) {
+  public function saveApplication(Request $request, $application_token) {
     $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
     $adoption_form->saveApplication($request->all());
   }
@@ -57,32 +57,24 @@ class AdoptionFormController extends Controller {
     Mail::to(env("MAIL_INBOX"))->send(new AdoptionAgreementMail($adoption_form));
   }
   
-  public function agreement($adoption_form_id) {
-    $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
-    $adoption_form->saveAgreement($request->all());
+  public function getAgreement(Request $request, $agreement_token) {
+    $data['adoption_form'] = AdoptionForm::where('agreement_token', $agreement_token)->first();;
+    $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $data['adoption_form']->adoption_form_id)
+      ->select('question', 'answer')->get();
+    return $data;
+  }
   
+  public function saveAgreement(Request $request, $agreement_token) {
+    $adoption_form = AdoptionForm::where('agreement_token', $agreement_token)->first();
+    $adoption_form->saveAgreement($request->all());
+
     $person = new Person();
     $person->saveAdoptionFormAsAdopter($adoption_form);
-  
+
     $adopter = new Adopter();
     $input['person_id'] = $person->person_id;
     $input['adopt_id'] = $adoption_form->adopt_id;
     $input['adopted_on'] = $adoption_form->adopted_on;
-    $adopter->saveAdopter($input);
-  }
-  
-  public function save(Request $request, $adoption_form_id) {
-    $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
-    $adoption_form->stat = AdoptionFormStat::Agreement;
-    $adoption_form->save();
-    
-    $person = new Person();
-    $person->saveAdoptionFormAsAdopter($adoption_form);
-  
-    $adopter = new Adopter();
-    $input['adopt_id'] = $request->adopt_id;
-    $input['person_id'] = $person->person_id;
-    $input['adopted_on'] = $request->adopted_on;
     $adopter->saveAdopter($input);
   }
   

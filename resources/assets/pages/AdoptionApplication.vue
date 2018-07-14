@@ -46,7 +46,7 @@
   import axios from 'axios'
   
   export default {
-    name: "AdoptionForm2",
+    name: "adoption-application",
     data() {
       return {
         adoption_form: {},
@@ -55,30 +55,22 @@
         success: false
       }
     },
-    created() {
-      axios.get('api/adoption-form/token/'+this.$route.params.token).then(response => {
-        this.adoption_form = response.data.adoption_form;
-        this.questions = response.data.questions;
-        this.answers = response.data.answers;
-      });
-    },
     methods: {
       onSubmit() {
-        axios.post('api/adoption-form/application/'+this.$route.params.token, this.answers)
+        axios.post('api/adoption-form/save-application/'+this.$route.params.token, this.answers)
           .then(this.onSuccess)
           .catch(this.onError);
       },
       onSuccess() {
         this.success = true;
-      },
-      onError(error) {
-        if (error.response.status == 500) {
-          toastr.error("A system error occurred");
-          return;
-        }
-        toastr.error("There were some errors, please check the form");
-        this.errors.record(error.response.data.errors);
       }
+    },
+    created() { 
+      axios.get('api/adoption-form/get-application/'+this.$route.params.token).then(response => {
+        this.adoption_form = response.data.adoption_form;
+        this.questions = response.data.questions;
+        this.answers = response.data.answers;
+      });
     }
   }
 </script>
