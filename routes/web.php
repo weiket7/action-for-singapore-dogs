@@ -11,6 +11,7 @@ Route::get('api/event/latest', 'EventController@latest');
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
+Route::post('api/adopt/filter', 'AdoptController@filter'); //for adopt view
 Route::post('api/donation/form', 'DonationController@form');
 Route::post('api/volunteer/form', 'VolunteerController@form');
 Route::post('api/contact/form', 'SiteController@form');

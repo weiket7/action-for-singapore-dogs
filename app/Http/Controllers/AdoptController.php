@@ -1,23 +1,18 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
-use App\Mail\AdoptionFormMail;
 use App\Models\Adopt;
 use App\Models\Adopter;
 use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptStat;
 use App\Helpers\BackendHelper;
 use App\Models\Foster;
-use App\Models\Question;
 use App\Models\Rescuer;
-use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
 class AdoptController extends Controller {
   public function save(AdoptRequest $request, $adopt_id = null) {
@@ -43,6 +38,35 @@ class AdoptController extends Controller {
   
   public function list(Request $request, $adopt_ids) {
     return Adopt::whereIn('adopt_id', explode(',', $adopt_ids))->get();
+  }
+  
+  public function filter(Request $request) {
+    $query = Adopt::where('stat', AdoptStat::Available);
+    if ($request->name) {
+      $query->where('name', 'like', '%'.$request->name.'%');
+    }
+    if (count($request->hdb) == 1) {
+      $query->where('hdb', array_first($request->hdb));
+    }
+    if (count($request->gender) == 1) {
+      $query->where('gender', array_first($request->gender));
+    }
+    if (count($request->age) >= 1) {
+      $query->where(function ($q) use ($request) {
+        if (in_array("1", $request->age)) {
+          $q->where('birthday', '>=', Carbon::now()->subYears(3));
+        }
+        if (in_array("2", $request->age)) {
+          $q->orWhere('birthday', '>=', Carbon::now()->subYears(7))->where('birthday', '<', Carbon::now()->subYears(3));
+        }
+        if (in_array("3", $request->age)) {
+          $q->orWhere('birthday', '<', Carbon::now()->subYears(7));
+        }
+      });
+    }
+    $data['adopts'] = $query->get();
+    Log::info($query->toSql());
+    return $data;
   }
   
   public function search(Request $request) {
