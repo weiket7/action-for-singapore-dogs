@@ -8,6 +8,8 @@ Route::get('backend', 'AdminController@backend');
 
 Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');
+Route::post('api/event/filter', 'EventController@filter');
+
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view

@@ -65,7 +65,6 @@ class AdoptController extends Controller {
       });
     }
     $data['adopts'] = $query->get();
-    Log::info($query->toSql());
     return $data;
   }
   

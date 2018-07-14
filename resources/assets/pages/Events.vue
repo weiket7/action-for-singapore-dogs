@@ -57,15 +57,15 @@
         <div class="widget">
 
           <h3 class="widget-title">Showing</h3>
-          <div class="radio">
+          <div class="checkbox">
             <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+              <input type="checkbox" v-model="showing" name="showing" value="upcoming">
               Upcoming
             </label>
           </div>
-          <div class="radio">
+          <div class="checkbox">
             <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="checkbox" v-model="showing" name="showing" value="past">
               Past
             </label>
           </div>
@@ -75,31 +75,32 @@
           <h3 class="widget-title">Type</h3>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="optionsRadios" id="optionsRadios1" value="option1">
+              <input type="checkbox" v-model="type" name="type" value="A">
               Adoption Drives
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="checkbox" v-model="type" name="type" value="B">
               Basic Obedience Classes
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="checkbox" v-model="type" name="type" value="S">
               Social Events
             </label>
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="optionsRadios" id="optionsRadios2" value="option2">
+              <input type="checkbox" v-model="type" name="type" value="O">
               Others
             </label>
           </div>
         </div>
-
-
+        <br>
+        
+        <button type="button" @click="filterEvent" class="theme_button inverse margin_0">Search</button>
       </div>
       <!-- eof aside sidebar -->
 
@@ -116,6 +117,20 @@
     data() {
       return {
         events: {},
+        showing: [],
+        type: [],
+      }
+    },
+    methods: {
+      filterEvent() {
+        let data = {
+          showing: this.showing,
+          type: this.type,
+        };
+        axios.post('api/event/filter', data)
+          .then(response => {
+            this.events = response.data.events;
+          })
       }
     },
     created: function() {

@@ -5,8 +5,8 @@
         <label-component required>Name</label-component>
         <textbox-component name='name' v-model="event.name" :error="errors.get('name')"></textbox-component>
 
-        <label-component>Adoption Drive</label-component>
-        <radio-component name="adoption_drive" v-model="event.adoption_drive" :options="{ '1': 'Yes', '0': 'No' }" :error="errors.get('adoption_drive')"></radio-component>
+        <label-component>Type</label-component>
+        <radio-component v-model="event.type" :options="event_types" :error="errors.get('type')" :inline="false"></radio-component>
       </form-row>
 
       <form-row>
@@ -21,13 +21,13 @@
         <label-component required>Time</label-component>
         <textbox-component name='time' v-model="event.time" :error="errors.get('time')"></textbox-component>
 
-        <label-component v-show="event.adoption_drive">Duration</label-component>
-        <textbox-component name='duration' v-model="event.duration" :error="errors.get('duration')" v-show="event.adoption_drive"></textbox-component>
+        <label-component v-show="isBasicObedience">Duration</label-component>
+        <textbox-component name='duration' v-model="event.duration" :error="errors.get('duration')" v-show="isBasicObedience"></textbox-component>
       </form-row>
 
       <form-row>
-        <label-component v-show="event.adoption_drive">Cost</label-component>
-        <textbox-component name="cost" v-model="event.cost" :error="errors.get('cost')" v-show="event.adoption_drive"></textbox-component>
+        <label-component v-show="isBasicObedience">Cost</label-component>
+        <textbox-component name="cost" v-model="event.cost" :error="errors.get('cost')" v-show="isBasicObedience"></textbox-component>
       </form-row>
 
       <form-row>
@@ -80,6 +80,7 @@
     data() {
       return {
         event: {},
+        event_types: {},
         errors: new Errors(),
         image_new: null,
         adopts: [],
@@ -154,6 +155,9 @@
           }
         }
         return adopt_ids.join(",");
+      },
+      isBasicObedience() {
+        return this.event.type === 'B';
       }
     },
     created() {
@@ -163,6 +167,7 @@
         axios.get('api/event/get/' + this.$route.params.event_id)
           .then(response => {
             this.event = response.data.event;
+            this.event_types = response.data.event_types;
             this.adopts = response.data.adopts;
             this.loaded = true;
           })

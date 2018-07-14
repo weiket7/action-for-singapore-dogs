@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-3">
-    <div class="m-radio-inline">
+    <div :class="className">
       <label v-for="(val, key) in options" class="m-radio">
         <input type="radio" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
         {{ val }}
@@ -20,6 +20,7 @@
       name: { type: String, required: false},
       value: { required: false},
       error: { type: String, required: false},
+      inline: { type: Boolean, required: false, default: false },
       options: {required: true}
     },
     methods: {
@@ -31,6 +32,11 @@
           value = 0;
         }
         this.$emit('input', value);
+      }
+    },
+    computed: {
+      className() {
+        return this.inline ? 'm-radio-inline' : 'm-radio-list';
       }
     }
   }

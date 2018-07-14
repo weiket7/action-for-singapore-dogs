@@ -4,10 +4,12 @@ use App\Helpers\BackendHelper;
 use App\Http\Requests\EventRequest;
 use App\Models\Adopt;
 use App\Models\Enums\EventStat;
+use App\Models\Enums\EventType;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class EventController extends Controller {
   public function save(EventRequest $request, $event_id = null) {
@@ -32,10 +34,9 @@ class EventController extends Controller {
   }
   
   public function latest(Request $request) {
-    $data['events'] = Event::where('date', '>=', Carbon::today())
-      ->orderBy("adoption_drive", "desc")
-      ->orderBy('date', "desc")
-      ->get();
+    $adoption_drives = Event::where('date', '>=', Carbon::today())->where('type', EventType::AdoptionDrive)->get();
+    $events = Event::where('date', '>=', Carbon::today())->orderBy('date', "desc")->get();
+    $data['events'] = $adoption_drives->merge($events);
     return $data;
   }
   
@@ -48,8 +49,29 @@ class EventController extends Controller {
       $event = Event::where('slug', $slug)->first();
     }
     $data['event'] = $event;
+    $data['event_types'] = EventType::$values;
     $adopt_ids = DB::table('adoption_drive')->where('event_id', $event->event_id)->pluck('adopt_id');
     $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
+    return $data;
+  }
+  
+  public function filter(Request $request) {
+    $query = Event::where('stat', EventStat::Active);
+    if (count($request->showing) == 1) {
+      if ($request->showing == 'upcoming') {
+        $query->where('date', '>=', Carbon::now());
+      } else if ($request->showing == 'past') {
+        $query->where('date', '<', Carbon::now());
+      }
+    }
+    
+    if ($request->type) {
+      $query->whereIn('type', $request->type);
+    }
+    $data['events'] = $query->orderBy("date", "desc")->get();
+    Log::info($query->toSql());
+    Log::info($request->type);
+    
     return $data;
   }
 }

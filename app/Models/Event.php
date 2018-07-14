@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Models\Enums\EventType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -13,12 +14,13 @@ class Event extends Model
   public function saveEvent($input) {
     //$this->stat = $input['stat'];
     $this->name = $input['name'];
+    $this->type = $input['type'];
     $this->slug = str_slug($input['name']);
     $this->location = $input['location'];
     $this->date = $input['date'];
     $this->time = $input['time'];
     $this->desc = $input['desc'];
-    if (!$this->adoption_drive) {
+    if ($this->type != EventType::BasicObedienceClass) {
       $this->duration = $input['duration'];
       $this->cost = $input['cost'];
     }
