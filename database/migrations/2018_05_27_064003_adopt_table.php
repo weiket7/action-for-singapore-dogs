@@ -42,7 +42,7 @@ class AdoptTable extends Migration
         $table->dateTime('posted_on');
         //$table->boolean('has_foster');
         //$table->boolean('can_sponsor');
-        $table->string('desc', 1000)->nullable();
+        $table->string('desc', 2000)->nullable();
         $table->softDeletes();
       });
   
