@@ -37,15 +37,15 @@
       </div>
     </div>
     
-    <hr v-show="adopt_count > 0">
+    <hr v-if="adopt_count > 0">
     
-    <div v-show="!interested && adopt_count > 0" class="row">
+    <div v-if="adopt_count > 0" class="row">
       <div class="col-md-12 text-center">
-        <button type="button" class="" @click="interested = true">I'm interested in adopting</button>
+        <button type="button">I'm interested in adopting</button>
       </div>
     </div>
     
-    <adoption-form v-show="interested">
+    <adoption-form v-if="adopt_count > 0">
     
     </adoption-form>
   </div>
