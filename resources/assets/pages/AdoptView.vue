@@ -29,7 +29,8 @@
             </p>
 
             <div itemprop="description">
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque orrupti quos dolores et quas molestias. Excepturi sint occaecati cupiditate.</p>
+              <p v-html="adopt.desc">
+              </p>
             </div>
 
             <ul class="nav nav-tabs" role="tablist">
