@@ -65,6 +65,7 @@ class AdoptController extends Controller {
       });
     }
     $data['adopts'] = $query->get();
+    $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
     return $data;
   }
   
