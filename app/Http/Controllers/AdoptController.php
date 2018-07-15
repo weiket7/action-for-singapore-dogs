@@ -78,18 +78,17 @@ class AdoptController extends Controller {
     return Adopt::where('adopt_id', $adopt_id)->first();
   }
   
-  public function page(Request $request) {
+  public function page(Request $request, $current_page) {
     if (! $request->session()->get('rand')) {
       $request->session()->put('rand', rand());
     }
-    $current_page = $request->get('current_page') ?? 1;
-    $page_limit = 12;
+    $page_limit = 24;
     $offset = ($current_page-1)*$page_limit;
     $rand = $request->session()->get('rand');
-    
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->skip($offset)->limit($page_limit)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
+    $data['adopts_per_page'] = $page_limit;
     return $data;
   }
   

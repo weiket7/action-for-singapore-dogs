@@ -6,13 +6,13 @@
         
         <div v-if="num_of_pages > 1" class="row columns_padding_0">
           <div class="col-sm-4 text-center text-sm-left">
-            <a href="#" class="theme_button inverse margin_0">Prev page</a>
+            <a href="#" @click="previousPage()" class="theme_button inverse margin_0">Prev page</a>
           </div>
           <div class="col-sm-4 text-center">
             Current Page: {{ current_page }} / {{ num_of_pages }}
           </div>
           <div class="col-sm-4 text-center text-sm-right">
-            <a href="#" class="theme_button inverse margin_0">Next page</a>
+            <a href="#" @click="nextPage()" class="theme_button inverse margin_0">Next page</a>
           </div>
         </div>
         
@@ -117,7 +117,7 @@
     data() {
       return {
         adopts: {},
-        adopts_per_page: 12,
+        adopts_per_page: 0,
         adopt_count: 0,
         current_page: 1,
         hearts: [],
@@ -142,6 +142,13 @@
         if(this.current_page < this.num_of_pages) {
           this.current_page++;
         }
+        this.getAdopts();
+      },
+      previousPage() {
+        if(this.current_page > 1) {
+          this.current_page--;
+        }
+        this.getAdopts();
       },
       heartAdopt(adopt_id) {
         let index = this.hearts.indexOf(adopt_id);
@@ -163,15 +170,19 @@
             this.adopts = response.data.adopts;
             this.adopt_count = response.data.adopt_count;
           })
+      },
+      getAdopts() {
+        axios.get('api/adopt/page/'+this.current_page)
+          .then(response => {
+            this.adopts = response.data.adopts;
+            this.adopt_count = response.data.adopt_count;
+            this.adopts_per_page = response.data.adopts_per_page;
+          })
+          .catch(this.onError);
       }
     },
     created: function() {
-      axios.get('api/adopt/page/'+this.current_page)
-        .then(response => {
-          this.adopts = response.data.adopts;
-          this.adopt_count = response.data.adopt_count;
-        })
-        .catch(error => { console.log(error); });
+      this.getAdopts();
       
       let hearts = localStorage.getItem('hearts');
       if (hearts != null) {
