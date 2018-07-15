@@ -75,7 +75,7 @@
 <script src="{{ asset("assets/js/main.js" )}}"></script>
 <script src="{{ asset("assets/js/jquery.bxslider.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/jquery-ui.min.js" ) }}"></script>
-<script src="{{ asset("app.js" ) }}"></script>
+<script src="{{ asset("app.js?20180715" ) }}"></script>
 
 </body>
 

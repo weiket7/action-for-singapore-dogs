@@ -29,22 +29,21 @@
                         v-on:heart-adopt="heartAdopt"></adopt-item>
           </div>
         </div>
-        
-        <div v-if="num_of_pages > 1" class="row columns_padding_0">
-          <div class="col-sm-4 text-center text-sm-left">
-            <a href="#" class="theme_button inverse margin_0">Prev page</a>
+  
+        <div v-if="!isFilter" class="row columns_padding_0">
+          <div class="col-sm-2 text-center text-sm-left">
+            <a href="#" @click="previousPage()" class="theme_button inverse margin_0">Prev page</a>
           </div>
-          <div class="col-sm-4 text-center">
+          <div class="col-sm-8 text-center grid-header">
             Current Page: {{ current_page }} / {{ num_of_pages }}
+            <br>
+            Showing {{ adopts.length }} out of {{ adopt_count }} dogs for adoption
           </div>
-          <div class="col-sm-4 text-center text-sm-right">
-            <a href="#" class="theme_button inverse margin_0">Next page</a>
+          <div class="col-sm-2 text-center text-sm-right">
+            <a href="#" @click="nextPage()" class="theme_button inverse margin_0">Next page</a>
           </div>
         </div>
-      
       </div>
-      <!--eof .col-sm-8 (main content)-->
-      
       
       <!-- sidebar -->
       <aside class="col-sm-5 col-md-4 col-lg-4">
