@@ -33,7 +33,7 @@
               </p>
             </div>
 
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs mt-20" role="tablist">
               <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Adopt</a></li>
               <li><a href="#tab2" role="tab" data-toggle="tab">Sponsor</a></li>
             </ul>
@@ -41,24 +41,32 @@
             <div class="tab-content">
               <div class="tab-pane fade in active" id="tab1">
                 <form class="form-horizontal" method="post">
-                  Would you like to adopt {{ adopt.name }}? Click this
-                  <i class="fa fa-heart fa-2x"></i> to add {{ adopt.gender == 'M' ? "him" : "her"}}
-                  to your Likes list.
-                  <br><br>
+                  
+                  <span v-if="!hasHeart">
+                    Are you interested in adopting {{ adopt.name }}? Click this <i @click="heartAdopt" class="fa fa-heart fa-2x adopt-heart"></i> to add {{ adopt.gender == 'M' ? "him" : "her"}} to your Likes.
+                  </span>
+                  
+                  <span v-else>
+                    {{ adopt.name }} is in your Likes. Click this <i @click="heartAdopt" class="fa fa-heart fa-2x adopt-heart highlight"></i> to remove {{ adopt.gender == 'M' ? "him" : "her"}}
+                  </span>
 
-                  When you are ready, go to your <router-link :to="'/i-want-to-adopt'">Likes</router-link> list
+                  <br><br>
+                  
+                  When you are ready, please go to your <router-link :to="'/i-want-to-adopt'">Likes</router-link>
                   to fill in the adoption form.
                 </form>
               </div>
               <div class="tab-pane fade" id="tab2">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.
+                  You can sponsor {{ adopt.name }} by making a one-time donation using cheque or giro.
+                  <br><br>
+                  Please download and fill in this <a href="asd-sponsorship-form" target="_blank">sponsorship form</a>.
+                  <br><br>
+                  Following, please mail it to:<br>
+                  3 Jambol Place<br>
+                  Singapore 119330
                 </p>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, enim saepe libero iure tenetur optio nisi aliquam molestias ratione magnam ab ut quod possimus hic suscipit doloremque, deleniti ipsa quia!</p>
               </div>
             </div>
 
@@ -85,8 +93,27 @@
     name: "AdoptView",
     data() {
       return {
-        adopt: {}
+        adopt: {},
+        hearts: [],
       }
+    },
+    methods: {
+      heartAdopt() {
+        let index = this.hearts.indexOf(this.adopt.adopt_id);
+        if (index >= 0) {
+          this.hearts.splice(index, 1);
+          this.$emit('unheart-adopt');
+        } else {
+          this.hearts.push(this.adopt.adopt_id);
+          this.$emit('heart-adopt');
+        }
+        localStorage.setItem('hearts', JSON.stringify(this.hearts));
+      },
+    },
+    computed: {
+      hasHeart() {
+        return this.hearts.indexOf(this.adopt.adopt_id) >= 0;
+      },
     },
     created: function() {
       axios.get('api/adopt/slug/'+this.$route.params.slug)
@@ -94,10 +121,20 @@
           this.adopt = response.data;
         })
         .catch(error => { console.log(error); })
+  
+      let hearts = localStorage.getItem('hearts');
+      if (hearts != null) {
+        this.hearts = JSON.parse(hearts);
+      }
     }
   }
 </script>
 
 <style scoped>
-
+  .tab-content {
+    padding: 15px 15px;
+  }
+  .adopt-heart {
+    cursor: pointer
+  }
 </style>

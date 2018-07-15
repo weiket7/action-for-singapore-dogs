@@ -6,7 +6,7 @@
         </router-link>
       </div>
       <h3 class="adopt-grid-name">
-        <a :href="'/adopt/'+adopt.slug">{{ adopt.name }}</a>
+        <router-link :to="'/adopt/'+adopt.slug">{{ adopt.name }}</router-link>
       </h3>
       <p class="adopt-grid-content">
         <i v-if="adopt.gender == 'M'" class="fas fa-mars"></i>

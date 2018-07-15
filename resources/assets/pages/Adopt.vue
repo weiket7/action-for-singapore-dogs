@@ -178,7 +178,7 @@
             this.adopt_count = response.data.adopt_count;
             this.adopts_per_page = response.data.adopts_per_page;
           })
-          .catch(this.onError);
+          .catch(error => { console.log(error); });
       }
     },
     created: function() {
