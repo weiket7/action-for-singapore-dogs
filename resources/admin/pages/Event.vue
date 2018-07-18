@@ -40,16 +40,16 @@
                          :src="event.image" :error="errors.get('image')"></image-component>
       </form-row>
 
-      <hr>
+      <hr v-if="isAdoptionDrive">
 
-      <form-row>
+      <form-row v-if="isAdoptionDrive">
         <label-component>Search</label-component>
         <select2-component name='dog_name' url="api/adopt/search"
                            event_name="select-adopt"
                            v-on:select-adopt="selectAdopt"></select2-component>
       </form-row>
 
-      <form-row>
+      <form-row v-if="isAdoptionDrive">
         <label-component>Dogs</label-component>
         <static-text>
           <table class="table">
@@ -158,6 +158,9 @@
       },
       isBasicObedience() {
         return this.event.type === 'B';
+      },
+      isAdoptionDrive() {
+        return this.event.type === 'A';
       }
     },
     created() {

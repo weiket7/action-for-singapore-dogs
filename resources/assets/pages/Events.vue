@@ -4,49 +4,41 @@
 
       <div class="col-sm-7 col-md-8 col-lg-8">
 
-        <article v-for="event in events" class="post format-small-image">
+        <div v-for="event in events">
           <div class="side-item">
-            <div class="row">
-              <div class="col-md-5">
-                <router-link :to="'/events/' + event.slug">
-                <div class="item-media entry-thumbnail">
-                  <img :src="'assets/images/events/'+event.image" alt="">
-                </div>
-                </router-link>
+            <router-link :to="'/events/' + event.slug" v-if="event.image">
+              <div class="item-media entry-thumbnail">
+                <img :src="'assets/images/events/'+event.image" alt="">
               </div>
+            </router-link>
 
-              <div class="col-md-7">
-                <div class="item-content">
-                  <h4 class="entry-title">
-                    <router-link :to="'/events/' + event.slug">{{ event.name }}</router-link>
-                  </h4>
+            <h4 class="entry-title">
+              <router-link :to="'/events/' + event.slug">{{ event.name }}</router-link>
+            </h4>
 
-                  <p class="event-detail">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ event.location }}
-                    <br>
-                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-                    {{ event.date | formatDate }}
-                    <br>
-                    <i class="fa fa-clock" aria-hidden="true"></i> {{ event.time }}
-                    <span v-if="event.duration">
+            <p class="event-detail">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              {{ event.location }}
+              <br>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              {{ event.date | formatDate }}
+              <br>
+              <i class="fa fa-clock" aria-hidden="true"></i> {{ event.time }}
+              <span v-if="event.duration">
                       <br><i class="fas fa-ruler-horizontal" aria-hidden="true"></i> {{ event.duration }}
                     </span>
-                    <span v-if="event.cost">
+              <span v-if="event.cost">
                       <br><i class="fa fa-dollar-sign" aria-hidden="true"></i> {{ event.cost }}
                     </span>
-                  </p>
-                  <!--<p>Stet clita kasd gubergren, no sea takimata sanctus sed diam voluptua.</p>-->
-                  <p>
-                    <router-link  class="theme_button inverse bottommargin_0" :to="'/events/' + event.slug">Learn More</router-link>
-                  </p>
-                </div>
-              </div>
-            </div>
+            </p>
+            <!--<p>Stet clita kasd gubergren, no sea takimata sanctus sed diam voluptua.</p>-->
+            <p>
+              <router-link  class="theme_button inverse bottommargin_0" :to="'/events/' + event.slug">Learn More</router-link>
+            </p>
           </div>
 
-          <hr class="divider_40">
-        </article>
+          <hr class="divider_20">
+        </div>
 
       </div>
       <!--eof .col-sm-8 (main content)-->
@@ -99,7 +91,7 @@
           </div>
         </div>
         <br>
-        
+
         <button type="button" @click="filterEvent" class="theme_button inverse margin_0">Search</button>
       </div>
       <!-- eof aside sidebar -->

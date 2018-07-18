@@ -64,7 +64,8 @@ class AdoptController extends Controller {
         }
       });
     }
-    $data['adopts'] = $query->get();
+    $rand = $request->session()->get('rand');
+    $data['adopts'] = $query->orderByRaw("rand(".$rand.")")->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
     return $data;
   }
