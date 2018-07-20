@@ -7,34 +7,34 @@
 <!--<![endif]-->
 
 <head>
-    <title>Action for Singapore Dogs</title>
-    <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <![endif]-->
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    
-    <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/animations.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/fonts.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}" class="color-switcher-link">
-    <link rel="stylesheet" href="{{ asset("assets/css/shop.css") }}" class="color-switcher-link">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <title>Action for Singapore Dogs</title>
+  <meta charset="utf-8">
+  <!--[if IE]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <![endif]-->
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="{{ asset("manifest.json") }}">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  
+  <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}">
+  <link rel="stylesheet" href="{{ asset("assets/css/animations.css") }}">
+  <link rel="stylesheet" href="{{ asset("assets/css/fonts.css") }}">
+  <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}" class="color-switcher-link">
+  <link rel="stylesheet" href="{{ asset("assets/css/shop.css") }}" class="color-switcher-link">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset("assets/css/jquery.bxslider.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/jquery-ui.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}">
-    
-    <script src="{{ asset("assets/js/vendor/modernizr-2.6.2.min.js") }}"></script>
-    <!--[if lt IE 9]>
-    <script src="{{ asset("assets/js/vendor/html5shiv.min.js") }}"></script>
-    <script src="{{ asset("assets/js/vendor/respond.min.js") }}"></script>
-    <script src="{{ asset("assets/js/vendor/jquery-1.12.4.min.js") }}"></script>
-    <![endif]-->
+  <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}">
   
-    <link rel="shortcut icon" href="{{ asset("favicon.ico") }}" />
+  <script src="{{ asset("assets/js/vendor/modernizr-2.6.2.min.js") }}"></script>
+  <!--[if lt IE 9]>
+  <script src="{{ asset("assets/js/vendor/html5shiv.min.js") }}"></script>
+  <script src="{{ asset("assets/js/vendor/respond.min.js") }}"></script>
+  <script src="{{ asset("assets/js/vendor/jquery-1.12.4.min.js") }}"></script>
+  <![endif]-->
+  
+  <link rel="shortcut icon" href="{{ asset("favicon.ico") }}" />
 </head>
 
 <body>
