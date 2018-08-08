@@ -204,8 +204,10 @@ Her mother is a medium sized brown/white local cross.', 'admin', '2018-07-15'),
 ('King', 'A', '', 'M', '2013-05-01', 'Cross Breed', '', 1, 1, 1, 0, 'king-1634.jpg', 'Description: King is a family dog though he has been trained as a guard dog. He is an intelligent boy who is good with people but not good with other dogs. He loves pats and sidling up to people. King is best suited for adopters with experience.\nHistory: King was commercially boarded when his owner went away. Unfortunately the owner is away indefinitely and the kennel had to close so King has no home now.', 'admin', '2018-07-15'),
 ('Maka', 'A', '', 'M', '2012-05-01', 'Cross Breed', '', 1, 1, 1, 0, 'maka-1635.jpg', 'Description: Maka is of a unique breed, offspring of a Pedigree wildboar hunting line from Louisiana. Maka loves long runs, hikes and playing with his handler. He is quick and agile, a fast learner that thrives in play and dog obedience. He has not lived with other dogs and needs to be under close supervision with children. He will thrive under a firm handler and loving family.\nHistory: Maka came to Singapore from Hawaii 4 years ago. He has had a single owner from the time he was a puppy. His owner is unable to provide the care Maka needs due to work commitments and frequent travelling.', 'admin', '2018-07-15');
       ");
-      
+  
       DB::statement("update adopt set slug = lower(replace(name, ' ', '-'))");
+      DB::statement("update adopt set colour = ''");
+      DB::statement("update adopt set location = 'ARC'");
     }
 
     public function down()

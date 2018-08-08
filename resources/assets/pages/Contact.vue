@@ -14,7 +14,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <a href="#">Donate</a>
+                    <router-link to="donate">Donate</router-link>
                   </h5>
                 </div>
               </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <a href="#">Sponsor</a>
+                    <router-link to="pages/sponsor">Sponsor</router-link>
                   </h5>
                 </div>
               </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <a href="#">Volunteer</a>
+                    <router-link to="volunteer">Volunteer</router-link>
                   </h5>
                 </div>
               </div>
@@ -52,43 +52,59 @@
         <h3 class="entry-title black">Contact</h3>
 
         <form @submit.prevent="onSubmit()" class="contact-form columns_padding_5" method="post" action="">
-          <div class="col-sm-6">
-            <div class="contact-form-name">
-              <label for="name">Name
-                <span class="required">*</span>
-              </label>
-              <input type="text" v-model="contact.name" size="30" id="name" class="form-control" placeholder="Name" autofocus>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group no-mb">
+                <label class="control-label">Name <span class="required">*</span></label>
+                <input type="text" name="name" v-model="contact.name" class="form-control" autofocus>
+                <span class="help-block error" v-if="errors.get('name')">
+                  {{ errors.get('name') }}
+                </span>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="contact-form-subject">
-              <label for="subject">Subject
-                <span class="required">*</span>
-              </label>
-              <input type="text" v-model="contact.subject" size="30" id="subject" class="form-control" placeholder="Subject">
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="contact-form-phone">
-              <label for="mobile">Mobile
-                <span class="required">*</span>
-              </label>
-              <input type="text" v-model="contact.mobile" size="30" id="mobile" class="form-control" placeholder="Mobile">
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="contact-form-email">
-              <label for="email">Email address
-                <span class="required">*</span>
-              </label>
-              <input type="email" v-model="contact.email" size="30" id="email" class="form-control" placeholder="Email">
-            </div>
-          </div>
-          <div class="col-sm-12">
 
-            <div class="contact-form-message">
-              <label for="message">Message</label>
-              <textarea rows="6" cols="45" v-model="contact.message" id="message" class="form-control" placeholder="Message"></textarea>
+            <div class="col-md-6">
+              <div class="form-group no-mb">
+                <label class="control-label">Email <span class="required">*</span></label>
+                <input type="email" name="email" v-model="contact.email" class="form-control">
+                <span class="help-block error" v-if="errors.get('email')">
+                  {{ errors.get('email') }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group no-mb">
+                <label class="control-label">Mobile <span class="required">*</span></label>
+                <input type="text" name="mobile" v-model="contact.mobile" class="form-control">
+                <span class="help-block error" v-if="errors.get('mobile')">
+                  {{ errors.get('mobile') }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group no-mb">
+                <label class="control-label">Subject <span class="required">*</span></label>
+                <input type="text" name="subject" v-model="contact.subject" class="form-control">
+                <span class="help-block error" v-if="errors.get('subject')">
+                  {{ errors.get('subject') }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group no-mb">
+                <label class="control-label">Message <span class="required">*</span></label>
+                <textarea class="form-control" v-model="contact.message" rows="5"></textarea>
+                <span class="help-block error" v-if="errors.get('message')">
+                  {{ errors.get('message') }}
+                </span>
+              </div>
             </div>
           </div>
 

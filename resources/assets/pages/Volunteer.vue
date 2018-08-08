@@ -15,99 +15,99 @@
         <!--<h2 class="black highlight">Donator</h2>-->
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
         <form @submit.prevent="onSubmit()" class="donator-form topmargin_30 form-horizontal" id="donatorform" method="post" action="">
-          <div class="form-group">
-            <label for="name" class="col-sm-3 control-label">Name <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" v-model="volunteer.name" class="form-control" id="name" autofocus>
-              <span class="help-block error" v-if="errors.get('name')">
-                {{ errors.get('name') }}
-              </span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="email" v-model="volunteer.email" class="form-control" id="email">
-              <span class="help-block error" v-if="errors.get('email')">
-                {{ errors.get('email') }}
-              </span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="mobile" class="col-sm-3 control-label">Mobile <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" v-model="volunteer.mobile" class="form-control" id="mobile">
-              <span class="help-block error" v-if="errors.get('mobile')">
-                {{ errors.get('mobile') }}
-              </span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="birthday" class="col-sm-3 control-label">Birthday <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control datepicker" id="birthday" readonly>
-              <span class="help-block error" v-if="errors.get('birthday')">
-                {{ errors.get('birthday') }}
-              </span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="gender" class="col-sm-3 control-label">Gender <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <label class="radio-inline">
-                <input type="radio" v-model="volunteer.gender" name="gender" value="M"> Male
+          <volunteer-field name="Name" :error="errors.get('name')">
+            <input type="text" v-model="volunteer.name" class="form-control" autofocus>
+          </volunteer-field>
+
+          <volunteer-field name="Email" :error="errors.get('email')">
+            <input type="email" v-model="volunteer.email" class="form-control">
+          </volunteer-field>
+
+          <volunteer-field name="Mobile" :error="errors.get('mobile')">
+            <input type="text" v-model="volunteer.mobile" class="form-control">
+          </volunteer-field>
+
+          <volunteer-field name="Birthday" :error="errors.get('birthday')">
+            <input type="text" class="form-control datepicker" readonly>
+          </volunteer-field>
+
+          <volunteer-field name="Gender" :error="errors.get('gender')">
+            <label class="radio-inline">
+              <input type="radio" v-model="volunteer.gender" name="gender" value="M"> Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio" v-model="volunteer.gender" name="gender" value="F"> Female
+            </label>
+          </volunteer-field>
+
+          <volunteer-field name="Occupation" :error="errors.get('occupation')">
+            <input type="text" class="form-control" readonly>
+          </volunteer-field>
+
+          <volunteer-field name="Amount of time you can afford" :error="errors.get('time')">
+            <input type="text" v-model="volunteer.time" class="form-control">
+          </volunteer-field>
+
+          <volunteer-field name="I'm interested in" :error="errors.get('interests')">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="Rescuing"> Rescuing
               </label>
-              <label class="radio-inline">
-                <input type="radio" v-model="volunteer.gender" name="gender" value="F"> Female
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="Rehoming"> Rehoming
               </label>
-              <span class="help-block error" v-if="errors.get('gender')">
-                {{ errors.get('gender') }}
-              </span>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="mobile" class="col-sm-3 control-label">I'm interested in <span class="required">*</span></label>
-            <div class="col-sm-9">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="Rescuing"> Rescuing
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="Rehoming"> Rehoming
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="Fostering"> Fostering
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="Volunteering"> Volunteer at Adoption & Rescue Centre (ARC)
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="Publicity"> Publicity
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="Fund Raising & Events"> Fund Raising & Events
-                </label>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" v-model="volunteer.interests" value="Logistics"> Logistics
-                </label>
-              </div>
-              <span class="help-block error" v-if="errors.get('interests')">
-                {{ errors.get('interests') }}
-              </span>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="Fostering"> Fostering
+              </label>
             </div>
-          </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="Volunteering"> Volunteer at Adoption & Rescue Centre (ARC)
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="Publicity"> Publicity
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="Fund Raising & Events"> Fund Raising & Events
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="Logistics"> Logistics
+              </label>
+            </div>
+          </volunteer-field>
+
+          <volunteer-field name="Preferred dog size" :error="errors.get('preferred_dog_size')" v-if="has_fostering">
+            <select class="form-control" v-model="volunteer.preferred_dog_size">
+              <option>No preference</option>
+              <option>Large</option>
+              <option>Medium</option>
+              <option>Small</option>
+            </select>
+          </volunteer-field>
+
+          <volunteer-field name="Number of dogs currently" :error="errors.get('current_no_of_dogs')" v-if="has_fostering">
+            <input type="text" v-model="volunteer.current_no_of_dogs" class="form-control">
+          </volunteer-field>
+
+          <volunteer-field name="Area to help in" :error="errors.get('publicity_area')" v-if="has_publicity">
+            <select v-model="publicity_area" class="form-control">
+              <option value=""></option>
+              <option value="Designing">Designing</option>
+              <option value="Pamphlet Distribution">Pamphlet Distribution</option>
+              <option value="Media Producer">Media Producer</option>
+              <option value="Education Counsellor">Education Counsellor</option>
+            </select>
+          </volunteer-field>
 
           <div class="form-group">
             <div class="col-sm-12 col-sm-offset-3">
@@ -124,28 +124,43 @@
         </form>
       </div>
       <div class="col-md-6 text-center bottommargin_0">
-        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-          <panel title="Rescuing" id="rescuing">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </panel>
-          <panel title="Rehoming" id="rehoming">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </panel>
-          <panel title="Fostering" id="fostering">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </panel>
-          <panel title="Volunteering at Adoption & Rescue Centre (ARC)" id="volunteering">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </panel>
-          <panel title="Publicity" id="publicity">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </panel>
-          <panel title="Fund Raising & Events" id="fund-raising-events">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </panel>
-          <panel title="Logistics" id="logistics">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </panel>
+        <div class="row">
+          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'rescuing'">
+            <img src="assets/images/rescue.jpg" class="img-rounded">
+            <br>Rescuing
+          </div>
+          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'rehoming'">
+            <img src="assets/images/rehoming.jpg" class="img-rounded">
+            <br>Rehoming
+          </div>
+          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'fostering'">
+            <img src="assets/images/fostering.jpg" class="img-rounded">
+            <br>Fostering
+          </div>
+          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'volunteer'">
+            <img src="assets/images/volunteer.png" class="img-rounded">
+            <br>Volunteer
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'fund-raising'">
+            <img src="assets/images/fund-raising.jpg" class="img-rounded">
+            <br>Fund Raising
+          </div>
+          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'publicity'">
+            <img src="assets/images/publicity.jpg" class="img-rounded">
+            <br>Publicity
+          </div>
+          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'logistics'">
+            <img src="assets/images/logistics.gif" class="img-rounded">
+            <br>Logistics
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mt-10 mb-20">(Click on the image to learn more)</div>
+
+          {{ selectedActivity}} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
         </div>
       </div>
     </div>
@@ -153,7 +168,7 @@
 </template>
 
 <script>
-  import Panel from '../components/Panel';
+  import VolunteerField from '../components/VolunteerField';
   import axios from 'axios';
   import moment from 'moment';
   import Errors from '../../common/errors';
@@ -164,11 +179,9 @@
       return {
         volunteer: { name: "", mobile: "", email: "", interests: [] },
         success: false,
+        selectedActivity: false,
         errors: new Errors()
       }
-    },
-    components: {
-      Panel
     },
     mounted() {
       let vue = this
@@ -202,6 +215,23 @@
         this.success = false;
         this.errors.record(error.response.data.errors);
       },
-    }
+    },
+    computed: {
+      has_fostering() {
+        return this.volunteer.interests.indexOf("Fostering") >= 0;
+      },
+      has_publicity() {
+        return this.volunteer.interests.indexOf("Publicity") >= 0;
+      }
+    },
+    components: {
+      VolunteerField
+    },
   }
 </script>
+
+<style scoped="scoped">
+  .clickable {
+    cursor: pointer;
+  }
+</style>

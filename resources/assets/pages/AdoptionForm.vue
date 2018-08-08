@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Name</label>
+            <label class="control-label">Name <span class="required">*</span></label>
             <input type="text" name="name" v-model="form.name" class="form-control" autofocus>
             <span class="help-block error" v-if="errors.get('name')">
               {{ errors.get('name') }}
@@ -26,7 +26,7 @@
 
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Email</label>
+            <label class="control-label">Email <span class="required">*</span></label>
             <input type="email" name="email" v-model="form.email" class="form-control">
             <span class="help-block error" v-if="errors.get('email')">
               {{ errors.get('email') }}
@@ -38,7 +38,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Mobile</label>
+            <label class="control-label">Mobile <span class="required">*</span></label>
             <input type="text" name="mobile" v-model="form.mobile" class="form-control">
             <span class="help-block error" v-if="errors.get('mobile')">
               {{ errors.get('mobile') }}
@@ -48,7 +48,7 @@
 
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Birthday</label>
+            <label class="control-label">Birthday <span class="required">*</span></label>
             <input type="text" name="birthday" v-model="form.birthday" class="form-control datepicker" readonly>
             <span class="help-block error" v-if="errors.get('birthday')">
               {{ errors.get('birthday') }}
@@ -60,7 +60,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Gender</label>
+            <label class="control-label">Gender <span class="required">*</span></label>
             <div class="radio">
               <label class="radio-inline">
                 <input type="radio" v-model="form.gender" name="gender" value="M"> Male
@@ -77,7 +77,7 @@
 
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Address</label>
+            <label class="control-label">Address <span class="required">*</span></label>
             <input type="text" v-model="form.address" class="form-control">
             <span class="help-block error" v-if="errors.get('address')">
               {{ errors.get('address') }}
@@ -89,7 +89,7 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group no-mb">
-            <label class="control-label">Postal Code</label>
+            <label class="control-label">Postal Code <span class="required">*</span></label>
             <input type="text" v-model="form.postal" class="form-control">
             <span class="help-block error" v-if="errors.get('postal')">
               {{ errors.get('postal') }}
@@ -97,10 +97,8 @@
           </div>
         </div>
       </div>
-      
-      <hr>
 
-      <div class="row">
+      <div class="row mt-20">
         <div class="col-md-12 text-center">
           <button type="submit">I want to adopt</button>
 

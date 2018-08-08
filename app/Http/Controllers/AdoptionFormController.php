@@ -38,8 +38,8 @@ class AdoptionFormController extends Controller {
   
   public function getApplication(Request $request, $application_token) {
     $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
-    if ($adoption_form->stat != AdoptionFormStat::Enquiry) {
-      throw new Exception();
+    if ($adoption_form->applied_on) {
+      throw new Exception('getApplication Adoption form id = ' . $adoption_form->adoption_form_id . ' already applied');
     }
     $question_ids = Question::where('is_header', false)->pluck('question_id');
     $answers = [];
@@ -54,20 +54,29 @@ class AdoptionFormController extends Controller {
   
   public function saveApplication(Request $request, $application_token) {
     $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
+    if ($adoption_form->applied_on) {
+      throw new Exception('saveApplication Adoption form id = ' . $adoption_form->adoption_form_id . ' already applied');
+    }
+    
     $adoption_form->saveApplication($request->all());
   }
   
   public function approve(Request $request, $adoption_form_id) {
     $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
+    if ($adoption_form->approved_on) {
+      throw new Exception('approve Adoption form id = ' . $adoption_form->adoption_form_id . ' already approved');
+    }
+    
     $adoption_form->approve($request->all(), Auth::user()->username);
     Mail::to(env("MAIL_INBOX"))->send(new AdoptionAgreementMail($adoption_form));
   }
   
   public function getAgreement(Request $request, $agreement_token) {
     $adoption_form = AdoptionForm::where('agreement_token', $agreement_token)->first();
-    if ($adoption_form->stat != AdoptionFormStat::PendingSignature) {
-      throw new Exception();
+    if ($adoption_form->agreed_on) {
+      throw new Exception('getAgreement - Adoption form id = ' . $adoption_form->adoption_form_id . ' already agreed');
     }
+    
     $data['adoption_form'] = $adoption_form;
     $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form->adoption_form_id)
       ->select('question', 'answer')->get();
@@ -76,6 +85,10 @@ class AdoptionFormController extends Controller {
   
   public function saveAgreement(Request $request, $agreement_token) {
     $adoption_form = AdoptionForm::where('agreement_token', $agreement_token)->first();
+    if ($adoption_form->agreed_on) {
+      throw new Exception('saveAgreement Adoption form id = ' . $adoption_form->adoption_form_id . ' already agreed');
+    }
+    
     $adoption_form->saveAgreement($request->all());
 
     $person = new Person();
