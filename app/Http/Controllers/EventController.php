@@ -28,7 +28,7 @@ class EventController extends Controller {
   }
   
   public function all(Request $request) {
-    $data['events'] = Event::all();
+    $data['events'] = Event::orderBy('date', 'desc')->get();
     $data['event_stats'] = EventStat::$values;
     return $data;
   }

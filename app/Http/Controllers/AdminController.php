@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller {
+  public function permission() {
+    return DB::table('user_permission')
+      ->where('user_id', Auth::user()->id)->pluck('permission');
+  }
+  
   public function backend() {
     if (!Auth::check()) {
       return redirect('login');

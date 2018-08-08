@@ -16,7 +16,7 @@
               </header>
 
               <div class="entry-content">
-                <template v-if="event.adoption_drive">
+                <template v-if="is_adoption_drive">
                   <p class="event-detail">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     {{ event.location }}
@@ -81,9 +81,13 @@
     name: "event-view",
     data() {
       return {
-        slug: '{{ $slug }}',
         event: {},
         adopts: {},
+      }
+    },
+    computed: {
+      is_adoption_drive() {
+        return this.event.type === 'A';
       }
     },
     created: function() {

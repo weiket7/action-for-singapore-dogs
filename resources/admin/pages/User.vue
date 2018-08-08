@@ -36,8 +36,9 @@
         user: {},
         errors: new Errors(),
         permissions: [],
-        permissions_options: ['Dogs', 'People', 'Volunteer', 'Sponsorships', 'Donations', 'Banners', 'Events',
-          'Adoption Forms', 'Users', 'Pages']
+        permissions_options: ['Dogs', 'People', 'Adopters', 'Rescuers', 'Fosters', 'Volunteers',
+          'Sponsorships', 'Donations', 'Banners', 'Events', 'Adoption', 'Questions',
+          'Users', 'Pages']
       }
     },
     computed: {

@@ -13,7 +13,7 @@
         <tr v-for="volunteer in volunteers">
           <td>{{ volunteer_stats[volunteer.stat] }}</td>
           <td width="450px">
-            <router-link v-bind:to="'/volunteer/save/'+volunteer.volunteer_id">{{ volunteer.name }}</router-link>
+            <router-link :to="'/volunteer/save/'+volunteer.volunteer_id">{{ volunteer.name }}</router-link>
           </td>
           <td>{{ volunteer.mobile }}</td>
         </tr>

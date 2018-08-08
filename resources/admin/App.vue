@@ -12,22 +12,7 @@
         data-menu-vertical="true"
         data-menu-scrollable="false" data-menu-dropdown-timeout="500"
       >
-        <menu-component :menus="[
-          { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
-          { 'name': 'People', 'link': 'person', 'icon': 'users' },
-          { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-plus' },
-          { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
-          { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-md' },
-          { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
-          { 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },
-          { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
-          { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
-          { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
-          { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
-          /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
-          { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' },
-          { 'name': 'Pages', 'link': 'page', 'icon': 'font' }
-        ]"/>
+        <menu-component :menus="menus"/>
       </div>
       <!-- END: Aside Menu -->
     </div>
@@ -67,17 +52,53 @@
 
   import MenuComponent from './components/MenuComponent'
   import TextareaComponent from './components/TextareaComponent'
+  import axios from 'axios'
 
   export default {
     name: 'app',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Welcome to Your Vue.js App',
+        permissions: []
       }
     },
     components: {
       'menu-component': MenuComponent,
       TextareaComponent
+    },
+    computed: {
+      menus() {
+        let menus = [
+          { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
+          { 'name': 'People', 'link': 'person', 'icon': 'users' },
+          { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-plus' },
+          { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
+          { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-md' },
+          { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
+          { 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },
+          { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
+          { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
+          { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
+          { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
+          /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
+          { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' },
+          { 'name': 'Pages', 'link': 'page', 'icon': 'font' }
+        ];
+        for(var i=0; i<menus.length; i++) {
+          if(this.permissions.indexOf(menus[i].name) < 0) {
+            menus.splice(i, 1);
+          }
+        }
+        return menus;
+      }
+    },
+    created() {
+      axios.get('api/permission')
+        .then(response => {
+          this.permissions = response.data;
+          console.log(response.data);
+
+        });
     }
   }
 </script>

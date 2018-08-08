@@ -27,6 +27,8 @@ Route::get('api/adoption-form/get-agreement/{agreement_token}', 'AdoptionFormCon
 Route::post('api/adoption-form/save-agreement/{agreement_token}', 'AdoptionFormController@saveAgreement');
 
 Route::group(['middleware' => 'auth'], function () {
+  Route::get('api/permission', 'AdminController@permission');
+  
   Route::get('api/adopt', 'AdoptController@all');
   Route::get('api/adopt/search', 'AdoptController@search');
   Route::get('api/adopt/get/{adopt_id}', 'AdoptController@get');

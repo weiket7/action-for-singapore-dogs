@@ -96,7 +96,7 @@
           this.volunteer_stats = response.data.volunteer_stats;
           this.interests = response.data.interests;
         })
-        .catch(error => { console.log(error); });
+        .catch(this.onError );
     },
     mounted() {
       let vue = this
