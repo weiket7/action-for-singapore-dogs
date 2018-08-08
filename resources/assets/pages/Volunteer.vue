@@ -15,23 +15,23 @@
         <!--<h2 class="black highlight">Donator</h2>-->
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
         <form @submit.prevent="onSubmit()" class="donator-form topmargin_30 form-horizontal" id="donatorform" method="post" action="">
-          <volunteer-field name="Name" :error="errors.get('name')">
+          <volunteer-field name="Name" :error="errors.get('name')" :required="true">
             <input type="text" v-model="volunteer.name" class="form-control" autofocus>
           </volunteer-field>
 
-          <volunteer-field name="Email" :error="errors.get('email')">
+          <volunteer-field name="Email" :error="errors.get('email')" :required="true">
             <input type="email" v-model="volunteer.email" class="form-control">
           </volunteer-field>
 
-          <volunteer-field name="Mobile" :error="errors.get('mobile')">
+          <volunteer-field name="Mobile" :error="errors.get('mobile')" :required="true">
             <input type="text" v-model="volunteer.mobile" class="form-control">
           </volunteer-field>
 
-          <volunteer-field name="Birthday" :error="errors.get('birthday')">
+          <volunteer-field name="Birthday" :error="errors.get('birthday')" :required="true">
             <input type="text" class="form-control datepicker" readonly>
           </volunteer-field>
 
-          <volunteer-field name="Gender" :error="errors.get('gender')">
+          <volunteer-field name="Gender" :error="errors.get('gender')" :required="true">
             <label class="radio-inline">
               <input type="radio" v-model="volunteer.gender" name="gender" value="M"> Male
             </label>
@@ -40,15 +40,15 @@
             </label>
           </volunteer-field>
 
-          <volunteer-field name="Occupation" :error="errors.get('occupation')">
-            <input type="text" class="form-control" readonly>
+          <volunteer-field name="Occupation" :error="errors.get('occupation')" :required="true">
+            <input type="text" v-model="volunteer.occupation" class="form-control">
           </volunteer-field>
 
-          <volunteer-field name="Amount of time you can afford" :error="errors.get('time')">
-            <input type="text" v-model="volunteer.time" class="form-control">
+          <volunteer-field name="Amount of time you can afford" :error="errors.get('availability')" :required="true">
+            <input type="text" v-model="volunteer.availability" class="form-control">
           </volunteer-field>
 
-          <volunteer-field name="I'm interested in" :error="errors.get('interests')">
+          <volunteer-field name="I'm interested in" :error="errors.get('interests')" :required="true">
             <div class="checkbox">
               <label>
                 <input type="checkbox" v-model="volunteer.interests" value="Rescuing"> Rescuing
@@ -97,6 +97,10 @@
 
           <volunteer-field name="Number of dogs currently" :error="errors.get('current_no_of_dogs')" v-if="has_fostering">
             <input type="text" v-model="volunteer.current_no_of_dogs" class="form-control">
+          </volunteer-field>
+
+          <volunteer-field name="Type of vehicle" :error="errors.get('vehicle')" v-if="has_logistics">
+            <input type="text" v-model="volunteer.vehicle" class="form-control">
           </volunteer-field>
 
           <volunteer-field name="Area to help in" :error="errors.get('publicity_area')" v-if="has_publicity">
@@ -222,6 +226,9 @@
       },
       has_publicity() {
         return this.volunteer.interests.indexOf("Publicity") >= 0;
+      },
+      has_logistics() {
+        return this.volunteer.interests.indexOf("Logistics") >= 0;
       }
     },
     components: {

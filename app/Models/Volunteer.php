@@ -20,8 +20,14 @@ class Volunteer extends Model
     $this->name = $input['name'];
     $this->email = $input['email'];
     $this->mobile = $input['mobile'];
-    $this->gender = $input['gender'];
     $this->birthday = $input['birthday'];
+    $this->gender = $input['gender'];
+    $this->occupation = $input['occupation'];
+    $this->availability = $input['availability'];
+    $this->vehicle = $input['vehicle'] ?? null;
+    $this->preferred_dog_size = $input['preferred_dog_size'] ?? null;
+    $this->current_no_of_dogs = $input['current_no_of_dogs'] ?? null;
+    $this->publicity_area = $input['publicity_area'] ?? null;
     $this->created_on = Carbon::now();
     $this->save();
     $this->saveVolunteerInterest($input['interests']);

@@ -28,6 +28,14 @@
       <form-row>
         <label-component>Interested In</label-component>
         <checkbox-component v-model="interests" :options="interested_in_options" v-if="volunteer"></checkbox-component>
+
+        <label-component>Remarks</label-component>
+        <static-text>
+          <div v-if="interests.indexOf('Fostering') >= 0">Preferred Dog Size: <input type="text" v-model="volunteer.preferred_dog_size" class="form-control"></div>
+          <div v-if="interests.indexOf('Fostering') >= 0">Number of dogs currently: <input type="text" v-model="volunteer.current_no_of_dogs" class="form-control"></div>
+          <div v-if="interests.indexOf('Publicity') >= 0">Area to help in: <input type="text" v-model="volunteer.publicity_area" class="form-control"></div>
+          <div v-if="interests.indexOf('Logistics') >= 0">Type of vehicle: <input type="text" v-model="volunteer.vehicle" class="form-control"></div>
+        </static-text>
       </form-row>
   
       <form-footer>

@@ -16,8 +16,14 @@ class VolunteerTable extends Migration
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
-      $table->char('gender', 1);
       $table->dateTime('birthday');
+      $table->char('gender', 1);
+      $table->string('occupation', 50);
+      $table->string('availability', 50);
+      $table->string('vehicle', 50)->nullable();
+      $table->string('preferred_dog_size', 50)->nullable();
+      $table->string('current_no_of_dogs', 50)->nullable();
+      $table->string('publicity_area', 50)->nullable();
       $table->dateTime('created_on');
       $table->string('desc', 250)->nullable();
     });
@@ -28,6 +34,8 @@ class VolunteerTable extends Migration
       'email'=>'vivien@gmail.com',
       'mobile'=>'9123 6666',
       'gender'=>'F',
+      'availability'=>'',
+      'occupation'=>'',
       'birthday'=>Carbon::now()->subYear(18),
       'created_on'=>Carbon::now(),
     ]);
@@ -38,6 +46,8 @@ class VolunteerTable extends Migration
       'email'=>'valora@gmail.com',
       'mobile'=>'9876 6666',
       'gender'=>'F',
+      'availability'=>'',
+      'occupation'=>'',
       'birthday'=>Carbon::now()->subYear(30),
       'created_on'=>Carbon::now(),
     ]);

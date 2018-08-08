@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label class="col-sm-3 control-label">{{ name }} <span class="required">*</span></label>
+    <label class="col-sm-3 control-label">{{ name }} <span class="required" v-if="required">*</span></label>
     <div class="col-sm-9">
       <slot></slot>
       <span class="help-block error" v-if="error">
@@ -13,7 +13,7 @@
 <script>
   export default {
     name: "volunteer-field",
-    props: ["name", "error"]
+    props: ["name", "error", "required"]
   }
 </script>
 
