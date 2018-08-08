@@ -54,16 +54,19 @@
                     
                     {{ event.desc }}
                   </p>
-  
-                  <p class="topmargin_30">
-                    <span class="rightpadding_20 fontsize_18 grey">Share:</span>
-                    <span class="small-icons">
-										<a href="#" class="social-icon color-icon bg-icon rounded-icon soc-facebook"></a>
-										<a href="#" class="social-icon color-icon bg-icon rounded-icon soc-twitter"></a>
-										<a href="#" class="social-icon color-icon bg-icon rounded-icon soc-linkedin"></a>
-									</span>
-                  </p>
                 </template>
+
+                <p class="topmargin_30">
+                  <div class="fb-share-button"
+                       :data-href="url"
+                       data-layout="button_count" data-size="large"
+                       data-mobile-iframe="true">
+                    <a target="_blank" :href="url"
+                       class="fb-xfbml-parse-ignore">Share</a>
+                  </div>
+
+
+                </p>
               </div>
             </div>
           </article>
@@ -86,6 +89,9 @@
       }
     },
     computed: {
+      url() {
+        return window.location.href;
+      },
       is_adoption_drive() {
         return this.event.type === 'A';
       }
@@ -96,7 +102,15 @@
           this.event = response.data.event;
           this.adopts = chunk(response.data.adopts, 4);
         })
-        .catch(error => { console.log(error); })
+        .catch(error => { console.log(error); });
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=673207399709727&autoLogAppEvents=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     },
     components: {AdoptItem},
   }

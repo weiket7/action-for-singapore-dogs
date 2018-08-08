@@ -1,6 +1,6 @@
 <template>
   <div id="box_wrapper">
-    <section class="page_toplogo table_section table_section_md ls">
+    <section class="page_toplogo table_section table_section_md ls" v-if="show_menu">
       <div class="container">
         <div class="row">
           <div class="col-md-4 text-md-left">
@@ -57,7 +57,7 @@
       </div>
     </section>
     
-    <header class="page_header header_yellow bordered_items">
+    <header class="page_header header_yellow bordered_items" v-if="show_menu">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 text-center">
@@ -150,7 +150,7 @@
       </router-view>
     </section>
     
-    <footer class="page_footer ds ms parallax">
+    <footer class="page_footer ds ms parallax" v-if="show_menu">
       <div class="container">
         <div class="row columns_padding_50 bottommargin_20">
           <div class="col-md-4">
@@ -199,6 +199,9 @@
       }
     },
     computed: {
+      show_menu() {
+        return this.$route.query.plain != "yes";
+      },
       heart_count() {
         return this.hearts.length
       }
@@ -217,9 +220,6 @@
     color: #ffffff;
   }
 
-  .entry-date {
-    color :#666666;
-  }
   .top-email-icon {
     padding-right: 5px;
   }
