@@ -5,6 +5,10 @@ use App\Mail\ContactMail;
 use App\Models\Adopt;
 use App\Models\Banner;
 use App\Models\Enums\AdoptStat;
+use App\Models\Enums\EventType;
+use App\Models\Event;
+use App\Models\Page;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -17,9 +21,51 @@ class SiteController extends Controller {
     $rand = $request->session()->get('rand');
     $count = 8;
     $data['banners'] = Banner::all();
-    $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
+    $adopts = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
-    return $data;
+    $data['adopts_desktop'] = $adopts->chunk(4);
+    $data['adopts_mobile'] = $adopts->chunk(2);
+    //var_dump($data['adopts_desktop']);
+    //return;
+    return view('home', $data);
+  }
+  
+  public function contact(Request $request) {
+    return view('contact');
+  }
+  
+  public function events(Request $request) {
+    $adoption_drives = Event::where('date', '>=', Carbon::today())->where('type', EventType::AdoptionDrive)->get();
+    $events = Event::where('date', '>=', Carbon::today())->orderBy('date', "desc")->get();
+    $data['events'] = $adoption_drives->merge($events);
+    return view('events', $data);
+  }
+  
+  public function volunteer(Request $request) {
+    return view('volunteer');
+  }
+  
+  public function donate(Request $request) {
+    return view('donate');
+  }
+  
+  public function pages(Request $request, $slug) {
+    $data['page'] = Page::where('slug', $slug)->first();
+    return view('pages', $data);
+  }
+  
+  public function dogsForAdoption(Request $request, $current_page = 1) {
+    if (! $request->session()->get('rand')) {
+      $request->session()->put('rand', rand());
+    }
+    $page_limit = 24;
+    $offset = ($current_page-1)*$page_limit;
+    $rand = $request->session()->get('rand');
+    $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
+      ->orderByRaw("rand(".$rand.")")->skip($offset)->limit($page_limit)->get();
+    $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
+    $data['adopts_per_page'] = $page_limit;
+    return view('adopt', $data);
   }
   
   public function form(ContactRequest $request) {

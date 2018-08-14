@@ -1,5 +1,6 @@
-<template>
-    <div class="adopt-grid-border">
+Vue.component('adopt-item', {
+  template: `
+  <div class="adopt-grid-border">
       <div class="adopt-grid-image">
         <router-link :to="'/adopt/'+adopt.slug">
           <img :src="'assets/images/adopts/'+adopt.image" alt="">
@@ -31,39 +32,12 @@
         </div>
       </div>
     </div>
-</template>
-
-<script>
-  export default {
-    name: "adopt-item",
-    props: ['adopt', 'highlight'],
-    methods: {
-      heartAdopt() {
-        this.$emit('heart-adopt', this.adopt.adopt_id);
-      },
-    }
+  `,
+  name: "adopt-item",
+  props: ['adopt', 'highlight'],
+  methods: {
+    heartAdopt() {
+      this.$emit('heart-adopt', this.adopt.adopt_id);
+    },
   }
-</script>
-
-<style scoped>
-  /*@media (min-width: 768px) {
-    .adopt-grid-image {
-      height: 200px;
-      overflow-y: hidden;
-    }
-  }*/
-  .adopt-grid-border {
-    border: 1px solid #ddd;
-    padding: 5px;
-  }
-  .adopt-grid-name {
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
-  .adopt-grid-content {
-    line-height: 24px;
-  }
-  .adopt-heart {
-    cursor: pointer
-  }
-</style>
+})

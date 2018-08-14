@@ -189,57 +189,6 @@
         </div>
       </div>
     </section>
-
-    <!--<section id="about" class="cs section_padding_0 columns_padding_0 columns_margin_0">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-4 col-sm-6 after_cover color_bg_1 light bg_teaser text-center">
-            <div class="toppadding_60 bottompadding_60 inline-block text-left">
-              <h2 class="bold">.01 Donator</h2>
-              <a href="careers.html" class="theme_button inverse">Learn more</a>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 after_cover color_bg_1 medium bg_teaser text-center">
-            <div class="toppadding_60 bottompadding_60 inline-block text-left">
-              <h2 class="bold">.02 Volunteer</h2>
-              <a href="careers.html" class="theme_button inverse">Learn more</a>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 after_cover color_bg_1 darken bg_teaser text-center">
-            <div class="toppadding_60 bottompadding_60 inline-block text-left">
-              <h2 class="bold">.03 Adopter</h2>
-              <a href="careers.html" class="theme_button inverse">Learn more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>-->
-
-    <!--<section class="ds page_video parallax section_padding_100 table_section table_section_md columns_padding_0 columns_margin_0">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-push-6">
-            <div class="embed-responsive embed-responsive-2by1 topmargin_20">
-              <a href="https://www.youtube.com/embed/xKxrkht7CpY" class="embed-placeholder">
-                <img src="images/video.jpg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 col-md-pull-6">
-            <div class="with_padding_big with_border thick_border right-offset">
-              <h2 class="section_header">
-                <strong>135 dogs for adoption</strong>
-              </h2>
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-              <p class="inline-vertical-center">
-
-                <a href="donation.html" class="theme_button wide_button inverse2 margin_0">Dogs for Adoption</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>-->
   </div>
 
 </template>

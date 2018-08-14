@@ -7,6 +7,14 @@ Route::get('logout', 'AdminController@logout');
 Route::get('backend', 'AdminController@backend');
 
 Route::get('api/home', 'SiteController@home');
+Route::get('home', 'SiteController@home');
+Route::get('contact', 'SiteController@contact');
+Route::get('events', 'SiteController@events');
+Route::get('volunteer', 'SiteController@volunteer');
+Route::get('donate', 'SiteController@donate');
+Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
+Route::get('pages/{slug}', 'SiteController@pages');
+
 Route::get('api/event/latest', 'EventController@latest');
 Route::post('api/event/filter', 'EventController@filter');
 Route::get('api/page/get/{page_id}', 'PageController@get');
