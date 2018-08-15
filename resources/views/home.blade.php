@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('content')
-  <div class="container content">
+  <div id="app" class="container content">
     <div class="row">
       <div class="col-md-8">
         <div class="bxslider">
@@ -108,17 +108,17 @@
       <div class="row">
         <div class="visible-lg visible-md">
           <div class="bxslider">
-            @foreach($adopts_desktop as $chunk)
-              <div class="bxslider-row">
-                @each('adopt-item', $chunk, 'adopt')
+            <div v-for="chunk in adopts_desktop" class="bxslider-row">
+              <div v-for="adopt in chunk" class="col-xs-3">
+                <adopt-item :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
               </div>
-            @endforeach
+            </div>
           </div>
         </div>
         
         <div class="hidden-lg hidden-md">
           <div class="bxslider">
-            <div v-for="chunk in adopts_mobile" class="row bxslider-row">
+            <div v-for="chunk in adopts_mobile" class="bxslider-row">
               <div v-for="adopt in chunk" class="col-xs-6">
                 <adopt-item :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
               </div>
@@ -197,6 +197,18 @@
 
 @section('script')
   <script>
+    var vm = new Vue({
+      el: "#app",
+      data: {
+        adopts: {!!  json_encode($adopts) !!},
+        adopts_desktop: [],
+        adopts_mobile: [],
+      },
+      created() {
+        this.adopts_desktop = _.chunk(this.adopts, 4);
+        this.adopts_mobile = _.chunk(this.adopts, 2);
+      }
+    });
     $('.bxslider').bxSlider();
   </script>
 @endsection

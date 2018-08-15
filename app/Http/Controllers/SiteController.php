@@ -25,12 +25,8 @@ class SiteController extends Controller {
     $rand = $request->session()->get('rand');
     $count = 8;
     $data['banners'] = Banner::all();
-    $adopts = Adopt::where('stat', AdoptStat::Available)
+    $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
-    $data['adopts_desktop'] = $adopts->chunk(4);
-    $data['adopts_mobile'] = $adopts->chunk(2);
-    //var_dump($data['adopts_desktop']);
-    //return;
     return view('home', $data);
   }
   
