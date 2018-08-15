@@ -1,20 +1,21 @@
 <?php
 
-Route::get('/', function () { return view("welcome"); });
+//Route::get('/', function () { return view("welcome"); });
+Route::get('/', 'SiteController@home');
 Route::get('login', 'AdminController@login');
 Route::post('login', 'AdminController@login');
 Route::get('logout', 'AdminController@logout');
 Route::get('backend', 'AdminController@backend');
 
-Route::get('api/home', 'SiteController@home');
-Route::get('home', 'SiteController@home');
 Route::get('contact', 'SiteController@contact');
 Route::get('events', 'SiteController@events');
 Route::get('volunteer', 'SiteController@volunteer');
 Route::get('donate', 'SiteController@donate');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
+Route::get('adopt/{slug}', 'SiteController@adopt');
 Route::get('pages/{slug}', 'SiteController@pages');
 
+Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');
 Route::post('api/event/filter', 'EventController@filter');
 Route::get('api/page/get/{page_id}', 'PageController@get');

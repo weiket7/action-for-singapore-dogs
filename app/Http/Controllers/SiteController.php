@@ -68,6 +68,11 @@ class SiteController extends Controller {
     return view('adopt', $data);
   }
   
+  public function adopt(Request $request, $slug) {
+    $data['adopt'] =  Adopt::where('slug', $slug)->first();
+    return view('adopt-view', $data);
+  }
+  
   public function form(ContactRequest $request) {
     Mail::to(env("MAIL_INBOX"))->send(new ContactMail($request->all()));
   }

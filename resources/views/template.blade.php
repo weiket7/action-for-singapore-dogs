@@ -78,13 +78,13 @@
           
           <a href="{{ url('i-want-to-adopt') }}" class="media small-teaser top-heart">
             <div class="media-left top-heart-icon">
-              <div class="teaser_icon fontsize_18" :class="{'highlight': hearts > 0}">
+              <div id="heart_icon" class="teaser_icon fontsize_18">
                 <i class="fa fa-heart fa-2x"></i>
               </div>
             </div>
             <div class="media-body top-heart-number">
-              <h4>
-                @{{ heart_count }}
+              <h4 id="heart_count">
+              
               </h4>
             </div>
           </a>
@@ -232,6 +232,13 @@
 <script src="{{ asset("assets/js/volunteer-field.js" ) }}"></script>
 <script src="{{ asset("assets/js/adopt-item.js" ) }}"></script>
 <script src="{{ asset("assets/js/moment.min.js" ) }}"></script>
+<script src="{{ asset("assets/js/heart.js" ) }}"></script>
+
+<script>
+  $(document).ready(function() {
+    window.updateHeartHeader();
+  })
+</script>
 
 @section('script')
 

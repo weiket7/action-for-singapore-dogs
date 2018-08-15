@@ -16,7 +16,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <router-link to="donate">Donate</router-link>
+                    <a href="donate">Donate</a>
                   </h5>
                 </div>
               </div>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <router-link to="pages/sponsor">Sponsor</router-link>
+                    <a href="pages/sponsor">Sponsor</a>
                   </h5>
                 </div>
               </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <router-link to="volunteer">Volunteer</router-link>
+                    <a href="volunteer">Volunteer</a>
                   </h5>
                 </div>
               </div>

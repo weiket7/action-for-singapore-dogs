@@ -2,12 +2,12 @@ Vue.component('adopt-item', {
   template: `
   <div class="adopt-grid-border">
       <div class="adopt-grid-image">
-        <router-link :to="'/adopt/'+adopt.slug">
+        <a :href="'adopt/'+adopt.slug">
           <img :src="'assets/images/adopts/'+adopt.image" alt="">
-        </router-link>
+        </a>
       </div>
       <h3 class="adopt-grid-name">
-        <router-link :to="'/adopt/'+adopt.slug">{{ adopt.name }}</router-link>
+        <a :href="'adopt/'+adopt.slug">{{ adopt.name }}</a>
       </h3>
       <p class="adopt-grid-content">
         <i v-if="adopt.gender == 'M'" class="fas fa-mars"></i>
@@ -25,7 +25,7 @@ Vue.component('adopt-item', {
       </p>
       <div class="row">
         <div class="col-xs-8">
-          <router-link :to="'adopt/'+adopt.slug" class="theme_button inverse margin_0">Learn More</router-link>
+          <a :href="'adopt/'+adopt.slug" class="theme_button inverse margin_0">Learn More</a>
         </div>
         <div class="col-xs-4 text-right">
           <i @click="heartAdopt" :class="{'highlight': highlight}" class="fas fa-heart fa-2x adopt-heart"></i>
