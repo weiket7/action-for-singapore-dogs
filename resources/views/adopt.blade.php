@@ -118,9 +118,9 @@
     var vm = new Vue({
       el: "#app",
       data: {
-        adopts: {},
-        adopts_per_page: 0,
-        adopt_count: 0,
+        adopts: {!! json_encode($adopts) !!},
+        adopt_count: {{ ($adopt_count) }},
+        adopts_per_page: {{ ($adopts_per_page) }},
         current_page: 1,
         hearts: [],
         filter: {
@@ -156,6 +156,9 @@
           window.heartAdopt(adopt_id);
         },
         hasHeart(adopt_id) {
+          if (objectIsEmpty(this.hearts)) {
+            return false;
+          }
           return this.hearts.indexOf(adopt_id) >= 0;
         },
         filterAdopt() {
@@ -177,7 +180,6 @@
         }
       },
       created: function() {
-        this.getAdopts();
         this.hearts = window.getHearts();
       }
     });

@@ -3,17 +3,12 @@ function getHearts() {
   if (hearts != null) {
     return JSON.parse(hearts);
   } else {
-    return {};
+    return [];
   }
 }
 
 function setHearts(hearts) {
   localStorage.setItem('hearts', JSON.stringify(hearts));
-}
-
-function adoptHasHeart(adopt_id) {
-  let hearts = getHearts();
-  return hearts.indexOf(adopt_id) >= 0;
 }
 
 function heartAdopt(adopt_id) {
@@ -30,10 +25,15 @@ function heartAdopt(adopt_id) {
 
 function updateHeartHeader() {
   let hearts = getHearts();
-  $("#heart_count").text(hearts.length);
+  let heart_count = objectIsEmpty(hearts) ? 0 : hearts.length;
+  $("#heart_count").text(heart_count);
   if (hearts.length > 0) {
     $("#heart_icon").addClass("highlight");
   } else {
     $("#heart_icon").removeClass("highlight");
   }
+}
+
+function objectIsEmpty(object) {
+  return Object.keys(object).length === 0
 }

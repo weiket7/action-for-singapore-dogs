@@ -28,24 +28,16 @@ Vue.component('adopt-item', {
           <a :href="'adopt/'+adopt.slug" class="theme_button inverse margin_0">Learn More</a>
         </div>
         <div class="col-xs-4 text-right">
-          <i @click="heartAdopt" :class="{'highlight': has_heart}" class="fas fa-heart fa-2x adopt-heart"></i>
+          <i @click="heartAdopt" :class="{'highlight': highlight}" class="fas fa-heart fa-2x adopt-heart"></i>
         </div>
       </div>
     </div>
   `,
-  data() {
-    return {
-      has_heart: false
-    }
-  },
   props: ['adopt', 'highlight'],
   methods: {
     heartAdopt() {
       this.has_heart = !this.has_heart;
       window.heartAdopt(this.adopt.adopt_id);
-    },
-    created() {
-      this.has_heart = window.adoptHasHeart(this.adopt.adopt_id);
     }
   }
-})
+});

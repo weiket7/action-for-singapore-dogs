@@ -174,16 +174,17 @@
         adopts: {},
         adopt_count: 0,
         isInterested: false,
-        hearts: []
       },
       methods: {
         heartAdopt(adopt_id) {
-          this.has_heart = !this.has_heart;
           window.heartAdopt(this.adopt.adopt_id);
-          window.updateHeartHeader();
+          this.has_heart = !this.has_heart;
         },
         hasHeart(adopt_id) {
-          return this.hearts.indexOf(adopt_id) >= 0;
+          /*console.log(this.form.hearts);
+          console.log(adopt_id);
+          console.log(this.form.hearts.indexOf(adopt_id) >= 0);*/
+          return this.form.hearts.indexOf(adopt_id) >= 0;
         },
         updateBirthday(date) {
           this.form.birthday = date;
@@ -213,10 +214,9 @@
         },
       },
       created() {
-        let hearts = window.getHearts();
-        this.form.hearts = hearts;
+        this.form.hearts = window.getHearts();
         
-        axios.get("api/adopt/list/"+hearts).then(
+        axios.get("api/adopt/list/"+this.form.hearts).then(
           response => {
             let adopts = response.data;
             this.adopt_count = adopts.length;
