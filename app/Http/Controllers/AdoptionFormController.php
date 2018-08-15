@@ -36,22 +36,6 @@ class AdoptionFormController extends Controller {
     return $adoption_form_id;
   }
   
-  public function getApplication(Request $request, $application_token) {
-    $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
-    if ($adoption_form->applied_on) {
-      throw new Exception('getApplication Adoption form id = ' . $adoption_form->adoption_form_id . ' already applied');
-    }
-    $question_ids = Question::where('is_header', false)->pluck('question_id');
-    $answers = [];
-    foreach($question_ids as $question_id) {
-      $answers['answer-'.$question_id] = '';
-    }
-    $data['adoption_form'] = $adoption_form;
-    $data['answers'] = $answers;
-    $data['questions'] = Question::orderBy('position')->select('content', 'is_header', 'question_id')->get();
-    return $data;
-  }
-  
   public function saveApplication(Request $request, $application_token) {
     $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
     if ($adoption_form->applied_on) {

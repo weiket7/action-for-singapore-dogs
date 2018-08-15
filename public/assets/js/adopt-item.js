@@ -43,7 +43,6 @@ Vue.component('adopt-item', {
     heartAdopt() {
       this.has_heart = !this.has_heart;
       window.heartAdopt(this.adopt.adopt_id);
-      window.updateHeartHeader();
     },
     created() {
       this.has_heart = window.adoptHasHeart(this.adopt.adopt_id);

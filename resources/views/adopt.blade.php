@@ -153,15 +153,7 @@
           this.getAdopts();
         },
         heartAdopt(adopt_id) {
-          let index = this.hearts.indexOf(adopt_id);
-          if (index >= 0) {
-            this.hearts.splice(index, 1);
-            this.$emit('unheart-adopt');
-          } else {
-            this.hearts.push(adopt_id);
-            this.$emit('heart-adopt');
-          }
-          localStorage.setItem('hearts', JSON.stringify(this.hearts));
+          window.heartAdopt(adopt_id);
         },
         hasHeart(adopt_id) {
           return this.hearts.indexOf(adopt_id) >= 0;
@@ -186,11 +178,7 @@
       },
       created: function() {
         this.getAdopts();
-      
-        let hearts = localStorage.getItem('hearts');
-        if (hearts != null) {
-          this.hearts = JSON.parse(hearts);
-        }
+        this.hearts = window.getHearts();
       }
     });
   </script>

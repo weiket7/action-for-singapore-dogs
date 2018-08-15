@@ -25,6 +25,7 @@ function heartAdopt(adopt_id) {
     hearts.push(adopt_id);
   }
   setHearts(hearts);
+  updateHeartHeader();
 }
 
 function updateHeartHeader() {

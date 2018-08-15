@@ -101,7 +101,6 @@
         heartAdopt() {
           this.has_heart = !this.has_heart;
           window.heartAdopt(this.adopt.adopt_id);
-          window.updateHeartHeader();
         }
       },
       created() {

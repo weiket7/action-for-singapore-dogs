@@ -37,12 +37,12 @@ class AdoptionFormTable extends Migration
     DB::table('adoption_form')->insert([
       'adoption_form_id'=>1,
       'stat'=>AdoptionFormStat::Enquiry,
-      'name'=>'Alan 5',
-      'email'=>'aaron@gmail.com',
-      'mobile'=>'9555 5555',
+      'name'=>'Aaron 6',
+      'email'=>'alan@gmail.com',
+      'mobile'=>'9666 6666',
       'birthday'=>Carbon::now()->subYear(30),
       'gender'=>'M',
-      'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
+      'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
       'postal'=>'123456',
       'application_token'=>'zxc',
       'enquired_on'=>Carbon::now()->subDays(3),
@@ -66,17 +66,19 @@ class AdoptionFormTable extends Migration
     DB::table('adoption_form')->insert([
       'adoption_form_id'=>3,
       'stat'=>AdoptionFormStat::Agreement,
-      'name'=>'Aaron 6',
-      'email'=>'alan@gmail.com',
-      'mobile'=>'9666 6666',
+      'name'=>'Alan 5',
+      'email'=>'aaron@gmail.com',
+      'mobile'=>'9555 5555',
       'birthday'=>Carbon::now()->subYear(30),
       'gender'=>'M',
-      'address'=>'#10-232, Blk 259, Ang Mo Kio Ave 3',
+      'address'=>'#01-123, Blk 123, Toa Payoh Ave 2',
       'postal'=>'123456',
       'application_token'=>'abc',
       'enquired_on'=>Carbon::now()->subDays(1),
       'applied_on'=>Carbon::now(),
-      'agreed_on'=>Carbon::now()
+      'agreed_on'=>Carbon::now(),
+      'adopt_id'=>1,
+      'adopted_on'=>Carbon::now()->subYears(3),
     ]);
   }
   

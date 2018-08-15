@@ -142,10 +142,6 @@
         this.success = true;
         this.errors = new Errors();
       },
-      onError(error) {
-        this.success = false;
-        this.errors.record(error.response.data.errors);
-      },
     },
     mounted() {
       let vue = this

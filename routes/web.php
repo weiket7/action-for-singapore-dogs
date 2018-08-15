@@ -15,6 +15,8 @@ Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt/{slug}', 'SiteController@adopt');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
+Route::get('adoption-application/{application_token}', 'SiteController@adoptionApplication');
+Route::get('adoption-agreement/{agreement_token}', 'SiteController@adoptionAgreement');
 
 Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');
@@ -31,9 +33,9 @@ Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
 Route::post('api/adopt/filter', 'AdoptController@filter'); //for adopt view
 
 Route::post('api/adoption-form/enquiry', 'AdoptionFormController@enquiry'); //step 1 - fill in basic info
-Route::get('api/adoption-form/get-application/{application_token}', 'AdoptionFormController@getApplication'); //step 2 - open
+//Route::get('api/adoption-form/get-application/{application_token}', 'AdoptionFormController@getApplication'); //step 2 - open
 Route::post('api/adoption-form/save-application/{application_token}', 'AdoptionFormController@saveApplication');
-Route::get('api/adoption-form/get-agreement/{agreement_token}', 'AdoptionFormController@getAgreement');
+//Route::get('api/adoption-form/get-agreement/{agreement_token}', 'AdoptionFormController@getAgreement');
 Route::post('api/adoption-form/save-agreement/{agreement_token}', 'AdoptionFormController@saveAgreement');
 
 Route::group(['middleware' => 'auth'], function () {

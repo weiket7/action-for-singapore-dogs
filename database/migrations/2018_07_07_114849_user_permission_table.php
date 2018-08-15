@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class UserPermissionTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
       Schema::create('user_permission', function (Blueprint $table) {
@@ -21,7 +16,7 @@ class UserPermissionTable extends Migration
       
       $arr = ['Dogs', 'People', 'Adopters', 'Rescuers', 'Fosters', 'Volunteers',
         'Sponsorships', 'Donations', 'Banners', 'Events', 'Adoption', 'Questions',
-        'Users', 'Pages'];
+        'Users', 'Pages', 'Adoption Forms'];
       foreach($arr as $a) {
         DB::table('user_permission')->insert([
           'user_id'=>1,
@@ -30,11 +25,6 @@ class UserPermissionTable extends Migration
       }
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
       Schema::dropIfExists('user_permission');

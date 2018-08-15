@@ -207,6 +207,10 @@
             .then(this.onSuccess)
             .catch(this.onError);
         },
+        onSuccess(response) {
+          this.success = true;
+          this.errors = new Errors();
+        },
       },
       created() {
         let hearts = window.getHearts();

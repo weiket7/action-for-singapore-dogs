@@ -3,13 +3,17 @@
 use App\Http\Requests\ContactRequest;
 use App\Mail\ContactMail;
 use App\Models\Adopt;
+use App\Models\AdoptionForm;
 use App\Models\Banner;
 use App\Models\Enums\AdoptStat;
 use App\Models\Enums\EventType;
 use App\Models\Event;
 use App\Models\Page;
+use App\Models\Question;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -43,6 +47,36 @@ class SiteController extends Controller {
   
   public function iWantToAdopt(Request $request) {
     return view('i-want-to-adopt');
+  }
+  
+  public function adoptionApplication(Request $request, $application_token) {
+    $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
+    if ($adoption_form->applied_on) {
+      throw new Exception('getApplication Adoption form id = ' . $adoption_form->adoption_form_id . ' already applied');
+    }
+    $question_ids = Question::where('is_header', false)->pluck('question_id');
+    $answers = [];
+    foreach($question_ids as $question_id) {
+      $answers['answer-'.$question_id] = '';
+    }
+    $data['adoption_form'] = $adoption_form;
+    $data['answers'] = $answers;
+    $data['questions'] = Question::orderBy('position')->select('content', 'is_header', 'question_id')->get();
+    $data['application_token'] = $application_token;
+    return view('adoption-application', $data);
+  }
+  
+  public function adoptionAgreement(Request $request, $agreement_token) {
+    $adoption_form = AdoptionForm::where('agreement_token', $agreement_token)->first();
+    if ($adoption_form->agreed_on) {
+      throw new Exception('getAgreement - Adoption form id = ' . $adoption_form->adoption_form_id . ' already agreed');
+    }
+  
+    $data['adoption_form'] = $adoption_form;
+    $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form->adoption_form_id)
+      ->select('question', 'answer')->get();
+    $data['agreement_token'] = $agreement_token;
+    return view('adoption-agreement', $data);
   }
   
   public function volunteer(Request $request) {
