@@ -41,6 +41,10 @@ class SiteController extends Controller {
     return view('events', $data);
   }
   
+  public function iWantToAdopt(Request $request) {
+    return view('i-want-to-adopt');
+  }
+  
   public function volunteer(Request $request) {
     return view('volunteer');
   }

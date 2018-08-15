@@ -14,6 +14,7 @@ Route::get('donate', 'SiteController@donate');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt/{slug}', 'SiteController@adopt');
 Route::get('pages/{slug}', 'SiteController@pages');
+Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
 
 Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');

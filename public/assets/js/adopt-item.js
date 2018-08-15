@@ -1,6 +1,6 @@
 Vue.component('adopt-item', {
   template: `
-  <div class="adopt-grid-border">
+    <div class="adopt-grid-border">
       <div class="adopt-grid-image">
         <a :href="'adopt/'+adopt.slug">
           <img :src="'assets/images/adopts/'+adopt.image" alt="">
@@ -28,16 +28,25 @@ Vue.component('adopt-item', {
           <a :href="'adopt/'+adopt.slug" class="theme_button inverse margin_0">Learn More</a>
         </div>
         <div class="col-xs-4 text-right">
-          <i @click="heartAdopt" :class="{'highlight': highlight}" class="fas fa-heart fa-2x adopt-heart"></i>
+          <i @click="heartAdopt" :class="{'highlight': has_heart}" class="fas fa-heart fa-2x adopt-heart"></i>
         </div>
       </div>
     </div>
   `,
-  name: "adopt-item",
+  data() {
+    return {
+      has_heart: false
+    }
+  },
   props: ['adopt', 'highlight'],
   methods: {
     heartAdopt() {
-      this.$emit('heart-adopt', this.adopt.adopt_id);
+      this.has_heart = !this.has_heart;
+      window.heartAdopt(this.adopt.adopt_id);
+      window.updateHeartHeader();
     },
+    created() {
+      this.has_heart = window.adoptHasHeart(this.adopt.adopt_id);
+    }
   }
 })
