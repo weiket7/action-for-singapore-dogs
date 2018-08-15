@@ -42,7 +42,9 @@ class SiteController extends Controller {
   }
   
   public function iWantToAdopt(Request $request) {
-    return view('i-want-to-adopt');
+    $adopt_ids = $request->hearts;
+    $data['adopts'] = Adopt::whereIn('adopt_id', explode(',', $adopt_ids))->get();
+    return view('i-want-to-adopt', $data);
   }
   
   public function adoptionApplication(Request $request, $application_token) {

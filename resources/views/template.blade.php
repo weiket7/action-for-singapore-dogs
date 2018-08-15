@@ -76,7 +76,7 @@
             </div>
           </div>
           
-          <a href="{{ url('i-want-to-adopt') }}" class="media small-teaser top-heart">
+          <a id="link-i-want-to-adopt" href="{{ url('i-want-to-adopt') }}" class="media small-teaser top-heart">
             <div class="media-left top-heart-icon">
               <div id="heart_icon" class="teaser_icon fontsize_18">
                 <i class="fa fa-heart fa-2x"></i>
@@ -225,7 +225,7 @@
 <script src="{{ asset("assets/js/jquery.bxslider.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/jquery-ui.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/axios.min.js" ) }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+<script src="{{ asset("assets/js/lodash.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/vue.js" ) }}"></script>
 <script src="{{ asset("assets/js/errors.js" ) }}"></script>
 <script src="{{ asset("assets/js/filters.js" ) }}"></script>

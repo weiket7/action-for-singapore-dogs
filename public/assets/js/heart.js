@@ -32,6 +32,7 @@ function updateHeartHeader() {
   } else {
     $("#heart_icon").removeClass("highlight");
   }
+  $("#link-i-want-to-adopt").attr("href", "i-want-to-adopt?hearts=" + hearts.join(","))
 }
 
 function objectIsEmpty(object) {

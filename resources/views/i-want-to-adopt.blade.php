@@ -171,7 +171,7 @@
         form: {},
         success: false,
         errors: new Errors(),
-        adopts: {},
+        adopts: {!! json_encode($adopts) !!},
         adopt_count: 0,
         isInterested: false,
       },
@@ -213,18 +213,13 @@
           this.errors = new Errors();
         },
       },
-      created() {
+      mounted() {
         this.form.hearts = window.getHearts();
         
-        axios.get("api/adopt/list/"+this.form.hearts).then(
-          response => {
-            let adopts = response.data;
-            this.adopt_count = adopts.length;
-            if (this.adopt_count >= 4) {
-              adopts = _.chunk(response.data, 4);
-            }
-            this.adopts = adopts;
-          }).catch(error => { console.log(error); });
+        this.adopt_count = this.adopts.length;
+        if (this.adopt_count >= 4) {
+          this.adopts = _.chunk(response.data, 4);
+        }
   
       }
     })
