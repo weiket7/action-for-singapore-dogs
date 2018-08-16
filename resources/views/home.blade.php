@@ -110,7 +110,7 @@
           <div class="bxslider">
             <div v-for="chunk in adopts_desktop" class="bxslider-row">
               <div v-for="adopt in chunk" class="col-xs-3">
-                <adopt-item :adopt="adopt" :key="adopt.adopt_id" :highlight="hasHeart(adopt.adopt_id)"></adopt-item>
+                <adopt-item :adopt="adopt" :key="adopt.adopt_id" :highlight="hasHeart(adopt.adopt_id)" v-on:heart-adopt="heartAdopt"></adopt-item>
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@
           <div class="bxslider">
             <div v-for="chunk in adopts_mobile" class="bxslider-row">
               <div v-for="adopt in chunk" class="col-xs-6">
-                <adopt-item :adopt="adopt" :key="adopt.adopt_id" :highlight="hasHeart(adopt.adopt_id)"></adopt-item>
+                <adopt-item :adopt="adopt" :key="adopt.adopt_id" :highlight="hasHeart(adopt.adopt_id)" v-on:heart-adopt="heartAdopt"></adopt-item>
               </div>
             </div>
           </div>
@@ -212,8 +212,14 @@
       },
       methods: {
         hasHeart(adopt_id) {
+          if (window.objectIsEmpty(this.hearts)) {
+            return false;
+          }
           return this.hearts.indexOf(adopt_id) >= 0;
-        }
+        },
+        heartAdopt(adopt_id) {
+          window.addOrRemoveHearts(this.hearts, adopt_id);
+        },
       }
     });
     

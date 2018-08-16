@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title'=>'ASD - Contact'])
 
 @section('content')
   <div id="app" class="container content">

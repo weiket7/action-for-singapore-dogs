@@ -38,6 +38,7 @@ Vue.component('adopt-item', {
     heartAdopt() {
       this.has_heart = !this.has_heart;
       window.heartAdopt(this.adopt.adopt_id);
+      this.$emit('heart-adopt', this.adopt.adopt_id);
     }
   }
 });

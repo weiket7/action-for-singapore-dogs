@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title'=>'ASD - Donate via PayNow, bank transfer, giro, cheque, paypal'])
 
 @section('content')
   <div id="app" class="container content">

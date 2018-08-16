@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title'=>'ASD - I want to adopt'])
 
 @section('content')
   <div id="app" class="container content">
@@ -168,22 +168,22 @@
     var vm = new Vue({
       el: "#app",
       data: {
-        form: {},
+        form: { hearts:[] },
         success: false,
         errors: new Errors(),
         adopts: {!! json_encode($adopts) !!},
         adopt_count: 0,
         isInterested: false,
+        hearts: [],
       },
       methods: {
         heartAdopt(adopt_id) {
-          window.heartAdopt(this.adopt.adopt_id);
-          this.has_heart = !this.has_heart;
+          window.addOrRemoveHearts(this.form.hearts, adopt_id);
         },
         hasHeart(adopt_id) {
-          /*console.log(this.form.hearts);
-          console.log(adopt_id);
-          console.log(this.form.hearts.indexOf(adopt_id) >= 0);*/
+          if (window.objectIsEmpty(this.form.hearts)) {
+            return false;
+          }
           return this.form.hearts.indexOf(adopt_id) >= 0;
         },
         updateBirthday(date) {

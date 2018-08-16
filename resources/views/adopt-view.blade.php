@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title'=>'ASD - Adopt '.$adopt->name])
 
 @section('content')
   <div id="app" class="container content">

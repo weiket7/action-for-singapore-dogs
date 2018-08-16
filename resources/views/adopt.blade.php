@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title'=>'ASD - Dogs for Adoption'])
 
 @section('content')
   <div id="app" class="container content">
@@ -153,10 +153,10 @@
           this.getAdopts();
         },
         heartAdopt(adopt_id) {
-          window.heartAdopt(adopt_id);
+          window.addOrRemoveHearts(this.hearts, adopt_id);
         },
         hasHeart(adopt_id) {
-          if (objectIsEmpty(this.hearts)) {
+          if (window.objectIsEmpty(this.form.hearts)) {
             return false;
           }
           return this.hearts.indexOf(adopt_id) >= 0;

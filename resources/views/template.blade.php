@@ -7,7 +7,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Action for Singapore Dogs</title>
+  <title>{{ isset($title) ? $title : "Action for Singapore Dogs" }}</title>
   <meta charset="utf-8">
   <!--[if IE]>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -222,17 +222,16 @@
 
 <script src="{{ asset("assets/js/compressed.js" )}}"></script>
 <script src="{{ asset("assets/js/main.js" )}}"></script>
-<script src="{{ asset("assets/js/jquery.bxslider.min.js" ) }}"></script>
+{{--<script src="{{ asset("assets/js/jquery.bxslider.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/jquery-ui.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/axios.min.js" ) }}"></script>
 <script src="{{ asset("assets/js/lodash.min.js" ) }}"></script>
-<script src="{{ asset("assets/js/vue.js" ) }}"></script>
-<script src="{{ asset("assets/js/errors.js" ) }}"></script>
-<script src="{{ asset("assets/js/filters.js" ) }}"></script>
-<script src="{{ asset("assets/js/volunteer-field.js" ) }}"></script>
-<script src="{{ asset("assets/js/adopt-item.js" ) }}"></script>
 <script src="{{ asset("assets/js/moment.min.js" ) }}"></script>
+<script src="{{ asset("assets/js/vue.js" ) }}"></script>--}}
+<script src="{{ asset("vendor.js" ) }}"></script>
+<script src="{{ asset("assets/js/errors.js" ) }}"></script>
 <script src="{{ asset("assets/js/heart.js" ) }}"></script>
+<script src="{{ asset("assets/js/adopt-item.js" ) }}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62167634-3"></script>
 <script>

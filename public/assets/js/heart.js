@@ -13,14 +13,18 @@ function setHearts(hearts) {
 
 function heartAdopt(adopt_id) {
   let hearts = getHearts();
+  addOrRemoveHearts(hearts, adopt_id);
+  setHearts(hearts);
+  updateHeartHeader();
+}
+
+function addOrRemoveHearts(hearts, adopt_id) {
   let index = hearts.indexOf(adopt_id);
   if (index >= 0) {
     hearts.splice(index, 1);
   } else {
     hearts.push(adopt_id);
   }
-  setHearts(hearts);
-  updateHeartHeader();
 }
 
 function updateHeartHeader() {

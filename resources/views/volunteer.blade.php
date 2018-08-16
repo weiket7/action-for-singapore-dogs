@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title'=>'ASD - Volunteer at Adoption & Rescue Centre'])
 
 @section('content')
   <div id="app" class="container content">
@@ -175,6 +175,8 @@
 @endsection
 
 @section('script')
+  <script src="{{ asset("assets/js/volunteer-field.js" ) }}"></script>
+  
   <script>
     var vm = new Vue({
       name: "Volunteer",
