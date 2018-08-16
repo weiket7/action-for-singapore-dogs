@@ -178,8 +178,6 @@
 @endsection
 
 @section('script')
-  <script src="{{ asset("assets/js/volunteer-field.js" ) }}"></script>
-  
   <script>
     var vm = new Vue({
       name: "Volunteer",

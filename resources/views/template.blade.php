@@ -7,15 +7,24 @@
 <!--<![endif]-->
 
 <head>
-  <title>{{ isset($title) ? $title : "Action for Singapore Dogs" }}</title>
+  <?php
+    $title = isset($title) ? $title : "Action for Singapore Dogs";
+    $meta_desc = isset($meta_desc) ? $meta_desc : "Action for Singapore Dogs";
+  ?>
+  <title>{{ $title }}</title>
   <meta charset="utf-8">
   <!--[if IE]>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <![endif]-->
-  <meta name="description" content="{{ isset($meta_desc) ? $meta_desc : "Action for Singapore Dogs" }}">
+  <meta name="description" content="{{ $meta_desc }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="{{ asset("manifest.json") }}">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  
+  <meta property="og:title" content="{{ $title }}"/>
+  <!--<meta property="og:image" content=""/>-->
+  <meta property="og:site_name" content="Action for Singapore Dogs"/>
+  <meta property="og:description" content="{{ $meta_desc }}"/>
   
   <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/fonts.css") }}">
