@@ -32,13 +32,4 @@ mix
     "resources/adopt-item.js",
     "resources/volunteer-field.js",
   ], 'public/app.js')
-  .webpackConfig({
-    plugins: [
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      /*new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery"
-      })*/
-    ]
-  })
   .disableSuccessNotifications();
