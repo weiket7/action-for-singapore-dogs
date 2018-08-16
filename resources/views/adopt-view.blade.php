@@ -1,4 +1,12 @@
-@extends('template', ['title'=>'ASD - Adopt '.$adopt->name])
+<?php
+  $meta_desc = $adopt->name. ' is a '.($adopt->gender=='M'?'male':'female')
+    .' '.($adopt->hdb?'hdb approved':'non hdb approved').' dog available for adoption from Action for Singapore Dogs.'
+?>
+
+@extends('template', [
+  'title'=>'ASD - Adopt '.$adopt->name,
+  'meta_desc'=>$meta_desc
+  ])
 
 @section('content')
   <div id="app" class="container content">

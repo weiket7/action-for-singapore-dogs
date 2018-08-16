@@ -1,4 +1,7 @@
-@extends('template', ['title'=>'ASD - Dogs for Adoption'])
+@extends('template', [
+  'title'=>'ASD - Dogs for Adoption',
+  "meta_desc"=>"Action for Singapore Dogs has ".$adopt_count." hdb approved and non hdb approved dogs for adoption. You can give the dogs a second chance by adopting today."
+])
 
 @section('content')
   <div id="app" class="container content">
@@ -156,7 +159,7 @@
           window.addOrRemoveHearts(this.hearts, adopt_id);
         },
         hasHeart(adopt_id) {
-          if (window.objectIsEmpty(this.form.hearts)) {
+          if (window.objectIsEmpty(this.hearts)) {
             return false;
           }
           return this.hearts.indexOf(adopt_id) >= 0;

@@ -12,16 +12,14 @@
   <!--[if IE]>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <![endif]-->
-  <meta name="description" content="">
+  <meta name="description" content="{{ isset($meta_desc) ? $meta_desc : "Action for Singapore Dogs" }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="{{ asset("manifest.json") }}">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   
   <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}">
-  <link rel="stylesheet" href="{{ asset("assets/css/animations.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/fonts.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}" class="color-switcher-link">
-  <link rel="stylesheet" href="{{ asset("assets/css/shop.css") }}" class="color-switcher-link">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset("assets/css/jquery.bxslider.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/jquery-ui.min.css") }}">

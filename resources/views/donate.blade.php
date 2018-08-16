@@ -1,4 +1,7 @@
-@extends('template', ['title'=>'ASD - Donate via PayNow, bank transfer, giro, cheque, paypal'])
+@extends('template', [
+  "title"=>"ASD - Donate via PayNow, bank transfer, giro, cheque, PayPal",
+  "meta_desc"=>"All donations go towards Action for Singapore Dogs' rescue, rehabilitation and rehoming activities. You can help by donating via PayNow, bank transfer, giro, cheque, PayPal."
+])
 
 @section('content')
   <div id="app" class="container content">

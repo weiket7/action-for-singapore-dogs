@@ -97,7 +97,7 @@
   margin-bottom: 5px;
 }
 .checkbox, .radio {
-  margin-top: 3px;
+  margin-top: 0;
   margin-bottom: 3px;
 }
 @media (min-width: 768px) {

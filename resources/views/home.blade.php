@@ -1,4 +1,7 @@
-@extends('template')
+@extends('template', [
+  "title"=>"Action for Singapore Dogs",
+  "meta_desc"=>"Action for Singapore Dogs (ASD) is a non-profit organisation dedicated to improving welfare of dogs and finding homes for the 150 dogs who are available for adoption."
+])
 
 @section('content')
   <div id="app" class="container content">

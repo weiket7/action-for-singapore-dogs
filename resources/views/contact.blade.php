@@ -1,4 +1,7 @@
-@extends('template', ['title'=>'ASD - Contact'])
+@extends('template', [
+  'title'=>'ASD - Contact',
+  'meta_desc'=>'For enquiries to Action for Singapore Dogs, please fill in the form or email info@asdsingapore.com'
+])
 
 @section('content')
   <div id="app" class="container content">

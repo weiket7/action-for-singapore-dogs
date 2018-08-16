@@ -1,4 +1,7 @@
-@extends('template', ['title'=>'ASD - Volunteer at Adoption & Rescue Centre'])
+@extends('template', [
+'title'=>'ASD - Volunteer at Adoption & Rescue Centre',
+"meta_desc"=>"You can help Action for Singapore Dogs and the dogs by volunteering to help at Adoption & Rescue Centre, with rescuing, rehoming, fostering, publicity, fund raising, events and logistics."
+])
 
 @section('content')
   <div id="app" class="container content">
