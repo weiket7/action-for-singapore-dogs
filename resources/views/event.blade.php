@@ -1,4 +1,7 @@
-@extends('template')
+@extends('template', [
+  'title'=>'ASD - '.$event->title,
+  'meta_desc'=>$event->meta_desc
+])
 
 @section('content')
   <div id="app" class="container content">

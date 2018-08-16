@@ -18,7 +18,8 @@ class EventTable extends Migration
       $table->char('stat', 1);
       $table->char('type', 1);
       $table->string('name', 50);
-      $table->string('slug', 50);
+      $table->string('slug', 100);
+      $table->string('meta_desc', 100)->nullable();
       $table->string('location', 100);
       $table->dateTime('date');
       $table->string('time', 50);

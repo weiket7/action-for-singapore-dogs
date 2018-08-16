@@ -17,7 +17,8 @@ class Event extends Model
     //$this->stat = $input['stat'];
     $this->name = $input['name'];
     $this->type = $input['type'];
-    $this->slug = str_slug($input['name'].' '.Carbon::createFromFormat('Y-m-d', $input['date'])->format('d M Y'));
+    $this->slug = str_slug($input['name'].' '.Carbon::createFromFormat('Y-m-d H:i:s', $input['date'])->format('d M Y'));
+    $this->meta_desc = $input['meta_desc'];
     $this->location = $input['location'];
     $this->date = $input['date'];
     $this->time = $input['time'];
@@ -26,7 +27,7 @@ class Event extends Model
       $this->duration = $input['duration'];
       $this->cost = $input['cost'];
     }
-    if ($this->banner_id == null) {
+    if ($this->event_id == null) {
       $this->image = "";
     }
     $this->save();

@@ -62,7 +62,7 @@
                   
                   <br><br>
                   
-                  When you are ready, please go to your <a href="i-want-to-adopt">Likes</a>
+                  When you are ready, please go to your <a href="{{ url('i-want-to-adopt') }}">Likes</a>
                   to fill in the adoption form.
                 </form>
               </div>

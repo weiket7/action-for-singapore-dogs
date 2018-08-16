@@ -69,8 +69,6 @@ class EventController extends Controller {
       $query->whereIn('type', $request->type);
     }
     $data['events'] = $query->orderBy("date", "desc")->get();
-    Log::info($query->toSql());
-    Log::info($request->type);
     
     return $data;
   }

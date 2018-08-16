@@ -21,11 +21,14 @@
         <label-component required>Time</label-component>
         <textbox-component name='time' v-model="event.time" :error="errors.get('time')"></textbox-component>
 
-        <label-component v-show="isBasicObedience">Duration</label-component>
-        <textbox-component name='duration' v-model="event.duration" :error="errors.get('duration')" v-show="isBasicObedience"></textbox-component>
+        <label-component>Meta Description</label-component>
+        <textbox-component name='meta_desc' v-model="event.meta_desc" :error="errors.get('meta_desc')"></textbox-component>
       </form-row>
 
       <form-row>
+        <label-component v-show="isBasicObedience">Duration</label-component>
+        <textbox-component name='duration' v-model="event.duration" :error="errors.get('duration')" v-show="isBasicObedience"></textbox-component>
+
         <label-component v-show="isBasicObedience">Cost</label-component>
         <textbox-component name="cost" v-model="event.cost" :error="errors.get('cost')" v-show="isBasicObedience"></textbox-component>
       </form-row>

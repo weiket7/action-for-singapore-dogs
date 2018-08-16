@@ -12,7 +12,7 @@ class PageTable extends Migration
         $table->increments('page_id');
         $table->string('title', 50);
         $table->string('slug', 50);
-        $table->string('meta_desc', 50)->nullable();
+        $table->string('meta_desc', 10)->nullable();
         $table->text('content');
       });
       
