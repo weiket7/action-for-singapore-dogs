@@ -34,7 +34,9 @@
                 
                 <div v-for="chunk in adopts" class="row">
                   <div class="col-md-3" v-for="adopt in chunk" >
-                    <adopt-item :adopt="adopt" :key="adopt.adopt_id" base_url="baseUrl"></adopt-item>
+                    <adopt-item :adopt="adopt" :key="adopt.adopt_id" base_url="baseUrl"
+                                :highlight="hasHeart(adopt.adopt_id)"
+                                v-on:heart-adopt="heartAdopt"></adopt-item>
                   </div>
                 </div>
               @else
@@ -85,7 +87,8 @@
     var vm = new Vue({
       el: "#app",
       data: {
-        adopts_raw: {!! json_encode($adopts) !!}
+        adopts_raw: {!! json_encode($adopts) !!},
+        hearts: []
       },
       computed: {
         adopts() {
@@ -95,6 +98,17 @@
           return window.base_url;
         }
       },
+      methods: {
+        hasHeart(adopt_id) {
+          if (window.objectIsEmpty(this.hearts)) {
+            return false;
+          }
+          return this.hearts.indexOf(adopt_id) >= 0;
+        },
+        heartAdopt(adopt_id) {
+          window.addOrRemoveHearts(this.hearts, adopt_id);
+        },
+      },
       mounted() {
         (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -103,6 +117,9 @@
           js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=673207399709727&autoLogAppEvents=1";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+      },
+      created: function() {
+        this.hearts = window.getHearts();
       }
     });
     

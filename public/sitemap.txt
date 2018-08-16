@@ -18,5 +18,6 @@ http://128.199.241.242/pages/gift-shop
 http://128.199.241.242/pages/dogs-in-need
 http://128.199.241.242/volunteer
 http://128.199.241.242/events
+http://128.199.241.242/dogs-adoption-drive
 http://128.199.241.242/contact
 http://128.199.241.242/i-want-to-adopt

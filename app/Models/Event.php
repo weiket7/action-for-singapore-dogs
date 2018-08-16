@@ -1,6 +1,7 @@
 <?php namespace App\Models;
 
 use App\Models\Enums\EventType;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +17,7 @@ class Event extends Model
     //$this->stat = $input['stat'];
     $this->name = $input['name'];
     $this->type = $input['type'];
-    $this->slug = str_slug($input['name']);
+    $this->slug = str_slug($input['name'].' '.Carbon::createFromFormat('Y-m-d', $input['date'])->format('d M Y'));
     $this->location = $input['location'];
     $this->date = $input['date'];
     $this->time = $input['time'];

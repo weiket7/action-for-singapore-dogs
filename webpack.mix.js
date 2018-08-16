@@ -26,8 +26,8 @@ mix
     "resources/vendor/vue.js",
     ], 'public/vendor.js')
   .combine([
-    "resources/common/errors.js",
-    "resources/common/filters.js",
+    "resources/errors.js",
+    "resources/filters.js",
     "resources/heart.js",
     "resources/adopt-item.js",
     "resources/volunteer-field.js",

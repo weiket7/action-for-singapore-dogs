@@ -124,7 +124,7 @@ class SiteController extends Controller {
   }
   
   public function adoptionDrive() {
-    $event = Event::orderBy('date', 'desc')->first();
+    $event = Event::where('type', EventType::AdoptionDrive)->orderBy('date', 'desc')->first();
     $adopt_ids = DB::table('adoption_drive')->where('event_id', $event->event_id)->pluck('adopt_id');
     $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
     $data['event'] = $event;
