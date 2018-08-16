@@ -1,4 +1,7 @@
-@extends('template', ['title'=>'ASD - '.$page->title])
+@extends('template', [
+'title'=>'ASD - '.$page->title,
+'meta_desc'=>$page->meta_desc
+])
 
 @section('content')
   <div class="container content">

@@ -27,6 +27,7 @@ class SiteController extends Controller {
     $data['banners'] = Banner::all();
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
+    $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
     return view('home', $data);
   }
   

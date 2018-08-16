@@ -3,9 +3,18 @@
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
         <label-component>Title</label-component>
-        <textbox-component v-model="page.title"></textbox-component>
+        <div class="col-lg-9">
+          <input type="text" v-model="page.title" class="form-control">
+        </div>
       </form-row>
-      
+
+      <form-row>
+        <label-component>Meta Description</label-component>
+        <div class="col-lg-9">
+          <textarea v-model="page.meta_desc" class="form-control"></textarea>
+        </div>
+      </form-row>
+
       <form-row>
         <label-component>Content</label-component>
         <div class="col-lg-9">

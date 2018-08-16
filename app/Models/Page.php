@@ -13,6 +13,7 @@ class Page extends Model
   public function savePage($input) {
     $this->title = $input['title'];
     $this->slug = str_slug($this->title);
+    $this->meta_desc = $input['meta_desc'];
     $this->content = $input['content'];
     $this->save();
     
