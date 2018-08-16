@@ -15,7 +15,7 @@
             </a>
             
             <h4 class="entry-title">
-              <a :href="'/events/' + event.slug">@{{ event.name }}</a>
+              <a :href="'event/' + event.slug">@{{ event.name }}</a>
             </h4>
             
             <p class="event-detail">
@@ -35,7 +35,7 @@
             </p>
             <!--<p>Stet clita kasd gubergren, no sea takimata sanctus sed diam voluptua.</p>-->
             <p>
-              <a :href="'/events/' + event.slug" class="theme_button inverse bottommargin_0">Learn More</a>
+              <a :href="'event/' + event.slug" class="theme_button inverse bottommargin_0">Learn More</a>
             </p>
           </div>
           

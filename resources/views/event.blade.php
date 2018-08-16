@@ -12,14 +12,12 @@
           @endif
           
           <div class="item-content">
-            @if($event->is_adoption_drive)
-              <header class="entry-header">
-                
-                <h1 class="entry-title black bottommargin_10">
-                  {{ $event->name }}
-                </h1>
-              </header>
-            @endif
+            <header class="entry-header">
+              
+              <h1 class="entry-title black bottommargin_10">
+                {{ $event->name }}
+              </h1>
+            </header>
             
             <div class="entry-content">
               @if($event->is_adoption_drive)

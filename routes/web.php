@@ -16,6 +16,7 @@ Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-singapore', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-sg', 'SiteController@dogsForAdoption');
+Route::get('dogs-adoption-drive', 'SiteController@adoptionDrive');
 Route::get('adopt/{slug}', 'SiteController@adopt');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
