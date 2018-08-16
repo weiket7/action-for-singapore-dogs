@@ -1,4 +1,5 @@
 {
-    "/admin.js": "/admin.js?id=e682f800aa32583dbfc2",
-    "/vendor.js": "/vendor.js?id=574cc0ecc2d65bf405fd"
+    "/admin.js": "/admin.js",
+    "/vendor.js": "/vendor.js",
+    "/app.js": "/app.js"
 }

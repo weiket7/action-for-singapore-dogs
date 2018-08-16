@@ -42,6 +42,15 @@ class SiteController extends Controller {
     return view('events', $data);
   }
   
+  public function event(Request $request, $slug) {
+    $event = Event::where('slug', $slug)->first();
+    $adopt_ids = DB::table('adoption_drive')->where('event_id', $event->event_id)->pluck('adopt_id');
+    $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
+    $data['event'] = $event;
+    return view('event', $data);
+  }
+  
+  
   public function iWantToAdopt(Request $request) {
     $adopt_ids = $request->hearts;
     $data['adopts'] = Adopt::whereIn('adopt_id', explode(',', $adopt_ids))->get();

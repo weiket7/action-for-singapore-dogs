@@ -18,13 +18,20 @@ mix
   //.js('resources/assets/app.js', 'public')
   .js('resources/admin/admin.js', 'public')
   .combine([
-    "public/assets/js/jquery.bxslider.min.js",
-    "public/assets/js/jquery-ui.min.js",
-    "public/assets/js/axios.min.js",
-    "public/assets/js/lodash.min.js",
-    "public/assets/js/moment.min.js",
-    "public/assets/js/vue.js",
-    ], 'public/vendor.js').version()
+    "resources/vendor/jquery.bxslider.min.js",
+    "resources/vendor/jquery-ui.min.js",
+    "resources/vendor/axios.min.js",
+    "resources/vendor/lodash.min.js",
+    "resources/vendor/moment.min.js",
+    "resources/vendor/vue.js",
+    ], 'public/vendor.js')
+  .combine([
+    "resources/common/errors.js",
+    "resources/common/filters.js",
+    "resources/heart.js",
+    "resources/adopt-item.js",
+    "resources/volunteer-field.js",
+  ], 'public/app.js')
   .webpackConfig({
     plugins: [
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -35,4 +42,3 @@ mix
     ]
   })
   .disableSuccessNotifications();
-

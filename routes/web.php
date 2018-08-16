@@ -9,6 +9,7 @@ Route::get('backend', 'AdminController@backend');
 
 Route::get('contact', 'SiteController@contact');
 Route::get('events', 'SiteController@events');
+Route::get('event/{slug}', 'SiteController@event');
 Route::get('volunteer', 'SiteController@volunteer');
 Route::get('donate', 'SiteController@donate');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');

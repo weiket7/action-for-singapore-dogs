@@ -220,16 +220,8 @@
 
 <script src="{{ asset("assets/js/compressed.js" )}}"></script>
 <script src="{{ asset("assets/js/main.js" )}}"></script>
-{{--<script src="{{ asset("assets/js/jquery.bxslider.min.js" ) }}"></script>
-<script src="{{ asset("assets/js/jquery-ui.min.js" ) }}"></script>
-<script src="{{ asset("assets/js/axios.min.js" ) }}"></script>
-<script src="{{ asset("assets/js/lodash.min.js" ) }}"></script>
-<script src="{{ asset("assets/js/moment.min.js" ) }}"></script>
-<script src="{{ asset("assets/js/vue.js" ) }}"></script>--}}
 <script src="{{ asset("vendor.js" ) }}"></script>
-<script src="{{ asset("assets/js/errors.js" ) }}"></script>
-<script src="{{ asset("assets/js/heart.js" ) }}"></script>
-<script src="{{ asset("assets/js/adopt-item.js" ) }}"></script>
+<script src="{{ asset("app.js" ) }}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62167634-3"></script>
 <script>

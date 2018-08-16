@@ -1,8 +1,9 @@
+/public/app.js
+/public/admin.js
+/public/vendor.js
 /node_modules
 /public/hot
 /public/storage
-/public/app.js
-/public/admin.js
 /storage/*.key
 /vendor
 /.idea

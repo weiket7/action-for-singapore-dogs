@@ -1,7 +1,3 @@
-import Vue from "vue"
-import moment from "moment"
-import accounting from "accounting"
-
 Vue.filter("formatDate", function (value) {
   if (value === "" || value == null || value == undefined) {
     return "";

@@ -1,4 +1,4 @@
-export default class Errors {
+class Errors {
   constructor() {
     this.errors = {};
   }

@@ -10,6 +10,7 @@ class Event extends Model
   public $table = 'event';
   protected $primaryKey = 'event_id';
   public $timestamps = false;
+  protected $appends = ['is_adoption_drive'];
   
   public function saveEvent($input) {
     //$this->stat = $input['stat'];
@@ -32,6 +33,10 @@ class Event extends Model
     $this->saveAdoptionDrive($input['adopt_ids']);
     
     return $this->event_id;
+  }
+  
+  public function getIsAdoptionDriveAttribute() {
+    return $this->type == EventType::AdoptionDrive;
   }
   
   private function saveAdoptionDrive($adopt_ids) {
