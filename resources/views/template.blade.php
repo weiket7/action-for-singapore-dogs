@@ -238,9 +238,9 @@
   gtag('js', new Date());
   
   gtag('config', 'UA-62167634-3');
-</script>
-
-<script>
+  
+  var base_url = '{{ url('/') }}'
+  
   $(document).ready(function() {
     window.updateHeartHeader();
   })

@@ -6,7 +6,7 @@
 @extends('template', [
   'title'=>'ASD - Adopt '.$adopt->name,
   'meta_desc'=>$meta_desc
-  ])
+])
 
 @section('content')
   <div id="app" class="container content">
@@ -112,7 +112,8 @@
         }
       },
       created() {
-        this.has_heart = window.adoptHasHeart(this.adopt.adopt_id);
+        let hearts = getHearts();
+        this.has_heart = hearts.indexOf(this.adopt.adopt_id) >= 0;
       }
     })
   </script>
