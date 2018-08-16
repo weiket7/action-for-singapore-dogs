@@ -218,6 +218,10 @@
 
 </div>
 
+<script>
+  var base_url = '{{ url('/') }}'
+</script>
+
 <script src="{{ asset("assets/js/compressed.js" )}}"></script>
 <script src="{{ asset("assets/js/main.js" )}}"></script>
 <script src="{{ asset("vendor.js" ) }}"></script>
@@ -230,8 +234,6 @@
   gtag('js', new Date());
   
   gtag('config', 'UA-62167634-3');
-  
-  var base_url = '{{ url('/') }}'
   
   $(document).ready(function() {
     window.updateHeartHeader();

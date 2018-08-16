@@ -36,7 +36,7 @@
                 
                 <div v-for="chunk in adopts" class="row">
                   <div class="col-md-3" v-for="adopt in chunk" >
-                    <adopt-item :adopt="adopt" :key="adopt.adopt_id"></adopt-item>
+                    <adopt-item :adopt="adopt" :key="adopt.adopt_id" base_url="baseUrl"></adopt-item>
                   </div>
                 </div>
               @else
@@ -67,10 +67,10 @@
               
               <p class="topmargin_30">
                 <div class="fb-share-button"
-                     :data-href="url"
+                     :data-href="baseUrl"
                      data-layout="button_count" data-size="large"
                      data-mobile-iframe="true">
-                  <a target="_blank" :href="url"
+                  <a target="_blank" :href="baseUrl"
                      class="fb-xfbml-parse-ignore">Share</a>
                 </div>
               </p>
@@ -90,13 +90,23 @@
         adopts_raw: {!! json_encode($adopts) !!}
       },
       computed: {
-        url() {
-          return window.location.href;
-        },
         adopts() {
           return _.chunk(this.adopts_raw, 4);
+        },
+        baseUrl() {
+          return window.base_url;
         }
+      },
+      mounted() {
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=673207399709727&autoLogAppEvents=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
       }
-    })
+    });
+    
   </script>
 @endsection

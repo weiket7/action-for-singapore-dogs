@@ -3,7 +3,7 @@ Vue.component('adopt-item', {
     <div class="adopt-grid-border">
       <div class="adopt-grid-image">
         <a :href="'adopt/'+adopt.slug">
-          <img :src="'assets/images/adopts/'+adopt.image" alt="">
+          <img :src="baseUrl+'/assets/images/adopts/'+adopt.image" alt="">
         </a>
       </div>
       <h3 class="adopt-grid-name">
@@ -39,6 +39,11 @@ Vue.component('adopt-item', {
       this.has_heart = !this.has_heart;
       window.heartAdopt(this.adopt.adopt_id);
       this.$emit('heart-adopt', this.adopt.adopt_id);
+    }
+  },
+  computed: {
+    baseUrl() {
+      return window.base_url;
     }
   }
 });
