@@ -18,11 +18,25 @@
       <form-row>
         <label-component>Content</label-component>
         <div class="col-lg-9">
-          <textarea name="" id="editor">{{ page.content }}
+          <textarea name="" id="editor">@{{ page.content }}
           </textarea>
         </div>
       </form-row>
-  
+
+      <form-row>
+        <label-component>Show</label-component>
+        <radio-component name="show" v-model="show" :options="{ 'A': 'Adoption Drive', 'F': 'Free Text' }"></radio-component>
+      </form-row>
+
+      <form-row v-show="show == 'F'">
+        <label-component>Free Text</label-component>
+        <div class="col-lg-9">
+          <textarea id="editor" class="form-control" rows="5">
+
+          </textarea>
+        </div>
+      </form-row>
+
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
       </form-footer>
@@ -32,49 +46,30 @@
 
 <script>
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-  import axios from 'axios'
-  import FormMixin from '../form-mixin';
 
   export default {
-    name: "page",
+    name: "PageHome",
     data() {
       return {
-        page: {},
-        editor: null
-      }
-    },
-    methods: {
-      onSubmit() {
-        this.page.content = this.editor.getData();
-        axios.post("api/page/save/"+this.$route.params.page_id, this.page)
-          .then(response => {
-            toastr.success("Page updated");
-          }).catch(this.onError);
+        show: null
       }
     },
     mounted() {
-      axios.get("api/page/get/"+this.$route.params.page_id)
+      axios.get("api/page/get/home")
         .then(response => {
           this.page = response.data;
 
           let vue = this
-          ClassicEditor.create(document.querySelector( '#editor' ), {
-              ckfinder: {
-                uploadUrl: '/asd/public/api/upload-image?folder=pages'
-              }.then(editor => {
-                vue.editor = editor;
-              }).catch(error => {
-                console.log(error)
-              })
-            }
-    },
-    mixins: [FormMixin]
+          ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+              vue.editor = editor;
+            }).catch(error => { console.log(error) })
+        });
+    }
   }
-  
 </script>
 
 <style scoped>
-  .pre {
-    white-space:pre;
-  }
+
 </style>

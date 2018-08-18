@@ -8,6 +8,11 @@
         </tr>
         </thead>
         <tbody>
+        <tr>
+          <td width="450px">
+            <router-link to="/page/home">Home</router-link>
+          </td>
+        </tr>
         <tr v-for="page in pages">
           <td width="450px">
             <router-link v-bind:to="'/page/save/'+page.page_id">{{ page.title }}</router-link>

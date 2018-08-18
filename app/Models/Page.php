@@ -20,4 +20,14 @@ class Page extends Model
     return $this->page_id;
   }
   
+  public function saveHome($input) {
+    $this->title = $input['title'];
+    $this->slug = str_slug($this->title);
+    $this->meta_desc = $input['meta_desc'];
+    $this->content = $input['content'];
+    $this->save();
+    
+    return $this->page_id;
+  }
+  
 }
