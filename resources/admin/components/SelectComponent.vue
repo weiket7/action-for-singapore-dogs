@@ -1,6 +1,7 @@
 <template>
   <div class="col-lg-3">
     <select :name="name" :value="value" class="form-control m-input" @change="updateValue($event.target.value)">
+      <option value="" v-if="hasEmpty"></option>
       <option v-if="isArray" :value="val" v-for="(val, key) in options" :selected="value == val">
         {{ val }}
       </option>
@@ -22,7 +23,8 @@
       name: { type: String, required: false},
       value: { required: false},
       error: { type: String, required: false},
-      options: {required: true}
+      options: {required: true},
+      hasEmpty: {required: false, default: false}
     },
     methods: {
       updateValue: function (value) {

@@ -20,22 +20,23 @@
         </div>
       </div>
       <div class="col-md-4">
-        <h2 class="section_header bold">Events</h2>
-        <h4 class="entry-title">
-          Basic Obedience Class
-        </h4>
-        
-        <p class="event-detail">
-          Our Basic Obedience Foundation Class incorporate the Amichien Bonding (TM) principles which are the foundation of your relationship with your dog.
-          <br><br>
-          <i aria-hidden="true" class="fa fa-map-marker"></i>
-          Bishan Park II
-          <br> <i aria-hidden="true" class="fa fa-calendar-check-o"></i>
-          15 Jun 2018
-          <br> <i aria-hidden="true" class="fa fa-clock"></i> 4.30 pm to 6.00pm (1.5hrs)
-          <span><br><i aria-hidden="true" class="fas fa-ruler-horizontal"></i> 6 weeks, every Sunday
-                  </span> <span><br><i aria-hidden="true" class="fa fa-dollar-sign"></i> 350
-                  </span></p>
+        @if($home->show == 'A')
+          <h4 class="entry-title">
+            {{ $event->name }}
+          </h4>
+    
+          <p class="event-detail">
+            {{ $event->desc }}
+          </p>
+        @else
+          <h4 class="entry-title">
+            {{ $home->title }}
+          </h4>
+    
+          <p class="event-detail">
+            {!! $home->content !!}
+          </p>
+        @endif
       </div>
     </div>
   </div>

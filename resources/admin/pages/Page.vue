@@ -7,14 +7,14 @@
           <input type="text" v-model="page.title" class="form-control">
         </div>
       </form-row>
-
+      
       <form-row>
         <label-component>Meta Description</label-component>
         <div class="col-lg-9">
           <textarea v-model="page.meta_desc" class="form-control"></textarea>
         </div>
       </form-row>
-
+      
       <form-row>
         <label-component>Content</label-component>
         <div class="col-lg-9">
@@ -22,7 +22,7 @@
           </textarea>
         </div>
       </form-row>
-  
+      
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
       </form-footer>
@@ -34,7 +34,7 @@
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
   import axios from 'axios'
   import FormMixin from '../form-mixin';
-
+  
   export default {
     name: "page",
     data() {
@@ -53,24 +53,25 @@
       }
     },
     mounted() {
-      axios.get("api/page/get/"+this.$route.params.page_id)
+      axios.get("api/page/get/" + this.$route.params.page_id)
         .then(response => {
           this.page = response.data;
-
+          
           let vue = this
-          ClassicEditor.create(document.querySelector( '#editor' ), {
-              ckfinder: {
-                uploadUrl: '/asd/public/api/upload-image?folder=pages'
-              }.then(editor => {
-                vue.editor = editor;
-              }).catch(error => {
-                console.log(error)
-              })
+          ClassicEditor.create(document.querySelector('#editor'), {
+            ckfinder: {
+              uploadUrl: '/asd/public/api/upload-image?folder=pages'
             }
+          }).then(editor => {
+            vue.editor = editor;
+          }).catch(error => {
+            console.log(error)
+          });
+        })
     },
     mixins: [FormMixin]
   }
-  
+
 </script>
 
 <style scoped>

@@ -28,6 +28,11 @@ class SiteController extends Controller {
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
+    $home = DB::table('home')->first();
+    if ($home == 'E') {
+      $data['event'] = Event::find($home->event_id);
+    }
+    $data['home'] = $home;
     return view('home', $data);
   }
   

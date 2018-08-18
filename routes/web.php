@@ -112,6 +112,8 @@ Route::group(['middleware' => 'auth'], function () {
   
   Route::get('api/page', 'PageController@all');
   Route::post('api/page/save/{page_id}', 'PageController@save');
+  Route::get('api/home/get', 'PageController@getHome');
+  Route::post('api/home/save/', 'PageController@saveHome');
   
   Route::post('api/delete-record', 'AdminController@deleteRecord');
   Route::post('api/upload-image', 'AdminController@uploadImage');

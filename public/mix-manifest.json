@@ -1,4 +1,5 @@
 {
     "/admin.js": "/admin.js",
-    "/vendor.js": "/vendor.js"
+    "/vendor.js": "/vendor.js",
+    "/app.js": "/app.js"
 }
