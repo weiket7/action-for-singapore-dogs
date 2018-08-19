@@ -29,8 +29,7 @@ class PageController extends Controller {
   
   public function getHome(Request $request) {
     $data['home'] = DB::table('home')->first();
-    $data['events'] = Event::where('date', '>=', Carbon::now()->subDay())
-      ->where('type', EventType::AdoptionDrive)->pluck('name', 'event_id');
+    $data['events'] = Event::where('date', '>=', Carbon::now()->subDay())->pluck('name', 'event_id');
     return $data;
   }
   

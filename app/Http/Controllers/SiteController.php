@@ -29,7 +29,7 @@ class SiteController extends Controller {
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
     $home = DB::table('home')->first();
-    if ($home == 'E') {
+    if ($home->show == 'E') {
       $data['event'] = Event::find($home->event_id);
     }
     $data['home'] = $home;

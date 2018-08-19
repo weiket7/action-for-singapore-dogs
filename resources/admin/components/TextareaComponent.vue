@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-3">
-    <textarea :name="name" class="form-control" @input="updateValue($event.target.value)" rows="3">{{ value }}</textarea>
+    <textarea :name="name" class="form-control" @input="updateValue($event.target.value)" rows="5">{{ value }}</textarea>
     <span class="m-form__help m-form__error" v-if="error">
       {{ error }}
     </span>

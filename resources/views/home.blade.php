@@ -20,13 +20,13 @@
         </div>
       </div>
       <div class="col-md-4">
-        @if($home->show == 'A')
+        @if($home->show == 'E')
           <h4 class="entry-title">
             {{ $event->name }}
           </h4>
     
           <p class="event-detail">
-            {{ $event->desc }}
+            {{ $event->short_desc }}
           </p>
         @else
           <h4 class="entry-title">

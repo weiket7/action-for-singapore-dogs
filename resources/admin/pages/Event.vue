@@ -34,9 +34,14 @@
       </form-row>
 
       <form-row>
+        <label-component text="Shown in Home if it's chosen">Short Description</label-component>
+        <textarea-component v-model="event.short_desc"></textarea-component>
+        
         <label-component>Description</label-component>
         <textarea-component v-model="event.desc"></textarea-component>
-
+      </form-row>
+      
+      <form-row>
         <label-component>Image</label-component>
         <image-component v-model="event.image" name="image"
                          v-on:update-image="updateImage" folder="events"

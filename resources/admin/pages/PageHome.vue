@@ -29,7 +29,7 @@
       </form-row>
   
       <form-row v-show="home.show == 'E'">
-        <label-component>Adoption Drive</label-component>
+        <label-component>Event</label-component>
         <select-component :options="events" v-model="home.event_id" has-empty="true"></select-component>
       </form-row>
       

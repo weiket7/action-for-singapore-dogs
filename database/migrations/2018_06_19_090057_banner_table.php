@@ -22,7 +22,7 @@ class BannerTable extends Migration
       'stat'=>'A',
       'position'=>1,
       'image'=>'banner1.jpg',
-      'url'=>'event/adoption-drive-1'
+      'url'=>'event/asd-a-dog-tion-drive-03-sep-2018'
     ]);
   
     /*DB::table('banner')->insert([

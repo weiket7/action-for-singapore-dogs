@@ -1,5 +1,5 @@
 @extends('template', [
-  'title'=>'ASD - '.$event->title,
+  'title'=>'ASD - '.$event->name,
   'meta_desc'=>$event->meta_desc
 ])
 

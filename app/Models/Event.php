@@ -22,6 +22,7 @@ class Event extends Model
     $this->location = $input['location'];
     $this->date = $input['date'];
     $this->time = $input['time'];
+    $this->short_desc = $input['short_desc'];
     $this->desc = $input['desc'];
     if ($this->type != EventType::BasicObedienceClass) {
       $this->duration = $input['duration'];
