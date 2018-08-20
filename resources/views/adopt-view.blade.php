@@ -5,7 +5,8 @@
 
 @extends('template', [
   'title'=>'ASD - Adopt '.$adopt->name,
-  'meta_desc'=>$meta_desc
+  'meta_desc'=>$meta_desc,
+  'og_image'=>url("/") . '/assets/images/adopts/' . $adopt->image
 ])
 
 @section('content')

@@ -1,6 +1,7 @@
 @extends('template', [
   'title'=>'ASD - '.$event->name,
-  'meta_desc'=>$event->meta_desc
+  'meta_desc'=>$event->meta_desc,
+  'og_image'=>url("/") . '/assets/images/events/' . $event->image
 ])
 
 @section('content')

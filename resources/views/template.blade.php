@@ -21,11 +21,14 @@
   <link rel="manifest" href="{{ asset("manifest.json") }}">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   
-  <meta property="og:title" content="{{ $title }}"/>
-  <!--<meta property="og:image" content=""/>-->
-  <meta property="og:site_name" content="Action for Singapore Dogs"/>
-  <meta property="og:description" content="{{ $meta_desc }}"/>
-  
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ $meta_desc }}" />
+    @if(isset($og_image))
+      <meta property="og:image" content="{{ $og_image }}"/>
+    @endif
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:type" content="article" />
+    
   <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/fonts.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}" class="color-switcher-link">
