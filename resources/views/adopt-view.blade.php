@@ -82,11 +82,13 @@
             </div>
             
             <p class="topmargin_20">
-              <span class="rightpadding_20 fontsize_18 grey">Share:</span>
-              <span class="small-icons">
-					<a href="#" class="social-icon color-icon bg-icon rounded-icon soc-facebook"></a>
-					<a href="#" class="social-icon color-icon bg-icon rounded-icon soc-twitter"></a>
-				</span>
+            <div class="fb-share-button"
+                 :data-href="shareUrl"
+                 data-layout="button_count" data-size="large"
+                 data-mobile-iframe="true">
+              <a target="_blank" :href="shareUrl"
+                 class="fb-xfbml-parse-ignore">Share</a>
+            </div>
             </p>
           
           </div>
@@ -107,14 +109,28 @@
         has_heart: false
       },
       methods: {
-        heartAdopt() {
+        heartAdopt: function() {
           this.has_heart = !this.has_heart;
           window.heartAdopt(this.adopt.adopt_id);
         }
       },
-      created() {
+      computed: {
+        shareUrl() {
+          return window.base_url + '/adopt/' + this.adopt.slug;
+        }
+      },
+      created: function() {
         let hearts = getHearts();
         this.has_heart = hearts.indexOf(this.adopt.adopt_id) >= 0;
+      },
+      mounted: function() {
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=673207399709727&autoLogAppEvents=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
       }
     })
   </script>

@@ -38,7 +38,7 @@
                 
                 <div v-for="chunk in adopts" class="row">
                   <div class="col-md-3" v-for="adopt in chunk" >
-                    <adopt-item :adopt="adopt" :key="adopt.adopt_id" base_url="baseUrl"
+                    <adopt-item :adopt="adopt" :key="adopt.adopt_id" base_url="shareUrl"
                                 :highlight="hasHeart(adopt.adopt_id)"
                                 v-on:heart-adopt="heartAdopt"></adopt-item>
                   </div>
@@ -71,10 +71,10 @@
               
               <p class="topmargin_30">
                 <div class="fb-share-button"
-                     :data-href="baseUrl"
+                     :data-href="shareUrl"
                      data-layout="button_count" data-size="large"
                      data-mobile-iframe="true">
-                  <a target="_blank" :href="baseUrl"
+                  <a target="_blank" :href="shareUrl"
                      class="fb-xfbml-parse-ignore">Share</a>
                 </div>
               </p>
@@ -92,14 +92,15 @@
       el: "#app",
       data: {
         adopts_raw: {!! json_encode($adopts) !!},
-        hearts: []
+        hearts: [],
+        event_slug: '{{ $event->slug }}'
       },
       computed: {
         adopts() {
           return _.chunk(this.adopts_raw, 4);
         },
-        baseUrl() {
-          return window.base_url;
+        shareUrl() {
+          return window.base_url + '/event/' + this.event_slug;
         }
       },
       methods: {
