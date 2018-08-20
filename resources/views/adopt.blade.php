@@ -166,17 +166,19 @@
         },
         filterAdopt: function() {
           this.isFilter = true;
+          var vue = this
           axios.post('api/adopt/filter', this.filter)
             .then(function(response) {
-              this.adopts = response.data.adopts;
+              Vue.set(vue.$data, 'adopts', response.data.adopts);
               this.adopt_count = response.data.adopt_count;
             })
             .catch(function(error) { console.log(error); });
         },
         getAdopts: function() {
+          var vue = this
           axios.get('api/adopt/page/'+this.current_page)
             .then(function(response) {
-              this.adopts = response.data.adopts;
+              Vue.set(vue.$data, 'adopts', response.data.adopts);
               this.adopt_count = response.data.adopt_count;
               this.adopts_per_page = response.data.adopts_per_page;
             })

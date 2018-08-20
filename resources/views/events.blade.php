@@ -118,9 +118,10 @@
             showing: this.showing,
             type: this.type,
           };
+          var vue = this
           axios.post('api/event/filter', data)
             .then(function(response) {
-              this.events = response.data.events;
+              Vue.set(vue.$data, 'events', response.data.events);
             })
         }
       },

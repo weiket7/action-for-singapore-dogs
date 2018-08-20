@@ -227,7 +227,7 @@
         }
       },
       mounted: function() {
-        let vue = this
+        var vue = this
         $(".datepicker").datepicker({
           dateFormat: 'd M yy',
           onSelect: function(value, date) {

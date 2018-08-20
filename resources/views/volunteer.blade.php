@@ -188,8 +188,8 @@
         selectedActivity: false,
         errors: new Errors()
       },
-      mounted() {
-        let vue = this
+      mounted: function() {
+        var vue = this
         $(".datepicker").datepicker({
           changeMonth: true,
           changeYear: true,
@@ -200,19 +200,19 @@
         });
       },
       methods: {
-        updateBirthday(date) {
+        updateBirthday: function(date) {
           this.volunteer.birthday = date;
         },
-        onSubmit() {
+        onSubmit: function() {
           axios.post('api/volunteer/form', this.volunteer)
             .then(this.onSuccess)
             .catch(this.onError);
         },
-        onSuccess(response) {
+        onSuccess: function(response) {
           this.success = true;
           this.errors = new Errors();
         },
-        onError(error) {
+        onError: function(error) {
           if (error.response.status == 500) {
             alert("A system error occurred");
             return;
@@ -222,13 +222,13 @@
         },
       },
       computed: {
-        has_fostering() {
+        has_fostering: function() {
           return this.volunteer.interests.indexOf("Fostering") >= 0;
         },
-        has_publicity() {
+        has_publicity: function() {
           return this.volunteer.interests.indexOf("Publicity") >= 0;
         },
-        has_logistics() {
+        has_logistics: function() {
           return this.volunteer.interests.indexOf("Logistics") >= 0;
         }
       }

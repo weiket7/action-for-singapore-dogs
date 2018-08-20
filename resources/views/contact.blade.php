@@ -146,16 +146,16 @@
         success: false,
       },
       methods: {
-        onSubmit() {
+        onSubmit: function() {
           axios.post("api/contact/form", this.contact)
             .then(this.onSuccess)
             .catch(this.onError)
         },
-        onSuccess(response) {
+        onSuccess: function(response) {
           this.success = true;
           this.errors = new Errors();
         },
-        onError(error) {
+        onError: function(error) {
           if (error.response.status == 500) {
             alert("A system error occurred");
             return;
