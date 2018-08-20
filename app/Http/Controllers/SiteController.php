@@ -136,4 +136,9 @@ class SiteController extends Controller {
     return view('event', $data);
   }
   
+  public function paypal(Request $request, $amount) {
+    $data['amount'] = $amount;
+    return view('paypal', $data);
+  }
+  
 }

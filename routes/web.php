@@ -13,6 +13,7 @@ Route::get('event/{slug}', 'SiteController@event');
 Route::get('dogs-adoption-drive', 'SiteController@adoptionDrive');
 Route::get('volunteer', 'SiteController@volunteer');
 Route::get('donate', 'SiteController@donate');
+Route::get('paypal/{amount}', 'SiteController@paypal');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-singapore', 'SiteController@dogsForAdoption');
