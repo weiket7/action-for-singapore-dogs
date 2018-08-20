@@ -134,33 +134,33 @@
       </div>
       <div class="col-md-6 text-center bottommargin_0">
         <div class="row">
-          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'rescuing'">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'rescuing'">
             <img src="assets/images/rescue.jpg" class="img-rounded">
             <br>Rescuing
           </div>
-          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'rehoming'">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'rehoming'">
             <img src="assets/images/rehoming.jpg" class="img-rounded">
             <br>Rehoming
           </div>
-          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'fostering'">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'fostering'">
             <img src="assets/images/fostering.jpg" class="img-rounded">
             <br>Fostering
           </div>
-          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'volunteer'">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'volunteer'">
             <img src="assets/images/volunteer.png" class="img-rounded">
             <br>Volunteer
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'fund-raising'">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'fund-raising'">
             <img src="assets/images/fund-raising.jpg" class="img-rounded">
             <br>Fund Raising
           </div>
-          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'publicity'">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'publicity'">
             <img src="assets/images/publicity.jpg" class="img-rounded">
             <br>Publicity
           </div>
-          <div class="col-md-3 text-center clickable" @click="selectedActivity = 'logistics'">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'logistics'">
             <img src="assets/images/logistics.gif" class="img-rounded">
             <br>Logistics
           </div>
