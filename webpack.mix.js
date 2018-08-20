@@ -25,7 +25,7 @@ mix
     "resources/vendor/moment.min.js",
     "resources/vendor/vue.js",
     ], 'public/vendor.js')
-  .combine([
+  .babel([
     "resources/errors.js",
     "resources/filters.js",
     "resources/heart.js",
