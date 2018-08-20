@@ -130,7 +130,7 @@
           </div>
         </div>
         
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center mt-20">
           <a href="#/adopt/Kodomo" class="theme_button btn-view-adoption margin_0">View Dogs for Adoption</a>
         </div>
       </div>
