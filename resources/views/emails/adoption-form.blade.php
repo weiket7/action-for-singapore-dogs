@@ -2,7 +2,7 @@ Hi {{ $adoption_form->name }},
 <br><br>
 
 To help us assess if {{ $adoption_form->adopt_names }} would be suitable for your family, please complete the Adoption Application Form in the link below:
-<a href="{{ url('/#/adoption-application/'.$adoption_form->application_token) }}" target="_blank">{{ url('/#/adoption-application/'.$adoption_form->application_token) }}</a>
+<a href="{{ url('adoption-application/'.$adoption_form->application_token) }}" target="_blank">{{ url('adoption-application/'.$adoption_form->application_token) }}</a>
 <br><br>
 
 Adopting a dog should be a rewarding experience for you so we need to take into consideration your family commitments, work and lifestyle as these factors will aid us in matching the right dog with the right family for a happy and positive experience for both the dog and the adopter. Also attached is some information about what to expect when you adopting a dog.

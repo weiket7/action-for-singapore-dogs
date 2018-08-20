@@ -2,8 +2,8 @@ Hi {{ $adoption_form->name }},
 <br><br>
 
 Please sign the adoption agreement in the link below:<br>
-<a href="{{ url('/#/adoption-agreement/'.$adoption_form->agreement_token) }}" target="_blank">
-  {{ url('/#/adoption-agreement/'.$adoption_form->agreement_token) }}
+<a href="{{ url('adoption-agreement/'.$adoption_form->agreement_token) }}" target="_blank">
+  {{ url('adoption-agreement/'.$adoption_form->agreement_token) }}
 </a>
 <br><br>
 
