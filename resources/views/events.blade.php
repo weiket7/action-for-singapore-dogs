@@ -113,13 +113,13 @@
         type: [],
       },
       methods: {
-        filterEvent() {
-          let data = {
+        filterEvent: function() {
+          var data = {
             showing: this.showing,
             type: this.type,
           };
           axios.post('api/event/filter', data)
-            .then(response => {
+            .then(function(response) {
               this.events = response.data.events;
             })
         }

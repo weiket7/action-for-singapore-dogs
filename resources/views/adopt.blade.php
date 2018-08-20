@@ -135,51 +135,52 @@
         isFilter: false,
       },
       computed: {
-        num_of_pages() {
+        num_of_pages: function() {
           return Math.ceil(this.adopt_count / this.adopts_per_page);
         },
-        adopt_chunks() {
+        adopt_chunks: function() {
           return _.chunk(this.adopts, 3);
         }
       },
       methods: {
-        nextPage() {
+        nextPage: function() {
           if(this.current_page < this.num_of_pages) {
             this.current_page++;
           }
           this.getAdopts();
         },
-        previousPage() {
+        previousPage: function() {
           if(this.current_page > 1) {
             this.current_page--;
           }
           this.getAdopts();
         },
-        heartAdopt(adopt_id) {
+        heartAdopt: function(adopt_id) {
           window.addOrRemoveHearts(this.hearts, adopt_id);
         },
-        hasHeart(adopt_id) {
+        hasHeart: function(adopt_id) {
           if (window.objectIsEmpty(this.hearts)) {
             return false;
           }
           return this.hearts.indexOf(adopt_id) >= 0;
         },
-        filterAdopt() {
+        filterAdopt: function() {
           this.isFilter = true;
           axios.post('api/adopt/filter', this.filter)
-            .then(response => {
+            .then(function(response) {
               this.adopts = response.data.adopts;
               this.adopt_count = response.data.adopt_count;
             })
+            .catch(function(error) { console.log(error); });
         },
-        getAdopts() {
+        getAdopts: function() {
           axios.get('api/adopt/page/'+this.current_page)
-            .then(response => {
+            .then(function(response) {
               this.adopts = response.data.adopts;
               this.adopt_count = response.data.adopt_count;
               this.adopts_per_page = response.data.adopts_per_page;
             })
-            .catch(error => { console.log(error); });
+            .catch(function(error) { console.log(error); });
         }
       },
       created: function() {

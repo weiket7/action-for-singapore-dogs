@@ -186,22 +186,22 @@
         payment_methods: { "N": "PayNow", "B": "Bank Transfer", "G": "Giro", "Q": "Cheque", "P": "PayPal"}
       },
       methods: {
-        chooseAmount(amount) {
+        chooseAmount: function(amount) {
           this.donation.amount = amount;
           this.donation.custom_amount = false;
         },
-        customAmount() {
+        customAmount: function() {
           this.donation.custom_amount = true;
         },
-        updateTransferDate(date) {
+        updateTransferDate: function(date) {
           this.donation.transfer_date = date;
         },
-        onSubmit() {
+        onSubmit: function() {
           axios.post('api/donation/form', this.donation)
             .then(this.onSuccess)
             .catch(this.onError);
         },
-        onSuccess(response) {
+        onSuccess: function(response) {
           this.success = true;
           this.errors = new Errors();
           console.log(this.donation.payment_method);
@@ -209,7 +209,7 @@
             window.location.replace('paypal/'+this.donation.amount);
           }
         },
-        onError(error) {
+        onError: function(error) {
           if (error.response.status == 500) {
             alert("A system error occurred");
             return;
@@ -226,7 +226,7 @@
           return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
         }
       },
-      mounted() {
+      mounted: function() {
         let vue = this
         $(".datepicker").datepicker({
           dateFormat: 'd M yy',

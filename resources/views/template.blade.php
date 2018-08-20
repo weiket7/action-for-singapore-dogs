@@ -21,13 +21,13 @@
   <link rel="manifest" href="{{ asset("manifest.json") }}">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   
-    <meta property="og:title" content="{{ $title }}" />
-    <meta property="og:description" content="{{ $meta_desc }}" />
+    <meta property="og:title"              content="{{ $title }}" />
+    <meta property="og:description"        content="{{ $meta_desc }}" />
     @if(isset($og_image))
-      <meta property="og:image" content="{{ $og_image }}"/>
+      <meta property="og:image"              content="{{ $og_image }}" />
     @endif
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:type" content="article" />
+    <meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="article" />
     
   <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.min.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/fonts.css") }}">
@@ -236,6 +236,9 @@
 
 <script src="{{ asset("assets/js/compressed.js" )}}"></script>
 <script src="{{ asset("assets/js/main.js" )}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+
 <script src="{{ asset("vendor.js" ) }}"></script>
 <script src="{{ asset("app.js" ) }}"></script>
 
