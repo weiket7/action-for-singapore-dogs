@@ -236,9 +236,6 @@
 
 <script src="{{ asset("assets/js/compressed.js" )}}"></script>
 <script src="{{ asset("assets/js/main.js" )}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
-
 <script src="{{ asset("vendor.js" ) }}"></script>
 <script src="{{ asset("app.js" ) }}"></script>
 

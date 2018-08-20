@@ -177,19 +177,19 @@
         hearts: [],
       },
       methods: {
-        heartAdopt(adopt_id) {
+        heartAdopt: function(adopt_id) {
           window.addOrRemoveHearts(this.form.hearts, adopt_id);
         },
-        hasHeart(adopt_id) {
+        hasHeart: function(adopt_id) {
           if (window.objectIsEmpty(this.form.hearts)) {
             return false;
           }
           return this.form.hearts.indexOf(adopt_id) >= 0;
         },
-        updateBirthday(date) {
+        updateBirthday: function(date) {
           this.form.birthday = date;
         },
-        interested() {
+        interested: function() {
           this.isInterested = true;
           this.$nextTick(function() {
             let vue = this
@@ -203,17 +203,17 @@
             });
           })
         },
-        onSubmit() {
+        onSubmit: function() {
           axios.post("api/adoption-form/enquiry", this.form)
             .then(this.onSuccess)
             .catch(this.onError);
         },
-        onSuccess(response) {
+        onSuccess: function(response) {
           this.success = true;
           this.errors = new Errors();
         },
       },
-      mounted() {
+      mounted: function() {
         this.form.hearts = window.getHearts();
         
         this.adopt_count = this.adopts.length;
