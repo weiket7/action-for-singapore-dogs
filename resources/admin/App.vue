@@ -96,8 +96,6 @@
       axios.get('api/permission')
         .then(response => {
           this.permissions = response.data;
-          console.log(response.data);
-
         });
     }
   }
