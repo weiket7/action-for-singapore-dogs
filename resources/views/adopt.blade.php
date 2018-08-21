@@ -28,10 +28,12 @@
         </div>
         
         <div class="row">
-          <div class="col-md-4 col-sm-6 col-xs-6" v-for="adopt in adopts" >
-            <adopt-item :adopt="adopt" :key="adopt.adopt_id"
+          <div v-for="chunk in adopt_chunks" class="row">
+            <div class="col-md-4" v-for="adopt in chunk" >
+              <adopt-item :adopt="adopt" :key="adopt.adopt_id"
                         :highlight="hasHeart(adopt.adopt_id)"
                         v-on:heart-adopt="heartAdopt"></adopt-item>
+            </div>
           </div>
         </div>
         

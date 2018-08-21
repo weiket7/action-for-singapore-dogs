@@ -149,10 +149,12 @@
 .pt-50 { padding-top: 50px !important; }
 
 /*adopt-item*/
+@media (min-width: 1001px) {
   .adopt-grid-image {
-    max-height: 200px;
+    max-height: 240px;
     overflow-y: hidden;
   }
+}
 .adopt-grid-border {
   border: 1px solid #ddd;
   padding: 5px;

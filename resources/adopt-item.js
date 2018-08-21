@@ -3,7 +3,7 @@ Vue.component('adopt-item', {
     <div class="adopt-grid-border">
       <div class="adopt-grid-image">
         <a :href="baseUrl+'/adopt/'+adopt.slug">
-          <img :src="baseUrl+'/assets/images/adopts/'+adopt.image" alt="">
+          <img :src="baseUrl+'/assets/images/adopts/'+adopt.image" class="img-responsive" alt="">
         </a>
       </div>
       <h3 class="adopt-grid-name">
