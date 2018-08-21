@@ -4,9 +4,9 @@
       <form-row>
         <label-component>Name</label-component>
         <textbox-component v-model="banner.name" :error="errors.get('name')"></textbox-component>
-  
-        <label-component>Url</label-component>
-        <textbox-component v-model="banner.url" :error="errors.get('url')"></textbox-component>
+
+        <label-component>Link To</label-component>
+        <radio-component name="link_to" :options="['None', 'Event', 'Page']" v-model="banner.link_to" :inline="true"></radio-component>
       </form-row>
 
       <form-row>
@@ -14,11 +14,21 @@
         <image-component v-model="banner.image" name="image"
                          v-on:update-image="updateImage" folder="banners"
                          :src="banner.image" :error="errors.get('image')"></image-component>
+
+        <template v-if="banner.link_to == 'Page'">
+          <label-component>Page</label-component>
+          <select-component :options="pages" v-model="banner.page_slug" has-empty="true"></select-component>
+        </template>
+
+        <template v-if="banner.link_to == 'Event'">
+          <label-component>Event</label-component>
+          <select-component :options="events" v-model="banner.event_id" has-empty="true"></select-component>
+        </template>
       </form-row>
-  
+
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
-        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+        <button type="button" class="btn btn-danger" data-toggle="confirmation" v-if="banner.banner_id != 1">Delete</button>
       </form-footer>
     </form>
   </single-portlet>
@@ -36,7 +46,9 @@
       return {
         banner: {},
         errors: new Errors(),
-        image_new: null
+        image_new: null,
+        events: [],
+        pages: []
       }
     },
     methods: {
@@ -91,6 +103,8 @@
           .then(response => {
             this.banner = response.data.banner;
             this.banner_stats = response.data.banner_stats;
+            this.events = response.data.events;
+            this.pages = response.data.pages;
           }).catch(error => {
           console.log(error);
         })

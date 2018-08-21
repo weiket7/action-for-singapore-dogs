@@ -9,12 +9,13 @@
       <div class="col-md-8">
         <div class="bxslider">
           @foreach($banners as $banner)
-            @if($banner->url)
-              <a href="{{ url($banner->url) }}">
-                <img src="{{ asset('assets/images/banners/'.$banner->image) }}" title="banner.name" />
+            @if($banner->link_to != 'None')
+              <?php $url = $banner->link_to == 'Event' ? '/event/'.$banner->event_slug : '/pages/'.$banner->page_slug; ?>
+              <a href="{{ url($url) }}">
+                <img src="{{ asset('assets/images/banners/'.$banner->image) }}" title="{{ $banner->name }}" />
               </a>
             @else
-              <img :src="'assets/images/banners/'+banner.image" :title="banner.name">
+              <img src="{{ asset('assets/images/banners/'.$banner->image) }}" title="{{ $banner->name }}" />
             @endif
           @endforeach
         </div>

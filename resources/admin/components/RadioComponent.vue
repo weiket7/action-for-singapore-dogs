@@ -2,7 +2,8 @@
   <div class="col-lg-3">
     <div :class="className">
       <label v-for="(val, key) in options" class="m-radio">
-        <input type="radio" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
+        <input type="radio" v-if="isArray" v-bind:value="val" :checked="value == val" :name="name" @change="updateValue($event.target.value)">
+        <input type="radio" v-if="!isArray" v-bind:value="key" :checked="value == key" :name="name" @change="updateValue($event.target.value)">
         {{ val }}
         <span></span>
       </label>
@@ -37,6 +38,9 @@
     computed: {
       className() {
         return this.inline ? 'm-radio-inline' : 'm-radio-list';
+      },
+      isArray() {
+        return Array.isArray(this.options);
       }
     }
   }

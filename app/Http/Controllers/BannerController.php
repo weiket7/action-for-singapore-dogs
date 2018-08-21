@@ -5,6 +5,7 @@ use App\Http\Requests\BannerRequest;
 use App\Models\Banner;
 use App\Models\Enums\BannerStat;
 use App\Models\Event;
+use App\Models\Page;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,7 @@ class BannerController extends Controller
       $res[$event->event_id] = $event->name . ' on ' . Carbon::createFromFormat('Y-m-d H:i:s', $event->date)->format('d M Y');
     }
     $data['events'] = $res;
+    $data['pages'] = Page::pluck('title', 'slug');
     return $data;
   }
   

@@ -11,8 +11,12 @@ class Banner extends Model
   
   public function saveBanner($input) {
     $this->name = $input['name'];
-    //$this->stat = $input['stat'];
-    $this->url = $input['url'] ?? "";
+    $this->link_to = $input['link_to'];
+    if ($this->link_to == 'Event') {
+      $this->event_id = $input['event_id'];
+    } else {
+      $this->page_slug = $input['page_slug'];
+    }
     if ($this->banner_id == null) {
       $this->image = "";
       $this->position = Banner::max("position") + 1;

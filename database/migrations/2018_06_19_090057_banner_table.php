@@ -14,7 +14,9 @@ class BannerTable extends Migration
       $table->char('stat', 1);
       $table->integer('position');
       $table->string('image', 50);
-      $table->string('url', 100)->nullable();
+      $table->string('link_to', 10);
+      $table->integer('event_id')->nullable();
+      $table->string('page_slug', 100)->nullable();
     });
     
     DB::table('banner')->insert([
@@ -22,7 +24,8 @@ class BannerTable extends Migration
       'stat'=>'A',
       'position'=>1,
       'image'=>'banner1.jpg',
-      'url'=>'event/asd-a-dog-tion-drive-03-sep-2018'
+      'link_to'=>'Event',
+      'event_id'=>1,
     ]);
   
     /*DB::table('banner')->insert([
