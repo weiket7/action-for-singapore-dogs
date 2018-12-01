@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Models\Enums\EventStat;
 use App\Models\Enums\EventType;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -17,14 +18,14 @@ class Event extends Model
     //$this->stat = $input['stat'];
     $this->name = $input['name'];
     $this->type = $input['type'];
-    $this->slug = str_slug($input['name'].' '.Carbon::createFromFormat('Y-m-d H:i:s', $input['date'])->format('d M Y'));
+    $this->slug = str_slug($input['name'].' '.Carbon::createFromFormat('Y-m-d', $input['date'])->format('d M Y'));
     $this->meta_desc = $input['meta_desc'];
     $this->location = $input['location'];
     $this->date = $input['date'];
     $this->time = $input['time'];
     $this->short_desc = $input['short_desc'];
     $this->desc = $input['desc'];
-    if ($this->type != EventType::BasicObedienceClass) {
+    if ($this->type == EventType::BasicObedienceClass) {
       $this->duration = $input['duration'];
       $this->cost = $input['cost'];
     }

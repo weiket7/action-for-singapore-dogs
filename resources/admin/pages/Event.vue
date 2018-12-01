@@ -88,7 +88,7 @@
     data() {
       return {
         event: {},
-        event_types: {},
+        event_types: { 'A': 'Adoption Drive', 'B': 'Basic Obedience Class', 'O': 'Others'},
         errors: new Errors(),
         image_new: null,
         adopts: [],
