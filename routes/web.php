@@ -11,6 +11,8 @@ Route::get('contact', 'SiteController@contact');
 Route::get('events', 'SiteController@events');
 Route::get('event/{slug}', 'SiteController@event');
 Route::get('dogs-adoption-drive', 'SiteController@adoptionDrive');
+Route::get('gift-shop', 'SiteController@giftShop');
+Route::get('boarding-services', 'SiteController@boardingServices');
 Route::get('volunteer', 'SiteController@volunteer');
 Route::get('donate', 'SiteController@donate');
 Route::get('paypal/{amount}', 'SiteController@paypal');

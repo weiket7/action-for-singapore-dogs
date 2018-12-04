@@ -86,7 +86,7 @@
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" v-model="volunteer.interests" value="Logistics"> Logistics
+                <input type="checkbox" v-model="volunteer.interests" value="Logistics"> Logistics & Transport
               </label>
             </div>
           </volunteer-field>
@@ -168,7 +168,7 @@
           </div>
           <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'logistics'">
             <img src="assets/images/logistics.gif" class="img-rounded">
-            <br>Logistics
+            <br>Logistics & Transport
           </div>
         </div>
         

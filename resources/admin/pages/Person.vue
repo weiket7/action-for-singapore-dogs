@@ -192,6 +192,7 @@
         this.errors.record(error.response.data.errors);
       },
       onSuccess(response) {
+        this.errors.clear();
         if (this.is_create) {
           toastr.success("Person added");
           this.person.person_id = response.data;

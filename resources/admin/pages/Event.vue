@@ -131,6 +131,7 @@
           .catch(this.onError);
       },
       onSuccess(response) {
+        this.errors.clear();
         if (this.is_create) {
           toastr.success("Event added");
           return;

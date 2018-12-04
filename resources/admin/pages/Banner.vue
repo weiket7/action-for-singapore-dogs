@@ -86,12 +86,12 @@
           .catch(this.onError);
       },
       onSuccess(response) {
+        this.errors.clear();
         if (this.is_create) {
           toastr.success("Banner added");
           return;
         }
         toastr.success("Banner updated");
-        this.errors.clear();
         let banner_id = response.data;
         this.$router.push('/banner/save/'+banner_id);
       },

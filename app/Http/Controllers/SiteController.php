@@ -42,6 +42,12 @@ class SiteController extends Controller {
     return view('contact');
   }
   
+  public function giftShop(Request $request) {
+    $data['gift-shops'] = GiftShop::all();
+    return view('gift-shop', $data);
+    
+  }
+  
   public function events(Request $request) {
     $adoption_drives = Event::where('date', '>=', Carbon::today())->where('type', EventType::AdoptionDrive)->get();
     $events = Event::where('date', '>=', Carbon::today())->orderBy('date', "desc")->get();
