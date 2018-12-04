@@ -105,7 +105,13 @@
           </volunteer-field>
           
           <volunteer-field name="Type of vehicle" :error="errors.get('vehicle')" v-if="has_logistics">
-            <input type="text" v-model="volunteer.vehicle" class="form-control">
+            <select class="form-control" v-model="volunteer.vehicle">
+              <option value=""></option>
+              <option>Car</option>
+              <option>Van</option>
+              <option>Lorry</option>
+              <option>Mini Bus</option>
+            </select>
           </volunteer-field>
           
           <volunteer-field name="Area to help in" :error="errors.get('publicity_area')" v-if="has_publicity">
@@ -148,7 +154,7 @@
           </div>
           <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'volunteer'">
             <img src="assets/images/volunteer.png" class="img-rounded">
-            <br>Volunteer
+            <br>Volunteer at Adoption & Rescue Centre (ARC)
           </div>
         </div>
         <div class="row">

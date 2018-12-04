@@ -11,6 +11,7 @@ class Banner extends Model
   
   public function saveBanner($input) {
     $this->name = $input['name'];
+    $this->stat = $input['stat'];
     $this->link_to = $input['link_to'];
     if ($this->link_to == 'Event') {
       $this->event_id = $input['event_id'];

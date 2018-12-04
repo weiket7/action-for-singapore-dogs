@@ -26,13 +26,13 @@ class BannerController extends Controller
     return $banner_id;
   }
   
-  public function get(Request $request, $banner_id) {
-    $data['banner'] = Banner::find($banner_id);
+  public function get(Request $request, $banner_id = null ) {
+    $data['banner'] = $banner_id != null ? Banner::find($banner_id) : new \ stdClass();
     $data['banner_stats'] = BannerStat::$values;
     $events = Event::where('date', '>=', Carbon::today())->get();
     $res = [];
     foreach($events as $event) {
-      $res[$event->event_id] = $event->name . ' on ' . Carbon::createFromFormat('Y-m-d H:i:s', $event->date)->format('d M Y');
+      $res[$event->event_id] = $event->name . ' on ' . Carbon::createFromFormat('Y-m-d', $event->date)->format('d M Y');
     }
     $data['events'] = $res;
     $data['pages'] = Page::pluck('title', 'slug');

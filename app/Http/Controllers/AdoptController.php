@@ -51,7 +51,7 @@ class AdoptController extends Controller {
     if (count($request->gender) == 1) {
       $query->where('gender', array_first($request->gender));
     }
-    if (count($request->age) >= 1) {
+    /*if (count($request->age) >= 1) {
       $query->where(function ($q) use ($request) {
         if (in_array("1", $request->age)) {
           $q->where('birthday', '>=', Carbon::now()->subYears(3));
@@ -63,7 +63,7 @@ class AdoptController extends Controller {
           $q->orWhere('birthday', '<', Carbon::now()->subYears(7));
         }
       });
-    }
+    }*/
     $rand = $request->session()->get('rand');
     $data['adopts'] = $query->orderByRaw("rand(".$rand.")")->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();

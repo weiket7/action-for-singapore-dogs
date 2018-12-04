@@ -90,6 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/event/save/{event_id}', 'EventController@save');
   
   Route::get('api/banner', 'BannerController@all');
+  Route::get('api/banner/get', 'BannerController@get');
   Route::get('api/banner/get/{banner_id}', 'BannerController@get');
   Route::post('api/banner/save/', 'BannerController@save');
   Route::post('api/banner/save/{banner_id}', 'BannerController@save');

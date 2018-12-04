@@ -143,7 +143,7 @@
           </div>
           <div class="col-md-3 text-center clickable" @click="selectedActivity = 'volunteer'">
             <img src="assets/images/volunteer.png" class="img-rounded">
-            <br>Volunteer
+            <br>Volunteer at Adoption & Rescue Centre (ARC)
           </div>
         </div>
         <div class="row">

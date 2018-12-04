@@ -2,18 +2,16 @@
   <single-portlet title="Banner">
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
-        <label-component>Name</label-component>
+        <label-component required>Name</label-component>
         <textbox-component v-model="banner.name" :error="errors.get('name')"></textbox-component>
 
-        <label-component>Link To</label-component>
-        <radio-component name="link_to" :options="['None', 'Event', 'Page']" v-model="banner.link_to" :inline="true"></radio-component>
+        <label-component required>Status</label-component>
+        <radio-component v-model="banner.stat" :options="banner_stats" :inline="true"></radio-component>
       </form-row>
 
       <form-row>
-        <label-component>Image<br>(820 x 340 px)</label-component>
-        <image-component v-model="banner.image" name="image"
-                         v-on:update-image="updateImage" folder="banners"
-                         :src="banner.image" :error="errors.get('image')"></image-component>
+        <label-component required>Link</label-component>
+        <radio-component name="link_to" :options="['None', 'Event', 'Page']" v-model="banner.link_to" :inline="true"></radio-component>
 
         <template v-if="banner.link_to == 'Page'">
           <label-component>Page</label-component>
@@ -22,8 +20,15 @@
 
         <template v-if="banner.link_to == 'Event'">
           <label-component>Event</label-component>
-          <select-component :options="events" v-model="banner.event_id" has-empty="true"></select-component>
+          <select-component :options="events" v-model="banner.event_id" has-empty="true" :error="errors.get('event_id')"></select-component>
         </template>
+      </form-row>
+
+      <form-row>
+        <label-component required>Image<br>(820 x 340 px)</label-component>
+        <image-component v-model="banner.image" name="image"
+                         v-on:update-image="updateImage" folder="banners"
+                         :src="banner.image" :error="errors.get('image_new')"></image-component>
       </form-row>
 
       <form-footer>
@@ -47,8 +52,9 @@
         banner: {},
         errors: new Errors(),
         image_new: null,
-        events: [],
-        pages: []
+        events: {},
+        pages: {},
+        banner_stats: {}
       }
     },
     methods: {
@@ -85,6 +91,7 @@
           return;
         }
         toastr.success("Banner updated");
+        this.errors.clear();
         let banner_id = response.data;
         this.$router.push('/banner/save/'+banner_id);
       },
@@ -98,17 +105,19 @@
       }
     },
     created() {
-      if (! this.is_create) {
-        axios.get('api/banner/get/' + this.$route.params.banner_id)
-          .then(response => {
-            this.banner = response.data.banner;
-            this.banner_stats = response.data.banner_stats;
-            this.events = response.data.events;
-            this.pages = response.data.pages;
-          }).catch(error => {
-          console.log(error);
-        })
+      let url = 'api/banner/get';
+      if (!this.is_create) {
+        url += '/'+ this.$route.params.banner_id
       }
+      axios.get(url)
+        .then(response => {
+          this.banner = response.data.banner;
+          this.banner_stats = response.data.banner_stats;
+          this.events = response.data.events;
+          this.pages = response.data.pages;
+        }).catch(error => {
+        console.log(error);
+      })
     },
     mounted() {
       let vue = this

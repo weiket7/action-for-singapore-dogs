@@ -87,26 +87,6 @@
               Female
             </label>
           </div>
-          
-          <h3 class="widget-title mt-30">Age</h3>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="age" value="1" v-model="filter.age">
-              0-3
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="age" value="2" v-model="filter.age">
-              4-7
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="age" value="3" v-model="filter.age">
-              8+
-            </label>
-          </div>
           <br>
           
           <button type="button" @click="filterAdopt" class="theme_button inverse margin_0">Search</button>

@@ -5,8 +5,9 @@
         <thead>
         <tr>
           <th width="80px">Status</th>
-          <th>Name</th>
-          <th width="100px">Amount</th>
+          <th width="150px">Name</th>
+          <th width="200px">Email</th>
+          <th width="80px">Amount</th>
           <th width="150px">Payment Method</th>
           <th>Donated On</th>
         </tr>
@@ -17,6 +18,7 @@
           <td>
             <router-link v-bind:to="'/donation/save/'+donation.donation_id">{{ donation.name }}</router-link>
           </td>
+          <td>{{ donation.email }}</td>
           <td>{{ donation.amount | formatNumber }}</td>
           <td>{{ payment_methods[donation.payment_method] }}</td>
           <td>{{ donation.donated_on | formatDate}}</td>
