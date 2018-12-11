@@ -11,13 +11,20 @@ class Page extends Model
   public $timestamps = false;
   
   public function savePage($input) {
-    $this->title = $input['title'];
-    $this->slug = str_slug($this->title);
     $this->meta_desc = $input['meta_desc'];
     $this->content = $input['content'];
     $this->save();
     
     return $this->page_id;
+  }
+  
+  public static function getContents() {
+    $raw_contents = Page::where('type', 'C')->get();
+    $contents = [];
+    foreach($raw_contents as $d) {
+      $contents[$d->title] = $d->content;
+    }
+    return $contents;
   }
   
 }

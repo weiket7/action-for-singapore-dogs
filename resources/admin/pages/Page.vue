@@ -3,9 +3,7 @@
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
         <label-component>Title</label-component>
-        <div class="col-lg-9">
-          <input type="text" v-model="page.title" class="form-control">
-        </div>
+        <static-text>{{ page.title }}</static-text>
       </form-row>
       
       <form-row>

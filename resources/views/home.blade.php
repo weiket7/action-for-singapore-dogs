@@ -59,7 +59,7 @@
                 <a href="{{ url('dogs-for-adoption') }}" class="bold">ADOPT</a>
               </h3>
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                {{ $contents['Home Adopt'] }}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/dogs-for-adoption') }}" class="theme_button">View Dogs for Adoption</a>
@@ -75,7 +75,7 @@
                 <a href="{{ url('/donate') }}" class="bold">Donate</a>
               </h3>
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                {{ $contents['Home Donate'] }}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/donate') }}" class="theme_button">Make a Donation</a>
@@ -91,7 +91,7 @@
                 <a href="{{ url('/volunteer') }}" class="bold">Volunteer</a>
               </h3>
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                {{ $contents['Home Volunteer'] }}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/volunteer') }}" class="theme_button">Be a Volunteer</a>
@@ -155,7 +155,7 @@
                 <a href="{{ url('/coming-soon') }}" class="bold">Rescue</a>
               </h3>
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                {{ $contents['Home Rescue'] }}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/coming-soon') }}" class="theme_button inverse">Learn More</a>
@@ -171,7 +171,7 @@
                 <a href="{{ url('/coming-soon') }}" class="bold">Rehabilitate</a>
               </h3>
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                {{ $contents['Home Rehabilitate'] }}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/coming-soon') }}" class="theme_button inverse">Learn More</a>
@@ -187,7 +187,7 @@
                 <a href="{{ url('/coming-soon') }}" class="bold">Rehome</a>
               </h3>
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque
+                {{ $contents['Home Rehome'] }}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/coming-soon') }}" class="theme_button inverse">Learn More</a>

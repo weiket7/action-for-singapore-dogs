@@ -33,12 +33,21 @@ class PageTable extends Migration
 ('C', 'Boarding Services', 'boarding-services', '<p>Do you worry about going away and leaving your dog in a kennel environment ? Haven’t had a holiday in years because you couldn’t trust anyone with your dog ?&nbsp;</p><p><br>Now you can rest easy when you leave your dog with us. Like you, we want the best for our dogs. That is why we spare no expense to ensure our dogs get the best treatment possible and the hallmark ASD quality care will be extended to your dog when he/she comes to stay with us.</p>'),
 ('C', 'Gift Shop', 'gift-shop', 'Gift Shop'),
 
-('C', 'Home Adopt', '', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Donate', '', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Volunteer', '', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Rescue', '', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Rehabilitate', '', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Rehome', '', 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque');"
+('C', 'Home Adopt', '', 'Home Adopt At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
+('C', 'Home Donate', '', 'Home Donate At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
+('C', 'Home Volunteer', '', 'Home Volunteer At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
+('C', 'Home Rescue', '', 'Home RescueAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
+('C', 'Home Rehabilitate', '', 'Home Rehabilitate At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
+('C', 'Home Rehome', '', 'Home Rehome At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
+('C', 'Volunteer Top', '', 'Volunteer Top Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.'),
+('C', 'Volunteer Left', '', 'Volunteer Left Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'),
+('C', 'Volunteer Rescuing', '', 'Rescuing Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'),
+('C', 'Volunteer Rehoming', '', 'Rehoming Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'),
+('C', 'Volunteer Fostering', '', 'Fostering Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'),
+('C', 'Volunteer Volunteer', '', 'Volunteer Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'),
+('C', 'Volunteer Fund Raising', '', 'Fund Raising Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'),
+('C', 'Volunteer Publicity', '', 'Publicity Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'),
+('C', 'Volunteer Logistics', '', 'Logistics Lorem ipsum dolor sit amet, consetetur sadipscing elitr.');"
       );
     }
 

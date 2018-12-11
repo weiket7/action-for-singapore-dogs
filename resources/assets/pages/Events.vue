@@ -79,12 +79,6 @@
           </div>
           <div class="checkbox">
             <label>
-              <input type="checkbox" v-model="type" name="type" value="S">
-              Social Events
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
               <input type="checkbox" v-model="type" name="type" value="O">
               Others
             </label>

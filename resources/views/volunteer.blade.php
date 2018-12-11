@@ -175,7 +175,28 @@
         <div class="row">
           <div class="mt-10 mb-20">(Click on the image to learn more)</div>
           
-          @{{ selectedActivity}} Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          <div v-if="selectedActivity == 'rescuing'">
+            {{ $contents['Volunteer Rescuing'] }}
+          </div>
+          <div v-if="selectedActivity == 'rehoming'">
+            {{ $contents['Volunteer Rehoming'] }}
+          </div>
+          <div v-if="selectedActivity == 'fostering'">
+            {{ $contents['Volunteer Fostering'] }}
+          </div>
+          <div v-if="selectedActivity == 'volunteer'">
+            {{ $contents['Volunteer Volunteer'] }}
+          </div>
+          <div v-if="selectedActivity == 'fund-raising'">
+            {{ $contents['Volunteer Fund Raising'] }}
+          </div>
+          <div v-if="selectedActivity == 'publicity'">
+            {{ $contents['Volunteer Publicity'] }}
+          </div>
+          <div v-if="selectedActivity == 'logistics'">
+              {{ $contents['Volunteer Logistics'] }}
+          </div>
+          
         </div>
       </div>
     </div>

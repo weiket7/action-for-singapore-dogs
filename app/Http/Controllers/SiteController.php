@@ -15,7 +15,6 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller {
@@ -31,6 +30,7 @@ class SiteController extends Controller {
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
+    $data['contents'] = Page::getContents();
     $home = DB::table('home')->first();
     if ($home->show == 'E') {
       $data['event'] = Event::find($home->event_id);
@@ -103,7 +103,8 @@ class SiteController extends Controller {
   }
   
   public function volunteer(Request $request) {
-    return view('volunteer');
+    $data['contents'] = Page::getContents();
+    return view('volunteer', $data);
   }
   
   public function donate(Request $request) {
