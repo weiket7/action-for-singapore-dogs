@@ -82,6 +82,9 @@ class AdoptionFormController extends Controller {
     $input['person_id'] = $person->person_id;
     $input['adopt_id'] = $adoption_form->adopt_id;
     $input['adopted_on'] = $adoption_form->adopted_on;
+    $input['remark1'] = $adoption_form->remark1;
+    $input['remark2'] = $adoption_form->remark2;
+    $input['remark3'] = $adoption_form->remark3;
     $adopter->saveAdopter($input);
   }
   
