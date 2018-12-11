@@ -5,8 +5,9 @@
         <thead>
         <tr>
           <th>Name</th>
-          <th>Image</th>
+          <th>Price</th>
           <th>Quantity</th>
+          <th>Image</th>
         </tr>
         </thead>
         <tbody>
@@ -16,10 +17,11 @@
               {{ gift.name }}
             </router-link>
           </td>
+          <td>${{ gift.price }}</td>
+          <td>{{ gift.quantity }}</td>
           <td>
               <img :src="'assets/images/gifts/'+gift.image" style="max-height: 70px">
           </td>
-          <td>{{ gift.quantity }}</td>
         </tr>
         </tbody>
       </table>

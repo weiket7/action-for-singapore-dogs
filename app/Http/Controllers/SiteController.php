@@ -8,6 +8,7 @@ use App\Models\Banner;
 use App\Models\Enums\AdoptStat;
 use App\Models\Enums\EventType;
 use App\Models\Event;
+use App\Models\Gift;
 use App\Models\Page;
 use App\Models\Question;
 use Carbon\Carbon;
@@ -43,7 +44,8 @@ class SiteController extends Controller {
   }
   
   public function giftShop(Request $request) {
-    $data['gift-shops'] = GiftShop::all();
+    $gifts = Gift::all();
+    $data['gift_chunks'] = $gifts->chunk(4);
     return view('gift-shop', $data);
     
   }

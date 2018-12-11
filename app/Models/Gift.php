@@ -12,6 +12,7 @@ class Gift extends Model
   public function saveGift($input) {
     $this->name = $input['name'];
     $this->quantity = $input['quantity'];
+    $this->price = $input['price'];
     if ($this->gift_id == null) {
       $this->image = "";
       $this->position = Gift::max("position") + 1;

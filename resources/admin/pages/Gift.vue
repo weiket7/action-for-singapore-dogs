@@ -10,6 +10,9 @@
       </form-row>
 
       <form-row>
+        <label-component required>Price</label-component>
+        <textbox-component v-model="gift.price" :error="errors.get('price')"></textbox-component>
+
         <label-component required>Image<br>(820 x 340 px)</label-component>
         <image-component v-model="gift.image" name="image"
                          v-on:update-image="updateImage" folder="gifts"
