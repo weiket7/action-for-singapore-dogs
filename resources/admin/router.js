@@ -23,6 +23,8 @@ import Question from './pages/Question'
 import QuestionList from './pages/QuestionList'
 import AdoptionForm from './pages/AdoptionForm'
 import AdoptionFormList from './pages/AdoptionFormList'
+import Gift from './pages/Gift'
+import GiftList from './pages/GiftList'
 import User from './pages/User'
 import UserList from './pages/UserList'
 import Page from './pages/Page'
@@ -77,7 +79,11 @@ export default new Router({
     { path: '/adoption-form', name: 'AdoptionFormList', component: AdoptionFormList },
     { path: '/adoption-form/save', name: 'AddAdoptionForm', component: AdoptionForm },
     { path: '/adoption-form/save/:adoption_form_id', name: 'SaveAdoptionForm', component: AdoptionForm },
-    
+  
+    { path: '/gift', name: 'GiftList', component: GiftList },
+    { path: '/gift/save', name: 'AddGift', component: Gift },
+    { path: '/gift/save/:gift_id', name: 'SaveGift', component: Gift },
+  
     { path: '/user', name: 'UserList', component: UserList },
     { path: '/user/save', name: 'AddUser', component: User },
     { path: '/user/save/:user_id', name: 'SaveUser', component: User },

@@ -81,7 +81,7 @@
           { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
           { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
           /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
-          { 'name': 'Gift Shop', 'link': 'gift-shop', 'icon': 'user-secret' },
+          { 'name': 'Gift Shop', 'link': 'gift', 'icon': 'user-secret' },
           { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' },
           { 'name': 'Pages', 'link': 'page', 'icon': 'font' }
         ];

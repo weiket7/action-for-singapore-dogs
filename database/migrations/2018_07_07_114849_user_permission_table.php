@@ -15,8 +15,8 @@ class UserPermissionTable extends Migration
       });
       
       $arr = ['Dogs', 'People', 'Adopters', 'Rescuers', 'Fosters', 'Volunteers',
-        'Donations', 'Banners', 'Events', 'Adoption', 'Questions',
-        'Users', 'Pages', 'Adoption Forms'];
+        'Donations', 'Banners', 'Events', 'Adoption Forms',
+        'Gift Shop', 'Users', 'Pages'];
       foreach($arr as $a) {
         DB::table('user_permission')->insert([
           'user_id'=>1,

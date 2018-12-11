@@ -107,12 +107,17 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/question/save/', 'QuestionController@save');
   Route::post('api/question/save/{question_id}', 'QuestionController@save');*/
   
-  
   Route::get('api/user', 'UserController@all');
   Route::get('api/user/get/{user_id}', 'UserController@get');
   Route::post('api/user/save/', 'UserController@save');
   Route::post('api/user/save/{user_id}', 'UserController@save');
   Route::post('api/user/delete/{user_id}', 'UserController@delete');
+  
+  Route::get('api/gift', 'GiftController@all');
+  Route::get('api/gift/get/{gift_shop_id}', 'GiftController@get');
+  Route::post('api/gift/save/', 'GiftController@save');
+  Route::post('api/gift/save/{gift_shop_id}', 'GiftController@save');
+  Route::post('api/gift/delete/{gift_shop_id}', 'GiftController@delete');
   
   Route::get('api/page', 'PageController@all');
   Route::post('api/page/save/{page_id}', 'PageController@save');
