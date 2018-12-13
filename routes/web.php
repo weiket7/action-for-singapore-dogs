@@ -119,6 +119,12 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/gift/save/{gift_shop_id}', 'GiftController@save');
   Route::post('api/gift/delete/{gift_shop_id}', 'GiftController@delete');
   
+  Route::get('api/testimonial', 'TestimonialController@all');
+  Route::get('api/testimonial/get/{testimonial_shop_id}', 'TestimonialController@get');
+  Route::post('api/testimonial/save/', 'TestimonialController@save');
+  Route::post('api/testimonial/save/{testimonial_shop_id}', 'TestimonialController@save');
+  Route::post('api/testimonial/delete/{testimonial_shop_id}', 'TestimonialController@delete');
+  
   Route::get('api/page', 'PageController@all');
   Route::post('api/page/save/{page_id}', 'PageController@save');
   Route::get('api/home/get', 'PageController@getHome');

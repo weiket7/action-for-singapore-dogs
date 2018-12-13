@@ -33,7 +33,7 @@
   import axios from 'axios'
 
   export default {
-    name: "GiftShopList",
+    name: "GiftList",
     data() {
       return {
         gifts: {},

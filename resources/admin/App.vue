@@ -83,7 +83,7 @@
           /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
           { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
           { 'name': 'Gift Shop', 'link': 'gift', 'icon': 'user-secret' },
-          /*{ 'name': 'Testimonials', 'link': 'testimonial', 'icon': 'user-secret' },*/
+          { 'name': 'Testimonials', 'link': 'testimonial', 'icon': 'user-secret' },
           { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' }
         ];
         for(var i=0; i<menus.length; i++) {

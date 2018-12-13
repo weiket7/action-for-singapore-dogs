@@ -9,7 +9,8 @@ class Testimonial extends Model
   public $timestamps = false;
   
   public function saveTestimonial($input) {
-    $this->is_header = $input['is_header'];
+    $this->dog_name = $input['dog_name'];
+    $this->quote = $input['quote'];
     $this->content = $input['content'];
     $this->save();
     return $this->testimonial_id;

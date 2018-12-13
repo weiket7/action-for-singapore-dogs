@@ -23,6 +23,8 @@ import AdoptionForm from './pages/AdoptionForm'
 import AdoptionFormList from './pages/AdoptionFormList'
 import Gift from './pages/Gift'
 import GiftList from './pages/GiftList'
+import Testimonial from './pages/Testimonial'
+import TestimonialList from './pages/TestimonialList'
 import User from './pages/User'
 import UserList from './pages/UserList'
 import Page from './pages/Page'
@@ -77,6 +79,11 @@ export default new Router({
     { path: '/gift', name: 'GiftList', component: GiftList },
     { path: '/gift/save', name: 'AddGift', component: Gift },
     { path: '/gift/save/:gift_id', name: 'SaveGift', component: Gift },
+    
+    { path: '/testimonial', name: 'TestimonialList', component: TestimonialList },
+    { path: '/testimonial/save', name: 'AddTestimonial', component: Testimonial },
+    { path: '/testimonial/save/:testimonial_id', name: 'SaveTestimonial', component: Testimonial },
+  
   
     { path: '/user', name: 'UserList', component: UserList },
     { path: '/user/save', name: 'AddUser', component: User },
