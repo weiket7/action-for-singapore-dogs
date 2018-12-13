@@ -130,13 +130,16 @@
                     <a href="{{ url('pages/adoption-rescue-centre-arc') }}" :data-target="'coming-soon'">Adoption & Rescue Centre (ARC)</a>
                   </li>
                   <li>
-                    <a href="{{ url('pages/boarding-services') }}" :data-target="'coming-soon'">Boarding Services</a>
+                    <a href="{{ url('boarding-services') }}" :data-target="'coming-soon'">Boarding Services</a>
                   </li>
                   <li>
                     <a href="{{ url('pages/media') }}" :data-target="'coming-soon'">Media</a>
                   </li>
                   <li>
                     <a href="{{ url('pages/dog-listener-academy') }}" :data-target="'coming-soon'">Dog Listener Academy</a>
+                  </li>
+                  <li>
+                    <a href="{{ url('pages/frequently-asked-questions') }}" :data-target="'coming-soon'">Frequently Asked Questions</a>
                   </li>
                 </ul>
               </li>

@@ -11,6 +11,7 @@ use App\Models\Event;
 use App\Models\Gift;
 use App\Models\Page;
 use App\Models\Question;
+use App\Models\Testimonial;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -145,6 +146,12 @@ class SiteController extends Controller {
     $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
     $data['event'] = $event;
     return view('event', $data);
+  }
+  
+  public function boardingServices() {
+    $data['content'] = Page::where('title', 'Boarding Services')->value('content');
+    $data['testimonials'] = Testimonial::all();
+    return view('boarding-services', $data);
   }
   
   public function paypal(Request $request, $amount) {

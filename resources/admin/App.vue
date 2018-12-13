@@ -75,15 +75,16 @@
           { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
           { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-md' },
           { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
-          { 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },
-          { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
-          { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
-          { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
           { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
+          /*{ 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },*/
+          { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
+          { 'name': 'Pages', 'link': 'page', 'icon': 'font' },
+          { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
           /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
+          { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
           { 'name': 'Gift Shop', 'link': 'gift', 'icon': 'user-secret' },
-          { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' },
-          { 'name': 'Pages', 'link': 'page', 'icon': 'font' }
+          /*{ 'name': 'Testimonials', 'link': 'testimonial', 'icon': 'user-secret' },*/
+          { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' }
         ];
         for(var i=0; i<menus.length; i++) {
           if(this.permissions.indexOf(menus[i].name) < 0) {

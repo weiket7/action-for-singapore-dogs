@@ -19,8 +19,6 @@ import Donation from './pages/Donation'
 import DonationList from './pages/DonationList'
 import Banner from './pages/Banner'
 import BannerList from './pages/BannerList'
-import Question from './pages/Question'
-import QuestionList from './pages/QuestionList'
 import AdoptionForm from './pages/AdoptionForm'
 import AdoptionFormList from './pages/AdoptionFormList'
 import Gift from './pages/Gift'
@@ -71,10 +69,6 @@ export default new Router({
     { path: '/banner', name: 'BannerList', component: BannerList },
     { path: '/banner/save', name: 'AddBanner', component: Banner },
     { path: '/banner/save/:banner_id', name: 'SaveBanner', component: Banner },
-    
-    { path: '/question', name: 'QuestionList', component: QuestionList },
-    { path: '/question/save', name: 'AddQuestion', component: Question },
-    { path: '/question/save/:question_id', name: 'SaveQuestion', component: Question },
     
     { path: '/adoption-form', name: 'AdoptionFormList', component: AdoptionFormList },
     { path: '/adoption-form/save', name: 'AddAdoptionForm', component: AdoptionForm },
