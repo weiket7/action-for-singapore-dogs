@@ -54,11 +54,6 @@ License: You must have a valid license purchased only from themeforest(the above
           </a>
         </div>
         <div class="m-login__signin">
-          <div class="m-login__head">
-            <h3 class="m-login__title">
-              Admin
-            </h3>
-          </div>
           <form class="m-login__form m-form" method="post" action="">
             {{ csrf_field() }}
             
