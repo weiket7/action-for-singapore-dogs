@@ -3,8 +3,6 @@
 use App\Helpers\BackendHelper;
 use App\Http\Requests\TestimonialRequest;
 use App\Models\Testimonial;
-use App\Models\Event;
-use App\Models\Page;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -27,13 +25,6 @@ class TestimonialController extends Controller
   
   public function get(Request $request, $testimonial_id = null ) {
     $data['testimonial'] = $testimonial_id != null ? Testimonial::find($testimonial_id) : new \ stdClass();
-    $events = Event::where('date', '>=', Carbon::today())->get();
-    $res = [];
-    foreach($events as $event) {
-      $res[$event->event_id] = $event->name . ' on ' . Carbon::createFromFormat('Y-m-d', $event->date)->format('d M Y');
-    }
-    $data['events'] = $res;
-    $data['pages'] = Page::pluck('title', 'slug');
     return $data;
   }
   

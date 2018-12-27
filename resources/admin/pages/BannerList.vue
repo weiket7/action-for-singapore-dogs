@@ -4,6 +4,7 @@
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
+          <th width="80px">Position</th>
           <th>Name</th>
           <th>Image</th>
           <th>Url</th>
@@ -11,6 +12,7 @@
         </thead>
         <tbody>
         <tr v-for="banner in banners">
+          <td><input type="text" class="form-control" v-model="banner.position"></td>
           <td>
             <router-link :to="'/banner/save/'+banner.banner_id">
               {{ banner.name }}
@@ -23,6 +25,12 @@
         </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-success" @click="saveBannerList()">Save</button>
+      </div>
     </div>
   </single-portlet>
 </template>
@@ -38,6 +46,14 @@
         banner_stats: {}
       }
     },
+    methods: {
+      saveBannerList() {
+        axios.post('api/banner', { banners: this.banners })
+          .then(response => {
+            toastr.success("Banners updated");
+          })
+      }
+    },
     created() {
       axios.get('api/banner')
         .then(response=>{
@@ -47,7 +63,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

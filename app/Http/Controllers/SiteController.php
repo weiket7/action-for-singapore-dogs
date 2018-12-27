@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller {
+  
   public function home(Request $request) {
     if (! $request->session()->get('rand')) {
       $request->session()->put('rand', rand());
@@ -26,7 +27,7 @@ class SiteController extends Controller {
     $rand = $request->session()->get('rand');
     $count = 8;
     $data['banners'] = Banner::leftJoin('event', 'event.event_id', '=', 'banner.event_id')
-      ->select('banner.name', 'banner.image', 'banner.link_to', 'banner.page_slug', 'event.slug as event_slug')->get();
+      ->select('banner.name', 'banner.image', 'banner.link_to', 'banner.page_slug', 'event.slug as event_slug')->orderBy('position')->get();
     //var_dump($data['banners']); exit;
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
@@ -48,7 +49,6 @@ class SiteController extends Controller {
     $gifts = Gift::all();
     $data['gift_chunks'] = $gifts->chunk(4);
     return view('gift-shop', $data);
-    
   }
   
   public function events(Request $request) {

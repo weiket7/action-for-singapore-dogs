@@ -16,8 +16,8 @@
       <form-row>
         <label-component>Content</label-component>
         <div class="col-lg-9">
-
-          <editor api-key="0nbcmlsjmwz51b0g81hg1xk8hf818lag7bfi0wjmhrvor8gw" id="editor" selector="#editor" images_upload_url="abc" :init="{image_caption: false, height: 1000, plugins: ['wordcount', 'image imagetools']}"></editor>
+          <textarea name="" id="editor">{{ page.content }}
+          </textarea>
         </div>
       </form-row>
       
@@ -32,8 +32,7 @@
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
   import axios from 'axios'
   import FormMixin from '../form-mixin';
-  import Editor from '@tinymce/tinymce-vue';
-  
+
   export default {
     name: "page",
     data() {
@@ -69,10 +68,6 @@
         })
     },
     mixins: [FormMixin],
-    components: {
-      'editor': Editor
-    }
-
   }
 
 </script>

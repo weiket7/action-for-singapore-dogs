@@ -39,8 +39,15 @@ class BannerController extends Controller
     return $data;
   }
   
-  public function all()
-  {
+  public function all(Request $request) {
+    if ($request->isMethod("post")) {
+      //vaR_dump($request->get('banners')); exit;
+      foreach($request->get('banners') as $banner) {
+        $target = Banner::find($banner['banner_id']);
+        $target->position = $banner['position'];
+        $target->save();
+      }
+    }
     $data['banners'] = Banner::all();
     $data['banner_stats'] = BannerStat::$values;
     return $data;
