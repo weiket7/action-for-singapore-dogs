@@ -47,7 +47,7 @@ class SiteController extends Controller {
   }
   
   public function giftShop(Request $request) {
-    $gifts = Gift::all();
+    $gifts = Gift::orderBy('position')->get();
     $data['gift_chunks'] = $gifts->chunk(4);
     return view('gift-shop', $data);
   }

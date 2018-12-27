@@ -37,8 +37,15 @@ class GiftController extends Controller
     return $data;
   }
   
-  public function all()
-  {
+  public function all(Request $request) {
+    if ($request->isMethod("post")) {
+      //vaR_dump($request->get('banners')); exit;
+      foreach($request->get('gifts') as $gift) {
+        $target = Gift::find($gift['gift_id']);
+        $target->position = $gift['position'];
+        $target->save();
+      }
+    }
     $data['gifts'] = Gift::all();
     //$data['gift_stats'] = GiftStat::$values;
     return $data;

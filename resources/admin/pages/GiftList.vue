@@ -4,6 +4,7 @@
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
+          <th width="80px">Position</th>
           <th>Name</th>
           <th>Price</th>
           <th>Quantity</th>
@@ -12,6 +13,7 @@
         </thead>
         <tbody>
         <tr v-for="gift in gifts">
+          <td><input type="text" class="form-control" v-model="gift.position"></td>
           <td>
             <router-link :to="'/gift/save/'+gift.gift_id">
               {{ gift.name }}
@@ -26,6 +28,12 @@
         </tbody>
       </table>
     </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-success" @click="saveGiftList()">Save</button>
+      </div>
+    </div>
   </single-portlet>
 </template>
 
@@ -38,6 +46,14 @@
       return {
         gifts: {},
         gift_stats: {}
+      }
+    },
+    methods: {
+      saveGiftList() {
+        axios.post('api/gift', { gifts: this.gifts })
+          .then(response => {
+            toastr.success("Gifts updated");
+          })
       }
     },
     created() {

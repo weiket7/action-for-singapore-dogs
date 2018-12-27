@@ -116,6 +116,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/user/delete/{user_id}', 'UserController@delete');
   
   Route::get('api/gift', 'GiftController@all');
+  Route::post('api/gift', 'GiftController@all');
   Route::get('api/gift/get/{gift_shop_id}', 'GiftController@get');
   Route::post('api/gift/save/', 'GiftController@save');
   Route::post('api/gift/save/{gift_shop_id}', 'GiftController@save');
