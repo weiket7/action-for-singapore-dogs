@@ -5,6 +5,7 @@ use App\Mail\ContactMail;
 use App\Models\Adopt;
 use App\Models\AdoptionForm;
 use App\Models\Banner;
+use App\Models\DogInNeed;
 use App\Models\Enums\AdoptStat;
 use App\Models\Enums\EventType;
 use App\Models\Event;
@@ -152,6 +153,11 @@ class SiteController extends Controller {
     $data['content'] = Page::where('title', 'Boarding Services')->value('content');
     $data['testimonials'] = Testimonial::all();
     return view('boarding-services', $data);
+  }
+  
+  public function dogsInNeed() {
+    $data['dogs_in_need'] = DogInNeed::all();
+    return view('dogs-in-need', $data);
   }
   
   public function paypal(Request $request, $amount) {

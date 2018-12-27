@@ -12,4 +12,9 @@ class ViewHelper
     return date('d M Y', strtotime($date));
   }
   
+  public static function limitContent($content, $limit) {
+    $pos=strpos($content, ' ', $limit);
+    return substr($content, 0, $pos);
+  }
+  
 }

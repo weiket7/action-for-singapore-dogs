@@ -178,7 +178,7 @@
                     <a href="{{ url('gift-shop') }}" :data-target="'coming-soon'">Gift Shop</a>
                   </li>
                   <li>
-                    <a href="{{ url('pages/dogs-in-need') }}" :data-target="'coming-soon'">Dogs in Need</a>
+                    <a href="{{ url('dogs-in-need') }}" :data-target="'coming-soon'">Dogs in Need</a>
                   </li>
                 </ul>
               </li>
