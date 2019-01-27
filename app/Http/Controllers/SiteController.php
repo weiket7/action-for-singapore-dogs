@@ -176,8 +176,8 @@ class SiteController extends Controller {
     return view('blog', $data);
   }
   
-  public function post($dog_name) {
-    $data['blog'] = Blog::where('dog_name', $dog_name)->first();
+  public function post($slug) {
+    $data['blog'] = Blog::where('slug', $slug)->first();
     return view('blog-post', $data);
   }
   

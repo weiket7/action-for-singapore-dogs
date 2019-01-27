@@ -16,7 +16,7 @@ class BlogTable extends Migration
       $table->string('slug', 150);
       $table->string('dog_name', 50)->nullable();
       $table->string('image', 50);
-      $table->dateTime('posted_on');
+      $table->date('posted_on');
       $table->text('content');
     });
     

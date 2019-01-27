@@ -24,7 +24,7 @@
             <h4 class="blog-title">{{ $post->title }}</h4>
           </a>
           <p class="event-detail">Posted On: {{ ViewHelper::formatDate($post->posted_on) }}</p>
-          <p>{{ ViewHelper::limitContent($post->content, 300) }}...</p>
+          <p>{!!  nl2br(ViewHelper::limitContent($post->content, 300))  !!}...</p>
         </div>
       </div>
       

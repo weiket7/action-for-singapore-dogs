@@ -4,12 +4,15 @@
       <form-row>
         <label-component>Title</label-component>
         <textbox-component v-model="blog.title" :error="errors.get('title')"></textbox-component>
-  
+        
         <label-component>Type</label-component>
         <select-component v-model="blog.type" :options="blog_types" :error="errors.get('type')"></select-component>
       </form-row>
       
       <form-row>
+        <label-component>Posted On</label-component>
+        <datepicker-component name="posted_on" v-model="blog.posted_on" :error="errors.get('posted_on')" v-if="loaded"></datepicker-component>
+        
         <label-component>Image</label-component>
         <image-component v-model="blog.image" name="image"
                          v-on:update-image="updateImage" folder="blog"
@@ -37,7 +40,7 @@
   import FormMixin from '../form-mixin';
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
   import ImageComponent from "../components/ImageComponent";
-
+  
   export default {
     name: "blog",
     data() {
@@ -47,20 +50,21 @@
         editor: null,
         errors: new Errors(),
         image_new: null,
-      }
+        loaded: false
+    }
     },
     methods: {
       onSubmit() {
         this.blog.content = this.editor.getData();
-  
+        
         let form_data = this.blog;
-  
+        
         let config = {};
         if (this.image_new) {
           form_data = new FormData();
           this.appendObjectToFormData(this.blog, form_data);
           form_data.append("image_new", this.image_new);
-    
+          
           config = {
             headers: {
               'content-type': 'multipart/form-data'
@@ -72,7 +76,7 @@
         if (!this.is_create) {
           url += '/'+ this.$route.params.blog_id
         }
-  
+        
         axios.post(url, form_data, config)
           .then(this.onSuccess)
           .catch(this.onError);
@@ -81,6 +85,7 @@
         this.errors.clear();
         if (this.is_create) {
           toastr.success("Blog added");
+          this.$router.push('/blog/save/'+this.blog_id);
           return;
         }
         toastr.success("Blog updated");
@@ -94,9 +99,9 @@
     mounted() {
       axios.get("api/blog/get/" + this.$route.params.blog_id)
         .then(response => {
-          this.blog = response.data.blog;
+          this.blog = this.is_create ? {} : response.data.blog;
           this.blog_types = response.data.blog_types;
-          
+  
           let vue = this
           ClassicEditor.create(document.querySelector('#editor'), {
             ckfinder: {
@@ -107,7 +112,14 @@
           }).catch(error => {
             console.log(error)
           });
+  
+          this.loaded = true;
         })
+    },
+    computed: {
+      is_create() {
+        return this.$route.path == "/blog/save";
+      }
     },
     components: {
       ImageComponent

@@ -25,7 +25,6 @@ class EventTable extends Migration
       $table->string('image', 50)->nullable();
       $table->string('cost', 50)->nullable();
       $table->string('duration', 50)->nullable();
-      $table->text('short_desc')->nullable();
       $table->text('desc')->nullable();
     });
     

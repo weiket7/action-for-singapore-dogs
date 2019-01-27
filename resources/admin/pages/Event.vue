@@ -34,14 +34,9 @@
       </form-row>
 
       <form-row>
-        <label-component text="Shown in Home if it's chosen">Short Description</label-component>
-        <textarea-component v-model="event.short_desc"></textarea-component>
-        
         <label-component>Description</label-component>
         <textarea-component v-model="event.desc"></textarea-component>
-      </form-row>
-      
-      <form-row>
+  
         <label-component>Image</label-component>
         <image-component v-model="event.image" name="image"
                          v-on:update-image="updateImage" folder="events"
@@ -88,7 +83,7 @@
     data() {
       return {
         event: {},
-        event_types: { 'A': 'Adoption Drive', 'B': 'Basic Obedience Class', 'O': 'Others'},
+        event_types: {},
         errors: new Errors(),
         image_new: null,
         adopts: [],
@@ -173,20 +168,16 @@
       }
     },
     created() {
-      if (this.is_create) {
-        this.loaded = true;
-      } else {
-        axios.get('api/event/get/' + this.$route.params.event_id)
-          .then(response => {
-            this.event = response.data.event;
-            this.event_types = response.data.event_types;
-            this.adopts = response.data.adopts;
-            this.loaded = true;
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      }
+      axios.get('api/event/get/' + this.$route.params.event_id)
+        .then(response => {
+          this.event = this.is_create ? {} : response.data.event;
+          this.event_types = response.data.event_types;
+          this.adopts = response.data.adopts;
+          this.loaded = true;
+        })
+        .catch(error => {
+          console.log(error);
+        })
     },
     mounted() {
       let vue = this

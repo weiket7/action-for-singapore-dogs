@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
@@ -12,6 +13,7 @@ class Blog extends Model
     $this->title = $input['title'];
     $this->slug = str_slug($this->title);
     $this->type = $input['type'];
+    $this->posted_on = Carbon::createFromFormat('Y-m-d', $input['posted_on']);
     if ($this->blog_id == null) {
       $this->image = "";
     }

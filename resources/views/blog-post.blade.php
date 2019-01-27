@@ -15,7 +15,7 @@
             <header class="entry-header">
               
               <h1 class="entry-title black bottommargin_10">
-                Dogs in Need - {{ $blog->dog_name }}
+                Dogs in Need - {{ $blog->title }}
               </h1>
               <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
               Posted On: {{ ViewHelper::formatDate($blog->posted_on) }}
