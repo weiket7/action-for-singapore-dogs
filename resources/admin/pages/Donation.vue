@@ -3,31 +3,31 @@
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
         <label-component required>Name</label-component>
-        <textbox-component v-model="donation.name"></textbox-component>
+        <textbox-component v-model="donation.name" :error="errors.get('name')"></textbox-component>
 
         <label-component required>Status</label-component>
-        <radio-component v-model="donation.stat" :options="donation_stats"></radio-component>
+        <radio-component v-model="donation.stat" :options="donation_stats" :error="errors.get('donation_stats')"></radio-component>
       </form-row>
 
       <form-row>
         <label-component required>Mobile</label-component>
-        <textbox-component v-model="donation.mobile"></textbox-component>
+        <textbox-component v-model="donation.mobile" :error="errors.get('mobile')"></textbox-component>
 
         <label-component required>Email</label-component>
-        <textbox-component v-model="donation.email"></textbox-component>
+        <textbox-component v-model="donation.email" :error="errors.get('email')"></textbox-component>
       </form-row>
 
       <form-row>
         <label-component required>Amount</label-component>
-        <textbox-component v-model="donation.amount"></textbox-component>
+        <textbox-component v-model="donation.amount" :error="errors.get('amount')"></textbox-component>
 
         <label-component required>Payment Method</label-component>
-        <radio-component v-model="donation.payment_method" :options="payment_methods"></radio-component>
+        <radio-component v-model="donation.payment_method" :options="payment_methods" :error="errors.get('payment_method')"></radio-component>
       </form-row>
 
       <form-row>
-        <label-component v-show="showRefNo">Ref No</label-component>
-        <textbox-component v-model="donation.ref_no" v-show="showRefNo"></textbox-component>
+        <label-component v-show="showRefNo" required>Ref No</label-component>
+        <textbox-component v-model="donation.ref_no" v-show="showRefNo" :error="errors.get('ref_no')"></textbox-component>
 
         <label-component v-show="showTransferDate">Transfer Date</label-component>
         <datepicker-component name="transfer_date" v-model="donation.transfer_date" :error="errors.get('transfer_date')" v-if="loaded && showTransferDate"></datepicker-component>
@@ -44,6 +44,7 @@
 <script>
   import axios from 'axios'
   import Errors from "../../common/errors";
+  import FormMixin from '../form-mixin';
 
   export default {
     name: "Donation",
@@ -110,7 +111,8 @@
       }).on("confirmed.bs.confirmation", function() {
         vue.deleteDonation();
       });
-    }
+    },
+    mixins: [FormMixin],
   }
 </script>
 

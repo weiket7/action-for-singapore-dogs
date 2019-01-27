@@ -24,6 +24,14 @@
         <label-component required>Birthday</label-component>
         <datepicker-component name="birthday" v-model="volunteer.birthday" :error="errors.get('birthday')" v-if="volunteer.birthday"></datepicker-component>
       </form-row>
+  
+      <form-row>
+        <label-component required>Occupation</label-component>
+        <textbox-component v-model="volunteer.occupation" :error="errors.get('occupation')"></textbox-component>
+    
+        <label-component required>Amount of time you can afford</label-component>
+        <textbox-component v-model="volunteer.availability" :error="errors.get('availability')"></textbox-component>
+      </form-row>
       
       <form-row>
         <label-component>Interested In</label-component>
@@ -56,6 +64,7 @@
 <script>
   import axios from 'axios'
   import Errors from "../../common/errors";
+  import FormMixin from "../form-mixin";
   
   export default {
     name: "Volunteer",
@@ -120,7 +129,8 @@
       }).on("confirmed.bs.confirmation", function() {
         vue.deleteVolunteer();
       });
-    }
+    },
+    mixins: [FormMixin]
   }
 </script>
 

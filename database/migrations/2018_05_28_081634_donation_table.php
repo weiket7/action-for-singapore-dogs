@@ -19,8 +19,8 @@ class DonationTable extends Migration
         $table->string('mobile', 50);
         $table->string('amount', 50);
         $table->string('payment_method', 50);
-        $table->string('ref_no', 50)->nullable();
-        $table->dateTime('transfer_date')->nullable();
+        $table->string('ref_no', 50);
+        $table->dateTime('transfer_date');
         $table->dateTime('donated_on');
       });
       
@@ -32,8 +32,8 @@ class DonationTable extends Migration
         'amount'=>10,
         'payment_method'=>PaymentMethod::BankTransfer,
         'ref_no'=>123,
-        'transfer_date'=>123,
-        'donated_on'=>Carbon::now()->subDay()
+        'transfer_date'=>Carbon::now(),
+        'donated_on'=>Carbon::now()
       ]);
       DB::table('donation')->insert([
         'stat'=>DonationStat::Received,
@@ -43,6 +43,7 @@ class DonationTable extends Migration
         'amount'=>1200,
         'payment_method'=>PaymentMethod::PayNow,
         'ref_no'=>456,
+        'transfer_date'=>Carbon::now(),
         'donated_on'=>Carbon::now()
       ]);
     }

@@ -6,25 +6,28 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class GiftRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            //
-        ];
-    }
+  public function authorize()
+  {
+    return true;
+  }
+  
+  public function rules()
+  {
+    return [
+      'name' => 'required',
+      'price' => 'required',
+      'quantity' => 'required',
+      'image_new' => 'required_without:gift_id',
+    ];
+  }
+  
+  public function messages()
+  {
+    return [
+      'name.required' => 'Name is required',
+      'price.required' => 'Price is required',
+      'quantity.required' => 'Quantity is required',
+      'image_new.required' => 'Image is required',
+    ];
+  }
 }
