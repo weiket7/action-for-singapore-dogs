@@ -160,6 +160,11 @@ class SiteController extends Controller {
     return view('dogs-in-need', $data);
   }
   
+  public function dogInNeed($dog_name) {
+    $data['dog_in_need'] = DogInNeed::where('dog_name', $dog_name)->first();
+    return view('dog-in-need', $data);
+  }
+  
   public function paypal(Request $request, $amount) {
     $data['amount'] = $amount;
     return view('paypal', $data);

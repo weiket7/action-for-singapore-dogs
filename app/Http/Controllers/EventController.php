@@ -56,7 +56,7 @@ class EventController extends Controller {
   }
   
   public function filter(Request $request) {
-    $query = Event::where('stat', EventStat::Active);
+    $query = Event::orderBy("date", "desc");
     if (count($request->showing) == 1) {
       if ($request->showing == 'upcoming') {
         $query->where('date', '>=', Carbon::now());
@@ -68,7 +68,7 @@ class EventController extends Controller {
     if ($request->type) {
       $query->whereIn('type', $request->type);
     }
-    $data['events'] = $query->orderBy("date", "desc")->get();
+    $data['events'] = $query->get();
     
     return $data;
   }

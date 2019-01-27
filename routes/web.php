@@ -16,6 +16,7 @@ Route::get('boarding-services', 'SiteController@boardingServices');
 Route::get('volunteer', 'SiteController@volunteer');
 Route::get('donate', 'SiteController@donate');
 Route::get('dogs-in-need', 'SiteController@dogsInNeed');
+Route::get('dogs-in-need/{dog_name}', 'SiteController@dogInNeed');
 Route::get('paypal/{amount}', 'SiteController@paypal');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');

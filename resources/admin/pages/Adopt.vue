@@ -9,7 +9,7 @@
 
             <label-component required>Status</label-component>
             <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')" v-if="!is_create"></radio-component>
-            <static-text v-else>Active</static-text>
+            <static-text v-else>Available</static-text>
           </form-row>
 
           <form-row v-if="adopt.adopt_id">
@@ -245,6 +245,7 @@
           .catch(this.onError);
       },
       onSuccess(response) {
+        this.errors.clear();
         if (this.is_create) {
           toastr.success("Dog added");
           this.adopt.adopt_id = response.data;

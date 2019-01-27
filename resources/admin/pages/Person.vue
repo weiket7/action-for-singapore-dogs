@@ -8,7 +8,7 @@
             <textbox-component v-model="person.name" :error="errors.get('name')"></textbox-component>
   
             <label-component required>Status</label-component>
-            <radio-component v-model="person.stat" :options="person_stats" v-if="!is_create" :error="errors.get('stat')"></radio-component>
+            <radio-component v-model="person.stat" :options="{ 'A': 'Active', 'I': 'Inactive', 'B': 'Blacklisted' }" v-if="!is_create" :error="errors.get('stat')"></radio-component>
             <static-text v-else>Active</static-text>
           </form-row>
           

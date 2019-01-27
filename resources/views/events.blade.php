@@ -3,10 +3,16 @@
 @section('content')
   <div id="app" class="container content">
     <div class="row">
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <h2 class="section_header bold">Events</h2>
+      </div>
+    </div>
+    
+    <div class="row">
       
       <div class="col-sm-7 col-md-8 col-lg-8">
         
-        <div v-for="event in events">
+        <div v-if="events.length" v-for="event in events">
           <div class="side-item">
             <a :href="'event/' + event.slug" v-if="event.image">
               <div class="item-media entry-thumbnail">
@@ -41,14 +47,16 @@
           
           <hr class="divider_20">
         </div>
-      
+        <div v-if="events.length === 0">
+          <h4>No results</h4>
+        </div>
       </div>
       <!--eof .col-sm-8 (main content)-->
       
       <!-- sidebar -->
       <div class="col-sm-5 col-md-4 col-lg-4">
         
-        <div class="widget">
+        {{--<div class="widget">
           
           <h3 class="widget-title">Showing</h3>
           <div class="checkbox">
@@ -63,9 +71,9 @@
               Past
             </label>
           </div>
-        </div>
+        </div>--}}
         
-        <div class="widget mt-30">
+        <div class="widget">
           <h3 class="widget-title">Type</h3>
           <div class="checkbox">
             <label>

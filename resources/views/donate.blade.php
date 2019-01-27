@@ -179,7 +179,6 @@
           payment_method: "",
           transfer_date: moment().format("YYYY-MM-DD"),
           custom_amount: false,
-          amount: 10
         },
         success: false,
         errors: new Errors(),

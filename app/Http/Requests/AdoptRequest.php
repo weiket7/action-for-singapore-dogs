@@ -30,7 +30,7 @@ class AdoptRequest extends FormRequest
       'stat.required' => 'Status is required',
       'gender.required' => 'Gender is required',
       'birthday.required' => 'Birthday is required',
-      'breed.required' => 'breed is required',
+      'breed.required' => 'Breed is required',
       'image_new.required_without' => 'Image is required',
       'image_new.mimes' => 'Image must be jpg, png or gif',
       'image_new.max' => 'Image must be less than 1mb size',

@@ -6,7 +6,9 @@
         <tr>
           <th width="80px">Status</th>
           <th>Name</th>
+          <th>Email</th>
           <th>Mobile</th>
+          <th>Submitted On</th>
         </tr>
         </thead>
         <tbody>
@@ -15,7 +17,9 @@
           <td width="450px">
             <router-link :to="'/volunteer/save/'+volunteer.volunteer_id">{{ volunteer.name }}</router-link>
           </td>
+          <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.mobile }}</td>
+          <td>{{ volunteer.created_on | formatDate}}</td>
         </tr>
         </tbody>
       </table>
