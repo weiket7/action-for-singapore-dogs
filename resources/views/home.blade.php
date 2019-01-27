@@ -10,7 +10,11 @@
         <div class="bxslider">
           @foreach($banners as $banner)
             @if($banner->link_to != 'None')
-              <?php $url = $banner->link_to == 'Event' ? '/event/'.$banner->event_slug : '/pages/'.$banner->page_slug; ?>
+              <?php if ($banner->link_to == 'Event') {
+                $url = '/event/'.$banner->event_slug;
+              } else if ($banner->link_to == 'Blog') {
+                $url = '/blog/post/'.$banner->blog_slug;
+              } ?>
               <a href="{{ url($url) }}">
                 <img src="{{ asset('assets/images/banners/'.$banner->image) }}" title="{{ $banner->name }}" />
               </a>
@@ -37,7 +41,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1 text-center">
           <h2 class="section_header bold">
-            How you can help
+            How You Can Help
           </h2>
         </div>
       </div>
@@ -95,10 +99,11 @@
   
   <section id="dogs-for-adoption" class="mt-30 mb-30">
     <div class="container">
-      <div class="row">
-        <h2 class="section_header bold text-center">
-          <span class="">Dogs for Adoption</span>
+      <div class="row text-center">
+        <h2 class="section_header bold text-center no-mb">
+          Dogs for Adoption
         </h2>
+        Showing 8 out of {{ $adopt_count }} dogs for adoption
       </div>
       <div class="row">
         <div class="visible-lg visible-md">
@@ -133,7 +138,7 @@
       <div class="row">
         <div class="col-md-10 col-md-offset-1 text-center">
           <h2 class="section_header bold">
-            what we do
+            What We Do
           </h2>
         </div>
       </div>

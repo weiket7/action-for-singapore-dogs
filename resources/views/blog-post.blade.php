@@ -8,23 +8,23 @@
       <div class="col-sm-12">
         <article class="vertical-item">
           <div class="item-media">
-            <img src="{{ url('assets/images/dogs-in-need/'.$dog_in_need->image) }}" alt="" class="img-responsive" style="width: auto; max-height: 300px"/>
+            <img src="{{ url('assets/images/blog/'.$blog->image) }}" alt="" class="img-responsive" style="width: auto; max-height: 300px"/>
           </div>
           
           <div class="item-content">
             <header class="entry-header">
               
               <h1 class="entry-title black bottommargin_10">
-                Dogs in Need - {{ $dog_in_need->dog_name }}
+                Dogs in Need - {{ $blog->dog_name }}
               </h1>
               <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-              Posted On: {{ ViewHelper::formatDate($dog_in_need->posted_on) }}
+              Posted On: {{ ViewHelper::formatDate($blog->posted_on) }}
             </header>
             <br>
   
             <div class="entry-content">
               <p class="event-detail">
-                {!! nl2br($dog_in_need->content) !!}
+                {!! nl2br($blog->content) !!}
               </p>
             </div>
           </div>

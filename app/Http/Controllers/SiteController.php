@@ -27,12 +27,11 @@ class SiteController extends Controller {
       $request->session()->put('rand', rand());
     }
     $rand = $request->session()->get('rand');
-    $count = 8;
     $data['banners'] = Banner::leftJoin('event', 'event.event_id', '=', 'banner.event_id')
-      ->select('banner.name', 'banner.image', 'banner.link_to', 'banner.page_slug', 'event.slug as event_slug')->orderBy('position')->get();
-    //var_dump($data['banners']); exit;
+      ->leftJoin('blog', 'blog.blog_id', '=', 'banner.blog_id')
+      ->select('banner.name', 'banner.image', 'banner.link_to', 'blog.slug as blog_slug', 'event.slug as event_slug')->orderBy('position')->get();
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
-      ->orderByRaw("rand(".$rand.")")->limit($count)->get();
+      ->orderByRaw("rand(".$rand.")")->limit(8)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
     $data['contents'] = Page::getContents();
     return view('home', $data);
@@ -178,8 +177,8 @@ class SiteController extends Controller {
   }
   
   public function post($dog_name) {
-    $data['post'] = Blog::where('dog_name', $dog_name)->first();
-    return view('dog-in-need', $data);
+    $data['blog'] = Blog::where('dog_name', $dog_name)->first();
+    return view('blog-post', $data);
   }
   
   public function paypal(Request $request, $amount) {

@@ -16,7 +16,7 @@ class BannerTable extends Migration
       $table->string('image', 50);
       $table->string('link_to', 10);
       $table->integer('event_id')->nullable();
-      $table->string('page_slug', 100)->nullable();
+      $table->integer('blog_id')->nullable();
     });
     
     DB::table('banner')->insert([
@@ -28,26 +28,14 @@ class BannerTable extends Migration
       'event_id'=>4,
     ]);
   
-    /*DB::table('banner')->insert([
-      'name'=>'name2',
-      'stat'=>'A',
-      'position'=>2,
-      'image'=>'banner2.jpg',
-    ]);
-  
     DB::table('banner')->insert([
-      'name'=>'name3',
+      'name'=>'Our Singapore Heritage FlashPay Cards',
       'stat'=>'A',
-      'position'=>3,
-      'image'=>'banner3.jpg',
+      'position'=>1,
+      'image'=>'ez-link-heritage-series.jpg',
+      'link_to'=>'Blog',
+      'blog_id'=>1,
     ]);
-  
-    DB::table('banner')->insert([
-      'name'=>'name4',
-      'stat'=>'A',
-      'position'=>4,
-      'image'=>'banner4.jpg',
-    ]);*/
   }
   
   public function down()

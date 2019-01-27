@@ -11,11 +11,11 @@
 
       <form-row>
         <label-component required>Link</label-component>
-        <radio-component name="link_to" :options="['None', 'Event', 'Page']" v-model="banner.link_to" :inline="true"></radio-component>
+        <radio-component name="link_to" :options="['None', 'Event', 'Blog']" v-model="banner.link_to" :inline="true"></radio-component>
 
-        <template v-if="banner.link_to == 'Page'">
-          <label-component>Page</label-component>
-          <select-component :options="pages" v-model="banner.page_slug" has-empty="true"></select-component>
+        <template v-if="banner.link_to == 'Blog'">
+          <label-component>Blog</label-component>
+          <select-component :options="blogs" v-model="banner.blog_id" has-empty="true"></select-component>
         </template>
 
         <template v-if="banner.link_to == 'Event'">
@@ -53,7 +53,7 @@
         errors: new Errors(),
         image_new: null,
         events: {},
-        pages: {},
+        blogs: {},
         banner_stats: {}
       }
     },
@@ -114,7 +114,7 @@
           this.banner = response.data.banner;
           this.banner_stats = response.data.banner_stats;
           this.events = response.data.events;
-          this.pages = response.data.pages;
+          this.blogs = response.data.blogs;
         }).catch(error => {
         console.log(error);
       })

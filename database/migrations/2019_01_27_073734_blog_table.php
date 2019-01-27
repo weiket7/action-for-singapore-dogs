@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Enums\BlogType;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -12,15 +13,37 @@ class BlogTable extends Migration
       $table->increments('blog_id');
       $table->char('type', 1);
       $table->string('title', 150);
-      $table->string('dog_name', 50);
+      $table->string('slug', 150);
+      $table->string('dog_name', 50)->nullable();
       $table->string('image', 50);
       $table->dateTime('posted_on');
       $table->text('content');
     });
     
     DB::table('blog')->insert([
+      'type'=>BlogType::News,
+      'title'=>'"Our Singapore Heritage" FlashPay Cards',
+      'slug'=>'our-singapore-heritage-flashpay-cards',
+      'image'=>'ez-link-heritage-series.jpg',
+      'posted_on'=>'2018-12-08',
+      'content'=>'As a celebration of the Singapore Special and following the success of our inaugural Singapore Heritage Series of EZLink Cards, we are proud to present the Singapore Heritage Series of NETS FlashPay cards**!
+
+For this series, we have 4 very limited edition designs of our rescued beautiful Singapore Specials at iconic bridges in Singapore.
+Pre-order is now open! You can submit your order @ http://bit.ly/asdflashpay. Delivery / postage of orders will take place after 15 Dec. Each card cost only $18 and the sales proceeds will be used to support the work we do for the stray and abandoned furries. A complete set of the 4 designs in a specially designed presentation pack is also available at $88.
+
+The jingle bells have started ringing and Christmas celebrations have began. While we are busy feasting and celebrating the holiday season with our loved ones, let’s not forget the plight of many stray and abandoned furries who do not even have a home to call their own.
+We hope you will join us to share some of your holiday season cheer with these furries. Gift the card as a Christmas present to a loved ones or simply bring it along as you commute daily.
+
+**The NETS FlashPay card is an all-in-one-card for your daily transport and retail needs. You can use it at the following locations:
+(a) MRT, LRT, public buses, Comfort & CityCab and SMRT taxis;
+(b) Food courts, convenience stores, supermarkets and selected hawker centres;
+(c) ERP and CEPAS-compliant car park charges.'
+    ]);
+    
+    DB::table('blog')->insert([
       'type'=>'I',
       'title'=>'Totally blind and cruelly abandoned, will Flora’s life disappear into the abyss of darkness?',
+      'slug'=>'flora',
       'dog_name'=>'Flora',
       'image'=>'flora.jpg',
       'posted_on'=>'2010-02-15',
@@ -38,6 +61,7 @@ She could not believe her eyes and in her state of shock could only watch as Flo
     DB::table('blog')->insert([
       'type'=>'I',
       'title'=>'Constantly darting and dodging the thundering lorries and trucks that stop for nothing',
+      'slug'=>'bertha',
       'dog_name'=>'Bertha',
       'image'=>'bertha.jpg',
       'posted_on'=>'2012-05-29',

@@ -19,6 +19,7 @@ Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('blog/news', 'SiteController@news');
 Route::get('blog/gone-to-loving-homes', 'SiteController@goneToLovingHomes');
 Route::get('blog/dogs-in-need', 'SiteController@dogsInNeed');
+Route::get('blog/post/{slug}', 'SiteController@post');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
 Route::get('adoption-application/{application_token}', 'SiteController@adoptionApplication');

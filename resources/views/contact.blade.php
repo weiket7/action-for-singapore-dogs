@@ -19,7 +19,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <a href="donate">Donate</a>
+                    <a href="{{ url('donate') }}">Donate</a>
                   </h5>
                 </div>
               </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <a href="pages/sponsor">Sponsor</a>
+                    <a href="{{ url('sponsor') }}">Sponsor</a>
                   </h5>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="media-body">
                   <h5 class="media-heading grey">
-                    <a href="volunteer">Volunteer</a>
+                    <a href="{{ url('volunteer') }}">Volunteer</a>
                   </h5>
                 </div>
               </div>

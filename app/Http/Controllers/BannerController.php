@@ -3,7 +3,9 @@
 use App\Helpers\BackendHelper;
 use App\Http\Requests\BannerRequest;
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Enums\BannerStat;
+use App\Models\Enums\BlogType;
 use App\Models\Event;
 use App\Models\Page;
 use Carbon\Carbon;
@@ -35,7 +37,7 @@ class BannerController extends Controller
       $res[$event->event_id] = $event->name . ' on ' . Carbon::createFromFormat('Y-m-d', $event->date)->format('d M Y');
     }
     $data['events'] = $res;
-    $data['pages'] = Page::pluck('title', 'slug');
+    $data['blogs'] = Blog::where('type', BlogType::News)->pluck('title', 'blog_id');
     return $data;
   }
   

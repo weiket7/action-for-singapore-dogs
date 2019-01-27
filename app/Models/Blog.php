@@ -10,6 +10,7 @@ class Blog extends Model
   
   public function saveBlog($input) {
     $this->title = $input['title'];
+    $this->slug = str_slug($this->title);
     $this->type = $input['type'];
     if ($this->blog_id == null) {
       $this->image = "";
