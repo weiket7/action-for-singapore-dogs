@@ -132,9 +132,9 @@
                   <li>
                     <a href="{{ url('boarding-services') }}" :data-target="'coming-soon'">Boarding Services</a>
                   </li>
-                  <li>
+                  {{--<li>
                     <a href="{{ url('pages/media') }}" :data-target="'coming-soon'">Media</a>
-                  </li>
+                  </li>--}}
                   <li>
                     <a href="{{ url('pages/dog-listener-academy') }}" :data-target="'coming-soon'">Dog Listener Academy</a>
                   </li>
@@ -159,9 +159,6 @@
                   <li>
                     <a href="{{ url('pages/project-adore') }}">Project Adore</a>
                   </li>
-                  <li>
-                    <a href="{{ url('pages/gone-to-loving-homes') }}">Gone to Loving Homes</a>
-                  </li>
                 </ul>
               </li>
               
@@ -172,13 +169,10 @@
                     <a href="{{ url('donate') }}" :data-target="'donate'">Make a Donation</a>
                   </li>
                   <li>
-                    <a href="{{ url('pages/sponsor') }}" :data-target="'coming-soon'">Sponsor</a>
+                    <a href="{{ url('sponsor') }}" :data-target="'coming-soon'">Sponsor</a>
                   </li>
                   <li>
                     <a href="{{ url('gift-shop') }}" :data-target="'coming-soon'">Gift Shop</a>
-                  </li>
-                  <li>
-                    <a href="{{ url('dogs-in-need') }}" :data-target="'coming-soon'">Dogs in Need</a>
                   </li>
                 </ul>
               </li>
@@ -187,6 +181,17 @@
               </li>
               <li>
                 <a href="{{ url('events') }}" :data-target="'events'" class="menu-single">Events</a>
+              </li>
+              <li>
+                <a href="#">Blog</a>
+                <ul>
+                  <li>
+                    <a href="{{ url('pages/gone-to-loving-homes') }}">Gone to Loving Homes</a>
+                  </li>
+                  <li>
+                    <a href="{{ url('dogs-in-need') }}" :data-target="'coming-soon'">Dogs in Need</a>
+                  </li>
+                </ul>
               </li>
               <li>
                 <a href="{{ url('contact') }}" :data-target="'contact'" class="menu-single">Contact</a>

@@ -155,6 +155,10 @@ class SiteController extends Controller {
     return view('boarding-services', $data);
   }
   
+  public function sponsor() {
+    return view('sponsor');
+  }
+  
   public function dogsInNeed() {
     $data['dogs_in_need'] = DogInNeed::all();
     return view('dogs-in-need', $data);
