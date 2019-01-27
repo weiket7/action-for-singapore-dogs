@@ -186,10 +186,13 @@
                 <a href="#">Blog</a>
                 <ul>
                   <li>
-                    <a href="{{ url('pages/gone-to-loving-homes') }}">Gone to Loving Homes</a>
+                    <a href="{{ url('blog/news') }}">News</a>
                   </li>
                   <li>
-                    <a href="{{ url('dogs-in-need') }}" :data-target="'coming-soon'">Dogs in Need</a>
+                    <a href="{{ url('blog/gone-to-loving-homes') }}">Gone to Loving Homes</a>
+                  </li>
+                  <li>
+                    <a href="{{ url('blog/dogs-in-need') }}" :data-target="'coming-soon'">Dogs in Need</a>
                   </li>
                 </ul>
               </li>

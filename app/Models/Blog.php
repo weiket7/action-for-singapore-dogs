@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class DogInNeed extends Model
+class Blog extends Model
 {
-  public $table = 'dog_in_need';
+  public $table = 'blog';
   protected $primaryKey = 'id';
   public $timestamps = false;
   

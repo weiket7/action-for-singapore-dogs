@@ -49,6 +49,7 @@ class BannerController extends Controller
       }
     }
     $data['banners'] = Banner::all();
+    $data['home_text'] = Page::where('slug', 'home')->value('content');
     $data['banner_stats'] = BannerStat::$values;
     return $data;
   }

@@ -5,7 +5,7 @@ use App\Mail\ContactMail;
 use App\Models\Adopt;
 use App\Models\AdoptionForm;
 use App\Models\Banner;
-use App\Models\DogInNeed;
+use App\Models\Blog;
 use App\Models\Enums\AdoptStat;
 use App\Models\Enums\EventType;
 use App\Models\Event;
@@ -66,7 +66,6 @@ class SiteController extends Controller {
     $data['event'] = $event;
     return view('event', $data);
   }
-  
   
   public function iWantToAdopt(Request $request) {
     $adopt_ids = $request->hearts;
@@ -159,13 +158,24 @@ class SiteController extends Controller {
     return view('sponsor');
   }
   
+  public function news() {
+    $data['posts'] = Blog::where('type', 'N')->get();
+    $data['type'] = 'News';
+    return view('blog', $data);
+  }
+  public function goneToLovingHomes() {
+    $data['posts'] = Blog::where('type', 'L')->get();
+    $data['type'] = 'Gone to Loving Homes';
+    return view('blog', $data);
+  }
   public function dogsInNeed() {
-    $data['dogs_in_need'] = DogInNeed::all();
-    return view('dogs-in-need', $data);
+    $data['posts'] = Blog::where('type', 'I')->get();
+    $data['type'] = 'Dogs In Need';
+    return view('blog', $data);
   }
   
-  public function dogInNeed($dog_name) {
-    $data['dog_in_need'] = DogInNeed::where('dog_name', $dog_name)->first();
+  public function post($dog_name) {
+    $data['post'] = Blog::where('dog_name', $dog_name)->first();
     return view('dog-in-need', $data);
   }
   

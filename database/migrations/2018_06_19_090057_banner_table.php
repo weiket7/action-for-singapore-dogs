@@ -25,7 +25,7 @@ class BannerTable extends Migration
       'position'=>1,
       'image'=>'banner1.jpg',
       'link_to'=>'Event',
-      'event_id'=>1,
+      'event_id'=>4,
     ]);
   
     /*DB::table('banner')->insert([

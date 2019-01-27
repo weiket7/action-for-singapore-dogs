@@ -15,7 +15,7 @@ class Banner extends Model
     $this->link_to = $input['link_to'];
     if ($this->link_to == 'Event') {
       $this->event_id = $input['event_id'];
-    } else {
+    } else if ($this->link_to == 'Page') {
       $this->page_slug = $input['page_slug'];
     }
     if ($this->banner_id == null) {

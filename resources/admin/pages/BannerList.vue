@@ -11,6 +11,14 @@
         </tr>
         </thead>
         <tbody>
+        <tr>
+          <td></td>
+          <td>
+            <router-link to="/page/home">Home</router-link>
+          </td>
+          <td>{{ home_text }}</td>
+          <td></td>
+        </tr>
         <tr v-for="banner in banners">
           <td><input type="text" class="form-control" v-model="banner.position"></td>
           <td>
@@ -43,7 +51,8 @@
     data() {
       return {
         banners: {},
-        banner_stats: {}
+        banner_stats: {},
+        home_text: ""
       }
     },
     methods: {
@@ -59,6 +68,7 @@
         .then(response=>{
           this.banners = response.data.banners;
           this.banner_stats = response.data.banner_stats;
+          this.home_text = response.data.home_text;
         })
     }
   }

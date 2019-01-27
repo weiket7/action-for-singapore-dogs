@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller {
   public function all() {
-    return Page::all();
+    return Page::where('slug', '!=', 'home')->get();
   }
   
   public function save(Request $request, $page_id ) {

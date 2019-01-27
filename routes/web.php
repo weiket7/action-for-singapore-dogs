@@ -16,14 +16,16 @@ Route::get('boarding-services', 'SiteController@boardingServices');
 Route::get('volunteer', 'SiteController@volunteer');
 Route::get('donate', 'SiteController@donate');
 Route::get('sponsor', 'SiteController@sponsor');
-Route::get('dogs-in-need', 'SiteController@dogsInNeed');
-Route::get('dogs-in-need/{dog_name}', 'SiteController@dogInNeed');
 Route::get('paypal/{amount}', 'SiteController@paypal');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-singapore', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-sg', 'SiteController@dogsForAdoption');
 Route::get('adopt/{slug}', 'SiteController@adopt');
+Route::get('pages/{slug}', 'SiteController@pages');
+Route::get('blog/news', 'SiteController@news');
+Route::get('blog/gone-to-loving-homes', 'SiteController@goneToLovingHomes');
+Route::get('blog/dogs-in-need', 'SiteController@dogsInNeed');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
 Route::get('adoption-application/{application_token}', 'SiteController@adoptionApplication');
@@ -94,6 +96,10 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/event/save/', 'EventController@save');
   Route::post('api/event/save/{event_id}', 'EventController@save');
   
+  Route::get('api/blog', 'BlogController@all');
+  Route::post('api/blog/save/', 'BlogController@save');
+  Route::post('api/blog/save/{blog_id}', 'BlogController@save');
+  
   Route::get('api/banner', 'BannerController@all');
   Route::post('api/banner', 'BannerController@all');
   Route::get('api/banner/get', 'BannerController@get');
@@ -105,11 +111,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('api/adoption-form/get/{adoption_form_id}', 'AdoptionFormController@get');
   Route::post('api/adoption-form/approve/{adoption_form_id}', 'AdoptionFormController@approve');
   Route::post('api/adoption-form/delete/{adoption_form_id}', 'AdoptionFormController@delete');
-  
-  /*Route::get('api/question', 'QuestionController@all');
-  Route::get('api/question/get/{question_id}', 'QuestionController@get');
-  Route::post('api/question/save/', 'QuestionController@save');
-  Route::post('api/question/save/{question_id}', 'QuestionController@save');*/
   
   Route::get('api/user', 'UserController@all');
   Route::get('api/user/get/{user_id}', 'UserController@get');

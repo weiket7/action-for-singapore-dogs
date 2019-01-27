@@ -5,6 +5,8 @@ import AdoptList from './pages/AdoptList'
 import Adopt from './pages/Adopt'
 import EventList from './pages/EventList'
 import Event from './pages/Event'
+import BlogList from './pages/BlogList'
+import Blog from './pages/Blog'
 import Person from './pages/Person'
 import Adopter from './pages/Adopter'
 import AdopterList from './pages/AdopterList'
@@ -45,6 +47,10 @@ export default new Router({
     { path: '/event/save', name: 'AddEvent', component: Event },
     { path: '/event/save/:event_id', name: 'Event', component: Event },
   
+    { path: '/blog', name: 'BlogList', component: BlogList },
+    { path: '/blog/save', name: 'AddBlog', component: Blog },
+    { path: '/blog/save/:blog_id', name: 'Blog', component: Blog },
+  
     { path: '/person', name: 'PersonList', component: PersonList },
     { path: '/person/save', name: 'AddPerson', component: Person },
     { path: '/person/save/:person_id', name: 'SavePerson', component: Person },
@@ -83,7 +89,6 @@ export default new Router({
     { path: '/testimonial', name: 'TestimonialList', component: TestimonialList },
     { path: '/testimonial/save', name: 'AddTestimonial', component: Testimonial },
     { path: '/testimonial/save/:testimonial_id', name: 'SaveTestimonial', component: Testimonial },
-  
   
     { path: '/user', name: 'UserList', component: UserList },
     { path: '/user/save', name: 'AddUser', component: User },

@@ -82,6 +82,7 @@
           { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
           /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
           { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
+          { 'name': 'Blog', 'link': 'blog', 'icon': 'calendar-o' },
           { 'name': 'Gift Shop', 'link': 'gift', 'icon': 'user-secret' },
           { 'name': 'Testimonials', 'link': 'testimonial', 'icon': 'user-secret' },
           { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' }
