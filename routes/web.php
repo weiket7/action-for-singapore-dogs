@@ -143,4 +143,5 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/upload-image', 'AdminController@uploadImage');
   
   Route::get('settings', function () { return view("settings"); });
+  Route::get('slug', function () { return str_slug($_GET['t']); });
 });

@@ -19,6 +19,69 @@ class BlogTable extends Migration
       $table->date('posted_on');
       $table->text('content');
     });
+  
+    DB::table('blog')->insert([
+      'type'=>BlogType::DogsInNeed,
+      'title'=>'Shawnie – Afflicted with a life threatening tumour, needs immediate financial assistance for an operation to stop the cancer spread.',
+      'slug'=>'shawnie-afflicted-with-a-life-threatening-tumour-needs-immediate-financial-assistance-for-an-operation-to-stop-the-cancer-spread',
+      'image'=>'shawnie.jpg',
+      'posted_on'=>'2005-09-08',
+      'content'=>'Afflicted with a life threatening tumour, needs immediate fianancial assistance for an operation to stop the cancer spread.
+
+Shawnie is a sweet and gentle 2 year old female cross breed that was rescued off the streets a while ago.The years of surviving on scraps and exposure to the harsh elements must have caused the tumour to develop at her rectum area. Antibiotic treatment did not help and the tumour continued to get bigger.Despite her pain and suffering, Shawnie never once complained; she’d lie quietly awaiting her fate. Only when she experienced excruciating pain during secretion will she make soft mewing noises.
+
+We cannot bear to put her on the streets again to fend for herself. Her life is at risk if the cancer spreads to her vital organs.
+
+Despite the overwhelming cost of the operation and treatment, we believe if everyone contributes a merge amount. We can attain the estimated $900 needed.
+
+As of now, $400 has been raised and Shawnie has had her tumour removed and is recuperating. We still need to raise the remaining $500 for her chemotherapy treatment.
+
+You can help her by purchasing our fast tag or contacting us should you wish to make a contribution on her behalf direct to Mount Pleasant Animal Hospital.
+
+We wish to thank everyone who has contributed in any way and to those who are helping us. You have made a difference…
+
+
+Update 15/02/01
+
+Shawnie has recuperated well from her operation. The good news is the tumour appears localized. We will put her on a herbal anti-cancer treatment which is less expensive than chemotherapy and pray that the tumour will not regress.She has been brave, all this while and never once gave any trouble despite her illness. She is eternally grateful to all who contributed to save her, and on behalf of her, we’d like to show our appreciation to these kind people.Update 21/05/01
+A twist of fate and the dice of fortune rolls in favour of Shawnie. She has been adopted and is now settling into her new home. Her new mistresses love her dearly despite her difficult history and health background. Come visit her here and celebrate with us on her much deserved break in life!
+'
+    ]);
+  
+    DB::table('blog')->insert([
+      'type'=>BlogType::DogsInNeed,
+      'title'=>'Tooney – Rescued from an MRT with deep wounds and tick fever.',
+      'slug'=>'tooney-rescued-from-an-mrt-with-deep-wounds-and-tick-fever',
+      'image'=>'',
+      'posted_on'=>'2005-01-01',
+      'content'=>'Rescued from an MRT with  deep wounds and tick fever.
+This is a not a happy tail, it is the grim reality of the hazards that the homeless and neglected face, each and every day of their lives.
+Tooney was a stray that had survived in this hard land for some time now. It was unfortunate that nobody would see that beneath the dirty coat and scrawny frame, there was a sweet, trusting and lovely character with a beautiful and endearing look.If only someone had cared… It was in this state that Tooney limped into an MRT station, her last resort, knowing that she would not last long on her own. Of the thousands who passed her by, engrossed with the day ahead, only one person cared enough to make the arrangements to bring her to the vet. And timely it was, for the pound people had already been notified.
+
+By Afternoon, she was brought to the vet, where she was diagnosed as having tick fever. Here deep wounds were caused by shrubs, says the vet, but it looked more like cruelty at work.Because of her tick fever, her red blood cell had plunged to an unhealthy level, and it was advised for her to recover before undergoing the operation to heal her wounds. She is currently convalescing at a foster parent’s home, and though her initial treatment had already been covered by kind heart souls who learnt about her plight, a long road ahead les for her full recovery and rehoming.
+
+If you can help with good food and vitamin supplements or should you wish to make a contribution direct to Mount Pleasant Animal Hospital, please contact us.
+
+
+We wish to thank everyone who has contributed so far and to those who are helping us, and especially to Jo and Cheryl who are taking care of her. The efforts of all have given Tooney something to live for.Update 03/01/01
+Tooney has made amazing progress on her recovery. Come and see the new and rejuvenated Tooney and say hello to her here!
+
+Looking at Tooney now, it is hard to imagine that she had suffered so much just a month or so ago.Her positive and very optimistic character had been pivotal in her amazing road to recover. Her deep wpi;ds which had needed an operation have all healed up beautifully, thanks to the meticulous care bestowed by her foster parent. her red blood cell level has also improved with the iron supplements.Tooney is now ready to give all of her love to that special someone. She is extremely friendly and gentle and warms up to people easily, and she loves a good snuggle followed by a slow tummy rub.
+
+
+Tooney is eagerly waiting to meet you, so open your heart to her!
+UPDATE JUNE 2013
+We are extremely happy to announce that Tooney has been adopted.'
+    ]);
+    
+    DB::table('blog')->insert([
+      'type'=>BlogType::DogsInNeed,
+      'title'=>'',
+      'slug'=>'',
+      'image'=>'',
+      'posted_on'=>'2005-01-01',
+      'content'=>''
+    ]);
     
     DB::table('blog')->insert([
       'type'=>BlogType::News,
