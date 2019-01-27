@@ -14,9 +14,19 @@
         <tr>
           <td></td>
           <td>
-            <router-link to="/page/home">Home</router-link>
+            <router-link to="/page/save/1">Title</router-link>
           </td>
-          <td>{{ home_text }}</td>
+          <td></td>
+          <td>{{ home_banner_title }}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <router-link to="/page/save/2">Content</router-link>
+          </td>
+          <td></td>
+          <td>{{ home_banner_content }}</td>
           <td></td>
         </tr>
         <tr v-for="banner in banners">
@@ -52,7 +62,8 @@
       return {
         banners: {},
         banner_stats: {},
-        home_text: ""
+        home_banner_title: "",
+        home_banner_content: ""
       }
     },
     methods: {
@@ -68,7 +79,8 @@
         .then(response=>{
           this.banners = response.data.banners;
           this.banner_stats = response.data.banner_stats;
-          this.home_text = response.data.home_text;
+          this.home_banner_title = response.data.home_banner_title;
+          this.home_banner_content = response.data.home_banner_content;
         })
     }
   }

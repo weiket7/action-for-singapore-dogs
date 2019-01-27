@@ -5,11 +5,7 @@
 
 @section('content')
   <div id="app" class="container content">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1 text-center">
-        <h2 class="section_header bold">Dogs for Adoption</h2>
-      </div>
-    </div>
+    <h2 class="section_header bold text-center">Dogs for Adoption</h2>
     
     <div class="row">
       

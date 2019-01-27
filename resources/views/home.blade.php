@@ -21,23 +21,13 @@
         </div>
       </div>
       <div class="col-md-4">
-        @if($home->show == 'E')
-          <h4 class="entry-title">
-            {{ $event->name }}
-          </h4>
-    
-          <p class="event-detail">
-            {{ $event->short_desc }}
-          </p>
-        @else
-          <h4 class="entry-title">
-            {{ $home->title }}
-          </h4>
-    
-          <p class="event-detail">
-            {!! $home->content !!}
-          </p>
-        @endif
+        <h4 class="entry-title">
+          {{ $contents['Home Banner Title'] }}
+        </h4>
+  
+        <p class="event-detail">
+          {{ $contents['Home Banner Content'] }}
+        </p>
       </div>
     </div>
   </div>

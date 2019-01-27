@@ -5,12 +5,13 @@
 
 @section('content')
   <div class="container content">
+    <h2 class="section_header bold text-center">{{ $page->title }}</h2>
+
     <div class="row">
       <div class="col-sm-12">
-        <h2>{{ $page->title }}</h2>
-        
+  
         <span>
-          {!! $page->content !!}
+          {!! nl2br($page->content) !!}
         </span>
       </div>
     </div>

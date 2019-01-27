@@ -2,21 +2,14 @@
 
 //Route::get('/', function () { return view("welcome"); });
 Route::get('/', 'SiteController@home');
-Route::get('login', 'AdminController@login');
-Route::post('login', 'AdminController@login');
-Route::get('logout', 'AdminController@logout');
-Route::get('backend', 'AdminController@backend');
 
-Route::get('contact', 'SiteController@contact');
+Route::get('who-we-are', 'SiteController@aboutUs');
 Route::get('events', 'SiteController@events');
 Route::get('event/{slug}', 'SiteController@event');
 Route::get('dogs-adoption-drive', 'SiteController@adoptionDrive');
 Route::get('gift-shop', 'SiteController@giftShop');
 Route::get('boarding-services', 'SiteController@boardingServices');
-Route::get('volunteer', 'SiteController@volunteer');
-Route::get('donate', 'SiteController@donate');
 Route::get('sponsor', 'SiteController@sponsor');
-Route::get('paypal/{amount}', 'SiteController@paypal');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-singapore', 'SiteController@dogsForAdoption');
@@ -31,15 +24,19 @@ Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
 Route::get('adoption-application/{application_token}', 'SiteController@adoptionApplication');
 Route::get('adoption-agreement/{agreement_token}', 'SiteController@adoptionAgreement');
 
+Route::get('donate', 'SiteController@donate');
+Route::post('api/donation/form', 'DonationController@form');
+Route::get('paypal/{amount}', 'SiteController@paypal');
+Route::get('volunteer', 'SiteController@volunteer');
+Route::post('api/volunteer/form', 'VolunteerController@form');
+Route::get('contact', 'SiteController@contact');
+Route::post('api/contact/form', 'SiteController@form');
+
 Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');
 Route::post('api/event/filter', 'EventController@filter');
 Route::get('api/page/get/{page_id}', 'PageController@get');
-Route::post('api/donation/form', 'DonationController@form');
-Route::post('api/volunteer/form', 'VolunteerController@form');
-Route::post('api/contact/form', 'SiteController@form');
 Route::get('api/event/get/{event_id}', 'EventController@get');
-
 Route::get('api/adopt/page/{current_page}', 'AdoptController@page'); //for adopt grid
 Route::get('api/adopt/list/{adopt_ids}', 'AdoptController@list'); //for heart list
 Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
@@ -50,6 +47,11 @@ Route::post('api/adoption-form/enquiry', 'AdoptionFormController@enquiry'); //st
 Route::post('api/adoption-form/save-application/{application_token}', 'AdoptionFormController@saveApplication');
 //Route::get('api/adoption-form/get-agreement/{agreement_token}', 'AdoptionFormController@getAgreement');
 Route::post('api/adoption-form/save-agreement/{agreement_token}', 'AdoptionFormController@saveAgreement');
+
+Route::get('login', 'AdminController@login');
+Route::post('login', 'AdminController@login');
+Route::get('logout', 'AdminController@logout');
+Route::get('backend', 'AdminController@backend');
 
 Route::group(['middleware' => 'auth'], function () {
   Route::get('api/permission', 'AdminController@permission');
@@ -97,8 +99,10 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/event/save/{event_id}', 'EventController@save');
   
   Route::get('api/blog', 'BlogController@all');
+  Route::get('api/blog/get', 'BlogController@get');
+  Route::get('api/blog/get/{id}', 'BlogController@get');
   Route::post('api/blog/save/', 'BlogController@save');
-  Route::post('api/blog/save/{blog_id}', 'BlogController@save');
+  Route::post('api/blog/save/{id}', 'BlogController@save');
   
   Route::get('api/banner', 'BannerController@all');
   Route::post('api/banner', 'BannerController@all');

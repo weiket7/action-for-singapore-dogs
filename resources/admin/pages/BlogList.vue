@@ -4,18 +4,18 @@
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
+          <th width="150px">Type</th>
           <th>Name</th>
-          <th>Date</th>
-          <th>Time</th>
+          <th>Posted On</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="blog in blogs">
+          <td>{{ blog_types[blog.type] }}</td>
           <td width="450px">
-            <router-link v-bind:to="'/blog/save/'+blog.blog_id">{{ blog.name }}</router-link>
+            <router-link v-bind:to="'/blog/save/'+blog.id">{{ blog.title }}</router-link>
           </td>
-          <td>{{ blog.date | formatDate }}</td>
-          <td>{{ blog.time }}</td>
+          <td>{{ blog.posted_on | formatDate }}</td>
         </tr>
         </tbody>
       </table>
@@ -33,14 +33,14 @@
     data() {
       return {
         blogs: [],
-        blog_stats: {}
+        blog_types: {}
       }
     },
     created() {
       axios.get('api/blog')
         .then(response => {
           this.blogs = response.data.blogs;
-          this.blog_stats = response.data.blog_stats;
+          this.blog_types = response.data.blog_types;
         })
         .catch(this.onError);
     }

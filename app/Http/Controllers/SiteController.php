@@ -34,16 +34,7 @@ class SiteController extends Controller {
       ->orderByRaw("rand(".$rand.")")->limit($count)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();
     $data['contents'] = Page::getContents();
-    $home = DB::table('home')->first();
-    if ($home->show == 'E') {
-      $data['event'] = Event::find($home->event_id);
-    }
-    $data['home'] = $home;
     return view('home', $data);
-  }
-  
-  public function contact(Request $request) {
-    return view('contact');
   }
   
   public function giftShop(Request $request) {
@@ -136,16 +127,25 @@ class SiteController extends Controller {
     return view('adopt-view', $data);
   }
   
-  public function form(ContactRequest $request) {
-    Mail::to(env("MAIL_INBOX"))->send(new ContactMail($request->all()));
-  }
-  
   public function adoptionDrive() {
     $event = Event::where('type', EventType::AdoptionDrive)->orderBy('date', 'desc')->first();
     $adopt_ids = DB::table('adoption_drive')->where('event_id', $event->event_id)->pluck('adopt_id');
     $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
     $data['event'] = $event;
     return view('event', $data);
+  }
+  
+  public function aboutUs(Request $request) {
+    $data['content'] = Page::where('slug', 'who-we-are')->value('content');
+    return view('about-us', $data);
+  }
+  
+  public function form(ContactRequest $request) {
+    Mail::to(env("MAIL_INBOX"))->send(new ContactMail($request->all()));
+  }
+  
+  public function contact(Request $request) {
+    return view('contact');
   }
   
   public function boardingServices() {

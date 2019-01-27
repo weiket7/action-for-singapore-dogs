@@ -124,7 +124,7 @@
                 <a href="#">About</a>
                 <ul>
                   <li>
-                    <a href="{{ url('pages/who-we-are') }}" :data-target="'coming-soon'">Who We Are</a>
+                    <a href="{{ url('who-we-are') }}" :data-target="'coming-soon'">Who We Are</a>
                   </li>
                   <li>
                     <a href="{{ url('pages/adoption-rescue-centre-arc') }}" :data-target="'coming-soon'">Adoption & Rescue Centre (ARC)</a>
@@ -151,13 +151,16 @@
                     <a href="{{ url('dogs-for-adoption') }}">Dogs for Adoption</a>
                   </li>
                   <li>
+                    <a href="{{ url('pages/project-adore') }}">Project Adore</a>
+                  </li>
+                  <li>
                     <a href="{{ url('pages/why-adopt-a-dog') }}">Why Adopt a Dog</a>
                   </li>
                   <li>
                     <a href="{{ url('pages/adoption-procedure') }}">Adoption Procedure</a>
                   </li>
                   <li>
-                    <a href="{{ url('pages/project-adore') }}">Project Adore</a>
+                    <a href="{{ url('pages/adoption-package') }}">Adoption Package</a>
                   </li>
                 </ul>
               </li>
@@ -166,7 +169,7 @@
                 <a href="#">Donate / Sponsor</a>
                 <ul>
                   <li>
-                    <a href="{{ url('donate') }}" :data-target="'donate'">Make a Donation</a>
+                    <a href="{{ url('donate') }}" :data-target="'donate'">Donate</a>
                   </li>
                   <li>
                     <a href="{{ url('sponsor') }}" :data-target="'coming-soon'">Sponsor</a>

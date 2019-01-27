@@ -1,13 +1,124 @@
 <template>
+  <single-portlet title="Page">
+    <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
+      <form-row>
+        <label-component>Title</label-component>
+        <textbox-component v-model="blog.title" :error="errors.get('title')"></textbox-component>
   
+        <label-component>Type</label-component>
+        <select-component v-model="blog.type" :options="blog_types" :error="errors.get('type')"></select-component>
+      </form-row>
+      
+      <form-row>
+        <label-component>Image</label-component>
+        <image-component v-model="blog.image" name="image"
+                         v-on:update-image="updateImage" folder="blog"
+                         :src="blog.image" :error="errors.get('image')"></image-component>
+      </form-row>
+      
+      <form-row>
+        <label-component>Content</label-component>
+        <div class="col-lg-9">
+          <textarea name="" id="editor">{{ blog.content }}
+          </textarea>
+        </div>
+      </form-row>
+      
+      <form-footer>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form-footer>
+    </form>
+  </single-portlet>
 </template>
 
 <script>
+  import axios from 'axios'
+  import Errors from '../../common/errors'
+  import FormMixin from '../form-mixin';
+  import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+  import ImageComponent from "../components/ImageComponent";
+
   export default {
-    name: "Blog.vue"
+    name: "blog",
+    data() {
+      return {
+        blog: {},
+        blog_types: {},
+        editor: null,
+        errors: new Errors(),
+        image_new: null,
+      }
+    },
+    methods: {
+      onSubmit() {
+        this.blog.content = this.editor.getData();
+  
+        let form_data = this.blog;
+  
+        let config = {};
+        if (this.image_new) {
+          form_data = new FormData();
+          this.appendObjectToFormData(this.blog, form_data);
+          form_data.append("image_new", this.image_new);
+    
+          config = {
+            headers: {
+              'content-type': 'multipart/form-data'
+            }
+          };
+        }
+        
+        let url = 'api/blog/save';
+        if (!this.is_create) {
+          url += '/'+ this.$route.params.blog_id
+        }
+  
+        axios.post(url, form_data, config)
+          .then(this.onSuccess)
+          .catch(this.onError);
+      },
+      onSuccess(response) {
+        this.errors.clear();
+        if (this.is_create) {
+          toastr.success("Blog added");
+          return;
+        }
+        toastr.success("Blog updated");
+        let blog_id = response.data;
+        this.$router.push('/blog/save/'+blog_id);
+      },
+      updateImage(file) {
+        this.image_new = file;
+      },
+    },
+    mounted() {
+      axios.get("api/blog/get/" + this.$route.params.blog_id)
+        .then(response => {
+          this.blog = response.data.blog;
+          this.blog_types = response.data.blog_types;
+          
+          let vue = this
+          ClassicEditor.create(document.querySelector('#editor'), {
+            ckfinder: {
+              uploadUrl: '/asd/public/api/upload-image?folder=blogs'
+            }
+          }).then(editor => {
+            vue.editor = editor;
+          }).catch(error => {
+            console.log(error)
+          });
+        })
+    },
+    components: {
+      ImageComponent
+    },
+    mixins: [FormMixin],
   }
+
 </script>
 
 <style scoped>
-
+  .pre {
+    white-space:pre;
+  }
 </style>

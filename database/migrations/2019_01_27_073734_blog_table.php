@@ -9,7 +9,7 @@ class BlogTable extends Migration
   public function up()
   {
     Schema::create('blog', function (Blueprint $table) {
-      $table->increments('id');
+      $table->increments('blog_id');
       $table->char('type', 1);
       $table->string('title', 150);
       $table->string('dog_name', 50);

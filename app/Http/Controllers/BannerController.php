@@ -41,7 +41,6 @@ class BannerController extends Controller
   
   public function all(Request $request) {
     if ($request->isMethod("post")) {
-      //vaR_dump($request->get('banners')); exit;
       foreach($request->get('banners') as $banner) {
         $target = Banner::find($banner['banner_id']);
         $target->position = $banner['position'];
@@ -49,7 +48,8 @@ class BannerController extends Controller
       }
     }
     $data['banners'] = Banner::all();
-    $data['home_text'] = Page::where('slug', 'home')->value('content');
+    $data['home_banner_title'] = Page::where('slug', 'home-banner-title')->value('content');
+    $data['home_banner_content'] = Page::where('slug', 'home-banner-content')->value('content');
     $data['banner_stats'] = BannerStat::$values;
     return $data;
   }

@@ -4391,7 +4391,6 @@ header [class*="col-"] {
 
 .section_header.bold {
 	font-weight: 900;
-	text-transform: uppercase;
 }
 
 .section_header.big {

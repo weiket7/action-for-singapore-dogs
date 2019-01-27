@@ -4,7 +4,7 @@
   <div id="app" class="container content">
     <div class="row">
       <div class="col-md-10 col-md-offset-1 text-center">
-        <h2 class="section_header bold">Gift Shop</h2>
+        <h2 class="section_header bold">Sponsor</h2>
       </div>
     </div>
     

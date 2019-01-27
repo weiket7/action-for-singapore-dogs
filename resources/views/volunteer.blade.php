@@ -10,15 +10,14 @@
         <h2 class="section_header bold">Be A
           <span class="highlight">Volunteer</span>
         </h2>
-        <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-        </p>
       </div>
     </div>
     <div class="row mt-20">
       <div class="col-md-6">
         <!--<h2 class="black highlight">Donator</h2>-->
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <p>
+          {!! nl2br($contents['Volunteer Content'])  !!}
+        </p>
         <form @submit.prevent="onSubmit()" class="donator-form topmargin_30 form-horizontal" id="donatorform" method="post" action="">
           <volunteer-field name="Name" :error="errors.get('name')" :required="true">
             <input type="text" v-model="volunteer.name" class="form-control" autofocus>
@@ -138,8 +137,8 @@
           </div>
         </form>
       </div>
-      <div class="col-md-6 text-center bottommargin_0">
-        <div class="row">
+      <div class="col-md-6 bottommargin_0">
+        <div class="row text-center">
           <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'rescuing'">
             <img src="assets/images/rescue.jpg" class="img-rounded">
             <br>Rescuing
@@ -157,7 +156,7 @@
             <br>Volunteer at Adoption & Rescue Centre (ARC)
           </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
           <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'fund-raising'">
             <img src="assets/images/fund-raising.jpg" class="img-rounded">
             <br>Fund Raising
@@ -171,34 +170,36 @@
             <br>Logistics & Transport
           </div>
         </div>
-        
+
+        <div class="mt-10 mb-20 text-center">(Click on the image to learn more)</div>
         <div class="row">
-          <div class="mt-10 mb-20">(Click on the image to learn more)</div>
-          
           <div v-if="selectedActivity == 'rescuing'">
-            {{ $contents['Volunteer Rescuing'] }}
+            {!! nl2br($contents['Volunteer Rescuing']) !!}
           </div>
           <div v-if="selectedActivity == 'rehoming'">
-            {{ $contents['Volunteer Rehoming'] }}
+            {!! nl2br($contents['Volunteer Rehoming']) !!}
           </div>
           <div v-if="selectedActivity == 'fostering'">
-            {{ $contents['Volunteer Fostering'] }}
+            {!! nl2br($contents['Volunteer Fostering']) !!}
           </div>
           <div v-if="selectedActivity == 'volunteer'">
-            {{ $contents['Volunteer Volunteer'] }}
+            {!! nl2br($contents['Volunteer Volunteer']) !!}
           </div>
           <div v-if="selectedActivity == 'fund-raising'">
-            {{ $contents['Volunteer Fund Raising'] }}
+            {!! nl2br($contents['Volunteer Fund Raising']) !!}
           </div>
           <div v-if="selectedActivity == 'publicity'">
-            {{ $contents['Volunteer Publicity'] }}
+            {!! nl2br($contents['Volunteer Publicity']) !!}
           </div>
           <div v-if="selectedActivity == 'logistics'">
-              {{ $contents['Volunteer Logistics'] }}
+            {!! nl2br($contents['Volunteer Logistics']) !!}
           </div>
-          
+  
         </div>
+        
       </div>
+      
+      
     </div>
   </div>
 

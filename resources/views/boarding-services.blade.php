@@ -82,7 +82,9 @@
     <br><br>
     Owners are advised to also inspect their dogs upon check out to ensure the state and well being of their dog as well as to check for fleas/ticks if any
     <br><br>
-    If you have any questions, you can contact us via email at info@asdsingapore.com with the heading 'Boarding'. We will contact you as soon as possible )
+    <div class="alert alert-info">
+      To book, please email us at <a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a> with the subject 'Boarding'. We will contact you as soon as possible.
+    </div>
     
     <h3>Testimonials</h3>
     
