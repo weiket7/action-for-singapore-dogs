@@ -35,7 +35,7 @@
                 <button type="submit">I want to adopt</button>
                 
                 <div class="alert alert-success mt-10" v-show="success">
-                  Thank you
+                  Thank you, our rehomers will get in touch with you via email.
                 </div>
               </div>
             </div>

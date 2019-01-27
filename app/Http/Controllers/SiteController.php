@@ -7,6 +7,7 @@ use App\Models\AdoptionForm;
 use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Enums\AdoptStat;
+use App\Models\Enums\BlogType;
 use App\Models\Enums\EventType;
 use App\Models\Event;
 use App\Models\Gift;
@@ -87,9 +88,11 @@ class SiteController extends Controller {
       throw new Exception('getAgreement - Adoption form id = ' . $adoption_form->adoption_form_id . ' already agreed');
     }
   
+    $data['adopt'] = Adopt::find($adoption_form->adopt_id);
     $data['adoption_form'] = $adoption_form;
     $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form->adoption_form_id)
-      ->select('question', 'answer')->get();
+      ->select('is_header', 'question', 'answer')->get();
+    //var_dump($data['answers']); exit;
     $data['agreement_token'] = $agreement_token;
     return view('adoption-agreement', $data);
   }
@@ -159,17 +162,17 @@ class SiteController extends Controller {
   }
   
   public function news() {
-    $data['posts'] = Blog::where('type', 'N')->get();
+    $data['posts'] = Blog::where('type', BlogType::News)->get();
     $data['type'] = 'News';
     return view('blog', $data);
   }
   public function goneToLovingHomes() {
-    $data['posts'] = Blog::where('type', 'L')->get();
+    $data['posts'] = Blog::where('type', BlogType::GoneToLovingHomes)->get();
     $data['type'] = 'Gone to Loving Homes';
     return view('blog', $data);
   }
   public function dogsInNeed() {
-    $data['posts'] = Blog::where('type', 'I')->get();
+    $data['posts'] = Blog::where('type', BlogType::DogsInNeed)->get();
     $data['type'] = 'Dogs In Need';
     return view('blog', $data);
   }

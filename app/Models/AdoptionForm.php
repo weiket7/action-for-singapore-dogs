@@ -38,10 +38,11 @@ class AdoptionForm extends Model
     $this->applied_on = Carbon::now();
     $this->save();
     
-    $questions = Question::select('question_id', 'content')->get();
+    $questions = Question::select('question_id', 'content', 'is_header')->get();
     foreach($questions as $question) {
       DB::table("adoption_form_answer")->insert([
         'adoption_form_id'=>$this->adoption_form_id,
+        'is_header'=>$question->is_header,
         'question'=>$question->content,
         'answer'=>$input['answer-'.$question->question_id] ?? ""
       ]);
@@ -50,7 +51,7 @@ class AdoptionForm extends Model
   
   public function approve($input, $username) {
     $this->stat = AdoptionFormStat::PendingSignature;
-    $this->adopt_id = $input['adopt_id'];
+      $this->adopt_id = $input['adopt_id'];
     $this->adopted_on = $input['adopted_on'];
     $this->agreement_token = str_random();
     $this->remark1 = $input['remark1'];

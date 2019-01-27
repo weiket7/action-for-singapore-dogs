@@ -218,7 +218,7 @@
     <div class="container">
       <div class="row columns_padding_50 bottommargin_20">
         <div class="col-md-4">
-          <a href="./" class="logo topmargin_20">
+          <a href="{{url('/')}}" class="logo topmargin_20">
             <img src="{{ asset('assets/images/action-for-singapore-dogs-logo.png') }}" alt="" />
           </a>
         </div>

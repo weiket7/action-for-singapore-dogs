@@ -43,9 +43,7 @@ Route::get('api/adopt/slug/{slug}', 'AdoptController@slug'); //for adopt view
 Route::post('api/adopt/filter', 'AdoptController@filter'); //for adopt view
 
 Route::post('api/adoption-form/enquiry', 'AdoptionFormController@enquiry'); //step 1 - fill in basic info
-//Route::get('api/adoption-form/get-application/{application_token}', 'AdoptionFormController@getApplication'); //step 2 - open
 Route::post('api/adoption-form/save-application/{application_token}', 'AdoptionFormController@saveApplication');
-//Route::get('api/adoption-form/get-agreement/{agreement_token}', 'AdoptionFormController@getAgreement');
 Route::post('api/adoption-form/save-agreement/{agreement_token}', 'AdoptionFormController@saveAgreement');
 
 Route::get('login', 'AdminController@login');

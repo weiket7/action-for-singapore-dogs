@@ -45,10 +45,10 @@
               <label-component>Dog Name</label-component>
               <select2-component name='dog_name' url="api/adopt/search"
                                  event_name="select-adopt"
-                                 v-on:select-adopt="selectAdopt"></select2-component>
+                                 v-on:select-adopt="selectAdopt" :error="errors.get('adopt_id')"></select2-component>
 
               <label-component>Adopted On</label-component>
-              <datepicker-component name="adopted_on" v-model="adoption_form.adopted_on"></datepicker-component>
+              <datepicker-component name="adopted_on" v-model="adoption_form.adopted_on" :error="errors.get('adopted_on')"></datepicker-component>
             </form-row>
 
             <form-row>
@@ -107,6 +107,7 @@
   import FormMixin from '../form-mixin';
   import Remark from '../modules/Remark'
 
+  
   export default {
     name: "adoption_form",
     data() {
@@ -182,6 +183,9 @@
       this.getAdoptionForm();
     },
     mounted() {
+      //toastr.options.timeOut = 0;
+      //toastr.options.extendedTimeOut = 0;
+  
       let vue = this
       $('[data-toggle=confirmation]').confirmation({
         rootSelector: '[data-toggle=confirmation]',

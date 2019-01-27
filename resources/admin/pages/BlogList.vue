@@ -13,7 +13,7 @@
         <tr v-for="blog in blogs">
           <td>{{ blog_types[blog.type] }}</td>
           <td width="450px">
-            <router-link v-bind:to="'/blog/save/'+blog.id">{{ blog.title }}</router-link>
+            <router-link v-bind:to="'/blog/save/'+blog.blog_id">{{ blog.title }}</router-link>
           </td>
           <td>{{ blog.posted_on | formatDate }}</td>
         </tr>

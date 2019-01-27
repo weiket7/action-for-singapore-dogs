@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\AdoptionFormApproveRequest;
 use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
 use App\Mail\AdoptionAgreementMail;
@@ -45,7 +46,7 @@ class AdoptionFormController extends Controller {
     $adoption_form->saveApplication($request->all());
   }
   
-  public function approve(Request $request, $adoption_form_id) {
+  public function approve(AdoptionFormApproveRequest $request, $adoption_form_id) {
     $adoption_form = AdoptionForm::where('adoption_form_id', $adoption_form_id)->first();
     if ($adoption_form->approved_on) {
       throw new Exception('approve Adoption form id = ' . $adoption_form->adoption_form_id . ' already approved');

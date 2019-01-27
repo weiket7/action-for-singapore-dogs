@@ -212,6 +212,12 @@
           this.success = true;
           this.errors = new Errors();
         },
+        onError: function(error) {
+          if (error.response.status == 500) {
+            return;
+          }
+          this.errors.record(error.response.data.errors);
+        }
       },
       mounted: function() {
         this.form.hearts = window.getHearts();
@@ -221,7 +227,8 @@
           this.adopts = _.chunk(response.data, 4);
         }
   
-      }
+      },
+      
     })
   </script>
 @endsection
