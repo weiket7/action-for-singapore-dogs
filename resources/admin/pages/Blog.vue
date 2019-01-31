@@ -6,7 +6,7 @@
         <textbox-component v-model="blog.title" :error="errors.get('title')"></textbox-component>
         
         <label-component>Type</label-component>
-        <select-component v-model="blog.type" :options="blog_types" :error="errors.get('type')"></select-component>
+        <select-component v-model="blog.type" :options="blog_types" has-empty="true" :error="errors.get('type')"></select-component>
       </form-row>
       
       <form-row>
@@ -29,6 +29,7 @@
       
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
       </form-footer>
     </form>
   </single-portlet>
@@ -85,8 +86,8 @@
         this.errors.clear();
         if (this.is_create) {
           toastr.success("Blog added");
-          const blog_id = response.data;
-          this.$router.push('/blog/save/'+blog_id);
+          this.blog.blog_id = response.data;
+          this.$router.push('/blog/save/'+this.blog.blog_id);
           return;
         }
         toastr.success("Blog updated");
@@ -94,6 +95,14 @@
       updateImage(file) {
         this.image_new = file;
       },
+      deleteBlog() {
+        axios.post('api/delete-record?table=blog&column=blog_id&id='+this.$route.params.blog_id)
+          .then(response => {
+            toastr.success("Blog deleted");
+            this.$router.push('/blog');
+          })
+          .catch(this.onError);
+      }
     },
     mounted() {
       axios.get("api/blog/get/" + this.$route.params.blog_id)
@@ -113,7 +122,14 @@
           });
   
           this.loaded = true;
-        })
+        });
+  
+      let vue = this
+      $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+      }).on("confirmed.bs.confirmation", function() {
+        vue.deleteBlog();
+      });
     },
     computed: {
       is_create() {

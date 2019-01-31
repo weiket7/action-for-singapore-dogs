@@ -15,6 +15,12 @@ class ViewHelper
   }
   
   public static function limitContent($content, $limit) {
+    if ($content == "") {
+      return "";
+    }
+    if (strlen($content) < 300) {
+      return $content;
+    }
     $pos=strpos($content, ' ', $limit);
     return substr($content, 0, $pos);
   }
