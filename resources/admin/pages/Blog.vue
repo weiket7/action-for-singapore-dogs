@@ -16,7 +16,7 @@
         <label-component>Image</label-component>
         <image-component v-model="blog.image" name="image"
                          v-on:update-image="updateImage" folder="blog"
-                         :src="blog.image" :error="errors.get('image')"></image-component>
+                         :src="blog.image" :error="errors.get('image_new')"></image-component>
       </form-row>
       
       <form-row>
@@ -85,12 +85,11 @@
         this.errors.clear();
         if (this.is_create) {
           toastr.success("Blog added");
-          this.$router.push('/blog/save/'+this.blog_id);
+          const blog_id = response.data;
+          this.$router.push('/blog/save/'+blog_id);
           return;
         }
         toastr.success("Blog updated");
-        let blog_id = response.data;
-        this.$router.push('/blog/save/'+blog_id);
       },
       updateImage(file) {
         this.image_new = file;
@@ -105,7 +104,7 @@
           let vue = this
           ClassicEditor.create(document.querySelector('#editor'), {
             ckfinder: {
-              uploadUrl: '/asd/public/api/upload-image?folder=blogs'
+              uploadUrl: '/asd/public/api/upload-image?folder=blog'
             }
           }).then(editor => {
             vue.editor = editor;

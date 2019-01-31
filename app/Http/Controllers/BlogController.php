@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Helpers\BackendHelper;
+use App\Helpers\ViewHelper;
 use App\Http\Requests\BlogRequest;
 use App\Models\Adopt;
 use App\Models\Enums\BlogStat;
@@ -19,8 +20,8 @@ class BlogController extends Controller {
     }
     $blog_id = $blog->saveBlog(BackendHelper::processInput($request->all()));
     if ($request->image_new) {
-      $image_name = "blog-".str_slug($blog->name)."-".Carbon::now()->format("YmdHis");
-      $image_name = BackendHelper::uploadImage("blog", $image_name, $request->image_new);
+      $image_name = $blog->blog_id.'-'.str_slug($blog->title);
+      $image_name = BackendHelper::uploadImage("blog/".ViewHelper::blogImageFolder($blog->type), $image_name, $request->image_new);
       $blog->image = $image_name;
       $blog->save();
     }

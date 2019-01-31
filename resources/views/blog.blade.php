@@ -15,7 +15,7 @@
         <div class="col-md-4">
   
           <a href="{{ url('blog/post/'.$post->slug) }}">
-            <img src="{{ url('assets/images/blog/'.$post->image) }}" alt="" />
+            <img src="{{ url('assets/images/blog/'.ViewHelper::blogImageFolder($post->type).'/'.$post->image) }}" alt="" />
           </a>
         </div>
         

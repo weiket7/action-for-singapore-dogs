@@ -7,9 +7,7 @@
     <div class="row">
       <div class="col-sm-12">
         <article class="vertical-item">
-          <div class="item-media">
-            <img src="{{ url('assets/images/blog/'.$blog->image) }}" alt="" class="img-responsive" style="width: auto; max-height: 300px"/>
-          </div>
+          <img src="{{ url('assets/images/blog/'.ViewHelper::blogImageFolder($blog->type).'/'.$blog->image) }}" alt="" />
           
           <div class="item-content">
             <header class="entry-header">

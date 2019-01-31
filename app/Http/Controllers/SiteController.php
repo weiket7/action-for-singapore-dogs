@@ -161,17 +161,17 @@ class SiteController extends Controller {
   }
   
   public function news() {
-    $data['posts'] = Blog::where('type', BlogType::News)->get();
+    $data['posts'] = Blog::where('type', BlogType::News)->orderBy('posted_on', 'desc')->get();
     $data['type'] = 'News';
     return view('blog', $data);
   }
   public function goneToLovingHomes() {
-    $data['posts'] = Blog::where('type', BlogType::GoneToLovingHomes)->get();
+    $data['posts'] = Blog::where('type', BlogType::GoneToLovingHomes)->orderBy('posted_on', 'desc')->get();
     $data['type'] = 'Gone to Loving Homes';
     return view('blog', $data);
   }
   public function dogsInNeed() {
-    $data['posts'] = Blog::where('type', BlogType::DogsInNeed)->get();
+    $data['posts'] = Blog::where('type', BlogType::DogsInNeed)->orderBy('posted_on', 'desc')->get();
     $data['type'] = 'Dogs In Need';
     return view('blog', $data);
   }
