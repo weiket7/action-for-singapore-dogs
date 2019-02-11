@@ -229,6 +229,7 @@
         var vue = this
         $(".datepicker").datepicker({
           dateFormat: 'd M yy',
+          yearRange: "-1:+0",
           onSelect: function(value, date) {
             vue.updateTransferDate(moment(value, 'DD MMM YYYY').format('YYYY-MM-DD'));
           }

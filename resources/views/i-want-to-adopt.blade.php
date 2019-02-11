@@ -197,6 +197,7 @@
               changeMonth: true,
               changeYear: true,
               dateFormat: 'd M yy',
+              yearRange: "-100:+0",
               onSelect: function (value, date) {
                 vue.updateBirthday(moment(value, 'DD MMM YYYY').format('YYYY-MM-DD'));
               }
