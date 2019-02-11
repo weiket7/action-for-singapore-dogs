@@ -224,7 +224,7 @@
         
         this.adopt_count = this.adopts.length;
         if (this.adopt_count >= 4) {
-          this.adopts = _.chunk(response.data, 4);
+          this.adopts = _.chunk(this.adopts, 4);
         }
   
       },
