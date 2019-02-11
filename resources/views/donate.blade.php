@@ -228,6 +228,8 @@
       mounted: function() {
         var vue = this
         $(".datepicker").datepicker({
+          changeMonth: true,
+          changeYear: true,
           dateFormat: 'd M yy',
           yearRange: "-1:+0",
           onSelect: function(value, date) {

@@ -19,7 +19,7 @@ class DonationTable extends Migration
         $table->string('mobile', 50);
         $table->string('amount', 50);
         $table->string('payment_method', 50);
-        $table->string('ref_no', 50);
+        $table->string('ref_no', 50)->nullable();
         $table->dateTime('transfer_date');
         $table->dateTime('donated_on');
       });
