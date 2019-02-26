@@ -102,7 +102,8 @@ class SiteController extends Controller {
   }
   
   public function donate(Request $request) {
-    return view('donate');
+    $data['content'] = Page::getContent('Donate');
+    return view('donate', $data);
   }
   
   public function pages(Request $request, $slug) {

@@ -27,4 +27,8 @@ class Page extends Model
     return $contents;
   }
   
+  public static function getContent($title) {
+    return Page::where('title', $title)->value('content');
+  }
+  
 }

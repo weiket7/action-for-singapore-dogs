@@ -7,6 +7,10 @@
   <div id="app" class="container content">
     <div class="row">
       <div class="col-sm-12">
+        <h2 class="section_header bold text-center">Donate</h2>
+  
+        {!! $content !!}
+  
         <div class="vertical-item content-overlap">
           <div class="item-media">
             <img src="assets/images/donate-banner.jpg" alt="" />
@@ -14,7 +18,6 @@
           <div class="item-content with_padding_big with_border theme_background fontsize_18">
             <i class="fa fa-heart highlight top_icon" aria-hidden="true"></i>
             <!--<p class="text-center grey">You are donating for the project:</p>-->
-            <h1 class="entry-title black text-center">Donate</h1>
             <form @submit.prevent="onSubmit()" method="post" action="" class="donate-form">
               <div class="form-horizontal">
                 <div class="form-group mt-10">
