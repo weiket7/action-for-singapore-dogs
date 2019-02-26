@@ -147,7 +147,8 @@ class SiteController extends Controller {
   }
   
   public function contact(Request $request) {
-    return view('contact');
+    $data['contents'] = Page::getContents();
+    return view('contact', $data);
   }
   
   public function boardingServices() {

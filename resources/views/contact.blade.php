@@ -55,6 +55,8 @@
       
       <div class="col-md-8" data-animation="scaleAppear">
         <h3 class="entry-title black">Contact</h3>
+  
+        {!! $contents['Contact Us']  !!}
         
         <form @submit.prevent="onSubmit()" class="contact-form columns_padding_5" method="post" action="">
           <div class="row">

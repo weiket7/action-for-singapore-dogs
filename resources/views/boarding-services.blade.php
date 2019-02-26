@@ -9,15 +9,14 @@
     </div>
     
     <h3>A Home Away From Home</h3>
-    Do you worry about going away and leaving your dog in a kennel environment ? Haven’t had a holiday in years because you couldn’t trust anyone with your dog ?
+    Do you worry about going away and leaving your dog in a kennel environment ? Haven’t had a holiday in years because you couldn’t trust anyone with your dog?
     <br><br>
     Now you can rest easy when you leave your dog with us. Like you, we want the best for our dogs. That is why we spare no expense to ensure our dogs get the best treatment possible and the hallmark ASD quality care will be extended to your dog when he/she comes to stay with us.
     
     <h3>Hallmark ASD Quality Care</h3>
     <b>What distinguishes the ASD Care Centre from the rest?</b><br>
-    
-    For us at ASD, the dog’s health, happiness and comfort comes first, and we designed our Care Centre from the ground up with these criteria in mind.
-    <br><br>
+  
+    For us at ASD, the dog’s health, happiness and comfort comes first, and we designed our Care Centre from the ground up with these criteria in mind.<br><br>
     
     <b>SPACE</b><br>
     We understand how stressful it must be for a dog to be separated from his/her owner, and to be shut up in a small cage will further add to that stress. Our proven concept is a dormitory style environment where 2 to 3 dogs interact in an airy 26 ft x 7 ft area with 2 open shared kennels for their own private moments. Your dog’s well being is of paramount importance to us.
@@ -36,8 +35,28 @@
     <br><br>
     
     <b>CARE</b><br>
-    At ASD, your dog gets personalized care, because our caretakers are genuine dog lovers, not just workers, who will give the same level of love, care and attention as they do to our rescued dogs. They have been trained and adhere to the strict ASD code of conduct on how to handle dogs, and how to observe their behavioural and physical symptoms to assess their health status. That said we do not provide 24 hours monitoring.
+    At ASD, your dog gets personalized care, because our caretakers are genuine dog lovers, not just workers, who will give the same level of love, care and attention as they do to our rescued dogs. They have been trained and adhere to the strict ASD code of conduct on how to handle dogs, and how to observe their behavioural and physical symptoms to assess their health status. That said we do not provide 24 hours <monitoring class=""></monitoring>
     
+    <h3>Take a Virtual Tour</h3>
+  
+    The ASD Care Centre’s layout and design is similar to our Adoption & Rescue Centre with the singular aim of providing a clean and condusive environment where the dogs can live and interact happily.
+    <br><br>
+    From our experience, the environment is of utmost important for the psychological health of the dogs,and a bright, airy, cosy and spacious environment is a must.
+    <br><br>
+    At the ASD Care Centre, the dogs are cared for in spacious dormitories measuring 26 ft x 7 ft area with 2 open shared kennels for their own private moments.
+    <br><br>
+    This proven concept has been reinforced by clients who have boarded their dogs with us and remarked on how much more relaxed their dogs were after their stay with us than with their previous experiences at other boarding facilities
+    <br><br>
+    Tiled floors with pleasant off-white shades (dogs see in shades of gray) provide a clean, safe and cozy environment while clean fresh air is circulated via the overhead fans.
+    <br><br>
+    All these ammenties are standard and included in the rates without any hidden charges.
+    <br><br>
+    A common walkway links all the domitories together allowing easy access for cleaning and interaction by our Care Counsellors
+    <br><br>
+    We welcome you to visit our ASD Care Centre to have a first hand* look at our premises and our Care Counsellors will be more than happy to explain things in more detail and to answer your queries. Just give us a call or email us to set up an appointment
+    At the same time, we also encourage you to view other commercial boarding facilities first as a reference. We dare say there is no basis for comparison !
+    *Please submit the e-booking form to check on space availability first before requesting for a site visit.
+  
     <div class="row">
       <div class="col-md-6">
         <img src="{{asset("assets/images/boarding/care-centre1.jpg")}}" style="max-height: 300px">
@@ -63,10 +82,10 @@
     S$50 for transport (2 way trip for weekdays, $60 for Saturdays, $70 for Sundays)
     
     <h3>Boarding Procedure</h3>
-    
+  
     As space is limited, bookings should be initiated at least 2 weeks in advance of intended date of stay
     <br><br>
-    We will inform you a week before the intended start date if we are able to allocate space for your dog’s stay. You will then need to confirm that you will board your dog with us on the intended dates.
+    Click on this <a href="{{url('boarding-request')}}">link</a> to fill up the Boarding Request form and we will check on the space availability and update you within 3 working days if we are able to allocate space for your dog’s stay. You will then need to confirm that you will board your dog with us on the intended dates.
     <br><br>
     A Boarding agreement will be attached which you need to download, print out and complete. Please take some time to answer the questions on your dog’s profile, such as phobias, character traits, past illness etc. This will help us to focus on these vulnerabilities and to ensure your dog’s stay is a happy and enjoyable one.
     <br><br>
@@ -79,11 +98,13 @@
     Your dog will also be assessed at that point to ensure it is flea and tick free. As part of our procedure to ensure the health and safety of your dog, he/she will be protected with an anti flea/tick application which is sprayed on. This is inclusive of the boarding charges.
     <br><br>
     However it must be noted that a spray application may sometimes not be as effective as a spot-on application. This is available at an additional charge upon request or you may do so yourself prior to check-in and inform our Care Counsellor
-    <br><br>
     Owners are advised to also inspect their dogs upon check out to ensure the state and well being of their dog as well as to check for fleas/ticks if any
-    <br><br>
+  
+    <h3>Contact Us</h3>
+    If you have any questions, you can contact us via email at <a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a> with the heading 'Boarding'
+    
     <div class="alert alert-info">
-      To book, please email us at <a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a> with the subject 'Boarding'. We will contact you as soon as possible.
+      To book, please click on this <a href="{{url('boarding-request')}}">link</a> to fill up the Boarding Request form.
     </div>
     
     <h3>Testimonials</h3>
