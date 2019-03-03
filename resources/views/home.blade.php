@@ -53,7 +53,7 @@
                 <a href="{{ url('dogs-for-adoption') }}" class="bold">ADOPT</a>
               </h3>
               <p>
-                {{ $contents['Home Adopt'] }}
+                {!! $contents['Home Adopt'] !!}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/dogs-for-adoption') }}" class="theme_button">View Dogs for Adoption</a>
@@ -69,7 +69,7 @@
                 <a href="{{ url('/donate') }}" class="bold">Donate</a>
               </h3>
               <p>
-                {{ $contents['Home Donate'] }}
+                {!! $contents['Home Donate'] !!}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/donate') }}" class="theme_button">Make a Donation</a>
@@ -85,7 +85,7 @@
                 <a href="{{ url('/volunteer') }}" class="bold">Volunteer</a>
               </h3>
               <p>
-                {{ $contents['Home Volunteer'] }}
+                {!! $contents['Home Volunteer'] !!}
               </p>
               <p class="topmargin_30">
                 <a href="{{ url('/volunteer') }}" class="theme_button">Be a Volunteer</a>
@@ -147,13 +147,13 @@
           <article class="vertical-item">
             <div class="item-content">
               <h3 class="entry-title">
-                <a href="{{ url('/coming-soon') }}" class="bold">Rescue</a>
+                <a href="{{ url('/blog/dogs-in-need') }}" class="bold">Rescue</a>
               </h3>
               <p>
-                {{ $contents['Home Rescue'] }}
+                {!! $contents['Home Rescue'] !!}
               </p>
               <p class="topmargin_30">
-                <a href="{{ url('/coming-soon') }}" class="theme_button inverse">Learn More</a>
+                <a href="{{ url('/blog/dogs-in-need') }}" class="theme_button inverse">Learn More</a>
               </p>
             </div>
           </article>
@@ -163,13 +163,13 @@
           <article class="vertical-item">
             <div class="item-content">
               <h3 class="entry-title">
-                <a href="{{ url('/coming-soon') }}" class="bold">Rehabilitate</a>
+                <a href="{{ url('/blog/dogs-in-need') }}" class="bold">Rehabilitate</a>
               </h3>
               <p>
-                {{ $contents['Home Rehabilitate'] }}
+                {!! $contents['Home Rehabilitate'] !!}
               </p>
               <p class="topmargin_30">
-                <a href="{{ url('/coming-soon') }}" class="theme_button inverse">Learn More</a>
+                <a href="{{ url('/blog/dogs-in-need') }}" class="theme_button inverse">Learn More</a>
               </p>
             </div>
           </article>
@@ -179,13 +179,13 @@
           <article class="vertical-item">
             <div class="item-content">
               <h3 class="entry-title">
-                <a href="{{ url('/coming-soon') }}" class="bold">Rehome</a>
+                <a href="{{ url('/blog/gone-to-loving-homes') }}" class="bold">Rehome</a>
               </h3>
               <p>
-                {{ $contents['Home Rehome'] }}
+                {!! $contents['Home Rehome'] !!}
               </p>
               <p class="topmargin_30">
-                <a href="{{ url('/coming-soon') }}" class="theme_button inverse">Learn More</a>
+                <a href="{{ url('/blog/gone-to-loving-homes') }}" class="theme_button inverse">Learn More</a>
               </p>
             </div>
           </article>

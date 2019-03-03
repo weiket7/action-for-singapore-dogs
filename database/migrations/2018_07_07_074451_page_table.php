@@ -147,12 +147,12 @@ Conducted by an approved professional trainer at a centralized location on weeke
 <p>However, we may not be able to accede to every request due to the limitations of our resources. We will however, provide alternatives that you may explore.</p>
 <p>If you have any queries or are thinking about surrendering your dog or cannot keep a dog that you found, please browse thorough our Frequently Asked Questions here, else you may reach us via email at <a href=\"mailto:info@asdsingapore.com\">info@asdsingapore.com</a></p>
 '),
-('C', 'Home Adopt', '', 'Home Adopt At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Donate', '', 'Home Donate At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Volunteer', '', 'Home Volunteer At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Rescue', '', 'Home RescueAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Rehabilitate', '', 'Home Rehabilitate At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
-('C', 'Home Rehome', '', 'Home Rehome At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis um voluptatum deleniti atque'),
+('C', 'Home Adopt', '', 'Thinking of getting a dog? View the many reasons why you should adopt one of these wonderful dogs who will provide a lifetime of love and  joy!'),
+('C', 'Home Donate', '', 'It takes a massive amount to keep our rescue, medical and shelter operations going monthly and this will be a great way to be a part of helping these helpless dogs who have no one but us to help them'),
+('C', 'Home Volunteer', '', 'Do you feel the passion and the fire to help these dogs ? Use your strengths and passion to really make a difference ! There are so many ways to help, find out more!'),
+('C', 'Home Rescue', '', 'It takes a lot to help dogs in need, from prepartory work to actual rescue and many a stray and abandoned dog suffer grave injuries or sickness. Read about them <a href=''blog/dogs-in-need''>here</a> and see how you can help!'),
+('C', 'Home Rehabilitate', '', 'After being rescued, the real work starts to help these dogs through their ordeals and to let them know there is still love in life.'),
+('C', 'Home Rehome', '', 'This is the final destination of any dog''s life journey, to find that forever home and to live happily ever after. Read about their fairy tale life stories!'),
 ('C', 'Volunteer Content', '', 'Ever seen homeless, abused, neglected, abandoned animals looking at you with dispair and resignation in their eyes ? Ever felt helpless and inadequate and wishing you could do something about it ? You can ! We may not be the richest or cleverest people in the world, but every little thing we do for these critters makes a world of difference to them. As a volunteer, we can make a difference between life and death for these critters. We may not solve the animal overpopulation problem overnight, but if each of us do our small part, we can make a tremendous difference.
 
 We have a variety of activities and duties and we are constantly in need of volunteers. If you have the heart and the will to do something for these animals, please click on any of the activities below to learn more about what the duties entail. And if you feel you can commit to them, simply enter your details and we will get in touch with you
