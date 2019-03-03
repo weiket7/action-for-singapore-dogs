@@ -18,21 +18,66 @@ class BannerTable extends Migration
       $table->integer('event_id')->nullable();
       $table->integer('blog_id')->nullable();
     });
-    
-    DB::table('banner')->insert([
-      'name'=>'name1',
-      'stat'=>'A',
-      'position'=>1,
-      'image'=>'banner1.jpg',
-      'link_to'=>'Event',
-      'event_id'=>4,
-    ]);
   
     DB::table('banner')->insert([
       'name'=>'Our Singapore Heritage FlashPay Cards',
       'stat'=>'A',
       'position'=>1,
       'image'=>'ez-link-heritage-series.jpg',
+      'link_to'=>'Blog',
+      'blog_id'=>1,
+    ]);
+    
+    DB::table('banner')->insert([
+      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'stat'=>'A',
+      'position'=>2,
+      'image'=>'asd_19calad.jpg',
+      'link_to'=>'Blog',
+      'blog_id'=>1,
+    ]);
+  
+    DB::table('banner')->insert([
+      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'stat'=>'A',
+      'position'=>3,
+      'image'=>'asd-project-adore.jpg',
+      'link_to'=>'Blog',
+      'blog_id'=>1,
+    ]);
+  
+    DB::table('banner')->insert([
+      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'stat'=>'A',
+      'position'=>4,
+      'image'=>'asd-adopt-a-dog.jpg',
+      'link_to'=>'Blog',
+      'blog_id'=>1,
+    ]);
+  
+    DB::table('banner')->insert([
+      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'stat'=>'A',
+      'position'=>5,
+      'image'=>'asd-sponsorship.jpg',
+      'link_to'=>'Blog',
+      'blog_id'=>1,
+    ]);
+  
+    DB::table('banner')->insert([
+      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'stat'=>'A',
+      'position'=>6,
+      'image'=>'asd-dog-listener-academy.jpg',
+      'link_to'=>'Blog',
+      'blog_id'=>1,
+    ]);
+  
+    DB::table('banner')->insert([
+      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'stat'=>'A',
+      'position'=>7,
+      'image'=>'asd-volunteer.jpg',
       'link_to'=>'Blog',
       'blog_id'=>1,
     ]);

@@ -20,11 +20,13 @@ class PageTable extends Migration
       
       DB::statement(
       "INSERT INTO `page` (`type`, `title`, `slug`, `content`) VALUES
-('C', 'Home Banner Title', 'home-banner-title', 'Singapore Specials Run 2018'),
-('C', 'Home Banner Content', 'home-banner-content', 'The quadrennial Singapore Specials Run is back! This year’s run will be bigger, better and stronger! This Run hopes to put runners in the paw buddies’ paws as to their struggles in life, and with your support, to raise hope and funds to help more of these paw buddies. Proceeds will be channelled into helping the many that ASD has rescued and rehomed. Join us and run with us on 11.11.2018 from 4.00pm onwards at the Bishan-Ang Mo Kio Park and give our paw buddies your support!'),
+('C', 'Home Banner Title', 'home-banner-title', 'Action for Singapore Dogs'),
+('C', 'Home Banner Content', 'home-banner-content', 'Action for Singapore Dogs (ASD) is a registered Charity and was established in December 2000 as a non-profit organization with the mission to improve the welfare of stray and abandoned dogs in Singapore with a strict no-kill policy.
+
+We aim to fulfill our mission through various activities and programs including rescuing, fostering and re-homing of stray and abandoned dogs, advocating sterilization to control the stray population, responsible pet ownership and highlighting the virtues of our local dogs, the Singapore Specials.'),
 ('P', 'Who We Are', 'who-we-are', 'Action for Singapore Dogs (ASD) is a registered Charity and was established in December 2000 as a non-profit organization with the mission to improve the welfare of stray and abandoned dogs in Singapore with a strict no-kill policy.
 
-We aim to fulfill our mission through various activities and programs including rescuing, fostering and re-homing of stray and abandoned dogs, advocating sterilization to control the stray population, responsible pet ownership and highlighting the virtues of our local dogs, the Singapore Special.
+We aim to fulfill our mission through various activities and programs including rescuing, fostering and re-homing of stray and abandoned dogs, advocating sterilization to control the stray population, responsible pet ownership and highlighting the virtues of our local dogs, the Singapore Specials.
 
 To date, we have rehomed over 3000 dogs and have about 150 dogs under our care. These dogs are housed at our Adoption & Rescue Centre and in foster homes.
 
