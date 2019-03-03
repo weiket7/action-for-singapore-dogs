@@ -32,6 +32,8 @@ Route::get('volunteer', 'SiteController@volunteer');
 Route::post('api/volunteer/form', 'VolunteerController@form');
 Route::get('contact', 'SiteController@contact');
 Route::post('api/contact/form', 'SiteController@form');
+Route::get('boarding-form', 'SiteController@boardingForm');
+Route::post('api/boarding/form', 'BoardingController@form');
 
 Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');

@@ -85,7 +85,7 @@
   
     As space is limited, bookings should be initiated at least 2 weeks in advance of intended date of stay
     <br><br>
-    Click on this <a href="{{url('boarding-request')}}">link</a> to fill up the Boarding Request form and we will check on the space availability and update you within 3 working days if we are able to allocate space for your dog’s stay. You will then need to confirm that you will board your dog with us on the intended dates.
+    Click on this <a href="{{url('boarding-form')}}">link</a> to fill up the Boarding Request form and we will check on the space availability and update you within 3 working days if we are able to allocate space for your dog’s stay. You will then need to confirm that you will board your dog with us on the intended dates.
     <br><br>
     A Boarding agreement will be attached which you need to download, print out and complete. Please take some time to answer the questions on your dog’s profile, such as phobias, character traits, past illness etc. This will help us to focus on these vulnerabilities and to ensure your dog’s stay is a happy and enjoyable one.
     <br><br>
@@ -104,7 +104,7 @@
     If you have any questions, you can contact us via email at <a href="mailto:info@asdsingapore.com">info@asdsingapore.com</a> with the heading 'Boarding'
     
     <div class="alert alert-info">
-      To book, please click on this <a href="{{url('boarding-request')}}">link</a> to fill up the Boarding Request form.
+      To book, please click on this <a href="{{url('boarding-form')}}">link</a> to fill up the Boarding Request form.
     </div>
     
     <h3>Testimonials</h3>

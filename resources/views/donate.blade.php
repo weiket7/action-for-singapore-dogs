@@ -206,7 +206,7 @@
         onSuccess: function(response) {
           this.success = true;
           this.errors = new Errors();
-          console.log(this.donation.payment_method);
+          //console.log(this.donation.payment_method);
           if (this.donation.payment_method == 'P') {
             window.location.replace('paypal/'+this.donation.amount);
           }

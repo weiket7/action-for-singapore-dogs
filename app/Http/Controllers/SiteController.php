@@ -158,6 +158,12 @@ class SiteController extends Controller {
     return view('boarding-services', $data);
   }
   
+  public function boardingForm() {
+    $data['content'] = Page::where('title', 'Boarding Services')->value('content');
+    $data['testimonials'] = Testimonial::all();
+    return view('boarding-form', $data);
+  }
+  
   public function sponsor() {
     return view('sponsor');
   }
