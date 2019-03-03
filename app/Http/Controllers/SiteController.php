@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Helpers\ViewHelper;
 use App\Http\Requests\ContactRequest;
 use App\Mail\ContactMail;
 use App\Models\Adopt;
@@ -44,9 +45,13 @@ class SiteController extends Controller {
   }
   
   public function events(Request $request) {
-    $adoption_drives = Event::where('date', '>=', Carbon::today())->where('type', EventType::AdoptionDrive)->get();
-    $events = Event::where('date', '>=', Carbon::today())->orderBy('date', "desc")->get();
-    $data['events'] = $adoption_drives->merge($events);
+    if ($request->get('type') == 'B') {
+      $data['events'] = Event::where('date', '>=', Carbon::today())->where('type', EventType::BasicObedienceClass)->orderBy('date', "desc")->get();
+    } else {
+      $adoption_drives = Event::where('date', '>=', Carbon::today())->where('type', EventType::AdoptionDrive)->get();
+      $events = Event::where('date', '>=', Carbon::today())->where('type', '!=', EventType::AdoptionDrive)->orderBy('date', "desc")->get();
+      $data['events'] = $adoption_drives->merge($events);
+    }
     return view('events', $data);
   }
   
@@ -106,6 +111,22 @@ class SiteController extends Controller {
     return view('donate', $data);
   }
   
+  public function dogListenerAcademy(Request $request) {
+    $data['content'] = Page::getContent('Dog Listener Academy');
+    $data['events'] = Event::where('date', '>=', Carbon::today())->where('type', EventType::BasicObedienceClass)->orderBy('date', "desc")->get();
+    return view('dog-listener-academy', $data);
+  }
+  
+  public function trainingForm(Request $request) {
+    $dates = Event::where('date', '>=', Carbon::today())->where('type', EventType::BasicObedienceClass)->orderBy('date')->pluck('date');
+    $result = [''=>''];
+    foreach($dates as $date) {
+      $result[$date] = ViewHelper::formatDate($date);
+    }
+    $data['dates'] = $result;
+    return view('training-form', $data);
+  }
+
   public function pages(Request $request, $slug) {
     $data['page'] = Page::where('slug', $slug)->first();
     return view('pages', $data);

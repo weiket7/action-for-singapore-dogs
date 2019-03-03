@@ -58,9 +58,10 @@ class EventController extends Controller {
   public function filter(Request $request) {
     $query = Event::orderBy("date", "desc");
     if (count($request->showing) == 1) {
-      if ($request->showing == 'upcoming') {
+      $showing = $request->showing[0];
+      if ($showing == 'upcoming') {
         $query->where('date', '>=', Carbon::now());
-      } else if ($request->showing == 'past') {
+      } else if ($showing == 'past') {
         $query->where('date', '<', Carbon::now());
       }
     }

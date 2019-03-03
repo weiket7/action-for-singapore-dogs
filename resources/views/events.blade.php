@@ -14,14 +14,14 @@
         
         <div v-if="events.length" v-for="event in events">
           <div class="side-item">
-            <a :href="'event/' + event.slug" v-if="event.image">
+            <a :href="baseUrl + 'event/' + event.slug" v-if="event.image">
               <div class="item-media entry-thumbnail">
                 <img :src="'assets/images/events/'+event.image" alt="">
               </div>
             </a>
             
             <h4 class="entry-title">
-              <a :href="'event/' + event.slug">@{{ event.name }}</a>
+              <a :href="baseUrl + '/event/' + event.slug">@{{ event.name }}</a>
             </h4>
             
             <p class="event-detail">
@@ -41,7 +41,7 @@
             </p>
             <!--<p>Stet clita kasd gubergren, no sea takimata sanctus sed diam voluptua.</p>-->
             <p>
-              <a :href="'event/' + event.slug" class="theme_button inverse bottommargin_0">Learn More</a>
+              <a :href="baseUrl + '/event/' + event.slug" class="theme_button inverse bottommargin_0">Learn More</a>
             </p>
           </div>
           
@@ -55,24 +55,6 @@
       
       <!-- sidebar -->
       <div class="col-sm-5 col-md-4 col-lg-4">
-        
-        {{--<div class="widget">
-          
-          <h3 class="widget-title">Showing</h3>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" v-model="showing" name="showing" value="upcoming">
-              Upcoming
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" v-model="showing" name="showing" value="past">
-              Past
-            </label>
-          </div>
-        </div>--}}
-        
         <div class="widget">
           <h3 class="widget-title">Type</h3>
           <div class="checkbox">
@@ -95,6 +77,23 @@
           </div>
         </div>
         <br>
+  
+        <div class="widget">
+          <h3 class="widget-title">Showing</h3>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" v-model="showing" name="showing" value="upcoming">
+              Upcoming
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" v-model="showing" name="showing" value="past">
+              Past
+            </label>
+          </div>
+        </div>
+        <br>
         
         <button type="button" @click="filterEvent" class="theme_button inverse margin_0">Search</button>
       </div>
@@ -113,6 +112,7 @@
         events: {!! json_encode($events) !!},
         showing: [],
         type: [],
+        baseUrl: '{{url('/')}}'
       },
       methods: {
         filterEvent: function() {

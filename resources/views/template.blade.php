@@ -136,7 +136,7 @@
                     <a href="{{ url('pages/media') }}" :data-target="'coming-soon'">Media</a>
                   </li>--}}
                   <li>
-                    <a href="{{ url('pages/dog-listener-academy') }}" :data-target="'coming-soon'">Dog Listener Academy</a>
+                    <a href="{{ url('dog-listener-academy') }}" :data-target="'coming-soon'">Dog Listener Academy</a>
                   </li>
                   <li>
                     <a href="{{ url('pages/frequently-asked-questions') }}" :data-target="'coming-soon'">Frequently Asked Questions</a>

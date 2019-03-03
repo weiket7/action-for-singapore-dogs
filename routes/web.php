@@ -18,12 +18,13 @@ Route::get('adopt/{slug}', 'SiteController@adopt');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('blog/news', 'SiteController@news');
 Route::get('blog/gone-to-loving-homes', 'SiteController@goneToLovingHomes');
-Route::get('blog/dogs-in-need', 'SiteController@dogsInNeed');
+Route::get('blog/dogs-in-need', 'SiteController@dogsIn  Need');
 Route::get('blog/post/{slug}', 'SiteController@post');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
 Route::get('adoption-application/{application_token}', 'SiteController@adoptionApplication');
 Route::get('adoption-agreement/{agreement_token}', 'SiteController@adoptionAgreement');
+Route::get('dog-listener-academy', 'SiteController@dogListenerAcademy');
 
 Route::get('donate', 'SiteController@donate');
 Route::post('api/donation/form', 'DonationController@form');
@@ -34,6 +35,8 @@ Route::get('contact', 'SiteController@contact');
 Route::post('api/contact/form', 'SiteController@form');
 Route::get('boarding-form', 'SiteController@boardingForm');
 Route::post('api/boarding/form', 'BoardingController@form');
+Route::get('training-form', 'SiteController@trainingForm');
+Route::post('api/training/form', 'TrainingController@form');
 
 Route::get('api/home', 'SiteController@home');
 Route::get('api/event/latest', 'EventController@latest');

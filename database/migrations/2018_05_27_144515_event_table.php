@@ -78,7 +78,7 @@ We will reply with a email receipt once we have received your payment and this e
       'desc'=>'Bring out your shades and your sunscreen and head on down to Sentosa on 1 July for our next adoption drive where you will meet a variety of puppies and HDB-approved local cross breed adults!
 Our team of Adoption Counsellors will be there to assist you in finding the right companion for your family and there will also be a range of merchandise – including limited edition Singapore Heritage EZ link cards – on sale.'],
       ['name'=>'Singapore Specials Run \'18', 'slug'=>'singapore-specials-run-18', 'location'=>"Activity Lawn, Bishan-Ang Mo Kio Park", 'date'=>'2018-11-11', 'time'=>'4pm',
-        'image'=>"singapore-specials-run-18.jpg", 'type'=>EventType::AdoptionDrive,
+        'image'=>"singapore-specials-run-18.png", 'type'=>EventType::Others,
         'desc'=>'<h3>What is the Singapore Specials Run?</h3>
 The Singapore Specials Run, first started in 2010, aims to raise awareness about the plight of the stray and abandoned dogs, who daily traverse long distances under the scorching heat and pouring rain in search of food, shelter and ultimately a home.
 <br><br>
@@ -152,8 +152,8 @@ Be part of history – It’s a race like no other. Singapore Specials Run is a 
 If you believe your brand is a good fit and would like to discuss sponsorship opportunities please email us at ssr@asdsingapore.com.
         '],
   
-      ['name'=>'ASD A-Dog-Tion Drive', 'slug'=>'asd-a-dog-tion-drive-2018-11-25', 'location'=>"RedDot BrewHouse @ Dempsey", 'date'=>'2018-11-25', 'time'=>'12pm-4pm',
-        'image'=>"RedDot-Adoption-Drive-2.jpg", 'type'=>EventType::AdoptionDrive,
+      ['name'=>'ASD A-Dog-Tion Drive', 'slug'=>'asd-a-dog-tion-drive-2018-11-25', 'location'=>"RedDot BrewHouse @ Dempsey", 'date'=>'2019-11-25', 'time'=>'12pm-4pm',
+        'image'=>"RedDot-Adoption-Drive-2.png", 'type'=>EventType::AdoptionDrive,
         'desc'=>'Mark your calendars for our upcoming aDOGtion drive on 25 November at RedDot BrewHouse @ Dempsey!
 <br>
 If you’ve been thinking of bringing a canine companion home, please drop by our adoption drive to find out more. Many of our lovable furbabies will be there to meet and mingle with you.

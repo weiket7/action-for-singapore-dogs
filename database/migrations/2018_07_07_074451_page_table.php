@@ -37,24 +37,19 @@ All our work require tremendous amounts of monetary and manpower resources and w
 Running and maintaining the ARC requires a tremendous amount of resources from food, medication, equipment, etc and every little bit counts. Here are some of the ways you can help
 '),
 ('P', 'Media', 'media', 'Media'),
-('P', 'Dog Listener Academy', 'dog-listener-academy', 'Dog training is a critical and integral part of the a wholistic approach to the mission and objectives of ASD. When a dog is first rescued, there could be behavioural issues which needs to be identified and managed through rehabilitation or behaviour modification. This approach ensures that potential adopters are fully aware of the character traits of the dog they are interested in and are prepared mentally and physically.
-Under the ASD Dog Listener Academy, volunteers at the Adoption & Rescue Centre  are trained with this philosophy in mind, from teaching the dog proper social behaviour to learning how to walk them properly, with the goal of getting them adopted quickly and easily once they are well adapted and adjusted to a domestic environment. Shy, introverted or dogs that do not adapt well to a kennel environment are progressively housed at the Trainer’s home for rehabilitation and socialization in a partnership with the Dog Listener Consultancy
+('C', 'Dog Listener Academy', 'dog-listener-academy', 'Dog training is a critical and integral part of the a wholistic approach to the mission and objectives of ASD. When a dog is first rescued, there could be behavioural issues which needs to be identified and managed through rehabilitation or behaviour modification. This approach ensures that potential adopters are fully aware of the character traits of the dog they are interested in and are prepared mentally and physically.
 
-The benefits of a well trained dog is many fold, and it greatly reduces the rate of returns as well, as the new owners now feel they have the post adoption support that is crucial to ensuring the dog settles quickly and well into their new home and owners understand their dog\'s behaviour and are now equipped to handle the issues.
+Under the ASD Dog Listener Academy, volunteers at the Adoption & Rescue Centre  are trained with this philosophy in mind, from teaching the dog proper social behaviour to learning how to walk them properly, with the goal of getting them adopted quickly and easily once they are well adapted and adjusted to a domestic environment. Shy, introverted or dogs that do not adapt well to a kennel environment are progressively housed at the Trainer’s home for rehabilitation and socialization in a partnership with the Dog Listener Consultancy.
+
+The benefits of a well trained dog is many fold, and it greatly reduces the rate of returns as well, as the new owners now feel they have the post adoption support that is crucial to ensuring the dog settles quickly and well into their new home and owners understand their dog''s behaviour and are now equipped to handle the issues.
 
 Educational talks and presentations expounding the benefits of proper training are also conducted so that people can better understand and communicate with their dog.
 
-Adopters also have the option to sign up for dog training classes and consultations, of which ASD refers to an external party , the Dog Listener Consultancy (www.doglistenerconsult.com). The Principal Director and Trainer is Ricky Yeo, the current president and founder of ASD.
+Adopters also have the option to sign up for dog training classes and consultations, of which ASD refers to an external party , the Dog Listener Consultancy (<a href=''http://www.doglistenerconsult.com'' target=''blank''>www.doglistenerconsult.com</a>). The Principal Director and Trainer is Ricky Yeo, the current president and founder of ASD.
 
 For all group courses signed up through the ASD website, The Dog Listener Consultancy will donate 50% of the course fees back to ASD. ASD Adopters are offered preferential rates for the group and home based program.
 
-For a schedule of the courses, please refer to this link :
-To sign up for a course, please click here :
-
-The new form will have a clarification statement at the bottom :
-
-This course is conducted by an external party, The Dog Listener Consultancy
-The Dog Listener Consultancy will donate 50% of the course fees signed thru this form
+This course is conducted by an external party, The Dog Listener Consultancy will donate 50% of the course fees signed through this form
 back to ASD.
 '),
 ('P', 'Why Adopt A Dog', 'why-adopt-a-dog', '<b>Cost</b>
