@@ -69,9 +69,8 @@
     <h3>Boarding Rates</h3>
     
     <b>Rates & Charges</b><br>
-    S$20 a day for dogs 10 kgs and below<br>
-    S$25 a day for dogs above 10 kgs and less than 25 kgs<br>
-    S$30 a day for dogs above 25 kgs<br>
+    $30 for dogs 10kg and below<br>
+    $40 for dogs above 10kg<br>
     Rates per day are charged inclusive of the day the dog is checked in and inclusive of the day the dog is checked out<br>
     Example if the dog is checked in on a Saturday and is checked out on a Sunday, 2 days accomodation is charged regardless of the time of check in or check out
     <br><br>

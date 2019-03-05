@@ -67,6 +67,8 @@
               </div>
             </div>
           </div>
+  
+          {{ $content }}
         </form>
       </div>
     </div>

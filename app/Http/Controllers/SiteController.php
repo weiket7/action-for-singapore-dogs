@@ -124,6 +124,7 @@ class SiteController extends Controller {
       $result[$date] = ViewHelper::formatDate($date);
     }
     $data['dates'] = $result;
+    $data['content'] = Page::where('title', 'Boarding Form')->value('content');
     return view('training-form', $data);
   }
 
@@ -180,9 +181,7 @@ class SiteController extends Controller {
   }
   
   public function boardingForm() {
-    $data['content'] = Page::where('title', 'Boarding Services')->value('content');
-    $data['testimonials'] = Testimonial::all();
-    return view('boarding-form', $data);
+    return view('boarding-form');
   }
   
   public function sponsor() {

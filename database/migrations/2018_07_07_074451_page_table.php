@@ -45,12 +45,11 @@ The benefits of a well trained dog is many fold, and it greatly reduces the rate
 
 Educational talks and presentations expounding the benefits of proper training are also conducted so that people can better understand and communicate with their dog.
 
-Adopters also have the option to sign up for dog training classes and consultations, of which ASD refers to an external party , the Dog Listener Consultancy (<a href=''http://www.doglistenerconsult.com'' target=''blank''>www.doglistenerconsult.com</a>). The Principal Director and Trainer is Ricky Yeo, the current president and founder of ASD.
+Adopters also have the option to sign up for dog training classes and consultations, of which ASD refers to an external party , the Dog Listener Consultancy (www.doglistenerconsult.com). The Principal Director and Trainer is Ricky Yeo, the current president and founder of ASD.
 
 For all group courses signed up through the ASD website, The Dog Listener Consultancy will donate 50% of the course fees back to ASD. ASD Adopters are offered preferential rates for the group and home based program.
 
-This course is conducted by an external party, The Dog Listener Consultancy will donate 50% of the course fees signed through this form
-back to ASD.
+For the schedule and syllabus of the courses, please refer to this link : www.doglistenerconsult.com
 '),
 ('P', 'Why Adopt A Dog', 'why-adopt-a-dog', '<b>Cost</b>
 It is much cheaper to adopt a dog than to buy one. Versus paying anything from $500 to $2000 from the pet shops or breeders, adopting a dog from ASD only entails a token adoption fee and provides many more benefits. Please refer to the ASD Adoption Package here.
@@ -150,6 +149,7 @@ Conducted by an approved professional trainer at a centralized location on weeke
 ('C', 'Home Rescue', '', 'It takes a lot to help dogs in need, from prepartory work to actual rescue and many a stray and abandoned dog suffer grave injuries or sickness. Read about them <a href=''blog/dogs-in-need''>here</a> and see how you can help!'),
 ('C', 'Home Rehabilitate', '', 'After being rescued, the real work starts to help these dogs through their ordeals and to let them know there is still love in life.'),
 ('C', 'Home Rehome', '', 'This is the final destination of any dog''s life journey, to find that forever home and to live happily ever after. Read about their fairy tale life stories!'),
+('C', 'Boarding Form', '', 'This course is conducted by an external party, The Dog Listener Consultancy. The Dog Listener Consultancy will donate back 50% of the course fees signed through this form back to ASD'),
 ('C', 'Volunteer Content', '', 'Ever seen homeless, abused, neglected, abandoned animals looking at you with dispair and resignation in their eyes ? Ever felt helpless and inadequate and wishing you could do something about it ? You can ! We may not be the richest or cleverest people in the world, but every little thing we do for these critters makes a world of difference to them. As a volunteer, we can make a difference between life and death for these critters. We may not solve the animal overpopulation problem overnight, but if each of us do our small part, we can make a tremendous difference.
 
 We have a variety of activities and duties and we are constantly in need of volunteers. If you have the heart and the will to do something for these animals, please click on any of the activities below to learn more about what the duties entail. And if you feel you can commit to them, simply enter your details and we will get in touch with you
