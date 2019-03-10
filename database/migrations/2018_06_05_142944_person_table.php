@@ -18,7 +18,7 @@ class PersonTable extends Migration
       $table->string('mobile', 20);
       $table->dateTime('birthday');
       $table->char('gender', 1);
-      $table->string('address', 100);
+      $table->string('address', 150);
       $table->string('postal', 10);
       $table->boolean('is_rescuer')->default(0);
       $table->boolean('is_adopter')->default(0);

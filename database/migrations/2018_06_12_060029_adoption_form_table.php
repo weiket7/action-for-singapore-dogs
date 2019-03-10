@@ -16,7 +16,7 @@ class AdoptionFormTable extends Migration
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
-      $table->string('address', 50);
+      $table->string('address', 150);
       $table->dateTime('birthday');
       $table->char('gender', 1);
       $table->string('postal', 10);

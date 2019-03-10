@@ -20,6 +20,6 @@ class DonationAdminMail extends Mailable
   
   public function build()
   {
-    return $this->subject('$' . $this->donation->amount . ' donation from ' . $this->donation->name)->view('emails.donation-admin');
+    return $this->subject('[Donation] $' . $this->donation->amount . ' from ' . $this->donation->name)->view('emails.donation-admin');
   }
 }

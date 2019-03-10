@@ -20,6 +20,6 @@ class AdoptionAgreementMail extends Mailable
   
   public function build()
   {
-    return $this->subject("ASD - Adoption Form")->view('emails.adoption-agreement');
+    return $this->subject("ASD - Adoption Agreement")->view('emails.adoption-agreement');
   }
 }
