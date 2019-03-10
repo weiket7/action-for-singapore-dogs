@@ -11,6 +11,7 @@ Route::get('gift-shop', 'SiteController@giftShop');
 Route::get('boarding-services', 'SiteController@boardingServices');
 Route::get('sponsor', 'SiteController@sponsor');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
+Route::get('wp/adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-singapore', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-sg', 'SiteController@dogsForAdoption');
