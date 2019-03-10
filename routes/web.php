@@ -3,6 +3,14 @@
 //Route::get('/', function () { return view("welcome"); });
 Route::get('/', 'SiteController@home');
 
+/**from old website**/
+Route::get('wp/', 'SiteController@home');
+Route::get('wp/adopt-a-dog/', 'SiteController@dogsForAdoption');
+Route::get('wp/about-us/', 'SiteController@aboutUs');
+Route::get('wp/be-a-volunteer/', 'SiteController@volunteer');
+Route::get('wp/contributions/', 'SiteController@donate');
+Route::get('wp/sponsorship/', 'SiteController@sponsor');
+
 Route::get('who-we-are', 'SiteController@aboutUs');
 Route::get('events', 'SiteController@events');
 Route::get('event/{slug}', 'SiteController@event');
@@ -11,7 +19,6 @@ Route::get('gift-shop', 'SiteController@giftShop');
 Route::get('boarding-services', 'SiteController@boardingServices');
 Route::get('sponsor', 'SiteController@sponsor');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
-Route::get('wp/adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-singapore', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog-sg', 'SiteController@dogsForAdoption');
