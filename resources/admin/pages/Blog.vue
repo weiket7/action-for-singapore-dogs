@@ -113,7 +113,7 @@
           let vue = this
           ClassicEditor.create(document.querySelector('#editor'), {
             ckfinder: {
-              uploadUrl: '/asd/public/api/upload-image?folder=blog'
+              uploadUrl: 'api/upload-image?folder=blog'
             }
           }).then(editor => {
             vue.editor = editor;

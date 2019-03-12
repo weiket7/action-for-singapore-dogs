@@ -40,7 +40,12 @@
             <label-component>Colour</label-component>
             <textbox-component v-model="adopt.colour" :error="errors.get('colour')"></textbox-component>
           </form-row>
-
+  
+          <form-row>
+            <label-component>HDB Approved</label-component>
+            <radio-component v-model="adopt.hdb" :options="{ 1: 'Yes', 0: 'No' }" :error="errors.get('hdb')"></radio-component>
+          </form-row>
+  
           <form-row>
             <label-component>Microchipped</label-component>
             <radio-component v-model="adopt.microchip" :options="{ 1: 'Yes', 0: 'No' }" :error="errors.get('microchip')"></radio-component>
@@ -81,11 +86,6 @@
           <form-row v-show="adopt.sterilise">
             <label-component>Vet</label-component>
             <textbox-component v-model="adopt.vet" :error="errors.get('vet')"></textbox-component>
-          </form-row>
-
-          <form-row>
-            <label-component>HDB Approved</label-component>
-            <radio-component v-model="adopt.hdb" :options="{ 1: 'Yes', 0: 'No' }" :error="errors.get('hdb')"></radio-component>
           </form-row>
 
           <form-row>
@@ -186,7 +186,7 @@
     name: "adopt",
     data() {
       return {
-        adopt: {},
+        adopt: { breed: "Local Cross"},
         rescuers: [{}],
         fosters: [{}],
         adopters: [{}],

@@ -49,9 +49,9 @@ class Adopt extends Model
     if ($this->adopt_id == null) {
       $this->image = "";
     } else {
-      $this->location = $input['location'];
+      $this->location = $input['location'] ?? "";
       $this->location_other = $input['location_other'] ?? "";
-      $this->rescued_on = $input['rescued_on'];
+      $this->rescued_on = $input['rescued_on'] ?? null;
     }
     $this->save();
     return $this->adopt_id;
