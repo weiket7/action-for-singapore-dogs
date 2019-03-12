@@ -26,7 +26,7 @@ Route::get('adopt/{slug}', 'SiteController@adopt');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('blog/news', 'SiteController@news');
 Route::get('blog/gone-to-loving-homes', 'SiteController@goneToLovingHomes');
-Route::get('blog/dogs-in-need', 'SiteController@dogsIn  Need');
+Route::get('blog/dogs-in-need', 'SiteController@dogsInNeed');
 Route::get('blog/post/{slug}', 'SiteController@post');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
