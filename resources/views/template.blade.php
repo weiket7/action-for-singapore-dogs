@@ -250,8 +250,8 @@
 
 <script src="{{ asset("assets/js/compressed.js" )}}"></script>
 <script src="{{ asset("assets/js/main.js" )}}"></script>
-<script src="{{ asset("vendor.js" ) }}"></script>
-<script src="{{ asset("app.js" ) }}"></script>
+<script src="{{ asset("assets/js/vendor.js" ) }}"></script>
+<script src="{{ asset("assets/js/app.js" ) }}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62167634-3"></script>
 <script>

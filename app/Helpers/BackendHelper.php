@@ -17,7 +17,7 @@ class BackendHelper {
     if (App::environment('local')) {
       $base_path = $_SERVER['DOCUMENT_ROOT'] . "/asd/public/assets/images/";
     } else {
-      $base_path = $_SERVER['DOCUMENT_ROOT'] . "/assets/images/";
+      $base_path = $_SERVER['DOCUMENT_ROOT'] . "/public/assets/images/";
     }
     
     $destination_path = $base_path . $folder . "/";

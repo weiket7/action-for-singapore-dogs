@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>
-    Apollo
+    ASD - Backend
   </title>
   <meta name="description" content="Latest updates and statistic charts">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -744,7 +744,7 @@
   <!--begin::Page Snippets -->
   <script src="./metronic/app/js/dashboard.js" type="text/javascript"></script>
   <script src="./bootstrap-confirmation.min.js" type="text/javascript"></script>
-  <script src="{{ asset("admin.js") }}"></script>
+  <script src="{{ asset("assets/js/admin-vue.js") }}"></script>
   <!--end::Page Snippets -->
 </body>
 <!-- end::Body -->

@@ -16,7 +16,7 @@ const webpack = require('webpack');
 
 mix
   //.js('resources/assets/app.js', 'public')
-  .js('resources/admin/admin.js', 'public')
+  .js('resources/admin/admin.js', 'public/assets/js/admin-vue.js')
   .combine([
     "resources/vendor/jquery.bxslider.min.js",
     "resources/vendor/jquery-ui.min.js",
@@ -26,12 +26,12 @@ mix
     "resources/vendor/lodash.min.js",
     "resources/vendor/moment.min.js",
     "resources/vendor/vue.js",
-    ], 'public/vendor.js')
+    ], 'public/assets/js/vendor.js')
   .babel([
     "resources/errors.js",
     "resources/filters.js",
     "resources/heart.js",
     "resources/adopt-item.js",
     "resources/volunteer-field.js",
-  ], 'public/app.js')
+  ], 'public/assets/js/app.js')
   .disableSuccessNotifications();

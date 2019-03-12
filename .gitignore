@@ -1,6 +1,6 @@
-/public/app.js
-/public/admin.js
-/public/vendor.js
+/public/assets/js/app.js
+/public/assets/js/admin-vue.js
+/public/assets/js/vendor.js
 /node_modules
 /public/hot
 /public/storage
