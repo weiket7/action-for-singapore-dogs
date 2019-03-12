@@ -121,7 +121,7 @@
                   </div>
                   <div v-if="donation.payment_method == 'G'" class="col-sm-offset-3 col-sm-9">
                     GIRO is the convenient and hassle free way of contributing every monthly automatically.<br>
-                    Please download this <a href="assets/pdf/action-for-singapore-dogs-donate-giro-form.pdf" target="_blank">form</a>, print it out, fill it up and send it to the address stated on the form.<br>
+                    Please download this <a href="action-for-singapore-dogs-donate-giro-form.pdf" target="_blank">form</a>, print it out, fill it up and send it to the address stated on the form.<br>
                     <i>(Please note the minimum sum is $10)</i>
                   </div>
                   <div v-if="donation.payment_method == 'N'" class="col-sm-offset-3 col-sm-9">

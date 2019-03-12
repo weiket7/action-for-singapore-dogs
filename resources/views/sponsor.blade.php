@@ -35,6 +35,6 @@
     3.	Free ASD life membership after 6 consecutive months of sponsorship.
     <br><br>
   
-    Please download and fill in this <a href="{{ url('asd-sponsorship-form.pdf') }}" target="_blank">sponsorship form</a>.
+    Please download and fill in this <a href="{{ url('action-for-singapore-dogs-sponsorship-form.pdf') }}" target="_blank">sponsorship form</a>.
   </div>
 @endsection
