@@ -12,8 +12,8 @@ class AdoptionFormAnswerTable extends Migration
       $table->increments('id');
       $table->integer('adoption_form_id');
       $table->boolean('is_header');
-      $table->string('question', 100);
-      $table->string('answer', 100);
+      $table->string('question', 200);
+      $table->string('answer', 200);
     });
   
     $answers = [

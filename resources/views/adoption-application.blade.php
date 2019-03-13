@@ -4,27 +4,28 @@
   <div class="container content">
     <div class="row">
       <div class="col-md-12">
-        <div class="text-center">
           <div class="alert alert-danger mt-10" v-if="error">
             Error
           </div>
           
-          <form @submit.prevent="onSubmit()" v-else class="form-horizontal">
-            <h3>Thank you for your interest in adopting</h3>
+          <form @submit.prevent="onSubmit()" v-else class="">
+            <h3 class="text-center">Thank you for your interest in adopting</h3>
             
-            <h5>
+            <h5 class="text-center">
               Please fill in the short form below to share some information with us so that we can assist you in the adoption process.<br>
               Upon submission, our rehomers will get in touch with you via email.
             </h5>
             
             <div v-for="question in questions">
-              <h4 v-if="question.is_header === 1 || question.is_header === '1'" class="adoption-form-header text-center">@{{ question.content }}</h4>
+              <h4 v-if="question.is_header === 1 || question.is_header === '1'" class="adoption-form-header">@{{ question.content }}</h4>
               
               <div v-else class="form-group">
-                <label class="col-sm-4 control-label">@{{ question.content }}</label>
-                <div class="col-sm-8">
-                  <input type="text" v-model="answers['answer-'+question.question_id]" :name="'answer-'+question.question_id" class="form-control">
-                </div>
+                <label class="control-label">@{{ question.content }} <span class="required">*</span></label>
+                <input type="text" v-model="answers['answer-'+question.question_id]" :name="'answer-'+question.question_id" class="form-control">
+  
+                <span class="help-block error" v-if="required.indexOf('answer-'+question.question_id) >= 0">
+                  Required
+                </span>
               </div>
             </div>
             
@@ -33,17 +34,31 @@
             <div class="row">
               <div class="col-md-12 text-center">
                 <button type="submit">I want to adopt</button>
-                
+  
+                <div class="alert alert-danger mt-10" v-show="required.length > 0">
+                  There were some errors, please check the form
+                </div>
                 <div class="alert alert-success mt-10" v-show="success">
                   Thank you, our rehomers will get in touch with you via email.
                 </div>
               </div>
             </div>
           </form>
-        </div>
       </div>
     </div>
   </div>
+@endsection
+
+@section('css')
+  <style>
+    label {
+      line-height: normal;
+    }
+    
+    .form-group {
+      margin-bottom: 5px;
+    }
+  </style>
 @endsection
 
 @section('script')
@@ -57,10 +72,21 @@
         adoption_form: {!! json_encode($adoption_form) !!},
         questions: {!! json_encode($questions) !!},
         answers: {!! json_encode($answers) !!},
-        base_url: '{{ url('/') }}'
+        base_url: '{{ url('/') }}',
+        required: [],
       },
       methods: {
         onSubmit() {
+          this.required = [];
+          for (var key in this.answers) {
+            if (this.answers.hasOwnProperty(key)) {
+              //console.log(key + ' = '  + this.answers[key]);
+              if (this.answers[key] === '') {
+                this.required.push(key);
+              }
+            }
+          }
+          
           axios.post(this.base_url+'/api/adoption-form/save-application/'+this.application_token, this.answers)
             .then(this.onSuccess)
             .catch(this.onError);

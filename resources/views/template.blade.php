@@ -44,6 +44,10 @@
   <script src="{{ asset("assets/js/vendor/jquery-1.12.4.min.js") }}"></script>
   <![endif]-->
   
+  @section('css')
+  
+  @show
+  
   <link rel="shortcut icon" href="{{ asset("favicon.ico") }}" />
 </head>
 
