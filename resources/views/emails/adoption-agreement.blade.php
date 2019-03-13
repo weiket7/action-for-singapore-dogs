@@ -8,7 +8,7 @@ Please sign the adoption agreement in the link below:<br>
 <br><br>
 
 Regards,<br>
-Wendy Low<br>
+ASD Rehoming Team<br>
 Action for Singapore Dogs<br>
 <br>
 <a href="www.asdsingapore.com" target="_blank">www.asdsingapore.com</a><br>

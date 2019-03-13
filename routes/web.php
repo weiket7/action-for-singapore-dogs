@@ -1,15 +1,6 @@
 <?php
 
-//Route::get('/', function () { return view("welcome"); });
 Route::get('/', 'SiteController@home');
-
-/**from old website**/
-Route::get('wp/', 'SiteController@home');
-Route::get('wp/adopt-a-dog/', 'SiteController@dogsForAdoption');
-Route::get('wp/about-us/', 'SiteController@aboutUs');
-Route::get('wp/be-a-volunteer/', 'SiteController@volunteer');
-Route::get('wp/contributions/', 'SiteController@donate');
-Route::get('wp/sponsorship/', 'SiteController@sponsor');
 
 Route::get('who-we-are', 'SiteController@aboutUs');
 Route::get('events', 'SiteController@events');

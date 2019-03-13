@@ -18,7 +18,7 @@
             </h5>
             
             <div v-for="question in questions">
-              <h4 v-if="question.is_header == 1 || question.is_header === '1'" class="adoption-form-header text-center">@{{ question.content }}</h4>
+              <h4 v-if="question.is_header === 1 || question.is_header === '1'" class="adoption-form-header text-center">@{{ question.content }}</h4>
               
               <div v-else class="form-group">
                 <label class="col-sm-4 control-label">@{{ question.content }}</label>
