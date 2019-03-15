@@ -62,7 +62,7 @@
       <div class="row">
         <div class="col-md-4 text-md-left">
           <a href="{{ url('/') }}" class="logo">
-            <img src="{{ asset('assets/images/action-for-singapore-dogs-logo.png')}}" alt="" />
+            <img src="{{ asset('assets/images/action-for-singapore-dogs-logo.jpg')}}" alt="" />
           </a>
           <!-- header toggler -->
           <span class="toggle_menu">
