@@ -148,7 +148,10 @@
         
         <div class="row mt-20">
           <div class="col-md-12 text-center">
-            <button type="submit">I want to adopt</button>
+            <button type="submit" class="theme_button" :disabled="loading">
+              <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
+              @{{ loading ? "Processing" : "I want to adopt" }}
+            </button>
             
             <div class="alert alert-success mt-10" v-show="success">
               Thank you, our rehomers will get in touch with you via email.
@@ -170,6 +173,7 @@
       data: {
         form: { hearts:[] },
         success: false,
+        loading: false,
         errors: new Errors(),
         adopts: {!! json_encode($adopts) !!},
         adopt_count: 0,
@@ -205,15 +209,19 @@
           })
         },
         onSubmit: function() {
+          this.loading = true;
           axios.post("api/adoption-form/enquiry", this.form)
             .then(this.onSuccess)
             .catch(this.onError);
         },
         onSuccess: function(response) {
+          this.loading = false;
           this.success = true;
           this.errors = new Errors();
         },
         onError: function(error) {
+          this.loading = false;
+          this.success = false;
           if (error.response.status == 500) {
             return;
           }

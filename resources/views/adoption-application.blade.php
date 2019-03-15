@@ -4,11 +4,7 @@
   <div class="container content">
     <div class="row">
       <div class="col-md-12">
-          <div class="alert alert-danger mt-10" v-if="error">
-            Error
-          </div>
-          
-          <form @submit.prevent="onSubmit()" v-else class="">
+          <form @submit.prevent="onSubmit()" class="">
             <h3 class="text-center">Thank you for your interest in adopting</h3>
             
             <h5 class="text-center">
@@ -29,11 +25,12 @@
               </div>
             </div>
             
-            <hr>
-            
-            <div class="row">
+            <div class="row mt-20">
               <div class="col-md-12 text-center">
-                <button type="submit">I want to adopt</button>
+                <button type="submit" class="theme_button" :disabled="loading">
+                  <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
+                  @{{ loading ? "Processing" : "I want to adopt" }}
+                </button>
   
                 <div class="alert alert-danger mt-10" v-show="required.length > 0">
                   There were some errors, please check the form
@@ -67,7 +64,7 @@
       el: "#app",
       data: {
         success: false,
-        error: false,
+        loading: false,
         application_token: '{{ $application_token }}',
         adoption_form: {!! json_encode($adoption_form) !!},
         questions: {!! json_encode($questions) !!},
@@ -86,12 +83,18 @@
               }
             }
           }
+          if (this.required.length >= 1) {
+            return;
+          }
+  
+          this.loading = true;
           
           axios.post(this.base_url+'/api/adoption-form/save-application/'+this.application_token, this.answers)
             .then(this.onSuccess)
             .catch(this.onError);
         },
         onSuccess() {
+          this.loading = false;
           this.success = true;
         }
       },

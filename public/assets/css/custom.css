@@ -41,6 +41,30 @@
   color: #a94442;
 }
 
+/*submit buttons*/
+.theme_button:disabled {
+  background-color: #fa8985;
+  border: 2px solid #fa8985;
+  -webkit-transition: all 0.05s linear 0s;
+  transition: all 0.05s linear 0s;
+}
+.theme_button > [class*="glyphicon"] {
+  top: 0;
+  font-size: inherit;
+}
+.glyphicon-refresh-animate {
+  -animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+}
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+
 /*template*/
 .header_yellow {
   background-color: #FFD037;

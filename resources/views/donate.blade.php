@@ -149,8 +149,9 @@
                 
                 <div class="form-group" >
                   <div class="col-sm-offset-3 col-sm-9">
-                    <button type="submit" class="theme_button">
-                      Submit
+                    <button type="submit" class="theme_button" :disabled="loading">
+                      <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
+                      @{{ loading ? "Processing" : "Submit" }}
                     </button>
                     
                     <div class="alert alert-success mt-10" v-show="success">
@@ -184,6 +185,7 @@
           custom_amount: false,
         },
         success: false,
+        loading: false,
         errors: new Errors(),
         payment_methods: { "N": "PayNow", "B": "Bank Transfer", "G": "Giro", "Q": "Cheque", "P": "PayPal"}
       },
@@ -199,11 +201,13 @@
           this.donation.transfer_date = date;
         },
         onSubmit: function() {
+          this.loading = true;
           axios.post('api/donation/form', this.donation)
             .then(this.onSuccess)
             .catch(this.onError);
         },
         onSuccess: function(response) {
+          this.loading = false;
           this.success = true;
           this.errors = new Errors();
           //console.log(this.donation.payment_method);
@@ -212,11 +216,12 @@
           }
         },
         onError: function(error) {
+          this.loading = false;
+          this.success = false;
           if (error.response.status == 500) {
             alert("A system error occurred");
             return;
           }
-          this.success = false;
           this.errors.record(error.response.data.errors);
         },
       },

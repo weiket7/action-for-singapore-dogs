@@ -125,7 +125,10 @@
           
           <div class="form-group">
             <div class="col-sm-12 col-sm-offset-3">
-              <button type="submit" name="submit" class="theme_button">Submit</button>
+              <button type="submit" class="theme_button" :disabled="loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
+                @{{ loading ? "Processing" : "Submit" }}
+              </button>
               
               <div class="alert alert-success mt-10" v-show="success">
                 Thank you
@@ -213,6 +216,7 @@
       data: {
         volunteer: { name: "", mobile: "", email: "", interests: [] },
         success: false,
+        loading: false,
         selectedActivity: false,
         errors: new Errors()
       },
@@ -233,20 +237,23 @@
           this.volunteer.birthday = date;
         },
         onSubmit: function() {
+          this.loading = true;
           axios.post('api/volunteer/form', this.volunteer)
             .then(this.onSuccess)
             .catch(this.onError);
         },
         onSuccess: function(response) {
+          this.loading = false;
           this.success = true;
           this.errors = new Errors();
         },
         onError: function(error) {
+          this.loading = false;
+          this.success = false;
           if (error.response.status == 500) {
             alert("A system error occurred");
             return;
           }
-          this.success = false;
           this.errors.record(error.response.data.errors);
         },
       },

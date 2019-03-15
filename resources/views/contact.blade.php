@@ -116,10 +116,11 @@
           </div>
           
           <div class="col-sm-12">
-            
             <div class="contact-form-submit topmargin_30">
-              <button type="submit" id="contact_form_submit" name="contact_submit" class="theme_button wide_button color1">Send Message</button>
-              <button type="reset" id="contact_form_reset" name="contact_reset" class="theme_button wide_button">Clear Form</button>
+              <button type="submit" class="theme_button" :disabled="loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
+                @{{ loading ? "Processing" : "Submit" }}
+              </button>
             </div>
             
             <div class="alert alert-success mt-10" v-show="success">
@@ -146,23 +147,27 @@
         contact: {},
         errors: new Errors(),
         success: false,
+        loading: false,
       },
       methods: {
         onSubmit: function() {
+          this.loading = true;
           axios.post("api/contact/form", this.contact)
             .then(this.onSuccess)
             .catch(this.onError)
         },
         onSuccess: function(response) {
+          this.loading = false;
           this.success = true;
           this.errors = new Errors();
         },
         onError: function(error) {
+          this.loading = false;
+          this.success = false;
           if (error.response.status == 500) {
             alert("A system error occurred");
             return;
           }
-          this.success = false;
           this.errors.record(error.response.data.errors);
         },
       },
