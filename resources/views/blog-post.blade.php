@@ -1,6 +1,7 @@
 <?php use App\Helpers\ViewHelper; ?>
+<?php use App\Models\Enums\BlogType; ?>
 
-@extends('template', ['title'=>'ASD - Dogs In Need'])
+@extends('template', ['title'=>'ASD - '.BlogType::$values[$blog->type]])
 
 @section('content')
   <div id="app" class="container content">
@@ -13,7 +14,7 @@
             <header class="entry-header">
               
               <h1 class="entry-title black bottommargin_10">
-                Dogs in Need - {{ $blog->title }}
+                {{ BlogType::$values[$blog->type] }} - {{ $blog->title }}
               </h1>
               <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
               Posted On: {{ ViewHelper::formatDate($blog->posted_on) }}

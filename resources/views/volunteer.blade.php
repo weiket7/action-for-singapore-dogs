@@ -176,28 +176,29 @@
 
         <div class="mt-10 mb-20 text-center">(Click on the image to learn more)</div>
         <div class="row">
-          <div v-if="selectedActivity == 'rescuing'">
-            {!! nl2br($contents['Volunteer Rescuing']) !!}
+          <div class="col-md-12">
+            <div v-if="selectedActivity == 'rescuing'">
+              {!! nl2br($contents['Volunteer Rescuing']) !!}
+            </div>
+            <div v-if="selectedActivity == 'rehoming'">
+              {!! nl2br($contents['Volunteer Rehoming']) !!}
+            </div>
+            <div v-if="selectedActivity == 'fostering'">
+              {!! nl2br($contents['Volunteer Fostering']) !!}
+            </div>
+            <div v-if="selectedActivity == 'volunteer'">
+              {!! nl2br($contents['Volunteer Volunteer']) !!}
+            </div>
+            <div v-if="selectedActivity == 'fund-raising'">
+              {!! nl2br($contents['Volunteer Fund Raising']) !!}
+            </div>
+            <div v-if="selectedActivity == 'publicity'">
+              {!! nl2br($contents['Volunteer Publicity']) !!}
+            </div>
+            <div v-if="selectedActivity == 'logistics'">
+              {!! nl2br($contents['Volunteer Logistics']) !!}
+            </div>
           </div>
-          <div v-if="selectedActivity == 'rehoming'">
-            {!! nl2br($contents['Volunteer Rehoming']) !!}
-          </div>
-          <div v-if="selectedActivity == 'fostering'">
-            {!! nl2br($contents['Volunteer Fostering']) !!}
-          </div>
-          <div v-if="selectedActivity == 'volunteer'">
-            {!! nl2br($contents['Volunteer Volunteer']) !!}
-          </div>
-          <div v-if="selectedActivity == 'fund-raising'">
-            {!! nl2br($contents['Volunteer Fund Raising']) !!}
-          </div>
-          <div v-if="selectedActivity == 'publicity'">
-            {!! nl2br($contents['Volunteer Publicity']) !!}
-          </div>
-          <div v-if="selectedActivity == 'logistics'">
-            {!! nl2br($contents['Volunteer Logistics']) !!}
-          </div>
-  
         </div>
         
       </div>
