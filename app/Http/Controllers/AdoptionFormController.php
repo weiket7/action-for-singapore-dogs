@@ -4,6 +4,7 @@ use App\Http\Requests\AdoptionFormApproveRequest;
 use App\Http\Requests\AdoptionFormRequest;
 use App\Http\Requests\AdoptRequest;
 use App\Mail\AdoptionAgreementMail;
+use App\Mail\AdoptionApplicationMail;
 use App\Mail\AdoptionFormMail;
 use App\Models\Adopt;
 use App\Models\Adopter;
@@ -42,8 +43,10 @@ class AdoptionFormController extends Controller {
     if ($adoption_form->applied_on) {
       throw new Exception('saveApplication Adoption form id = ' . $adoption_form->adoption_form_id . ' already applied');
     }
-    
+  
     $adoption_form->saveApplication($request->all());
+    $answers = $adoption_form->getAnswers($adoption_form->adoption_form_id);
+    Mail::to(env("MAIL_INBOX"))->send(new AdoptionApplicationMail($adoption_form, $answers));
   }
   
   public function approve(AdoptionFormApproveRequest $request, $adoption_form_id) {

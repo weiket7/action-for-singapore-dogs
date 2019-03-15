@@ -67,4 +67,9 @@ class AdoptionForm extends Model
     $this->agreed_on = Carbon::now();
     $this->save();
   }
+  
+  public function getAnswers($adoption_form_id) {
+    return DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form_id)
+      ->select('is_header', 'question', 'answer')->get();
+  }
 }

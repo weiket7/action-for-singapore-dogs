@@ -32,6 +32,7 @@
               <br>
               
               <i class="fas fa-birthday-cake"></i> @{{ adopt.age }}
+              <small>(@{{ adopt.birthday | formatDate}})</small>
               <br>
               
               <i class="fas fa-home"></i>

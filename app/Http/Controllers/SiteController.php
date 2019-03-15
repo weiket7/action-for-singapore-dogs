@@ -94,8 +94,7 @@ class SiteController extends Controller {
   
     $data['adopt'] = Adopt::find($adoption_form->adopt_id);
     $data['adoption_form'] = $adoption_form;
-    $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form->adoption_form_id)
-      ->select('is_header', 'question', 'answer')->get();
+    $data['answers'] = $adoption_form->getAnswers($adoption_form->adoption_form_id);
     //var_dump($data['answers']); exit;
     $data['agreement_token'] = $agreement_token;
     return view('adoption-agreement', $data);
