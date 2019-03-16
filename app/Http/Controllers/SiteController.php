@@ -7,6 +7,7 @@ use App\Models\Adopt;
 use App\Models\AdoptionForm;
 use App\Models\Banner;
 use App\Models\Blog;
+use App\Models\Contact;
 use App\Models\Enums\AdoptStat;
 use App\Models\Enums\BlogType;
 use App\Models\Enums\EventType;
@@ -165,6 +166,8 @@ class SiteController extends Controller {
   }
   
   public function form(ContactRequest $request) {
+    $contact = new Contact();
+    $contact->saveContact($request->all());
     Mail::to(env("MAIL_INBOX"))->send(new ContactMail($request->all()));
   }
   
