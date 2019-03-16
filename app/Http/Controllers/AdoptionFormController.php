@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Helpers\ViewHelper;
 use App\Http\Requests\AdoptionFormApproveRequest;
 use App\Http\Requests\AdoptionFormRequest;
-use App\Http\Requests\AdoptRequest;
 use App\Mail\AdoptionAgreementMail;
 use App\Mail\AdoptionApplicationMail;
 use App\Mail\AdoptionFormMail;
@@ -11,14 +11,13 @@ use App\Models\Adopter;
 use App\Models\AdoptionForm;
 use App\Models\Enums\AdoptionFormStat;
 use App\Models\Person;
-use App\Models\Question;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class AdoptionFormController extends Controller {
   //POST
@@ -45,8 +44,14 @@ class AdoptionFormController extends Controller {
     }
   
     $adoption_form->saveApplication($request->all());
-    $answers = $adoption_form->getAnswers($adoption_form->adoption_form_id);
-    Mail::to(env("MAIL_INBOX"))->send(new AdoptionApplicationMail($adoption_form, $answers));
+    
+    $data['answers'] = $adoption_form->getAnswers($adoption_form->adoption_form_id);
+    $adoption_application_mail = new AdoptionApplicationMail($adoption_form, $data['answers']);
+    $data['adoption_form'] = $adoption_form;
+    $pdf = PDF::loadView('emails.adoption-application', $data);
+    $pdf_name = "ASD Adoption Application, ".$adoption_form->name." on ".ViewHelper::formatDate($adoption_form->applied_on).".pdf";
+    $adoption_application_mail->attachData($pdf->output(), $pdf_name);
+    Mail::to(env("MAIL_INBOX"))->send($adoption_application_mail);
   }
   
   public function approve(AdoptionFormApproveRequest $request, $adoption_form_id) {

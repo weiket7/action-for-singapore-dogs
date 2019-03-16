@@ -73,7 +73,7 @@
         required: [],
       },
       methods: {
-        onSubmit() {
+        onSubmit: function() {
           this.required = [];
           for (var key in this.answers) {
             if (this.answers.hasOwnProperty(key)) {
@@ -93,7 +93,7 @@
             .then(this.onSuccess)
             .catch(this.onError);
         },
-        onSuccess() {
+        onSuccess: function() {
           this.loading = false;
           this.success = true;
         }

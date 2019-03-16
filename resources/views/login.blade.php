@@ -50,7 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
       <div class="m-login__container">
         <div class="m-login__logo">
           <a href="#">
-            <img src="assets/images/action-for-singapore-dogs-logo.png" alt="" />
+            <img src="assets/images/action-for-singapore-dogs-logo.jpg" alt="" />
           </a>
         </div>
         <div class="m-login__signin">

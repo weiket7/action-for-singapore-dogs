@@ -136,7 +136,7 @@
             base_url: '{{ url('/') }}'
           },
           methods: {
-            onSubmit() {
+            onSubmit: function() {
               axios.post(this.base_url+'/api/adoption-form/save-agreement/'+this.agreement_token)
                 .then(response => {
                   this.success = true;
