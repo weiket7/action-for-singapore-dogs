@@ -25,8 +25,8 @@ class GiftController extends Controller
     return $gift_id;
   }
   
-  public function get(Request $request, $gift_id = null ) {
-    $data['gift'] = $gift_id != null ? Gift::find($gift_id) : new \ stdClass();
+  public function get(Request $request, $gift_id) {
+    $data['gift'] = $gift_id != 'undefined' ? Gift::find($gift_id) : new \ stdClass();
     $events = Event::where('date', '>=', Carbon::today())->get();
     $res = [];
     foreach($events as $event) {

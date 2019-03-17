@@ -16,8 +16,11 @@ class UserController extends Controller {
   }
   
   public function get($user_id) {
-    $data['user'] = User::find($user_id);
-    $data['permissions'] = DB::table('user_permission')->where('user_id', $user_id)->pluck('permission');
+    $data['user'] = $user_id != 'undefined' ? User::find($user_id) :  new \ stdClass();
+    $data['permissions'] = DB::table('permission')->orderBy('permission_id')->pluck('name', 'permission_id');
+    $user = new User();
+    $data['user_permissions'] = DB::table('user_permission')->
+      where('user_id', $user_id)->pluck('permission_id');
     return $data;
   }
   

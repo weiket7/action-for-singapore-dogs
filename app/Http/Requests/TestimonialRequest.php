@@ -27,7 +27,7 @@ class TestimonialRequest extends FormRequest
       'dog_name.required' => 'Dog Name is required',
       'quote.required' => 'Quote is required',
       'content.required' => 'Content is required',
-      'image_new.required' => 'Image is required',
+      'image_new.required_without' => 'Image is required',
     ];
   }
 }

@@ -1,15 +1,15 @@
 <?php namespace App\Http\Controllers;
 
 use App\Helpers\BackendHelper;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller {
   public function permission() {
-    return DB::table('user_permission')
-      ->where('user_id', Auth::user()->id)->pluck('permission');
+    $user = new User();
+    return $user->getPermissions(Auth::user()->id);
   }
   
   public function backend() {

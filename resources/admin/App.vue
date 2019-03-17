@@ -12,7 +12,7 @@
         data-menu-vertical="true"
         data-menu-scrollable="false" data-menu-dropdown-timeout="500"
       >
-        <menu-component :menus="menus"/>
+        <menu-component :menus="permissions"/>
       </div>
       <!-- END: Aside Menu -->
     </div>
@@ -65,35 +65,6 @@
     components: {
       'menu-component': MenuComponent,
       TextareaComponent
-    },
-    computed: {
-      menus() {
-        let menus = [
-          { 'name': 'Dogs', 'link': 'adopt', 'icon': 'paw' },
-          { 'name': 'People', 'link': 'person', 'icon': 'users' },
-          { 'name': 'Adopters', 'link': 'adopter', 'icon': 'user-plus' },
-          { 'name': 'Rescuers', 'link': 'rescuer', 'icon': 'street-view' },
-          { 'name': 'Fosters', 'link': 'foster', 'icon': 'user-md' },
-          { 'name': 'Volunteers', 'link': 'volunteer', 'icon': 'handshake-o' },
-          { 'name': 'Adoption Forms', 'link': 'adoption-form', 'icon': 'wpforms' },
-          /*{ 'name': 'Sponsorships', 'link': 'sponsor', 'icon': 'money' },*/
-          { 'name': 'Donations', 'link': 'donation', 'icon': 'dollar' },
-          { 'name': 'Pages', 'link': 'page', 'icon': 'font' },
-          { 'name': 'Banners', 'link': 'banner', 'icon': 'image' },
-          /*{ 'name': 'Questions', 'link': 'question', 'icon': 'question' },*/
-          { 'name': 'Events', 'link': 'event', 'icon': 'calendar-o' },
-          { 'name': 'Blog', 'link': 'blog', 'icon': 'calendar-o' },
-          { 'name': 'Gift Shop', 'link': 'gift', 'icon': 'user-secret' },
-          { 'name': 'Testimonials', 'link': 'testimonial', 'icon': 'user-secret' },
-          { 'name': 'Users', 'link': 'user', 'icon': 'user-secret' }
-        ];
-        for(var i=0; i<menus.length; i++) {
-          if(this.permissions.indexOf(menus[i].name) < 0) {
-            menus.splice(i, 1);
-          }
-        }
-        return menus;
-      }
     },
     created() {
       axios.get('api/permission')

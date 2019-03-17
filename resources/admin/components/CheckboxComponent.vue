@@ -25,11 +25,14 @@
     },
     methods: {
       updateValue: function (key, val) {
-        if (this.isChecked(key, val)) {
-          const index = this.value.indexOf(val);
+        let index = this.value.findIndex(item => item == val);
+        if (index >= 0 === false) {
+          index = this.value.findIndex(item => item == key);
+        }
+        if (index >= 0) {
           this.value.splice(index, 1);
         } else {
-          this.value.push(val);
+          this.value.push(key);
         }
         this.$emit('input', this.value);
       },
@@ -40,8 +43,7 @@
         if (typeof this.value === 'string') {
           return this.value === val || this.value === key;
         }
-        //console.log("this.value " + this.value + " value="+value);
-        return this.value.indexOf(key) >= 0 || this.value.indexOf(val) >= 0;
+        return this.value.findIndex(item => item == val) >= 0 || this.value.findIndex(item => item == key) >= 0;
       }
     },
     computed: {

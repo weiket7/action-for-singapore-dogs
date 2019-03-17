@@ -5,15 +5,18 @@
         <label-component required>Username</label-component>
         <textbox-component name='username' v-model="user.username" :error="errors.get('username')"></textbox-component>
         
-        <label-component>Password</label-component>
+        <label-component :required="is_create">Password</label-component>
         <div class="col-lg-3">
           <input type="password" v-model="user.password" class="form-control">
+          <span class="m-form__help m-form__error" v-if="errors.get('password')">
+            {{ errors.get('password') }}
+          </span>
         </div>
       </form-row>
 
       <form-row>
         <label-component>Permissions</label-component>
-        <checkbox-component v-model="permissions" :options="permissions_options" v-if="user"></checkbox-component>
+        <checkbox-component v-model="user_permissions" :options="permissions"></checkbox-component>
       </form-row>
 
       <form-footer>
@@ -36,9 +39,7 @@
         user: {},
         errors: new Errors(),
         permissions: [],
-        permissions_options: ['Dogs', 'People', 'Adopters', 'Rescuers', 'Fosters', 'Volunteers',
-          'Sponsorships', 'Donations', 'Banners', 'Events', 'Adoption', 'Questions',
-          'Users', 'Pages']
+        user_permissions: []
       }
     },
     computed: {
@@ -53,17 +54,18 @@
           url += '/'+ this.$route.params.user_id
         }
   
-        this.user.permissions = this.permissions;
+        this.user.user_permissions = this.user_permissions;
         
         axios.post(url, this.user)
           .then(this.onSuccess)
           .catch(this.onError);
       },
       onSuccess(response) {
+        this.errors = new Errors();
         if (this.is_create) {
           toastr.success("User added");
-          this.user.user_id = response.data;
-          this.$router.push('/user/save/'+this.user.user_id);
+          this.user.id = response.data;
+          this.$router.push('/user/save/'+this.user.id);
           return;
         }
         toastr.success("User updated");
@@ -77,24 +79,18 @@
           .catch(this.onError);
       }
     },
-    computed: {
-      is_create() {
-        return this.$route.path == "/user/save";
-      },
-    },
     created() {
-      if (this.is_create) {
-        this.loaded = true;
-      } else {
-        axios.get('api/user/get/' + this.$route.params.user_id)
-          .then(response => {
-            this.user = response.data.user;
-            this.permissions = response.data.permissions;
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      }
+      axios.get('api/user/get/' + this.$route.params.user_id)
+        .then(response => {
+          if (! this.is_create) {
+          }
+          this.user = response.data.user;
+          this.user_permissions = response.data.user_permissions;
+          this.permissions = response.data.permissions;
+        })
+        .catch(error => {
+          console.log(error);
+        })
     },
     mounted() {
       let vue = this

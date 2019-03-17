@@ -6,12 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+   public function authorize()
     {
         return true;
     }
@@ -19,13 +14,17 @@ class UserRequest extends FormRequest
   public function rules()
   {
     return [
-      'username' => 'required',
+      'username' => 'required|unique:users,username,'.$this->id,
+      'password' => 'required_without:id|min:6',
     ];
   }
   
   public function messages() {
     return [
       'username.required' => 'Username is required',
+      'username.unique' => 'Username has been taken',
+      'password.required_without' => 'Password is required',
+      'password.min' => 'Password must be at least 6 characters',
     ];
   }
 }

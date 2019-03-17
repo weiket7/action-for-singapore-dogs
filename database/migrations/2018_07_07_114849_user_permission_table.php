@@ -11,17 +11,15 @@ class UserPermissionTable extends Migration
       Schema::create('user_permission', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('user_id');
-        $table->string('permission', 30);
+        $table->tinyInteger('permission_id');
       });
       
-      $arr = ['Dogs', 'People', 'Adopters', 'Rescuers', 'Fosters', 'Volunteers',
-        'Adoption Forms', 'Donations',
-        'Pages', 'Banners', 'Events', 'Blog',
-        'Gift Shop', 'Testimonials', 'Users'];
-      foreach($arr as $a) {
+      $permission_ids = DB::table('permission')->pluck('permission_id');
+      
+      foreach($permission_ids as $p) {
         DB::table('user_permission')->insert([
           'user_id'=>1,
-          'permission'=>$a
+          'permission_id'=>$p
         ]);
       }
     }
