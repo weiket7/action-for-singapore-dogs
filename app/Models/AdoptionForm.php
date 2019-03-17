@@ -74,4 +74,9 @@ class AdoptionForm extends Model
     return DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form_id)
       ->select('is_header', 'question', 'answer')->orderBy('question_id')->get();
   }
+  
+  public function getDogsInterestedIn($adoption_form_id) {
+    return DB::table('adoption_form_adopt as afa')->join('adopt as a', 'afa.adopt_id', '=', 'a.adopt_id')
+      ->where('adoption_form_id', $adoption_form_id)->pluck('name', 'afa.adopt_id');
+  }
 }

@@ -105,6 +105,7 @@ class AdoptionFormController extends Controller {
     $data['adoption_form'] = $adoption_form;
     $data['answers'] = $adoption_form->getAnswers($adoption_form_id);
     $data['adoption_form_stats'] = AdoptionFormStat::$values;
+    $data['interested_in'] = $adoption_form->getDogsInterestedIn($adoption_form_id);
     return $data;
   }
   

@@ -12,8 +12,13 @@
             </static-text>
             <static-text v-else>{{ adoption_form_stats[adoption_form.stat] }}</static-text>
   
-            <label-component>Name</label-component>
-            <static-text>{{ adoption_form.name }}</static-text>
+            <label-component>Dog(s) {{ adoption_form.gender == "M" ? "he" : "she" }}'s interested in</label-component>
+            <static-text>
+              {{ interested_in.length}}
+              <span v-for="(dog_name, adopt_id, index) in interested_in">
+                <router-link :to="'/adopt/save/'+adopt_id">{{ dog_name }}</router-link><span v-if="index != Object.keys(interested_in).length - 1">, </span>
+              </span>
+            </static-text>
 
           </form-row>
           
@@ -123,6 +128,7 @@
       return {
         adoption_form: {},
         adoption_form_stats: {},
+        interested_in: {},
         adopt: {},
         answers: {},
         errors: new Errors(),
@@ -151,6 +157,7 @@
             this.adoption_form = response.data.adoption_form;
             this.adoption_form_stats = response.data.adoption_form_stats;
             this.answers = response.data.answers;
+            this.interested_in = response.data.interested_in;
             if (this.adoption_form.adopt_id) {
               this.adopt = response.data.adopt;
             }
