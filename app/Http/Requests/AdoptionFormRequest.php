@@ -9,6 +9,7 @@ class AdoptionFormRequest extends FormRequest
   public function rules()
   {
     return [
+      'identification_number' => 'required',
       'name' => 'required',
       'email' => 'required',
       'mobile' => 'required',
@@ -22,6 +23,7 @@ class AdoptionFormRequest extends FormRequest
   public function messages()
   {
     return [
+      'identification_number.required' => 'NRIC / FIN is required',
       'name.required' => 'Name is required',
       'email.required' => 'Email is required',
       'mobile.required' => 'Mobile is required',

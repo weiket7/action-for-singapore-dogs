@@ -12,8 +12,15 @@
             </static-text>
             <static-text v-else>{{ adoption_form_stats[adoption_form.stat] }}</static-text>
 
+            
+          </form-row>
+          
+          <form-row>
             <label-component>Name</label-component>
             <static-text>{{ adoption_form.name }}</static-text>
+            
+            <label-component>NRIC / FIN</label-component>
+            <static-text>{{ adoption_form.identification_number }}</static-text>
           </form-row>
           
           <form-row>

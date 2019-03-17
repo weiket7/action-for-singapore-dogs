@@ -71,14 +71,14 @@
               </span>
             </div>
           </div>
-          
+  
           <div class="col-md-6">
             <div class="form-group no-mb">
-              <label class="control-label">Email <span class="required">*</span></label>
-              <input type="email" name="email" v-model="form.email" class="form-control">
-              <span class="help-block error" v-if="errors.get('email')">
-              @{{ errors.get('email') }}
-            </span>
+              <label class="control-label">NRIC / FIN <span class="required">*</span></label>
+              <input type="text" name="identification_number" v-model="form.identification_number" class="form-control">
+              <span class="help-block error" v-if="errors.get('identification_number')">
+                @{{ errors.get('identification_number') }}
+              </span>
             </div>
           </div>
         </div>
@@ -86,21 +86,21 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group no-mb">
-              <label class="control-label">Mobile <span class="required">*</span></label>
-              <input type="text" name="mobile" v-model="form.mobile" class="form-control">
-              <span class="help-block error" v-if="errors.get('mobile')">
-              @{{ errors.get('mobile') }}
-            </span>
+              <label class="control-label">Email <span class="required">*</span></label>
+              <input type="email" name="email" v-model="form.email" class="form-control">
+              <span class="help-block error" v-if="errors.get('email')">
+                @{{ errors.get('email') }}
+              </span>
             </div>
           </div>
           
           <div class="col-md-6">
             <div class="form-group no-mb">
-              <label class="control-label">Birthday <span class="required">*</span></label>
-              <input type="text" name="birthday" v-model="form.birthday" class="form-control datepicker" readonly>
-              <span class="help-block error" v-if="errors.get('birthday')">
-              @{{ errors.get('birthday') }}
-            </span>
+              <label class="control-label">Mobile <span class="required">*</span></label>
+              <input type="text" name="mobile" v-model="form.mobile" class="form-control">
+              <span class="help-block error" v-if="errors.get('mobile')">
+                @{{ errors.get('mobile') }}
+              </span>
             </div>
           </div>
         </div>
@@ -118,18 +118,18 @@
                 </label>
               </div>
               <span class="help-block error" v-if="errors.get('gender')">
-              @{{ errors.get('gender') }}
-            </span>
+                @{{ errors.get('gender') }}
+              </span>
             </div>
           </div>
-          
+  
           <div class="col-md-6">
             <div class="form-group no-mb">
-              <label class="control-label">Address <span class="required">*</span></label>
-              <input type="text" v-model="form.address" class="form-control">
-              <span class="help-block error" v-if="errors.get('address')">
-              @{{ errors.get('address') }}
-            </span>
+              <label class="control-label">Birthday <span class="required">*</span></label>
+              <input type="text" name="birthday" v-model="form.birthday" class="form-control datepicker" readonly>
+              <span class="help-block error" v-if="errors.get('birthday')">
+                @{{ errors.get('birthday') }}
+              </span>
             </div>
           </div>
         </div>
@@ -137,11 +137,21 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group no-mb">
+              <label class="control-label">Address <span class="required">*</span></label>
+              <input type="text" v-model="form.address" class="form-control">
+              <span class="help-block error" v-if="errors.get('address')">
+                @{{ errors.get('address') }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group no-mb">
               <label class="control-label">Postal Code <span class="required">*</span></label>
               <input type="text" v-model="form.postal" class="form-control">
               <span class="help-block error" v-if="errors.get('postal')">
-              @{{ errors.get('postal') }}
-            </span>
+                @{{ errors.get('postal') }}
+              </span>
             </div>
           </div>
         </div>
@@ -235,7 +245,7 @@
         if (this.adopt_count >= 4) {
           this.adopts = _.chunk(this.adopts, 4);
         }
-  
+        
       },
       
     })
