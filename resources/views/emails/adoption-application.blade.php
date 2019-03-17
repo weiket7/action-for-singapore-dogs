@@ -2,8 +2,8 @@ Name: {{ $adoption_form->name }}<br>
 NRIC / FIN: {{ $adoption_form->identification_number }}<br>
 Email: {{ $adoption_form->email }}<br>
 Mobile: {{ $adoption_form->mobile }}<br>
-Birthday: {{ $adoption_form->birthday }}<br>
-Gender: {{ $adoption_form->gender }}<br>
+Birthday: {{ \App\Helpers\ViewHelper::formatDate($adoption_form->birthday) }}<br>
+Gender: {{ $adoption_form->gender == "M" ? "Male" : "Female" }}<br>
 Address: {{ $adoption_form->address }}<br>
 Postal Code: {{ $adoption_form->postal }}<br>
 <br>

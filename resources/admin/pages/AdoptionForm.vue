@@ -11,8 +11,10 @@
               Please contact {{ adoption_form.gender == "M" ? "him" : "her" }} to check his email and sign
             </static-text>
             <static-text v-else>{{ adoption_form_stats[adoption_form.stat] }}</static-text>
+  
+            <label-component>Name</label-component>
+            <static-text>{{ adoption_form.name }}</static-text>
 
-            
           </form-row>
           
           <form-row>

@@ -20,6 +20,7 @@ class DonationMail extends Mailable
   
   public function build()
   {
-    return $this->subject('Thank you for $' . $this->donation->amount . ' donation to Action for Singapore Dogs')->view('emails.donation');
+    return $this->to($this->donation->email)
+      ->subject('Thank you for $' . $this->donation->amount . ' donation to Action for Singapore Dogs')->view('emails.donation');
   }
 }

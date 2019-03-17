@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -22,6 +23,8 @@ class AdoptionApplicationMail extends Mailable
   
   public function build()
   {
-    return $this->subject("[Adoption Application] from ".$this->adoption_form->name)->view('emails.adoption-application');
+    $recipients = Setting::getAdoptionFormRecipients($this->adoption_form->email);
+    return $this->to($recipients)
+      ->subject("[Adoption Application] from ".$this->adoption_form->name)->view('emails.adoption-application');
   }
 }

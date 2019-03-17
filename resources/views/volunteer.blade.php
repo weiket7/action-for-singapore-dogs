@@ -114,7 +114,7 @@
           </volunteer-field>
           
           <volunteer-field name="Area to help in" :error="errors.get('publicity_area')" v-if="has_publicity">
-            <select v-model="publicity_area" class="form-control">
+            <select v-model="volunteer.publicity_area" class="form-control">
               <option value=""></option>
               <option value="Designing">Designing</option>
               <option value="Pamphlet Distribution">Pamphlet Distribution</option>

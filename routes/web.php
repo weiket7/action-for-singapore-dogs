@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Setting;
+
 Route::get('/', 'SiteController@home');
 
 Route::get('who-we-are', 'SiteController@aboutUs');
@@ -34,7 +36,7 @@ Route::get('contact', 'SiteController@contact');
 Route::post('api/contact/form', 'SiteController@form');
 Route::get('boarding-form', 'SiteController@boardingForm');
 Route::post('api/boarding/form', 'BoardingController@form');
-Route::get('training-form', 'SiteController@trainingForm');
+Route::get('basic-obedience-class-form', 'SiteController@trainingForm');
 Route::post('api/training/form', 'TrainingController@form');
 
 Route::get('api/home', 'SiteController@home');
@@ -55,6 +57,12 @@ Route::get('login', 'AdminController@login');
 Route::post('login', 'AdminController@login');
 Route::get('logout', 'AdminController@logout');
 Route::get('backend', 'AdminController@backend');
+
+Route::get('test', function() {
+  $value = Setting::where('key', 'volunteer_form_arc_recipients')->value('value');
+  echo $value;
+  echo str_replace(' ', '', $value);
+});
 
 Route::group(['middleware' => 'auth'], function () {
   Route::get('api/permission', 'AdminController@permission');

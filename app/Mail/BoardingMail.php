@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,15 +12,16 @@ class BoardingMail extends Mailable
 {
   use Queueable, SerializesModels;
   
-  public $input;
+  public $boarding;
   
-  public function __construct($input)
+  public function __construct($boarding)
   {
-    $this->input = $input;
+    $this->boarding = $boarding;
   }
 
   public function build()
   {
-    return $this->subject('[Boarding] from ' . $this->input['name'])->view('emails.boarding-email');
+    $main_email = $this->boarding->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : Setting::getMainEmail();
+    return $this->to($main_email)->subject('[Boarding] from ' . $this->boarding->name)->view('emails.boarding');
   }
 }

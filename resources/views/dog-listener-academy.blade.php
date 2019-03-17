@@ -38,7 +38,7 @@
           @endforeach
           
           <div class="alert alert-info">
-            Click <a href="{{ url('training-form') }}">here</a> to sign up
+            Click <a href="{{ url('basic-obedience-class-form') }}">here</a> to sign up
           </div>
         </span>
       </div>

@@ -1,7 +1,7 @@
-Name: {{ $input['name'] }}<br>
-Subject: {{ $input['subject'] }}<br>
-Mobile: {{ $input['mobile'] }}<br>
-Email: {{ $input['email'] }}<br>
+Name: {{ $contact->name }}<br>
+Subject: {{ $contact->subject }}<br>
+Mobile: {{ $contact->mobile }}<br>
+Email: {{ $contact->email }}<br>
 <br>
 
-{{ $input['message'] }}
+{{ $contact->message }}

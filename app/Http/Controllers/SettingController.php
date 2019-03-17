@@ -2,28 +2,28 @@
 
 use App\Models\Event;
 use App\Models\Home;
-use App\Models\Page;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PageController extends Controller {
+class SettingController extends Controller {
   public function all() {
-    return Page::where('slug', '!=', 'home-banner-title')->where('slug', '!=', 'home-banner-content')->get();
+    return Setting::where('slug', '!=', 'home-banner-title')->where('slug', '!=', 'home-banner-content')->get();
   }
   
   public function save(Request $request, $page_id ) {
-    $page = Page::find($page_id);
-    $page_id = $page->savePage($request->all());
+    $page = Setting::find($page_id);
+    $page_id = $page->saveSetting($request->all());
     return $page_id;
   }
   
   public function get(Request $request, $page_id) {
     if (is_numeric($page_id)) {
-      return Page::find($page_id);
+      return Setting::find($page_id);
     }
     $slug = $page_id;
-    return Page::where('slug', $slug)->first();
+    return Setting::where('slug', $slug)->first();
   }
   
   public function getHome(Request $request) {

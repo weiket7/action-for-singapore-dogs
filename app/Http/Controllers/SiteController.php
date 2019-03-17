@@ -168,7 +168,7 @@ class SiteController extends Controller {
   public function form(ContactRequest $request) {
     $contact = new Contact();
     $contact->saveContact($request->all());
-    Mail::to(env("MAIL_INBOX"))->send(new ContactMail($request->all()));
+    Mail::send(new ContactMail($contact));
   }
   
   public function contact(Request $request) {

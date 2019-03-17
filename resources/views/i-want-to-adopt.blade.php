@@ -233,6 +233,7 @@
           this.loading = false;
           this.success = false;
           if (error.response.status == 500) {
+            alert("A system error occurred");
             return;
           }
           this.errors.record(error.response.data.errors);

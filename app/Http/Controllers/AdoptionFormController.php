@@ -31,8 +31,7 @@ class AdoptionFormController extends Controller {
       $str = implode(', ', $adopt_names)." and ".$str;
     }
     $adoption_form->adopt_names = $str;
-    $asd_email = $adoption_form->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : env("MAIL_INBOX");
-    Mail::to($asd_email)->send(new AdoptionFormMail($adoption_form));
+    Mail::send(new AdoptionFormMail($adoption_form));
     return $adoption_form_id;
   }
   
@@ -51,7 +50,7 @@ class AdoptionFormController extends Controller {
     $pdf_name = "ASD Adoption Application, ".$adoption_form->name." on ".ViewHelper::formatDate($adoption_form->applied_on).".pdf";
     $adoption_application_mail->attachData($pdf->output(), $pdf_name);
     $asd_email = $adoption_form->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : env("MAIL_INBOX");
-    Mail::to($asd_email)->send($adoption_application_mail);
+    Mail::send($adoption_application_mail);
   }
   
   public function approve(AdoptionFormApproveRequest $request, $adoption_form_id) {
@@ -61,7 +60,7 @@ class AdoptionFormController extends Controller {
     }
     
     $adoption_form->approve($request->all(), Auth::user()->username);
-    Mail::to(env("MAIL_INBOX"))->send(new AdoptionAgreementMail($adoption_form));
+    Mail::send(new AdoptionAgreementMail($adoption_form));
   }
   
   public function getAgreement(Request $request, $agreement_token) {

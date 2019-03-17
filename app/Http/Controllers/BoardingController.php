@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Mail;
 class BoardingController extends Controller {
   public function form(BoardingRequest $request) {
     $boarding = new Boarding();
-    Mail::to(env("MAIL_INBOX"))->send(new BoardingMail($request->all()));
-    return $boarding->saveBoarding($request->all());
+    $boarding->saveBoarding($request->all());
+    Mail::send(new BoardingMail($boarding));
   }
   
 }

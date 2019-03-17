@@ -1,10 +1,12 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\VolunteerRequest;
+use App\Mail\VolunteerMail;
 use App\Models\Enums\VolunteerStat;
 use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class VolunteerController extends Controller {
   public function save(VolunteerRequest $request) {
@@ -14,7 +16,8 @@ class VolunteerController extends Controller {
   
   public function form(VolunteerRequest $request) {
     $volunteer = new Volunteer();
-    return $volunteer->saveVolunteer($request->all());
+    $volunteer->saveVolunteer($request->all());
+    Mail::send(new VolunteerMail($volunteer, $request->get('interests')));
   }
   
   public function all(Request $request) {

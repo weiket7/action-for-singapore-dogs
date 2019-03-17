@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,15 +12,16 @@ class ContactMail extends Mailable
 {
   use Queueable, SerializesModels;
   
-  public $input;
+  public $contact;
   
-  public function __construct($input)
+  public function __construct($contact)
   {
-    $this->input = $input;
+    $this->contact = $contact;
   }
   
   public function build()
   {
-    return $this->subject('[Contact] ' . $this->input['subject'])->view('emails.contact');
+    $main_email = $this->contact->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : Setting::getMainEmail();
+    return $this->to($main_email)->subject('[Contact] ' . $this->contact->subject)->view('emails.contact');
   }
 }

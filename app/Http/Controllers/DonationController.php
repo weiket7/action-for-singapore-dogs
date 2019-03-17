@@ -18,8 +18,8 @@ class DonationController extends Controller {
   public function form(DonationRequest $request) {
     $donation = new Donation();
     $donation->saveDonation($request->all());
-    Mail::to(env("MAIL_INBOX"))->send(new DonationAdminMail($donation));
-    Mail::to($donation->email)->send(new DonationMail($donation));
+    Mail::send(new DonationAdminMail($donation));
+    Mail::send(new DonationMail($donation));
     return $donation->donation_id;
   }
   

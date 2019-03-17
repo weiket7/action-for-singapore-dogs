@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -20,6 +21,7 @@ class DonationAdminMail extends Mailable
   
   public function build()
   {
-    return $this->subject('[Donation] $' . $this->donation->amount . ' from ' . $this->donation->name)->view('emails.donation-admin');
+    $main_email = $this->donation->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : Setting::getMainEmail();
+    return $this->to($main_email)->subject('[Donation] $' . $this->donation->amount . ' from ' . $this->donation->name)->view('emails.donation-admin');
   }
 }
