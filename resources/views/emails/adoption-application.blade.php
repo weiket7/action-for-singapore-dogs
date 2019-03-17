@@ -7,6 +7,7 @@ Gender: {{ $adoption_form->gender == "M" ? "Male" : "Female" }}<br>
 Address: {{ $adoption_form->address }}<br>
 Postal Code: {{ $adoption_form->postal }}<br>
 <br>
+Dog(s) he/she is interested in: {{ $dog_names }}<br>
 Enquired On: {{ \App\Helpers\ViewHelper::formatDate($adoption_form->enquired_on) }}<br>
 Applied On: {{ \App\Helpers\ViewHelper::formatDate($adoption_form->applied_on) }}<br>
 <br>

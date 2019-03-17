@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade as PDF;
 
 class AdoptionFormController extends Controller {
-  //POST
   public function enquiry(AdoptionFormRequest $request) {
     $adoption_form = new AdoptionForm();
     
@@ -44,12 +43,15 @@ class AdoptionFormController extends Controller {
     $adoption_form->saveApplication($request->all());
     
     $data['answers'] = $adoption_form->getAnswers($adoption_form->adoption_form_id);
-    $adoption_application_mail = new AdoptionApplicationMail($adoption_form, $data['answers']);
+    $data['dog_names'] = implode(", ", DB::table('adoption_form_adopt as afa')->join('adopt as a', 'afa.adopt_id', '=', 'a.adopt_id')
+      ->where('adoption_form_id', $adoption_form->adoption_form_id)->pluck('name')->toArray());
     $data['adoption_form'] = $adoption_form;
+    $adoption_application_mail = new AdoptionApplicationMail($data['adoption_form'], $data['answers'], $data['dog_names']);
+    
     $pdf = PDF::loadView('emails.adoption-application', $data);
     $pdf_name = "ASD Adoption Application, ".$adoption_form->name." on ".ViewHelper::formatDate($adoption_form->applied_on).".pdf";
     $adoption_application_mail->attachData($pdf->output(), $pdf_name);
-    $asd_email = $adoption_form->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : env("MAIL_INBOX");
+    
     Mail::send($adoption_application_mail);
   }
   

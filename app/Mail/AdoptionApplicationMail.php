@@ -14,11 +14,13 @@ class AdoptionApplicationMail extends Mailable
   
   public $adoption_form;
   public $answers;
+  public $dog_names;
   
-  public function __construct($adoption_form, $answers)
+  public function __construct($adoption_form, $answers, $dog_names)
   {
     $this->adoption_form = $adoption_form;
     $this->answers = $answers;
+    $this->dog_names = $dog_names;
   }
   
   public function build()
