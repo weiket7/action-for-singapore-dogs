@@ -25,15 +25,14 @@ class AdoptionFormController extends Controller {
     $adoption_form = new AdoptionForm();
     
     $adoption_form_id = $adoption_form->saveEnquiry($request->all());
-    //$user = User::where('email', $registration->email)->firstOrFail();
     $adopt_names = Adopt::whereIn('adopt_id', $request->hearts)->pluck('name')->toArray();
     $str = array_pop($adopt_names);
     if ($adopt_names) {
       $str = implode(', ', $adopt_names)." and ".$str;
     }
     $adoption_form->adopt_names = $str;
-    Mail::to(env("MAIL_INBOX"))->send(new AdoptionFormMail($adoption_form));
-    
+    $asd_email = $adoption_form->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : env("MAIL_INBOX");
+    Mail::to($asd_email)->send(new AdoptionFormMail($adoption_form));
     return $adoption_form_id;
   }
   
@@ -51,7 +50,8 @@ class AdoptionFormController extends Controller {
     $pdf = PDF::loadView('emails.adoption-application', $data);
     $pdf_name = "ASD Adoption Application, ".$adoption_form->name." on ".ViewHelper::formatDate($adoption_form->applied_on).".pdf";
     $adoption_application_mail->attachData($pdf->output(), $pdf_name);
-    Mail::to(env("MAIL_INBOX"))->send($adoption_application_mail);
+    $asd_email = $adoption_form->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : env("MAIL_INBOX");
+    Mail::to($asd_email)->send($adoption_application_mail);
   }
   
   public function approve(AdoptionFormApproveRequest $request, $adoption_form_id) {
@@ -71,8 +71,7 @@ class AdoptionFormController extends Controller {
     }
     
     $data['adoption_form'] = $adoption_form;
-    $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form->adoption_form_id)
-      ->select('question', 'answer')->get();
+    $data['answers'] = $adoption_form->getAnswers($adoption_form->adoption_form_id);
     return $data;
   }
   
@@ -103,7 +102,7 @@ class AdoptionFormController extends Controller {
       $data['adopt'] = Adopt::where('adopt_id', $adoption_form->adopt_id)->first();
     }
     $data['adoption_form'] = $adoption_form;
-    $data['answers'] = DB::table('adoption_form_answer')->where('adoption_form_id', $data['adoption_form']->adoption_form_id)->select('question', 'answer')->get();
+    $data['answers'] = $adoption_form->getAnswers($adoption_form_id);
     $data['adoption_form_stats'] = AdoptionFormStat::$values;
     return $data;
   }
