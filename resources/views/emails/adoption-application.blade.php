@@ -8,7 +8,7 @@ Postal Code: {{ $adoption_form->postal }}<br>
 <br>
 Enquired On: {{ \App\Helpers\ViewHelper::formatDate($adoption_form->enquired_on) }}<br>
 Applied On: {{ \App\Helpers\ViewHelper::formatDate($adoption_form->applied_on) }}<br>
-
+<br>
 @foreach($answers as $answer)
   @if($answer->is_header == 1)
     <h3><u>{{ $answer->question }}</u></h3>
