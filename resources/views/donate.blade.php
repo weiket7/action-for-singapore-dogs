@@ -52,17 +52,17 @@
                   <label for="mobile" class="col-sm-3 control-label">Amount <span class="required">*</span></label>
                   <div class="col-sm-9">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary" @click="chooseAmount(10)">
-                        <input type="radio" name="amount" value="10"> $10
-                      </label>
-                      <label class="btn btn-primary" @click="chooseAmount(20)">
-                        <input type="radio" name="amount" value="20"> $20
-                      </label>
                       <label class="btn btn-primary" @click="chooseAmount(50)">
                         <input type="radio" name="amount" value="50"> $50
                       </label>
                       <label class="btn btn-primary" @click="chooseAmount(100)">
-                        <input type="radio" name="amount" value="50"> $100
+                        <input type="radio" name="amount" value="100"> $100
+                      </label>
+                      <label class="btn btn-primary" @click="chooseAmount(200)">
+                        <input type="radio" name="amount" value="200"> $200
+                      </label>
+                      <label class="btn btn-primary" @click="chooseAmount(500)">
+                        <input type="radio" name="amount" value="500"> $500
                       </label>
                       <label class="btn btn-primary" @click="customAmount()">
                         <input type="radio" v-model="donation.amount" name="amount" value="custom"> Custom Amount
@@ -125,8 +125,10 @@
                     <i>(Please note the minimum sum is $10)</i>
                   </div>
                   <div v-if="donation.payment_method == 'N'" class="col-sm-offset-3 col-sm-9">
-                    Please PayNow to:<br>
-                    9123 4567
+                    Please PayNow to UEN:<br>
+                    T02SS0132E<br>
+                    <img src="{{ asset('assets/images/paynow-to-action-for-singapore-dogs-uen.jpg') }}">
+                    <br><small>(screenshot from OCBC app)</small>
                   </div>
                 </div>
                 
