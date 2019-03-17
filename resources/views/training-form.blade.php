@@ -57,7 +57,10 @@
           
           <div class="form-group">
             <div class="col-sm-12 col-sm-offset-3">
-              <button type="submit" name="submit" class="theme_button">Submit</button>
+              <button type="submit" class="theme_button" :disabled="loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
+                @{{ loading ? "Processing" : "Submit" }}
+              </button>
               
               <div class="alert alert-success mt-10" v-show="success">
                 Thank you, your basic obedience class request has been received.
@@ -84,26 +87,30 @@
       data: {
         training: { name: "", mobile: "", email: "", date: "" },
         success: false,
+        loading: false,
         dates: {!! json_encode($dates) !!},
         selectedActivity: false,
         errors: new Errors()
       },
       methods: {
         onSubmit: function() {
+          this.loading = true;
           axios.post('api/training/form', this.training)
             .then(this.onSuccess)
             .catch(this.onError);
         },
         onSuccess: function(response) {
+          this.loading = false;
           this.success = true;
           this.errors = new Errors();
         },
         onError: function(error) {
+          this.loading = false;
+          this.success = false;
           if (error.response.status == 500) {
             alert("A system error occurred");
             return;
           }
-          this.success = false;
           this.errors.record(error.response.data.errors);
         },
       }
