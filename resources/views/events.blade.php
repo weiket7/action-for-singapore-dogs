@@ -14,7 +14,7 @@
         
         <div v-if="events.length" v-for="event in events">
           <div class="side-item">
-            <a :href="baseUrl + 'event/' + event.slug" v-if="event.image">
+            <a :href="baseUrl + '/event/' + event.slug" v-if="event.image">
               <div class="item-media entry-thumbnail">
                 <img :src="'assets/images/events/'+event.image" alt="">
               </div>

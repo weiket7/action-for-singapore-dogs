@@ -177,7 +177,7 @@
         .then(response => {
           this.event = this.is_create ? {} : response.data.event;
           this.event_types = response.data.event_types;
-          this.adopts = response.data.adopts;
+          this.adopts = this.is_create ? [] : data.adopts;
           this.loaded = true;
         })
         .catch(error => {
