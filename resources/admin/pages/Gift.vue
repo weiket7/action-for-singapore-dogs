@@ -77,8 +77,8 @@
           return;
         }
         toastr.success("Gift updated");
-        let gift_id = response.data;
-        this.$router.push('/gift/save/'+gift_id);
+        this.gift.gift_id = response.data;
+        this.$router.push('/gift/save/'+this.gift.gift_id);
       },
       deleteGift() {
         axios.post('api/delete-record?table=gift&column=gift_id&id='+this.$route.params.gift_id)
@@ -90,16 +90,12 @@
       }
     },
     created() {
-      let url = 'api/gift/get';
-      if (!this.is_create) {
-        url += '/'+ this.$route.params.gift_id
+      if(!this.is_create) {
+        axios.get('api/gift/get/' + this.$route.params.gift_id)
+          .then(response => {
+            this.gift = response.data.gift;
+          }).catch(this.onError);
       }
-      axios.get(url)
-        .then(response => {
-          this.gift = response.data.gift;
-        }).catch(error => {
-        console.log(error);
-      })
     },
     mounted() {
       let vue = this

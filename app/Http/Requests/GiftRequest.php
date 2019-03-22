@@ -27,7 +27,7 @@ class GiftRequest extends FormRequest
       'name.required' => 'Name is required',
       'price.required' => 'Price is required',
       'quantity.required' => 'Quantity is required',
-      'image_new.required' => 'Image is required',
+      'image_new.required_without' => 'Image is required',
     ];
   }
 }

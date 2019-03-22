@@ -168,7 +168,12 @@
       }
     },
     created() {
-      axios.get('api/event/get/' + this.$route.params.event_id)
+      let url = 'api/event/get';
+      if (!this.is_create) {
+        url += '/'+ this.$route.params.event_id
+      }
+
+      axios.get(url)
         .then(response => {
           this.event = this.is_create ? {} : response.data.event;
           this.event_types = response.data.event_types;

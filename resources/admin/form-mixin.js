@@ -9,7 +9,7 @@ export default {
   },
   methods: {
     onError(error) {
-      if (error.response.status == 500) {
+      if (error.response.status === 500) {
         toastr.error("A system error occurred");
         return;
       }

@@ -106,6 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('api/donation/save/{donation_id}', 'DonationController@save');
   
   Route::get('api/event', 'EventController@all');
+  Route::get('api/event/get', 'EventController@get');
   Route::post('api/event/save/', 'EventController@save');
   Route::post('api/event/save/{event_id}', 'EventController@save');
   

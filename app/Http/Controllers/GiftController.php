@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Page;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Object_;
 
 class GiftController extends Controller
 {
@@ -25,15 +26,8 @@ class GiftController extends Controller
     return $gift_id;
   }
   
-  public function get(Request $request, $gift_id) {
-    $data['gift'] = $gift_id != 'undefined' ? Gift::find($gift_id) : new \ stdClass();
-    $events = Event::where('date', '>=', Carbon::today())->get();
-    $res = [];
-    foreach($events as $event) {
-      $res[$event->event_id] = $event->name . ' on ' . Carbon::createFromFormat('Y-m-d', $event->date)->format('d M Y');
-    }
-    $data['events'] = $res;
-    $data['pages'] = Page::pluck('title', 'slug');
+  public function get(Request $request, $gift_id = null) {
+    $data['gift'] = $gift_id == null ? Gift::find($gift_id) : new Gift();
     return $data;
   }
   

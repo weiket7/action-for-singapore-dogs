@@ -40,18 +40,21 @@ class EventController extends Controller {
     return $data;
   }
   
-  public function get(Request $request, $event_id) {
-    $event = null;
-    if (is_numeric($event_id)) {
-      $event = Event::where('event_id', $event_id)->first();
+  public function get(Request $request, $event_id = null) {
+    if ($event_id == null) {
+      $event = $event_id == null ? Event::find($event_id) : new \ stdClass();
     } else {
-      $slug = $event_id;
-      $event = Event::where('slug', $slug)->first();
+      if (is_numeric($event_id)) {
+        $event = Event::where('event_id', $event_id)->first();
+      } else {
+        $slug = $event_id;
+        $event = Event::where('slug', $slug)->first();
+      }
+      $adopt_ids = DB::table('adoption_drive')->where('event_id', $event->event_id)->pluck('adopt_id');
+      $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
     }
     $data['event'] = $event;
     $data['event_types'] = EventType::$values;
-    $adopt_ids = DB::table('adoption_drive')->where('event_id', $event->event_id)->pluck('adopt_id');
-    $data['adopts'] = Adopt::whereIn('adopt_id', $adopt_ids)->select('adopt_id', 'name', 'slug', 'image', 'birthday', 'gender')->get();
     return $data;
   }
   
