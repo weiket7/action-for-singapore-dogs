@@ -11,7 +11,7 @@ class AdoptionForm extends Model
   protected $primaryKey = 'adoption_form_id';
   public $timestamps = false;
 
-  public function saveEnquiry($input) {
+  public function saveEnquiry($input, $browser) {
     $this->stat = AdoptionFormStat::Enquiry;
     $this->identification_number = $input['identification_number'];
     $this->name = $input['name'];
@@ -23,6 +23,7 @@ class AdoptionForm extends Model
     $this->postal = $input['postal'];
     $this->application_token = str_random();
     $this->enquired_on = Carbon::now();
+    $this->browser_enquired = $browser;
     $this->save();
     
     foreach($input['hearts'] as $heart) {
@@ -34,9 +35,10 @@ class AdoptionForm extends Model
     return $this->adoption_form_id;
   }
   
-  public function saveApplication($input) {
+  public function saveApplication($input, $browser) {
     $this->stat = AdoptionFormStat::Application;
     $this->applied_on = Carbon::now();
+    $this->browser_applied = $browser;
     $this->save();
     
     $questions = Question::select('question_id', 'content', 'is_header')->get();

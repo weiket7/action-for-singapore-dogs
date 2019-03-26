@@ -33,6 +33,8 @@ class AdoptionFormTable extends Migration
       $table->dateTime('approved_on')->nullable();
       $table->string('approved_by', 30)->nullable();
       $table->dateTime('agreed_on')->nullable();
+      $table->string('browser_enquired', 100)->nullable();
+      $table->string('browser_applied', 100)->nullable();
     });
     
     DB::table('adoption_form')->insert([

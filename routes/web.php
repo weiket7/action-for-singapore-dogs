@@ -59,9 +59,7 @@ Route::get('logout', 'AdminController@logout');
 Route::get('backend', 'AdminController@backend');
 
 Route::get('test', function() {
-  $value = Setting::where('key', 'volunteer_form_arc_recipients')->value('value');
-  echo $value;
-  echo str_replace(' ', '', $value);
+  var_dump(\App\Helpers\BackendHelper::getBrowser());
 });
 
 Route::group(['middleware' => 'auth'], function () {

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Helpers\BackendHelper;
 use App\Helpers\ViewHelper;
 use App\Http\Requests\AdoptionFormApproveRequest;
 use App\Http\Requests\AdoptionFormRequest;
@@ -23,7 +24,7 @@ class AdoptionFormController extends Controller {
   public function enquiry(AdoptionFormRequest $request) {
     $adoption_form = new AdoptionForm();
     
-    $adoption_form_id = $adoption_form->saveEnquiry($request->all());
+    $adoption_form_id = $adoption_form->saveEnquiry($request->all(), BackendHelper::getBrowser());
     $adopt_names = Adopt::whereIn('adopt_id', $request->hearts)->pluck('name')->toArray();
     $str = array_pop($adopt_names);
     if ($adopt_names) {
@@ -40,7 +41,7 @@ class AdoptionFormController extends Controller {
       throw new Exception('saveApplication Adoption form id = ' . $adoption_form->adoption_form_id . ' already applied');
     }
   
-    $adoption_form->saveApplication($request->all());
+    $adoption_form->saveApplication($request->all(), BackendHelper::getBrowser());
     
     $data['answers'] = $adoption_form->getAnswers($adoption_form->adoption_form_id);
     $data['dog_names'] = implode(", ", DB::table('adoption_form_adopt as afa')->join('adopt as a', 'afa.adopt_id', '=', 'a.adopt_id')
