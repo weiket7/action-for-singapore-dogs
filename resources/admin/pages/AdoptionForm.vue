@@ -19,7 +19,19 @@
                 <router-link :to="'/adopt/save/'+adopt_id">{{ dog_name }}</router-link><span v-if="index != Object.keys(interested_in).length - 1">, </span>
               </span>
             </static-text>
-
+          </form-row>
+          
+          <form-row>
+            <label-component>Enquired On</label-component>
+            <static-text>{{ adoption_form.enquired_on | formatDate }}</static-text>
+    
+            <label-component v-if="adoption_form.applied_on">Applied On</label-component>
+            <static-text>{{ adoption_form.applied_on | formatDate }}</static-text>
+          </form-row>
+          
+          <form-row v-if="adoption_form.approved_on">
+            <label-component>Approved On</label-component>
+            <static-text>{{ adoption_form.approved_on | formatDate }}</static-text>
           </form-row>
           
           <form-row>

@@ -6,6 +6,9 @@
         <tr>
           <th width="80px ">Status</th>
           <th>Name</th>
+          <th>Enquired On</th>
+          <th>Applied On</th>
+          <th>Approved On</th>
         </tr>
         </thead>
         <tbody>
@@ -16,6 +19,9 @@
               {{ adoption_form.name }}
             </router-link>
           </td>
+          <td>{{ adoption_form.enquired_on | formatDate }}</td>
+          <td>{{ adoption_form.applied_on | formatDate }}</td>
+          <td>{{ adoption_form.approved_on | formatDate }}</td>
         </tr>
         </tbody>
       </table>

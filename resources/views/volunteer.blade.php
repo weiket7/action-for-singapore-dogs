@@ -70,7 +70,7 @@
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" v-model="volunteer.interests" value="Volunteering"> Volunteer at Adoption & Rescue Centre (ARC)
+                <input type="checkbox" v-model="volunteer.interests" value="Volunteering at ARC"> Volunteer at Adoption & Rescue Centre (ARC)
               </label>
             </div>
             <div class="checkbox">

@@ -27,7 +27,7 @@ class VolunteerMail extends Mailable
       $main_email = "wei_ket@hotmail.com";
     } else {
       $main_email = Setting::getMainEmail();
-      if(in_array("Volunteering", $this->interests)) {
+      if(in_array("Volunteering at ARC", $this->interests)) {
         $main_email .= ','.Setting::getVolunteerFormArcRecipients();
         $main_email = explode(',', $main_email);
       }

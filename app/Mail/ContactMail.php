@@ -22,6 +22,6 @@ class ContactMail extends Mailable
   public function build()
   {
     $main_email = $this->contact->email == "wei_ket@hotmail.com" ? "wei_ket@hotmail.com" : Setting::getMainEmail();
-    return $this->to($main_email)->subject('[Contact] ' . $this->contact->subject)->view('emails.contact');
+    return $this->to($main_email)->replyTo($this->contact->email)->subject('[Contact] ' . $this->contact->subject)->view('emails.contact');
   }
 }
