@@ -6,7 +6,7 @@
 @section('content')
   <div id="app" class="container content">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="bxslider">
           @foreach($banners as $banner)
             @if($banner->link_to != 'None')
@@ -24,13 +24,13 @@
           @endforeach
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <h4 class="entry-title">
           {{ $contents['Home Banner Title'] }}
         </h4>
   
         <p class="event-detail">
-          {{ $contents['Home Banner Content'] }}
+          {!!  $contents['Home Banner Content'] !!}
         </p>
       </div>
     </div>

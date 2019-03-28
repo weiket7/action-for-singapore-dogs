@@ -22,7 +22,7 @@ class EventTable extends Migration
       $table->string('location', 100);
       $table->date('date');
       $table->string('time', 50);
-      $table->string('image', 50)->nullable();
+      $table->string('image', 100)->nullable();
       $table->string('cost', 50)->nullable();
       $table->string('duration', 50)->nullable();
       $table->text('desc')->nullable();

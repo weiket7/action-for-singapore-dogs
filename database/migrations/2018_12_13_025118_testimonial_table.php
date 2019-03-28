@@ -11,7 +11,7 @@ class TestimonialTable extends Migration
     Schema::create('testimonial', function (Blueprint $table) {
       $table->increments('testimonial_id');
       $table->string('dog_name', 100);
-      $table->string('image', 150);
+      $table->string('image', 100);
       $table->string('quote', 500);
       $table->string('content', 500);
     });

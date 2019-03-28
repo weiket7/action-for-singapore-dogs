@@ -24,7 +24,7 @@ class AdoptTable extends Migration
         $table->boolean('vaccinate')->nullable();
         $table->boolean('sterilise')->nullable();
         $table->boolean('hdb');
-        $table->string('image', 50);
+        $table->string('image', 100);
         $table->string('microchip_no', 40)->nullable();
         $table->date('microchip_date')->nullable();
         $table->date('vaccinate_date1')->nullable();

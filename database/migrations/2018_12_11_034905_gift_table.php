@@ -11,7 +11,7 @@ class GiftTable extends Migration
     Schema::create('gift', function (Blueprint $table) {
       $table->increments('gift_id');
       $table->string('name', 100);
-      $table->string('image', 150);
+      $table->string('image', 100);
       $table->decimal('price', 9, 2);
       $table->integer('quantity');
       $table->integer('position');

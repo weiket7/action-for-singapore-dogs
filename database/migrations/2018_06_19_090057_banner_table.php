@@ -13,7 +13,7 @@ class BannerTable extends Migration
       $table->string('name', 50);
       $table->char('stat', 1);
       $table->integer('position');
-      $table->string('image', 50);
+      $table->string('image', 100);
       $table->string('link_to', 10);
       $table->integer('event_id')->nullable();
       $table->integer('blog_id')->nullable();
