@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="col-md-5">
-        <h4 class="entry-title">
+        <h4 class="entry-title home-title">
           {{ $contents['Home Banner Title'] }}
         </h4>
   

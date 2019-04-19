@@ -158,9 +158,9 @@
         
         <div class="row mt-20">
           <div class="col-md-12 text-center">
-            <button type="submit" class="theme_button" :disabled="loading">
+            <button type="submit" class="theme_button" :disabled="loading || success">
               <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
-              @{{ loading ? "Processing" : "I want to adopt" }}
+              @{{ submitButtonText }}
             </button>
             
             <div class="alert alert-success mt-10" v-show="success">
@@ -189,6 +189,16 @@
         adopt_count: 0,
         isInterested: false,
         hearts: [],
+      },
+      computed: {
+        submitButtonText: function() {
+          if (this.success === true && this.loading === false) {
+            return "Submitted";
+          } else if (this.success === false && this.loading === true) {
+            return "Processing"
+          }
+          return "I want to adopt";
+        }
       },
       methods: {
         heartAdopt: function(adopt_id) {
