@@ -223,6 +223,8 @@
       }
     });
     
-    $('.bxslider').bxSlider();
+    //https://github.com/stevenwanderski/bxslider-4/issues/1188
+    //https://github.com/stevenwanderski/bxslider-4/issues/1240
+    $('.bxslider').bxSlider({ touchEnabled: false });
   </script>
 @endsection
