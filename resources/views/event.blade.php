@@ -32,8 +32,8 @@
                   <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                   {{ ViewHelper::formatDate($event->date) }}
                   <br><br>
-                  
-                  {{ $event->desc }}
+
+                  {!! nl2br($event->desc) !!}
                 </p>
                 
                 <div v-for="chunk in adopts" class="row">
@@ -65,7 +65,7 @@
                   @endif
                   <br><br>
                   
-                  {{ $event->desc }}
+                  {!! nl2br($event->desc) !!}
                 </p>
               @endif
               

@@ -26,7 +26,7 @@
       </div>
       <div class="col-md-5">
         <h4 class="entry-title home-title">
-          {{ $contents['Home Banner Title'] }}
+          {!! $contents['Home Banner Title'] !!}
         </h4>
   
         <p class="event-detail">
@@ -205,19 +205,19 @@
         adopts_mobile: [],
         hearts: []
       },
-      created() {
+      created: function() {
         this.adopts_desktop = _.chunk(this.adopts, 4);
         this.adopts_mobile = _.chunk(this.adopts, 2);
         this.hearts = window.getHearts();
       },
       methods: {
-        hasHeart(adopt_id) {
+        hasHeart: function(adopt_id) {
           if (window.objectIsEmpty(this.hearts)) {
             return false;
           }
           return this.hearts.indexOf(adopt_id) >= 0;
         },
-        heartAdopt(adopt_id) {
+        heartAdopt: function(adopt_id) {
           window.addOrRemoveHearts(this.hearts, adopt_id);
         },
       }
