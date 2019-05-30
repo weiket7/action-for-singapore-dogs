@@ -34,13 +34,17 @@
       </form-row>
 
       <form-row>
-        <label-component>Description</label-component>
-        <textarea-component v-model="event.desc"></textarea-component>
-  
         <label-component>Image</label-component>
         <image-component v-model="event.image" name="image"
                          v-on:update-image="updateImage" folder="events"
                          :src="event.image" :error="errors.get('image')"></image-component>
+      </form-row>
+
+      <form-row>
+        <label-component>Description</label-component>
+        <div class="col-lg-9">
+          <textarea name="" id="editor">{{ event.desc }}</textarea>
+        </div>
       </form-row>
 
       <hr v-if="isAdoptionDrive">
@@ -77,7 +81,8 @@
   import Errors from '../../common/errors'
   import ImageComponent from "../components/ImageComponent";
   import FormMixin from '../form-mixin';
-  
+  import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+
   export default {
     name: "event",
     data() {
@@ -121,6 +126,7 @@
           };
         }
 
+        this.event.desc = this.editor.getData();
         axios.post(url, form_data, config)
           .then(this.onSuccess)
           .catch(this.onError);
@@ -179,6 +185,16 @@
           this.event_types = response.data.event_types;
           this.adopts = this.is_create ? [] : response.data.adopts;
           this.loaded = true
+
+          let vue = this
+          ClassicEditor.create(document.querySelector('#editor'), {
+            removePlugins: [ 'ImageUpload' ],
+          }).then(editor => {
+            vue.editor = editor;
+          }).catch(error => {
+            console.log(error)
+          });
+
         })
         .catch(error => {
           console.log(error);
@@ -191,6 +207,9 @@
       }).on("confirmed.bs.confirmation", function() {
         vue.deleteEvent();
       });
+
+
+
     },
     components: {
       ImageComponent
