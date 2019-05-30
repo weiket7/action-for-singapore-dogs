@@ -41,6 +41,7 @@ class Adopt extends Model
       $this->sterilise_date = $input['sterilise_date'];
       $this->vet = $input['vet'];
     }
+    $this->desc = $input['desc'] ?? "";
     $this->health = $input['health'] ?? "";
     $this->behaviour = $input['behaviour'] ?? "";
     $this->history = $input['history'] ?? "";
