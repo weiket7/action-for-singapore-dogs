@@ -84,22 +84,17 @@
           </form-row>
 
           <form-row v-show="adopt.sterilise">
+            <label-component>Description</label-component>
+            <textarea-component rows="7" v-model="adopt.desc" :error="errors.get('desc')"></textarea-component>
+
             <label-component>Vet</label-component>
             <textbox-component v-model="adopt.vet" :error="errors.get('vet')"></textbox-component>
           </form-row>
 
           <form-row>
-            <label-component>Health</label-component>
-            <textarea-component v-model="adopt.health" :error="errors.get('health')"></textarea-component>
-
-            <label-component>Behaviour</label-component>
-            <textarea-component v-model="adopt.behaviour" :error="errors.get('behaviour')"></textarea-component>
-          </form-row>
-  
-          <form-row>
             <label-component>History</label-component>
-            <textarea-component v-model="adopt.history" :error="errors.get('history')"></textarea-component>
-            
+            <textarea-component rows="7" v-model="adopt.history" :error="errors.get('history')"></textarea-component>
+
             <label-component required>Image 1</label-component>
             <image-component v-model="adopt.image" name="image"
                              v-on:update-image="updateImage" folder="adopts"

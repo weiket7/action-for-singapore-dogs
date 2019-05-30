@@ -41,10 +41,10 @@
             </p>
             
             <div itemprop="description">
-              <p v-html="adopt.desc">
-              </p>
+              <p v-html="adopt.desc"></p>
+              <p>History: @{{ adopt.history }}</p>
             </div>
-            
+
             <ul class="nav nav-tabs mt-20" role="tablist">
               <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Adopt</a></li>
               <li><a href="#tab2" role="tab" data-toggle="tab">Sponsor</a></li>
