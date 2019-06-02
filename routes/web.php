@@ -24,6 +24,7 @@ Route::get('blog/post/{slug}', 'SiteController@post');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
 Route::get('adoption-application/{application_token}', 'SiteController@adoptionApplication');
+Route::post('adoption-application/{application_token}', 'SiteController@adoptionApplication');
 Route::get('adoption-agreement/{agreement_token}', 'SiteController@adoptionAgreement');
 Route::get('dog-listener-academy', 'SiteController@dogListenerAcademy');
 

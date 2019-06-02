@@ -35,6 +35,7 @@ class AdoptionFormController extends Controller {
     return $adoption_form_id;
   }
   
+  //not in use
   public function saveApplication(Request $request, $application_token) {
     $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
     if ($adoption_form->applied_on) {

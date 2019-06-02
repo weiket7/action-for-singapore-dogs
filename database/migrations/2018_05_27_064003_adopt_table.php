@@ -36,7 +36,7 @@ class AdoptTable extends Migration
         $table->string('location_other', 30)->nullable();
         $table->string('health', 500)->nullable();
         $table->string('behaviour', 500)->nullable();
-        $table->string('history', 500)->nullable();
+        $table->string('history', 2000)->nullable();
         $table->dateTime('rescued_on')->nullable();
         $table->string('posted_by', 30);
         $table->dateTime('posted_on');

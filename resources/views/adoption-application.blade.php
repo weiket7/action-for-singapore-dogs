@@ -4,42 +4,58 @@
   <div class="container content">
     <div class="row">
       <div class="col-md-12">
-          <form @submit.prevent="onSubmit()" class="">
-            <h3 class="text-center">Thank you for your interest in adopting</h3>
+          <form id="form" method="post" action="">
+            {{ csrf_field() }}
             
-            <h5 class="text-center">
-              Please fill in the short form below to share some information with us so that we can assist you in the adoption process.<br>
-              Upon submission, our rehomers will get in touch with you via email.
-            </h5>
-            
-            <div v-for="question in questions">
-              <h4 v-if="question.is_header === 1 || question.is_header === '1'" class="adoption-form-header">@{{ question.content }}</h4>
-              
+            <h3 class="text-center">
+              @if(isset($submitted) == false)
+                Thank you for your interest in adopting
+              @else
+                Thank you, our rehomers will get in touch with you via email.
+              @endif
+            </h3>
+  
+            @if(isset($submitted) == false)
+              <h5 class="text-center">
+                Please fill in the short form below to share some information with us so that we can assist you in the adoption process.<br>
+                Upon submission, our rehomers will get in touch with you via email.
+              </h5>
+            @endif
+
+          @foreach($questions as $question)
+              @if($question->is_header == 1)
+                <h4 class="adoption-form-header">{{ $question->content }}</h4>
+              @endif
+  
               <div v-else class="form-group">
-                <label class="control-label">@{{ question.content }} <span class="required">*</span></label>
-                <input type="text" v-model="answers['answer-'+question.question_id]" :name="'answer-'+question.question_id" class="form-control">
-  
-                <span class="help-block error" v-if="required.indexOf('answer-'+question.question_id) >= 0">
-                  Required
-                </span>
+                <label class="control-label">{{ $question->content }} <span class="required">*</span></label>
+                  
+                  @if(isset($submitted))
+                    <br>{{ $answers[$question->question_id] }}
+                  @else
+                    <input type="text" name="answer-{{$question->question_id}}" data-question_id="{{ $question->question_id }}" class="form-control">
+                  @endif
+                
+                  <span class="help-block error" id="required-{{ $question->question_id }}" style="display:none">
+                    Required
+                  </span>
               </div>
-            </div>
-            
-            <div class="row mt-20">
-              <div class="col-md-12 text-center">
-                <button type="submit" class="theme_button" :disabled="loading || success">
-                  <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" v-if="loading"></span>
-                    @{{ submitButtonText }}
+            @endforeach
+  
+            @if(isset($submitted) == false)
+              <div class="row mt-20">
+                <div class="col-md-12 text-center">
+                  <button id="btn-submit" type="button" class="theme_button" onclick="submitApplication()">
+                    <span id="icon-processing" class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="display:none"></span>
+                    Submit
                   </button>
-  
-                <div class="alert alert-danger mt-10" v-show="required.length > 0">
-                  There were some errors, please check the form
-                </div>
-                <div class="alert alert-success mt-10" v-show="success">
-                  Thank you, our rehomers will get in touch with you via email.
+                  
+                  <div id="message-error" class="alert alert-danger mt-10" style="display:none">
+                    There were some errors, please check the form
+                  </div>
                 </div>
               </div>
-            </div>
+            @endif
           </form>
       </div>
     </div>
@@ -60,54 +76,31 @@
 
 @section('script')
   <script>
-    var vm = new Vue({
-      el: "#app",
-      data: {
-        success: false,
-        loading: false,
-        application_token: '{{ $application_token }}',
-        adoption_form: {!! json_encode($adoption_form) !!},
-        questions: {!! json_encode($questions) !!},
-        answers: {!! json_encode($answers) !!},
-        base_url: '{{ url('/') }}',
-        required: [],
-      },
-      computed: {
-        submitButtonText: function() {
-            if (this.success === true && this.loading === false) {
-              return "Submitted";
-            } else if (this.success === false && this.loading === true) {
-              return "Processing"
-            }
-            return "I want to adopt";
+    function submitApplication() {
+      let empty_field = false;
+      
+      $(".form-control").each(function() {
+        let question_id = $(this).data('question_id');
+        if($(this).val() == "") {
+          $("#required-"+question_id).show();
+          empty_field = true;
+        } else {
+          $("#required-"+question_id).hide();
         }
-      },
-      methods: {
-        onSubmit: function() {
-          this.required = [];
-          for (var key in this.answers) {
-            if (this.answers.hasOwnProperty(key)) {
-              //console.log(key + ' = '  + this.answers[key]);
-              if (this.answers[key] === '') {
-                this.required.push(key);
-              }
-            }
-          }
-          if (this.required.length >= 1) {
-            return;
-          }
+      });
+    
+      if (empty_field) {
+        $("#message-error").show();
+        return;
+      } else {
+        $("#message-error").hide();
+      }
   
-          this.loading = true;
-          
-          axios.post(this.base_url+'/api/adoption-form/save-application/'+this.application_token, this.answers)
-            .then(this.onSuccess)
-            .catch(this.onError);
-        },
-        onSuccess: function() {
-          this.loading = false;
-          this.success = true;
-        }
-      },
-    })
+      $("#icon-processing").show();
+      $("#btn-submit").prop('disabled', true);
+  
+      $("#form").submit();
+
+    }
   </script>
 @endsection

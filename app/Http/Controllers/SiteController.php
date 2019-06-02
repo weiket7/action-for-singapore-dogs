@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Helpers\BackendHelper;
 use App\Helpers\ViewHelper;
 use App\Http\Requests\ContactRequest;
+use App\Mail\AdoptionApplicationMail;
 use App\Mail\ContactMail;
 use App\Models\Adopt;
 use App\Models\AdoptionForm;
@@ -21,6 +23,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SiteController extends Controller {
   
@@ -72,18 +75,35 @@ class SiteController extends Controller {
   
   public function adoptionApplication(Request $request, $application_token) {
     $adoption_form = AdoptionForm::where('application_token', $application_token)->first();
-    if ($adoption_form->applied_on) {
-      throw new Exception('getApplication Adoption form id = ' . $adoption_form->adoption_form_id . ' already applied');
-    }
-    $question_ids = Question::where('is_header', false)->pluck('question_id');
-    $answers = [];
-    foreach($question_ids as $question_id) {
-      $answers['answer-'.$question_id] = '';
-    }
-    $data['adoption_form'] = $adoption_form;
-    $data['answers'] = $answers;
     $data['questions'] = Question::orderBy('position')->select('content', 'is_header', 'question_id')->get();
-    $data['application_token'] = $application_token;
+    
+    if ($request->isMethod("post")) {
+      //var_dump($request->all()); exit;
+  
+      $adoption_form->saveApplication($request->all(), BackendHelper::getBrowser());
+  
+      $data_for_email['answers'] = $adoption_form->getAnswers($adoption_form->adoption_form_id);
+      $data_for_email['dog_names'] = implode(", ", DB::table('adoption_form_adopt as afa')->join('adopt as a', 'afa.adopt_id', '=', 'a.adopt_id')
+        ->where('adoption_form_id', $adoption_form->adoption_form_id)->pluck('name')->toArray());
+      $data_for_email['adoption_form'] = $adoption_form;
+      $adoption_application_mail = new AdoptionApplicationMail($data_for_email['adoption_form'], $data_for_email['answers'], $data_for_email['dog_names']);
+  
+      $pdf = PDF::loadView('emails.adoption-application', $data_for_email);
+      $pdf_name = "ASD Adoption Application, " . $adoption_form->name . " on " . ViewHelper::formatDate($adoption_form->applied_on) . ".pdf";
+      $adoption_application_mail->attachData($pdf->output(), $pdf_name);
+  
+      Mail::send($adoption_application_mail);
+    }
+    
+    if ($request->isMethod("post") || $adoption_form->applied_on){
+      $data_for_email['answers'] = $adoption_form->getAnswers($adoption_form->adoption_form_id);
+      $data['submitted'] = true;
+      $answers = [];
+      foreach($data_for_email['answers'] as $a) {
+        $answers[$a->question_id] = $a->answer;
+      }
+      $data['answers'] = $answers;
+    }
     return view('adoption-application', $data);
   }
   

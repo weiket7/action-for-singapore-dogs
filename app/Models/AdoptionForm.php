@@ -48,7 +48,7 @@ class AdoptionForm extends Model
         'is_header'=>$question->is_header,
         'question_id'=>$question->question_id,
         'question'=>$question->content,
-        'answer'=>$input['answer-'.$question->question_id] ?? ""
+        'answer'=>$input['answer-'.$question->question_id]
       ]);
     }
   }
@@ -74,7 +74,7 @@ class AdoptionForm extends Model
   
   public function getAnswers($adoption_form_id) {
     return DB::table('adoption_form_answer')->where('adoption_form_id', $adoption_form_id)
-      ->select('is_header', 'question', 'answer')->orderBy('question_id')->get();
+      ->select('is_header', 'question', 'question_id', 'answer')->orderBy('question_id')->get();
   }
   
   public function getDogsInterestedIn($adoption_form_id) {
