@@ -33,7 +33,7 @@
                   @if(isset($submitted))
                     <br>{{ $answers[$question->question_id] }}
                   @else
-                    <input type="text" name="answer-{{$question->question_id}}" data-question_id="{{ $question->question_id }}" class="form-control">
+                    <input type="text" name="answer-{{$question->question_id}}" data-question_id="{{ $question->question_id }}" maxlength="500" class="form-control">
                   @endif
                 
                   <span class="help-block error" id="required-{{ $question->question_id }}" style="display:none">

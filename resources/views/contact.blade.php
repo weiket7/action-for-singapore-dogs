@@ -63,7 +63,7 @@
             <div class="col-md-6">
               <div class="form-group no-mb">
                 <label class="control-label">Name <span class="required">*</span></label>
-                <input type="text" name="name" v-model="contact.name" class="form-control" autofocus>
+                <input type="text" name="name" v-model="contact.name" maxlength="50" class="form-control" autofocus>
                 <span class="help-block error" v-if="errors.get('name')">
                   @{{ errors.get('name') }}
                 </span>
@@ -73,7 +73,7 @@
             <div class="col-md-6">
               <div class="form-group no-mb">
                 <label class="control-label">Email <span class="required">*</span></label>
-                <input type="email" name="email" v-model="contact.email" class="form-control">
+                <input type="email" name="email" v-model="contact.email" maxlength="100" class="form-control">
                 <span class="help-block error" v-if="errors.get('email')">
                   @{{ errors.get('email') }}
                 </span>
@@ -85,7 +85,7 @@
             <div class="col-md-6">
               <div class="form-group no-mb">
                 <label class="control-label">Mobile <span class="required">*</span></label>
-                <input type="text" name="mobile" v-model="contact.mobile" class="form-control">
+                <input type="text" name="mobile" v-model="contact.mobile" maxlength="50" class="form-control">
                 <span class="help-block error" v-if="errors.get('mobile')">
                   @{{ errors.get('mobile') }}
                 </span>
@@ -95,7 +95,7 @@
             <div class="col-md-6">
               <div class="form-group no-mb">
                 <label class="control-label">Subject <span class="required">*</span></label>
-                <input type="text" name="subject" v-model="contact.subject" class="form-control">
+                <input type="text" name="subject" v-model="contact.subject" maxlength="50" class="form-control">
                 <span class="help-block error" v-if="errors.get('subject')">
                   @{{ errors.get('subject') }}
                 </span>
@@ -107,7 +107,7 @@
             <div class="col-md-12">
               <div class="form-group no-mb">
                 <label class="control-label">Message <span class="required">*</span></label>
-                <textarea class="form-control" v-model="contact.message" rows="5"></textarea>
+                <textarea class="form-control" v-model="contact.message" rows="5" maxlength="500"></textarea>
                 <span class="help-block error" v-if="errors.get('message')">
                   @{{ errors.get('message') }}
                 </span>
