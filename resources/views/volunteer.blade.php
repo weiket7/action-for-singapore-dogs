@@ -45,7 +45,7 @@
           </volunteer-field>
           
           <volunteer-field name="Occupation" :error="errors.get('occupation')" :required="true">
-            <input type="text" v-model="volunteer.occupation" maxlength="50" class="form-control">
+            <input type="text" v-model="volunteer.occupation" maxlength="100" class="form-control">
           </volunteer-field>
           
           <volunteer-field name="Amount of time you can afford" :error="errors.get('availability')" :required="true">
@@ -100,7 +100,7 @@
           </volunteer-field>
           
           <volunteer-field name="Number of dogs currently" :error="errors.get('current_no_of_dogs')" v-if="has_fostering">
-            <input type="text" v-model="volunteer.current_no_of_dogs" maxlength="50" class="form-control">
+            <input type="text" v-model="volunteer.current_no_of_dogs" maxlength="100" class="form-control">
           </volunteer-field>
           
           <volunteer-field name="Type of vehicle" :error="errors.get('vehicle')" v-if="has_logistics">

@@ -18,11 +18,11 @@ class VolunteerTable extends Migration
       $table->string('mobile', 20);
       $table->dateTime('birthday');
       $table->char('gender', 1);
-      $table->string('occupation', 50);
+      $table->string('occupation', 100);
       $table->string('availability', 100);
       $table->string('vehicle', 50)->nullable();
       $table->string('preferred_dog_size', 50)->nullable();
-      $table->string('current_no_of_dogs', 50)->nullable();
+      $table->string('current_no_of_dogs', 100)->nullable();
       $table->string('publicity_area', 50)->nullable();
       $table->dateTime('created_on');
       $table->string('desc', 250)->nullable();
