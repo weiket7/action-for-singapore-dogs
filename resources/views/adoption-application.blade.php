@@ -22,16 +22,17 @@
               </h5>
             @endif
 
+          <?php $question_no = 1; ?>
           @foreach($questions as $question)
               @if($question->is_header == 1)
                 <h4 class="adoption-form-header">{{ $question->content }}</h4>
               @endif
   
               <div v-else class="form-group">
-                <label class="control-label">{{ $question->content }} <span class="required">*</span></label>
+                <label class="control-label"><b>{{ $question_no }}. {{ $question->content }} <span class="required">*</span></b></label>
                   
                   @if(isset($submitted))
-                    <br>{{ $answers[$question->question_id] }}
+                    <br>{{ $answers[$question->question_id] ?? "" }}
                   @else
                     <input type="text" name="answer-{{$question->question_id}}" data-question_id="{{ $question->question_id }}" maxlength="500" class="form-control">
                   @endif
@@ -40,6 +41,7 @@
                     Required
                   </span>
               </div>
+              <?php $question_no++; ?>
             @endforeach
   
             @if(isset($submitted) == false)

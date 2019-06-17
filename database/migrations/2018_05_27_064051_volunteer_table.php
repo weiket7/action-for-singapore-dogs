@@ -14,12 +14,12 @@ class VolunteerTable extends Migration
       $table->increments('volunteer_id');
       $table->char('stat', 1);
       $table->string('name', 50);
-      $table->string('email', 50);
+      $table->string('email', 100);
       $table->string('mobile', 20);
       $table->dateTime('birthday');
       $table->char('gender', 1);
       $table->string('occupation', 50);
-      $table->string('availability', 50);
+      $table->string('availability', 100);
       $table->string('vehicle', 50)->nullable();
       $table->string('preferred_dog_size', 50)->nullable();
       $table->string('current_no_of_dogs', 50)->nullable();
