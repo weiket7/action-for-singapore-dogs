@@ -20,8 +20,7 @@ Vue.component('adopt-item', {
         <br>
 
         <i class="fas fa-home"></i>
-        <span v-if="adopt.hdb === 1 || adopt.hdb === '1'">HDB Approved</span>
-        <span v-else>Not HDB Approved</span><br>
+        <span>{{ adopt.hdb == 0 ? "Not" : ""}} HDB Approved</span>
       </p>
       <div class="row">
         <div class="col-xs-8">

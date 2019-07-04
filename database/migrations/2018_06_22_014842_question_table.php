@@ -19,7 +19,7 @@ class QuestionTable extends Migration
       ['content'=>'Personal Info', 'position'=>0, 'is_header'=>1],
       ['content'=>'What is your occupation?', 'position'=>1, 'is_header'=>0],
       ['content'=>'What are your working hours?', 'position'=>2, 'is_header'=>0],
-      /*['content'=>'How many days in a month do you work overtime?', 'position'=>3, 'is_header'=>0],
+      ['content'=>'How many days in a month do you work overtime?', 'position'=>3, 'is_header'=>0],
       ['content'=>'How many weeks/months in a year do you travel for work/leisure?', 'position'=>4, 'is_header'=>0],
       ['content'=>'How many people in the household, and what are their ages? ', 'position'=>5, 'is_header'=>0],
       ['content'=>'Please state their exposure / experience with pets', 'position'=>6, 'is_header'=>0],
@@ -65,7 +65,7 @@ class QuestionTable extends Migration
       ['content'=>'Situation 3 : You are assigned to work overseas for at least 1 year', 'position'=>42, 'is_header'=>0],
       ['content'=>'Situation 4 : You are separated from your spouse', 'position'=>43, 'is_header'=>0],
       ['content'=>'Situation 5 : You have a baby in the family', 'position'=>44, 'is_header'=>0],
-      ['content'=>'Situation 6 : You or a member of your household develops an allergy to your dog', 'position'=>45, 'is_header'=>0],*/
+      ['content'=>'Situation 6 : You or a member of your household develops an allergy to your dog', 'position'=>45, 'is_header'=>0],
     ];
     foreach($questions as $question) {
       DB::table('question')->insert($question);
