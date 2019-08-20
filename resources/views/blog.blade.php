@@ -1,6 +1,6 @@
 <?php use App\Helpers\ViewHelper; ?>
 
-@extends('template', ['title'=>'ASD - Dogs In Need'])
+@extends('template', ['title'=>'ASD - '.$type])
 
 @section('content')
   <div id="app" class="container content">

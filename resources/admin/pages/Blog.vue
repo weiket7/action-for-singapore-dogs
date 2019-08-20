@@ -15,7 +15,7 @@
         
         <label-component>Image</label-component>
         <image-component v-model="blog.image" name="image"
-                         v-on:update-image="updateImage" folder="blog"
+                         v-on:update-image="updateImage" :folder="folder"
                          :src="blog.image" :error="errors.get('image_new')"></image-component>
       </form-row>
       
@@ -134,6 +134,18 @@
     computed: {
       is_create() {
         return this.$route.path == "/blog/save";
+      },
+      folder() {
+        if (this.blog.type == 'G') {
+          return 'blog/gone-to-good-homes';
+        }
+        if (this.blog.type == 'I') {
+          return 'blog/dogs-in-need';
+        }
+        if (this.blog.type == 'N') {
+          return 'blog/news-flash';
+        }
+        return "";
       }
     },
     components: {
