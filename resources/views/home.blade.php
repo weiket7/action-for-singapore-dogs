@@ -14,6 +14,8 @@
                 $url = '/event/'.$banner->event_slug;
               } else if ($banner->link_to == 'Blog') {
                 $url = '/blog/post/'.$banner->blog_slug;
+              } else if ($banner->link_to == 'Page') {
+                $url = '/'.$banner->page;
               } ?>
               <a href="{{ url($url) }}">
                 <img src="{{ asset('assets/images/banners/'.$banner->image) }}" title="{{ $banner->name }}" />

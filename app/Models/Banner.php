@@ -17,6 +17,8 @@ class Banner extends Model
       $this->event_id = $input['event_id'];
     } else if ($this->link_to == 'Blog') {
       $this->blog_id = $input['blog_id'];
+    } else if ($this->link_to == 'Page') {
+        $this->page = $input['page'];
     }
     if ($this->banner_id == null) {
       $this->image = "";

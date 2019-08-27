@@ -15,6 +15,7 @@ class BannerTable extends Migration
       $table->integer('position');
       $table->string('image', 100);
       $table->string('link_to', 10);
+      $table->string('page', 100)->nullable();
       $table->integer('event_id')->nullable();
       $table->integer('blog_id')->nullable();
     });
@@ -29,7 +30,7 @@ class BannerTable extends Migration
     ]);
     
     DB::table('banner')->insert([
-      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'name'=>'Calendar 2020',
       'stat'=>'A',
       'position'=>2,
       'image'=>'asd_19calad.jpg',
@@ -38,48 +39,48 @@ class BannerTable extends Migration
     ]);
   
     DB::table('banner')->insert([
-      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'name'=>'Project Adore',
       'stat'=>'A',
       'position'=>3,
       'image'=>'asd-project-adore.jpg',
-      'link_to'=>'Blog',
-      'blog_id'=>1,
+      'link_to'=>'Page',
+      'page'=>'pages/project-adore',
     ]);
   
     DB::table('banner')->insert([
-      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'name'=>'Adopt A Dog',
       'stat'=>'A',
       'position'=>4,
       'image'=>'asd-adopt-a-dog.jpg',
-      'link_to'=>'Blog',
-      'blog_id'=>1,
+      'link_to'=>'Page',
+      'page'=>'dogs-for-adoption',
     ]);
   
     DB::table('banner')->insert([
-      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'name'=>'	Sponsorship',
       'stat'=>'A',
       'position'=>5,
       'image'=>'asd-sponsorship.jpg',
-      'link_to'=>'Blog',
-      'blog_id'=>1,
+      'link_to'=>'Page',
+      'page'=>'sponsor',
     ]);
   
     DB::table('banner')->insert([
-      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'name'=>'Dog Listener Academy',
       'stat'=>'A',
       'position'=>6,
       'image'=>'asd-dog-listener-academy.jpg',
-      'link_to'=>'Blog',
-      'blog_id'=>1,
+      'link_to'=>'Page',
+      'page'=>'dog-listener-academy',
     ]);
   
     DB::table('banner')->insert([
-      'name'=>'Our Singapore Heritage FlashPay Cards',
+      'name'=>'Volunteer',
       'stat'=>'A',
       'position'=>7,
       'image'=>'asd-volunteer.jpg',
-      'link_to'=>'Blog',
-      'blog_id'=>1,
+      'link_to'=>'Page',
+      'page'=>'volunteer',
     ]);
   }
   

@@ -35,7 +35,7 @@ class SiteController extends Controller {
     $data['banners'] = Banner::leftJoin('event', 'event.event_id', '=', 'banner.event_id')
       ->leftJoin('blog', 'blog.blog_id', '=', 'banner.blog_id')
       ->where('banner.stat', 'A')
-      ->select('banner.name', 'banner.image', 'banner.link_to', 'blog.slug as blog_slug', 'event.slug as event_slug')->orderBy('position')->get();
+      ->select('banner.name', 'banner.image', 'banner.link_to', 'blog.slug as blog_slug', 'event.slug as event_slug', 'banner.page as page')->orderBy('position')->get();
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit(8)->get();
     $data['adopt_count'] = Adopt::where('stat', AdoptStat::Available)->count();

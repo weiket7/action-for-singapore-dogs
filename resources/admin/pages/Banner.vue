@@ -11,7 +11,12 @@
 
       <form-row>
         <label-component required>Link</label-component>
-        <radio-component name="link_to" :options="['None', 'Event', 'Blog']" v-model="banner.link_to" :inline="true"></radio-component>
+        <radio-component name="link_to" :options="['None', 'Page', 'Event', 'Blog']" v-model="banner.link_to" :inline="true"></radio-component>
+
+        <template v-if="banner.link_to == 'Page'">
+          <label-component>Page</label-component>
+          <select-component :options="pages" v-model="banner.page" has-empty="true"></select-component>
+        </template>
 
         <template v-if="banner.link_to == 'Blog'">
           <label-component>Blog</label-component>
@@ -54,7 +59,11 @@
         image_new: null,
         events: {},
         blogs: {},
-        banner_stats: {}
+        banner_stats: {},
+        pages: {
+          "donate": "Donate", "volunteer": "Volunteer", "pages/project-adore": "Project Adore",
+          "sponsor": "Sponsor", "adopt": "Adopt", "dog-listener-academy" : "Dog Listener Academy"
+        }
       }
     },
     methods: {
