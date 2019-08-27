@@ -1,5 +1,5 @@
 <template>
-  <single-portlet title="Page">
+  <single-portlet title="Blog">
     <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
       <form-row>
         <label-component>Title</label-component>

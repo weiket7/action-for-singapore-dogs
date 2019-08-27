@@ -1,5 +1,6 @@
 <?php namespace App\Helpers;
 
+use DateTime;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 
@@ -11,6 +12,10 @@ class BackendHelper {
       }
     }
     return $input;
+  }
+
+  public static function isDateTime($dateTime) {
+      return DateTime::createFromFormat('Y-m-d H:i:s', $dateTime);
   }
   
   public static function uploadImage($folder, $name, $image) {

@@ -34,6 +34,7 @@ class SiteController extends Controller {
     $rand = $request->session()->get('rand');
     $data['banners'] = Banner::leftJoin('event', 'event.event_id', '=', 'banner.event_id')
       ->leftJoin('blog', 'blog.blog_id', '=', 'banner.blog_id')
+      ->where('banner.stat', 'A')
       ->select('banner.name', 'banner.image', 'banner.link_to', 'blog.slug as blog_slug', 'event.slug as event_slug')->orderBy('position')->get();
     $data['adopts'] = Adopt::where('stat', AdoptStat::Available)
       ->orderByRaw("rand(".$rand.")")->limit(8)->get();

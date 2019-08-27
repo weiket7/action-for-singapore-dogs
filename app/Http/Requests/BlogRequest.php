@@ -16,6 +16,7 @@ class BlogRequest extends FormRequest
     return [
       'title' => 'required',
       'type' => 'required',
+      'posted_on'=>'required',
       'image_new' => 'required_without:blog_id',
     ];
   }
@@ -24,6 +25,7 @@ class BlogRequest extends FormRequest
     return [
       'title.required' => 'Title is required',
       'type.required' => 'Type is required',
+      'posted_on.required'=>'Posted On is required',
       'image_new.required_without' => 'Image is required',
     ];
   }
