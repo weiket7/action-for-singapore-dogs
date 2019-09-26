@@ -71,14 +71,43 @@
               </span>
             </div>
           </div>
-  
+
           <div class="col-md-6">
             <div class="form-group no-mb">
-              <label class="control-label">NRIC / FIN <span class="required">*</span></label>
-              <input type="text" name="identification_number" v-model="form.identification_number" class="form-control">
-              <span class="help-block error" v-if="errors.get('identification_number')">
-                @{{ errors.get('identification_number') }}
+              <label class="control-label">Gender <span class="required">*</span></label>
+              <div class="radio">
+                <label class="radio-inline">
+                  <input type="radio" v-model="form.gender" name="gender" value="M"> Male
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" v-model="form.gender" name="gender" value="F"> Female
+                </label>
+              </div>
+              <span class="help-block error" v-if="errors.get('gender')">
+                @{{ errors.get('gender') }}
               </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group no-mb">
+              <label class="control-label">Nationality <span class="required">*</span></label>
+              <input type="text" name="nationality" v-model="form.nationality" class="form-control">
+              <span class="help-block error" v-if="errors.get('nationality')">
+              @{{ errors.get('nationality') }}
+            </span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group no-mb">
+              <label class="control-label">If you are not Singaporean, how long have you been living in Singapore? <span class="required">*</span></label>
+              <input type="text" name="duration_in_sg" v-model="form.duration_in_sg" class="form-control">
+              <span class="help-block error" v-if="errors.get('duration_in_sg')">
+              @{{ errors.get('duration_in_sg') }}
+            </span>
             </div>
           </div>
         </div>
@@ -106,22 +135,7 @@
         </div>
         
         <div class="row">
-          <div class="col-md-6">
-            <div class="form-group no-mb">
-              <label class="control-label">Gender <span class="required">*</span></label>
-              <div class="radio">
-                <label class="radio-inline">
-                  <input type="radio" v-model="form.gender" name="gender" value="M"> Male
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" v-model="form.gender" name="gender" value="F"> Female
-                </label>
-              </div>
-              <span class="help-block error" v-if="errors.get('gender')">
-                @{{ errors.get('gender') }}
-              </span>
-            </div>
-          </div>
+
   
           <div class="col-md-6">
             <div class="form-group no-mb">
@@ -132,9 +146,7 @@
               </span>
             </div>
           </div>
-        </div>
-        
-        <div class="row">
+
           <div class="col-md-6">
             <div class="form-group no-mb">
               <label class="control-label">Address <span class="required">*</span></label>
@@ -144,6 +156,9 @@
               </span>
             </div>
           </div>
+        </div>
+        
+        <div class="row">
           
           <div class="col-md-6">
             <div class="form-group no-mb">

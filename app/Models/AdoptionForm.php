@@ -13,7 +13,8 @@ class AdoptionForm extends Model
 
   public function saveEnquiry($input, $browser) {
     $this->stat = AdoptionFormStat::Enquiry;
-    $this->identification_number = $input['identification_number'];
+    $this->nationality = $input['nationality'];
+    $this->duration_in_sg = $input['duration_in_sg'];
     $this->name = $input['name'];
     $this->email = $input['email'];
     $this->mobile = $input['mobile'];

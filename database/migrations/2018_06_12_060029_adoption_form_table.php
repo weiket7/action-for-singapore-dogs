@@ -14,6 +14,8 @@ class AdoptionFormTable extends Migration
       $table->increments('adoption_form_id');
       $table->char('stat', 1);
       $table->string('identification_number', 30);
+      $table->string('nationality', 50);
+      $table->string('duration_in_sg', 30);
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
