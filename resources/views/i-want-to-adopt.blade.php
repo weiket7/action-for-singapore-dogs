@@ -94,7 +94,7 @@
           <div class="col-md-6">
             <div class="form-group no-mb">
               <label class="control-label">Nationality <span class="required">*</span></label>
-              <input type="text" name="nationality" v-model="form.nationality" class="form-control">
+              <input type="text" name="nationality" v-model="form.nationality" maxlength="50" class="form-control">
               <span class="help-block error" v-if="errors.get('nationality')">
               @{{ errors.get('nationality') }}
             </span>
@@ -103,8 +103,8 @@
 
           <div class="col-md-6">
             <div class="form-group no-mb">
-              <label class="control-label">If you are not Singaporean, how long have you been living in Singapore? <span class="required">*</span></label>
-              <input type="text" name="duration_in_sg" v-model="form.duration_in_sg" class="form-control">
+              <label class="control-label">If you are not Singaporean, how long have you been living in Singapore?</label>
+              <input type="text" name="duration_in_sg" v-model="form.duration_in_sg" maxlength="30" class="form-control">
               <span class="help-block error" v-if="errors.get('duration_in_sg')">
               @{{ errors.get('duration_in_sg') }}
             </span>

@@ -13,9 +13,8 @@ class AdoptionFormTable extends Migration
     Schema::create('adoption_form', function (Blueprint $table) {
       $table->increments('adoption_form_id');
       $table->char('stat', 1);
-      $table->string('identification_number', 30);
       $table->string('nationality', 50);
-      $table->string('duration_in_sg', 30);
+      $table->string('duration_in_sg', 30)->nullable();
       $table->string('name', 50);
       $table->string('email', 50);
       $table->string('mobile', 20);
@@ -42,7 +41,7 @@ class AdoptionFormTable extends Migration
     DB::table('adoption_form')->insert([
       'adoption_form_id'=>1,
       'stat'=>AdoptionFormStat::Enquiry,
-      'identification_number'=>'S1234567G',
+      'nationality'=>'Singaporean',
       'name'=>'Aaron 6',
       'email'=>'alan@gmail.com',
       'mobile'=>'9666 6666',
@@ -57,7 +56,7 @@ class AdoptionFormTable extends Migration
     DB::table('adoption_form')->insert([
       'adoption_form_id'=>2,
       'stat'=>AdoptionFormStat::Application,
-      'identification_number'=>'S1234567G',
+      'nationality'=>'Singaporean',
       'name'=>'Aaron 6',
       'email'=>'alan@gmail.com',
       'mobile'=>'9666 6666',
@@ -73,7 +72,7 @@ class AdoptionFormTable extends Migration
     DB::table('adoption_form')->insert([
       'adoption_form_id'=>3,
       'stat'=>AdoptionFormStat::Agreement,
-      'identification_number'=>'S1234567G',
+      'nationality'=>'Singaporean',
       'name'=>'Alan 5',
       'email'=>'aaron@gmail.com',
       'mobile'=>'9555 5555',

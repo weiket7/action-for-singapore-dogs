@@ -1,9 +1,10 @@
 Name: {{ $adoption_form->name }}<br>
-NRIC / FIN: {{ $adoption_form->identification_number }}<br>
+Gender: {{ $adoption_form->gender == "M" ? "Male" : "Female" }}<br>
+Nationality: {{ $adoption_form->nationality }}<br>
+Duration in Singapore: {{ $adoption_form->duration_in_sg }}<br>
 Email: {{ $adoption_form->email }}<br>
 Mobile: {{ $adoption_form->mobile }}<br>
 Birthday: {{ \App\Helpers\ViewHelper::formatDate($adoption_form->birthday) }}<br>
-Gender: {{ $adoption_form->gender == "M" ? "Male" : "Female" }}<br>
 Address: {{ $adoption_form->address }}<br>
 Postal Code: {{ $adoption_form->postal }}<br>
 <br>
