@@ -8,6 +8,7 @@
           <th>Name</th>
           <th>Email</th>
           <th>Mobile</th>
+          <th>Interests</th>
           <th>Submitted On</th>
         </tr>
         </thead>
@@ -19,6 +20,7 @@
           </td>
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.mobile }}</td>
+          <td>{{ volunteer.interests.join(", ") }}</td>
           <td>{{ volunteer.created_on | formatDate}}</td>
         </tr>
         </tbody>

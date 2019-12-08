@@ -49,7 +49,7 @@ class BannerController extends Controller
         $target->save();
       }
     }
-    $data['banners'] = Banner::all();
+    $data['banners'] = Banner::orderBy('stat')->orderBy('position')->get();
     $data['home_banner_title'] = Page::where('slug', 'home-banner-title')->value('content');
     $data['home_banner_content'] = Page::where('slug', 'home-banner-content')->value('content');
     $data['banner_stats'] = BannerStat::$values;
