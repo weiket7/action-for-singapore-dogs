@@ -37,11 +37,19 @@
           <form-row>
             <label-component>Name</label-component>
             <static-text>{{ adoption_form.name }}</static-text>
-            
-            <label-component>NRIC / FIN</label-component>
-            <static-text>{{ adoption_form.identification_number }}</static-text>
+
+            <label-component>Gender</label-component>
+            <static-text>{{ adoption_form.gender | showGender }}</static-text>
           </form-row>
-          
+
+          <form-row>
+            <label-component>Nationality</label-component>
+            <static-text>{{ adoption_form.nationality }}</static-text>
+
+            <label-component>Duration in Singapore</label-component>
+            <static-text>{{ adoption_form.duration_in_sg }}</static-text>
+          </form-row>
+
           <form-row>
             <label-component>Email</label-component>
             <static-text>{{ adoption_form.email }}</static-text>
@@ -53,15 +61,12 @@
           <form-row>
             <label-component>Birthday</label-component>
             <static-text>{{ adoption_form.birthday | formatDate }}</static-text>
-            
-            <label-component>Gender</label-component>
-            <static-text>{{ adoption_form.gender | showGender }}</static-text>
+
+            <label-component>Address</label-component>
+            <static-text>{{ adoption_form.address }}</static-text>
           </form-row>
           
           <form-row>
-            <label-component>Address</label-component>
-            <static-text>{{ adoption_form.address }}</static-text>
-            
             <label-component>Postal</label-component>
             <static-text>{{ adoption_form.postal }}</static-text>
           </form-row>
