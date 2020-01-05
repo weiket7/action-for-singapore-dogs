@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Gifts" create_link="gift/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -45,7 +46,8 @@
     data() {
       return {
         gifts: {},
-        gift_stats: {}
+        gift_stats: {},
+        loading: true,
       }
     },
     methods: {
@@ -61,6 +63,7 @@
         .then(response=>{
           this.gifts = response.data.gifts;
           this.gift_stats = response.data.gift_stats;
+          this.loading = false;
         })
     }
   }

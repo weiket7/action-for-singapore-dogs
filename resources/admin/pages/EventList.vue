@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Events" create_link="event/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -33,7 +34,8 @@
     data() {
       return {
         events: [],
-        event_stats: {}
+        event_stats: {},
+        loading: true,
       }
     },
     created() {
@@ -41,6 +43,7 @@
         .then(response => {
           this.events = response.data.events;
           this.event_stats = response.data.event_stats;
+          this.loading = false;
         })
         .catch(this.onError);
     }

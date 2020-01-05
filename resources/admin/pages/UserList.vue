@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Users" create_link="user/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -29,12 +30,14 @@
     data() {
       return {
         users: [],
+        loading: true,
       }
     },
     created() {
       axios.get('api/user')
         .then(response => {
-          this.users = response.data
+          this.users = response.data;
+          this.loading = false;
         })
         .catch(error => {
           console.log(error);

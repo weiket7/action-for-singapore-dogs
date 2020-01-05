@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Banners" create_link="banner/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -63,7 +64,8 @@
         banners: {},
         banner_stats: {},
         home_banner_title: "",
-        home_banner_content: ""
+        home_banner_content: "",
+        loading: true,
       }
     },
     methods: {
@@ -81,6 +83,7 @@
           this.banner_stats = response.data.banner_stats;
           this.home_banner_title = response.data.home_banner_title;
           this.home_banner_content = response.data.home_banner_content;
+          this.loading = false;
         })
     }
   }

@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Donations">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -37,7 +38,8 @@
     data() {
       return {
         donations: {},
-        donation_stats: {}
+        donation_stats: {},
+        loading: true,
       }
     },
     created() {
@@ -46,6 +48,7 @@
           this.donations = response.data.donations;
           this.payment_methods = response.data.payment_methods;
           this.donation_stats = response.data.donation_stats;
+          this.loading = false;
         })
     }
   }

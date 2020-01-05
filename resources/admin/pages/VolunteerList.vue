@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Volunteers">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -38,7 +39,8 @@
     data() {
       return {
         volunteers: [],
-        volunteer_stats: []
+        volunteer_stats: [],
+        loading: true,
       }
     },
     created() {
@@ -46,6 +48,7 @@
         .then(response => {
           this.volunteers = response.data.volunteers;
           this.volunteer_stats = response.data.volunteer_stats;
+          this.loading = false;
         })
         .catch(error => {
           console.log(error);

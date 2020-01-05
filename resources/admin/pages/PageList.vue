@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Pages" create_link="page/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -27,12 +28,14 @@
     data() {
       return {
         pages: [],
+        loading: true,
       }
     },
     created() {
       axios.get('api/page')
         .then(response => {
           this.pages = response.data;
+          this.loading = false;
         })
         .catch(this.onError);
     }

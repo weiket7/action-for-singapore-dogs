@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Testimonials" create_link="testimonial/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -37,7 +38,8 @@
     data() {
       return {
         testimonials: {},
-        testimonial_stats: {}
+        testimonial_stats: {},
+        loading: true,
       }
     },
     created() {
@@ -45,6 +47,7 @@
         .then(response=>{
           this.testimonials = response.data.testimonials;
           this.testimonial_stats = response.data.testimonial_stats;
+          this.loading = false;
         })
     }
   }

@@ -1,9 +1,11 @@
 <template>
   <single-portlet title="Dogs" create_link="adopt/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
+          <th width="50px">#</th>
           <th width="80px">Status</th>
           <th>Name</th>
           <th>Gender</th>
@@ -12,6 +14,7 @@
         </thead>
         <tbody>
         <tr v-for="adopt in adopts">
+          <td>{{ adopt.adopt_id }}</td>
           <td>{{ adopt_stats[adopt.stat] }}</td>
           <td width="450px">
             <router-link v-bind:to="'/adopt/save/'+adopt.adopt_id">{{ adopt.name }}</router-link>
@@ -34,7 +37,8 @@
     data() {
       return {
         adopts: [],
-        adopt_stats: {}
+        adopt_stats: {},
+        loading: true,
       }
     },
     created() {
@@ -42,6 +46,7 @@
         .then(response => {
           this.adopts = response.data.adopts;
           this.adopt_stats = response.data.adopt_stats;
+          this.loading = false;
         })
         .catch(error => {
           console.log(error);

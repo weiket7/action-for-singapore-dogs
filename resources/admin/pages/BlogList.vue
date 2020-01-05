@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Blogs" create_link="blog/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -33,7 +34,8 @@
     data() {
       return {
         blogs: [],
-        blog_types: {}
+        blog_types: {},
+        loading: true,
       }
     },
     created() {
@@ -41,6 +43,7 @@
         .then(response => {
           this.blogs = response.data.blogs;
           this.blog_types = response.data.blog_types;
+          this.loading = false;
         })
         .catch(this.onError);
     }

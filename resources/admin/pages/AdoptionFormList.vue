@@ -1,6 +1,7 @@
 <template>
   <single-portlet title="Adoption Forms" create_link="adoption_form/save">
-    <div class="table-responsive">
+    <div class="m-loader m-loader--lg" style="width: 30px; display: inline-block;" v-if="loading"></div>
+    <div class="table-responsive" v-else>
       <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -37,7 +38,8 @@
     data() {
       return {
         adoption_forms: {},
-        adoption_form_stats: {}
+        adoption_form_stats: {},
+        loading: true,
       }
     },
     created() {
@@ -45,6 +47,7 @@
         .then(response=>{
           this.adoption_forms = response.data.adoption_forms;
           this.adoption_form_stats = response.data.adoption_form_stats;
+          this.loading = false;
         })
     }
   }
