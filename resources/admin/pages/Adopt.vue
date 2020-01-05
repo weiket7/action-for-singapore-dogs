@@ -90,10 +90,10 @@
 
           <form-row>
             <label-component>Description</label-component>
-            <textarea-component rows="7" v-model="adopt.desc" :error="errors.get('desc')"></textarea-component>
+            <textarea-component :rows="7" v-model="adopt.desc" :error="errors.get('desc')"></textarea-component>
 
             <label-component>History</label-component>
-            <textarea-component rows="7" v-model="adopt.history" :error="errors.get('history')"></textarea-component>
+            <textarea-component :rows="7" v-model="adopt.history" :error="errors.get('history')"></textarea-component>
           </form-row>
 
           <form-row>
@@ -166,6 +166,21 @@
           </form-row>
         </form>
       </tab>
+      <tab :name="'Import into adoptadog'">
+          <img :src="'assets/images/adopts/'+adopt.image" style="max-height: 150px;">
+          <br><br>
+          <textarea readonly rows="10" class="form-control" id="importIntoAdoptadog" @click="copy">
+Num: {{ adopt.adopt_id}}
+Name: {{ adopt.name }}
+Birthday: {{ adopt.birthday }}
+Gender: {{ adopt.gender }}
+Breed: {{ adopt.breed }}
+HDB: {{ adopt.hdb == 0 ? 'N' : 'Y' }}
+Description: {{ adopt.desc }}
+History: {{ adopt.history }}
+          </textarea>
+        </form-row>
+      </tab>
     </tabs>
   </single-portlet>
 </template>
@@ -198,7 +213,7 @@
       tabs() {
         let tabs = ['General'];
         if (! this.is_create) {
-          tabs = ['General', 'Adopter', 'Rescuer', 'Foster'];
+          tabs = ['General', 'Adopter', 'Rescuer', 'Foster', 'Import into adoptadog'];
         }
         return tabs;
       },
@@ -279,6 +294,10 @@
             this.$router.push('/adopt');
           })
           .catch(this.onError);
+      },
+      copy() {
+        document.getElementById("importIntoAdoptadog").select();
+        document.execCommand("copy");
       }
     },
     created() {

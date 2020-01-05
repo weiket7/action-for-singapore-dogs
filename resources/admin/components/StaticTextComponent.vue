@@ -5,8 +5,5 @@
 <script>
   export default {
     name: "static-text",
-    props: {
-      value: {type: String, required: false},
-    }
   }
 </script>
