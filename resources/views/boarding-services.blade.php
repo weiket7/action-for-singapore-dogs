@@ -78,7 +78,8 @@
     S$30 for shampooing and cleaning of ears<br>
     S$30 for deticking and defleaing (needed only if dog has a large number of them at point of admission)<br>
     S$10 for additional Frontline Plus spot-on (anti flea/tick application effective for 1 month)<br>
-    S$50 for transport (2 way trip for weekdays, $60 for Saturdays, $70 for Sundays)
+    $60 for transport (2-way)<br>
+    Additional $20 for eve of CNY
     
     <h3>Boarding Procedure</h3>
   
