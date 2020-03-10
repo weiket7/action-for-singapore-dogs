@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ asset("assets/css/jquery.bxslider.css") }}">
   <link rel="stylesheet" href="{{ asset("assets/css/jquery-ui.min.css") }}">
-  <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}?v=20190406">
+  <link rel="stylesheet" href="{{ asset("assets/css/custom.css") }}?v=20200310">
   
   <script src="{{ asset("assets/js/vendor/modernizr-2.6.2.min.js") }}"></script>
   <!--[if lt IE 9]>
@@ -252,10 +252,10 @@
   var base_url = '{{ url('/') }}'
 </script>
 
-<script src="{{ asset("assets/js/compressed.js" )}}?v=20190313.1"></script>
-<script src="{{ asset("assets/js/main.js" )}}?v=20190313.1"></script>
-<script src="{{ asset("assets/js/vendor.js" ) }}?v=20190313.1"></script>
-<script src="{{ asset("assets/js/app.js" ) }}?v=20190704"></script>
+<script src="{{ asset("assets/js/compressed.js" )}}?v=20200310"></script>
+<script src="{{ asset("assets/js/main.js" )}}?v=20200310"></script>
+<script src="{{ asset("assets/js/vendor.js" ) }}?v=20200310"></script>
+<script src="{{ asset("assets/js/app.js" ) }}?v=20200310"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62167634-3"></script>
 <script>

@@ -14,8 +14,8 @@ class DonationRequest extends FormRequest
       'mobile'=>'required',
       'amount'=>'required|numeric|min:10',
       'payment_method'=>'required',
-      'ref_no'=>'required_if:payment_method,B,Q,N',
-      'transfer_date'=>'required_if:payment_method,B,Q,N'
+      'ref_no'=>'required_if:payment_method,B,Q,N,D',
+      'transfer_date'=>'required_if:payment_method,B,Q,N,D'
     ];
   }
   

@@ -130,6 +130,12 @@
                     <img src="{{ asset('assets/images/paynow-to-action-for-singapore-dogs-uen.jpg') }}">
                     <br><small>(screenshot from OCBC app)</small>
                   </div>
+                <div v-if="donation.payment_method == 'D'" class="col-sm-offset-3 col-sm-9">
+                    Please view more information and donate at:<br>
+                    <a href="https://deeda.care/de/foundation?foundationid=8edcd2eb-ce17-42e3-b0ad-b7c817edf3a3" target="_blank">https://deeda.care/de/foundation?foundationid=8edcd2eb-ce17-42e3-b0ad-b7c817edf3a3
+                    <img src="{{ asset('assets/images/deeda.png') }}"></a>
+                    <br><small>(screenshot from Deeda)</small>
+                </div>
                 </div>
                 
                 <div class="form-group" v-show="showRefNo">
@@ -142,7 +148,7 @@
                   </div>
                 </div>
                 
-                <div class="form-group" v-show="showTransferDate">
+                <div class="form-group" v-show="showRefNo">
                   <label for="transfer_date" class="col-sm-3 control-label">Transfer Date</label>
                   <div class="col-sm-9">
                     <input type="text" id="transfer_date" :value="default_date" class="form-control datepicker" readonly>
@@ -189,7 +195,7 @@
         success: false,
         loading: false,
         errors: new Errors(),
-        payment_methods: { "N": "PayNow", "B": "Bank Transfer", "G": "Giro", "Q": "Cheque", "P": "PayPal"}
+        payment_methods: { "N": "PayNow", "B": "Bank Transfer", "G": "Giro", "Q": "Cheque", "P": "PayPal", "D": "Deeda"}
       },
       methods: {
         chooseAmount: function(amount) {
@@ -229,11 +235,8 @@
       },
       computed: {
         showRefNo: function() {
-          return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
+          return this.donation.payment_method === 'B' || this.donation.payment_method === 'Q' || this.donation.payment_method === "N" || this.donation.payment_method === "D";
         },
-        showTransferDate: function() {
-          return this.donation.payment_method == 'B' || this.donation.payment_method == 'Q' || this.donation.payment_method == "N";
-        }
       },
       mounted: function() {
         var vue = this
