@@ -37,7 +37,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+    { path: '/', name: 'Dashboard', component: AdoptList },
   
     { path: '/adopt', name: 'AdoptList', component: AdoptList },
     { path: '/adopt/save', name: 'AddAdopt', component: Adopt },

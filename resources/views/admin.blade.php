@@ -744,7 +744,7 @@
   <!--begin::Page Snippets -->
   <script src="./metronic/app/js/dashboard.js" type="text/javascript"></script>
   <script src="./bootstrap-confirmation.min.js" type="text/javascript"></script>
-  <script src="{{ asset("assets/js/admin-vue.js") }}?v=20190704"></script>
+  <script src="{{ asset("assets/js/admin-vue.js") }}?v=20200926"></script>
   <!--end::Page Snippets -->
 </body>
 <!-- end::Body -->

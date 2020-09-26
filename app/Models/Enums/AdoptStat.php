@@ -1,15 +1,20 @@
 <?php namespace App\Models\Enums;
 
-abstract class AdoptStat {
-  const Available = 'A';
-  const Adopted = 'D';
-  const Hidden = 'H';
+abstract class AdoptStat
+{
+    const Available = 'A';
+    const LongTermFostering = 'F';
+    const Adopted = 'D';
+    const PassedAway = 'P';
+    const UnavailableHealth = 'H';
+    const UnavailableTemperament = 'T';
   
-  static $values = array(
-    self::Available=>'Available',
-    self::Adopted=>'Adopted',
-    self::Hidden=>'Hidden',
-  );
+    public static $values = array(
+      self::Available=>'Available',
+      self::LongTermFostering=>'Long Term Fostering',
+      self::Adopted=>'Adopted',
+      self::PassedAway=>'Passed Away',
+      self::UnavailableHealth=>'Unavailable (Health)',
+      self::UnavailableTemperament=>'Unavailable (Temperament)',
+    );
 }
-
-

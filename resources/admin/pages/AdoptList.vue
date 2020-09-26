@@ -3,11 +3,17 @@
     <div class="row">
       <div class="col-md-2"><static-text>Status</static-text></div>
       <div class="col-md-4">
-        <select class="form-control m-input" @change="filterAdopts($event.target.value)">
+        <select class="form-control m-input" v-model="selectedStatus">
           <option value="All">All</option>
-          <option value="A">Available</option>
-          <option value="D">Adopted</option>
+          <option v-for="(key, value) in adopt_stats" :value="value" :key="key">{{ key }}</option>
         </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2"><static-text>Name</static-text></div>
+      <div class="col-md-4">
+        <input type="text" class="form-control" v-model="searchName"/>
       </div>
     </div>
     <br>
@@ -18,7 +24,7 @@
         <thead>
         <tr>
           <th width="50px">#</th>
-          <th width="80px">Status</th>
+          <th width="220px">Status</th>
           <th>Name</th>
           <th>Gender</th>
           <th>Age</th>
@@ -48,7 +54,8 @@
     name: "adopt-list",
     data() {
       return {
-        selectedStatus: null,
+        selectedStatus: 'All',
+        searchName: null,
         filteredAdopts: [],
         adopts: [],
         adopt_stats: {},
@@ -56,15 +63,29 @@
       }
     },
     methods: {
-      filterAdopts(selectedStatus) {
-        if(selectedStatus === 'All') {
-          this.filteredAdopts = this.adopts;
-          return;
+      filterAdopts() {
+        let filteredAdopts = this.adopts;
+        if(this.selectedStatus !== 'All') {
+          filteredAdopts = filteredAdopts.filter(adopt => {
+            return adopt.stat === this.selectedStatus;
+          });
         }
-        this.filteredAdopts = this.adopts.filter((adopt) => {
-          return adopt.stat === selectedStatus;
-        });
+        if(this.searchName) {
+          filteredAdopts = filteredAdopts.filter(adopt => {
+            console.log(adopt.name + " " + adopt.name.indexOf(this.searchName));
+            return adopt.name.toLowerCase().indexOf(this.searchName.toLowerCase()) >= 0;
+          });
+        }
+        this.filteredAdopts = filteredAdopts;
       }
+    },
+    watch: {
+      searchName: function() {
+        this.filterAdopts();
+      },
+      selectedStatus: function() {
+        this.filterAdopts();
+      },
     },
     created() {
       axios.get('api/adopt')

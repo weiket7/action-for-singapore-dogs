@@ -8,7 +8,7 @@
             <textbox-component v-model="adopt.name" :error="errors.get('name')"></textbox-component>
 
             <label-component required>Status</label-component>
-            <radio-component v-model="adopt.stat" :options="{ 'A': 'Available', 'D': 'Adopted' }" :error="errors.get('stat')" v-if="!is_create"></radio-component>
+            <select-component v-model="adopt.stat" :options="adopt_stats" :error="errors.get('stat')" v-if="!is_create"></select-component>
             <static-text v-else>Available</static-text>
           </form-row>
 
@@ -199,6 +199,7 @@ History: {{ adopt.history }}
     data() {
       return {
         adopt: { breed: "Local Cross"},
+        adopt_stats: {},
         rescuers: [{}],
         fosters: [{}],
         adopters: [{}],
@@ -305,6 +306,7 @@ History: {{ adopt.history }}
         axios.get('api/adopt/get/' + this.$route.params.adopt_id)
           .then(response => {
             this.adopt = response.data.adopt;
+            this.adopt_stats = response.data.adopt_stats;
             this.fosters = response.data.fosters;
             this.adopters = response.data.adopters;
             this.rescuers = response.data.rescuers;
