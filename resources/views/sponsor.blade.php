@@ -26,7 +26,7 @@
     You can also choose to play an active role by visiting your dog after 3 months of sponsorship and soon your sponsored dog will experience plenty of positive experiences with humans.
     <br><br>
     
-    As a sponsor, we keep you updated on the details of your sponsored dog(s).
+    Your contribution will be transferred to another needy dog at our Adoption & Rescue Centre if your sponsored dog is adopted or has passed away.
     <br><br>
     
     You receive:
