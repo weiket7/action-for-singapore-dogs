@@ -28,7 +28,7 @@
             <br>
       
             <i class="fas fa-home"></i>
-            <span>{{ $adopt->hdb == 'N' ? 'Not' : '' }}HDB Approved</span>
+            <span>{{ $adopt->hdb == 'N' ? 'Not' : '' }} HDB Approved</span>
           </p>
         </div>
       </div>
@@ -89,22 +89,30 @@
       
       <hr>
       
-      <h3 class="text-center no-mb">Questionnaire</h3>
+      <h3 class="text-center no-mb">Terms and Conditions</h3>
       
-      @foreach($answers as $answer)
-        <div>
-          @if($answer->is_header)
-            <h4 class="adoption-form-header text-center">{{ $answer->question }}</h4>
-          @else
-            <div class="form-group">
-              <label class="col-sm-4 control-label">{{ $answer->question }}</label>
-              <div class="col-sm-8">
-                <p class="form-control-static">{{ $answer->answer }}</p>
-              </div>
-            </div>
-          @endif
-        </div>
-      @endforeach
+      <p>I, the Adopter, agree to abide by the following conditions:</p>
+      <p>1. I understand that this is a permanent adoption. I am fully responsible for and must be committed to the dog's health and
+      welfare throughout his/her entire life.</p>
+      <p>2. I must allow home visits by rehoming personnel in order for them to help with potential problems associated with new
+      adoptions and to assist with the adaptability of both the dog and myself.</p>
+      <p>3. The dog must be vaccinated, microchipped and licensed. Puppies must receive 3 vaccinations in their first year, each to be
+      carried out a month apart. This must be followed by annual vaccinations or as advised by the vet. (The cost of microchipping
+      and the cost of vaccinations received up to the point of adoption are covered by the adoption fee).</p>
+      <p>4. The dog must be sterilized. Sterilization must be done when the dog is at least six months of age, regardless of gender. (The
+      cost of sterilization is covered by the adoption fee).</p>
+      <p>5. I must contact and be willing to work with rehoming personnel on common problems associated with the introduction of the
+      dog into his/her new environment.</p>
+      <p>6. I must immediately inform ASD of any change in address, ownership or change in circumstances that may affect the mental
+      or physical well being of the dog.</p>
+      <p>7. If I intend to leave Singapore permanently, I will bring the dog along with me. At no time will I attempt to absolve my
+      responsibility by abandoning the dog.</p>
+      <p>8. In the unlikely event that I am considering giving up the dog or euthanizing him/her, I must contact ASD prior to making
+      such a decision and allow ASD the discretion of rehoming the dog or making any other arrangements they deem fit.</p>
+      <p>9. Should there be evidence of abuse (i.e. extreme malnutrition, unnecessary beatings, ill treatment etc.) and I remain adamant
+      about maintaining this current treatment, ASD reserves the right to take possession of the dog and to make any decisions they
+      deem fit. </p>
+
       
       <div class="row">
         <div class="col-md-12 text-center">
