@@ -71,7 +71,7 @@
                 <p>
                   You can sponsor @{{ adopt.name }} by making a one-time donation using cheque or giro.
                   <br><br>
-                  Please download and fill in this <a href="{{ url('asd-sponsorship-form.pdf') }}" target="_blank">sponsorship form</a>.
+                  Please download and fill in this <a href="{{ url('action-for-singapore-dogs-sponsorship-form') }}" target="_blank">sponsorship form</a>.
                   <br><br>
                   Following, please mail it to:<br>
                   3 Jambol Place<br>
