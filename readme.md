@@ -30,9 +30,6 @@ php artisan serve
 
 http://127.0.0.1:8000/
 
-# Frontend
+## Laravel Mix
 
-npm i  
-npm run watch
-
-http://localhost/action-for-singapore-dogs/public/
+Couldn't `npm i` in local, switch back to normal Javascript instead

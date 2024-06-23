@@ -36,7 +36,8 @@ function updateHeartHeader() {
   } else {
     $("#heart_icon").removeClass("highlight");
   }
-  $("#link-i-want-to-adopt").attr("href", window.base_url+"/i-want-to-adopt?hearts=" + hearts.join(","))
+  $("#link-i-want-to-adopt").attr("href", window.base_url+"/i-want-to-adopt?hearts=" + hearts.join(",")); //update header heart
+  $("#link-i-want-to-adopt2").attr("href", window.base_url+"/i-want-to-adopt?hearts=" + hearts.join(",")); //update adopt-view heart
 }
 
 function objectIsEmpty(object) {

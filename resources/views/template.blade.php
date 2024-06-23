@@ -133,9 +133,9 @@
                   <li>
                     <a href="{{ url('pages/adoption-rescue-centre-arc') }}" :data-target="'coming-soon'">Adoption & Rescue Centre (ARC)</a>
                   </li>
-                  <li>
+                  {{--<li>
                     <a href="{{ url('boarding-services') }}" :data-target="'coming-soon'">Boarding Services</a>
-                  </li>
+                  </li>--}}
                   {{--<li>
                     <a href="{{ url('pages/media') }}" :data-target="'coming-soon'">Media</a>
                   </li>--}}
@@ -254,8 +254,21 @@
 
 <script src="{{ asset("assets/js/compressed.js" )}}?v=20200310"></script>
 <script src="{{ asset("assets/js/main.js" )}}?v=20200310"></script>
-<script src="{{ asset("assets/js/vendor.js" ) }}?v=20200310"></script>
-<script src="{{ asset("assets/js/app.js" ) }}?v=20200310"></script>
+
+<script src="{{ asset("js/jquery.bxslider.min.js") }}"></script>
+<script src="{{ asset("js/jquery-ui.min.js") }}"></script>
+<script src="{{ asset("js/axios.min.js") }}"></script>
+<script src="{{ asset("js/es6-promise.min.js") }}"></script>
+<script src="{{ asset("js/es6-promise.auto.min.js") }}"></script>
+<script src="{{ asset("js/lodash.min.js") }}"></script>
+<script src="{{ asset("js/moment.min.js") }}"></script>
+<script src="{{ asset("js/vue.js") }}"></script>
+
+<script src="{{ asset("js/errors.js") }}"></script>
+<script src="{{ asset("js/filters.js") }}"></script>
+<script src="{{ asset("js/heart.js") }}"></script>
+<script src="{{ asset("js/adopt-item.js") }}"></script>
+<script src="{{ asset("js/volunteer-field.js") }}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62167634-3"></script>
 <script>
