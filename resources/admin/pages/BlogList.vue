@@ -7,7 +7,8 @@
         <tr>
           <th width="150px">Type</th>
           <th>Name</th>
-          <th>Posted On</th>
+          <th width="150px">Posted On</th>
+          <th>Status</th>
         </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@
             <router-link v-bind:to="'/blog/save/'+blog.blog_id">{{ blog.title }}</router-link>
           </td>
           <td>{{ blog.posted_on | formatDate }}</td>
+          <td>{{ blog.archive ? 'Archived' : '' }}</td>
         </tr>
         </tbody>
       </table>

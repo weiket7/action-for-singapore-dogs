@@ -64,4 +64,10 @@ class BlogController extends Controller {
     
     return $data;
   }
+  
+  public function archive(Request $request, $blog_id) {
+    $blog = Blog::where('blog_id', $blog_id)->first();
+    $blog->archive = !$blog->archive;
+    $blog->save();
+  }
 }

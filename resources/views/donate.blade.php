@@ -127,15 +127,9 @@
                   <div v-if="donation.payment_method == 'N'" class="col-sm-offset-3 col-sm-9">
                     Please PayNow to UEN:<br>
                     T02SS0132E<br>
-                    <img src="{{ asset('assets/images/paynow-to-action-for-singapore-dogs-uen.jpg') }}">
+                    <img src="{{ asset('assets/images/action-for-singapore-dogs-paynow.jpg') }}">
                     <br><small>(screenshot from OCBC app)</small>
                   </div>
-                <div v-if="donation.payment_method == 'D'" class="col-sm-offset-3 col-sm-9">
-                    Please view more information and donate at:<br>
-                    <a href="https://deeda.care/de/foundation?foundationid=8edcd2eb-ce17-42e3-b0ad-b7c817edf3a3" target="_blank">https://deeda.care/de/foundation?foundationid=8edcd2eb-ce17-42e3-b0ad-b7c817edf3a3
-                    <img src="{{ asset('assets/images/deeda.png') }}"></a>
-                    <br><small>(screenshot from Deeda)</small>
-                </div>
                 </div>
                 
                 <div class="form-group" v-show="showRefNo">
@@ -195,7 +189,7 @@
         success: false,
         loading: false,
         errors: new Errors(),
-        payment_methods: { "N": "PayNow", "B": "Bank Transfer", "G": "Giro", "Q": "Cheque", "P": "PayPal", "D": "Deeda"}
+        payment_methods: { "N": "PayNow", "B": "Bank Transfer", "G": "Giro", "Q": "Cheque", "P": "PayPal"}
       },
       methods: {
         chooseAmount: function(amount) {

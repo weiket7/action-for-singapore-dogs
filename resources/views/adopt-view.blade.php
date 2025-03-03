@@ -1,6 +1,6 @@
 <?php
   $meta_desc = $adopt->name. ' is a '.($adopt->gender=='M'?'male':'female')
-    .' '.($adopt->hdb?'hdb approved':'non hdb approved').' dog available for adoption from Action for Singapore Dogs.'
+    .' '.($adopt->hdb?'hdb approved':'non hdb approved').' dog available for adoption from Action for Singapore Dogs.';
 ?>
 
 @extends('template', [
@@ -18,6 +18,11 @@
           <div class="col-sm-6">
             <div class="images">
               <img src="{{ url('assets/images/adopts/'.$adopt->image) }}" class="attachment-shop_single wp-post-image" alt="" title="">
+              <br><br>
+
+              @if($adopt->image2)
+                <img src="{{ url('assets/images/adopts/'.$adopt->image2) }}" class="attachment-shop_single wp-post-image" alt="" title="">
+              @endif
             </div>
           </div>
           
@@ -45,7 +50,9 @@
             </div>
 
             <ul class="nav nav-tabs mt-20" role="tablist">
-              <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Adopt</a></li>
+              @if(isset($is_sponsor) == false || $is_sponsor == false)
+                <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Adopt</a></li>
+              @endif
               <li><a href="#tab2" role="tab" data-toggle="tab">Sponsor</a></li>
             </ul>
             
@@ -69,13 +76,12 @@
               </div>
               <div class="tab-pane fade" id="tab2">
                 <p>
-                  You can sponsor @{{ adopt.name }} by making a one-time donation using cheque or giro.
+                  You can sponsor @{{ adopt.name }} by making a one-time donation using cheque, bank transfer, PayNow, Paypal or set up a GIRO for monthly payments.
                   <br><br>
-                  Please download and fill in this <a href="{{ url('action-for-singapore-dogs-sponsorship-form') }}" target="_blank">sponsorship form</a>.
-                  <br><br>
-                  Following, please mail it to:<br>
-                  3 Jambol Place<br>
-                  Singapore 119330
+                  Please download and fill in the <a href="{{ url('action-for-singapore-dogs-sponsorship-form.pdf') }}" target="_blank">sponsorship form</a> and mail the form to: 
+                  <br>
+                  48 Thomson Terrace<br>
+                  Singapore 574579
                 </p>
               
               </div>

@@ -8,7 +8,7 @@
     <div :id="'image-' + name">
       <img :src="'assets/images/'+folder+'/'+src" v-if="src" style="max-height: 150px"/>
     </div>
-
+    <button type="button" class="btn btn-secondary" @click="deleteImage" v-if="canDelete && value != null">Delete</button>
   </div>
 </template>
 
@@ -20,7 +20,8 @@
       value: { required: false },
       error: { type: String, required: false },
       src: { required: false },
-      folder: { required: false }
+      folder: { required: false },
+      canDelete: { type: Boolean, required: false, default: false },
     },
     methods: {
       updateValue: function (e) {
@@ -37,6 +38,9 @@
         reader.readAsDataURL(file);
 
         this.$emit('update-image', file);
+      },
+      deleteImage() {
+        this.$emit('update-image', null);
       }
     }
   }

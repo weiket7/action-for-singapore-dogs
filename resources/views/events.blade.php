@@ -56,7 +56,7 @@
       <!-- sidebar -->
       <div class="col-sm-5 col-md-4 col-lg-4">
         <div class="widget">
-          <h3 class="widget-title">Type</h3>
+          {{-- <h3 class="widget-title">Type</h3>
           <div class="checkbox">
             <label>
               <input type="checkbox" v-model="type" name="type" value="A">
@@ -76,7 +76,7 @@
             </label>
           </div>
         </div>
-        <br>
+        <br> --}}
   
         <div class="widget">
           <h3 class="widget-title">Showing</h3>

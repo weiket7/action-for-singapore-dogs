@@ -23,10 +23,19 @@ class AdoptController extends Controller
             $adopt = Adopt::find($request->get('adopt_id'));
         }
         $adopt_id = $adopt->saveAdopt(BackendHelper::processInput($request->all()));
-        if ($request->image_new) {
+        if ($request->image && is_string($request->image) == false) {
             $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
-            $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image_new);
+            $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image);
             $adopt->image = $image_name;
+            $adopt->save();
+        }
+        if($request->image2 == null) {
+            $adopt->image2 = null;
+            $adopt->save();
+        } else if ($request->image2 && is_string($request->image2) == false) {
+            $image_name = $adopt->slug."-".Carbon::now()->format("YmdHis");
+            $image_name = BackendHelper::uploadImage("adopts", $image_name, $request->image2);
+            $adopt->image2 = $image_name;
             $adopt->save();
         }
         return $adopt_id;

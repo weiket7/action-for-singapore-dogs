@@ -31,7 +31,7 @@ class VolunteerRequest extends FormRequest
       'birthday.required' => 'Birthday is required',
       'gender.required' => 'Gender is required',
       'occupation.required' => 'Occupation is required',
-      'availability.required' => 'Amount of time you can afford is required',
+      'availability.required' => 'Availability is required',
       'interests.required' => 'Interest(s) is required',
     ];
   }

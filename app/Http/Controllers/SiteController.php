@@ -227,27 +227,45 @@ class SiteController extends Controller
         return view('boarding-form');
     }
   
-    public function sponsor()
+    public function sponsor(Request $request, $current_page = 1)
     {
-        return view('sponsor');
+        if (! $request->session()->get('rand')) {
+            $request->session()->put('rand', rand());
+        }
+        $page_limit = 24;
+        $offset = ($current_page-1)*$page_limit;
+        $rand = $request->session()->get('rand');
+        $data['adopts'] = Adopt::whereIn('stat', [AdoptStat::Sponsor])
+            ->orderByRaw("rand(".$rand.")")->skip($offset)->limit($page_limit)->get();
+        $data['adopt_count'] = Adopt::whereIn('stat', [AdoptStat::Sponsor])->count();
+        $data['adopts_per_page'] = $page_limit;
+        $data['contents'] = Page::getContents();
+        return view('sponsor', $data);
+    }
+
+    public function sponsorDog(Request $request, $slug)
+    {
+        $data['adopt'] =  Adopt::where('slug', $slug)->where('stat', AdoptStat::Sponsor)->first();
+        $data['is_sponsor'] = true;
+        return view('adopt-view', $data);
     }
   
     public function news()
     {
-        $data['posts'] = Blog::where('type', BlogType::News)->orderBy('posted_on', 'desc')->get();
+        $data['posts'] = Blog::where('type', BlogType::News)->where('archive', 0)->orderBy('posted_on', 'desc')->get();
         $data['type'] = 'News';
         return view('blog', $data);
     }
     public function goneToLovingHomes()
     {
-        $data['posts'] = Blog::where('type', BlogType::GoneToLovingHomes)->orderBy('posted_on', 'desc')->get();
+        $data['posts'] = Blog::where('type', BlogType::GoneToLovingHomes)->where('archive', 0)->orderBy('posted_on', 'desc')->get();
         $data['type'] = 'Gone to Loving Homes';
         return view('blog', $data);
     }
-    public function dogsInNeed()
+    public function inLovingMemory()
     {
-        $data['posts'] = Blog::where('type', BlogType::DogsInNeed)->orderBy('posted_on', 'desc')->get();
-        $data['type'] = 'Dogs In Need';
+        $data['posts'] = Blog::where('type', BlogType::InLovingMemory)->where('archive', 0)->orderBy('posted_on', 'desc')->get();
+        $data['type'] = 'In Loving Memory';
         return view('blog', $data);
     }
   

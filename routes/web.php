@@ -11,6 +11,7 @@ Route::get('dogs-adoption-drive', 'SiteController@adoptionDrive');
 Route::get('gift-shop', 'SiteController@giftShop');
 Route::get('boarding-services', 'SiteController@boardingServices');
 Route::get('sponsor', 'SiteController@sponsor');
+Route::get('sponsor/{slug}', 'SiteController@sponsorDog');
 Route::get('dogs-for-adoption', 'SiteController@dogsForAdoption');
 Route::get('adopt', 'SiteController@dogsForAdoption');
 Route::get('adopt-a-dog', 'SiteController@dogsForAdoption');
@@ -20,7 +21,7 @@ Route::get('adopt/{slug}', 'SiteController@adopt');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('blog/news', 'SiteController@news');
 Route::get('blog/gone-to-loving-homes', 'SiteController@goneToLovingHomes');
-Route::get('blog/dogs-in-need', 'SiteController@dogsInNeed');
+Route::get('blog/in-loving-memory', 'SiteController@inLovingMemory');
 Route::get('blog/post/{slug}', 'SiteController@post');
 Route::get('pages/{slug}', 'SiteController@pages');
 Route::get('i-want-to-adopt', 'SiteController@iWantToAdopt');
@@ -115,6 +116,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('api/blog/get/{id}', 'BlogController@get');
     Route::post('api/blog/save/', 'BlogController@save');
     Route::post('api/blog/save/{id}', 'BlogController@save');
+    Route::post('api/blog/archive/{id}', 'BlogController@archive');
   
     Route::get('api/banner', 'BannerController@all');
     Route::post('api/banner', 'BannerController@all');

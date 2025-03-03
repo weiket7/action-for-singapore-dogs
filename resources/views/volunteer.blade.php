@@ -7,17 +7,80 @@
   <div id="app" class="container content">
     <div class="row">
       <div class="col-md-10 col-md-offset-1 text-center">
-        <h2 class="section_header bold">Be A
-          <span class="highlight">Volunteer</span>
+        <h2 class="section_header bold">
+          Be A Volunteer
         </h2>
       </div>
     </div>
     <div class="row mt-20">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <!--<h2 class="black highlight">Donator</h2>-->
         <p>
           {!! nl2br($contents['Volunteer Content'])  !!}
         </p>
+        <br><br>
+
+        <div class="row text-center">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'rehoming'">
+            <img src="assets/images/rehoming.webp" class="img-rounded">
+            <br>Rehoming
+          </div>
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'fostering'">
+            <img src="assets/images/fostering.webp" class="img-rounded">
+            <br>Fostering
+          </div>
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'volunteer'">
+            <img src="assets/images/volunteer.webp" class="img-rounded">
+            <br>Volunteer at ASD Canine Rehoming Centre (ACRC)
+          </div>
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'publicity'">
+            <img src="assets/images/fund-raising.webp" class="img-rounded">
+            <br>Fund Raising & Publicity
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'logistics'">
+            <img src="assets/images/logistics.webp" class="img-rounded">
+            <br>Logistics & Transport
+          </div>
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'students'">
+            <img src="assets/images/students.webp" class="img-rounded">
+            <br>For Students
+          </div>
+          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'corporate'">
+            <img src="assets/images/corporate.webp" class="img-rounded">
+            <br>For Corporate Volunteering
+          </div>
+        </div>
+
+        <div class="mt-10 mb-20 text-center">(Click on the image to learn more)</div>
+        <div class="row">
+          <div class="col-md-12">
+            <div v-if="selectedActivity == 'rehoming'">
+              {!! nl2br($contents['Volunteer Rehoming']) !!}
+            </div>
+            <div v-if="selectedActivity == 'fostering'">
+              {!! nl2br($contents['Volunteer Fostering']) !!}
+            </div>
+            <div v-if="selectedActivity == 'volunteer'">
+              {!! nl2br($contents['Volunteer Volunteer']) !!}
+            </div>
+            <div v-if="selectedActivity == 'fund-raising'">
+              {!! nl2br($contents['Volunteer Fund Raising']) !!}
+            </div>
+            <div v-if="selectedActivity == 'logistics'">
+              {!! nl2br($contents['Volunteer Logistics']) !!}
+            </div>
+            <div v-if="selectedActivity == 'students'">
+              {!! nl2br($contents['Volunteer Students']) !!}
+            </div>
+            <div v-if="selectedActivity == 'corporate'">
+              {!! nl2br($contents['Volunteer Corporate']) !!}
+            </div>
+          </div>
+        </div>
+        <br>
+
         <form @submit.prevent="onSubmit()" class="donator-form topmargin_30 form-horizontal" id="donatorform" method="post" action="">
           <volunteer-field name="Name" :error="errors.get('name')" :required="true">
             <input type="text" v-model="volunteer.name" maxlength="50" class="form-control" autofocus>
@@ -48,16 +111,19 @@
             <input type="text" v-model="volunteer.occupation" maxlength="100" class="form-control">
           </volunteer-field>
           
-          <volunteer-field name="Amount of time you can afford" :error="errors.get('availability')" :required="true">
-            <input type="text" v-model="volunteer.availability" maxlength="100" class="form-control">
+          <volunteer-field name="Availability" :error="errors.get('availability')" :required="true">
+            <label class="radio-inline">
+              <input type="radio" v-model="volunteer.availability" name="availability" value="Weekday"> Weekdays only
+            </label>
+            <label class="radio-inline">
+              <input type="radio" v-model="volunteer.availability" name="availability" value="Weekend"> Weekends only
+            </label>
+            <label class="radio-inline">
+              <input type="radio" v-model="volunteer.availability" name="availability" value="Flexible"> Flexible
+            </label>
           </volunteer-field>
           
           <volunteer-field name="I'm interested in" :error="errors.get('interests')" :required="true">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" v-model="volunteer.interests" value="Rescuing"> Rescuing
-              </label>
-            </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox" v-model="volunteer.interests" value="Rehoming"> Rehoming
@@ -70,22 +136,27 @@
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" v-model="volunteer.interests" value="Volunteering at ARC"> Volunteer at Adoption & Rescue Centre (ARC)
+                <input type="checkbox" v-model="volunteer.interests" value="Volunteering at ACRC"> Volunteer at ASD Canine Rehoming Centre (ACRC)
               </label>
             </div>
             <div class="checkbox">
               <label>
-                <input type="checkbox" v-model="volunteer.interests" value="Publicity"> Publicity
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" v-model="volunteer.interests" value="Fund Raising & Events"> Fund Raising & Events
+                <input type="checkbox" v-model="volunteer.interests" value="Fund Raising & Publicity"> Fund Raising & Publicity
               </label>
             </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox" v-model="volunteer.interests" value="Logistics"> Logistics & Transport
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="For Students"> For Students
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="volunteer.interests" value="For Corporate"> For Corporate Volunteering
               </label>
             </div>
           </volunteer-field>
@@ -113,14 +184,19 @@
             </select>
           </volunteer-field>
           
-          <volunteer-field name="Area to help in" :error="errors.get('publicity_area')" v-if="has_publicity">
+          <volunteer-field name="Area to help in" :error="errors.get('fund_raising')" v-if="has_publicity">
             <select v-model="volunteer.publicity_area" class="form-control">
               <option value=""></option>
-              <option value="Designing">Designing</option>
-              <option value="Pamphlet Distribution">Pamphlet Distribution</option>
-              <option value="Media Producer">Media Producer</option>
-              <option value="Education Counsellor">Education Counsellor</option>
+              <option value="Booth volunteer at Events">Booth Volunteer at Events</option>
+              <option value="Design and Content Creation">Design and Content Creation</option>
+              <option value="Photographers and Videographers">Photographers and Videographers</option>
+              <option value="Fundraising / Campaign / Event Organizer">Fund Raising / Campaign / Event Organizer</option>
+              <option value="Others">Others</option>
             </select>
+          </volunteer-field>
+          
+          <volunteer-field name="Average age of participating students: " :error="errors.get('students_average_age')" v-if="has_students">
+            <input type="text" v-model="volunteer.students_average_age" maxlength="100" class="form-control">
           </volunteer-field>
           
           <div class="form-group">
@@ -140,70 +216,6 @@
           </div>
         </form>
       </div>
-      <div class="col-md-6 bottommargin_0">
-        <div class="row text-center">
-          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'rescuing'">
-            <img src="assets/images/rescue.jpg" class="img-rounded">
-            <br>Rescuing
-          </div>
-          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'rehoming'">
-            <img src="assets/images/rehoming.jpg" class="img-rounded">
-            <br>Rehoming
-          </div>
-          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'fostering'">
-            <img src="assets/images/fostering.jpg" class="img-rounded">
-            <br>Fostering
-          </div>
-          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'volunteer'">
-            <img src="assets/images/volunteer.png" class="img-rounded">
-            <br>Volunteer at Adoption & Rescue Centre (ARC)
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'fund-raising'">
-            <img src="assets/images/fund-raising.jpg" class="img-rounded">
-            <br>Fund Raising
-          </div>
-          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'publicity'">
-            <img src="assets/images/publicity.jpg" class="img-rounded">
-            <br>Publicity
-          </div>
-          <div class="col-xs-3 text-center clickable" @click="selectedActivity = 'logistics'">
-            <img src="assets/images/logistics.gif" class="img-rounded">
-            <br>Logistics & Transport
-          </div>
-        </div>
-
-        <div class="mt-10 mb-20 text-center">(Click on the image to learn more)</div>
-        <div class="row">
-          <div class="col-md-12">
-            <div v-if="selectedActivity == 'rescuing'">
-              {!! nl2br($contents['Volunteer Rescuing']) !!}
-            </div>
-            <div v-if="selectedActivity == 'rehoming'">
-              {!! nl2br($contents['Volunteer Rehoming']) !!}
-            </div>
-            <div v-if="selectedActivity == 'fostering'">
-              {!! nl2br($contents['Volunteer Fostering']) !!}
-            </div>
-            <div v-if="selectedActivity == 'volunteer'">
-              {!! nl2br($contents['Volunteer Volunteer']) !!}
-            </div>
-            <div v-if="selectedActivity == 'fund-raising'">
-              {!! nl2br($contents['Volunteer Fund Raising']) !!}
-            </div>
-            <div v-if="selectedActivity == 'publicity'">
-              {!! nl2br($contents['Volunteer Publicity']) !!}
-            </div>
-            <div v-if="selectedActivity == 'logistics'">
-              {!! nl2br($contents['Volunteer Logistics']) !!}
-            </div>
-          </div>
-        </div>
-        
-      </div>
-      
-      
     </div>
   </div>
 
@@ -263,10 +275,13 @@
           return this.volunteer.interests.indexOf("Fostering") >= 0;
         },
         has_publicity: function() {
-          return this.volunteer.interests.indexOf("Publicity") >= 0;
+          return this.volunteer.interests.indexOf("Fund Raising & Publicity") >= 0;
         },
         has_logistics: function() {
           return this.volunteer.interests.indexOf("Logistics") >= 0;
+        },
+        has_students: function() {
+          return this.volunteer.interests.indexOf("For Students") >= 0;
         }
       }
     })

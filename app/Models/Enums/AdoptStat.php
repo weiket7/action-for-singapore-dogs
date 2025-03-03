@@ -8,6 +8,7 @@ abstract class AdoptStat
     const PassedAway = 'P';
     const UnavailableHealth = 'H';
     const UnavailableTemperament = 'T';
+    const Sponsor = 'S';
   
     public static $values = array(
       self::Available=>'Available',
@@ -16,5 +17,6 @@ abstract class AdoptStat
       self::PassedAway=>'Passed Away',
       self::UnavailableHealth=>'Unavailable (Health)',
       self::UnavailableTemperament=>'Unavailable (Temperament)',
+      self::Sponsor=>'Sponsor',
     );
 }

@@ -29,7 +29,8 @@
       
       <form-footer>
         <button type="submit" class="btn btn-success">Save</button>
-        <button type="button" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+        <button type="button" class="btn btn-warning" @click="archiveBlog">{{ blog.archive ? 'Unarchive' : 'Archive' }}</button>
+        <button type="button" id="btn-archive" class="btn btn-danger" data-toggle="confirmation">Delete</button>
       </form-footer>
     </form>
   </single-portlet>
@@ -99,6 +100,14 @@
         axios.post('api/delete-record?table=blog&column=blog_id&id='+this.$route.params.blog_id)
           .then(response => {
             toastr.success("Blog deleted");
+            this.$router.push('/blog');
+          })
+          .catch(this.onError);
+      },
+      archiveBlog() {
+        axios.post('api/blog/archive/'+this.$route.params.blog_id)
+          .then(response => {
+            toastr.success("Blog archived");
             this.$router.push('/blog');
           })
           .catch(this.onError);

@@ -48,11 +48,11 @@
         </div>
       </div>
       <div class="row columns_margin_bottom_30 columns_margin_top_0">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-6">
           <article class="vertical-item">
             <div class="item-content">
               <h3 class="entry-title">
-                <a href="{{ url('dogs-for-adoption') }}" class="bold">ADOPT</a>
+                <a href="{{ url('dogs-for-adoption') }}" class="bold">Adopt</a>
               </h3>
               <p>
                 {!! $contents['Home Adopt'] !!}
@@ -63,8 +63,24 @@
             </div>
           </article>
         </div>
+
+        <div class="col-md-3 col-sm-6">
+          <article class="vertical-item">
+            <div class="item-content">
+              <h3 class="entry-title">
+                <a href="{{ url('sponsor') }}" class="bold">Sponsor</a>
+              </h3>
+              <p>
+                {!! $contents['Home Sponsor'] !!}
+              </p>
+              <p class="topmargin_30">
+                <a href="{{ url('/sponsor') }}" class="theme_button">Sponsor</a>
+              </p>
+            </div>
+          </article>
+        </div>
         
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-6">
           <article class="vertical-item">
             <div class="item-content">
               <h3 class="entry-title">
@@ -80,7 +96,7 @@
           </article>
         </div>
         
-        <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-0">
+        <div class="col-md-3 col-sm-6 col-sm-offset-3 col-md-offset-0">
           <article class="vertical-item">
             <div class="item-content">
               <h3 class="entry-title">
@@ -135,7 +151,7 @@
     </div>
   </section>
   
-  <section id="what-we-do" style="background-color:#f2f2f2" class="pt-30">
+  {{-- <section id="what-we-do" style="background-color:#f2f2f2" class="pt-30">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1 text-center">
@@ -194,7 +210,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 @endsection
 
 @section('script')

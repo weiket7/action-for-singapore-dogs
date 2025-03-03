@@ -121,9 +121,6 @@
           <!-- main nav start -->
           <nav class="mainmenu_wrapper">
             <ul class="mainmenu nav sf-menu">
-              <li class="active">
-                <a href="{{ url('/') }}" :data-target="'home'" class="menu-single">Home</a>
-              </li>
               <li>
                 <a href="#">About</a>
                 <ul>
@@ -131,7 +128,7 @@
                     <a href="{{ url('who-we-are') }}" :data-target="'coming-soon'">Who We Are</a>
                   </li>
                   <li>
-                    <a href="{{ url('pages/adoption-rescue-centre-arc') }}" :data-target="'coming-soon'">Adoption & Rescue Centre (ARC)</a>
+                    <a href="{{ url('pages/adoption-rescue-centre-arc') }}" :data-target="'coming-soon'">ASD Canine Rehoming Centre (ACRC)</a>
                   </li>
                   {{--<li>
                     <a href="{{ url('boarding-services') }}" :data-target="'coming-soon'">Boarding Services</a>
@@ -158,7 +155,7 @@
                     <a href="{{ url('pages/project-adore') }}">Project Adore</a>
                   </li>
                   <li>
-                    <a href="{{ url('pages/why-adopt-a-dog') }}">Why Adopt a Dog</a>
+                    <a href="{{ url('pages/what-to-expect-when-adopting-a-dog') }}">What to Expect When Adopting a Dog</a>
                   </li>
                   <li>
                     <a href="{{ url('pages/adoption-procedure') }}">Adoption Procedure</a>
@@ -170,18 +167,10 @@
               </li>
               
               <li>
-                <a href="#">Donate / Sponsor</a>
-                <ul>
-                  <li>
-                    <a href="{{ url('donate') }}" :data-target="'donate'">Donate</a>
-                  </li>
-                  <li>
-                    <a href="{{ url('sponsor') }}" :data-target="'coming-soon'">Sponsor</a>
-                  </li>
-                  <li>
-                    <a href="{{ url('gift-shop') }}" :data-target="'coming-soon'">Gift Shop</a>
-                  </li>
-                </ul>
+                <a href="{{ url('donate') }}" :data-target="'donate'" class="menu-single">Donate</a>
+              </li>
+              <li>
+                <a href="{{ url('sponsor') }}" :data-target="'sponsor'" class="menu-single">Sponsor</a>
               </li>
               <li>
                 <a href="{{ url('volunteer') }}" :data-target="'volunteer'" class="menu-single">Volunteer</a>
@@ -199,7 +188,7 @@
                     <a href="{{ url('blog/gone-to-loving-homes') }}">Gone to Loving Homes</a>
                   </li>
                   <li>
-                    <a href="{{ url('blog/dogs-in-need') }}" :data-target="'coming-soon'">Dogs in Need</a>
+                    <a href="{{ url('blog/in-loving-memory') }}" :data-target="'coming-soon'">In Loving Memory</a>
                   </li>
                 </ul>
               </li>
@@ -239,7 +228,6 @@
           <div class="darklinks topmargin_10">
             <a class="social-icon theme-color-icon soc-facebook" href="https://www.facebook.com/asdsingapore/" title="Facebook"></a>
             <a class="social-icon theme-color-icon soc-instagram" href="https://www.instagram.com/asdsingapore" title="Instagram"></a>
-            <a class="social-icon theme-color-icon soc-youtube" href="#" title="Youtube"></a>
           </div>
         </div>
       </div>
@@ -267,7 +255,7 @@
 <script src="{{ asset("js/errors.js") }}"></script>
 <script src="{{ asset("js/filters.js") }}"></script>
 <script src="{{ asset("js/heart.js") }}"></script>
-<script src="{{ asset("js/adopt-item.js") }}"></script>
+<script src="{{ asset("js/adopt-item.js") }}?v=202501"></script>
 <script src="{{ asset("js/volunteer-field.js") }}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-62167634-3"></script>

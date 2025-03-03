@@ -100,16 +100,22 @@
             <label-component required>Image 1</label-component>
             <image-component v-model="adopt.image" name="image"
                              v-on:update-image="updateImage" folder="adopts"
-                             :src="adopt.image" :error="errors.get('image_new')"></image-component>
+                             :src="adopt.image" :error="errors.get('image')"></image-component>
+
+            <label-component>Image 2</label-component>
+            <image-component v-model="adopt.image2" name="image2"
+                            v-on:update-image="updateImage2" folder="adopts"
+                            :src="adopt.image2" :error="errors.get('image2')" canDelete>
+            </image-component>
           </form-row>
-  
+
           <form-footer>
             <button type="submit" class="btn btn-success">Save</button>
             <button type="button" class="btn btn-danger" data-toggle="confirmation" v-if="!this.is_create">Delete</button>
           </form-footer>
         </form>
       </tab>
-      <tab :name="'Adopter'">
+      <!-- <tab :name="'Adopter'">
         <form @submit.prevent="onSubmit()" class="m-form m-form--fit m-form--label-align-right" >
           <adopt-adopter v-for="(adopter, index) in adopters" v-if="adopter"
                          v-on:update-person="updateAdopter"
@@ -165,8 +171,8 @@
             </div>
           </form-row>
         </form>
-      </tab>
-      <tab :name="'Import into adoptadog'">
+      </tab> -->
+      <!-- <tab :name="'Import into adoptadog'">
           <img :src="'assets/images/adopts/'+adopt.image" style="max-height: 150px;">
           <br><br>
           <textarea readonly rows="10" class="form-control" id="importIntoAdoptadog" @click="copy">
@@ -180,7 +186,7 @@ Description: {{ adopt.desc }}
 History: {{ adopt.history }}
           </textarea>
         </form-row>
-      </tab>
+      </tab> -->
     </tabs>
   </single-portlet>
 </template>
@@ -204,7 +210,8 @@ History: {{ adopt.history }}
         fosters: [{}],
         adopters: [{}],
         errors: new Errors(),
-        image_new: null,
+        image: null,
+        image2: null,
       }
     },
     computed: {
@@ -214,7 +221,7 @@ History: {{ adopt.history }}
       tabs() {
         let tabs = ['General'];
         if (! this.is_create) {
-          tabs = ['General', 'Adopter', 'Rescuer', 'Foster', 'Import into adoptadog'];
+          tabs = ['General'];
         }
         return tabs;
       },
@@ -238,13 +245,23 @@ History: {{ adopt.history }}
         if (!this.is_create) {
           url += '/'+ this.$route.params.adopt_id
         }
-  
-        let form_data = this.adopt;
+
+        let form_data = {...this.adopt};
+
         let config = {};
-        if (this.image_new) {
+        if (this.image || this.image2) {
           form_data = new FormData();
           this.appendObjectToFormData(this.adopt, form_data);
-          form_data.append("image_new", this.image_new);
+
+          form_data.delete("image");
+          form_data.delete("image2");
+          if (this.image) {
+            form_data.set("image", this.image);
+          }
+          if (this.image2) {
+            form_data.set("image2", this.image2);
+          }
+          console.log(form_data);
     
           config = {
             headers: {
@@ -286,7 +303,11 @@ History: {{ adopt.history }}
         this.adopters.splice(index, 1);
       },
       updateImage(file) {
-        this.image_new = file;
+        this.image = file;
+      },
+      updateImage2(file) {
+        this.image2 = file;
+        this.adopt.image2 = file;
       },
       deleteAdopt() {
         axios.post('api/adopt/delete/'+this.$route.params.adopt_id)

@@ -73,7 +73,7 @@
         volunteer: {},
         volunteer_stats: [],
         interests: [],
-        interested_in_options: ['Rescuing', 'Rehoming', 'Fostering', 'Volunteering at ARC', 'Publicity', 'Fund Raising & Events', 'Logistics'],
+        interested_in_options: ['Rescuing', 'Rehoming', 'Fostering', 'Volunteering at ACRC', 'Publicity', 'Fund Raising & Events', 'Logistics'],
         errors: new Errors(),
       }
     },

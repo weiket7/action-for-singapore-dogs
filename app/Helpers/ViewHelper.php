@@ -26,7 +26,7 @@ class ViewHelper
   }
   
   public static function blogImageFolder($blog_type) {
-    if($blog_type == BlogType::DogsInNeed)
+    if($blog_type == BlogType::InLovingMemory)
       return 'dogs-in-need';
     elseif($blog_type == BlogType::GoneToLovingHomes)
       return 'gone-to-good-homes';

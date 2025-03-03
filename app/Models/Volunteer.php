@@ -17,7 +17,7 @@ class Volunteer extends Model
     } else { //create
       $this->stat = VolunteerStat::Potential;
     }
-    $this->name = $input['name'];
+    $this->name = $input['name']; 
     $this->email = $input['email'];
     $this->mobile = $input['mobile'];
     $this->birthday = $input['birthday'];
@@ -28,6 +28,7 @@ class Volunteer extends Model
     $this->preferred_dog_size = $input['preferred_dog_size'] ?? null;
     $this->current_no_of_dogs = $input['current_no_of_dogs'] ?? null;
     $this->publicity_area = $input['publicity_area'] ?? null;
+    $this->students_average_age = $input['students_average_age'] ?? null;
     $this->created_on = Carbon::now();
     $this->save();
     $this->saveVolunteerInterest($input['interests']);
