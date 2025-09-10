@@ -91,6 +91,9 @@
                       <label v-for="(value, key) in payment_methods" class="btn btn-primary" @click="donation.payment_method = key">
                         <input type="radio" name="payment_method" :value="key"> @{{ value }}
                       </label>
+                      <button onclick="location.href='https://give.asia/asd-no-dog-left-behind'" type="button" class="btn btn-primary">
+                        Give.Asia
+                      </button>
                     </div>
                     
                     <span class="help-block error" v-if="errors.get('payment_method')">
