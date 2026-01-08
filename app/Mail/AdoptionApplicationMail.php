@@ -25,8 +25,10 @@ class AdoptionApplicationMail extends Mailable
   
   public function build()
   {
-    $recipients = Setting::getAdoptionFormRecipients($this->adoption_form->email);
-    return $this->to($recipients)
+    //$recipients = Setting::getAdoptionFormRecipients($this->adoption_form->email);
+    $to = [$this->adoption_form->email, "info@asdsingapore.com"];
+    $bcc = ["wjflow66@gmail.com", "wjflow@icloud.com", "cooper.myhre@gmail.com"];
+    return $this->to($to)->bcc($bcc)
       ->subject("[Adoption Application] from ".$this->adoption_form->name)->view('emails.adoption-application');
   }
 }
