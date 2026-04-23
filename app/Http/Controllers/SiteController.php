@@ -235,8 +235,10 @@ class SiteController extends Controller
         $page_limit = 24;
         $offset = ($current_page-1)*$page_limit;
         $rand = $request->session()->get('rand');
+        // $data['adopts'] = Adopt::whereIn('stat', [AdoptStat::Sponsor])
+        //     ->orderByRaw("rand(".$rand.")")->skip($offset)->limit($page_limit)->get();
         $data['adopts'] = Adopt::whereIn('stat', [AdoptStat::Sponsor])
-            ->orderByRaw("rand(".$rand.")")->skip($offset)->limit($page_limit)->get();
+            ->orderByRaw("rand(".$rand.")")->get();
         $data['adopt_count'] = Adopt::whereIn('stat', [AdoptStat::Sponsor])->count();
         $data['adopts_per_page'] = $page_limit;
         $data['contents'] = Page::getContents();

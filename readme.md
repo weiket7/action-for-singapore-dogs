@@ -8,15 +8,31 @@ Unzip to C:\php-7.4.33
 
 Add to environment variables
 
-In Terminal, `php --ini` to find php.ini location  
+In Terminal, `php --ini` to find php.ini location
 
-Uncomment or add `extension_dir = "ext"`   
+Uncomment or add `extension_dir = "ext"`
 
-Uncomment or add `extension=php_fileinfo.dll`   
+Uncomment or add `extension=php_fileinfo.dll`
 
-Uncomment or add `extension=php_openssl.dll`   
+Uncomment or add `extension=php_openssl.dll`
 
 Uncomment or add `extension=php_pdo_mysql.dll`
+
+### Laravel 5.5.50
+
+Create .env file
+
+composer install
+
+php artisan key:generate
+
+Create database
+
+php artisan migrate
+
+php artisan serve
+
+http://127.0.0.1:8000/
 
 ## Database
 
@@ -25,18 +41,6 @@ php artisan make:migration volunteer_add_students
 php artisan migrate --force
 
 php artisan migrate:rollback
-
-### Laravel 5.5.50
-
-composer install  
-
-php artisan key:generate  
-
-php artisan migrate
-
-php artisan serve
-
-http://127.0.0.1:8000/
 
 ## Laravel Mix
 

@@ -15,20 +15,20 @@
     
     <div class="row">
       
-      <div class="col-sm-7 col-md-8 col-lg-8">
+      <div class="col-sm-12 col-md-12 col-lg-12">
         
         <div v-if="!isFilter" class="row columns_padding_0">
-          <div class="col-sm-2 text-center text-sm-left">
+          <!-- <div class="col-sm-2 text-center text-sm-left">
             <a href="#" @click="previousPage()" class="theme_button inverse margin_0">Prev page</a>
+          </div> -->
+          <div class="col-sm-12 text-center grid-header">
+            <!-- Current Page: @{{ current_page }} / @{{ num_of_pages }}
+            <br> -->
+            Showing @{{ adopt_count }} dogs for sponsorship
           </div>
-          <div class="col-sm-8 text-center grid-header">
-            Current Page: @{{ current_page }} / @{{ num_of_pages }}
-            <br>
-            Showing @{{ adopts.length }} out of @{{ adopt_count }} dogs for adoption
-          </div>
-          <div class="col-sm-2 text-center text-sm-right">
+          <!-- <div class="col-sm-2 text-center text-sm-right">
             <a href="#" @click="nextPage()" class="theme_button inverse margin_0">Next page</a>
-          </div>
+          </div> -->
         </div>
         
         <div v-else class="text-center">
@@ -37,7 +37,7 @@
         
         <div class="row">
           <div v-for="chunk in adopt_chunks" class="row">
-            <div class="col-md-4" v-for="adopt in chunk" >
+            <div class="col-md-3" v-for="adopt in chunk" >
               <adopt-item :adopt="adopt" :key="adopt.adopt_id"
                         :highlight="hasHeart(adopt.adopt_id)"
                         v-on:heart-adopt="heartAdopt" is-sponsor="true"></adopt-item>
@@ -46,61 +46,19 @@
         </div>
         
         <div v-if="!isFilter" class="row columns_padding_0">
-          <div class="col-sm-2 text-center text-sm-left">
+          <!-- <div class="col-sm-2 text-center text-sm-left">
             <a href="#" @click="previousPage()" class="theme_button inverse margin_0">Prev page</a>
+          </div> -->
+          <div class="col-sm-12 text-center grid-header">
+            <!-- Current Page: @{{ current_page }} / @{{ num_of_pages }}
+            <br> -->
+            Showing @{{ adopt_count }} dogs for sponsorship
           </div>
-          <div class="col-sm-8 text-center grid-header">
-            Current Page: @{{ current_page }} / @{{ num_of_pages }}
-            <br>
-            Showing @{{ adopts.length }} out of @{{ adopt_count }} dogs for adoption
-          </div>
-          <div class="col-sm-2 text-center text-sm-right">
+          <!-- <div class="col-sm-2 text-center text-sm-right">
             <a href="#" @click="nextPage()" class="theme_button inverse margin_0">Next page</a>
-          </div>
+          </div> -->
         </div>
       </div>
-      
-      <!-- sidebar -->
-      <aside class="col-sm-5 col-md-4 col-lg-4">
-        <h2>Search</h2>
-        
-        <div class="widget widget_categories2">
-          <h3 class="widget-title">Dog Name</h3>
-          <input type="text" v-model="filter.name" class="form-control">
-          
-          <h3 class="widget-title mt-30">HDB Approved</h3>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="hdb" v-model="filter.hdb" value="1">
-              Yes
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="hdb" v-model="filter.hdb" value="0">
-              No
-            </label>
-          </div>
-          
-          <h3 class="widget-title mt-30">Gender</h3>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="gender" v-model="filter.gender" value="M">
-              Male
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="gender" v-model="filter.gender" value="F">
-              Female
-            </label>
-          </div>
-          <br>
-          
-          <button type="button" @click="filterAdopt" class="theme_button inverse margin_0">Search</button>
-        
-        </div>
-      </aside>
     </div>
     @endif
   </div>
@@ -130,7 +88,7 @@
         return Math.ceil(this.adopt_count / this.adopts_per_page);
       },
       adopt_chunks: function() {
-        return _.chunk(this.adopts, 3);
+        return _.chunk(this.adopts, 4);
       }
     },
     methods: {
