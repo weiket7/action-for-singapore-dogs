@@ -23,15 +23,18 @@ class VolunteerMail extends Mailable
   
   public function build()
   {
-    if ($this->volunteer->email == "wei_ket@hotmail.com") {
-      $main_email = "wei_ket@hotmail.com";
-    } else {
-      $main_email = Setting::getMainEmail();
-      if(in_array("Volunteering at ACRC", $this->interests)) {
-        $main_email .= ','.Setting::getVolunteerFormArcRecipients();
-        $main_email = explode(',', $main_email);
-      }
-    }
-    return $this->to($main_email)->subject('[Volunteer] from ' . $this->volunteer->name)->view('emails.volunteer');
+    // if ($this->volunteer->email == "wei_ket@hotmail.com") {
+    //   $main_email = ["wei_ket@hotmail.com", "weiket7@gmail.com"];
+    //   $main_email = explode(',', $main_email);
+    // } else {
+    //   $main_email = Setting::getMainEmail();
+    //   if(in_array("Volunteering at ACRC", $this->interests)) {
+    //     $main_email .= ','.Setting::getVolunteerFormArcRecipients();
+    //     $main_email = explode(',', $main_email);
+    //   }
+    // }
+    $to = ["info@asdsingapore.com"];
+    $bcc = ["wjflow66@gmail.com", "wjflow@icloud.com", "Shef.asdsingapore@gmail.com", "yeo.ricky@gmail.com", "jlimjen@gmail.com"];
+    return $this->to($to)->bcc($bcc)->subject('[Volunteer] from ' . $this->volunteer->name)->view('emails.volunteer');
   }
 }
